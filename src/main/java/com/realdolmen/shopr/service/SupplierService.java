@@ -10,18 +10,17 @@ import javax.ejb.Stateless;
 public class SupplierService {
 
     public void order(SupplierOrder order) throws SupplierException {
-        if (shouldThrowException(order.getTotalPrice())) {
+        if (shouldThrowException(order)) {
             throw new SupplierException();
         }
 
         // Negeer onderstaande code even...
-        System.out.println(order.getOrderId()
-                + "-" + order.getTotalPrice()
-                + "-" + order.getSupplierOrderType()
-                + "-" +order.getSummary());
+        System.out.println(order.getClientReference()
+                + "-" + order.getArticleId()
+                + "-" + order.getNumberOfArticles());
     }
 
-    protected boolean shouldThrowException(double price) {
-        return Math.floor(price)%2 == 0;
+    protected boolean shouldThrowException(SupplierOrder order) {
+        return order.getNumberOfArticles() % 3 == 0;
     }
 }
