@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -32,5 +33,4 @@ public class UserController {
     public void submit(){
         this.userService.insert(newUser);
     }
-
 }
