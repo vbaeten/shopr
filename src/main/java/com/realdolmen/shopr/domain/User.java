@@ -34,6 +34,7 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
+
     public int getId() {
         return id;
     }
