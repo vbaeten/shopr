@@ -8,6 +8,10 @@ public class LP extends Article {
     private LPGenre genre;
 
 
+
+
+
+
     public String getPublisher() {
         return publisher;
     }

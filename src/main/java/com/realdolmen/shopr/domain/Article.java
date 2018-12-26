@@ -1,21 +1,21 @@
 package com.realdolmen.shopr.domain;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+
 @Table(name= "Article")
 public abstract class Article {
 
     @Id
     private int id;
-    private String titel;
+    @Column(name = "title")
+    private String title;
     private double price;
     private String supplierId;
-
-
 
 
 
@@ -29,11 +29,11 @@ public abstract class Article {
     }
 
     public String getTitel() {
-        return titel;
+        return title;
     }
 
-    public void setTitel(String titel) {
-        this.titel = titel;
+    public void setTitel(String title) {
+        this.title = title;
     }
 
     public double getPrice() {
