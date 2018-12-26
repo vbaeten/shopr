@@ -1,9 +1,6 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,15 +10,19 @@ public abstract class Artikel
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @NotNull
     @Size(min=1,max=100)
+    @Column
     private String titel;
     @NotNull
+    @Column
     private Integer prijs;
     @NotNull
     @Size(min=1,max=100)
+    @Column
     private String leverancier;
 
 
