@@ -27,6 +27,8 @@ public class User {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 
+    //comment
+
     @Id
     private int id;
     @Column(name = "name")
