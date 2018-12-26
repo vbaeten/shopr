@@ -7,29 +7,43 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+
+//business logic goes here in service
+
 @Stateless
-public class UserService {
+public class UserService
+{
     @Inject
     private UserRepository userRepository;
 
-    public User findUserById(int id) {
+    public User findUserById(int id)
+    {
         return userRepository.findById(id);
     }
 
-    public List<User> findAllUsers() {
+    public List<User> findAllUsers()
+    {
         return userRepository.findAll();
     }
 
-    public User findUserByName(String name) {
+    public User findUserByName(String name)
+    {
         return userRepository.findByName(name);
     }
 
-    public void updateName(int id, String newName) {
+
+    //managed transaction --> geen persist nodig
+    // na gebruik service auto persist/update , kracht van jpa
+    // alles in service valt binnen tranaction
+
+    public void updateName(int id, String newName)
+    {
         User user = userRepository.findById(id);
         user.setName(newName);
     }
 
-    public void insert(User user) {
+    public void insert(User user)
+    {
         userRepository.insert(user);
     }
 
