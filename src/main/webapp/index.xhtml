@@ -37,14 +37,14 @@
         <p:panel header="Select a user to login">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="user" value="User:"/>
-                <p:selectOneMenu id="user" value="#{user.firstName} + #{user.name}" style="width:150px">
+                <p:selectOneMenu id="user" value="#{user}" style="width:150px">
                     <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
-                    <f:selectItems value="#{userController.users}" />
+                    <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.name}" itemLabel="#{user.firstName} #{user.name}" />
                 </p:selectOneMenu>
             </h:panelGrid>
             <p:separator/>
 
-            <p:commandButton value="Submit" update="msgs" action="#{userController.user}" icon="pi pi-check"/>
+            <p:commandButton value="Submit" update="msgs" action="#{user.name}" icon="pi pi-check"/>
         </p:panel>
     </h:form>
 </h:body>
