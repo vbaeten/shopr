@@ -3,6 +3,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @MappedSuperclass
@@ -10,13 +11,15 @@ public abstract class Article {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(length = 100)
+    @Column
+    @Size(max = 100 )
     @NotNull
     private String title;
     @NotNull
     @Digits(integer=6, fraction=2)
     private BigDecimal price;
-    @Column(length = 100)
+    @Column
+    @Size(max = 100 )
     @NotNull
     private String supplierId;
 

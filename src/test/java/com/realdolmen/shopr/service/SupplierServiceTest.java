@@ -51,7 +51,6 @@ public class SupplierServiceTest {
             }
         };
         Assert.assertEquals(shouldTrowException, service.shouldThrowException(order));
-
     }
 
 }
