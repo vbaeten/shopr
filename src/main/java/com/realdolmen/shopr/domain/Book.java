@@ -3,8 +3,8 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Inheritance(strategy = InheritanceType.JOINED)
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Book extends Product {
 
     @Column(length = 100, name = "author")

@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class Product {
 
     @Id
-    @Column(name = "product_id")
+    @GeneratedValue
     private Long id;
 
     @Column(length = 100, name = "title")

@@ -1,15 +1,13 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 @Entity
 public class Rating {
 
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @Min(0)
@@ -19,6 +17,7 @@ public class Rating {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Rating() {

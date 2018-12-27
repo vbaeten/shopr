@@ -1,19 +1,19 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
 public class Order {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "order_date")
-    private LocalDate orderDate;
+    private Date orderDate;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -36,14 +36,6 @@ public class Order {
         this.id = id;
     }
 
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
-
     public List<Product> getProducts() {
         return products;
     }
@@ -58,5 +50,13 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 }

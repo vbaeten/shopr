@@ -3,13 +3,11 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "fiction")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Fiction extends Book {
 
     private Book_Genre genre;
 
-    @Column(length = 255, name = "summary")
+    @Column(length = 255)
     private String summary;
 
     public Fiction() {
