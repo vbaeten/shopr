@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "boek_type")
 public abstract class Boek extends Artikel
 {   
@@ -20,7 +20,7 @@ public abstract class Boek extends Artikel
     @Column
     private int aantalPaginas;
 
-    @JoinTable
+
 
 
     public String getAuteur()

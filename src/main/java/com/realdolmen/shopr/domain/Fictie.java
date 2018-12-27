@@ -3,7 +3,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-
+@Entity
 @DiscriminatorValue(value = "fictie")
 public class Fictie extends Boek
 {

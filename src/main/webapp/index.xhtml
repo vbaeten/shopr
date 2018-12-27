@@ -44,17 +44,17 @@ xmlns:of="http://omnifaces.org/functions">
     <p:panel id="panelGame" header="Add Game" style="margin-bottom:10px;">
         <h:panelGrid columns="4" cellpadding="5">
             <h:outputLabel for="titel" value="Titel:"/>
-            <p:inputText id="titel" value="#{gameController.newGame.titel}"></p:inputText>
+            <p:inputText id="titel" value="#{gameController.newGame.titel}"/>
 
             <h:outputLabel for="prijs" value="Prijs:"/>
-            <p:inputText id="prijs" value="#{gameController.newGame.prijs}"></p:inputText>
+            <p:inputText id="prijs" value="#{gameController.newGame.prijs}"/>
 
             <h:outputLabel for="leverancier" value="Leverancier:"/>
-            <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}"></p:inputText>
+            <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}"/>
 
             <h:outputLabel for="uitgever" value="Uitgever:"/>
-            <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}">
-            </p:inputText>
+            <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}"/>
+            
 
 
             <h:outputLabel for="leeftijd" value="Min Leeftijd: " />
@@ -109,17 +109,17 @@ xmlns:of="http://omnifaces.org/functions">
         <p:panel id="panelLp" header="Add Lp" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
                 <h:outputLabel for="titelLp" value="Titel:"/>
-                <p:inputText id="titelLp" value="#{lpController.newLp.titel}"></p:inputText>
+                <p:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true"/>
 
                 <h:outputLabel for="prijsLp" value="Prijs:"/>
-                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}"></p:inputText>
+                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}" required="true"/>
 
                 <h:outputLabel for="leverancierLp" value="Leverancier:"/>
-                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"></p:inputText>
+                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"/>
 
                 <h:outputLabel for="uitvoerderLp" value="Uitgever:"/>
-                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}">
-                </p:inputText>
+                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}" required="true"/>
+
 
                 <o:importConstants type="com.realdolmen.shopr.domain.EnumMuziekGenre" />
                 <h:outputLabel for="muziekGenre" value="Genre:"/>

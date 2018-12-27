@@ -2,7 +2,7 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 
-
+@Entity
 @DiscriminatorValue(value = "nonFictie")
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Nonfictie extends Boek
