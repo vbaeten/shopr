@@ -4,12 +4,15 @@
     <h:form>
         <p:growl id="messages"/>
 
-        <p:menubar>
+        <p:menubar >
 
+<p:menuitem><h:link outcome="index.xhtml">
+<h:outputLabel value="#{msgs['header.brand']}" />
+</h:link>
+</p:menuitem>
 
-            <p:menuitem> <p:commandButton type="button" value="ShopR"/></p:menuitem>
-            <p:menuitem> <p:commandButton type="button" value="Zoek"/></p:menuitem>
-            <p:menuitem> <p:commandButton type="button" value="Toevoegen"/></p:menuitem>
+            <p:menuitem> <p:commandButton type="button" action="goToZoek" value="#{msgs['header.zoek']}"/></p:menuitem>
+            <p:menuitem> <p:commandButton type="button" action="goToToevoegen" value="#{msgs['header.toevoegen']}"/></p:menuitem>
 
 
 

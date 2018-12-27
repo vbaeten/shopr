@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "boek_type")
 public abstract class Boek extends Artikel
 {   
