@@ -7,8 +7,6 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table
 public class Game extends Article{
     @Column(name = "Publisher")
     @Size(max = 100)

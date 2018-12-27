@@ -6,11 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table
 @DiscriminatorValue("Fiction")
 public class BookFiction extends Book {
-    @Column(name = "Book genre")
+    @Column(name = "Bookgenre")
     private BookGenre bookGenre;
     @Column(name = "Summary")
     @Size(max = 255 )

@@ -6,8 +6,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Book extends Article {
     @Column(name = "author")
     @Size(max = 100)

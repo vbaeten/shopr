@@ -6,9 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table
-@DiscriminatorValue("Non Fiction")
+@DiscriminatorValue("NonFiction")
 public class BookNonFiction extends Book {
     @Column(name = "Subject")
     private BookSubjectNF bookSubjectNF;

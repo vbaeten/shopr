@@ -1,6 +1,6 @@
 package com.realdolmen.shopr.repository;
 
-import com.realdolmen.shopr.domain.BookFiction;
+import com.realdolmen.shopr.domain.Game;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,19 +10,18 @@ public class GameRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public BookFiction findById(int id) {
-        return entityManager.find(BookFiction.class, id);
+    public Game findById(int id) {
+        return entityManager.find(Game.class, id);
     }
 
-    public List<BookFiction> findAll() {
-        return entityManager.createQuery("select f from BookFiction f ", BookFiction.class).getResultList();
+    public List<Game> findAll() {
+        return entityManager.createQuery("select f from Game f ", Game.class).getResultList();
     }
 
-    public BookFiction findByTitle(String title) {
-        return entityManager.createQuery(" select f from BookFiction f where f.title =: title", BookFiction.class).getSingleResult();
+    public Game findByTitle(String title) {
+        return entityManager.createQuery(" select f from Game f where f.title =: title", Game.class).getSingleResult();
     }
 
-    public void insert(BookFiction bookFiction) {
-        entityManager.persist(bookFiction);
+    public void insert(Game game) {entityManager.persist(game);
     }
 }

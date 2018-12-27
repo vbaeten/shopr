@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
+@Table(name= "ArticleOrder")
 public class Order {
     @Id
     @GeneratedValue

@@ -7,8 +7,6 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table
 public class LP extends Article {
     @Size(max = 100)
     @Column(name = "Artist")
