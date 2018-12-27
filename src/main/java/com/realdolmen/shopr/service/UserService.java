@@ -37,4 +37,8 @@ public class UserService {
         User user = userRepository.findById(id);
         userRepository.delete(user);
     }
+
+    protected void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 }
