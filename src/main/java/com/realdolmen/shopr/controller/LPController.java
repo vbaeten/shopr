@@ -7,6 +7,7 @@ import com.realdolmen.shopr.service.LPService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ManagedBean
 @ViewScoped
@@ -15,12 +16,16 @@ public class LPController {
     private LP newLP = new LP();
 
     @Inject
-    private LPService LPService;
+    private LPService lpService;
 
 
 
-    public void addLP(){
-      this.LPService.insert(newLP);
+    public List<LP> getLPs(){
+        return this.lpService.findAllLps();
+    }
+
+    public void submit(){
+      this.lpService.insert(newLP);
     }
 
 
@@ -33,11 +38,11 @@ public class LPController {
     }
 
     public LPService getLPService() {
-        return LPService;
+        return lpService;
     }
 
     public void setLPService(LPService LPService) {
-        this.LPService = LPService;
+        this.lpService = LPService;
     }
 
 

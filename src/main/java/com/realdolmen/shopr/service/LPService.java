@@ -6,6 +6,7 @@ import com.realdolmen.shopr.repository.LPRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class LPService {
@@ -17,6 +18,10 @@ public class LPService {
     public void insert(LP lp)
     {
         lpRepository.insert(lp);
+    }
+
+    public List<LP> findAllLps() {
+        return lpRepository.findAllLps();
     }
 
 
