@@ -10,7 +10,7 @@ public class UserRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public User findById(int id) {
+    public User findById(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -26,4 +26,7 @@ public class UserRepository {
         entityManager.persist(user);
     }
 
+    public void delete(User user) {
+        entityManager.remove(user);
+    }
 }
