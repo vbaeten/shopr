@@ -4,33 +4,164 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:o="http://omnifaces.org/ui"
+xmlns:of="http://omnifaces.org/functions">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
-      <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
-         <p:column headerText="Id">
-            <h:outputText value="#{user.id}" />
-         </p:column>
 
-         <p:column headerText="Name">
-            <h:outputText value="#{user.name}" />
-         </p:column>
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="content">
 
-         <p:column headerText="First name">
-            <h:outputText value="#{user.firstName}" />
-         </p:column>
-      </p:dataTable>
-      <h:form id="addLocationForm">
-         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+    <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
+        <p:column headerText="Id">
+            <h:outputText value="#{user.id}"/>
+        </p:column>
+
+        <p:column headerText="Name">
+            <h:outputText value="#{user.name}"/>
+        </p:column>
+
+        <p:column headerText="First name">
+            <h:outputText value="#{user.firstName}"/>
+        </p:column>
+    </p:dataTable>
+    <h:form id="addLocationForm">
+        <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
-               <h:outputLabel for="userName" value="Name:" />
-               <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
-               <h:outputLabel for="userFirstName" value="First name:" />
-               <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
-               </p:inputText>
-               <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable" />
+                <h:outputLabel for="userName" value="Name:"/>
+                <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
+                <h:outputLabel for="userFirstName" value="First name:"/>
+                <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
+                </p:inputText>
+                <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"/>
             </h:panelGrid>
-         </p:panel>
-      </h:form>
+        </p:panel>
+    </h:form>
+
+    <h:form id="addGameForm">
+    <p:panel id="panelGame" header="Add Game" style="margin-bottom:10px;">
+        <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="titel" value="Titel:"/>
+            <p:inputText id="titel" value="#{gameController.newGame.titel}"></p:inputText>
+
+            <h:outputLabel for="prijs" value="Prijs:"/>
+            <p:inputText id="prijs" value="#{gameController.newGame.prijs}"></p:inputText>
+
+            <h:outputLabel for="leverancier" value="Leverancier:"/>
+            <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}"></p:inputText>
+
+            <h:outputLabel for="uitgever" value="Uitgever:"/>
+            <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}">
+            </p:inputText>
+
+
+            <h:outputLabel for="leeftijd" value="Min Leeftijd: " />
+            <p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}" min="3" max="18" />
+
+            <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre" />
+
+            <h:outputLabel for="genre" value="Genre:"/>
+            <p:selectOneMenu id="genre" value="#{gameController.newGame.enumGameGenre}" >
+                <f:selectItems value="#{EnumGameGenre}" />
+            </p:selectOneMenu>
+
+
+            <h:commandButton value="Add Game" action="#{gameController.submit}" update=":gameDataTable"/>
+        </h:panelGrid>
+
+
+        </p:panel>
+    </h:form>
+
+    <p:dataTable var="game" value="#{gameController.games}" id="gameDataTable">
+        <p:column headerText="Id">
+            <h:outputText value="#{game.id}"/>
+        </p:column>
+
+        <p:column headerText="Titel">
+            <h:outputText value="#{game.titel}"/>
+        </p:column>
+
+        <p:column headerText="Uitgever">
+            <h:outputText value="#{game.uitgever}"/>
+        </p:column>
+
+        <p:column headerText="Leverancier">
+            <h:outputText value="#{game.leverancier}"/>
+        </p:column>
+
+        <p:column headerText="Minimum leeftijd">
+            <h:outputText value="#{game.minLeeftijd}"/>
+        </p:column>
+
+        <p:column headerText="Genre">
+            <h:outputText value="#{game.enumGameGenre}"/>
+        </p:column>
+
+        <p:column headerText="Prijs">
+            <h:outputText value="#{game.prijs}"/>
+        </p:column>
+    </p:dataTable>
+
+    <h:form id="addLpForm">
+        <p:panel id="panelLp" header="Add Lp" style="margin-bottom:10px;">
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputLabel for="titelLp" value="Titel:"/>
+                <p:inputText id="titelLp" value="#{lpController.newLp.titel}"></p:inputText>
+
+                <h:outputLabel for="prijsLp" value="Prijs:"/>
+                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}"></p:inputText>
+
+                <h:outputLabel for="leverancierLp" value="Leverancier:"/>
+                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"></p:inputText>
+
+                <h:outputLabel for="uitvoerderLp" value="Uitgever:"/>
+                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}">
+                </p:inputText>
+
+                <o:importConstants type="com.realdolmen.shopr.domain.EnumMuziekGenre" />
+                <h:outputLabel for="muziekGenre" value="Genre:"/>
+                <p:selectOneMenu id="muziekGenre" value="#{lpController.newLp.enumMuziekGenre}" >
+                    <f:selectItems value="#{EnumMuziekGenre}" />
+                </p:selectOneMenu>
+
+
+                <h:commandButton value="Add Lp" action="#{lpController.submit}" update=":lpDataTable"/>
+            </h:panelGrid>
+
+
+        </p:panel>
+    </h:form>
+
+
+    <p:dataTable var="lp" value="#{lpController.lps}" id="lpDataTable">
+        <p:column headerText="Id">
+            <h:outputText value="#{lp.id}"/>
+        </p:column>
+
+        <p:column headerText="Titel">
+            <h:outputText value="#{lp.titel}"/>
+        </p:column>
+
+        <p:column headerText="Prijs">
+            <h:outputText value="#{lp.prijs}"/>
+        </p:column>
+        <p:column headerText="Leverancier">
+            <h:outputText value="#{lp.leverancier}"/>
+        </p:column>
+
+        <p:column headerText="Uitvoerder">
+            <h:outputText value="#{lp.uitvoerder}"/>
+        </p:column>
+
+        <p:column headerText="Genre">
+            <h:outputText value="#{lp.enumMuziekGenre}"/>
+        </p:column>
+
+    </p:dataTable>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

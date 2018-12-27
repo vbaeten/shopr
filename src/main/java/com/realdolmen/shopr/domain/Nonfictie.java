@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @DiscriminatorValue(value = "nonFictie")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Nonfictie extends Boek
 {
     @Column

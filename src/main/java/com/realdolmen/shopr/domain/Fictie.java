@@ -5,10 +5,9 @@ import javax.validation.constraints.Size;
 
 
 @DiscriminatorValue(value = "fictie")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Fictie extends Boek
 {
-    @Column
+    @Column(name="genre")
     EnumFictieGenre enumFictieGenre;
     @Size(max=255)
     @Column

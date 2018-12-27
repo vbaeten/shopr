@@ -1,11 +1,11 @@
 package com.realdolmen.shopr.domain;
 
-import javax.inject.Named;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Named
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "boek_type")
@@ -19,6 +19,8 @@ public abstract class Boek extends Artikel
     private String isbn;
     @Column
     private int aantalPaginas;
+
+    @JoinTable
 
 
     public String getAuteur()
