@@ -17,7 +17,7 @@ public class LPService {
 
     public void insert(LP lp)
     {
-        lpRepository.insert(lp);
+        this.lpRepository.insert(lp);
     }
 
     public List<LP> findAllLps() {

@@ -2,6 +2,7 @@ package com.realdolmen.shopr.controller;
 
 
 import com.realdolmen.shopr.domain.LP;
+import com.realdolmen.shopr.domain.LPGenre;
 import com.realdolmen.shopr.service.LPService;
 
 import javax.faces.bean.ManagedBean;
@@ -18,6 +19,11 @@ public class LPController {
     @Inject
     private LPService lpService;
 
+
+
+    public LPGenre[] getGenres(){
+        return LPGenre.values();
+    }
 
 
     public List<LP> getLPs(){

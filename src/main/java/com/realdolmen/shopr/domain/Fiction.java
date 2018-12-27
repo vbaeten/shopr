@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
+
+
 public class Fiction extends Book {
     private BookGenre bookGenre;
     private String preview;

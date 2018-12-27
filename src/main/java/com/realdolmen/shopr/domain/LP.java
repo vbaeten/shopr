@@ -12,27 +12,19 @@ import javax.persistence.*;
         )
 
 })
-public class LP extends Article {
-
+public class LP extends Item {
 
     public static final String FIND_ALL = "LP.findAll";
 
-    @Id
-    private int id;
     private String publisher;
+
+    @Enumerated(EnumType.STRING)
     private LPGenre genre;
 
 
 
 
-    public int getId() {
-        return id;
-    }
 
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getPublisher() {
         return publisher;

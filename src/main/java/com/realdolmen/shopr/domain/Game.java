@@ -1,10 +1,28 @@
 package com.realdolmen.shopr.domain;
 
-public class Game extends Article {
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Games")
+@NamedQueries({
+        @NamedQuery(
+                name = Game.FIND_ALL,
+                query = "SELECT g FROM Game g"
+        )
+})
+public class Game extends Item {
+
+    public static final String FIND_ALL = "Game.findAll";
 
     private String publisher;
     private short minAge;
+
+    @Enumerated(EnumType.STRING)
     private GameGenre genre;
+
+
+
 
 
 

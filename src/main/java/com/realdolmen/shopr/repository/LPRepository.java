@@ -1,9 +1,7 @@
 package com.realdolmen.shopr.repository;
 
-
 import com.realdolmen.shopr.domain.LP;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;

@@ -17,6 +17,7 @@ public class UserController {
     @Inject
     private UserService userService;
 
+
     public User getNewUser() {
         return newUser;
     }

@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 
@@ -12,7 +11,7 @@ public class Review {
     private short score;
     private String description;
     private User user;
-    private Article article;
+    private Item item;
 
 
     public int getId() {
@@ -47,11 +46,11 @@ public class Review {
         this.user = user;
     }
 
-    public Article getArticle() {
-        return article;
+    public Item getItem() {
+        return item;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

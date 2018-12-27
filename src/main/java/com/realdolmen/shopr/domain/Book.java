@@ -1,9 +1,13 @@
 package com.realdolmen.shopr.domain;
 
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
-
-public abstract class Book extends Article{
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Book extends Item {
 
     private String Author;
     private String isbn;
