@@ -33,4 +33,7 @@ public class UserService {
         userRepository.insert(user);
     }
 
+    protected void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 }
