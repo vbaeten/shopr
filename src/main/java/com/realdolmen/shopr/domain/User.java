@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -31,8 +32,10 @@ public class User implements Serializable {
     @Id
     private int id;
     @Column(name = "name")
+    @NotNull
     private String name;
     @Column(name = "first_name")
+    @NotNull
     private String firstName;
 
     public int getId() {

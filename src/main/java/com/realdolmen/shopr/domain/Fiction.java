@@ -2,14 +2,16 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Max;
 
 @Entity
 public class Fiction extends Book {
 
+
     @Column(name = "genre")
     private BookGenre bookGenre;
 
-    //TODO max length 255
+    @Max(255)
     @Column(name = "synopsis")
     private String synopsis;
 

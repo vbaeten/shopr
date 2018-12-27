@@ -1,11 +1,27 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
+import java.io.Serializable;
 
 @Entity
-public class Game extends Article {
+@Table(name = "game")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Game.FIND_GAME_BY_TITLE,
+                        query = "SELECT g FROM Game g WHERE g.title = :title"
+                ),
+                @NamedQuery(
+                        name = Game.FIND_ALL_GAMES,
+                        query = "SELECT g FROM Game g"
+                )
+        }
+)
+public class Game extends Article implements Serializable {
+
+    public static final String FIND_ALL_GAMES = "Game.findAll";
+    public static final String FIND_GAME_BY_TITLE = "Game.findByTitle";
 
     //TODO unique in combination title
     @Max(100)

@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "article")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
+@DiscriminatorColumn(name = "article_type")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -21,13 +22,14 @@ import java.util.List;
                 )
         }
 )
-public class Article {
+public abstract class Article {
 
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
 
     @Id
-    @Column(name = "article_id")
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
 
     @Max(100)
@@ -38,14 +40,14 @@ public class Article {
     @NotNull
     @Digits(integer=6, fraction=2)
     @Column (name = "price")
-    private long price;
+    private double price;
 
     @Max(100)
     @NotNull
     @Column(name = "supplier")
     private String supplier;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany
     private List<Rating> ratings;
 
     public int getId() {
@@ -64,11 +66,11 @@ public class Article {
         this.title = title;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

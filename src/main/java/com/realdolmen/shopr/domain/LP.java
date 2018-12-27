@@ -1,12 +1,15 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
 
 @Entity
+@Table(name = "lp")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class LP extends Article {
 
-    //TODO length 100, unique in combination title
+    //TODO unique in combination title
+    @Max(100)
     @Column(name = "artist")
     private String Artist;
 

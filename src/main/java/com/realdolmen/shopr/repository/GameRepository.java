@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class GameReposistory {
+public class GameRepository {
 
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
@@ -16,11 +16,11 @@ public class GameReposistory {
     }
 
     public List<Game> findAll() {
-        return entityManager.createNamedQuery(Game.FIND_ALL, Game.class).getResultList();
+        return entityManager.createNamedQuery(Game.FIND_ALL_GAMES, Game.class).getResultList();
     }
 
     public Game findByTitle(String title) {
-        return entityManager.createNamedQuery(Game.FIND_BY_TITLE, Game.class).setParameter("title", title).getSingleResult();
+        return entityManager.createNamedQuery(Game.FIND_GAME_BY_TITLE, Game.class).setParameter("title", title).getSingleResult();
     }
 
     public void insert(Game game) {

@@ -1,19 +1,15 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@MappedSuperclass
-@Inheritance
-@Table(name = "books")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "book")
 public class Book extends Article {
 
-    //TODO length 100
     @Max(100)
     @Column(name = "author")
     private String Author;

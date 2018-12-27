@@ -17,12 +17,12 @@ public class Rating {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn
     private User user;
 
-//    @ManyToOne
-//    @JoinColumn(name = "id")
-//    private Article article;
+    @ManyToOne
+    @JoinColumn
+    private Article article;
 
     public int getId() {
         return id;
@@ -46,14 +46,6 @@ public class Rating {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
 }
