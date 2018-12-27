@@ -30,8 +30,9 @@
         <p:selectOneMenu id="LPGenre" value="#{lPController.newLP.genre}"  >
             <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}" />
         </p:selectOneMenu>
-
+        <div>
         <p:commandButton value="Add Article" id="ajax" action="#{lPController.submit}"  styleClass="ui-priority-primary" />
+        </div>
     </h:form>
 </div>
 
@@ -54,10 +55,9 @@
             <p:selectOneMenu id="gameGenre" value="#{gameController.newGame.genre}"  >
                 <f:selectItems value="#{gameController.genres}" itemLabel="#{GameGenre.genre}" />
             </p:selectOneMenu>
-
-
-
+            <div>
             <p:commandButton value="Add Article" id="ajax2" action="#{gameController.submit}"  styleClass="ui-priority-primary" />
+            </div>
         </h:form>
     </div>
 
@@ -90,8 +90,9 @@
             </p:selectOneMenu>
 
             <p:inputTextarea rows="10" cols="50" value="#{fictionController.newFiction.preview}" queryDelay="750" minQueryLength="4" />
-
+            <div>
             <p:commandButton value="Add Article" id="ajax3" action="#{fictionController.submit}"  styleClass="ui-priority-primary" />
+            </div>
         </h:form>
 
 
