@@ -1,15 +1,23 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Game.FIND_ALL,
+                query = "select g from Game g"),
+@NamedQuery(name= Game.FIND_BY_NAME,
+query = "select g from Game g where g.titel=:titel")})
+
 @Table(name = "game")
 public class Game extends Artikel
 {
+
+    public static final String FIND_ALL = "Game.findAll";
+    public static final String FIND_BY_NAME = "Game.findByTitel";
+
+
     @Size(max = 100)
     @Column
     private String uitgever;

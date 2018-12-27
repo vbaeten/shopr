@@ -1,12 +1,11 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Entity
+
 @DiscriminatorValue(value = "fictie")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Fictie extends Boek
 {
     @Column

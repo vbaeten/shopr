@@ -20,7 +20,7 @@ public class Bestelling
 //    @JoinColumn(name = "order_id")
 //    private List<Artikel> artikels = new ArrayList<>();
     @ManyToOne
-    @Column
+
     User user;
 
 }
