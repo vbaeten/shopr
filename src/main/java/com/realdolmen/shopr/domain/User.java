@@ -1,13 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -28,18 +22,15 @@ public class User {
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "first_name")
     private String firstName;
 
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
