@@ -1,13 +1,14 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Fiction extends Book {
+    @Enumerated(EnumType.STRING)
     private FictionGenre genre;
+    @Size(max = 255)
     private String summary;
 
     public FictionGenre getGenre() {

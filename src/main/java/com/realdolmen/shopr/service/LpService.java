@@ -21,7 +21,7 @@ public class LpService {
     }
 
     public Lp findLpByTitle(String title) {
-        return lpRepository.findByName(title);
+        return lpRepository.findByTitle(title);
     }
 
     public void updateTitle(int id, String newTitle) {

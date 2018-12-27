@@ -9,25 +9,29 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="table">
-        <p:dataTable var="lp" value="#{lpController.lps}" styleClass="table table-striped">
+        <p:dataTable var="game" value="#{gameController.games}" styleClass="table table-striped">
             <p:column headerText="Id">
-                <h:outputText value="#{lp.id}"/>
+                <h:outputText value="#{game.id}"/>
             </p:column>
 
             <p:column headerText="Title">
-                <h:outputText value="#{lp.title}"/>
+                <h:outputText value="#{game.title}"/>
             </p:column>
 
-            <p:column headerText="Artist">
-                <h:outputText value="#{lp.artist}"/>
+            <p:column headerText="Publisher">
+                <h:outputText value="#{game.publisher}"/>
             </p:column>
 
             <p:column headerText="Genre">
-                <h:outputText value="#{lp.genre}"/>
+                <h:outputText value="#{game.genre}"/>
+            </p:column>
+
+            <p:column headerText="Minimum Age">
+                <h:outputText value="#{game.minimumAge}"/>
             </p:column>
 
             <p:column headerText="Price">
-                <h:outputText value="#{lp.price}€"/>
+                <h:outputText value="#{game.price}€"/>
             </p:column>
         </p:dataTable>
     </ui:define>

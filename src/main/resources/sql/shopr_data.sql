@@ -13,3 +13,20 @@ insert into lp(id, title, price, supplierId, artist, genre) values(12, 'Run DMC'
 insert into lp(id, title, price, supplierId, artist, genre) values(13, 'Paul''s Boutique', 10.00, '6', 'Beastie Boys', 'hiphop');
 insert into lp(id, title, price, supplierId, artist, genre) values(14, 'It Takes A Nation Of Millions To Hold Us Back', 5.99, '6', 'Public Enemy', 'hiphop');
 insert into lp(id, title, price, supplierId, artist, genre) values(15, 'Rumours', 14.99, '3', 'Fleetwood Mac', 'rock');
+
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(16, 'Red Dead Redemption', 69.99, '8', 'Rockstar', '16', 'RPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(17, 'Forza Horizon 4', 59.99, '7', 'Playground Games', '6', 'RACE');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(16, 'Dirt Rally', 35.45, '7', 'Codemasters', '6', 'RACE');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(18, 'Project Cars 2', 30.00, '7', 'Slightly Mad', '6', 'RACE');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(19, 'F1 2016', 19.99, '7', 'Codemasters', '10', 'RACE');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(20, 'Diablo 3', 64.99, '7', 'Blizzard', '12', 'RPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(21, 'Assassin''s Creed: Odyssey', 70.00, '7', 'Ubisoft', '16', 'RPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(22, 'World Of Warcraft', 10.00, '7', 'Blizzard', '2', 'MMORPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(23, 'Neverwinter', 9.99, '8', 'Cryptic Studios', '6', 'MMORPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(24, 'Tera', 4.99, '7', 'Bluehole', '6', 'RPG');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(25, 'Legacy', 11.50, '9', '1C Company', '12', 'RTS');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(26, 'Frostpunk', 69.99, '9', '1C Company', '12', 'RTS');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(27, 'Age Of Empires 2: HD Edition', 69.99, '9', 'Microsoft', '8', 'RTS');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(28, 'Far Cry 4', 50.00, '10', 'Ubisoft', '12', 'FPS');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(29, 'Bioshock Infinite', 35.00, '10', '2K Games', '12', 'FPS');
+insert into game(id, title, price, supplierId, publisher, minimumAge, genre) values(30, 'Borderlands 2', 19.99, '10', 'Gearbox Software', '12', 'FPS');

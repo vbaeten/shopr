@@ -15,9 +15,9 @@ public class LpRepository {
     public List<Lp> findAll() {
         return entityManager.createNamedQuery(Lp.FIND_ALL, Lp.class).getResultList();
     }
-//TODO: name vervangen door title, ook in andere lagen
-    public Lp findByName(String name) {
-        return entityManager.createNamedQuery(Lp.FIND_BY_NAME, Lp.class).setParameter("name", name).getSingleResult();
+
+    public Lp findByTitle(String title) {
+        return entityManager.createNamedQuery(Lp.FIND_BY_TITLE, Lp.class).setParameter("name", title).getSingleResult();
     }
 
     public void insert(Lp lp) {

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = Lp.FIND_BY_NAME,
+                        name = Lp.FIND_BY_TITLE,
                         query = "SELECT l FROM Lp l WHERE l.title = :title"
                 ),
                 @NamedQuery(
@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Lp extends Article {
     public static final String FIND_ALL = "Lp.findAll";
-    public static final String FIND_BY_NAME = "Lp.findByName";
+    public static final String FIND_BY_TITLE = "Lp.findByTitle";
 
     @Size(max=100)
     private String artist;

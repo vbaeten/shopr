@@ -1,14 +1,32 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Game.FIND_BY_TITLE,
+                        query = "SELECT g FROM Game g WHERE g.title = :title"
+                ),
+                @NamedQuery(
+                        name = Game.FIND_ALL,
+                        query = "SELECT g FROM Game g"
+                )
+        })
+@Table(name = "game",
+        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "publisher"})
+)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Game extends Article {
+    public static final String FIND_ALL = "Game.findAll";
+    public static final String FIND_BY_TITLE = "Game.findByTitle";
+
+    @Size(max = 100)
     private String publisher;
     private int minimumAge;
+    @Enumerated(EnumType.STRING)
     private GameGenre genre;
 
     public String getPublisher() {
