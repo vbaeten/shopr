@@ -8,6 +8,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
@@ -23,7 +24,7 @@ import javax.validation.constraints.Size;
                 )
         }
 )
-public class User {
+public class User implements Serializable {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 

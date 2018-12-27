@@ -1,26 +1,28 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.websocket.OnClose;
 
+@Entity
 public class Rating {
 
     @Id
     private int id;
 
     //TODO van 0 tot 10
-    @Column(name = "score")
+    @Column
     private int score;
 
-    @Column(name = "description")
+    @Column
     private String description;
 
-    @Column(name = "name")
+    @ManyToOne
+    @JoinColumn(name = "user")
     private User user;
 
-    @Column(name = "article")
-    private Article article;
+//    @ManyToOne
+//    @JoinColumn(name = "id")
+//    private Article article;
 
     public int getId() {
         return id;
@@ -54,11 +56,4 @@ public class Rating {
         this.user = user;
     }
 
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
 }

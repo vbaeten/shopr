@@ -1,10 +1,14 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.validation.constraints.Max;
 
+@Entity
 public class Game extends Article {
 
-    //TODO length 100, unique in combination title
+    //TODO unique in combination title
+    @Max(100)
     @Column(name = "publisher")
     private String publisher;
 

@@ -1,7 +1,9 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 
+@Entity
 public class Fiction extends Book {
 
     @Column(name = "genre")

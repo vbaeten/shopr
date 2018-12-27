@@ -5,8 +5,49 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head><title>ShopR!</title></h:head>
+<h:head>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <title>ShopR!</title>
+</h:head>
 <h:body>
+    <h1>WELCOME TO SHOPR!!</h1>
+    <h:form>
+        <p:growl id="msgs" showDetail="true" />
+        <p:panel header="Select a user to login">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="user" value="User:"/>
+                <p:selectOneMenu id="user" value="#{user}" style="width:150px">
+                    <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.name}" itemLabel="#{user.firstName} #{user.name}" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+            <p:separator/>
+
+            <p:commandButton value="Submit" update="msgs" action="#{loginController.login}"/>
+        </p:panel>
+    </h:form>
+    <h2>List of articles</h2>
+    <p:dataTable var="article" value="#{dtBasicView.cars}">
+        <p:column headerText="Id">
+            <h:outputText value="#{car.id}" />
+        </p:column>
+
+        <p:column headerText="Year">
+            <h:outputText value="#{car.year}" />
+        </p:column>
+
+        <p:column headerText="Brand">
+            <h:outputText value="#{car.brand}" />
+        </p:column>
+
+        <p:column headerText="Color">
+            <h:outputText value="#{car.color}" />
+        </p:column>
+    </p:dataTable>
+
+    <h2>List per type, ordered by title, author and price</h2>
+
+    <h2>List of users</h2>
     <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
         <p:column headerText="Id">
             <h:outputText value="#{user.id}"/>
@@ -20,6 +61,7 @@
             <h:outputText value="#{user.firstName}"/>
         </p:column>
     </p:dataTable>
+    <h2>Add a new user</h2>
     <h:form id="addLocationForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
@@ -30,21 +72,6 @@
                 </p:inputText>
                 <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"/>
             </h:panelGrid>
-        </p:panel>
-    </h:form>
-    <h:form>
-        <p:growl id="msgs" showDetail="true" />
-        <p:panel header="Select a user to login">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="user" value="User:"/>
-                <p:selectOneMenu id="user" value="#{user}" style="width:150px">
-                    <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
-                    <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.name}" itemLabel="#{user.firstName} #{user.name}" />
-                </p:selectOneMenu>
-            </h:panelGrid>
-            <p:separator/>
-
-            <p:commandButton value="Submit" update="msgs" action="#{user.name}" icon="pi pi-check"/>
         </p:panel>
     </h:form>
 </h:body>

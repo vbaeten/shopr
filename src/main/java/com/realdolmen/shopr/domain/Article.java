@@ -1,26 +1,52 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
-@MappedSuperclass
+@Table(name = "article")
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Article.FIND_BY_TITLE,
+                        query = "SELECT a FROM Article a WHERE a.title = :title"
+                ),
+                @NamedQuery(
+                        name = Article.FIND_ALL,
+                        query = "SELECT u FROM Article u"
+                )
+        }
+)
 public class Article {
 
+    public static final String FIND_ALL = "Article.findAll";
+    public static final String FIND_BY_TITLE = "Article.findByTitle";
+
     @Id
+    @Column(name = "article_id")
     private int id;
 
-    //TODO length 100, verplicht
+    @Max(100)
+    @NotNull
     @Column(name = "title")
     private String title;
 
-    //TODO type? 0,00
+    @NotNull
+    @Digits(integer=6, fraction=2)
     @Column (name = "price")
-    private int price;
+    private long price;
 
-    //TODO string, length 100. verplicht
+    @Max(100)
+    @NotNull
     @Column(name = "supplier")
     private String supplier;
+
+    @OneToMany(mappedBy = "id")
+    private List<Rating> ratings;
 
     public int getId() {
         return id;
@@ -36,6 +62,14 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public String getSupplier() {

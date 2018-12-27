@@ -1,12 +1,11 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Order {
 
     @Id
@@ -16,13 +15,11 @@ public class Order {
     private Timestamp orderDate;
 
     @OneToMany
+    @JoinColumn(name = "id")
     private List<Article> articles = new ArrayList<>();
 
-    //TODO per artikel moet huidige prijs en aantal stuks bijgehouden worden
-
-    @Column(name = "user")
+    @ManyToOne
+    @JoinColumn(name = "user")
     private User user;
-
-
 
 }
