@@ -29,6 +29,11 @@
             <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <!--<version>1.0.10</version>-->
+        </dependency>
     </dependencies>
     <build>
         <finalName>shopr</finalName>

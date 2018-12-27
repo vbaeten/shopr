@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<ui:composition template="templates/templ.xhtml">
+    <ui:define name="table">
+        <p:dataTable var="lp" value="#{lpController.lps}">
+            <p:column headerText="Id">
+                <h:outputText value="#{lp.id}" />
+            </p:column>
+
+            <p:column headerText="Title">
+                <h:outputText value="#{lp.title}" />
+            </p:column>
+
+            <p:column headerText="Artist">
+                <h:outputText value="#{lp.artist}" />
+            </p:column>
+
+            <p:column headerText="Genre">
+                <h:outputText value="#{lp.genre}" />
+            </p:column>
+
+            <p:column headerText="Price">
+                <h:outputText value="#{lp.price}€" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+
+</html>

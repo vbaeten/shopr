@@ -4,50 +4,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
       xml:lang="en" lang="en">
 <h:head>
     <title>Articles</title>
 </h:head>
 <h:body>
+    <ui:composition template="templates/templ.xhtml">
 
-<h:form>
-    <p:panel header="Articles" style="margin-bottom:10px;">
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="articleType" value="Article Type: "/>
-            <p:selectOneMenu id="articleType" style="width:150px">
-                <f:selectItem itemLabel="---Select Article---" itemValue="" noSelectionOption="true"/>
-                <f:selectItem itemLabel="All Articles" itemValue="0" />
-                <f:selectItem itemLabel="Fiction Books" itemValue="1" />
-                <f:selectItem itemLabel="Non-Fiction Books" itemValue="2" />
-                <f:selectItem itemLabel="Games" itemValue="3" />
-                <f:selectItem itemLabel="LPs" itemValue="4" />
-            </p:selectOneMenu>
-        </h:panelGrid>
-    </p:panel>
-</h:form>
-
-    <p:dataTable var="lp" value="#{lpController.lps}">
-        <p:column headerText="Id">
-            <h:outputText value="#{lp.id}" />
-        </p:column>
-
-        <p:column headerText="Title">
-            <h:outputText value="#{lp.title}" />
-        </p:column>
-
-        <p:column headerText="Artist">
-            <h:outputText value="#{lp.artist}" />
-        </p:column>
-
-        <p:column headerText="Genre">
-            <h:outputText value="#{lp.genre}" />
-        </p:column>
-
-        <p:column headerText="Price">
-            <h:outputText value="#{lp.price}€" />
-        </p:column>
-    </p:dataTable>
+    </ui:composition>
 
 </h:body>
 </html>
