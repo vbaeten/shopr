@@ -1,5 +1,49 @@
-CREATE TABLE user (
-  id                BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name              VARCHAR(255) NOT NULL,
-  first_name        VARCHAR(255) NOT NULL
+CREATE TABLE user
+(
+  id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE item
+(
+  id    BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  price FLOAT        NOT NULL
+);
+
+CREATE TABLE lp
+(
+  id       BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  artist   VARCHAR(255) NOT NULL,
+  lp_genre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE game
+(
+  id         BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  publisher  VARCHAR(255) NOT NULL,
+  game_genre VARCHAR(255) NOT NULL,
+  min_age    INTEGER      NOT NULL
+);
+
+CREATE TABLE book
+(
+  id     BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  author VARCHAR(255) NOT NULL,
+  isbn   BIGINT       NOT NULL,
+  pages  INTEGER      NOT NULL
+);
+
+CREATE TABLE fiction
+(
+  id         BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  book_genre VARCHAR(255),
+  summary    VARCHAR(255)
+);
+
+CREATE TABLE non_fiction
+(
+  id    BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  topic VARCHAR(255)
 );
