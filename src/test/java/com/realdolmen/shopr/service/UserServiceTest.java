@@ -26,15 +26,15 @@ public class UserServiceTest {
     @Before
     public void init() {
         user = new User();
-        user.setId(1);
+        user.setId(1L);
         user.setFirstName("John");
         user.setName("Doe");
     }
 
     @Test
     public void testUpdateName() {
-        when(userRepository.findById(1)).thenReturn(user);
-        userService.updateName(1, "Van Cleemput");
+        when(userRepository.findById(1L)).thenReturn(user);
+        userService.updateName(1L, "Van Cleemput");
         Assert.assertEquals("Van Cleemput", user.getName());
     }
 }

@@ -17,12 +17,12 @@ public class UserServiceTestOldSkool {
     @Before
     public void init() {
         user = new User();
-        user.setId(1);
+        user.setId(1L);
         user.setFirstName("John");
         user.setName("Doe");
 
         userRepository = new UserRepository(){
-            public User findById(int id) {
+            public User findById(Long id) {
                 return user;
             }
         };
@@ -32,7 +32,7 @@ public class UserServiceTestOldSkool {
 
     @Test
     public void testUpdateName() {
-        userService.updateName(1, "Van Cleemput");
+        userService.updateName(1L, "Van Cleemput");
         Assert.assertEquals("Van Cleemput", user.getName());
     }
 }
