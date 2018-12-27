@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="header">
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="selectUserForm">
+                <p:panel header="Sign in" style="margin-bottom: 10px;">
+                    <h:panelGrid columns="1" cellpadding="5">
+                        <p:selectOneMenu id="selectUser" value="#{userController.id}" style="width: 250px;">
+                            <f:selectItem itemLabel="Select a user" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems var="user" value="#{userController.users}" itemValue="#{user.id}"
+                                           itemLabel="#{user.firstName}"/>
+                        </p:selectOneMenu>
+                        <h:commandButton value="Delete user" action="#{userController.deleteNewUser}"
+                                         update=":userDataTable"/>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+            <p:panel header="List of LP's" style="margin-bottom: 10px;">
+                <p:dataTable var="lp" value="#{lpController.lps}" id="lpDataTable">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{lp.id}"/>
+                    </p:column>
+                    <p:column headerText="Title">
+                        <h:outputText value="#{lp.title}"/>
+                    </p:column>
+                    <p:column headerText="Artist">
+                        <h:outputText value="#{lp.artist}"/>
+                    </p:column>
+                    <p:column headerText="Genre">
+                        <h:outputText value="#{lp.lpGenre.name}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{lp.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:panel header="List of games" style="margin-bottom: 10px;">
+                <p:dataTable var="game" value="#{gameController.games}" id="gameDataTable">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{game.id}"/>
+                    </p:column>
+                    <p:column headerText="Title">
+                        <h:outputText value="#{game.title}"/>
+                    </p:column>
+                    <p:column headerText="Publisher">
+                        <h:outputText value="#{game.publisher}"/>
+                    </p:column>
+                    <p:column headerText="Genre">
+                        <h:outputText value="#{game.gameGenre.name}"/>
+                    </p:column>
+                    <p:column headerText="Minimum Age">
+                        <h:outputText value="#{game.minAge}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{game.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:panel header="List of books" style="margin-bottom: 10px;">
+                <p:dataTable var="book" value="#{bookController.books}" id="bookDataTable">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{book.id}"/>
+                    </p:column>
+                    <p:column headerText="Title">
+                        <h:outputText value="#{book.title}"/>
+                    </p:column>
+                    <p:column headerText="Author">
+                        <h:outputText value="#{book.author}"/>
+                    </p:column>
+                    <p:column headerText="ISBN">
+                        <h:outputText value="#{book.isbn}"/>
+                    </p:column>
+                    <p:column headerText="Pages">
+                        <h:outputText value="#{book.pages}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{book.price}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </ui:define>
+
+        <ui:define name="footer">
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
