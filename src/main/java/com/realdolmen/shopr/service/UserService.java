@@ -12,7 +12,7 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
-    public User findUserById(int id) {
+    public User findUserById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -24,7 +24,7 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
-    public void updateName(int id, String newName) {
+    public void updateName(Long id, String newName) {
         User user = userRepository.findById(id);
         user.setName(newName);
     }
@@ -33,4 +33,8 @@ public class UserService {
         userRepository.insert(user);
     }
 
+    public void delete(Long id) {
+        User user = userRepository.findById(id);
+        userRepository.delete(user);
+    }
 }
