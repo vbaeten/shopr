@@ -12,7 +12,7 @@ public class BookNonFictionRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public BookNonFiction findById(int id) {
+    public BookNonFiction findById(Long id) {
         return entityManager.find(BookNonFiction.class, id);
     }
 

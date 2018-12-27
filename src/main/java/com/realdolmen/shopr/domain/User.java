@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table
 @NamedQueries(
         {
                 @NamedQuery(
@@ -24,10 +24,11 @@ public class User {
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
+    @GeneratedValue
     private int id;
-    @Column(name = "name")
+    @Column
     private String name;
-    @Column(name = "first_name")
+    @Column
     private String firstName;
 
     @OneToMany
@@ -65,5 +66,4 @@ public class User {
         this.firstName = firstName;
     }
 
-    // BRANCH ELLIS
 }

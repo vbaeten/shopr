@@ -12,7 +12,7 @@ public class BookFictionRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public BookFiction findById(int id) {
+    public BookFiction findById(Long id) {
         return entityManager.find(BookFiction.class, id);
     }
 

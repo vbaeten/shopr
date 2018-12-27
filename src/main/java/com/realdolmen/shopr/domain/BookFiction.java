@@ -8,9 +8,9 @@ import javax.validation.constraints.Size;
 @Entity
 @DiscriminatorValue("Fiction")
 public class BookFiction extends Book {
-    @Column(name = "Bookgenre")
+    @Column
     private BookGenre bookGenre;
-    @Column(name = "Summary")
+    @Column
     @Size(max = 255 )
     private String summary;
 

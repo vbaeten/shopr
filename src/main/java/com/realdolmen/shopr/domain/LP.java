@@ -9,9 +9,9 @@ import java.math.BigDecimal;
 @Entity
 public class LP extends Article {
     @Size(max = 100)
-    @Column(name = "Artist")
+    @Column
     private String artist;
-    @Column(name = "Genre")
+    @Column
     private LPMusicGenre LPMusicGenre;
 
     public LP() {

@@ -18,6 +18,7 @@ import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.OK;
 
+/*
 @Path("users")
 public class UserRestController {
     @Inject
@@ -62,7 +63,7 @@ public class UserRestController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response insert(User user) {
         userService.insert(user);
-
         return Response.status(OK).build();
     }
 }
+*/

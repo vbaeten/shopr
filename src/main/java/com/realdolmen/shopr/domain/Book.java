@@ -7,15 +7,15 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Book extends Article {
-    @Column(name = "author")
+    @Column
     @Size(max = 100)
     private String author;
-    @Column(unique = true, name = "isbn")
+    @Column(unique = true)
     @Pattern(regexp = "\\d{3}\\-\\d{2}\\-\\d{4}\\-\\d{3}\\-\\d")
     private String isbn;
-    @Column(name = "numberofpages")
+    @Column
     private int numberOfPages;
 
     public Book() {

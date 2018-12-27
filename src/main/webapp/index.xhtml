@@ -13,9 +13,9 @@
       <p:panel header="Select a User" style="margin-bottom:10px;">
          <h:panelGrid columns="2" cellpadding="5">
             <p:outputLabel for="user" value="User: " />
-            <p:selectOneMenu id="user" value="#{dropdownView.user}" style="width:150px">
+            <p:selectOneMenu id="user" value="#{userController.newUser}" style="width:150px">
                <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
-               <f:selectItems value="#{dropdownView.users}" />
+               <f:selectItems value="#{userController.users}" />
             </p:selectOneMenu>
 
          </h:panelGrid>

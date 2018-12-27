@@ -12,15 +12,15 @@ public abstract class Article {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name = "title")
+    @Column
     @Size(max = 100 )
     @NotNull
     private String title;
-    @Column(name = "price")
+    @Column
     @NotNull
     @Digits(integer=6, fraction=2)
     private BigDecimal price;
-    @Column(name = "supplier")
+    @Column
     @Size(max = 100 )
     @NotNull
     private String supplierId;

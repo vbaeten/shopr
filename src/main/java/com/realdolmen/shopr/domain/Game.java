@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 
 @Entity
 public class Game extends Article{
-    @Column(name = "Publisher")
+    @Column
     @Size(max = 100)
     private String publisher;
-    @Column(name = "Minimumage")
+    @Column
     private int minimumAge;
-    @Column(name = "Genre")
+    @Column
     private GameGenre gameGenre;
 
     public Game() {

@@ -5,26 +5,19 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name= "ArticleOrder")
+@Table
 public class Order {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "Date")
+    @Column
     private Timestamp date;
 
-//    @Column
-//    @OneToMany
-//    private List<Article> articles;
+    @Column
+    @OneToMany
+    private List<Article> articles;
 
-
-
-
-
-//    @Column
-//    @ManyToMany
-//    private Article article;
 
 
 }

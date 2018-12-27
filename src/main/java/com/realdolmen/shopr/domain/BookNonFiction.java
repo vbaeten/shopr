@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Entity
 @DiscriminatorValue("NonFiction")
 public class BookNonFiction extends Book {
-    @Column(name = "Subject")
+    @Column
     private BookSubjectNF bookSubjectNF;
 
     public BookNonFiction () {
