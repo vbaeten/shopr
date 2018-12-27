@@ -8,6 +8,7 @@ CREATE TABLE user (
 CREATE TABLE lp (
 
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  title VARCHAR(255),
   publisher VARCHAR(255),
   genre VARCHAR(255)
 

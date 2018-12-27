@@ -8,18 +8,21 @@
 
 
 
-<head><title>Articles</title></head>
+<h:head><title>Articles</title></h:head>
 
-<body>
+<h:body>
 
 <h1>hello world</h1>
 
 <h:form>
 
+    <h:outputLabel value="Publisher: " />
     <p:inputText value="#{lPController.newLP.publisher}" />
+    <h:outputLabel value="title: " />
+    <p:inputText value="#{lPController.newLP.title}" />
     <p:commandButton value="Add Article" id="ajax" action="#{lPController.submit}" style="margin-right:20px;" styleClass="ui-priority-primary" />
 
 </h:form>
-</body>
+</h:body>
 
 </html>
