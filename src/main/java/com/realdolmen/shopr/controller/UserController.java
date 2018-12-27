@@ -33,7 +33,7 @@ public class UserController {
         this.userService.insert(newUser);
     }
 
-    public void remove() {
-        this.userService.remove(newUser.getId());}
-
+    public void remove(int id) {
+        this.userService.removeById(id);
+    }
 }

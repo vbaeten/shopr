@@ -20,8 +20,7 @@ public class Bestelling {
     @ManyToMany
     private List<Artikel> artikels;
 
-    @Transient
-    //@ManyToOne
+    @ManyToOne
     private User user;
 
 

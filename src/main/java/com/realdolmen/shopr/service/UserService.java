@@ -35,9 +35,8 @@ public class UserService {
 
 
 
-    public void remove (int id){
-        User user = findUserById(id);
-        userRepository.remove(user);
+    public void removeById (int id){
+        userRepository.remove(id);
     }
 
 

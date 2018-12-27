@@ -20,8 +20,7 @@ public class Beoordeling {
     @Column(name = "omschrijving")
     private String omschrijving;
 
-    @Transient
-    //@ManyToOne
+    @ManyToOne
     private User user;
 
     @ManyToOne

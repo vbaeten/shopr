@@ -23,8 +23,6 @@ public class User {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 
-    //comment
-
     @Id
     @GeneratedValue
     private int id;
@@ -33,12 +31,10 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
-    @Transient
-   // @OneToMany
+    @OneToMany
     private List <Bestelling> bestellingen;
 
-    @Transient
-   // @OneToMany
+    @OneToMany
     private List <Beoordeling> beoordelingen;
 
     public int getId() {
