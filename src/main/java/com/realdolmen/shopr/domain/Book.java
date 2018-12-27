@@ -15,7 +15,7 @@ public abstract class Book extends Article {
     @Column(unique = true, name = "isbn")
     @Pattern(regexp = "\\d{3}\\-\\d{2}\\-\\d{4}\\-\\d{3}\\-\\d")
     private String isbn;
-    @Column(name = "number of pages")
+    @Column(name = "numberofpages")
     private int numberOfPages;
 
     public Book() {

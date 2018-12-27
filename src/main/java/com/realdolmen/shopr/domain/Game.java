@@ -11,7 +11,7 @@ public class Game extends Article{
     @Column(name = "Publisher")
     @Size(max = 100)
     private String publisher;
-    @Column(name = "Minimum age")
+    @Column(name = "Minimumage")
     private int minimumAge;
     @Column(name = "Genre")
     private GameGenre gameGenre;
