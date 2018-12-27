@@ -33,4 +33,12 @@ public class UserService {
         userRepository.insert(user);
     }
 
+
+
+    public void remove (int id){
+        User user = findUserById(id);
+        userRepository.remove(user);
+    }
+
+
 }
