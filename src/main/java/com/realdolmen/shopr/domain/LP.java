@@ -1,17 +1,37 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.validation.constraints.Max;
+import com.realdolmen.shopr.domain.enums.LPMusicGenre;
+
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table
 public class LP extends Article {
-    @Size(max = 100 )
-    @Column
+    @Size(max = 100)
+    @Column(name = "Artist")
     private String artist;
+    @Column(name = "Genre")
     private LPMusicGenre LPMusicGenre;
+
+    public LP() {
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public com.realdolmen.shopr.domain.enums.LPMusicGenre getLPMusicGenre() {
+        return LPMusicGenre;
+    }
+
+    public void setLPMusicGenre(com.realdolmen.shopr.domain.enums.LPMusicGenre LPMusicGenre) {
+        this.LPMusicGenre = LPMusicGenre;
+    }
 }

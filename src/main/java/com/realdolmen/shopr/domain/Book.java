@@ -9,29 +9,16 @@ import java.math.BigDecimal;
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Book extends Article {
-    @Column
+    @Column(name = "author")
     @Size(max = 100)
     private String author;
-    @Column(unique = true)
+    @Column(unique = true, name = "isbn")
     @Pattern(regexp = "\\d{3}\\-\\d{2}\\-\\d{4}\\-\\d{3}\\-\\d")
     private String isbn;
-    @Column
+    @Column(name = "number of pages")
     private int numberOfPages;
 
     public Book() {
-    }
-
-    public Book(String author, String isbn, int numberOfPages) {
-        this.author = author;
-        this.isbn = isbn;
-        this.numberOfPages = numberOfPages;
-    }
-
-    public Book(String title, BigDecimal price, String supplierId, String author, String isbn, int numberOfPages) {
-        super(title, price, supplierId);
-        this.author = author;
-        this.isbn = isbn;
-        this.numberOfPages = numberOfPages;
     }
 
     public String getAuthor() {

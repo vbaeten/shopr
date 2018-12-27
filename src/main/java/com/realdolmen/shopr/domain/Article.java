@@ -11,25 +11,24 @@ public abstract class Article {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
+    @Column(name = "title")
     @Size(max = 100 )
     @NotNull
     private String title;
+    @Column(name = "price")
     @NotNull
     @Digits(integer=6, fraction=2)
     private BigDecimal price;
-    @Column
+    @Column(name = "supplier")
     @Size(max = 100 )
     @NotNull
     private String supplierId;
+    @ManyToOne
+    private Rating rating;
+
+//    private Order order;
 
     public Article() {
-    }
-
-    public Article(String title, BigDecimal price, String supplierId) {
-        this.title = title;
-        this.price = price;
-        this.supplierId = supplierId;
     }
 
     public Long getId() {

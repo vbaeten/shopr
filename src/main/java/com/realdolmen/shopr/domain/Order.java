@@ -1,16 +1,29 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Order {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToMany
-    private Article article;
+
+    @Column(name = "Date")
+    private Timestamp date;
+
+//    @Column
+//    @OneToMany
+//    private List<Article> articles;
+
+
+
+
+
+//    @Column
+//    @ManyToMany
+//    private Article article;
+
 
 }
