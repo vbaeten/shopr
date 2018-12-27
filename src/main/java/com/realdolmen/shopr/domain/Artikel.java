@@ -9,11 +9,11 @@ import javax.persistence.MappedSuperclass;
  * Created by TLMBM39 on 26/12/2018.
  */
 @MappedSuperclass
-@Entity
 public abstract  class Artikel {
     @Id
     @GeneratedValue
     private int id;
+
     private String Titel;
     private int price;
     private String leverancier;

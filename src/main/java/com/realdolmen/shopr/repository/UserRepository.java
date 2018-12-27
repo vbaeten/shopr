@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class UserRepository {
-    @PersistenceContext(unitName = "shoprPU")
+    @PersistenceContext
     private EntityManager entityManager;
 
     public User findById(int id) {
