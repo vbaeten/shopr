@@ -1,13 +1,9 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -28,18 +24,23 @@ public class User {
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
+    @GeneratedValue
     private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "first_name")
     private String firstName;
 
+    @Transient
+   // @OneToMany
+    private List <Bestelling> bestellingen;
+
+    @Transient
+   // @OneToMany
+    private List <Beoordeling> beoordelingen;
+
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -57,4 +58,21 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public List<Bestelling> getBestellingen() {
+        return bestellingen;
+    }
+
+    public void setBestellingen(List<Bestelling> bestellingen) {
+        this.bestellingen = bestellingen;
+    }
+
+    public List<Beoordeling> getBeoordelingen() {
+        return beoordelingen;
+    }
+
+    public void setBeoordelingen(List<Beoordeling> beoordelingen) {
+        this.beoordelingen = beoordelingen;
+    }
+
 }
