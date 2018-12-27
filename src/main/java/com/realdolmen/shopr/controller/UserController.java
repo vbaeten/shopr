@@ -17,14 +17,6 @@ public class UserController {
     @Inject
     private UserService userService;
 
-    public User getNewUser() {
-        return newUser;
-    }
-
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
-    }
-
     public List<User> getUsers() {
         return this.userService.findAllUsers();
     }
@@ -35,6 +27,14 @@ public class UserController {
 
     public void deleteNewUser() {
         this.userService.delete(this.id);
+    }
+
+    public User getNewUser() {
+        return newUser;
+    }
+
+    public void setNewUser(User newUser) {
+        this.newUser = newUser;
     }
 
     public Long getId() {
