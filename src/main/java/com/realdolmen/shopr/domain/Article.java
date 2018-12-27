@@ -3,16 +3,25 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public abstract class Article {
     @Id
     @GeneratedValue
     private int id;
+    @NotNull
+    @Size(max=100)
     private String title;
+    @NotNull
+    @Digits(integer=6, fraction=2)
     private double price;
-    private int supplierId;
-    //TODO: validation on fields
+    @NotNull
+    @Size(max=100)
+    private String supplierId;
 
     public int getId() {
         return id;
@@ -38,11 +47,11 @@ public abstract class Article {
         this.price = price;
     }
 
-    public int getSupplierId() {
+    public String getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
     }
 }

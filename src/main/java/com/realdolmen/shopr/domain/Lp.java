@@ -1,14 +1,17 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "lp")
+@Table(name = "lp",
+        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "artist"})
+)
 @NamedQueries(
         {
                 @NamedQuery(
                         name = Lp.FIND_BY_NAME,
-                        query = "SELECT l FROM Lp l WHERE l.name = :name"
+                        query = "SELECT l FROM Lp l WHERE l.title = :title"
                 ),
                 @NamedQuery(
                         name = Lp.FIND_ALL,
@@ -20,8 +23,9 @@ public class Lp extends Article {
     public static final String FIND_ALL = "Lp.findAll";
     public static final String FIND_BY_NAME = "Lp.findByName";
 
-    //TODO: primary combined key artist + id
+    @Size(max=100)
     private String artist;
+    @Enumerated(EnumType.STRING)
     private LpGenre genre;
 
     public String getArtist() {
