@@ -1,10 +1,17 @@
 package com.realdolmen.shopr.domain;
 
 
+import javax.persistence.*;
 
 
+@Entity
+@Table(name="fiction")
 public class Fiction extends Book {
+
+
+    @Enumerated(EnumType.STRING)
     private BookGenre bookGenre;
+
     private String preview;
 
 

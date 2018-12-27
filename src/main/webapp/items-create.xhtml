@@ -62,6 +62,51 @@
     </div>
 
 
+    <div>
+        <h3>Add a Book</h3>
+
+        <h5>Add a fiction book</h5>
+
+
+        <h:form>
+            <h:outputLabel value="title: " />
+            <p:inputText value="#{fictionController.newFiction.title}" />
+
+            <h:outputLabel value="Price: "/>
+            <p:inputText value="#{fictionController.newFiction.price}"/>
+
+            <h:outputLabel value="Author: "/>
+            <p:inputText value="#{fictionController.newFiction.author}"/>
+
+            <h:outputLabel value="ISBN: "/>
+            <p:inputText value="#{fictionController.newFiction.isbn}"/>
+
+            <h:outputLabel value="totalPages: "/>
+            <p:inputText value="#{fictionController.newFiction.totalPages}"/>
+
+            <h:outputLabel value="Genre: "/>
+            <p:selectOneMenu id="FictionGenre" value="#{fictionController.newFiction.bookGenre}"  >
+                <f:selectItems value="#{fictionController.genres}" itemLabel="#{BookGenre.genre}" />
+            </p:selectOneMenu>
+
+            <p:inputTextarea rows="10" cols="50" value="#{fictionController.newFiction.preview}" queryDelay="750" minQueryLength="4" />
+
+            <p:commandButton value="Add Article" id="ajax3" action="#{fictionController.submit}"  styleClass="ui-priority-primary" />
+        </h:form>
+
+
+
+
+        <h5>Add a non-fiction book</h5>
+
+
+
+
+
+
+
+    </div>
+
 
 
 
