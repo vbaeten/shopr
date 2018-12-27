@@ -22,6 +22,9 @@ public class Game extends Product {
         return editor;
     }
 
+    public Game() {
+    }
+
     public void setEditor(String editor) {
         this.editor = editor;
     }

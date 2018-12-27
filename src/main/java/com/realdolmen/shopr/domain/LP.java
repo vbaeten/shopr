@@ -19,6 +19,9 @@ public class LP extends Product {
         return Interpreter;
     }
 
+    public LP() {
+    }
+
     public void setInterpreter(String interpreter) {
         Interpreter = interpreter;
     }

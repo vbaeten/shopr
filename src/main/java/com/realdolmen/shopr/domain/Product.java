@@ -1,14 +1,15 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Product {
 
     @Id
+    @Column(name = "product_id")
     private Long id;
 
     @Column(length = 100, name = "title")
@@ -22,6 +23,9 @@ public abstract class Product {
     @Column(length = 100, name = "publisher")
     @NotNull
     private String publisher;
+
+    @OneToMany
+    private List<Rating> ratings;
 
     public Product() {
     }
@@ -56,5 +60,13 @@ public abstract class Product {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

@@ -12,6 +12,9 @@ public class Fiction extends Book {
     @Column(length = 255, name = "summary")
     private String summary;
 
+    public Fiction() {
+    }
+
     public Book_Genre getGenre() {
         return genre;
     }
