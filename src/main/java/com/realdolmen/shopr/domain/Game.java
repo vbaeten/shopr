@@ -22,7 +22,7 @@ public class Game extends Artikel
     @Column
     private String uitgever;
     @Column
-    private int minLeeftijd;
+    private int minLeeftijd = 6;
     @Column
     @Enumerated(EnumType.STRING)
     private EnumGameGenre enumGameGenre;

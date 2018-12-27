@@ -40,25 +40,37 @@ xmlns:of="http://omnifaces.org/functions">
         </p:panel>
     </h:form>
 
+
+            <!--ganeform validation complete###############################################################################-->
+
     <h:form id="addGameForm">
     <p:panel id="panelGame" header="Add Game" style="margin-bottom:10px;">
         <h:panelGrid columns="4" cellpadding="5">
             <h:outputLabel for="titel" value="Titel:"/>
-            <p:inputText id="titel" value="#{gameController.newGame.titel}"/>
+            <p:inputText id="titel" value="#{gameController.newGame.titel}" required="true">
+            <f:validateLength maximum="100"/>
+            </p:inputText>
 
             <h:outputLabel for="prijs" value="Prijs:"/>
-            <p:inputText id="prijs" value="#{gameController.newGame.prijs}"/>
+            <p:inputText id="prijs" value="#{gameController.newGame.prijs}" required="true">
+                <f:validateDoubleRange minimum="1"/>
+            </p:inputText>
 
             <h:outputLabel for="leverancier" value="Leverancier:"/>
-            <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}"/>
+            <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}" required="true">
+            <f:validateLength maximum="100"/>
+            </p:inputText>
+
 
             <h:outputLabel for="uitgever" value="Uitgever:"/>
-            <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}"/>
+            <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}" required="true">
+            <f:validateLength maximum="100"/>
+            </p:inputText>
 
 
 
             <h:outputLabel for="leeftijd" value="Min Leeftijd: " />
-            <p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}" min="3" max="18" />
+            <p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}"  min="6" max="18" />
 
             <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre" />
 
@@ -105,20 +117,30 @@ xmlns:of="http://omnifaces.org/functions">
         </p:column>
     </p:dataTable>
 
+            <!--lpform validation complete###############################################################################-->
+
     <h:form id="addLpForm">
         <p:panel id="panelLp" header="Add Lp" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
                 <h:outputLabel for="titelLp" value="Titel:"/>
-                <p:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true"/>
+                <p:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true">
+                <f:validateLength maximum="100"/>
+                </p:inputText>
 
                 <h:outputLabel for="prijsLp" value="Prijs:"/>
-                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}" required="true"/>
+                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}" required="true">
+                        <f:validateDoubleRange minimum="1"/>
+                </p:inputText>
 
                 <h:outputLabel for="leverancierLp" value="Leverancier:"/>
-                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"/>
+                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}" required="true">
+                <f:validateLength maximum="100"/>
+                </p:inputText>
 
                 <h:outputLabel for="uitvoerderLp" value="Uitgever:"/>
-                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}" required="true"/>
+                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}" required="true">
+                <f:validateLength maximum="100"/>
+                </p:inputText>
 
 
                 <o:importConstants type="com.realdolmen.shopr.domain.EnumMuziekGenre" />
