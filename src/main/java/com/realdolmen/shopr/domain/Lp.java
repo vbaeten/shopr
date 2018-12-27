@@ -36,8 +36,8 @@ public class Lp extends Article {
         this.artist = artist;
     }
 
-    public LpGenre getGenre() {
-        return genre;
+    public String getGenre() {
+        return genre.description;
     }
 
     public void setGenre(LpGenre genre) {
