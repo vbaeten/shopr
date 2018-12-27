@@ -11,8 +11,8 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class UserController {
-
     private User newUser = new User();
+    private Long id;
 
     @Inject
     private UserService userService;
@@ -25,12 +25,23 @@ public class UserController {
         this.newUser = newUser;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
+    public void submit() {
         this.userService.insert(newUser);
     }
 
+    public void deleteNewUser() {
+        this.userService.delete(this.id);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
