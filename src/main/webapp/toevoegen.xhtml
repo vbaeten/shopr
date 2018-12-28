@@ -14,7 +14,7 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <h:form>
-                <p:panel>
+                <p:panel style="width: 500px;">
                     <p:selectOneRadio required="true" id="artikelSoort" value="#{toevoegController.selectPanel}">
                         <f:selectItem itemLabel="#{msgs['toevoegen.lp']}"
                                       itemValue="1"/>
@@ -30,7 +30,7 @@
                 </p:panel>
 
 
-                <p:panel id="panelLp" style="margin-bottom:10px;" class="panelStyle"
+                <p:panel id="panelLp" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{1 eq toevoegController.getSelectPanel()}">
                     <h:panelGrid columns="1" cellpadding="5">
 
@@ -72,7 +72,7 @@
                 </p:panel>
 
 
-                <p:panel id="panelGame" style="margin-bottom:10px;" class="panelStyle"
+                <p:panel id="panelGame" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{2 eq toevoegController.getSelectPanel()}">
                     <h:panelGrid columns="1" cellpadding="5">
                         <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}"/>
@@ -114,7 +114,7 @@
 
                 </p:panel>
 
-                <p:panel id="panelNonFictie" style="margin-bottom:10px;" class="panelStyle"
+                <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{3 eq toevoegController.getSelectPanel()}">
 
                     <h:panelGrid columns="1" cellpadding="5">
@@ -160,7 +160,7 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:panel id="panelFictie" style="margin-bottom:10px;" class="panelStyle"
+                <p:panel id="panelFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{4 eq toevoegController.getSelectPanel()}">
 
                     <h:panelGrid columns="1" cellpadding="5">
@@ -194,13 +194,13 @@
                         <p:inputText id="paginasfictie" value="#{fictieController.newFictie.aantalPaginas}" >
                         </p:inputText>
 
-                        <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.korteinhoud']}"/>
+                        <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}"/>
                         <p:inputText id="inhoudfictie" value="#{fictieController.newFictie.korteInhoud}" >
                         </p:inputText>
 
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumFictieGenre"/>
 
-                        <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.inhoud']}"/>
+                        <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.genre']}"/>
                         <p:selectOneMenu id="genrefictie" value="#{fictieController.newFictie.enumFictieGenre}">
                             <f:selectItems value="#{EnumFictieGenre}"/>
                         </p:selectOneMenu>

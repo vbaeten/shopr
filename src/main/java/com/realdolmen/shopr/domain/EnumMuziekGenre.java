@@ -1,6 +1,6 @@
 package com.realdolmen.shopr.domain;
 
-public enum EnumMuziekGenre
+public enum  EnumMuziekGenre
 {
     KLASSIEK,
     POP,

@@ -1,18 +1,26 @@
-body
+#bodyColor
 {
-    background-color: #fefcfd;
+    background-color: #bfcde0!important;
 
 
+}
+
+.ui-widget :active
+{
+    border:none!important;
 }
 
 .navbarStyle
 {
-    background: #5d5d81;
+    background: #5d5d81!important;
 }
 
 .panelStyle
 {
-    background-color: #bfcde0;
+    background-color: #bfcde0!important;
+}
+#page{
+    background-color: blue;
 }
 
 
