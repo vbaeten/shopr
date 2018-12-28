@@ -3,7 +3,6 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lp")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -12,6 +11,7 @@ import javax.persistence.*;
                 )
         }
 )
+@DiscriminatorValue("LP")
 public class Lp extends Item {
     public static final String FIND_ALL = "Lp.findAll";
 

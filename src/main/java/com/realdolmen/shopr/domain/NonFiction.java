@@ -4,6 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+@DiscriminatorValue("Non fiction")
 public class NonFiction extends Book {
     @Enumerated(EnumType.STRING)
     private Topic topic;

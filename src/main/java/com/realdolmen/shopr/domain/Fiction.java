@@ -5,6 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+@DiscriminatorValue("Fiction")
 public class Fiction extends Book {
     @Enumerated(EnumType.STRING)
     @Column(name = "book_genre")
