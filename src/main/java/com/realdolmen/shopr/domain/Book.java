@@ -12,7 +12,7 @@ import javax.persistence.*;
                 )
         }
 )
-public abstract class Book extends Item {
+public class Book extends Item {
     public static final String FIND_ALL = "Book.findAll";
 
     private String author;
