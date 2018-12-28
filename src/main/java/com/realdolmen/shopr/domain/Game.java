@@ -16,7 +16,7 @@ public class Game extends Item {
     public static final String FIND_ALL = "Game.findAll";
 
     private String publisher;
-    private short minAge;
+    private int minAge;
 
     @Enumerated(EnumType.STRING)
     private GameGenre genre;
@@ -34,11 +34,11 @@ public class Game extends Item {
         this.publisher = publisher;
     }
 
-    public short getMinAge() {
+    public int getMinAge() {
         return minAge;
     }
 
-    public void setMinAge(short minAge) {
+    public void setMinAge(int minAge) {
         this.minAge = minAge;
     }
 

@@ -8,6 +8,7 @@ import com.realdolmen.shopr.service.FictionService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 
 @ManagedBean
@@ -19,20 +20,22 @@ public class FictionController {
     @Inject
     private FictionService fictionService;
 
+
+
+    public List<Fiction> getFictions(){
+        return this.fictionService.findAllFictions();
+    }
+
+
     public void submit(){
         this.fictionService.insert(newFiction);
     }
-
-
     public BookGenre[]getGenres(){
         return BookGenre.values();
     }
-
-
     public Fiction getNewFiction() {
         return newFiction;
     }
-
     public void setNewFiction(Fiction newFiction) {
         this.newFiction = newFiction;
     }

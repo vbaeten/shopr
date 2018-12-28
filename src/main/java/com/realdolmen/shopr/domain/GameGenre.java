@@ -9,13 +9,14 @@ public enum GameGenre {
     RACE("Race");
 
 
-    private final String genre;
+    private final String name;
 
-    GameGenre(String genre) {
-        this.genre = genre;
+
+    GameGenre(String name) {
+        this.name = name;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getName() {
+        return name;
     }
 }

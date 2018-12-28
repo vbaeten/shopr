@@ -7,13 +7,13 @@ public enum Subject {
     SPORTS("Sports");
 
 
-    private final String subject;
+    private final String name;
 
-    Subject(String subject) {
-        this.subject = subject;
+    Subject(String name) {
+        this.name = name;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getName() {
+        return name;
     }
 }

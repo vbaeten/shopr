@@ -10,14 +10,14 @@ public enum LPGenre {
     HIPHOP ("Hip-Hop");
 
 
-    private final String genre;
+    private final String name;
 
 
-    LPGenre(String genre) {
-        this.genre = genre;
+    LPGenre(String name) {
+        this.name = name;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getName() {
+        return name;
     }
 }

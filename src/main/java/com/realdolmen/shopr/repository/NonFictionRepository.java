@@ -4,6 +4,7 @@ import com.realdolmen.shopr.domain.NonFiction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class NonFictionRepository {
 
@@ -15,4 +16,9 @@ public class NonFictionRepository {
         entityManager.persist(newNonFiction);
     }
 
-}
+    public List<NonFiction> findAllNonFictions() {
+
+            return entityManager.createNamedQuery(NonFiction.FIND_ALL, NonFiction.class).getResultList();
+        }
+    }
+

@@ -1,15 +1,23 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = NonFiction.FIND_ALL,
+                query = "SELECT nf FROM NonFiction nf"
+        )
+})
 public class NonFiction extends Book{
 
     @Enumerated(EnumType.STRING)
     private Subject subject;
+    public static final String FIND_ALL = "NonFiction.findAll";
+
+
+
 
 
     public Subject getSubject() {

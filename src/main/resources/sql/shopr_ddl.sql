@@ -16,7 +16,7 @@ CREATE TABLE lp (
 
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   publisher VARCHAR(255),
-  genre ENUM('Classical', 'Rock', 'R&B', 'Dance', 'Hip-Hop', 'Pop')
+  genre VARCHAR(255)
 
 
 );
@@ -26,7 +26,7 @@ CREATE TABLE games(
 
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   publisher VARCHAR(255),
-  genre ENUM('MMORPG', 'RTS', 'RPG', 'RACE', 'FPS'),
+  genre VARCHAR(255),
   minAge INT
 
 
@@ -45,7 +45,7 @@ CREATE TABLE book(
 CREATE TABLE fiction(
 
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  bookGenre ENUM('Thriller','Romance','Sci-Fi','Detective','Fantasy'),
+  bookGenre VARCHAR(255),
   preview VARCHAR(255)
 
 );
@@ -53,5 +53,5 @@ CREATE TABLE fiction(
 CREATE TABLE nonFiction(
 
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  subject ENUM('Sports','Science','History','Cooking')
+  subject VARCHAR(255)
 );

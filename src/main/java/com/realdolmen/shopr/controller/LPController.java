@@ -43,14 +43,4 @@ public class LPController {
         this.newLP = newLP;
     }
 
-    public LPService getLPService() {
-        return lpService;
-    }
-
-    public void setLPService(LPService LPService) {
-        this.lpService = LPService;
-    }
-
-
-
 }
