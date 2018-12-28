@@ -31,4 +31,8 @@ public class LPService {
         LP lP = lPRepository.findById(id);
         lPRepository.removeLP(lP);
     }
+
+    public void insert(LP lp){
+        lPRepository.insert(lp);
+    }
 }
