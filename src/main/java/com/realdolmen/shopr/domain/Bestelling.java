@@ -7,7 +7,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "bestelling")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Bestelling.FIND_BY_ID,
+                        query = "SELECT b FROM Bestelling b WHERE b.id = :id"
+                ),
+                @NamedQuery(
+                        name = Bestelling.FIND_ALL,
+                        query = "SELECT b FROM Bestelling b"
+                )
+        }
+)
 public class Bestelling {
+    public static final String FIND_ALL = "Bestelling.findAll";
+    public static final String FIND_BY_ID = "Bestelling.findById";
 
     @Id
     @GeneratedValue

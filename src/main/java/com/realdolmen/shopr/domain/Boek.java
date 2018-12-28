@@ -8,8 +8,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "boek")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Boek.FIND_BY_ID,
+                        query = "SELECT b FROM Boek b WHERE b.id = :id"
+                ),
+                @NamedQuery(
+                        name = Boek.FIND_ALL,
+                        query = "SELECT b FROM Boek b"
+                )
+        }
+)
 public abstract class Boek extends Artikel {
+    public static final String FIND_ALL = "Boek.findAll";
+    public static final String FIND_BY_ID = "Boek.findById";
 
     @Size(max = 100)
     @Column(name = "auteur")
@@ -18,7 +31,7 @@ public abstract class Boek extends Artikel {
     @Column(name = "isbn", unique = true)
     @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
-    @Column(name = "aantal_pagina's")
+    @Column(name = "aantal_paginas")
     private  int aantalPaginas;
 
     public String getAuteur() {

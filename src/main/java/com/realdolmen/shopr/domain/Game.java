@@ -6,7 +6,21 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "game"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"uitgever", "titel"})*/)
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Game.FIND_BY_GENRE,
+                        query = "SELECT g FROM Game g WHERE g.gameGenre = :gameGenre"
+                ),
+                @NamedQuery(
+                        name = Game.FIND_ALL,
+                        query = "SELECT g FROM Game g"
+                )
+        }
+)
 public class Game extends Artikel {
+    public static final String FIND_ALL = "Game.findAll";
+    public static final String FIND_BY_GENRE = "Game.findByGenre";
 
     @Size(max = 100)
     @Column(name = "uitgever", unique = true)

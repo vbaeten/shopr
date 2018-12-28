@@ -10,7 +10,21 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "artikel")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Artikel.FIND_BY_TITLE,
+                        query = "SELECT a FROM Artikel a WHERE a.title = :title"
+                ),
+                @NamedQuery(
+                        name = Artikel.FIND_ALL,
+                        query = "SELECT a FROM Artikel a"
+                )
+        }
+)
 public abstract class Artikel {
+    public static final String FIND_ALL = "Artikel.findAll";
+    public static final String FIND_BY_TITLE = "Artikel.findByTitle";
 
     @Id
     @GeneratedValue

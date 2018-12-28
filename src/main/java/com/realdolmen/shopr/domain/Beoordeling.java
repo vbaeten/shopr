@@ -6,7 +6,22 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "beoordeling")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Beoordeling.FIND_BY_SCORE,
+                        query = "SELECT b FROM Beoordeling b WHERE b.score = :score"
+                ),
+                @NamedQuery(
+                        name = Beoordeling.FIND_ALL,
+                        query = "SELECT b FROM Beoordeling a"
+                )
+        }
+)
 public class Beoordeling {
+    public static final String FIND_ALL = "Beoordeling.findAll";
+    public static final String FIND_BY_SCORE = "Beoordeling.findByScore";
+
 
     @Id
     @GeneratedValue

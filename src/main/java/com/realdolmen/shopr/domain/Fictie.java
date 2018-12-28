@@ -5,7 +5,21 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "fictie")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Fictie.FIND_BY_GENRE,
+                        query = "SELECT f FROM Fictie f WHERE f.fictieGenre = :fictieGenre"
+                ),
+                @NamedQuery(
+                        name = Fictie.FIND_ALL,
+                        query = "SELECT f FROM Fictie f"
+                )
+        }
+)
 public class Fictie extends Boek {
+    public static final String FIND_ALL = "Fictie.findAll";
+    public static final String FIND_BY_GENRE = "Fictie.findByGenre";
 
     @Size(max = 255)
     @Column(name = "korte_inhoud")

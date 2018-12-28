@@ -45,6 +45,7 @@
          <h:selectOneMenu value="#{user.name}">
             <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.name} #{user.firstName}" />
          </h:selectOneMenu>
+         <h:button value="Login" outcome="shop"/>
       </p:panel>
    </h:form>
 </h:body>
