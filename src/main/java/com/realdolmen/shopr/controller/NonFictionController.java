@@ -18,13 +18,20 @@ public class NonFictionController {
     @Inject
     private NonFictionService nonFictionService;
 
-
     public Subject[] getSubjects(){
         return Subject.values();
     }
 
-
     public void submit(){
         this.nonFictionService.insert(newNonFiction);
+    }
+
+
+    public NonFiction getNewNonFiction() {
+        return newNonFiction;
+    }
+
+    public void setNewNonFiction(NonFiction newNonFiction) {
+        this.newNonFiction = newNonFiction;
     }
 }

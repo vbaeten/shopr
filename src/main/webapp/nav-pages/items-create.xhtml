@@ -111,7 +111,36 @@
         <h5>Add a non-fiction book</h5>
 
 
+        <div class="addItem">
+            <h:form>
+                <div class="textBoxDiv">
+                    <h:outputLabel value="title: " />
+                    <p:inputText value="#{nonFictionController.newNonFiction.title}" styleClass="inputField" />
 
+                    <h:outputLabel value="Price: "/>
+                    <p:inputText value="#{nonFictionController.newNonFiction.price}" styleClass="inputField"/>
+
+                    <h:outputLabel value="Author: "/>
+                    <p:inputText value="#{nonFictionController.newNonFiction.author}" styleClass="inputField"/>
+
+                    <h:outputLabel value="ISBN: "/>
+                    <p:inputText value="#{nonFictionController.newNonFiction.isbn}" styleClass="inputField"/>
+
+                    <h:outputLabel value="totalPages: "/>
+                    <p:inputText value="#{nonFictionController.newNonFiction.totalPages}" styleClass="inputField"/>
+
+                    <h:outputLabel value="Subject "/>
+                    <p:selectOneMenu id="nonFictionSubject" value="#{nonFictionController.newNonFiction.subject}"  >
+                        <f:selectItems value="#{nonFictionController.subjects}" itemLabel="#{newNonFiction.subject}"  styleClass="inputField"/>
+                    </p:selectOneMenu>
+                </div>
+
+                <div>
+                    <p:commandButton value="Add Article" id="ajax4" action="#{nonFictionController.submit}"  styleClass="addButton" />
+                </div>
+            </h:form>
+
+        </div>
 
 
 

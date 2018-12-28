@@ -1,7 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 public enum Subject {
-    HISTROY("History"),
+    HISTORY("History"),
     COOKING("Cooking"),
     SCIENCE("Science"),
     SPORTS("Sports");
