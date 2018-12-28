@@ -10,7 +10,7 @@ import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class ItemController {
+public class ItemsController {
     private Item item = new Item();
 
     @Inject

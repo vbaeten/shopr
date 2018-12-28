@@ -10,7 +10,7 @@ import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class GameController {
+public class GamesController {
     private Game game = new Game();
 
     @Inject
