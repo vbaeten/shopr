@@ -2,9 +2,11 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 
 @Entity
+@Table(name = "fiction")
 public class Fiction extends Book {
 
 

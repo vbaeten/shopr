@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name = "article")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-@DiscriminatorColumn(name = "article_type")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -22,7 +21,7 @@ import java.util.List;
                 )
         }
 )
-public abstract class Article {
+public class Article {
 
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";

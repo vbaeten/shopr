@@ -25,10 +25,25 @@ CREATE TABLE lp
 );
 CREATE TABLE game
 (
+  id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   publisher varchar(100) NOT NULL,
   min_age int NOT NULL,
   genre varchar(50) NOT NULL
 );
 
+CREATE TABLE non_fiction
+(
+  id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+  genre varchar(50)
+);
+
+CREATE TABLE fiction
+(
+  id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  genre varchar(50),
+  synopsis varchar(255)
+
+)
 
 

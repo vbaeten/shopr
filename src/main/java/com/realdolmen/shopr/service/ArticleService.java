@@ -23,4 +23,8 @@ public class ArticleService {
         return articleRepository.findByTitle(title);
     }
 
+    public void insert(Article article) {
+        articleRepository.insert(article);
+    }
+
 }

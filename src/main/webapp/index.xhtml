@@ -26,22 +26,49 @@
             <p:commandButton value="Submit" update="msgs" action="#{loginController.login}"/>
         </p:panel>
     </h:form>
-    <h2>List of articles</h2>
-    <p:dataTable var="article" value="#{dtBasicView.cars}">
+    <h2>Let's try again to add a game.</h2>
+    <h:form id="addGameForm">
+        <p:panel id="gamepanel" header="Form" style="margin-bottom:10px;">
+        <p:panelGrid colums="3" style="margin-bottom:10px;">
+            <h:outputLabel for="title" value="Title:">
+            <p:inputText id="title" value="#{gameController.newGame.title}"/>
+            </h:outputLabel>
+            <h:outputLabel for="genre" value="Genre:">
+                <p:inputText id="genre" value="#{gameController.newGame.gameGenre}"/>
+            </h:outputLabel>
+            <h:outputLabel for="publisher" value="Publisher:">
+                <p:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
+            </h:outputLabel>
+            <h:outputLabel for="price" value="Price:">
+                <p:inputText id="price" value="#{gameController.newGame.price}"/>
+            </h:outputLabel>
+            <h:outputLabel for="supplier" value="Supplier:">
+                <p:inputText id="supplier" value="#{gameController.newGame.supplier}"/>
+            </h:outputLabel>
+            <h:outputLabel for="min_age" value="Minimun Age:">
+                <p:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
+            </h:outputLabel>
+        </p:panelGrid>
+        </p:panel>
+    </h:form>
+
+
+    <h2>List of games</h2>
+    <p:dataTable var="game" value="#{gameController.games}">
         <p:column headerText="Id">
-            <h:outputText value="#{car.id}" />
+            <h:outputText value="#{game.id}" />
         </p:column>
-
-        <p:column headerText="Year">
-            <h:outputText value="#{car.year}" />
+        <p:column headerText="Title">
+            <h:outputText value="#{game.title}" />
         </p:column>
-
-        <p:column headerText="Brand">
-            <h:outputText value="#{car.brand}" />
+        <p:column headerText="Genre">
+            <h:outputText value="#{game.gameGenre}" />
         </p:column>
-
-        <p:column headerText="Color">
-            <h:outputText value="#{car.color}" />
+        <p:column headerText="Price">
+            <h:outputText value="#{game.price}" />
+        </p:column>
+        <p:column headerText="Mininum Age">
+            <h:outputText value="#{game.minAge}" />
         </p:column>
     </p:dataTable>
 
@@ -62,7 +89,7 @@
         </p:column>
     </p:dataTable>
     <h2>Add a new user</h2>
-    <h:form id="addLocationForm">
+    <h:form id="addUserForm">
         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
                 <h:outputLabel for="userName" value="Name:"/>

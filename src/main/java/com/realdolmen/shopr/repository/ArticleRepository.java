@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class ArticleRepository {
+
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
