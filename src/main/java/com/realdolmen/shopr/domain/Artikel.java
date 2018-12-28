@@ -14,7 +14,7 @@ import java.util.List;
         {
                 @NamedQuery(
                         name = Artikel.FIND_BY_TITLE,
-                        query = "SELECT a FROM Artikel a WHERE a.title = :title"
+                        query = "SELECT a FROM Artikel a WHERE a.titel = :titel"
                 ),
                 @NamedQuery(
                         name = Artikel.FIND_ALL,

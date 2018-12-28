@@ -14,7 +14,7 @@ import javax.validation.constraints.Min;
                 ),
                 @NamedQuery(
                         name = Beoordeling.FIND_ALL,
-                        query = "SELECT b FROM Beoordeling a"
+                        query = "SELECT b FROM Beoordeling b"
                 )
         }
 )
