@@ -4,7 +4,6 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -24,7 +23,6 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name = "name")
     private String name;
     @Column(name = "first_name")
     private String firstName;
