@@ -1,8 +1,6 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Book;
-import com.realdolmen.shopr.domain.Fiction;
-import com.realdolmen.shopr.domain.NonFiction;
 import com.realdolmen.shopr.service.BookService;
 
 import javax.faces.bean.ManagedBean;
@@ -13,7 +11,7 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class BookController {
-    private Book book = new Fiction();
+    private Book book = new Book();
 
     @Inject
     private BookService bookService;
