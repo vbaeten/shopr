@@ -6,7 +6,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Table(name = "article")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @NamedQueries(
@@ -28,7 +27,7 @@ public class Article {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "article_id")
     private int id;
 
     @Max(100)
@@ -36,8 +35,8 @@ public class Article {
     @Column(name = "title")
     private String title;
 
-    @NotNull
-    @Digits(integer=6, fraction=2)
+//    @NotNull
+//    @Digits(integer=6, fraction=2)
     @Column (name = "price")
     private double price;
 

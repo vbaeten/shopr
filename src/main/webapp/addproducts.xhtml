@@ -20,40 +20,40 @@
                     <b:panel title="Add Game Here">
                         <b:row>
                             <b:column span="4">
-                                <b:label for="title" value="Title:">
-                                    <b:inputText id="title" value="#{gameController.newGame.title}"/>
-                                </b:label>
-                                <b:label for="genre" value="Genre:">
-                                    <b:inputText id="genre" value="#{gameController.newGame.gameGenre}"/>
-                                </b:label>
-                                <b:label for="publisher" value="Publisher:">
-                                    <b:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
-                                </b:label>
+                                <h:outputLabel for="title" value="Title:"/>
+                                <b:inputText id="title" value="#{gameController.newGame.title}"/>
+                                <h:outputLabel for="genre" value="Genre:"/>
+                                <b:inputText id="genre" value="#{gameController.newGame.gameGenre}"/>
+                                <h:outputLabel for="publisher" value="Publisher:"/>
+                                <b:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="4">
-                                <b:label for="price" value="Price:">
-                                    <b:inputText id="price" value="#{gameController.newGame.price}"/>
-                                </b:label>
-                                <b:label for="supplier" value="Supplier:">
-                                    <b:inputText id="supplier" value="#{gameController.newGame.supplier}"/>
-                                </b:label>
-                                <b:label for="min_age" value="Minimun Age:">
-                                    <b:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
-                                </b:label>
+                                <h:outputLabel for="price" value="Price:"/>
+                                <b:inputText id="price" value="#{gameController.newGame.price}"/>
+                                <h:outputLabel for="supplier" value="Supplier:"/>
+                                <b:inputText id="supplier" value="#{gameController.newGame.supplier}"/>
+                                <h:outputLabel for="min_age" value="Minimun Age:"/>
+                                <b:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
                             </b:column>
                         </b:row>
+                        <b:row>
+                            <b:commandButton value="Submit" action="#{gameController.submit}" update="gameDataTable"/>
+                        </b:row>
                     </b:panel>
-                </b:accordion></b:form>
+                </b:accordion>
+            </b:form>
             <b:form>
                 <b:accordion>
                     <b:panel title="Add LP Here"></b:panel>
-                </b:accordion></b:form>
+                </b:accordion>
+            </b:form>
             <b:form>
                 <b:accordion>
                     <b:panel title="Add Fiction Book Here"></b:panel>
-                </b:accordion></b:form>
+                </b:accordion>
+            </b:form>
             <b:form>
                 <b:accordion>
                     <b:panel title="Add Non-Fiction Book Here"></b:panel>
@@ -61,7 +61,17 @@
             </b:form>
             <p>Check lists of diffent articles here.</p>
             <b:accordion>
-                <b:panel title="List of Games"></b:panel>
+                <b:panel title="List of Games">
+                    <b:dataTable id="gameDataTable" value="#{gameController.games}" var="game">
+                        <b:dataTableColumn value="#{game.id}"/>
+                        <b:dataTableColumn value="#{game.title}"/>
+                        <b:dataTableColumn value="#{game.gameGenre}"/>
+                        <b:dataTableColumn value="#{game.publisher}"/>
+                        <b:dataTableColumn value="#{game.price}"/>
+                        <b:dataTableColumn value="#{game.supplier}"/>
+                        <b:dataTableColumn value="#{game.minAge}"/>
+                    </b:dataTable>
+                </b:panel>
             </b:accordion>
             <b:accordion>
                 <b:panel title="List of LP's"></b:panel>

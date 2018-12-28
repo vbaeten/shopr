@@ -5,7 +5,6 @@ import javax.validation.constraints.Max;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "game")
 @NamedQueries(
         {
                 @NamedQuery(

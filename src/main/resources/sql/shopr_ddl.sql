@@ -5,9 +5,9 @@ CREATE TABLE user (
 );
 
 CREATE TABLE article (
-  id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  article_id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  price DOUBLE       NOT NULL,
+  price DOUBLE       ,
   supplier VARCHAR(50) NOT NULL
 );
 
@@ -25,9 +25,9 @@ CREATE TABLE lp
 );
 CREATE TABLE game
 (
-  id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  article_id    INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   publisher varchar(100) NOT NULL,
-  min_age int NOT NULL,
+  min_age int ,
   genre varchar(50) NOT NULL
 );
 

@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.GameService;
 
 import javax.faces.bean.ManagedBean;
@@ -31,6 +30,7 @@ public class GameController {
     }
 
     public void submit() {
+        System.out.println(" test");
         this.gameService.insert(newGame);
     }
 
