@@ -3,13 +3,26 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Item.FIND_ALL,
+                        query = "SELECT i FROM Item i"
+                )
+        }
+)
+@DiscriminatorColumn(name = "type")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Item {
+public class Item {
+    public static final String FIND_ALL = "Item.findAll";
+
     @Id
     @GeneratedValue
     private Long id;
     private String title;
     private Double price;
+    @Column(name = "type", insertable = false, updatable = false)
+    private String type;
 
     public Long getId() {
         return id;
@@ -33,5 +46,9 @@ public abstract class Item {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
     }
 }
