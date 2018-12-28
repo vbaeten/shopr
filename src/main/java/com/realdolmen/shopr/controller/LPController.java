@@ -4,12 +4,13 @@ import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.service.LPService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class LPController {
 
     LP lp = new LP();

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 public abstract class Article {
     @Id
     @GeneratedValue
@@ -26,10 +27,20 @@ public abstract class Article {
     private String supplierId;
     @ManyToOne
     private Rating rating;
+    @Column(insertable = false, updatable = false)
+    private String type;
 
 //    private Order order;
 
     public Article() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Article(String title, BigDecimal price, String supplierId, Rating rating) {

@@ -15,7 +15,7 @@
             <p:outputLabel for="user" value="User: " />
             <p:selectOneMenu id="user" value="#{userController.newUser}" style="width:150px">
                <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
-               <f:selectItems value="#{userController.users}" />
+               <f:selectItems var="user" value="#{userController.users}" itemValue="=#{user}" itemLabel="#{user.firstName}" />
             </p:selectOneMenu>
 
          </h:panelGrid>

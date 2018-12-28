@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorValue("book")
+@DiscriminatorColumn(name = "booktype", discriminatorType = DiscriminatorType.STRING)
 public abstract class Book extends Article {
     @Column
     @Size(max = 100)
@@ -17,8 +19,18 @@ public abstract class Book extends Article {
     private String isbn;
     @Column
     private int numberOfPages;
+    @Column(insertable = false, updatable = false)
+    private String booktype;
 
     public Book() {
+    }
+
+    public String getBooktype() {
+        return booktype;
+    }
+
+    public void setBooktype(String booktype) {
+        this.booktype = booktype;
     }
 
     public String getAuthor() {

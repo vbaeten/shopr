@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
+@DiscriminatorValue("game")
 public class Game extends Article{
     @Column
     @Size(max = 100)

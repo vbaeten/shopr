@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
+@DiscriminatorValue("lp")
 public class LP extends Article {
     @Size(max = 100)
     @Column
