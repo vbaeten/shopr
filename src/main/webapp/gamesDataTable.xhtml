@@ -8,18 +8,18 @@
       xml:lang="en" lang="en">
 
 <ui:composition template="templates/templ.xhtml">
-    <ui:define name="table">
+    <ui:define name="pageContent">
         <p:dataTable var="game" value="#{gameController.games}" styleClass="table table-striped">
-            <p:column headerText="Id">
+            <p:column headerText="Id" >
                 <h:outputText value="#{game.id}"/>
             </p:column>
 
             <p:column headerText="Title">
-                <h:outputText value="#{game.title}"/>
+                <h:outputText value="#{game.title}"  StyleClass="titleColumn"/>
             </p:column>
 
             <p:column headerText="Publisher">
-                <h:outputText value="#{game.publisher}"/>
+                <h:outputText value="#{game.publisher}" styleClass="authorColumn"/>
             </p:column>
 
             <p:column headerText="Genre">
@@ -31,7 +31,7 @@
             </p:column>
 
             <p:column headerText="Price">
-                <h:outputText value="#{game.price}€"/>
+                <h:outputText value="#{game.price}€"  styleClass="priceColumn"/>
             </p:column>
         </p:dataTable>
     </ui:define>

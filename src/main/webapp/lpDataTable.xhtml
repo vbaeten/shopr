@@ -8,26 +8,26 @@
       xml:lang="en" lang="en">
 
 <ui:composition template="templates/templ.xhtml">
-    <ui:define name="table">
+    <ui:define name="pageContent">
         <p:dataTable var="lp" value="#{lpController.lps}" styleClass="table table-striped">
             <p:column headerText="Id">
                 <h:outputText value="#{lp.id}"/>
             </p:column>
 
-            <p:column headerText="Title" styleClass="titleColumn">
-                <h:outputText value="#{lp.title}"/>
+            <p:column headerText="Title">
+                <h:outputText value="#{lp.title}"  styleClass="titleColumn"/>
             </p:column>
 
-            <p:column headerText="Artist" styleClass="authorColumn">
-                <h:outputText value="#{lp.artist}"/>
+            <p:column headerText="Artist">
+                <h:outputText value="#{lp.artist}" styleClass="authorColumn"/>
             </p:column>
 
             <p:column headerText="Genre">
                 <h:outputText value="#{lp.genre}"/>
             </p:column>
 
-            <p:column headerText="Price" Styleclass="priceColumn">
-                <h:outputText value="#{lp.price}€"/>
+            <p:column headerText="Price">
+                <h:outputText value="#{lp.price}€" styleClass="priceColumn"/>
             </p:column>
         </p:dataTable>
     </ui:define>

@@ -8,18 +8,18 @@
       xml:lang="en" lang="en">
 
 <ui:composition template="templates/templ.xhtml">
-    <ui:define name="table">
+    <ui:define name="pageContent">
         <p:dataTable var="fiction" value="#{fictionController.fictions}" styleClass="table table-striped">
             <p:column headerText="Id">
                 <h:outputText value="#{fiction.id}"/>
             </p:column>
 
-            <p:column headerText="Title" styleClass="titleColumn">
-                <h:outputText value="#{fiction.title}"/>
+            <p:column headerText="Title" >
+                <h:outputText value="#{fiction.title}" styleClass="titleColumn"/>
             </p:column>
 
-            <p:column headerText="Author" styleClass="authorColumn">
-                <h:outputText value="#{fiction.author}"/>
+            <p:column headerText="Author" >
+                <h:outputText value="#{fiction.author}" styleClass="authorColumn"/>
             </p:column>
 
             <p:column headerText="Genre">
@@ -38,8 +38,8 @@
                 <h:outputText value="#{fiction.isbn}"/>
             </p:column>
 
-            <p:column headerText="Price" styleClass="priceColumn">
-                <h:outputText value="#{fiction.price}€"/>
+            <p:column headerText="Price" >
+                <h:outputText value="#{fiction.price}€" styleClass="priceColumn"/>
             </p:column>
         </p:dataTable>
     </ui:define>

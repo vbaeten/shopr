@@ -11,3 +11,6 @@ body{
 .authorColumn{
     font-weight: bold;
 }
+.idColumn{
+    width: 20px;
+}

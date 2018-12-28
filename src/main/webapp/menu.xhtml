@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<ui:composition>
+    <ui:define name="menu">
+        <h:form>
+            <p:panel header="Articles" style="margin-bottom:10px;">
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:outputLabel for="articleType" value="Article Type: "/>
+                    <p:selectOneMenu id="articleType" style="width:150px">
+                        <f:selectItem itemLabel="---Select Article---" itemValue="" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="All Articles" itemValue="allArticlesDataTable"/>
+                        <f:selectItem itemLabel="Fiction Books" itemValue="fictionDataTable"/>
+                        <f:selectItem itemLabel="Non-Fiction Books" itemValue="nonFictionDataTable"/>
+                        <f:selectItem itemLabel="Games" itemValue="gamesDataTable"/>
+                        <f:selectItem itemLabel="LPs" itemValue="lpDataTable"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
