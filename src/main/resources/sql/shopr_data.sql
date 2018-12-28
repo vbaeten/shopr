@@ -33,65 +33,65 @@ INSERT INTO item(id,title,price) VALUES (29,'two more',2.00);
 INSERT INTO item(id,title,price) VALUES (30,'Practically Free',999.99);
 INSERT INTO item(id,title,price) VALUES (31,'Cheap as',1.99);
 
-INSERT INTO book(author, isbn, totalPages) VALUES (13,'Meetch','5648465412',500);
-INSERT INTO book(author, isbn, totalPages) VALUES (14,'Meetch','5648465412',485);
-INSERT INTO book(author, isbn, totalPages) VALUES (15,'Meetch','5648465412',215);
-INSERT INTO book(author, isbn, totalPages) VALUES (16,'Meetch','5648465412',360);
-INSERT INTO book(author, isbn, totalPages) VALUES (17,'Meetch','5648465412',789);
-INSERT INTO book(author, isbn, totalPages) VALUES (18,'Meetch','5648465412',100);
-INSERT INTO book(author, isbn, totalPages) VALUES (19,'Meetch','5648465412',89);
-INSERT INTO book(author, isbn, totalPages) VALUES (20,'Karel','7894526548',233);
-INSERT INTO book(author, isbn, totalPages) VALUES (21,'Karel','7894526548',344);
-INSERT INTO book(author, isbn, totalPages) VALUES (22,'Karel','7894526548',45);
-INSERT INTO book(author, isbn, totalPages) VALUES (23,'Karel','7894526548',569);
-INSERT INTO book(author, isbn, totalPages) VALUES (24,'Ines','1203201558',541);
-INSERT INTO book(author, isbn, totalPages) VALUES (25,'Ines','1203201558',189);
-INSERT INTO book(author, isbn, totalPages) VALUES (26,'Ines','1203201558',278);
-INSERT INTO book(author, isbn, totalPages) VALUES (27,'Ines','1203201558',364);
-INSERT INTO book(author, isbn, totalPages) VALUES (28,'Amir','1203201558',198);
-INSERT INTO book(author, isbn, totalPages) VALUES (29,'Amir','87089540',65);
-INSERT INTO book(author, isbn, totalPages) VALUES (30,'Amir','87089540',105);
-INSERT INTO book(author, isbn, totalPages) VALUES (31,'Amir','87089540',1000);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (13,'Meetch','5648465412',500);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (14,'Meetch','5648465412',485);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (15,'Meetch','5648465412',215);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (16,'Meetch','5648465412',360);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (17,'Meetch','5648465412',789);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (18,'Meetch','5648465412',100);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (19,'Meetch','5648465412',89);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (20,'Karel','7894526548',233);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (21,'Karel','7894526548',344);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (22,'Karel','7894526548',45);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (23,'Karel','7894526548',569);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (24,'Ines','1203201558',541);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (25,'Ines','1203201558',189);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (26,'Ines','1203201558',278);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (27,'Ines','1203201558',364);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (28,'Amir','1203201558',198);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (29,'Amir','87089540',65);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (30,'Amir','87089540',105);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (31,'Amir','87089540',1000);
 
 
 INSERT INTO games(id, publisher, minAge, genre) VALUES (1,'EAGames',5,'FPS');
 INSERT INTO games(id, publisher, minAge, genre) VALUES (2,'EAGames',10,'FPS');
 INSERT INTO games(id, publisher, minAge, genre) VALUES (3,'RIOT games',1,'RTS');
 INSERT INTO games(id, publisher, minAge, genre) VALUES (4,'Valve',14,'FPS');
-INSERT INTO games(id, publisher, minAge, genre) VALUES (5,'Blizzard',12,'mmorpg');
+INSERT INTO games(id, publisher, minAge, genre) VALUES (5,'Blizzard',12,'MMORPG');
 
 
 
-INSERT INTO lp(id, publisher, genre) VALUES (6,'Dummies','rock');
-INSERT INTO lp(id, publisher, genre) VALUES (7,'Dummies','Dance');
-INSERT INTO lp(id, publisher, genre) VALUES (8,'Datas','classical');
-INSERT INTO lp(id, publisher, genre) VALUES (9,'pubbs','r&b');
-INSERT INTO lp(id, publisher, genre) VALUES (10,'lishers','pop');
-INSERT INTO lp(id, publisher, genre) VALUES (11,'Karel','rock');
-INSERT INTO lp(id, publisher, genre) VALUES (12,'meme','dance');
+INSERT INTO lp(id, publisher, genre) VALUES (6,'Dummies','ROCK');
+INSERT INTO lp(id, publisher, genre) VALUES (7,'Dummies','DANCE');
+INSERT INTO lp(id, publisher, genre) VALUES (8,'Datas','CLASSICAL');
+INSERT INTO lp(id, publisher, genre) VALUES (9,'pubbs','RNB');
+INSERT INTO lp(id, publisher, genre) VALUES (10,'Lishers','POP');
+INSERT INTO lp(id, publisher, genre) VALUES (11,'Karel','ROCK');
+INSERT INTO lp(id, publisher, genre) VALUES (12,'meme','DANCE');
 
 
-INSERT INTO fiction(id,bookGenre,preview) VALUES (13,'thriller','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (14,'fantasy', 'Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (15,'detective','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (16,'scifi','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (17,'romance','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (18,'thriller','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (19,'fantasy','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (20,'romance','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
-INSERT INTO fiction(id,bookGenre,preview) VALUES (21,'detective','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (13,'THRILLER','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (14,'FANTASY', 'Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (15,'DETECTIVE','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (16,'SCIFI','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (17,'ROMANCE','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (18,'THRILLER','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (19,'FANTASY','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (20,'ROMANCE','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (21,'DETECTIVE','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
 
 
-INSERT INTO nonfiction(id,subject) VALUES (22,'history');
-INSERT INTO nonfiction(id,subject) VALUES (23,'cooking');
-INSERT INTO nonfiction(id,subject) VALUES (24,'sports');
-INSERT INTO nonfiction(id,subject) VALUES (25,'science');
-INSERT INTO nonfiction(id,subject) VALUES (26,'history');
-INSERT INTO nonfiction(id,subject) VALUES (27,'cooking');
-INSERT INTO nonfiction(id,subject) VALUES (28,'sports');
-INSERT INTO nonfiction(id,subject) VALUES (29,'science');
-INSERT INTO nonfiction(id,subject) VALUES (30,'science');
-INSERT INTO nonfiction(id,subject) VALUES (31,'science');
+INSERT INTO nonfiction(id,subject) VALUES (22,'HISTORY');
+INSERT INTO nonfiction(id,subject) VALUES (23,'COOKING');
+INSERT INTO nonfiction(id,subject) VALUES (24,'SPORTS');
+INSERT INTO nonfiction(id,subject) VALUES (25,'SCIENCE');
+INSERT INTO nonfiction(id,subject) VALUES (26,'HISTORY');
+INSERT INTO nonfiction(id,subject) VALUES (27,'COOKING');
+INSERT INTO nonfiction(id,subject) VALUES (28,'SPORTS');
+INSERT INTO nonfiction(id,subject) VALUES (29,'SCIENCE');
+INSERT INTO nonfiction(id,subject) VALUES (30,'SCIENCE');
+INSERT INTO nonfiction(id,subject) VALUES (31,'SCIENCE');
 
 
 
