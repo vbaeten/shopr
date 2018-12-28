@@ -1,0 +1,21 @@
+.addItem{
+    border-style: none;
+    background-color: rgba(5,7,0,0.37);
+    margin: 2%;
+    font-size: large;
+    padding: 2%;
+    align-content: center;
+
+}
+
+.textBoxDiv{
+    width: 100%;
+}
+
+.inputField{
+    width: 10%;
+
+}
+.addButton{
+    margin-top: 20px;
+}

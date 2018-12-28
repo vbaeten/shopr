@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+<ui:composition template="/WEB-INF/layout.xhtml">
+<ui:define name="pageContent">
+<h:outputStylesheet  library = "css" name="create.css"/>
+
+
+<h1>Create Items</h1>
+
+
+<div>
+    <h3>add an LP</h3>
+    <div class="addItem">
+    <h:form>
+        <h:outputLabel value="title: " />
+        <p:inputText value="#{lPController.newLP.title}" styleClass="inputField" />
+
+        <h:outputLabel value="Publisher: " />
+        <p:inputText value="#{lPController.newLP.publisher}"  styleClass="inputField"/>
+        <h:outputLabel value="Price: "/>
+        <p:inputText value="#{lPController.newLP.price}" styleClass="inputField"/>
+
+        <h:outputLabel value="Genre: "/>
+        <p:selectOneMenu id="LPGenre" value="#{lPController.newLP.genre}"  >
+            <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}" styleClass="inputField" />
+        </p:selectOneMenu>
+        <div>
+        <p:commandButton value="Add Article" id="ajax" action="#{lPController.submit}"  styleClass="addButton" />
+        </div>
+    </h:form>
+</div>
+</div>
+
+    <div>
+        <h3>add a Game</h3>
+        <div class="addItem">
+        <h:form>
+            <h:outputLabel value="title: " />
+            <p:inputText value="#{gameController.newGame.title}" styleClass="inputField" />
+
+            <h:outputLabel value="Publisher: " />
+            <p:inputText value="#{gameController.newGame.publisher}"  styleClass="inputField"/>
+            <h:outputLabel value="Price: "/>
+            <p:inputText value="#{gameController.newGame.price}" styleClass="inputField"/>
+
+            <h:outputLabel value="Min Age: " />
+            <p:inputText value="#{gameController.newGame.minAge}" styleClass="inputField" />
+
+            <h:outputLabel value="Genre: "/>
+            <p:selectOneMenu id="gameGenre" value="#{gameController.newGame.genre}"  >
+                <f:selectItems value="#{gameController.genres}" itemLabel="#{GameGenre.genre}" styleClass="inputField" />
+            </p:selectOneMenu>
+            <div>
+            <p:commandButton value="Add Article" id="ajax2" action="#{gameController.submit}"  styleClass="addButton" />
+            </div>
+        </h:form>
+    </div>
+    </div>
+
+    <div>
+        <h3>Add a Book</h3>
+
+        <h5>Add a fiction book</h5>
+
+        <div class="addItem">
+        <h:form>
+            <div class="textBoxDiv">
+            <h:outputLabel value="title: " />
+            <p:inputText value="#{fictionController.newFiction.title}" styleClass="inputField" />
+
+            <h:outputLabel value="Price: "/>
+            <p:inputText value="#{fictionController.newFiction.price}" styleClass="inputField"/>
+
+            <h:outputLabel value="Author: "/>
+            <p:inputText value="#{fictionController.newFiction.author}" styleClass="inputField"/>
+
+            <h:outputLabel value="ISBN: "/>
+            <p:inputText value="#{fictionController.newFiction.isbn}" styleClass="inputField"/>
+
+            <h:outputLabel value="totalPages: "/>
+            <p:inputText value="#{fictionController.newFiction.totalPages}" styleClass="inputField"/>
+
+            <h:outputLabel value="Genre: "/>
+            <p:selectOneMenu id="FictionGenre" value="#{fictionController.newFiction.bookGenre}"  >
+                <f:selectItems value="#{fictionController.genres}" itemLabel="#{BookGenre.genre}"  styleClass="inputField"/>
+            </p:selectOneMenu>
+            </div>
+
+            <h:outputLabel value="preview: "/>
+            <div>
+            <p:inputTextarea rows="10" cols="50" value="#{fictionController.newFiction.preview}" queryDelay="750" minQueryLength="4" />
+            </div>
+            <div>
+            <p:commandButton value="Add Article" id="ajax3" action="#{fictionController.submit}"  styleClass="addButton" />
+            </div>
+        </h:form>
+
+        </div>
+
+
+        <h5>Add a non-fiction book</h5>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+</ui:define>
+</ui:composition>
+
+</html>
