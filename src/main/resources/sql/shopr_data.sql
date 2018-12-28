@@ -1,23 +1,23 @@
-INSERT INTO item(id, title, price)
-  VALUES (1, 'Paranoid', 20.00);
-INSERT INTO item(id, title, price)
-  VALUES (2, 'The Richest Man In Babylon', 18.00);
-INSERT INTO item(id, title, price)
-  VALUES (3, 'Journey In Satchidananda', 25.00);
-INSERT INTO item(id, title, price)
-  VALUES (4, 'League of Legends', 0.00);
-INSERT INTO item(id, title, price)
-  VALUES (5, 'Minecraft', 23.95);
-INSERT INTO item(id, title, price)
-  VALUES (6, 'Artifact', 17.95);
-INSERT INTO item(id, title, price)
-  VALUES (7, 'The Kite Runner', 11.95);
-INSERT INTO item(id, title, price)
-  VALUES (8, 'The Help', 9.95);
-INSERT INTO item(id, title, price)
-  VALUES (9, 'The Oxford History of Ancient Egypt', 12.99);
-INSERT INTO item(id, title, price)
-  VALUES (10, 'Cooking Basics for Dummies', 14.99);
+INSERT INTO item(id, title, price, type)
+  VALUES (1, 'Paranoid', 20.00, 'LP');
+INSERT INTO item(id, title, price, type)
+  VALUES (2, 'The Richest Man In Babylon', 18.00, 'LP');
+INSERT INTO item(id, title, price, type)
+  VALUES (3, 'Journey In Satchidananda', 25.00, 'LP');
+INSERT INTO item(id, title, price, type)
+  VALUES (4, 'League of Legends', 0.00, 'Game');
+INSERT INTO item(id, title, price, type)
+  VALUES (5, 'Minecraft', 23.95, 'Game');
+INSERT INTO item(id, title, price, type)
+  VALUES (6, 'Artifact', 17.95, 'Game');
+INSERT INTO item(id, title, price, type)
+  VALUES (7, 'The Kite Runner', 11.95, 'Book');
+INSERT INTO item(id, title, price, type)
+  VALUES (8, 'The Help', 9.95, 'Book');
+INSERT INTO item(id, title, price, type)
+  VALUES (9, 'The Oxford History of Ancient Egypt', 12.99, 'Book');
+INSERT INTO item(id, title, price, type)
+  VALUES (10, 'Cooking Basics for Dummies', 14.99, 'Book');
 
 INSERT INTO lp(id, artist, lp_genre)
   VALUES (1, 'Black Sabbath', 'ROCK');
@@ -33,14 +33,14 @@ INSERT INTO game(id, publisher, min_age, game_genre)
 INSERT INTO game(id, publisher, min_age, game_genre)
   VALUES (6, 'Valve', 12, 'RTS');
 
-INSERT INTO book(id, author, isbn, pages)
-  VALUES (7, 'Khaled Hosseini', 9781594480003, 371);
-INSERT INTO book(id, author, isbn, pages)
-  VALUES (8, 'Kathryn Stockett', 9780399155345, 465);
-INSERT INTO book(id, author, isbn, pages)
-  VALUES (9, 'Ian Shaw', 9780198150343, 554);
-INSERT INTO book(id, author, isbn, pages)
-  VALUES (10, 'Bryan Miller', 9780764572067, 436);
+INSERT INTO book(id, author, isbn, pages, book_type)
+  VALUES (7, 'Khaled Hosseini', '978-15-9448-000-3', '371', 'Fiction');
+INSERT INTO book(id, author, isbn, pages, book_type)
+  VALUES (8, 'Kathryn Stockett', '978-03-9915-534-5', '465', 'Fiction');
+INSERT INTO book(id, author, isbn, pages, book_type)
+  VALUES (9, 'Ian Shaw', '978-01-9815-034-3', '554', 'Non fiction');
+INSERT INTO book(id, author, isbn, pages, book_type)
+  VALUES (10, 'Bryan Miller', '978-07-6457-206-7', '436', 'Non fiction');
 
 INSERT INTO fiction(id, book_genre, summary)
   VALUES (7, 'THRILLER',

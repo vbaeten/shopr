@@ -9,7 +9,8 @@ CREATE TABLE item
 (
   id    BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  price FLOAT        NOT NULL
+  price FLOAT        NOT NULL,
+  type  VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE lp
@@ -29,10 +30,11 @@ CREATE TABLE game
 
 CREATE TABLE book
 (
-  id     BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  author VARCHAR(255) NOT NULL,
-  isbn   BIGINT       NOT NULL,
-  pages  INTEGER      NOT NULL
+  id        BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  author    VARCHAR(255) NOT NULL,
+  isbn      VARCHAR(255) NOT NULL,
+  pages     VARCHAR(255) NOT NULL,
+  book_type VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE fiction
