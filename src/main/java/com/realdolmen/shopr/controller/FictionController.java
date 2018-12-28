@@ -15,6 +15,8 @@ public class FictionController {
 
     private Fiction newFiction = new Fiction();
 
+    private Fiction selectedItem;
+
     @Inject
     private FictionService service;
 
@@ -30,4 +32,5 @@ public class FictionController {
     public void init() {
         newFiction.getGenre();
     }
+
 }

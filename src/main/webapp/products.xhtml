@@ -8,32 +8,102 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p:dataTable var="fiction" value="#{fictionController.fictions}" id="fictionDataTable">
-        <p:column headerText="Id">
-            <h:outputText value="#{fiction.id}" />
+        <f:facet name="header">
+            Fictions
+        </f:facet>
+        <p:column headerText="Title">
+            <h:outputText value="#{fiction.title}" />
         </p:column>
-
+        <p:column headerText="Author">
+            <h:outputText value="#{fiction.author}" />
+        </p:column>
         <p:column headerText="Genre">
             <h:outputText value="#{fiction.genre}" />
         </p:column>
-
+        <p:column headerText="Pages">
+            <h:outputText value="#{fiction.nbPages}" />
+        </p:column>
+        <p:column headerText="Publisher">
+            <h:outputText value="#{fiction.publisher}" />
+        </p:column>
         <p:column headerText="Summary">
             <h:outputText value="#{fiction.summary}" />
         </p:column>
+        <p:column headerText="Summary">
+            <h:outputText value="#{fiction.price}" />
+        </p:column>
     </p:dataTable>
-    <h:form id="addLocationForm">
-        <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-            <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="genre" value="Genre:" />
-                <p:selectOneMenu id="genre" value="#{fictionController.newFiction}" dynamic="true" style="width:125px">
-                    <f:selectItem itemLabel="Genres" itemValue="" />
-                    <f:selectItems value="#{fictionController.fictions}" />
-                </p:selectOneMenu>
-                <h:outputLabel for="summary" value="Summary:" />
-                <p:inputText id="summary" value="#{fictionController.newFiction.summary}">
-                </p:inputText>
-                <h:commandButton value="Submit" action="#{fictionController.submit}" update=":fictionDataTable" />
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
+
+    <p:dataTable var="nonFiction" value="#{nonFictionController.nonFictions}" id="nonFictionDataTable">
+        <f:facet name="header">
+           Non Fictions
+        </f:facet>
+        <p:column headerText="Title">
+            <h:outputText value="#{nonFiction.title}" />
+        </p:column>
+        <p:column headerText="Author">
+            <h:outputText value="#{nonFiction.author}" />
+        </p:column>
+        <p:column headerText="Genre">
+            <h:outputText value="#{nonFiction.subject}" />
+        </p:column>
+        <p:column headerText="Pages">
+            <h:outputText value="#{nonFiction.nbPages}" />
+        </p:column>
+        <p:column headerText="Publisher">
+            <h:outputText value="#{nonFiction.publisher}" />
+        </p:column>
+        <p:column headerText="Subject">
+            <h:outputText value="#{nonFiction.subject}" />
+        </p:column>
+        <p:column headerText="Price">
+            <h:outputText value="#{nonFiction.price}" />
+        </p:column>
+    </p:dataTable>
+
+    <p:dataTable var="game" value="#{gameController.games}" id="gameDataTable">
+        <f:facet name="header">
+            Games
+        </f:facet>
+        <p:column headerText="Title">
+            <h:outputText value="#{game.title}" />
+        </p:column>
+        <p:column headerText="Editor">
+            <h:outputText value="#{game.editor}" />
+        </p:column>
+        <p:column headerText="Genre">
+            <h:outputText value="#{game.genre}" />
+        </p:column>
+        <p:column headerText="Age">
+            <h:outputText value="#{game.pegiRating}" />
+        </p:column>
+        <p:column headerText="Publisher">
+            <h:outputText value="#{game.publisher}" />
+        </p:column>
+        <p:column headerText="Price">
+            <h:outputText value="#{game.price}" />
+        </p:column>
+    </p:dataTable>
+
+    <p:dataTable var="lp" value="#{LPController.LPs}" id="lpDataTable">
+        <f:facet name="header">
+            LP
+        </f:facet>
+        <p:column headerText="Title">
+            <h:outputText value="#{lp.title}" />
+        </p:column>
+        <p:column headerText="Interpreter">
+            <h:outputText value="#{lp.interpreter}" />
+        </p:column>
+        <p:column headerText="Genre">
+            <h:outputText value="#{lp.genre}" />
+        </p:column>
+        <p:column headerText="Publisher">
+            <h:outputText value="#{lp.publisher}" />
+        </p:column>
+        <p:column headerText="Price">
+            <h:outputText value="#{lp.price}" />
+        </p:column>
+    </p:dataTable>
 </h:body>
 </html>

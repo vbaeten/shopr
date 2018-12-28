@@ -16,6 +16,7 @@ public class Game extends Product {
     @Column(name = "pegi_rating")
     private Integer pegiRating;
 
+    @Enumerated
     private GameGenre genre;
 
     public String getEditor() {

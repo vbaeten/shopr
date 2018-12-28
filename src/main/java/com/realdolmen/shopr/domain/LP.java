@@ -13,6 +13,7 @@ public class LP extends Product {
     @Column(length = 100, name = "interpreter")
     private String Interpreter;
 
+    @Enumerated
     private LPGenre genre;
 
     public String getInterpreter() {

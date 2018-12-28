@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Fiction extends Book {
 
+    @Enumerated
     private Book_Genre genre;
 
     @Column(length = 255)

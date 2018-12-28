@@ -21,6 +21,15 @@
          </p:column>
       </p:dataTable>
 
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <h:outputLabel for="user" value="Users:" />
+        <p:selectOneMenu converter="omnifaces.SelectItemsConverter" value="#{userController.selectedUser}" id="user" dynamic="true" style="width:125px">
+            <f:selectItems itemValue="#{user}" value="#{userController.users}" var="user" itemLabel="#{user.firstName}" />
+        </p:selectOneMenu>
+    </h:panelGrid>
+    <h:form>
+        <h:commandButton value="Connect" action="#{userController.goToProducts}" />
+    </h:form>
 
       <h:form id="addLocationForm">
          <p:panel id="panel" header="Form" style="margin-bottom:10px;">
