@@ -8,13 +8,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
 xmlns:o="http://omnifaces.org/ui"
 xmlns:of="http://omnifaces.org/functions">
-<h:head><title>ShopR!</title></h:head>
+<h:head>
+    <title>ShopR!</title>
+</h:head>
 <h:body>
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
+         <div id="">
 
-    <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
+    <p:dataTable var="user" value="#{userController.users}" id="userDataTable" >
+        <p:columnGroup type="header">
         <p:column headerText="Id">
             <h:outputText value="#{user.id}"/>
         </p:column>
@@ -26,9 +30,10 @@ xmlns:of="http://omnifaces.org/functions">
         <p:column headerText="First name">
             <h:outputText value="#{user.firstName}"/>
         </p:column>
+        </p:columnGroup>
     </p:dataTable>
-    <h:form id="addLocationForm">
-        <p:panel id="panel" header="Form" style="margin-bottom:10px;">
+    <h:form id="addLocationForm" class="panelStyle">
+        <p:panel id="panel"  style="margin-bottom:10px;" class="panelStyle" >
             <h:panelGrid columns="4" cellpadding="5">
                 <h:outputLabel for="userName" value="Name:"/>
                 <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
@@ -44,7 +49,7 @@ xmlns:of="http://omnifaces.org/functions">
             <!--ganeform validation complete###############################################################################-->
 
     <h:form id="addGameForm">
-    <p:panel id="panelGame" header="Add Game" style="margin-bottom:10px;">
+    <p:panel id="panelGame" header="Add Game" style="margin-bottom:10px;" class="panelStyle">
         <h:panelGrid columns="4" cellpadding="5">
             <h:outputLabel for="titel" value="Titel:"/>
             <p:inputText id="titel" value="#{gameController.newGame.titel}" required="true">
@@ -120,7 +125,7 @@ xmlns:of="http://omnifaces.org/functions">
             <!--lpform validation complete###############################################################################-->
 
     <h:form id="addLpForm">
-        <p:panel id="panelLp" header="Add Lp" style="margin-bottom:10px;">
+        <p:panel id="panelLp" header="Add Lp" style="margin-bottom:10px;" class="panelStyle">
             <h:panelGrid columns="4" cellpadding="5">
                 <h:outputLabel for="titelLp" value="Titel:"/>
                 <p:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true">
@@ -183,6 +188,9 @@ xmlns:of="http://omnifaces.org/functions">
         </p:column>
 
     </p:dataTable>
+
+
+</div>
         </ui:define>
     </ui:composition>
 </h:body>

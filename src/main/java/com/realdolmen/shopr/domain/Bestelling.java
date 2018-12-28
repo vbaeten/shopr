@@ -16,11 +16,10 @@ public class Bestelling
     @Column
     private Date bestelDatum;
 
-//    @OneToMany
+    //    @OneToMany
 //    @JoinColumn(name = "order_id")
 //    private List<Artikel> artikels = new ArrayList<>();
     @ManyToOne
-
     User user;
 
 }

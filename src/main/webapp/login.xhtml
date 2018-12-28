@@ -15,16 +15,23 @@
         <ui:define name="content">
 
             <h:form id="addLocationForm">
-                <p:panel id="panel" header="Login" style="margin-bottom:10px;">
+                <p:panel id="panel"  style="height: 85%;  display: inline-block; position: center " >
                     <h:panelGrid columns="4" cellpadding="5">
                         <h:outputLabel for="gebruiker" value="Gebruiker:"/>
-                        <p:selectOneMenu id="gebruiker" value="#{userController.users}" >
-                            <f:selectItems value="#{Users}" />
+
+                        <p:selectOneMenu id="gebruiker" value="#{loginController.currentUser}">
+                                         converter="omnifaces.SelectItemsIndexConverter">
+
+                            <f:selectItems value="#{loginController.findAllUsers()}" var="user"
+                                           itemLabel="#{user.name}"
+                                           itemValue="#{user.id}"/>
+
                         </p:selectOneMenu>
                         <h:commandButton value="Login" action="#{loginController.currentUser}" />
                     </h:panelGrid>
                 </p:panel>
             </h:form>
+
 
 
         </ui:define>

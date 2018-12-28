@@ -3,6 +3,7 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @NamedQueries(
@@ -28,6 +29,8 @@ public class User {
     private String name;
     @Column(name = "first_name")
     private String firstName;
+    @ManyToMany
+    private List <Beoordeling> beoordelingen;
 
     public int getId() {
         return id;
