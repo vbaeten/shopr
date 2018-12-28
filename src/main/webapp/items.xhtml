@@ -22,42 +22,44 @@
                 </b:form>
             </p:panel>
 
+            <p:panel header="List of items" style="margin-bottom: 10px;">
+                <b:form>
+                    <b:dataTable value="#{itemController.items}" var="item">
+                        <b:dataTableColumn value="#{item.title}"/>
+                        <b:dataTableColumn value="#{item.type}"/>
+                        <b:dataTableColumn value="#{item.price}"/>
+                    </b:dataTable>
+                </b:form>
+            </p:panel>
+
             <p:panel header="List of LP's" style="margin-bottom: 10px;">
-                <h:form>
+                <b:form>
                     <b:dataTable value="#{lpController.lps}" var="lp">
-                        <b:dataTableColumn value="#{lp.id}"/>
                         <b:dataTableColumn value="#{lp.title}"/>
                         <b:dataTableColumn value="#{lp.artist}"/>
-                        <b:dataTableColumn value="#{lp.lpGenre.name}"/>
                         <b:dataTableColumn value="#{lp.price}"/>
                     </b:dataTable>
-                </h:form>
+                </b:form>
             </p:panel>
 
             <p:panel header="List of games" style="margin-bottom: 10px;">
-                <h:form>
+                <b:form>
                     <b:dataTable value="#{gameController.games}" var="game">
-                        <b:dataTableColumn value="#{game.id}"/>
                         <b:dataTableColumn value="#{game.title}"/>
                         <b:dataTableColumn value="#{game.publisher}"/>
-                        <b:dataTableColumn value="#{game.gameGenre.name}"/>
-                        <b:dataTableColumn value="#{game.minAge}"/>
                         <b:dataTableColumn value="#{game.price}"/>
                     </b:dataTable>
-                </h:form>
+                </b:form>
             </p:panel>
 
             <p:panel header="List of books" style="margin-bottom: 10px;">
-                <h:form>
+                <b:form>
                     <b:dataTable value="#{bookController.books}" var="book">
-                        <b:dataTableColumn value="#{book.id}"/>
                         <b:dataTableColumn value="#{book.title}"/>
                         <b:dataTableColumn value="#{book.author}"/>
-                        <b:dataTableColumn value="#{book.isbn}"/>
-                        <b:dataTableColumn value="#{book.pages}"/>
                         <b:dataTableColumn value="#{book.price}"/>
                     </b:dataTable>
-                </h:form>
+                </b:form>
             </p:panel>
         </ui:define>
 
