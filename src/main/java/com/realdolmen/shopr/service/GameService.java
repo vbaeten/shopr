@@ -4,22 +4,24 @@ import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.repository.ArtikelRepository;
 import com.realdolmen.shopr.repository.GameRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+@Stateless
 public class GameService {
     @Inject
     private GameRepository gameRepository;
 
-    public Game findGameById(int id) {
+    public Game findById(int id) {
         return gameRepository.findById(id);
     }
 
-    public List<Game> findAllGames() {
+    public List<Game> findAll() {
         return gameRepository.findAll();
     }
 
-    public Game findGameByTitle(String title) {
+    public Game findByTitle(String title) {
         return gameRepository.findByTitle(title);
     }
 
@@ -32,7 +34,7 @@ public class GameService {
         gameRepository.insert(game);
     }
 
-    public void removeGameById(int id){
+    public void removeById(int id){
         gameRepository.remove(id);
     }
 }

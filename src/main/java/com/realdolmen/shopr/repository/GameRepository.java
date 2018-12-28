@@ -28,8 +28,8 @@ public class GameRepository {
     }
 
     public void remove(int id) {
-        Game artikelById = findById(id);
-        entityManager.remove(artikelById);
+        Game gameById = findById(id);
+        entityManager.remove(gameById);
     }
 
 }
