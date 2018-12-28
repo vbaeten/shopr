@@ -4,9 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "lp",
-        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "artist"})
-)
+//@Table(name = "lp",
+//        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "artist"})
+//)
 @NamedQueries(
         {
                 @NamedQuery(
@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
                         query = "SELECT l FROM Lp l"
                 )
         })
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Lp extends Article {
     public static final String FIND_ALL = "Lp.findAll";
     public static final String FIND_BY_TITLE = "Lp.findByTitle";

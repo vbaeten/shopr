@@ -4,8 +4,21 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Fiction.FIND_BY_TITLE,
+                        query = "SELECT f FROM Fiction f WHERE f.title = :title"
+                ),
+                @NamedQuery(
+                        name = Fiction.FIND_ALL,
+                        query = "SELECT f FROM Fiction f"
+                )
+        })
 public class Fiction extends Book {
+    public static final String FIND_ALL = "Fiction.findAll";
+    public static final String FIND_BY_TITLE = "Fiction.findByTitle";
+
     @Enumerated(EnumType.STRING)
     private FictionGenre genre;
     @Size(max = 255)

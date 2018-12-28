@@ -8,29 +8,29 @@
       xml:lang="en" lang="en">
 <h:head>
     <title>Articles</title>
+    <!--<link rel="stylesheet" type="text/css" href="../shopr/styles/style.css"/>-->
+
 </h:head>
 <h:body>
-
-
-    <h:form>
-        <p:panel header="Articles" style="margin-bottom:10px;">
-            <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel for="articleType" value="Article Type: "/>
-                <p:selectOneMenu id="articleType" style="width:150px">
-                    <f:selectItem itemLabel="---Select Article---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItem itemLabel="All Articles" itemValue="allArticlesDataTable" />
-                    <f:selectItem itemLabel="Fiction Books" itemValue="fictionDataTable" />
-                    <f:selectItem itemLabel="Non-Fiction Books" itemValue="nonFictionDataTable" />
-                    <f:selectItem itemLabel="Games" itemValue="gamesDataTable" />
-                    <f:selectItem itemLabel="LPs" itemValue="lpDataTable" />
-                </p:selectOneMenu>
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
+    <!--<h:form>-->
+        <!--<p:panel header="Articles" style="margin-bottom:10px;">-->
+            <!--<h:panelGrid columns="3" cellpadding="5">-->
+                <!--<p:outputLabel for="articleType" value="Article Type: "/>-->
+                <!--<p:selectOneMenu id="articleType" style="width:150px">-->
+                    <!--<f:selectItem itemLabel="-&#45;&#45;Select Article-&#45;&#45;" itemValue="" noSelectionOption="true"/>-->
+                    <!--<f:selectItem itemLabel="All Articles" itemValue="allArticlesDataTable" />-->
+                    <!--<f:selectItem itemLabel="Fiction Books" itemValue="fictionDataTable" />-->
+                    <!--<f:selectItem itemLabel="Non-Fiction Books" itemValue="nonFictionDataTable" />-->
+                    <!--<f:selectItem itemLabel="Games" itemValue="gamesDataTable" />-->
+                    <!--<f:selectItem itemLabel="LPs" itemValue="lpDataTable" />-->
+                <!--</p:selectOneMenu>-->
+            <!--</h:panelGrid>-->
+        <!--</p:panel>-->
+    <!--</h:form>-->
 
     <div id="table">
         <ui:insert name="table">
-            <ui:include src="gamesDataTable.xhtml">
+            <ui:include src="nonFictionDataTable.xhtml">
             </ui:include>
         </ui:insert>
     </div>

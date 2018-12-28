@@ -1,19 +1,19 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Book extends Article{
     @Size(max = 100)
     @NotNull
     @Column(nullable = false)
     private String author;
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
-    private long isbn;
+    private String isbn;
     private int numberOfPages;
 
     public String getAuthor() {
@@ -24,11 +24,11 @@ public abstract class Book extends Article{
         this.author = author;
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

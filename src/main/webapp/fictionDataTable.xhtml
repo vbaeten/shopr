@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<ui:composition template="templates/templ.xhtml">
+    <ui:define name="table">
+        <p:dataTable var="fiction" value="#{fictionController.fictions}" styleClass="table table-striped">
+            <p:column headerText="Id">
+                <h:outputText value="#{fiction.id}"/>
+            </p:column>
+
+            <p:column headerText="Title" styleClass="titleColumn">
+                <h:outputText value="#{fiction.title}"/>
+            </p:column>
+
+            <p:column headerText="Author" styleClass="authorColumn">
+                <h:outputText value="#{fiction.author}"/>
+            </p:column>
+
+            <p:column headerText="Genre">
+                <h:outputText value="#{fiction.genre}"/>
+            </p:column>
+
+            <p:column headerText="Number Of Pages">
+                <h:outputText value="#{fiction.numberOfPages}"/>
+            </p:column>
+
+            <p:column headerText="Summary">
+                <h:outputText value="#{fiction.summary}"/>
+            </p:column>
+
+            <p:column headerText="Isbn">
+                <h:outputText value="#{fiction.isbn}"/>
+            </p:column>
+
+            <p:column headerText="Price" styleClass="priceColumn">
+                <h:outputText value="#{fiction.price}€"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+
+</html>
