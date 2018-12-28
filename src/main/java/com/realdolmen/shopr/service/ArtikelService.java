@@ -35,7 +35,7 @@ public class ArtikelService {
     }
 
 
-    public void removeById (int id){
+    public void removeArtikelById(int id){
         artikelRepository.remove(id);
     }
 

@@ -9,30 +9,33 @@
 <h:head><title>ShopR!</title></h:head>
 
 <h:body>
+    <h:form id="artikelBeheer">
+        <p:dataTable var="artikel" value="#{artikelController.allArtikels}" id="artikelDataTabel">
+            <p:column headerText="Id">
+                <h:outputText value="#{artikel.id}"/>
+            </p:column>
+            <p:column headerText="Id_leverancier">
+                <h:outputText value="#{artikel.idLeverancier}"/>
+            </p:column>
+            <p:column headerText="type">
+                <h:outputText value="#{artikel}"/>
+            </p:column>
+            <p:column headerText="titel">
+                <h:outputText value="#{artikel.titel}"/>
+            </p:column>
+            <p:column headerText="prijs">
+                <h:outputText value="#{artikel.prijs}"/>
+            </p:column>
 
-    <p:dataTable var="artikel" value="#{artikelController.artikels}" id="artikelDataTabel">
-        <p:column headerText="Id">
-            <h:outputText value="#{artikel.id}"/>
-        </p:column>
-        <p:column headerText="Id_leverancier">
-            <h:outputText value="#{artikel.idLeverancier}"/>
-        </p:column>
-        <p:column headerText="titel">
-            <h:outputText value="#{artikel.titel}"/>
-        </p:column>
-        <p:column headerText="prijs">
-            <h:outputText value="#{artikel.prijs}"/>
-        </p:column>
-
-        <!--<p:column headerText="beoordelingen">-->
+            <!--<p:column headerText="beoordelingen">-->
             <!--<h:outputText value="#{artikel.beoordelingen}"/>-->
-        <!--</p:column>-->
-        <!--<p:column headerText="bestellingen">-->
+            <!--</p:column>-->
+            <!--<p:column headerText="bestellingen">-->
             <!--<h:outputText value="#{artikel.bestellingen}"/>-->
-        <!--</p:column>-->
+            <!--</p:column>-->
 
-    </p:dataTable>
-
+        </p:dataTable>
+    </h:form>
 </h:body>
 
 </html>
