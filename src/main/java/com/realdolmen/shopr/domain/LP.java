@@ -17,6 +17,12 @@ public class LP extends Article {
     public LP() {
     }
 
+    public LP(String title, BigDecimal price, String supplierId, String artist, com.realdolmen.shopr.domain.enums.LPMusicGenre LPMusicGenre) {
+        super(title, price, supplierId);
+        this.artist = artist;
+        this.LPMusicGenre = LPMusicGenre;
+    }
+
     public String getArtist() {
         return artist;
     }

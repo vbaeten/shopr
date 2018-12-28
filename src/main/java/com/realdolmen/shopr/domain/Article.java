@@ -32,6 +32,19 @@ public abstract class Article {
     public Article() {
     }
 
+    public Article(String title, BigDecimal price, String supplierId, Rating rating) {
+        this.title = title;
+        this.price = price;
+        this.supplierId = supplierId;
+        this.rating = rating;
+    }
+
+    public Article(String title, BigDecimal price, String supplierId) {
+        this.title = title;
+        this.price = price;
+        this.supplierId = supplierId;
+    }
+
     public Long getId() {
         return id;
     }

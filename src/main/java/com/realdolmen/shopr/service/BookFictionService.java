@@ -11,11 +11,14 @@ public class BookFictionService {
     @Inject
     private BookFictionRepository bookFictionRepository;
 
-    public BookFiction findBookFictionById(Long id) {return bookFictionRepository.findById(id);}
+    public BookFiction findBookFictionById(Long id) {
+        return bookFictionRepository.findById(id);
+    }
 
-    public List<BookFiction> findAllBooks() {
+    public List<BookFiction> findAllBooksFiction() {
         return bookFictionRepository.findAll();
     }
+
     public BookFiction findByTitle(String title) {
         return bookFictionRepository.findByTitle(title);
     }
@@ -24,9 +27,10 @@ public class BookFictionService {
         BookFiction bookFiction = bookFictionRepository.findById(id);
         bookFiction.setTitle(newTitle);
     }
-    
 
-    public void insert(User user) {
-        userRepository.insert(user);
-    }*/
+    public void insert(BookFiction bookFiction) {
+        bookFictionRepository.insert(bookFiction);
+    }
+
 }
+

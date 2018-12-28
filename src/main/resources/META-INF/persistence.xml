@@ -3,6 +3,9 @@
 <persistence-unit name="shoprPU">
     <jta-data-source>java:/shoprDS</jta-data-source>
     <properties>
+        <property name="javax.persistence.sql-load-script-source" value="META-INF/shopr_ddl.sql"/>
+        <property name="javax.persistence.schema-generation.create-source" value="metadata-then-script"/>
+        <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/ddlsscarrier.sql" />
         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         <property name="hibernate.show_sql" value="true" />
         <property name="hibernate.format_sql" value="true" />

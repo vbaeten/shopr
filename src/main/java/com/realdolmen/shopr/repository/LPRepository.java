@@ -24,4 +24,8 @@ public class LPRepository {
 
     public void insert(LP lP) {entityManager.persist(lP);
     }
+
+    public void removeLP(LP lP){
+        entityManager.remove(lP);
+    }
 }
