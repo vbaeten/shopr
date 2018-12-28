@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Game;
+import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.repository.GameRepository;
 
 import javax.inject.Inject;
@@ -25,5 +26,8 @@ public class GameService {
     public void updateTitle(Long id, String newTitle) {
         Game bookFiction = gameRepository.findById(id);
         bookFiction.setTitle(newTitle);
+    }
+    public void insert(Game game){
+        gameRepository.insert(game);
     }
 }

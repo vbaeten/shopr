@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@DiscriminatorValue("Fiction")
+@DiscriminatorValue("fiction")
 public class BookFiction extends Book {
     @Column
     private BookGenre bookGenre;

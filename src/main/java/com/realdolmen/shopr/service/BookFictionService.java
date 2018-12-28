@@ -15,7 +15,7 @@ public class BookFictionService {
         return bookFictionRepository.findById(id);
     }
 
-    public List<BookFiction> findAllBooksFiction() {
+    public List<BookFiction> findAllBooksFictions() {
         return bookFictionRepository.findAll();
     }
 

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("book")
 @DiscriminatorColumn(name = "booktype", discriminatorType = DiscriminatorType.STRING)
-public abstract class Book extends Article {
+public class Book extends Article {
     @Column
     @Size(max = 100)
     private String author;

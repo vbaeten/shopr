@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@DiscriminatorValue("NonFiction")
+@DiscriminatorValue("nonfiction")
 public class BookNonFiction extends Book {
     @Column
     private BookSubjectNF bookSubjectNF;
