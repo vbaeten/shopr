@@ -1,3 +1,9 @@
-.body{
-    background-color: black;
+.templateBody{
+    background-color: #DAFFEF;
 }
+
+.navBar{
+    background-color:#64B6AC; ;
+    margin-bottom: 5%;
+}
+
