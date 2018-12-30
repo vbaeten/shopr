@@ -8,9 +8,15 @@ body{
 .titleColumn{
     font-weight: bold;
 }
+.titleColumn > a, a:visited{
+    text-decoration: none;
+}
+.titleColumn a:hover{
+    text-decoration: underline;
+}
 .authorColumn{
     font-weight: bold;
 }
-.idColumn{
-    width: 20px;
+.topMenu{
+    margin-bottom: 20px;
 }

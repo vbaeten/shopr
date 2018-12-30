@@ -1,11 +1,13 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Fiction;
+import com.realdolmen.shopr.domain.FictionGenre;
 import com.realdolmen.shopr.service.FictionService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -31,4 +33,14 @@ public class FictionController {
     public void submit(Fiction fiction){
         this.fictionService.insert(fiction);
     }
+
+
+    public List<String> getFictionGenres() {
+        List<String> genreList = new ArrayList<>();
+        for (FictionGenre genre : FictionGenre.values()) {
+            genreList.add(genre.description);
+        }
+        return genreList;
+    }
+
 }
