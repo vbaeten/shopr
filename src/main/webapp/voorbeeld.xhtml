@@ -14,7 +14,22 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <p>Add Content Here</p>
+            <p>Testing Stuff</p>
+            <b:form id="addLp" >
+                <b:panelGrid columns="6">
+                    <h:outputLabel value = "Title:" for = "lpTitle"/>
+                    <b:inputText id="lpTitle" value="#{lpController.newLp.title}"/>
+                    <h:outputLabel value = "Supplier:" for = "lpSupplier"/>
+                    <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}"/>
+                    <h:outputLabel value = "Price:" for = "lpPrice"/>
+                    <b:inputText id="lpPrice" value="#{lpController.newLp.price}"/>
+                    <h:outputLabel value = "Artist:" for = "lpArtist"/>
+                    <b:inputText id="lpArtist" value="#{lpController.newLp.artist}"/>
+                    <h:outputLabel value = "Genre:" for = "lpGenre"/>
+                    <b:inputText id="lpGenre" value="#{lpController.newLp.musicGenre}"/>
+                    <b:commandButton value="Submit" action="#{lpController.submitLp}" update="@form addLp" />
+                </b:panelGrid>
+            </b:form>
         </ui:define>
     </ui:composition>
 </h:body>

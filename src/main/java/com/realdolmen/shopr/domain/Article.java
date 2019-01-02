@@ -30,18 +30,16 @@ public class Article {
     @Column(name = "article_id")
     private int id;
 
-    @Max(100)
-    @NotNull
+
     @Column(name = "title")
     private String title;
 
-//    @NotNull
+    @NotNull
 //    @Digits(integer=6, fraction=2)
     @Column (name = "price")
     private double price;
 
-    @Max(100)
-    @NotNull
+
     @Column(name = "supplier")
     private String supplier;
 

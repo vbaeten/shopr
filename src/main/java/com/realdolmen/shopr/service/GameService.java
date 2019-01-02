@@ -3,9 +3,11 @@ package com.realdolmen.shopr.service;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.repository.GameRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+@Stateless
 public class GameService {
 
     @Inject
@@ -15,11 +17,11 @@ public class GameService {
         return gameRepository.findById(id);
     }
 
-    public List<Game> findAllGames() {
+    public List<Game> findAll() {
         return gameRepository.findAll();
     }
 
-    public Game findGameByTitle(String title) {
+    public Game findTitle(String title) {
         return gameRepository.findByTitle(title);
     }
 

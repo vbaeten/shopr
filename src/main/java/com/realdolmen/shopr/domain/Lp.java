@@ -6,7 +6,21 @@ import javax.validation.constraints.Max;
 @Entity
 @Table(name = "lp")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class LP extends Article {
+@NamedQueries(
+        value = {
+                @NamedQuery(
+                        name = Lp.FIND_BY_TITLE,
+                        query = "SELECT a FROM Lp a WHERE a.title = :title"
+                ),
+                @NamedQuery(
+                        name = Lp.FIND_ALL,
+                        query = "SELECT a FROM Lp a"
+                )
+        }
+)
+public class Lp extends Article {
+    public static final String FIND_BY_TITLE = "Lp.findByTitle";
+    public static final String FIND_ALL = "Lp.FindAll";
 
     //TODO unique in combination title
     @Max(100)

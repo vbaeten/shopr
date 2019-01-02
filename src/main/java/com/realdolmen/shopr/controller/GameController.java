@@ -7,10 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @ManagedBean
 @ViewScoped
 public class GameController {
+    private Logger logger = Logger.getLogger(GameController.class.getName());
 
     private Game newGame = new Game();
 
@@ -26,12 +29,12 @@ public class GameController {
     }
 
     public List<Game> getGames() {
-        return this.gameService.findAllGames();
+        return this.gameService.findAll();
     }
 
     public void submit() {
-        System.out.println(" test");
-        this.gameService.insert(newGame);
+        logger.log(Level.INFO, "submit !!!");
+        this.gameService.insert(getNewGame());
     }
 
 }
