@@ -25,11 +25,11 @@
                         <h:form id="form">
                             <p:growl id="msgs"/>
 
-                            <p:dataTable id="allFlightDT" var="artikel" value="#{overviewController.artikels()}">
+                            <p:dataTable id="overviewArtikels" var="artikel" value="#{overviewController.artikels()}">
 
-                                <!--<p:column headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">-->
-                                    <!--<h:outputText value="#{artikel.type}"/>-->
-                                <!--</p:column>-->
+                                <p:column headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
+                                    <h:outputText value="#{artikel.type}"/>
+                                </p:column>
                                 <p:column headerText="#{msgs['artikel.titel']}"
                                           sortBy="#{artikel.titel}">
                                     <h:outputText value="#{artikel.titel}"/>
@@ -43,8 +43,9 @@
                                 </p:column>
 
                                 <p:column headerText="#{msgs['artikel.details']}">
-                                    <b:button class="btn btn-primary" style="background: #52489c"
-                                              value="#{msgs['artikel.details']}" action="#{overviewController.details}"/>
+                                    <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                              value="#{msgs['artikel.details']}" action="#{overviewController.details(artikel)}">
+                                    </b:commandButton>
                                 </p:column>
 
                             </p:dataTable>

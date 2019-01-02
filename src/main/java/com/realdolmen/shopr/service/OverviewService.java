@@ -11,6 +11,7 @@ import java.util.List;
 public class OverviewService
 {
     public String detailsSoort;
+
     @Inject
     OverviewRepository overviewRepository;
 
@@ -26,6 +27,11 @@ public class OverviewService
     @Inject
     NonFictieRepository nonFictieRepository;
 
+    public Artikel findArtikelById(int id)
+    {
+        return overviewRepository.findById(id);
+    }
+
     public List<Artikel> findAllArtikels()
     {
     return overviewRepository.findAllArtikels();
@@ -35,16 +41,18 @@ public class OverviewService
     {
         switch (type)
         {
-            case "lp":
+            case "lp": detailsSoort = "lpdetails";
                 break;
-            case "game":
+            case "game": System.out.println("gamedetailks");
+                detailsSoort = "gamedetails";
                 break;
-            case "fictie":
+            case "fictie": detailsSoort = "fictiedetails";
                 break;
-            case "nonFictie":
+            case "nonFictie": detailsSoort = "nonfictiedetails";
                 break;
 
         }
-
+        System.out.println("gamedetailks");
+return detailsSoort;
     }
 }

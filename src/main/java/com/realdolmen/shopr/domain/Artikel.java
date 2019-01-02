@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,7 +21,7 @@ public class Artikel
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private int id;
 
     @NotNull
     @Size(min = 1, max = 100)
@@ -28,14 +29,28 @@ public class Artikel
     private String titel;
     @NotNull
     @Column
+    @Digits(integer = 6, fraction = 2)
     private Integer prijs;
     @NotNull
     @Size(min = 1, max = 100)
     @Column
     private String leverancier;
 
+    @Column(insertable = false, updatable = false)
+    private String type;
 
-    public Long getId()
+
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    public int getId()
     {
         return id;
     }

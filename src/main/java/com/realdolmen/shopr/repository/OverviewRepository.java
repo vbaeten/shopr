@@ -17,4 +17,8 @@ public class OverviewRepository
     return entityManager.createNamedQuery(Artikel.FIND_ALL_ARTIKELS, Artikel.class).getResultList();
     }
 
+    public Artikel findById(int id) {
+        return entityManager.find(Artikel.class, id);
+    }
+
 }

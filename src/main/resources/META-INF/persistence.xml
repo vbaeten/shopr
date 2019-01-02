@@ -10,6 +10,7 @@
         <property name="hibernate.id.new_generator_mappings" value="true" />
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        <property name="javax.persistence.sql-load-script-source" value="/sql/shopr_ddl.sql"/>
     </properties>
 </persistence-unit>
 </persistence>

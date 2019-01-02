@@ -1,51 +1,60 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
 
     <!--<converter>-->
-        <!--<converter-for-class>java.lang.Enum</converter-for-class>-->
-        <!--<converter-class>javax.faces.convert.EnumConverter</converter-class>-->
+    <!--<converter-for-class>java.lang.Enum</converter-for-class>-->
+    <!--<converter-class>javax.faces.convert.EnumConverter</converter-class>-->
     <!--</converter>-->
 
     <navigation-rule>
-    <from-view-id>*</from-view-id>
-    <navigation-case>
-        <from-outcome>goToZoek</from-outcome>
-        <to-view-id>/overview.xhtml</to-view-id>
-        <redirect />
-    </navigation-case>
-
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>goToZoek</from-outcome>
+            <to-view-id>/overview.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
         <navigation-case>
             <from-outcome>goToIndex</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
-            <redirect />
+            <redirect/>
         </navigation-case>
 
         <navigation-case>
-        <from-outcome>goToWinkelwagen</from-outcome>
-        <to-view-id>/winkelwagen.xhtml</to-view-id>
-        <redirect />
-    </navigation-case>
+            <from-outcome>goToWinkelwagen</from-outcome>
+            <to-view-id>/winkelwagen.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
 
-    <navigation-case>
-        <from-outcome>goToToevoegen</from-outcome>
-        <to-view-id>/toevoegen.xhtml</to-view-id>
-        <redirect />
-    </navigation-case>
+        <navigation-case>
+            <from-outcome>goToToevoegen</from-outcome>
+            <to-view-id>/toevoegen.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+
+
+    </navigation-rule>
+    <navigation-rule>
+
+        <from-view-id>/overview.xhtml</from-view-id>
+
+        <navigation-case>
+
+            <from-action>#{overviewController.details}</from-action>
+
+            <from-outcome>detail</from-outcome>
+
+            <to-view-id>/lpdetails.xhtml</to-view-id>
+
+
+        </navigation-case>
+
     </navigation-rule>
 
-    <!--<navigation-rule>-->
-        <!--<from-view-id>/login.xhtml</from-view-id>-->
-        <!--<navigation-case>-->
-            <!--<from-action>#{loginController.currentUser}</from-action>-->
-
-            <!--<to-view-id>/index.xhtml</to-view-id>-->
-            <!--<redirect />-->
-        <!--</navigation-case>-->
-    <!--</navigation-rule>-->
 
     <application>
         <locale-config>
