@@ -11,6 +11,24 @@
 <h:body>
     <ui:composition template="../templates/common.xhtml">
         <ui:define name="content">
+            <f:metadata>
+                <f:viewParam name="id" value="#{gameDetailController.id}"/>
+                <f:event listener="#{gameDetailController.init}" type="preRenderView"/>
+            </f:metadata>
+
+            <p:panel header="Details" style="margin-bottom: 10px;">
+                <h:outputText value="#{gameDetailController.game.title}"/><br/>
+                <h:outputText value="#{gameDetailController.game.publisher}"/><br/>
+                <h:outputText value="#{gameDetailController.game.gameGenre.name}"/><br/>
+                <h:outputText value="#{gameDetailController.game.minAge}"/><br/>
+                <h:outputText value="#{gameDetailController.game.price}"/>
+                <b:form>
+                    <b:commandButton value="Delete" action="#{gameDetailController.delete}"/><br/>
+                    <h:link value="Edit" outcome="/cu/cu-game.xhtml" includeViewParams="true">
+                        <f:param id="id" value="#{gameDetailController.game.id}"/>
+                    </h:link>
+                </b:form>
+            </p:panel>
         </ui:define>
 
         <ui:define name="footer">
