@@ -9,6 +9,17 @@
 <h:body>
 
     <h:form>
+        <b:dataTable value="#{lPController.LPS}"
+                     var="lp">
+            <b:dataTableColumn value="#{lp.type}" label="type" />
+            <b:dataTableColumn value="#{lp.title}" label="title" />
+            <b:dataTableColumn value="#{lp.price}" label="price"/>
+            <b:dataTableColumn value="#{lp.artist}"  label="artist"/>
+            <b:dataTableColumn value="#{lp.id}" label="detail"/>
+        </b:dataTable>
+    </h:form>
+
+    <h:form>
         <b:dataTable value="#{articleController.articles}"
                      var="article">
             <b:dataTableColumn value="#{article.type}" label="type" />
@@ -16,6 +27,9 @@
             <b:dataTableColumn value="#{articleController.creator(article)}" label="Author/Artist/Publisher"/>
             <b:dataTableColumn value="#{article.price}" label="price"/>
             <b:dataTableColumn value="#{article.id}" label="detail"/>
+            <b:dataTableColumn>
+            <b:commandButton value="Detail" action="#{articleController.goToArticleDetail(article)}"/>
+            </b:dataTableColumn>
         </b:dataTable>
     </h:form>
 </h:body>

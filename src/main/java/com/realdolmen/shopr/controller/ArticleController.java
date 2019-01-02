@@ -18,6 +18,10 @@ public class ArticleController {
             GameController gameController;
     @Inject
             BookController bookController;
+    @Inject
+            BookFictionController bookFictionController;
+    @Inject
+            BookNonFictionController bookNonFictionController;
     Article article = new Article();
     LP lp = new LP();
     Book book = new Book();
@@ -27,6 +31,21 @@ public class ArticleController {
 
     @Inject
     private LPService lpService;
+
+    public String goToArticleDetail(Article article) {
+        this.article = article;
+        if (article.getType().equals("lp")) {
+            return "lpdetail";
+        } else if (article.getType().equals("game")) {
+            return "gamedetail";
+        } else if (article.getType().equals("book") && book.getBooktype().equals("booknonfiction")) {
+            return "booknonfictiondetail";
+        } else if (article.getType().equals("book") && book.getBooktype().equals("bookfiction")) {
+            return "bookfictiondetail";
+        } else {
+            return "ERROR";
+        }
+    }
 
     public Article getArticle() {
         return article;

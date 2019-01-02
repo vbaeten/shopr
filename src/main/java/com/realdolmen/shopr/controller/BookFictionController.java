@@ -13,7 +13,7 @@ public class BookFictionController {
     @Inject
     BookFictionService bookFictionService;
 
-    public BookFiction getBookFiction() { return  bookFiction;}
+    public BookFiction getBookFiction() { return  this.bookFiction;}
 
     public void setBookFiction(BookFiction bookFiction){
         this.bookFiction = bookFiction;

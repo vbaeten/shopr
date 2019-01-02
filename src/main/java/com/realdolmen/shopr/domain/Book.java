@@ -26,7 +26,7 @@ public class Book extends Article {
     }
 
     public String getBooktype() {
-        return booktype;
+        return this.booktype;
     }
 
     public void setBooktype(String booktype) {
