@@ -24,6 +24,17 @@ public abstract class Book extends Article{
         this.author = author;
     }
 
+    public String getFormattedIsbn() {
+        String formattedIsbn = this.isbn;
+        formattedIsbn = new StringBuffer(formattedIsbn)
+                .insert(3, "-")
+                .insert(6, "-")
+                .insert(11, "-")
+                .insert(15, "-")
+                .toString();
+        return formattedIsbn;
+    }
+
     public String getIsbn() {
         return isbn;
     }

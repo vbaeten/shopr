@@ -9,31 +9,41 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <p:fieldset legend="Add Game" style="margin-bottom:20px">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="title" value="Title: "/>
-                <p:inputText id="title" value="#{gameController.newGame.title}"/>
+            <h:form>
+                <p:messages id="msgs"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="title" value="Title: "/>
+                    <p:inputText id="title" value="#{gameController.newGame.title}"/>
 
-                <p:outputLabel for="artist" value="Publisher: "/>
-                <p:inputText id="artist" value="#{gameController.newGame.publisher}"/>
+                    <p:outputLabel for="artist" value="Publisher: "/>
+                    <p:inputText id="artist" value="#{gameController.newGame.publisher}"/>
 
-                <p:outputLabel for="genre" value="Genre: "/>
-                <p:selectOneMenu id="genre"  style="width:150px">
-                    <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{gameController.gameGenres}"/>
-                </p:selectOneMenu>
+                    <p:outputLabel for="genre" value="Genre: "/>
+                    <p:selectOneMenu id="genre" style="width:150px" value="#{gameController.newGame.genre}">
+                        <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{gameController.getGameGenre()}"
+                                       var="genre"
+                                       itemValue="#{genre}"
+                                       itemLabel="#{genre.description}"/>
+                    </p:selectOneMenu>
 
-                <p:outputLabel for="minimumAge" value="Minimum age: "/>
-                <p:inputNumber id="minimumAge" value="" decimalPlaces="0" minValue="0" maxValue="18"/>
+                    <p:outputLabel for="minimumAge" value="Minimum age: "/>
+                    <p:inputNumber id="minimumAge" value="#{gameController.newGame.minimumAge}" decimalPlaces="0" minValue="0" maxValue="18" />
 
-                <p:outputLabel for="supplierID" value="Supplier ID: "/>
-                <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
+                    <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                    <p:inputText id="supplierID" value="#{gameController.newGame.supplierId}"/>
 
-                <p:outputLabel for="price" value="price: "/>
-                <p:inputNumber id="price" value="#{lpController.newLp.price}" symbol=" €" symbolPosition="s"
-                               decimalSeparator="," thousandSeparator="."/>
+                    <p:outputLabel for="price" value="price: "/>
+                    <p:inputNumber id="price"
+                                   value="#{gameController.newGame.price}"
+                                   symbol=" €"
+                                   symbolPosition="s"
+                                   decimalSeparator=","
+                                   thousandSeparator="."/>
 
-            </h:panelGrid>
-            <p:commandButton value="Submit"/>
+                </h:panelGrid>
+                <p:commandButton value="Submit" action="#{gameController.submit}" update="@form"/>
+            </h:form>
         </p:fieldset>
     </ui:define>
 </ui:composition>

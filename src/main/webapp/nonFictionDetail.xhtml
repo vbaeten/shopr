@@ -7,35 +7,32 @@
       xml:lang="en" lang="en">
 
 <f:metadata>
-    <f:viewParam name="id" value="#{fictionController.fictionId}"/>
-    <f:event listener="#{fictionController.init}" type="preRenderView"/>
+    <f:viewParam name="id" value="#{nonFictionController.nonFictionId}"/>
+    <f:event listener="#{nonFictionController.init}" type="preRenderView"/>
 </f:metadata>
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <h:form>
-            <p:fieldset legend="#{fictionController.newFiction.title}" cellPadding="5">
+            <p:fieldset legend="#{nonFictionController.newNonFiction.title}" cellPadding="5">
                 <p:panelGrid columns="2" cellPaddinig="5">
                     <h:outputText value="Author:" />
-                    <h:outputText value="#{fictionController.newFiction.author}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.author}"/>
 
-                    <h:outputText value="Genre:" />
-                    <h:outputText value="#{fictionController.newFiction.genre}"/>
+                    <h:outputText value="Subject:" />
+                    <h:outputText value="#{nonFictionController.newNonFiction.subject}"/>
 
                     <h:outputText value="Number of Pages:" />
-                    <h:outputText value="#{fictionController.newFiction.numberOfPages}"/>
-
-                    <h:outputText value="Summary:" />
-                    <h:outputText value="#{fictionController.newFiction.summary}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.numberOfPages}"/>
 
                     <h:outputText value="Isbn:" />
-                    <h:outputText value="#{fictionController.newFiction.isbn}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.formattedIsbn}"/>
 
                     <h:outputText value="Supplier ID:" />
-                    <h:outputText value="#{fictionController.newFiction.supplierId}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.supplierId}"/>
 
                     <h:outputText value="Price:" />
-                    <h:outputText value="#{fictionController.newFiction.price}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.price}"/>
                 </p:panelGrid>
                 <p:button value="Delete"/>
             </p:fieldset>

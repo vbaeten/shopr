@@ -15,9 +15,14 @@ import java.util.List;
 @ViewScoped
 public class NonFictionController {
     NonFiction newNonFiction = new NonFiction();
+    int nonFictionId;
 
     @Inject
     private NonFictionService nonFictionService;
+
+    public void init(){
+        newNonFiction = getNonFictionById(nonFictionId);
+    }
 
     public NonFiction getNewNonFiction(){
         return newNonFiction;
@@ -31,15 +36,24 @@ public class NonFictionController {
         return this.nonFictionService.findAllNonFictions();
     }
 
-    public void submit(NonFiction nonFiction){
-        this.nonFictionService.insert(nonFiction);
+    public void submit(){
+        this.nonFictionService.insert(newNonFiction);
+        newNonFiction = new NonFiction();
     }
 
-    public List<String> getNonFictionSubjects() {
-        List<String> subjectList = new ArrayList<>();
-        for (NonFictionSubject subject : NonFictionSubject.values()) {
-            subjectList.add(subject.description);
-        }
-        return subjectList;
+    public NonFiction getNonFictionById(int id){
+        return newNonFiction = nonFictionService.findNonFictionById(id);
     }
+
+    public int getNonFictionId() {
+        return nonFictionId;
+    }
+
+    public void setNonFictionId(int nonFictionId) {
+        this.nonFictionId = nonFictionId;
+    }
+
+    public NonFictionSubject[] getNonFictionSubject() { return NonFictionSubject.values(); }
+
+
 }

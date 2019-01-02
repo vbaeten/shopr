@@ -9,34 +9,51 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <p:fieldset legend="Add Non-Fiction Book" style="margin-bottom:20px">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="title" value="Title: "/>
-                <p:inputText id="title" value="#{fictionController.newFiction.title}"/>
+            <h:form>
+                <p:messages id="msgs"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="title" value="Title: "/>
+                    <p:inputText id="title" value="#{nonFictionController.newNonFiction.title}"/>
 
-                <p:outputLabel for="author" value="Author: "/>
-                <p:inputText id="author" value="#{fictionController.newFiction.author}"/>
+                    <p:outputLabel for="author" value="Author: "/>
+                    <p:inputText id="author" value="#{nonFictionController.newNonFiction.author}"/>
 
-                <p:outputLabel for="subject" value="subject: "/>
-                <p:selectOneMenu id="subject"  style="width:150px">
-                    <f:selectItem itemLabel="--- Select subject ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{nonFictionController.nonFictionSubjects}"/>
-                </p:selectOneMenu>
 
-                <p:outputLabel for="nbOfPages" value="Number of pages: "/>
-                <p:inputNumber id="nbOfPages" value="" decimalPlaces="0" minValue="0"/>
+                    <p:outputLabel for="subject" value="subject: "/>
+                    <p:selectOneMenu id="subject" style="width:150px"
+                                     value="#{nonFictionController.newNonFiction.subject}">
+                        <f:selectItem itemLabel="--- Select subject ---" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{nonFictionController.getNonFictionSubject()}"
+                                       var="subject"
+                                       itemValue="#{subject}"
+                                       itemLabel="#{subject.description}"/>
+                    </p:selectOneMenu>
 
-                <p:outputLabel for="isbn" value="ISBN:" />
-                <p:inputMask id="isbn" mask="999-99-9999-999-9"/>
+                    <p:outputLabel for="nbOfPages" value="Number of pages: "/>
+                    <p:inputNumber id="nbOfPages"
+                                   value="#{nonFictionController.newNonFiction.numberOfPages}"
+                                   decimalPlaces="0"
+                                   minValue="0"/>
 
-                <p:outputLabel for="supplierID" value="Supplier ID: "/>
-                <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
+                    <p:outputLabel for="isbn" value="ISBN:"/>
+                    <p:inputMask id="isbn"
+                                 value="#{nonFictionController.newNonFiction.isbn}"
+                                 mask="999-99-9999-999-9"/>
 
-                <p:outputLabel for="price" value="price: "/>
-                <p:inputNumber id="price" value="#{lpController.newLp.price}" symbol=" €" symbolPosition="s"
-                               decimalSeparator="," thousandSeparator="."/>
+                    <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                    <p:inputText id="supplierID"
+                                 value="#{nonFictionController.newNonFiction.supplierId}"/>
 
-            </h:panelGrid>
-            <p:commandButton value="Submit"/>
+                    <p:outputLabel for="price" value="price: "/>
+                    <p:inputNumber id="price"
+                                   value="#{nonFictionController.newNonFiction.price}"
+                                   symbol=" €"
+                                   symbolPosition="s"
+                                   decimalSeparator=","
+                                   thousandSeparator="."/>
+                </h:panelGrid>
+                <p:commandButton value="Submit" action="#{nonFictionController.submit}" update="@form"/>
+            </h:form>
         </p:fieldset>
     </ui:define>
 </ui:composition>

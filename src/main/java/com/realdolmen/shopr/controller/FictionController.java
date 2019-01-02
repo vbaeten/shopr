@@ -4,6 +4,7 @@ import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.domain.FictionGenre;
 import com.realdolmen.shopr.service.FictionService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -14,9 +15,14 @@ import java.util.List;
 @ViewScoped
 public class FictionController {
     Fiction newFiction = new Fiction();
+    int fictionId;
 
     @Inject
     private FictionService fictionService;
+
+    public void init(){
+        newFiction = getFictionById(fictionId);
+    }
 
     public Fiction getNewFiction(){
         return newFiction;
@@ -30,17 +36,24 @@ public class FictionController {
         return this.fictionService.findAllFictions();
     }
 
-    public void submit(Fiction fiction){
-        this.fictionService.insert(fiction);
+    public void submit(){
+        this.fictionService.insert(newFiction);
+        this.newFiction = new Fiction();
     }
 
-
-    public List<String> getFictionGenres() {
-        List<String> genreList = new ArrayList<>();
-        for (FictionGenre genre : FictionGenre.values()) {
-            genreList.add(genre.description);
-        }
-        return genreList;
+    public Fiction getFictionById(int id){
+        return newFiction = fictionService.findFictionById(id);
     }
+
+    public int getFictionId() {
+        return fictionId;
+    }
+
+    public void setFictionId(int fictionId) {
+        this.fictionId = fictionId;
+    }
+
+    public FictionGenre[] getFictionGenre() { return FictionGenre.values(); }
+
 
 }

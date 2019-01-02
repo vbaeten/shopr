@@ -9,28 +9,37 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <p:fieldset legend="Add LP" style="margin-bottom:20px">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="title" value="Title: "/>
-                <p:inputText id="title" value="#{lpController.newLp.title}"/>
+            <h:form>
+                <p:messages id="msgs" />
+                <h:panelGrid columns="2" cellpadding="5">
 
-                <p:outputLabel for="artist" value="Artist: "/>
-                <p:inputText id="artist" value="#{lpController.newLp.artist}"/>
+                    <p:outputLabel for="title" value="Title: "/>
+                    <p:inputText id="title" value="#{lpController.newLp.title}"/>
 
-                <p:outputLabel for="genre" value="Genre: "/>
-                <p:selectOneMenu id="genre"  style="width:150px">
-                    <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{lpController.lpGenres}"/>
-                </p:selectOneMenu>
+                    <p:outputLabel for="artist" value="Artist: "/>
+                    <p:inputText id="artist" value="#{lpController.newLp.artist}"/>
 
-                <p:outputLabel for="supplierID" value="Supplier ID: "/>
-                <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
+                    <p:outputLabel for="genre" value="Genre: "/>
+                    <p:selectOneMenu id="genre" style="width:150px" value="#{lpController.newLp.genre}">
+                        <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{lpController.getLpGenre()}" var="genre" itemValue="#{genre}" itemLabel="#{genre.description}"/>
+                    </p:selectOneMenu>
 
-                <p:outputLabel for="price" value="price: "/>
-                <p:inputNumber id="price" value="#{lpController.newLp.price}" symbol=" €" symbolPosition="s"
-                               decimalSeparator="," thousandSeparator="."/>
 
-            </h:panelGrid>
-            <p:commandButton value="Submit"/>
+                    <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                    <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
+
+                    <p:outputLabel for="price" value="price: "/>
+                    <p:inputNumber id="price"
+                                   value="#{lpController.newLp.price}"
+                                   symbol=" €"
+                                   symbolPosition="s"
+                                   decimalSeparator=","
+                                   thousandSeparator="."/>
+
+                </h:panelGrid>
+                <p:commandButton value="Submit" action="#{lpController.submit}" update="@form"/>
+            </h:form>
         </p:fieldset>
     </ui:define>
 </ui:composition>

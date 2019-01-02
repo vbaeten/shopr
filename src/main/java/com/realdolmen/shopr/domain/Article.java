@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Article {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Size(max=100)

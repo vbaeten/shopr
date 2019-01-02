@@ -15,9 +15,14 @@ import java.util.List;
 @ViewScoped
 public class LpController {
     Lp newLp = new Lp();
+    int lpId;
 
     @Inject
     private LpService lpService;
+
+    public void init(){
+        newLp = getLpById(lpId);
+    }
 
     public Lp getNewLp() {
         return newLp;
@@ -31,15 +36,26 @@ public class LpController {
         return this.lpService.findAllLps();
     }
 
-    public List<String> getLpGenres() {
-        List<String> genreList = new ArrayList<>();
-        for (LpGenre genre : LpGenre.values()) {
-            genreList.add(genre.description);
-        }
-        return genreList;
+    public void submit() {
+        this.lpService.insert(newLp);
+        newLp = new Lp();
     }
 
-    public void submit(Lp lp) {
-        this.lpService.insert(lp);
+    public Lp getLpById(int id){
+        return newLp = lpService.findLpById(id);
     }
+
+    public int getLpId() {
+        return lpId;
+    }
+
+    public void setLpId(int lpId) {
+        this.lpId = lpId;
+    }
+
+    public LpGenre[] getLpGenre() {
+        return LpGenre.values();
+    }
+
+
 }

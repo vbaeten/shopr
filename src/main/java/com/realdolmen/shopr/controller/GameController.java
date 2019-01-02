@@ -15,9 +15,14 @@ import java.util.List;
 @ViewScoped
 public class GameController {
     Game newGame = new Game();
+    int gameId;
 
     @Inject
     private GameService gameService;
+
+    public void init(){
+        newGame = getGameById(gameId);
+    }
 
     public Game getNewGame(){
         return newGame;
@@ -31,17 +36,24 @@ public class GameController {
         return this.gameService.findAllGames();
     }
 
-    public void submit(Game game){
-        this.gameService.insert(game);
+    public void submit(){
+        this.gameService.insert(newGame);
+        this.newGame = new Game();
     }
 
-
-    public List<String> getGameGenres() {
-        List<String> genreList = new ArrayList<>();
-        for (GameGenre genre : GameGenre.values()) {
-            genreList.add(genre.description);
-        }
-        return genreList;
+    public Game getGameById(int id){
+        return newGame = gameService.findGameById(id);
     }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int id) {
+        this.gameId = id;
+    }
+
+    public GameGenre[] getGameGenre() { return GameGenre.values(); }
+
 
 }

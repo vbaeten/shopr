@@ -6,4 +6,12 @@ public enum GameGenre {
     GameGenre(String des){
         this.description = des;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

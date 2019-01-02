@@ -9,47 +9,63 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <p:fieldset legend="Add Fiction Book" style="margin-bottom:20px">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="title" value="Title: "/>
-                <p:inputText id="title" value="#{fictionController.newFiction.title}"/>
+            <h:form>
+                <p:messages id="msgs"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="title" value="Title: "/>
+                    <p:inputText id="title" value="#{fictionController.newFiction.title}"/>
 
-                <p:outputLabel for="author" value="Author: "/>
-                <p:inputText id="author" value="#{fictionController.newFiction.author}"/>
+                    <p:outputLabel for="author" value="Author: "/>
+                    <p:inputText id="author" value="#{fictionController.newFiction.author}"/>
 
-                <p:outputLabel for="genre" value="Genre: "/>
-                <p:selectOneMenu id="genre"  style="width:150px">
-                    <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{fictionController.fictionGenres}"/>
-                </p:selectOneMenu>
+                    <p:outputLabel for="genre" value="Genre: "/>
+                    <p:selectOneMenu id="genre" style="width:150px" value="#{fictionController.newFiction.genre}">
+                        <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{fictionController.getFictionGenre()}"
+                                       var="genre"
+                                       itemValue="#{genre}"
+                                       itemLabel="#{genre.description}"/>
+                    </p:selectOneMenu>
 
-                <p:outputLabel for="nbOfPages" value="Number of pages: "/>
-                <p:inputNumber id="nbOfPages" value="" decimalPlaces="0" minValue="0"/>
+                    <p:outputLabel for="nbOfPages" value="Number of pages: "/>
+                    <p:inputNumber id="nbOfPages"
+                                   value="#{fictionController.newFiction.numberOfPages}"
+                                   decimalPlaces="0"
+                                   minValue="0"/>
 
-                <p:outputLabel for="isbn" value="ISBN:" />
-                <p:inputMask id="isbn" mask="999-99-9999-999-9"/>
+                    <p:outputLabel for="isbn" value="ISBN:"/>
+                    <p:inputMask id="isbn"
+                                 mask="999-99-9999-999-9"
+                                 value="#{fictionController.newFiction.isbn}"/>
 
-                <p:outputLabel for="summary" value="Summary: "/>
-                <p:inputTextarea id="summary"
-                                 rows="5"
-                                 cols="50"
-                                 counter="counter"
-                                 maxlength="255"
-                                 counterTemplate="{0} characters remaining."
-                                 autoResize="true" />
-                <p:column/>
-                <p:column>
-                    <h:outputText id="counter"/>
-                </p:column>
+                    <p:outputLabel for="summary" value="Summary: "/>
+                    <p:inputTextarea id="summary"
+                                     rows="5"
+                                     cols="50"
+                                     counter="counter"
+                                     maxlength="255"
+                                     counterTemplate="{0} characters remaining."
+                                     autoResize="true"/>
+                    <p:column/>
+                    <p:column>
+                        <h:outputText id="counter"/>
+                    </p:column>
 
-                <p:outputLabel for="supplierID" value="Supplier ID: "/>
-                <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
+                    <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                    <p:inputText id="supplierID"
+                                 value="#{fictionController.newFiction.supplierId}"/>
 
-                <p:outputLabel for="price" value="price: "/>
-                <p:inputNumber id="price" value="#{lpController.newLp.price}" symbol=" €" symbolPosition="s"
-                               decimalSeparator="," thousandSeparator="."/>
+                    <p:outputLabel for="price" value="price: "/>
+                    <p:inputNumber id="price"
+                                   value="#{fictionController.newFiction.price}"
+                                   symbol=" €"
+                                   symbolPosition="s"
+                                   decimalSeparator=","
+                                   thousandSeparator="."/>
 
-            </h:panelGrid>
-            <p:commandButton value="Submit"/>
+                </h:panelGrid>
+                <p:commandButton value="Submit" action="#{fictionController.submit}" update="@form"/>
+            </h:form>
         </p:fieldset>
     </ui:define>
 </ui:composition>
