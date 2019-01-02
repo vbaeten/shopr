@@ -17,6 +17,7 @@ public class NonFictie extends Boek
     public static final String FIND_BY_NAME = "nonFictie.findByTitel";
 
     @Column
+    @Enumerated(EnumType.STRING)
     EnumNonFictieGenre enumNonFictieGenre;
     @Column
     public EnumNonFictieGenre getEnumNonFictieGenre()

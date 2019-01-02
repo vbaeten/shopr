@@ -7,6 +7,7 @@ public enum  EnumMuziekGenre
     ROCK,
     DANCE,
     RnB,
-    HIPHOP
+    HIPHOP,
+    METAL
 
 }

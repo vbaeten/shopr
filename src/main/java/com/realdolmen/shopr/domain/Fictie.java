@@ -17,6 +17,7 @@ public class Fictie extends Boek
 
 
     @Column(name="genre")
+    @Enumerated(EnumType.STRING)
     EnumFictieGenre enumFictieGenre;
     @Size(max=255)
     @Column

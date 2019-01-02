@@ -6,41 +6,34 @@
 
     <h:form>
         <p:growl id="messages"/>
-<b:navBar brand="#{msgs['header.brand']}"  class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbarStyle" >
+        <b:navBar brand="#{msgs['header.brand']}" brandHref="login.xhtml"  class="navbar navbar-expand-lg navbar-dark bg-primary"
+                  style="background: #59c3c3">
 
-        <b:navbarLinks>
-            <b:navCommandLink value="#{msgs['header.zoek']}" action="goToZoek"/>
-            <b:navCommandLink value="#{msgs['header.toevoegen']}" action="goToToevoegen"/>
+            <b:navbarLinks>
+                <b:navCommandLink action="goToZoek"><b:button class="btn btn-primary" style="background: #52489c"
+                                                              value="#{msgs['header.zoek']}">
 
-        </b:navbarLinks>
-    <b:navbarLinks pull="right" styleClass="hidden-xs">
-        <h:form id="login_form">
-            <b:commandLink value="Admin"
-                           action="#{loginController.userName('admin')}"/>|
-            <b:commandLink value="User"
-                           action="#{loginController.userName('user')}"/>
-        </h:form>
+                </b:button></b:navCommandLink>
+                <b:navCommandLink action="goToToevoegen"><b:button class="btn btn-primary" style="background: #f45b69"
+                                                                   value="#{msgs['header.toevoegen']}">
 
-    </b:navbarLinks>
-        <!--<p:menubar class="navbarStyle" >-->
+                </b:button></b:navCommandLink>
 
-<!--<p:menuitem><h:link outcome="index.xhtml">-->
-<!--<h:outputLabel value="#{msgs['header.brand']}" />-->
-<!--</h:link>-->
-<!--</p:menuitem>-->
+            </b:navbarLinks>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+                <h:form id="login_form">
+                    <b:label value="#{loginController.currentUserName}"/>
 
-            <!--<p:menuitem action="goToZoek"> <b:commandButton  type="button"  value="#{msgs['header.zoek']}"/></p:menuitem>-->
-            <!--<p:menuitem action="goToToevoegen"> <b:commandButton  type="button"  value="#{msgs['header.toevoegen']}"/></p:menuitem>-->
+                </h:form>
 
+            </b:navbarLinks>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+            <b:navCommandLink  action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #4062bb"
+                                                                 value="#{msgs['header.winkelwagen']}">
 
+            </b:button></b:navCommandLink>
+            </b:navbarLinks>
 
-
-
-
-            <!--<f:facet name="options">-->
-                <!--<p:commandButton type="button" value="Logout" style="background-color: #ff1654"  />-->
-            <!--</f:facet>-->
-        <!--</p:menubar>-->
-</b:navBar>
+        </b:navBar>
     </h:form>
-        </ui:composition>
+</ui:composition>

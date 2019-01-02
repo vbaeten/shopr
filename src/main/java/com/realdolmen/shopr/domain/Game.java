@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 @NamedQuery(name= Game.FIND_BY_NAME,
 query = "select g from Game g where g.titel=:titel")})
 
-@Table(name = "game")
+@DiscriminatorValue(value = "game")
 public class Game extends Artikel
 {
 

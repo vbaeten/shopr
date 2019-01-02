@@ -15,7 +15,7 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <h:form>
-                <p:panel style="width: 500px;" class="panelStyle">
+                <p:panel  class="panelStyle" style="width: 500px;background-color: #f45b69">
                     <p:selectOneRadio required="true" id="artikelSoort" value="#{toevoegController.selectPanel}">
                         <f:selectItem itemLabel="#{msgs['toevoegen.lp']}"
                                       itemValue="1"/>
@@ -157,7 +157,7 @@
                         </p:selectOneMenu>
 
 
-                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{gameController.submit}" update=":gameDataTable"/>
+                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{nonFictieController.submit}" update=":nonFictieDataTable"/>
                     </h:panelGrid>
                 </p:panel>
 
@@ -207,7 +207,7 @@
                         </p:selectOneMenu>
 
 
-                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{gameController.submit}" update=":gameDataTable"/>
+                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{fictieController.submit}" update=":fictieDataTable"/>
                     </h:panelGrid>
                 </p:panel>
 

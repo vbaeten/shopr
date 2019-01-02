@@ -14,15 +14,38 @@
     <from-view-id>*</from-view-id>
     <navigation-case>
         <from-outcome>goToZoek</from-outcome>
-        <to-view-id>/zoeken.xhtml</to-view-id>
+        <to-view-id>/overview.xhtml</to-view-id>
         <redirect />
     </navigation-case>
+
+        <navigation-case>
+            <from-outcome>goToIndex</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        <navigation-case>
+        <from-outcome>goToWinkelwagen</from-outcome>
+        <to-view-id>/winkelwagen.xhtml</to-view-id>
+        <redirect />
+    </navigation-case>
+
     <navigation-case>
         <from-outcome>goToToevoegen</from-outcome>
         <to-view-id>/toevoegen.xhtml</to-view-id>
         <redirect />
     </navigation-case>
     </navigation-rule>
+
+    <!--<navigation-rule>-->
+        <!--<from-view-id>/login.xhtml</from-view-id>-->
+        <!--<navigation-case>-->
+            <!--<from-action>#{loginController.currentUser}</from-action>-->
+
+            <!--<to-view-id>/index.xhtml</to-view-id>-->
+            <!--<redirect />-->
+        <!--</navigation-case>-->
+    <!--</navigation-rule>-->
 
     <application>
         <locale-config>

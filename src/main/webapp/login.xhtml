@@ -7,33 +7,36 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions">
+      xmlns:of="http://omnifaces.org/functions"
+      xmlns:b="http://bootsfaces.net/ui">>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
-
-            <h:form id="addLocationForm">
+<b:container>
+            <b:form id="addLocationForm">
                 <p:panel id="panel"  style="height: 85%;  display: inline-block; position: center " >
-                    <h:panelGrid columns="4" cellpadding="5">
+                    <h:panelGrid columns="1" cellpadding="5">
                         <h:outputLabel for="gebruiker" value="Gebruiker:"/>
 
-                        <p:selectOneMenu id="gebruiker" value="#{loginController.currentUser}">
-                                         converter="omnifaces.SelectItemsIndexConverter">
+                        <p:selectOneMenu id="gebruiker" value="#{loginController.currentUserName}">
+                                        >
 
-                            <f:selectItems value="#{loginController.findAllUsers()}" var="user"
+                            <f:selectItems value="#{userController.users}" var="user"
                                            itemLabel="#{user.name}"
-                                           itemValue="#{user.id}"/>
+                                           itemValue="#{user.name}"/>
 
                         </p:selectOneMenu>
-                        <h:commandButton value="Login" action="#{loginController.currentUser}" />
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                  value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
+
                     </h:panelGrid>
                 </p:panel>
-            </h:form>
+            </b:form>
 
 
-
+</b:container>
         </ui:define>
     </ui:composition>
 </h:body>

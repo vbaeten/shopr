@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
         @NamedQuery(name= Lp.FIND_BY_NAME,
                 query = "select l from Lp l where l.titel=:titel")})
 @Table(name = "LP")
+@DiscriminatorValue(value = "lp")
 public class Lp extends Artikel
 {
     public static final String FIND_ALL = "Lp.findAll";
@@ -22,6 +23,7 @@ public class Lp extends Artikel
     private String uitvoerder;
     @NotNull
 @Column
+    @Enumerated(EnumType.STRING)
     EnumMuziekGenre enumMuziekGenre;
 
     public String getUitvoerder()

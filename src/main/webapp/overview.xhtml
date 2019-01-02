@@ -7,7 +7,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions">
+      xmlns:of="http://omnifaces.org/functions"
+      xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
@@ -22,82 +23,32 @@
 
                         <!--</h:form>-->
                         <h:form id="form">
-                            <p:growl id="msgs" showDetail="true"/>
+                            <p:growl id="msgs"/>
 
-                            <p:dataTable id="allFlightDT" var="flight" value="#{flightBean.getAllFlights()}">
-                                <f:facet name="header">
-                                    #{msgs['page.allflights.dataTableName']}
-                                </f:facet>
-                                <p:column>
-                                    <p:rowToggler/>
+                            <p:dataTable id="allFlightDT" var="artikel" value="#{overviewController.artikels()}">
+
+                                <!--<p:column headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">-->
+                                    <!--<h:outputText value="#{artikel.type}"/>-->
+                                <!--</p:column>-->
+                                <p:column headerText="#{msgs['artikel.titel']}"
+                                          sortBy="#{artikel.titel}">
+                                    <h:outputText value="#{artikel.titel}"/>
                                 </p:column>
-                                <p:column headerText="#{msgs['page.allflights.id']}" sortBy="#{flight.id}">
-                                    <h:outputText value="#{flight.id}"/>
+                                <p:column headerText="#{msgs['artikel.leverancier']}" sortBy="#{artikel.leverancier}">
+                                    <h:outputText value="#{artikel.leverancier}"/>
                                 </p:column>
-                                <p:column headerText="#{msgs['page.allflights.airlineName']}"
-                                          sortBy="#{flight.route.airline.name}">
-                                    <h:outputText value="#{flight.route.airline.name}"/>
-                                </p:column>
-                                <p:column headerText="#{msgs['page.allflights.ecoSeats']}" sortBy="#{flight.availableEcoSeats}">
-                                    <h:outputText value="#{flight.availableEcoSeats}"/>
-                                </p:column>
-                                <p:column headerText="#{msgs['page.allflights.busSeats']}"
-                                          sortBy="#{flight.availableBusinessSeats}">
-                                    <h:outputText value="#{flight.availableBusinessSeats}"/>
-                                </p:column>
-                                <p:column headerText="#{msgs['page.allflights.firstclassSeats']}" sortBy="#{flight.availableFirstClassSeats}">
-                                    <h:outputText value="#{flight.availableFirstClassSeats}"/>
-                                </p:column>
-                                <p:column headerText="#{msgs['page.allflights.depDate']}" sortBy="#{flight.departureDate}">
-                                    <h:outputText value="#{flight.departureDate}"/>
+                                <p:column headerText="#{msgs['artikel.prijs']}"
+                                          sortBy="#{artikel.prijs}">
+                                    <h:outputText value="$ #{artikel.prijs}"/>
                                 </p:column>
 
-                                <p:rowExpansion>
-                                    <p:panelGrid columns="2" style="width:100%">
+                                <p:column headerText="#{msgs['artikel.details']}">
+                                    <b:button class="btn btn-primary" style="background: #52489c"
+                                              value="#{msgs['artikel.details']}" action="#{overviewController.details}"/>
+                                </p:column>
 
-                                        <h:outputLabel for="depname" value="#{msgs['page.allflights.departure']}"/>
-                                        <h:outputText id="depname" value="#{flight.route.departure.name}"/>
-
-                                        <h:outputLabel for="desname" value="#{msgs['page.allflights.destination']}"/>
-                                        <h:outputText id="desname" value="#{flight.route.destination.name}"/>
-
-                                        <h:outputLabel for="planename" value="#{msgs['page.allflights.plane']}"/>
-                                        <h:outputText id="planename" value="#{flight.route.plane.name}"/>
-
-                                        <h:outputLabel for="deptime" value="#{msgs['page.allflights.departureTime']}"/>
-                                        <h:outputText id="deptime" value="#{flight.schedule.departureTime}"/>
-
-                                        <h:outputLabel for="artime" value="#{msgs['page.allflights.arrivalTime']}"/>
-                                        <h:outputText id="artime" value="#{flight.schedule.arrivalTime}"/>
-
-                                        <h:outputLabel for="airprice" value="#{msgs['page.allflights.airlinePrice']}"/>
-                                        <h:outputText id="airprice" value="#{flight.schedule.airlinePrice.businessPrice}"/>
-
-                                        <h:outputLabel for="comprice" value="#{msgs['page.allflights.companyPrice']}"/>
-                                        <h:outputText id="comprice" value="#{flight.schedule.companyPrice.businessPrice}"/>
-
-                                        <h:outputLabel for="startsch" value="#{msgs['page.allflights.startSchedule']}"/>
-                                        <h:outputText id="startsch" value="#{flight.schedule.startSchedule}"/>
-
-                                        <h:outputLabel for="endsch" value="#{msgs['page.allflights.endSchedule']}"/>
-                                        <h:outputText id="endsch" value="#{flight.schedule.endSchedule}"/>
-
-                                        <h:outputLabel for="schesta" value="#{msgs['page.allflights.status']}"/>
-
-                                        <h:outputText id="schesta" value="#{flight.schedule.status}"/>
-
-                                    </p:panelGrid>
-                                </p:rowExpansion>
                             </p:dataTable>
                         </h:form>
-                    <!--</b:container>-->
-                    <!--<b:container rendered="#{loginBean.loggedInRole != 'airline'}">-->
-                        <!--<p>You don't have permission to this page</p>-->
-                    <!--</b:container>-->
-                <!--</ui:define>-->
-            <!--</ui:composition>-->
-
-
         </ui:define>
     </ui:composition>
 </h:body>

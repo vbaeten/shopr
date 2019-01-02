@@ -32,6 +32,16 @@ public class User {
     @ManyToMany
     private List <Beoordeling> beoordelingen;
 
+    public User()
+    {
+    }
+
+    public User(String name, String firstName)
+    {
+        this.name = name;
+        this.firstName = firstName;
+    }
+
     public int getId() {
         return id;
     }

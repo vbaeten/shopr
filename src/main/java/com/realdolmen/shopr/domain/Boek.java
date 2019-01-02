@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "boek_type")
+@DiscriminatorValue(value = "boek")
 public abstract class Boek extends Artikel
 {   
     @Size(max=100)

@@ -4,12 +4,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import static javax.persistence.DiscriminatorType.STRING;
+
 @Entity
+@DiscriminatorColumn(discriminatorType = STRING ,
+        name = "type")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(@NamedQuery(name = Artikel.FIND_ALL_ARTIKELS,
         query = "select a from Artikel a"))
 
-public abstract class Artikel
+public class Artikel
 {
     public static final String FIND_ALL_ARTIKELS = "Artikel.findAll";
 
