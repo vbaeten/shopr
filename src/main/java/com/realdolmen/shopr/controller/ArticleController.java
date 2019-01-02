@@ -32,5 +32,4 @@ public class ArticleController {
     public void submit() {
         this.articleService.insert(newArticle);
     }
-
 }

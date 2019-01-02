@@ -14,53 +14,129 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
+
             <p>Content for adding products comes here.</p>
+
             <b:form id="addProduct">
                 <b:accordion>
                     <b:panel title="Add Game Here">
                         <b:row>
                             <b:column span="4">
                                 <h:outputLabel for="title" value="Title:"/>
-                                <b:inputText id="title" value="#{gameController.newGame.title}"/>
+                                <b:inputText id="title" value="#{gameController.newGame.title}" required="true"/>
                                 <h:outputLabel for="genre" value="Genre:"/>
-                                <b:inputText id="genre" value="#{gameController.newGame.gameGenre}"/>
+                                <b:selectOneMenu id="genre" value="#{gameController.newGame.gameGenre}" required="true">
+                                    <f:selectItem itemLabel="Choose one" itemValue=""/>
+                                    <f:selectItem itemLabel="MMORPG" itemValue="MMORPG"/>
+                                    <f:selectItem itemLabel="RPG" itemValue="RPG"/>
+                                    <f:selectItem itemLabel="FPS" itemValue="FPS"/>
+                                    <f:selectItem itemLabel="RTS" itemValue="RTS"/>
+                                    <f:selectItem itemLabel="Race" itemValue="RACE"/>
+                                </b:selectOneMenu>
                                 <h:outputLabel for="publisher" value="Publisher:"/>
                                 <b:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
                             </b:column>
-                        </b:row>
-                        <b:row>
                             <b:column span="4">
                                 <h:outputLabel for="price" value="Price:"/>
                                 <b:inputText id="price" value="#{gameController.newGame.price}"/>
-                                <h:outputLabel for="supplier" value="Supplier:"/>
-                                <b:inputText id="supplier" value="#{gameController.newGame.supplier}"/>
+                                <h:outputLabel for="gameSupplier" value="Supplier:"/>
+                                <b:inputText id="gameSupplier" value="#{gameController.newGame.supplier}"/>
                                 <h:outputLabel for="min_age" value="Minimun Age:"/>
                                 <b:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
                             </b:column>
                         </b:row>
-                        <b:row>
-                            <b:commandButton value="Submit" action="#{gameController.submit}" ajax="true"
-                                             immediate="true" auto-update="true"/>
-                        </b:row>
+                        <b:commandButton value="Submit" action="#{gameController.submit}" ajax="true"
+                                         immediate="true" auto-update="true"/>
                     </b:panel>
                 </b:accordion>
             </b:form>
+
+
             <b:form>
                 <b:accordion>
-                    <b:panel title="Add LP Here"></b:panel>
+                    <b:panel title="Add Lp's Here">
+                        <h:outputLabel value="Title:" for="lpTitle"/>
+                        <b:inputText id="lpTitle" value="#{lpController.newLp.title}" required="true"/>
+                        <h:outputLabel value="Supplier:" for="lpSupplier"/>
+                        <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}" required="true"/>
+                        <h:outputLabel value="Price:" for="lpPrice"/>
+                        <b:inputText id="lpPrice" value="#{lpController.newLp.price}" required="true"/>
+                        <h:outputLabel value="Artist:" for="lpArtist"/>
+                        <b:inputText id="lpArtist" value="#{lpController.newLp.artist}" required="true"/>
+                        <h:outputLabel value="Genre:" for="lpGenre"/>
+                        <b:selectOneMenu id="lpGenre" value="#{lpController.newLp.musicGenre}" required="true">
+                            <f:selectItem itemLabel="Please select" itemValue=""/>
+                            <f:selectItem itemLabel="Classical" itemValue="CLASSICAL"/>
+                            <f:selectItem itemLabel="Pop" itemValue="POP"/>
+                            <f:selectItem itemLabel="Rock" itemValue="ROCK"/>
+                            <f:selectItem itemLabel="Dance" itemValue="DANCE"/>
+                            <f:selectItem itemLabel="R&amp;B" itemValue="RNB"/>
+                            <f:selectItem itemLabel="Hiphop" itemValue="HIPHOP"/>
+                        </b:selectOneMenu>
+                        <b:commandButton value="Submit" action="#{lpController.submitLp}" update="lpDataTable"/>
+                    </b:panel>
                 </b:accordion>
             </b:form>
+
+
             <b:form>
                 <b:accordion>
-                    <b:panel title="Add Fiction Book Here"></b:panel>
+                    <b:panel title="Add Fiction Book Here">
+                        <h:outputLabel value="Title:" for="fictionTitle"/>
+                        <b:inputText id="fictionTitle" value="#{fictionController.newFiction.title}"/>
+                        <h:outputLabel value="Author:" for="fictionAuthor"/>
+                        <b:inputText id="fictionAuthor" value="#{fictionController.newFiction.author}"/>
+                        <h:outputLabel value="Price" for="fictionPrice"/>
+                        <b:inputText id="fictionPrice" value="#{fictionController.newFiction.price}"/>
+                        <h:outputLabel value="Supplier" for="fictionSupplier"/>
+                        <b:inputText id="fictionSupplier" value="#{fictionController.newFiction.supplier}"/>
+                        <h:outputLabel value="Isbn" for="fictionIsbn"/>
+                        <b:inputText id="fictionIsbn" value="#{fictionController.newFiction.isbn}"/>
+                        <h:outputLabel value="Genre" for="fictionGenre"/>
+                        <b:selectOneMenu id="fictionGenre" value="#{fictionController.newFiction.bookGenre}">
+                            <f:selectItem itemLabel="Please select" itemValue=""/>
+                            <f:selectItem itemLabel="Thriller" itemValue="THRILLER"/>
+                            <f:selectItem itemLabel="Fantasy" itemValue="FANTASY"/>
+                            <f:selectItem itemLabel="Detective" itemValue="DETECTIVE"/>
+                            <f:selectItem itemLabel="Romance" itemValue="ROMANCE"/>
+                            <f:selectItem itemLabel="Sci-Fi" itemValue="SCIFI"/>
+                        </b:selectOneMenu>
+                        <h:outputLabel value="Synopsis" for="fictionSynopsis"/>
+                        <b:inputText id="fictionSynopsis" value="#{fictionController.newFiction.synopsis}"/>
+                        <b:commandButton value="Submit" action="#{fictionController.submit}" update="fictionDataTable"/>
+
+                    </b:panel>
                 </b:accordion>
             </b:form>
+
             <b:form>
                 <b:accordion>
-                    <b:panel title="Add Non-Fiction Book Here"></b:panel>
+                    <b:panel title="Add Non-Fiction Book Here">
+                        <h:outputLabel value="Title:" for="nonFictionTitle"/>
+                        <b:inputText id="nonFictionTitle" value="#{nonFictionController.newNonFiction.title}"/>
+                        <h:outputLabel value="Author:" for="nonFictionAuthor"/>
+                        <b:inputText id="nonFictionAuthor" value="#{nonFictionController.newNonFiction.author}"/>
+                        <h:outputLabel value="Price" for="nonFictionPrice"/>
+                        <b:inputText id="nonFictionPrice" value="#{nonFictionController.newNonFiction.price}"/>
+                        <h:outputLabel value="Supplier" for="nonFictionSupplier"/>
+                        <b:inputText id="nonFictionSupplier" value="#{nonFictionController.newNonFiction.supplier}"/>
+                        <h:outputLabel value="Isbn" for="nonFictionIsbn"/>
+                        <b:inputText id="nonFictionIsbn" value="#{nonFictionController.newNonFiction.isbn}"/>
+                        <h:outputLabel value="Subject:" for="nonFictionGenre"/>
+                        <b:selectOneMenu id="nonFictionGenre" value="#{nonFictionController.newNonFiction.subject}">
+                            <f:selectItem itemLabel="Please Select" itemValue=""/>
+                            <f:selectItem itemLabel="History" itemValue="HISTORY"/>
+                            <f:selectItem itemLabel="Cooking" itemValue="COOKING"/>
+                            <f:selectItem itemLabel="Science" itemValue="SCIENCE"/>
+                            <f:selectItem itemLabel="Sport" itemValue="SPORT"/>
+                        </b:selectOneMenu>
+                        <b:commandButton value="Submit" action="#{nonFictionController.submit}" update="nonFictionDataTable"/>
+                    </b:panel>
                 </b:accordion>
             </b:form>
-            <p>Check lists of diffent articles here.</p>
+
+
+            <p>Check lists of different articles here.</p>
             <b:accordion>
                 <b:panel title="List of Games">
                     <b:dataTable id="gameDataTable" value="#{gameController.games}" var="game">
@@ -74,16 +150,50 @@
                     </b:dataTable>
                 </b:panel>
             </b:accordion>
+
+
             <b:accordion>
-                <b:panel title="List of LP's"></b:panel>
-            </b:accordion>
-            <b:accordion>
-                <b:panel title="List of Fiction Books"></b:panel>
-            </b:accordion>
-            <b:accordion>
-                <b:panel title="List of Non-Fiction Books"></b:panel>
+                <b:panel title="List of LP's">
+                    <b:dataTable id="lpDataTable" value="#{lpController.lps}" var="lp">
+                        <b:dataTableColumn value="#{lp.id}"/>
+                        <b:dataTableColumn value="#{lp.title}"/>
+                        <b:dataTableColumn value="#{lp.artist}"/>
+                        <b:dataTableColumn value="#{lp.supplier}"/>
+                        <b:dataTableColumn value="#{lp.musicGenre}"/>
+                        <b:dataTableColumn value="#{lp.price}"/>
+                    </b:dataTable>
+                </b:panel>
             </b:accordion>
 
+
+            <b:accordion>
+                <b:panel title="List of Fiction Books">
+                    <b:dataTable id="fictionDataTable" value="#{fictionController.allFiction}" var="fiction">
+                        <b:dataTableColumn value="#{fiction.id}"/>
+                        <b:dataTableColumn value="#{fiction.title}"/>
+                        <b:dataTableColumn value="#{fiction.author}"/>
+                        <b:dataTableColumn value="#{fiction.pages}"/>
+                        <b:dataTableColumn value="#{fiction.synopsis}"/>
+                        <b:dataTableColumn value="#{fiction.isbn}"/>
+                        <b:dataTableColumn value="#{fiction.bookGenre}"/>
+                    </b:dataTable>
+                </b:panel>
+            </b:accordion>
+
+
+            <b:accordion>
+                <b:panel title="List of Non-Fiction Books">
+                    <b:dataTable id="nonFictionDataTable" value="#{nonFictionController.allNonFiction}"
+                                 var="nonfiction">
+                        <b:dataTableColumn value="#{nonfiction.id}"/>
+                        <b:dataTableColumn value="#{nonfiction.title}"/>
+                        <b:dataTableColumn value="#{nonfiction.author}"/>
+                        <b:dataTableColumn value="#{nonfiction.pages}"/>
+                        <b:dataTableColumn value="#{nonfiction.subject}"/>
+                        <b:dataTableColumn value="#{nonfiction.isbn}"/>
+                    </b:dataTable>
+                </b:panel>
+            </b:accordion>
 
         </ui:define>
         <ui:define name="js">

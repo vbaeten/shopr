@@ -34,7 +34,6 @@ public class GameController {
 
     public void submit() {
         logger.log(Level.INFO, "submit !!!");
-        this.gameService.insert(getNewGame());
+        this.gameService.insertGame(newGame);
     }
-
 }

@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public class GameRepository {
-
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
@@ -20,8 +19,7 @@ public class GameRepository {
         return entityManager.createNamedQuery(Game.FIND_ALL, Game.class).getResultList();
     }
 
-    @Transactional
-    public void insert(Game game) {
+    public void insertGame(Game game) {
         entityManager.persist(game);
     }
 

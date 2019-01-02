@@ -21,7 +21,7 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public void insert(Game game) {
-        gameRepository.insert(game);
+    public void insertGame(Game game) {
+        gameRepository.insertGame(game);
     }
 }

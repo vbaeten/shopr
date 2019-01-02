@@ -12,7 +12,7 @@ import javax.persistence.*;
 )
 public class NonFiction extends Book {
 
-    public static final String FIND_ALL = "FonFiction.findAll";
+    public static final String FIND_ALL = "NonFiction.findAll";
 
     @Column(name = "genre")
     private Subject subject;

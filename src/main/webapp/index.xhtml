@@ -19,7 +19,7 @@
 
             <b:form id="loginUser">
                 <b:formGroup>
-                    <b:selectOneMenu value="#{user}" style="width:200px">
+                    <b:selectOneMenu value="#{user}" style="width:200px" select2="true">
                         <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
                         <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.name}"
                                        itemLabel="#{user.firstName} #{user.name}"/>
@@ -36,7 +36,7 @@
                         <b:inputText id="userName" value="#{userController.newUser.name}"/>
                         <h:outputLabel value="First Name:" for="userFirstName"/>
                         <b:inputText id="userFirstName" value="#{userController.newUser.firstName}"/>
-                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable"/>
+                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginUser" />
                     </b:panelGrid>
                 </b:panel>
             </b:form>
