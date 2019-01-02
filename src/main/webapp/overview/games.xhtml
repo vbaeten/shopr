@@ -12,13 +12,15 @@
     <ui:composition template="../templates/common.xhtml">
         <ui:define name="content">
             <p:panel header="List of games" style="margin-bottom: 10px;">
-                <b:form>
-                    <b:dataTable value="#{gamesController.games}" var="game">
-                        <b:dataTableColumn value="#{game.title}"/>
-                        <b:dataTableColumn value="#{game.publisher}"/>
-                        <b:dataTableColumn value="#{game.price}"/>
-                    </b:dataTable>
-                </b:form>
+                <b:dataTable value="#{gamesController.games}" var="game">
+                    <b:dataTableColumn label="Title">
+                        <h:link value="#{game.title}" outcome="/detail/game-detail.xhtml" includeViewParams="true">
+                            <f:param name="id" value="#{game.id}"/>
+                        </h:link>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn value="#{game.publisher}"/>
+                    <b:dataTableColumn value="#{game.price}"/>
+                </b:dataTable>
             </p:panel>
         </ui:define>
 
