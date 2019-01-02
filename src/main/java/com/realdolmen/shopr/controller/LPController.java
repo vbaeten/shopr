@@ -19,7 +19,11 @@ public class LPController {
     private LPService lpService;
 
     public LP getLp(){
-        return lp;
+        return this.lp;
+    }
+
+    public LP getLPById(Long id) {
+        return lpService.findLPById(id);
     }
 
     public void setLp(LP lp){

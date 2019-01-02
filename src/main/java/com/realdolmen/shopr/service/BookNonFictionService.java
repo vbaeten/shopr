@@ -27,4 +27,7 @@ public class BookNonFictionService {
         BookNonFiction bookNonFiction = bookNonFictionRepository.findById(id);
         bookNonFiction.setTitle(newTitle);
     }
+    public void insert(BookNonFiction bookNonFiction) {
+        bookNonFictionRepository.insert(bookNonFiction);
+    }
 }

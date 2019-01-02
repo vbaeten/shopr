@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Book;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.service.GameService;
@@ -14,7 +15,7 @@ public class GameController {
     @Inject
     private GameService gameService;
 
-    public Game getGame() { return  game;}
+    public Game getGame() { return  this.game;}
 
     public void setGame(Game game){
         this.game = game;
@@ -26,5 +27,9 @@ public class GameController {
 
     public void add(Game game){
         this.gameService.insert(game);
+    }
+
+    public Game getGamebyId(Long id) {
+        return gameService.findGameById(id);
     }
 }
