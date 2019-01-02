@@ -6,25 +6,41 @@
 
     <h:form>
         <p:growl id="messages"/>
+<b:navBar brand="#{msgs['header.brand']}"  class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbarStyle" >
 
-        <p:menubar class="navbarStyle" >
+        <b:navbarLinks>
+            <b:navCommandLink value="#{msgs['header.zoek']}" action="goToZoek"/>
+            <b:navCommandLink value="#{msgs['header.toevoegen']}" action="goToToevoegen"/>
 
-<p:menuitem><h:link outcome="index.xhtml">
-<h:outputLabel value="#{msgs['header.brand']}" />
-</h:link>
-</p:menuitem>
+        </b:navbarLinks>
+    <b:navbarLinks pull="right" styleClass="hidden-xs">
+        <h:form id="login_form">
+            <b:commandLink value="Admin"
+                           action="#{loginController.userName('admin')}"/>|
+            <b:commandLink value="User"
+                           action="#{loginController.userName('user')}"/>
+        </h:form>
 
-            <p:menuitem action="goToZoek"> <p:commandButton type="button"  value="#{msgs['header.zoek']}"/></p:menuitem>
-            <p:menuitem action="goToToevoegen"> <p:commandButton type="button"  value="#{msgs['header.toevoegen']}"/></p:menuitem>
+    </b:navbarLinks>
+        <!--<p:menubar class="navbarStyle" >-->
+
+<!--<p:menuitem><h:link outcome="index.xhtml">-->
+<!--<h:outputLabel value="#{msgs['header.brand']}" />-->
+<!--</h:link>-->
+<!--</p:menuitem>-->
+
+            <!--<p:menuitem action="goToZoek"> <b:commandButton  type="button"  value="#{msgs['header.zoek']}"/></p:menuitem>-->
+            <!--<p:menuitem action="goToToevoegen"> <b:commandButton  type="button"  value="#{msgs['header.toevoegen']}"/></p:menuitem>-->
 
 
 
 
 
 
-            <f:facet name="options">
-                <p:commandButton type="button" value="Logout"  />
-            </f:facet>
-        </p:menubar>
+            <!--<f:facet name="options">-->
+                <!--<p:commandButton type="button" value="Logout" style="background-color: #ff1654"  />-->
+            <!--</f:facet>-->
+        <!--</p:menubar>-->
+</b:navBar>
     </h:form>
         </ui:composition>

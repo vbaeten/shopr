@@ -1,6 +1,6 @@
 #bodyColor
 {
-    background-color: #bfcde0!important;
+    background-color:  #fefeff!important;
 
 
 }
@@ -10,17 +10,29 @@
     border:none!important;
 }
 
-.navbarStyle
+.navbarStyle        none
 {
-    background: #5d5d81!important;
+    background: #247ba0!important;
 }
 
 .panelStyle
 {
-    background-color: #bfcde0!important;
+    background-color: #70c1b3!important;
 }
-#page{
-    background-color: blue;
+
+.footerStyle
+{
+    background: #5d5d81!important;
+
+}
+
+.buttonStyleHeader
+{
+    background: #6c7d47;
+}
+
+#navbarStyle{
+    background-color: #247ba0;
 }
 
 
