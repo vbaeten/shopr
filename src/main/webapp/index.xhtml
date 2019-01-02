@@ -36,23 +36,19 @@
                         <b:inputText id="userName" value="#{userController.newUser.name}"/>
                         <h:outputLabel value="First Name:" for="userFirstName"/>
                         <b:inputText id="userFirstName" value="#{userController.newUser.firstName}"/>
-                        <b:commandButton value="Submit" action="#{userController.submit}" update="userDataTable"/>
+                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable"/>
                     </b:panelGrid>
                 </b:panel>
             </b:form>
 
             <p>List of users</p>
-            <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
-                <p:column headerText="Id">
-                    <h:outputText value="#{user.id}"/>
-                </p:column>
-                <p:column headerText="Name">
-                    <h:outputText value="#{user.name}"/>
-                </p:column>
-                <p:column headerText="First name">
-                    <h:outputText value="#{user.firstName}"/>
-                </p:column>
-            </p:dataTable>
+            <h:form id="userTable">
+                <b:dataTable value="#{userController.users}" var = "user">
+                    <b:dataTableColumn value="#{user.id}"/>
+                    <b:dataTableColumn value="#{user.name}"/>
+                    <b:dataTableColumn value="#{user.firstName}"/>
+                </b:dataTable>
+            </h:form>
         </ui:define>
 
         <ui:define name="js">

@@ -22,6 +22,7 @@ import java.util.List;
         }
 )
 public class Article implements Serializable {
+
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
 

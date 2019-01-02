@@ -1,14 +1,20 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "fiction")
-public class Fiction extends Book {
+@NamedQueries(
+        @NamedQuery(
+                name = Fiction.FIND_ALL,
+                query = "SELECT a FROM Fiction a"
+        )
+)
+public class Fiction extends Book implements Serializable {
 
+    public static final String FIND_ALL = "Fiction.findAll";
 
     @Column(name = "genre")
     private BookGenre bookGenre;

@@ -18,15 +18,24 @@
             <b:form id="addLp" >
                 <b:panelGrid columns="6">
                     <h:outputLabel value = "Title:" for = "lpTitle"/>
-                    <b:inputText id="lpTitle" value="#{lpController.newLp.title}"/>
+                    <b:inputText id="lpTitle" value="#{lpController.newLp.title}" required="true"/>
                     <h:outputLabel value = "Supplier:" for = "lpSupplier"/>
-                    <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}"/>
+                    <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}" required="true"/>
                     <h:outputLabel value = "Price:" for = "lpPrice"/>
-                    <b:inputText id="lpPrice" value="#{lpController.newLp.price}"/>
+                    <b:inputText id="lpPrice" value="#{lpController.newLp.price}" required="true"/>
                     <h:outputLabel value = "Artist:" for = "lpArtist"/>
-                    <b:inputText id="lpArtist" value="#{lpController.newLp.artist}"/>
+                    <b:inputText id="lpArtist" value="#{lpController.newLp.artist}" required="true"/>
                     <h:outputLabel value = "Genre:" for = "lpGenre"/>
-                    <b:inputText id="lpGenre" value="#{lpController.newLp.musicGenre}"/>
+                    <b:selectOneMenu id="lpGenre" value="#{lpController.newLp.musicGenre}" required="true">
+                        <f:selectItem itemLabel="" itemValue=""/>
+                        <f:selectItem itemLabel="Please select" itemValue=""/>
+                        <f:selectItem itemLabel="Classical" itemValue="CLASSICAL"/>
+                        <f:selectItem itemLabel="Pop" itemValue="POP"/>
+                        <f:selectItem itemLabel="Rock" itemValue="ROCK"/>
+                        <f:selectItem itemLabel="Dance" itemValue="DANCE"/>
+                        <f:selectItem itemLabel="R&amp;B" itemValue="RNB"/>
+                        <f:selectItem itemLabel="Hiphop" itemValue="HIPHOP"/>
+                    </b:selectOneMenu>
                     <b:commandButton value="Submit" action="#{lpController.submitLp}" update="lpTable" />
                 </b:panelGrid>
             </b:form>

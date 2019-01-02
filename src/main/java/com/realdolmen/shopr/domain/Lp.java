@@ -20,6 +20,7 @@ import java.io.Serializable;
         }
 )
 public class Lp extends Article implements Serializable {
+
     public static final String FIND_BY_TITLE = "Lp.findByTitle";
     public static final String FIND_ALL = "Lp.FindAll";
 

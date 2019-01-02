@@ -4,11 +4,20 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "book")
-public class Book extends Article {
+@NamedQueries(
+        @NamedQuery(
+                name = Book.FIND_ALL,
+                query = "SELECT a FROM Book a"
+        )
+)
+public class Book extends Article implements Serializable {
+
+    public static final String FIND_ALL = "Book.findAll";
 
     @Max(100)
     @Column(name = "author")
