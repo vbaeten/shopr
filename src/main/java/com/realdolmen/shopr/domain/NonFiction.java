@@ -4,6 +4,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorValue("non fiction")
 @NamedQueries({
         @NamedQuery(
                 name = NonFiction.FIND_ALL,

@@ -7,6 +7,7 @@ import com.realdolmen.shopr.service.ItemService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @ManagedBean
@@ -35,4 +36,23 @@ public class ItemController {
     }
 
 
+    public String redirect(String type) {
+
+        switch (type){
+
+            case "fiction":
+                return "/detail-pages/fiction-detail.xhtml";
+
+            case "nonFiction":
+                return"/detail-pages/nonFiction-detail.xhtml";
+
+            case "game":
+              return "/detail-pages/games-detail.xhtml";
+
+            case "lp":
+               return "/detail-pages/lps-detail.xhtml";
+
+
+        }return "items-overview.xhtml";
+    }
 }

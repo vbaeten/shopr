@@ -38,7 +38,8 @@ CREATE TABLE book(
     id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     author VARCHAR(255),
     isbn LONG,
-    totalPages INT
+    totalPages INT,
+    type VARCHAR(255)
 
   );
 

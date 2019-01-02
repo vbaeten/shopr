@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="fiction")
+@DiscriminatorValue("fiction")
 @NamedQueries({
         @NamedQuery(
                 name = Fiction.FIND_ALL,
