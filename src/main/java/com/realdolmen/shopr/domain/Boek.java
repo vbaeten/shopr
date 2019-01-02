@@ -8,6 +8,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "boek")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "boekType")
+@DiscriminatorValue("boek")
+@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(
         {
                 @NamedQuery(
@@ -20,7 +23,7 @@ import java.util.List;
                 )
         }
 )
-public abstract class Boek extends Artikel {
+public class Boek extends Artikel {
     public static final String FIND_ALL = "Boek.findAll";
     public static final String FIND_BY_ID = "Boek.findById";
 
@@ -33,6 +36,8 @@ public abstract class Boek extends Artikel {
     private String isbn;
     @Column(name = "aantal_paginas")
     private  int aantalPaginas;
+    @Column(insertable = false, updatable = false)
+    private String boekType;
 
     public String getAuteur() {
         return auteur;
@@ -56,5 +61,13 @@ public abstract class Boek extends Artikel {
 
     public void setAantalPaginas(int aantalPaginas) {
         this.aantalPaginas = aantalPaginas;
+    }
+
+    public String getBoekType() {
+        return boekType;
+    }
+
+    public void setBoekType(String boekType) {
+        this.boekType = boekType;
     }
 }

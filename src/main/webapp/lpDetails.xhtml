@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+    <title>Details</title>
+
+</h:head>
+<h:body>
+
+    <p>#{artikelController.artikel.titel}</p>
+
+    <h:form id="details">
+        <b:dataTable var="artikel" value="#{artikelController.artikel}" id="lpDetailsDataTabel">
+            <b:dataTableColumn label="Id" value="#{artikel.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Id leverancier" value="#{artikel.idLeverancier}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Type" value="#{artikel.type}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Titel" value="#{artikel.titel}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Prijs" value="#{artikel.prijs}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Uitvoerder" value="#{artikel.uitvoerder}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{artikel.lpGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(artikel.id)}"/>
+            </b:dataTableColumn>
+        </b:dataTable>
+
+    </h:form>
+
+
+</h:body>
+</html>

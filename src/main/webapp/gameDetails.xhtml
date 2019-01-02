@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+    <title>Details</title>
+
+</h:head>
+<h:body>
+
+<p>#{artikelController.artikel.titel}</p>
+
+<h:form id="details">
+    <b:dataTable var="game" rendered="#{artikelController.artikel == artikelController.artikel}" value="#{artikelController.artikel}" id="gameArtikelDetailsDataTabel">
+        <b:dataTableColumn label="Id" value="#{game.id}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Id leverancier" value="#{game.idLeverancier}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Type" value="#{game.type}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Titel" value="#{game.titel}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Prijs" value="#{game.prijs}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Uitgever" value="#{game.uitgever}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Minimum leeftijd" value="#{game.minimumLeeftijd}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Operations">
+            <b:commandButton value="delete" action="#{artikelController.removeArtikelById(game.id)}"/>
+        </b:dataTableColumn>
+    </b:dataTable>
+    <b:dataTable var="game" rendered="#{gameController.game == gameController.game}" value="#{gameController.game}" id="gameDetailsDataTabel">
+        <b:dataTableColumn label="Id" value="#{game.id}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Id leverancier" value="#{game.idLeverancier}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Type" value="#{game.type}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Titel" value="#{game.titel}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Prijs" value="#{game.prijs}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Uitgever" value="#{game.uitgever}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Minimum leeftijd" value="#{game.minimumLeeftijd}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Operations">
+            <b:commandButton value="delete" action="#{artikelController.removeArtikelById(game.id)}"/>
+        </b:dataTableColumn>
+    </b:dataTable>
+</h:form>
+
+
+</h:body>
+</html>

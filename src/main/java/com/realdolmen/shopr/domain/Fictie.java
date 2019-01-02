@@ -5,6 +5,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "fictie")
+@DiscriminatorValue("fictie")
 @NamedQueries(
         {
                 @NamedQuery(

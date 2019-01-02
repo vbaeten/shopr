@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "game"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"uitgever", "titel"})*/)
+@DiscriminatorValue("game")
 @NamedQueries(
         {
                 @NamedQuery(

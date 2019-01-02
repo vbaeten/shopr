@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "artikel")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -22,7 +23,7 @@ import java.util.List;
                 )
         }
 )
-public abstract class Artikel {
+public class Artikel {
     public static final String FIND_ALL = "Artikel.findAll";
     public static final String FIND_BY_TITLE = "Artikel.findByTitle";
 
@@ -41,6 +42,8 @@ public abstract class Artikel {
     @Size(max = 100)
     @Column(name = "ID_leverancier")
     private String idLeverancier;
+    @Column(name ="type", insertable = false, updatable = false)
+    private String type;
 
     @OneToMany
     private List<Beoordeling> beoordelingen;
@@ -91,5 +94,13 @@ public abstract class Artikel {
 
     public void setBestellingen(List<Bestelling> bestellingen) {
         this.bestellingen = bestellingen;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
