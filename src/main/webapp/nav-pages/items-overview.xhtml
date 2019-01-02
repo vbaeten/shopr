@@ -12,9 +12,34 @@
     <ui:define name="pageContent">
         <h:outputStylesheet library="css" name="overview.css"/>
 
+
         <div class="afterNav">
+            <div>
+                <h3>List of Items</h3>
+            </div>
+
+            <div>
+
+                <h:form>
+                    <b:dataTable value="#{itemController.items}"
+                                 var="item">
+                        <b:dataTableColumn value="#{item.title}"/>
+                        <b:dataTableColumn value="#{item.price}"/>
+                        <b:dataTableColumn value="#{item.type}"/>
+                        <b:dataTableColumn>
+                            <b:button value="Details" onclick="redirectToDetailPage()"/>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
 
 
+            </div>
+        </div>
+
+
+
+
+        <div class="afterNav">
             <div>
                 <h3>List of Lps</h3>
             </div>

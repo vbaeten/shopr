@@ -1,14 +1,13 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 
 @Entity
+@DiscriminatorValue("book")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Book extends Item {
+public class Book extends Item {
 
     private String author;
     private String isbn;

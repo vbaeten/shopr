@@ -9,7 +9,8 @@ CREATE TABLE item(
 
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   title VARCHAR(255),
-  price LONG
+  price LONG,
+  type VARCHAR(255)
 );
 
 CREATE TABLE lp (
