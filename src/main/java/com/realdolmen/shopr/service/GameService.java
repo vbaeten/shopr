@@ -33,4 +33,8 @@ public class GameService {
     public void insert(Game game) {
         gameRepository.insert(game);
     }
+
+    public void delete(int id){
+        gameRepository.delete(id);
+    }
 }

@@ -32,4 +32,8 @@ public class FictionService {
     public void insert(Fiction fiction) {
         fictionRepository.insert(fiction);
     }
+
+    public void delete(int id){
+        fictionRepository.delete(id);
+    }
 }

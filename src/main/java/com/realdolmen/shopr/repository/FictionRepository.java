@@ -23,4 +23,9 @@ public class FictionRepository {
     public void insert(Fiction fiction) {
         entityManager.persist(fiction);
     }
+
+    public void delete (int id){
+        Fiction fiction = entityManager.find(Fiction.class, id);
+        entityManager.remove(fiction);
+    }
 }

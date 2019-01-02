@@ -29,9 +29,9 @@
                     <h:outputText value="#{gameController.newGame.supplierId}"/>
 
                     <h:outputText value="Price:" />
-                    <h:outputText value="#{gameController.newGame.price}"/>
+                    <h:outputText value="#{gameController.newGame.price} €"/>
                 </p:panelGrid>
-                <p:button value="Delete"/>
+                <p:commandButton value="delete" action="#{gameController.delete}"/>
             </p:fieldset>
         </h:form>
     </ui:define>

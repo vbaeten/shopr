@@ -35,9 +35,9 @@
                     <h:outputText value="#{fictionController.newFiction.supplierId}"/>
 
                     <h:outputText value="Price:" />
-                    <h:outputText value="#{fictionController.newFiction.price}"/>
+                    <h:outputText value="#{fictionController.newFiction.price} €"/>
                 </p:panelGrid>
-                <p:button value="Delete"/>
+                <p:commandButton value="delete" action="#{fictionController.delete}"/>
             </p:fieldset>
         </h:form>
     </ui:define>

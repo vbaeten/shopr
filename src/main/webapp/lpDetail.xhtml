@@ -26,9 +26,9 @@
                     <h:outputText value="#{lpController.newLp.supplierId}"/>
 
                     <h:outputText value="Price:" />
-                    <h:outputText value="#{lpController.newLp.price}"/>
+                    <h:outputText value="#{lpController.newLp.price} €"/>
                 </p:panelGrid>
-                <p:button value="Delete"/>
+                <p:commandButton value="delete" action="#{lpController.delete}"/>
             </p:fieldset>
         </h:form>
     </ui:define>

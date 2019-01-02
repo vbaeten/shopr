@@ -55,5 +55,11 @@ public class FictionController {
 
     public FictionGenre[] getFictionGenre() { return FictionGenre.values(); }
 
+    public String delete(){
+        fictionService.delete(newFiction.getId());
+        newFiction = new Fiction();
+        return "fictionDataTable?faces-redirect=true";
+    }
+
 
 }

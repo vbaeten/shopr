@@ -55,5 +55,11 @@ public class GameController {
 
     public GameGenre[] getGameGenre() { return GameGenre.values(); }
 
+    public String delete(){
+        gameService.delete(newGame.getId());
+        newGame = new Game();
+        return "gamesDataTable?faces-redirect=true";
+    }
+
 
 }

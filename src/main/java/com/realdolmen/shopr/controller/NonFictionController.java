@@ -55,5 +55,11 @@ public class NonFictionController {
 
     public NonFictionSubject[] getNonFictionSubject() { return NonFictionSubject.values(); }
 
+    public String delete(){
+        nonFictionService.delete(newNonFiction.getId());
+        newNonFiction = new NonFiction();
+        return "nonFictionDataTable?faces-redirect=true";
+    }
+
 
 }

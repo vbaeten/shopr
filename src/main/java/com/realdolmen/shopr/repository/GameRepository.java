@@ -23,4 +23,9 @@ public class GameRepository {
     public void insert(Game game) {
         entityManager.persist(game);
     }
+
+    public void delete(int id){
+        Game game = entityManager.find(Game.class, id);
+        entityManager.remove(game);
+    }
 }

@@ -25,4 +25,9 @@ public class NonFictionRepository {
     public void insert(NonFiction nonFiction) {
         entityManager.persist(nonFiction);
     }
+
+    public void delete (int id){
+        NonFiction nonFiction = entityManager.find(NonFiction.class, id);
+        entityManager.remove(nonFiction);
+    }
 }

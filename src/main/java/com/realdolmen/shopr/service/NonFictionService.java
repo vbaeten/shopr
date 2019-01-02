@@ -32,4 +32,9 @@ public class NonFictionService {
     public void insert(NonFiction nonFiction) {
         nonFictionRepository.insert(nonFiction);
     }
+
+    public void delete(int id){
+        nonFictionRepository.delete(id);
+    }
+
 }

@@ -57,5 +57,11 @@ public class LpController {
         return LpGenre.values();
     }
 
+    public String delete(){
+        lpService.delete(newLp.getId());
+        newLp = new Lp();
+        return "lpDataTable?faces-redirect=true";
+    }
+
 
 }

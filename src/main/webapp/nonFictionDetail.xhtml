@@ -34,7 +34,7 @@
                     <h:outputText value="Price:" />
                     <h:outputText value="#{nonFictionController.newNonFiction.price}"/>
                 </p:panelGrid>
-                <p:button value="Delete"/>
+                <p:commandButton value="delete" action="#{nonFictionController.delete}"/>
             </p:fieldset>
         </h:form>
     </ui:define>

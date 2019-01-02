@@ -32,4 +32,8 @@ public class LpService {
     public void insert(Lp lp) {
         lpRepository.insert(lp);
     }
+
+    public void delete(int id){
+        lpRepository.delete(id);
+    }
 }
