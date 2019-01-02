@@ -16,7 +16,7 @@ public class LpDetailController {
     @Inject
     private LpService lpService;
 
-    public void init(){
+    public void init() {
         getLpById(id);
     }
 
