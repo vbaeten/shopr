@@ -22,4 +22,12 @@ public class GameService {
     public void insert(Game newGame) {
         this.gameRepository.insert(newGame);
     }
+
+
+    public Game findById(Long id) {
+
+       return this.gameRepository.findById(id);
+
+
+    }
 }

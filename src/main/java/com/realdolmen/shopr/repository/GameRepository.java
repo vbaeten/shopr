@@ -19,4 +19,9 @@ public class GameRepository {
     public void insert(Game newGame) {
         this.entityManager.persist(newGame);
     }
+
+    public Game findById(Long id) {
+        return entityManager.find(Game.class, id);
+    }
+
 }

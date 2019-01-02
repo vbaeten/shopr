@@ -36,23 +36,23 @@ public class ItemController {
     }
 
 
-    public String redirect(String type) {
-
-        switch (type){
-
-            case "fiction":
-                return "/detail-pages/fiction-detail.xhtml";
-
-            case "nonFiction":
-                return"/detail-pages/nonFiction-detail.xhtml";
-
-            case "game":
-              return "/detail-pages/games-detail.xhtml";
-
-            case "lp":
-               return "/detail-pages/lps-detail.xhtml";
-
-
-        }return "items-overview.xhtml";
-    }
+//    public String redirect(String type) {
+//
+//        switch (type){
+//
+//            case "fiction":
+//                return "/detail-pages/fiction-detail.xhtml";
+//
+//            case "nonFiction":
+//                return"/detail-pages/nonFiction-detail.xhtml";
+//
+//            case "game":
+//              return "/detail-pages/games-detail.xhtml";
+//
+//            case "lp":
+//               return "/detail-pages/lps-detail.xhtml";
+//
+//
+//        }return "items-overview.xhtml";
+//    }
 }

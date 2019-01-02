@@ -7,10 +7,13 @@ import javax.persistence.*;
 @Table(name="Games")
 @DiscriminatorValue("game")
 @NamedQueries({
+
+
         @NamedQuery(
                 name = Game.FIND_ALL,
                 query = "SELECT g FROM Game g"
         )
+
 })
 public class Game extends Item {
 
