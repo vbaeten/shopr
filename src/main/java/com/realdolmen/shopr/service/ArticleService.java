@@ -3,11 +3,12 @@ package com.realdolmen.shopr.service;
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.repository.ArticleRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+@Stateless
 public class ArticleService {
-
     @Inject
     private ArticleRepository articleRepository;
 
@@ -16,7 +17,7 @@ public class ArticleService {
     }
 
     public List<Article> findAllArticles() {
-        return articleRepository.findAll();
+        return articleRepository.findAllArticles();
     }
 
     public Article findArticleByTitle(String title) {

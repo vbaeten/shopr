@@ -20,10 +20,6 @@ public class GameRepository {
         return entityManager.createNamedQuery(Game.FIND_ALL, Game.class).getResultList();
     }
 
-    public Game findByTitle(String title) {
-        return entityManager.createNamedQuery(Game.FIND_BY_TITLE, Game.class).setParameter("title", title).getSingleResult();
-    }
-
     @Transactional
     public void insert(Game game) {
         entityManager.persist(game);

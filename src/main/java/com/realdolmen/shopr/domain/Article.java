@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -16,18 +17,17 @@ import java.util.List;
                 ),
                 @NamedQuery(
                         name = Article.FIND_ALL,
-                        query = "SELECT u FROM Article u"
+                        query = "SELECT a FROM Article a"
                 )
         }
 )
-public class Article {
-
+public class Article implements Serializable {
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
 
     @Id
     @GeneratedValue
-    @Column(name = "article_id")
+    @Column(name = "id")
     private int id;
 
 

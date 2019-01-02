@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class ArticleRepository {
-
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
@@ -15,7 +14,7 @@ public class ArticleRepository {
         return entityManager.find(Article.class, id);
     }
 
-    public List<Article> findAll() {
+    public List<Article> findAllArticles() {
         return entityManager.createNamedQuery(Article.FIND_ALL, Article.class).getResultList();
     }
 

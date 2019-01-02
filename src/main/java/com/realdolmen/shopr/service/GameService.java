@@ -17,16 +17,11 @@ public class GameService {
         return gameRepository.findById(id);
     }
 
-    public List<Game> findAll() {
+    public List<Game> findAllGames() {
         return gameRepository.findAll();
-    }
-
-    public Game findTitle(String title) {
-        return gameRepository.findByTitle(title);
     }
 
     public void insert(Game game) {
         gameRepository.insert(game);
     }
-
 }

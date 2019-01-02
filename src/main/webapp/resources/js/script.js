@@ -17,6 +17,10 @@ function setNavMenuItemActive(navMenuItem){
             $("#nav-menu-items-addproducts").addClass("active");
             console.log("In Add Products");
             break;
+        case "articles":
+            $("#nav-menu-items-articles").addClass("active");
+            console.log("In Articles");
+            break;
         case "shoppingbag":
             $("#nav-menu-items-shoppingbag").addClass("active");
             console.log("In Shoppingbag");

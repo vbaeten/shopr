@@ -15,10 +15,9 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <p>Content for adding products comes here.</p>
-
-            <b:accordion>
-                <b:panel title="Add Game Here">
-                    <b:form id="addProduct">
+            <b:form id="addProduct">
+                <b:accordion>
+                    <b:panel title="Add Game Here">
                         <b:row>
                             <b:column span="4">
                                 <h:outputLabel for="title" value="Title:"/>
@@ -40,12 +39,12 @@
                             </b:column>
                         </b:row>
                         <b:row>
-                            <b:commandButton value="Submit" action="#{gameController.submit}" ajax="true" immediate="true" auto-update="true" />
+                            <b:commandButton value="Submit" action="#{gameController.submit}" ajax="true"
+                                             immediate="true" auto-update="true"/>
                         </b:row>
-                    </b:form>
-                </b:panel>
-
-            </b:accordion>
+                    </b:panel>
+                </b:accordion>
+            </b:form>
             <b:form>
                 <b:accordion>
                     <b:panel title="Add LP Here"></b:panel>

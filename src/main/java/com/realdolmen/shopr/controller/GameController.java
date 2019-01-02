@@ -29,7 +29,7 @@ public class GameController {
     }
 
     public List<Game> getGames() {
-        return this.gameService.findAll();
+        return this.gameService.findAllGames();
     }
 
     public void submit() {

@@ -27,9 +27,20 @@
                     <b:inputText id="lpArtist" value="#{lpController.newLp.artist}"/>
                     <h:outputLabel value = "Genre:" for = "lpGenre"/>
                     <b:inputText id="lpGenre" value="#{lpController.newLp.musicGenre}"/>
-                    <b:commandButton value="Submit" action="#{lpController.submitLp}" update="@form addLp" />
+                    <b:commandButton value="Submit" action="#{lpController.submitLp}" update="lpTable" />
                 </b:panelGrid>
             </b:form>
+            <p>List of Lp's</p>
+            <h:form id="lpTable">
+                <b:dataTable value="#{lpController.lps}" var = "lp">
+                    <b:dataTableColumn value="#{lp.id}"/>
+                    <b:dataTableColumn value="#{lp.title}"/>
+                    <b:dataTableColumn value="#{lp.artist}"/>
+                    <b:dataTableColumn value="#{lp.supplier}"/>
+                    <b:dataTableColumn value="#{lp.musicGenre}"/>
+                    <b:dataTableColumn value="#{lp.price}"/>
+                </b:dataTable>
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>
