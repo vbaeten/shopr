@@ -10,18 +10,17 @@
 
 <h:body>
     <ui:composition template="../templates/common.xhtml">
-        <ui:define name="header">
-        </ui:define>
-
         <ui:define name="content">
             <p:panel header="List of LP's" style="margin-bottom: 10px;">
-                <b:form>
-                    <b:dataTable value="#{lpsController.lps}" var="lp">
-                        <b:dataTableColumn value="#{lp.title}"/>
-                        <b:dataTableColumn value="#{lp.artist}"/>
-                        <b:dataTableColumn value="#{lp.price}"/>
-                    </b:dataTable>
-                </b:form>
+                <b:dataTable value="#{lpsController.lps}" var="lp">
+                    <b:dataTableColumn label="Title">
+                        <h:link value="#{lp.title}" outcome="/detail/lp-detail.xhtml" includeViewParams="true">
+                            <f:param name="id" value="#{lp.id}"/>
+                        </h:link>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn value="#{lp.artist}"/>
+                    <b:dataTableColumn value="#{lp.price}"/>
+                </b:dataTable>
             </p:panel>
         </ui:define>
 
