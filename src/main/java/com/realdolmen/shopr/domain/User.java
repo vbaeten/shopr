@@ -29,7 +29,8 @@ public class User {
     private String name;
     @Column(name = "first_name")
     private String firstName;
-
+    @Enumerated(EnumType.STRING)
+    private EnumRoles role;
     @ManyToMany
     private List <Beoordeling> beoordelingen;
 
@@ -41,6 +42,26 @@ public class User {
     {
         this.name = name;
         this.firstName = firstName;
+    }
+
+    public EnumRoles getRole()
+    {
+        return role;
+    }
+
+    public void setRole(EnumRoles role)
+    {
+        this.role = role;
+    }
+
+    public List<Beoordeling> getBeoordelingen()
+    {
+        return beoordelingen;
+    }
+
+    public void setBeoordelingen(List<Beoordeling> beoordelingen)
+    {
+        this.beoordelingen = beoordelingen;
     }
 
     public int getId() {

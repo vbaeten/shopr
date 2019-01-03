@@ -10,14 +10,16 @@
                   style="background: #59c3c3">
 
             <b:navbarLinks>
-                <b:navCommandLink action="goToZoek"><b:button class="btn btn-primary" style="background: #52489c"
+                <b:navCommandLink action="goToZoek"><b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
+                    class="btn btn-primary" style="background: #52489c"
                                                               value="#{msgs['header.zoek']}">
 
                 </b:button></b:navCommandLink>
-                <b:navCommandLink action="goToToevoegen"><b:button class="btn btn-primary" style="background: #f45b69"
+                <b:navCommandLink action="goToToevoegen"><b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
+                                                                   class="btn btn-primary" style="background: #f45b69"
                                                                    value="#{msgs['header.toevoegen']}">
 
-                </b:button></b:navCommandLink>
+                </b:button ></b:navCommandLink>
                 <b:navCommandLink action="goToEdit"><b:button class="btn btn-primary" style="background: #f45b69"
                                                                    value="#{msgs['header.edit']}">
 
@@ -32,7 +34,7 @@
 
             </b:navbarLinks>
             <b:navbarLinks pull="right" styleClass="hidden-xs">
-            <b:navCommandLink  action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #4062bb"
+            <b:navCommandLink rendered="#{loginController.enumRoles eq 'USER'}" action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #4062bb"
                                                                  value="#{msgs['header.winkelwagen']}">
 
             </b:button></b:navCommandLink>

@@ -87,11 +87,11 @@
                         <p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1"
                                    max="10"/>
 
-                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(artikel)}">
                         </b:commandButton>
-                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
                                   onclick="$('.modalPseudoClass').modal()"/>
 
 
@@ -125,11 +125,11 @@
                         <p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
                                    min="1" max="10"/>
 
-                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(artikel)}">
                         </b:commandButton>
-                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
                                   onclick="$('.modalPseudoClass').modal()"/>
 
 
@@ -169,11 +169,11 @@
                         <p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
                                    min="1" max="10"/>
 
-                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(artikel)}">
                         </b:commandButton>
-                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
                                   onclick="$('.modalPseudoClass').modal()"/>
 
 
@@ -215,10 +215,10 @@
                         <p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
                                    min="1" max="10"/>
 
-                        <b:button class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()">
                         </b:button>
-                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
                                   onclick="$('.modalPseudoClass').modal()"/>
 
                     </h:panelGrid>

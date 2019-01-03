@@ -15,17 +15,17 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <b:container>
-                <b:form id="addLocationForm">
+                <b:form id="loginForm">
                     <p:panel id="panel" style="height: 85%;  display: inline-block; position: center ">
                         <h:panelGrid columns="1" cellpadding="5">
                             <h:outputLabel for="gebruiker" value="Gebruiker:"/>
 
-                            <p:selectOneMenu id="gebruiker" value="#{loginController.currentUserName}">
+                            <p:selectOneMenu id="gebruiker" value="#{loginController.enumRoles}">
                                 >
 
                                 <f:selectItems value="#{userController.users}" var="user"
                                                itemLabel="#{user.name}"
-                                               itemValue="#{user.name}"/>
+                                               itemValue="#{user.role}"/>
 
                             </p:selectOneMenu>
                             <b:commandButton class="btn btn-primary" style="background: #52489c"

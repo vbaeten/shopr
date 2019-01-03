@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
 
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ public class LoginController
 
     private User currentUser;
     private String currentUserName;
+    private EnumRoles enumRoles;
 
     public String getCurrentUserName()
     {
@@ -33,40 +35,21 @@ public class LoginController
         this.currentUserName = currentUserName;
     }
 
+    public EnumRoles getEnumRoles()
+    {
+        return enumRoles;
+    }
+
+    public void setEnumRoles(EnumRoles enumRoles)
+    {
+        this.enumRoles = enumRoles;
+    }
+
     public LoginController()
     {
 //        addUsers();
     }
 
-    public void addUsers()
-    {
-//        try
-//        {
-//            utx.begin();
-//            User user = new User("Meyers", "Koen");
-//            User user2 = new User("Meyers", "Indy");
-//            User user3 = new User("Meyers", "Odin");
-//            entityManager.persist(user);
-//            entityManager.persist(user2);
-//            entityManager.persist(user3);
-//            utx.commit();
-//        } catch (NotSupportedException e)
-//        {
-//            e.printStackTrace();
-//        } catch (SystemException e)
-//        {
-//            e.printStackTrace();
-//        } catch (RollbackException e)
-//        {
-//            e.printStackTrace();
-//        } catch (HeuristicMixedException e)
-//        {
-//            e.printStackTrace();
-//        } catch (HeuristicRollbackException e)
-//        {
-//            e.printStackTrace();
-//        }
-    }
 
     public void setCurrentUser(int id )
     {
@@ -78,10 +61,11 @@ public class LoginController
 
     }
 
-    public void loggedIn()
+    public String loggedIn()
     {
-
         System.out.println(currentUserName);
+        return "/index.xhtml?faces-redirect=true" ;
+
     }
 
 
