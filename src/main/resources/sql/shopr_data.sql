@@ -11,13 +11,13 @@ INSERT INTO item(id, title, price, type)
 INSERT INTO item(id, title, price, type)
   VALUES (6, 'Artifact', 17.95, 'Game');
 INSERT INTO item(id, title, price, type)
-  VALUES (7, 'The Kite Runner', 11.95, 'Book');
+  VALUES (7, 'The Kite Runner', 11.95, 'Fiction');
 INSERT INTO item(id, title, price, type)
-  VALUES (8, 'The Help', 9.95, 'Book');
+  VALUES (8, 'The Help', 9.95, 'Fiction');
 INSERT INTO item(id, title, price, type)
-  VALUES (9, 'The Oxford History of Ancient Egypt', 12.99, 'Book');
+  VALUES (9, 'The Oxford History of Ancient Egypt', 12.99, 'Non fiction');
 INSERT INTO item(id, title, price, type)
-  VALUES (10, 'Cooking Basics for Dummies', 14.99, 'Book');
+  VALUES (10, 'Cooking Basics for Dummies', 14.99, 'Non fiction');
 
 INSERT INTO lp(id, artist, lp_genre)
   VALUES (1, 'Black Sabbath', 'ROCK');
@@ -33,23 +33,23 @@ INSERT INTO game(id, publisher, min_age, game_genre)
 INSERT INTO game(id, publisher, min_age, game_genre)
   VALUES (6, 'Valve', 12, 'RTS');
 
-INSERT INTO book(id, author, isbn, pages, book_type)
-  VALUES (7, 'Khaled Hosseini', '978-15-9448-000-3', '371', 'Fiction');
-INSERT INTO book(id, author, isbn, pages, book_type)
-  VALUES (8, 'Kathryn Stockett', '978-03-9915-534-5', '465', 'Fiction');
-INSERT INTO book(id, author, isbn, pages, book_type)
-  VALUES (9, 'Ian Shaw', '978-01-9815-034-3', '554', 'Non fiction');
-INSERT INTO book(id, author, isbn, pages, book_type)
-  VALUES (10, 'Bryan Miller', '978-07-6457-206-7', '436', 'Non fiction');
+INSERT INTO book(id, author, isbn, pages)
+  VALUES (7, 'Khaled Hosseini', '978-15-9448-000-3', '371');
+INSERT INTO book(id, author, isbn, pages)
+  VALUES (8, 'Kathryn Stockett', '978-03-9915-534-5', '465');
+INSERT INTO book(id, author, isbn, pages)
+  VALUES (9, 'Ian Shaw', '978-01-9815-034-3', '554');
+INSERT INTO book(id, author, isbn, pages)
+  VALUES (10, 'Bryan Miller', '978-07-6457-206-7', '436');
 
-INSERT INTO fiction(id, book_genre, summary)
+INSERT INTO fiction(id, fiction_genre, summary)
   VALUES (7, 'THRILLER',
           'A sweeping story of family, love, and friendship told against the devastating backdrop of the history of Afghanistan over the last thirty years, The Kite Runner is an unusual and powerful novel that has become a beloved, one-of-a-kind classic.');
-INSERT INTO fiction(id, book_genre, summary)
+INSERT INTO fiction(id, fiction_genre, summary)
   VALUES (8, 'ROMANCE',
           'Twenty-two-year-old Skeeter has just returned home after graduating from Ole Miss. She may have a degree, but it is 1962, Mississippi, and her mother will not be happy till Skeeter has a ring on her finger.');
 
-INSERT INTO non_fiction(id, topic)
+INSERT INTO non_fiction(id, nonfiction_subject)
   VALUES (9, 'HISTORY');
-INSERT INTO non_fiction(id, topic)
+INSERT INTO non_fiction(id, nonfiction_subject)
   VALUES (10, 'COOKBOOK');

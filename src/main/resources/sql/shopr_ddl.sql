@@ -30,22 +30,21 @@ CREATE TABLE game
 
 CREATE TABLE book
 (
-  id        BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  author    VARCHAR(255) NOT NULL,
-  isbn      VARCHAR(255) NOT NULL,
-  pages     VARCHAR(255) NOT NULL,
-  book_type VARCHAR(255) NOT NULL
+  id     BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  author VARCHAR(255) NOT NULL,
+  isbn   VARCHAR(255) NOT NULL,
+  pages  VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE fiction
 (
   id         BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  book_genre VARCHAR(255),
+  fiction_genre VARCHAR(255),
   summary    VARCHAR(255)
 );
 
 CREATE TABLE non_fiction
 (
   id    BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  topic VARCHAR(255)
+  nonfiction_subject VARCHAR(255)
 );
