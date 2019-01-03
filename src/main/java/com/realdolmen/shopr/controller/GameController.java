@@ -20,7 +20,7 @@ public class GameController {
     private GameService gameService;
 
 
-    public String submit(){
+    public String submit() {
         this.gameService.insert(newGame);
         return "/overview-pages/games-overview.xhtml?faces-redirect=true";
     }
@@ -29,12 +29,12 @@ public class GameController {
 
 
 
-    public GameGenre[]getGenres(){
+    public GameGenre[] getGenres() {
         return GameGenre.values();
     }
 
 
-    public List<Game> getGames(){
+    public List<Game> getGames() {
         return this.gameService.findAllGames();
     }
 

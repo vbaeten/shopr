@@ -12,26 +12,23 @@
     <ui:define name="pageContent">
         <h:outputStylesheet  library = "css" name="create.css"/>
 
-
-        <div class="afterNav">
-
-            <b:button value="Books" href="create-book.xhtml" />
-            <b:button value="Lps" href="create-lp.xhtml"/>
-            <b:button value="Games" href="create-game.xhtml"/>
-
-        </div>
+        <f:metadata>
+            <f:viewParam name="id" value="#{gameDetailController.id}"/>
+            <f:event type="preRenderView" listener="#{gameDetailController.init}"/>
+        </f:metadata>
 
 
         <div class="afterNav">
             <div class="insideForm">
-                <b:form>
+                <b:form id="editForm">
+                    <b:messages/>
                     <b:container fluid="true">
                         <b:row>
                             <b:column mediumScreen="2">
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{gameController.newGame.title}"/>
+                                <b:inputText placeholder="title" value="#{gameDetailController.game.title}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -39,7 +36,7 @@
                                 <h:outputText value="publisher:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="publisher" value="#{gameController.newGame.publisher}"/>
+                                <b:inputText placeholder="publisher" value="#{gameDetailController.game.publisher}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -47,7 +44,7 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{gameController.newGame.price}"/>
+                                <b:inputText placeholder="price" value="#{gameDetailController.game.price}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -55,7 +52,7 @@
                                 <h:outputText value="Minimum age:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="min age" value="#{gameController.newGame.price}"/>
+                                <b:inputText placeholder="min age" value="#{gameDetailController.game.price}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -63,14 +60,14 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{gameController.newGame.genre}" >
-                                    <f:selectItems value="#{gameController.genres}" />
+                                <b:selectOneMenu value="#{gameDetailController.game.genre}" >
+                                    <f:selectItems value="#{gameDetailController.genres}" />
                                 </b:selectOneMenu>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Create game"  style="width:100%" action="#{gameController.submit}" />
+                                <b:commandButton value="Edit game"  style="width:100%" action="#{gameDetailController.update}" update="@form:editForm" />
                             </b:column>
                         </b:row>
 

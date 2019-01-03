@@ -27,4 +27,8 @@ public class GameRepository {
     public void delete(Game toDeleteG) {
         this.entityManager.remove(entityManager.contains(toDeleteG)? toDeleteG: entityManager.merge(toDeleteG));
     }
+
+    public void update(Game game) {
+        this.entityManager.merge(game);
+    }
 }

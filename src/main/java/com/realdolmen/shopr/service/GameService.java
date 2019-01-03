@@ -13,7 +13,6 @@ public class GameService {
     private GameRepository gameRepository = new GameRepository();
 
 
-
     public List<Game> findAllGames() {
         return this.gameRepository.findAllGames();
     }
@@ -26,12 +25,18 @@ public class GameService {
 
     public Game findById(int id) {
 
-       return this.gameRepository.findById(id);
+        return this.gameRepository.findById(id);
 
 
     }
+
     @Transactional
     public void delete(Game toDeleteG) {
         this.gameRepository.delete(toDeleteG);
+    }
+
+    @Transactional
+    public void update(Game game) {
+        this.gameRepository.update(game);
     }
 }

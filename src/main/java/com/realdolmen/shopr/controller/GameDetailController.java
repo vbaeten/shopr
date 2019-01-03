@@ -2,6 +2,7 @@ package com.realdolmen.shopr.controller;
 
 
 import com.realdolmen.shopr.domain.Game;
+import com.realdolmen.shopr.domain.GameGenre;
 import com.realdolmen.shopr.service.GameService;
 
 import javax.faces.bean.ManagedBean;
@@ -41,9 +42,17 @@ public class GameDetailController {
         return "/overview-pages/games-overview.xhtml?faces-redirect=true";
     }
 
+    public String update() {
+
+        this.gameService.update(game);
+
+        return "/overview-pages/games-overview.xhtml?faces-redirect=true";
+    }
 
 
-
+    public GameGenre[]getGenres(){
+        return GameGenre.values();
+    }
 
 
     public int getId() {
