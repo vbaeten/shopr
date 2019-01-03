@@ -13,7 +13,6 @@ import javax.inject.Inject;
 public class CuLpController {
     private Lp lp;
     private Long id;
-    private LpGenre[] lpGenres;
 
     @Inject
     private LpService lpService;
@@ -34,11 +33,10 @@ public class CuLpController {
         if (id == null) {
             this.lpService.insert(lp);
             lp = new Lp();
-            return "/overview/lps.xhtml?faces-redirect=true";
         } else {
             this.lpService.update(lp);
-            return "/overview/lps.xhtml?faces-redirect=true";
         }
+        return "/overview/lps.xhtml?faces-redirect=true";
     }
 
     public Lp getLp() {
@@ -60,6 +58,4 @@ public class CuLpController {
     public LpGenre[] getLpGenres() {
         return LpGenre.values();
     }
-
-
 }

@@ -13,7 +13,6 @@ import javax.inject.Inject;
 public class CuGameController {
     private Game game;
     private Long id;
-    private GameGenre[] gameGenres;
 
     @Inject
     private GameService gameService;
@@ -34,11 +33,10 @@ public class CuGameController {
         if (id == null) {
             this.gameService.insert(game);
             game = new Game();
-            return "/overview/games.xhtml?faces-redirect=true";
         } else {
             this.gameService.update(game);
-            return "/overview/games.xhtml?faces-redirect=true";
         }
+        return "/overview/games.xhtml?faces-redirect=true";
     }
 
     public Game getGame() {
