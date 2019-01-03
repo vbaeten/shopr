@@ -11,20 +11,11 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class BooksController {
-    private Book book = new Book();
 
     @Inject
     private BookService bookService;
 
     public List<Book> getBooks() {
         return this.bookService.findAllBooks();
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
     }
 }

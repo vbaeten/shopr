@@ -12,17 +12,13 @@ import javax.validation.constraints.Pattern;
                 )
         }
 )
-@DiscriminatorColumn(name = "book_type")
-@DiscriminatorValue("Book")
-public class Book extends Item {
+public abstract class Book extends Item {
     public static final String FIND_ALL = "Book.findAll";
 
     private String author;
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
     private String pages;
-    @Column(name = "book_type", insertable = false, updatable = false)
-    private String bookType;
 
     public String getAuthor() {
         return author;
@@ -46,9 +42,5 @@ public class Book extends Item {
 
     public void setPages(String pages) {
         this.pages = pages;
-    }
-
-    public String getBookType() {
-        return bookType;
     }
 }
