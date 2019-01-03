@@ -20,7 +20,11 @@ public class NonFictionService {
         return nonFictionRepository.findAll();
     }
 
-    public void insert(NonFiction nonFiction) {
-        nonFictionRepository.insert(nonFiction);
+    public void insertNonFiction(NonFiction nonFiction) {
+        nonFictionRepository.insertNonFiction(nonFiction);
+    }
+
+    public void deleteNonFiction(int id){
+        nonFictionRepository.delete(id);
     }
 }

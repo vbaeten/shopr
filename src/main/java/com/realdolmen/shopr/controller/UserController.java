@@ -33,4 +33,7 @@ public class UserController {
         this.userService.insert(newUser);
     }
 
+    public void deleteUser(int id){
+        this.userService.deleteUser(id);
+    }
 }

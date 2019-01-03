@@ -25,4 +25,8 @@ public class ArticleRepository {
     public void insert(Article article) {
         entityManager.persist(article);
     }
+
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(Article.class, id));
+    }
 }

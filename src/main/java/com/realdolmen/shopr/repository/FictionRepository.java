@@ -18,7 +18,11 @@ public class FictionRepository {
         return entityManager.createNamedQuery(Fiction.FIND_ALL, Fiction.class).getResultList();
     }
 
-    public void insert(Fiction fiction) {
-        entityManager.persist(fiction);
+    public void insertFiction(Fiction fiction) {
+        entityManager.merge(fiction);
+    }
+
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(Fiction.class, id));
     }
 }

@@ -28,4 +28,8 @@ public class ArticleService {
         articleRepository.insert(article);
     }
 
+    public void deleteArticle(int id){
+        articleRepository.delete(id);
+    }
+
 }

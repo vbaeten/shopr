@@ -32,4 +32,9 @@ public class ArticleController {
     public void submit() {
         this.articleService.insert(newArticle);
     }
+
+    public void deleteArticle(int id){
+        this.articleService.deleteArticle(id);
+    }
+
 }

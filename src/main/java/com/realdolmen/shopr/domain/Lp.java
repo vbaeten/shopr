@@ -2,6 +2,7 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -25,7 +26,7 @@ public class Lp extends Article implements Serializable {
     public static final String FIND_ALL = "Lp.FindAll";
 
     //TODO unique in combination title
-//    @Max(100)
+    @Size(max = 100)
     @Column(name = "artist")
     private String Artist;
 

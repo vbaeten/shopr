@@ -22,10 +22,8 @@
                     <b:panel title="Add Game Here">
                         <b:row>
                             <b:column span="4">
-                                <h:outputLabel for="title" value="Title:"/>
-                                <b:inputText id="title" value="#{gameController.newGame.title}" required="true"/>
-                                <h:outputLabel for="genre" value="Genre:"/>
-                                <b:selectOneMenu id="genre" value="#{gameController.newGame.gameGenre}" required="true">
+                                <b:inputText id="title" value="#{gameController.newGame.title}" required="true" label="Title:"/>
+                                <b:selectOneMenu id="genre" value="#{gameController.newGame.gameGenre}" required="true" label="Genre:">
                                     <f:selectItem itemLabel="Choose one" itemValue=""/>
                                     <f:selectItem itemLabel="MMORPG" itemValue="MMORPG"/>
                                     <f:selectItem itemLabel="RPG" itemValue="RPG"/>
@@ -33,38 +31,28 @@
                                     <f:selectItem itemLabel="RTS" itemValue="RTS"/>
                                     <f:selectItem itemLabel="Race" itemValue="RACE"/>
                                 </b:selectOneMenu>
-                                <h:outputLabel for="publisher" value="Publisher:"/>
-                                <b:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
+                                <b:inputText id="publisher" value="#{gameController.newGame.publisher}" label="Publisher:"/>
                             </b:column>
                             <b:column span="4">
-                                <h:outputLabel for="price" value="Price:"/>
-                                <b:inputText id="price" value="#{gameController.newGame.price}"/>
-                                <h:outputLabel for="gameSupplier" value="Supplier:"/>
-                                <b:inputText id="gameSupplier" value="#{gameController.newGame.supplier}"/>
-                                <h:outputLabel for="min_age" value="Minimun Age:"/>
-                                <b:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
+                                <b:inputText id="price" value="#{gameController.newGame.price}" required="true" label="Price:"/>
+                                <b:inputText id="gameSupplier" value="#{gameController.newGame.supplier}" label="Supplier:"/>
+                                <b:inputText id="min_age" value="#{gameController.newGame.minAge}" label="Minimum Age"/>
                             </b:column>
                         </b:row>
-                        <b:commandButton value="Submit" action="#{gameController.submit}" ajax="true"
-                                         immediate="true" auto-update="true"/>
+                        <b:commandButton value="Submit" action="#{gameController.submitGame()}"/>
                     </b:panel>
                 </b:accordion>
             </b:form>
 
 
-            <b:form>
+            <b:form id="addLp">
                 <b:accordion>
                     <b:panel title="Add Lp's Here">
-                        <h:outputLabel value="Title:" for="lpTitle"/>
-                        <b:inputText id="lpTitle" value="#{lpController.newLp.title}" required="true"/>
-                        <h:outputLabel value="Supplier:" for="lpSupplier"/>
-                        <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}" required="true"/>
-                        <h:outputLabel value="Price:" for="lpPrice"/>
-                        <b:inputText id="lpPrice" value="#{lpController.newLp.price}" required="true"/>
-                        <h:outputLabel value="Artist:" for="lpArtist"/>
-                        <b:inputText id="lpArtist" value="#{lpController.newLp.artist}" required="true"/>
-                        <h:outputLabel value="Genre:" for="lpGenre"/>
-                        <b:selectOneMenu id="lpGenre" value="#{lpController.newLp.musicGenre}" required="true">
+                        <b:inputText id="lpTitle" value="#{lpController.newLp.title}" required="true" label="Title:"/>
+                        <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}" required="true" label="Supplier:"/>
+                        <b:inputText id="lpPrice" value="#{lpController.newLp.price}" required="true" label="Price:"/>
+                        <b:inputText id="lpArtist" value="#{lpController.newLp.artist}" required="true" label="Artist:"/>
+                        <b:selectOneMenu id="lpGenre" value="#{lpController.newLp.musicGenre}" label="Genre:">
                             <f:selectItem itemLabel="Please select" itemValue=""/>
                             <f:selectItem itemLabel="Classical" itemValue="CLASSICAL"/>
                             <f:selectItem itemLabel="Pop" itemValue="POP"/>
@@ -82,18 +70,12 @@
             <b:form>
                 <b:accordion>
                     <b:panel title="Add Fiction Book Here">
-                        <h:outputLabel value="Title:" for="fictionTitle"/>
-                        <b:inputText id="fictionTitle" value="#{fictionController.newFiction.title}"/>
-                        <h:outputLabel value="Author:" for="fictionAuthor"/>
-                        <b:inputText id="fictionAuthor" value="#{fictionController.newFiction.author}"/>
-                        <h:outputLabel value="Price" for="fictionPrice"/>
-                        <b:inputText id="fictionPrice" value="#{fictionController.newFiction.price}"/>
-                        <h:outputLabel value="Supplier" for="fictionSupplier"/>
-                        <b:inputText id="fictionSupplier" value="#{fictionController.newFiction.supplier}"/>
-                        <h:outputLabel value="Isbn" for="fictionIsbn"/>
-                        <b:inputText id="fictionIsbn" value="#{fictionController.newFiction.isbn}"/>
-                        <h:outputLabel value="Genre" for="fictionGenre"/>
-                        <b:selectOneMenu id="fictionGenre" value="#{fictionController.newFiction.bookGenre}">
+                        <b:inputText id="fictionTitle" value="#{fictionController.newFiction.title}"  required="true" label="Title:"/>
+                        <b:inputText id="fictionAuthor" value="#{fictionController.newFiction.author}" label="Author:"/>
+                        <b:inputText id="fictionPrice" value="#{fictionController.newFiction.price}" required="true" label="Price:"/>
+                        <b:inputText id="fictionSupplier" value="#{fictionController.newFiction.supplier}" label="Supplier:"/>
+                        <b:inputText id="fictionIsbn" value="#{fictionController.newFiction.isbn}" required="true" label="Isbn:"/>
+                        <b:selectOneMenu id="fictionGenre" value="#{fictionController.newFiction.bookGenre}" label="Genre:">
                             <f:selectItem itemLabel="Please select" itemValue=""/>
                             <f:selectItem itemLabel="Thriller" itemValue="THRILLER"/>
                             <f:selectItem itemLabel="Fantasy" itemValue="FANTASY"/>
@@ -101,10 +83,9 @@
                             <f:selectItem itemLabel="Romance" itemValue="ROMANCE"/>
                             <f:selectItem itemLabel="Sci-Fi" itemValue="SCIFI"/>
                         </b:selectOneMenu>
-                        <h:outputLabel value="Synopsis" for="fictionSynopsis"/>
-                        <b:inputText id="fictionSynopsis" value="#{fictionController.newFiction.synopsis}"/>
-                        <b:commandButton value="Submit" action="#{fictionController.submit}" update="fictionDataTable"/>
-
+                        <b:inputText id="fictionSynopsis" value="#{fictionController.newFiction.synopsis}" label="Synopsis"/>
+                        <b:commandButton value="Submit" action="#{fictionController.submitFiction}"
+                                         update="fictionDataTable"/>
                     </b:panel>
                 </b:accordion>
             </b:form>
@@ -112,144 +93,117 @@
             <b:form>
                 <b:accordion>
                     <b:panel title="Add Non-Fiction Book Here">
-                        <h:outputLabel value="Title:" for="nonFictionTitle"/>
-                        <b:inputText id="nonFictionTitle" value="#{nonFictionController.newNonFiction.title}"/>
-                        <h:outputLabel value="Author:" for="nonFictionAuthor"/>
-                        <b:inputText id="nonFictionAuthor" value="#{nonFictionController.newNonFiction.author}"/>
-                        <h:outputLabel value="Price" for="nonFictionPrice"/>
-                        <b:inputText id="nonFictionPrice" value="#{nonFictionController.newNonFiction.price}"/>
-                        <h:outputLabel value="Supplier" for="nonFictionSupplier"/>
-                        <b:inputText id="nonFictionSupplier" value="#{nonFictionController.newNonFiction.supplier}"/>
-                        <h:outputLabel value="Isbn" for="nonFictionIsbn"/>
-                        <b:inputText id="nonFictionIsbn" value="#{nonFictionController.newNonFiction.isbn}"/>
-                        <h:outputLabel value="Subject:" for="nonFictionGenre"/>
-                        <b:selectOneMenu id="nonFictionGenre" value="#{nonFictionController.newNonFiction.subject}">
+                        <b:inputText id="nonFictionTitle" value="#{nonFictionController.newNonFiction.title}"  required="true" label="Title:"/>
+                        <b:inputText id="nonFictionAuthor" value="#{nonFictionController.newNonFiction.author}" label="Author:"/>
+                        <b:inputText id="nonFictionPrice" value="#{nonFictionController.newNonFiction.price}" required="true" label="Price"/>
+                        <b:inputText id="nonFictionSupplier" value="#{nonFictionController.newNonFiction.supplier}" label="Supplier:"/>
+                        <b:inputText id="nonFictionIsbn" value="#{nonFictionController.newNonFiction.isbn}" required="true" label="Isbn:"/>
+                        <b:selectOneMenu id="nonFictionGenre" value="#{nonFictionController.newNonFiction.subject}" label="Subject:">
                             <f:selectItem itemLabel="Please Select" itemValue=""/>
                             <f:selectItem itemLabel="History" itemValue="HISTORY"/>
                             <f:selectItem itemLabel="Cooking" itemValue="COOKING"/>
                             <f:selectItem itemLabel="Science" itemValue="SCIENCE"/>
                             <f:selectItem itemLabel="Sport" itemValue="SPORT"/>
                         </b:selectOneMenu>
-                        <b:commandButton value="Submit" action="#{nonFictionController.submit}" update="nonFictionDataTable"/>
+                        <b:commandButton value="Submit" action="#{nonFictionController.submitNonFiction}"
+                                         update="nonFictionDataTable"/>
                     </b:panel>
                 </b:accordion>
             </b:form>
 
 
             <p>Check lists of different articles here.</p>
-            <b:accordion>
-                <b:panel title="List of Games">
-                    <b:dataTable id="gameDataTable" value="#{gameController.games}" var="game">
-                        <b:dataTableColumn value="#{game.id}"/>
-                        <b:dataTableColumn value="#{game.title}"/>
-                        <b:dataTableColumn value="#{game.gameGenre}"/>
-                        <b:dataTableColumn value="#{game.publisher}"/>
-                        <b:dataTableColumn value="#{game.price}"/>
-                        <b:dataTableColumn value="#{game.supplier}"/>
-                        <b:dataTableColumn value="#{game.minAge}"/>
-                    </b:dataTable>
-                </b:panel>
-            </b:accordion>
+            <b:form id="gameDataTable">
+                <b:accordion>
+                    <b:panel title="List of Games">
+                        <b:dataTable value="#{gameController.games}" var="game">
+                            <b:dataTableColumn value="#{game.id}"/>
+                            <b:dataTableColumn value="#{game.title}"/>
+                            <b:dataTableColumn value="#{game.gameGenre}"/>
+                            <b:dataTableColumn value="#{game.publisher}"/>
+                            <b:dataTableColumn value="#{game.price}"/>
+                            <b:dataTableColumn value="#{game.supplier}"/>
+                            <b:dataTableColumn value="#{game.minAge}"/>
+                            <b:dataTableColumn>
+                                <b:commandButton value="Delete" action="#{gameController.deleteGame(game.id)}">
+                                    <f:ajax excecute="@this" render="@form"/>
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+                </b:accordion>
+            </b:form>
 
+            <b:form id="lpDataTable">
+                <b:accordion>
+                    <b:panel title="List of LP's">
+                        <b:dataTable value="#{lpController.lps}" var="lp">
+                            <b:dataTableColumn value="#{lp.id}"/>
+                            <b:dataTableColumn value="#{lp.title}"/>
+                            <b:dataTableColumn value="#{lp.artist}"/>
+                            <b:dataTableColumn value="#{lp.supplier}"/>
+                            <b:dataTableColumn value="#{lp.musicGenre}"/>
+                            <b:dataTableColumn value="#{lp.price}"/>
+                            <b:dataTableColumn>
+                                <b:commandButton value="Delete" action="#{lpController.deleteLp(lp.id)}">
+                                    <f:ajax excecute="@this" render="@form"/>
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+                </b:accordion>
+            </b:form>
 
-            <b:accordion>
-                <b:panel title="List of LP's">
-                    <b:dataTable id="lpDataTable" value="#{lpController.lps}" var="lp">
-                        <b:dataTableColumn value="#{lp.id}"/>
-                        <b:dataTableColumn value="#{lp.title}"/>
-                        <b:dataTableColumn value="#{lp.artist}"/>
-                        <b:dataTableColumn value="#{lp.supplier}"/>
-                        <b:dataTableColumn value="#{lp.musicGenre}"/>
-                        <b:dataTableColumn value="#{lp.price}"/>
-                    </b:dataTable>
-                </b:panel>
-            </b:accordion>
+            <b:form id="fictionDataTable">
+                <b:accordion>
+                    <b:panel title="List of Fiction Books">
+                        <b:dataTable  value="#{fictionController.allFiction}" var="fiction">
+                            <b:dataTableColumn value="#{fiction.id}"/>
+                            <b:dataTableColumn value="#{fiction.title}"/>
+                            <b:dataTableColumn value="#{fiction.author}"/>
+                            <b:dataTableColumn value="#{fiction.pages}"/>
+                            <b:dataTableColumn value="#{fiction.synopsis}"/>
+                            <b:dataTableColumn value="#{fiction.isbn}"/>
+                            <b:dataTableColumn value="#{fiction.bookGenre}"/>
+                            <b:dataTableColumn>
+                                <b:commandButton value="Delete" action="#{fictionController.deleteFiction(fiction.id)}">
+                                    <f:ajax excecute="@this" render="@form"/>
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+                </b:accordion>
+            </b:form>
 
-
-            <b:accordion>
-                <b:panel title="List of Fiction Books">
-                    <b:dataTable id="fictionDataTable" value="#{fictionController.allFiction}" var="fiction">
-                        <b:dataTableColumn value="#{fiction.id}"/>
-                        <b:dataTableColumn value="#{fiction.title}"/>
-                        <b:dataTableColumn value="#{fiction.author}"/>
-                        <b:dataTableColumn value="#{fiction.pages}"/>
-                        <b:dataTableColumn value="#{fiction.synopsis}"/>
-                        <b:dataTableColumn value="#{fiction.isbn}"/>
-                        <b:dataTableColumn value="#{fiction.bookGenre}"/>
-                    </b:dataTable>
-                </b:panel>
-            </b:accordion>
-
-
-            <b:accordion>
-                <b:panel title="List of Non-Fiction Books">
-                    <b:dataTable id="nonFictionDataTable" value="#{nonFictionController.allNonFiction}"
-                                 var="nonfiction">
-                        <b:dataTableColumn value="#{nonfiction.id}"/>
-                        <b:dataTableColumn value="#{nonfiction.title}"/>
-                        <b:dataTableColumn value="#{nonfiction.author}"/>
-                        <b:dataTableColumn value="#{nonfiction.pages}"/>
-                        <b:dataTableColumn value="#{nonfiction.subject}"/>
-                        <b:dataTableColumn value="#{nonfiction.isbn}"/>
-                    </b:dataTable>
-                </b:panel>
-            </b:accordion>
-
+            <b:form id="nonFictionDataTable">
+                <b:accordion>
+                    <b:panel title="List of Non-Fiction Books">
+                        <b:dataTable  value="#{nonFictionController.allNonFiction}"
+                                     var="nonfiction">
+                            <b:dataTableColumn value="#{nonfiction.id}"/>
+                            <b:dataTableColumn value="#{nonfiction.title}"/>
+                            <b:dataTableColumn value="#{nonfiction.author}"/>
+                            <b:dataTableColumn value="#{nonfiction.pages}"/>
+                            <b:dataTableColumn value="#{nonfiction.subject}"/>
+                            <b:dataTableColumn value="#{nonfiction.isbn}"/>
+                            <b:dataTableColumn>
+                                <b:commandButton value="Delete"
+                                                 action="#{nonFictionController.deleteNonFiction(nonfiction.id)}">
+                                    <f:ajax excecute="@this" render="@form"/>
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+                </b:accordion>
+            </b:form>
         </ui:define>
+
         <ui:define name="js">
             <script type="text/javascript">
                 setNavMenuItemActive("addproducts");
             </script>
         </ui:define>
+
     </ui:composition>
-
-    <h2>List of games</h2>
-    <p:dataTable var="game" value="#{gameController.games}">
-        <p:column headerText="Id">
-            <h:outputText value="#{game.id}"/>
-        </p:column>
-        <p:column headerText="Title">
-            <h:outputText value="#{game.title}"/>
-        </p:column>
-        <p:column headerText="Genre">
-            <h:outputText value="#{game.gameGenre}"/>
-        </p:column>
-        <p:column headerText="Price">
-            <h:outputText value="#{game.price}"/>
-        </p:column>
-        <p:column headerText="Mininum Age">
-            <h:outputText value="#{game.minAge}"/>
-        </p:column>
-    </p:dataTable>
-
-    <h2>List per type, ordered by title, author and price</h2>
-
-    <h2>List of users</h2>
-    <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
-        <p:column headerText="Id">
-            <h:outputText value="#{user.id}"/>
-        </p:column>
-
-        <p:column headerText="Name">
-            <h:outputText value="#{user.name}"/>
-        </p:column>
-
-        <p:column headerText="First name">
-            <h:outputText value="#{user.firstName}"/>
-        </p:column>
-    </p:dataTable>
-    <h2>Add a new user</h2>
-    <h:form id="addUserForm">
-        <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-            <h:panelGrid columns="4" cellpadding="5">
-                <h:outputLabel for="userName" value="Name:"/>
-                <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
-                <h:outputLabel for="userFirstName" value="First name:"/>
-                <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
-                </p:inputText>
-                <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"/>
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
 </h:body>
 </html>

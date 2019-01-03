@@ -7,13 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @ManagedBean
 @ViewScoped
 public class GameController {
-    private Logger logger = Logger.getLogger(GameController.class.getName());
 
     private Game newGame = new Game();
 
@@ -32,8 +30,12 @@ public class GameController {
         return this.gameService.findAllGames();
     }
 
-    public void submit() {
-        logger.log(Level.INFO, "submit !!!");
+    public void submitGame() {
         this.gameService.insertGame(newGame);
     }
+
+    public void deleteGame(int id){
+        this.gameService.deleteGame(id);
+    }
+
 }

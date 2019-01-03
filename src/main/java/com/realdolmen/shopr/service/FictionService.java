@@ -20,7 +20,11 @@ public class FictionService {
         return fictionRepository.findAll();
     }
 
-    public void insert(Fiction fiction) {
-        fictionRepository.insert(fiction);
+    public void insertFiction(Fiction fiction) {
+        fictionRepository.insertFiction(fiction);
+    }
+
+    public void deleteFiction(int id){
+        fictionRepository.delete(id);
     }
 }

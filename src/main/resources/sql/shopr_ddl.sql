@@ -5,18 +5,18 @@ CREATE TABLE user (
 );
 
 CREATE TABLE article (
-  id INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT     NOT NULL     AUTO_INCREMENT PRIMARY KEY,
   title      VARCHAR(255) NOT NULL,
-  price      DOUBLE,
+  price      DOUBLE       NOT NULL,
   supplier   VARCHAR(50)  NOT NULL
 );
 
 CREATE TABLE book
 (
-  id INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  author VARCHAR(100) NOT NULL,
-  isbn   varchar(255) NOT NULL,
-  pages  INT
+  id      INT           NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  author  VARCHAR(100),
+  isbn    VARCHAR(255)  NOT NULL,
+  pages   INT
 );
 
 CREATE TABLE lp
@@ -36,7 +36,7 @@ CREATE TABLE game
 CREATE TABLE non_fiction
 (
   id INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  genre varchar(50)
+  subject          varchar(50)
 );
 
 CREATE TABLE fiction
@@ -44,6 +44,10 @@ CREATE TABLE fiction
   id       INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   genre    varchar(50),
   synopsis varchar(255)
+
+);
+
+CREATE TABLE rating (
 
 );
 

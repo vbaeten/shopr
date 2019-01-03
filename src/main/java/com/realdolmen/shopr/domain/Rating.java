@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.websocket.OnClose;
 
 @Entity
+@Table(name="rating")
 public class Rating {
 
     @Id
@@ -21,7 +22,7 @@ public class Rating {
     private User user;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="article_fk")
     private Article article;
 
     public int getId() {

@@ -1,7 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -19,7 +19,7 @@ public class Fiction extends Book implements Serializable {
     @Column(name = "genre")
     private BookGenre bookGenre;
 
-    @Max(255)
+    @Size(max = 255)
     @Column(name = "synopsis")
     private String synopsis;
 

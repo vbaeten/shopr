@@ -12,7 +12,7 @@ import java.util.List;
 @ViewScoped
 public class NonFictionController {
 
-    private NonFiction newNonFiction;
+    private NonFiction newNonFiction = new NonFiction();
 
     @Inject
     private NonFictionService nonFictionService;
@@ -29,7 +29,12 @@ public class NonFictionController {
         return this.nonFictionService.findAllNonFiction();
     }
 
-    public void submit() {
-        this.nonFictionService.insert(newNonFiction);
+    public void submitNonFiction() {
+        this.nonFictionService.insertNonFiction(newNonFiction);
     }
+
+    public void deleteNonFiction(int id){
+        this.nonFictionService.deleteNonFiction(id);
+    }
+
 }

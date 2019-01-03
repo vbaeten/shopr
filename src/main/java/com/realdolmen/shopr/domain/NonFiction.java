@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "non_fiction")
@@ -10,11 +11,11 @@ import javax.persistence.*;
                 query = "SELECT a FROM NonFiction a"
         )
 )
-public class NonFiction extends Book {
+public class NonFiction extends Book implements Serializable {
 
     public static final String FIND_ALL = "NonFiction.findAll";
 
-    @Column(name = "genre")
+    @Column(name = "subject")
     private Subject subject;
 
     public Subject getSubject() {

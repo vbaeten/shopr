@@ -32,4 +32,9 @@ public class BookController {
     public void submit() {
         this.bookService.insert(newBook);
     }
+
+    public void deleteBook(int id){
+        this.bookService.deleteBook(id);
+    }
+
 }

@@ -2,7 +2,6 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.service.FictionService;
-import com.realdolmen.shopr.service.NonFictionService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -30,7 +29,12 @@ public class FictionController {
         return this.fictionService.findAllFiction();
     }
 
-    public void submit() {
-        this.fictionService.insert(newFiction);
+    public void submitFiction() {
+        this.fictionService.insertFiction(newFiction);
     }
+
+    public void deleteFiction(int id){
+        this.fictionService.deleteFiction(id);
+    }
+
 }

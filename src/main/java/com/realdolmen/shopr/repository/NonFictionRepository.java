@@ -19,7 +19,11 @@ public class NonFictionRepository {
         return entityManager.createNamedQuery(NonFiction.FIND_ALL, NonFiction.class).getResultList();
     }
 
-    public void insert(NonFiction nonFiction) {
-        entityManager.persist(nonFiction);
+    public void insertNonFiction(NonFiction nonFiction) {
+        entityManager.merge(nonFiction);
+    }
+
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(NonFiction.class, id));
     }
 }

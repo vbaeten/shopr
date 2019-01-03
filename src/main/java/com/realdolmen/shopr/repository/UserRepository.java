@@ -26,8 +26,8 @@ public class UserRepository {
         entityManager.persist(user);
     }
 
-    public void delete(User user) {
-        entityManager.remove(user);
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(User.class, id));
     }
 
 }

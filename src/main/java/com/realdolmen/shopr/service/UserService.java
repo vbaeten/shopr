@@ -33,4 +33,8 @@ public class UserService {
         userRepository.insert(user);
     }
 
+    public void deleteUser(int id){
+        userRepository.delete(id);
+    }
+
 }

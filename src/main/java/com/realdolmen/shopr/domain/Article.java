@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -33,18 +34,23 @@ public class Article implements Serializable {
 
 
     @Column(name = "title")
+    @Size(max = 100)
+    @NotNull
     private String title;
 
     @NotNull
-//    @Digits(integer=6, fraction=2)
+    @Digits(integer=6, fraction=2)
     @Column (name = "price")
     private double price;
 
-
+    @NotNull
+    @Size(max = 100)
     @Column(name = "supplier")
     private String supplier;
 
     @OneToMany
+    @JoinColumn(name="article_ratings")
+    @Transient
     private List<Rating> ratings;
 
     public int getId() {

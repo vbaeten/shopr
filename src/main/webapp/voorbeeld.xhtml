@@ -15,42 +15,38 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <p>Testing Stuff</p>
-            <b:form id="addLp" >
-                <b:panelGrid columns="6">
-                    <h:outputLabel value = "Title:" for = "lpTitle"/>
-                    <b:inputText id="lpTitle" value="#{lpController.newLp.title}" required="true"/>
-                    <h:outputLabel value = "Supplier:" for = "lpSupplier"/>
-                    <b:inputText id="lpSupplier" value="#{lpController.newLp.supplier}" required="true"/>
-                    <h:outputLabel value = "Price:" for = "lpPrice"/>
-                    <b:inputText id="lpPrice" value="#{lpController.newLp.price}" required="true"/>
-                    <h:outputLabel value = "Artist:" for = "lpArtist"/>
-                    <b:inputText id="lpArtist" value="#{lpController.newLp.artist}" required="true"/>
-                    <h:outputLabel value = "Genre:" for = "lpGenre"/>
-                    <b:selectOneMenu id="lpGenre" value="#{lpController.newLp.musicGenre}" required="true">
-                        <f:selectItem itemLabel="" itemValue=""/>
-                        <f:selectItem itemLabel="Please select" itemValue=""/>
-                        <f:selectItem itemLabel="Classical" itemValue="CLASSICAL"/>
-                        <f:selectItem itemLabel="Pop" itemValue="POP"/>
-                        <f:selectItem itemLabel="Rock" itemValue="ROCK"/>
-                        <f:selectItem itemLabel="Dance" itemValue="DANCE"/>
-                        <f:selectItem itemLabel="R&amp;B" itemValue="RNB"/>
-                        <f:selectItem itemLabel="Hiphop" itemValue="HIPHOP"/>
-                    </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{lpController.submitLp}" update="lpTable" />
-                </b:panelGrid>
+
+            <b:form id="addProduct">
+                    <b:panel title="Add Game Here">
+                        <b:row>
+                            <b:column span="4">
+                                <h:outputLabel for="title" value="Title:"/>
+                                <b:inputText id="title" value="#{gameController.newGame.title}" required="true"/>
+                                <h:outputLabel for="genre" value="Genre:"/>
+                                <b:selectOneMenu id="genre" value="#{gameController.newGame.gameGenre}" required="true">
+                                    <f:selectItem itemLabel="Choose one" itemValue=""/>
+                                    <f:selectItem itemLabel="MMORPG" itemValue="MMORPG"/>
+                                    <f:selectItem itemLabel="RPG" itemValue="RPG"/>
+                                    <f:selectItem itemLabel="FPS" itemValue="FPS"/>
+                                    <f:selectItem itemLabel="RTS" itemValue="RTS"/>
+                                    <f:selectItem itemLabel="Race" itemValue="RACE"/>
+                                </b:selectOneMenu>
+                                <h:outputLabel for="publisher" value="Publisher:"/>
+                                <b:inputText id="publisher" value="#{gameController.newGame.publisher}"/>
+                            </b:column>
+                            <b:column span="4">
+                                <h:outputLabel for="price" value="Price:"/>
+                                <b:inputText id="price" value="#{gameController.newGame.price}"/>
+                                <h:outputLabel for="gameSupplier" value="Supplier:"/>
+                                <b:inputText id="gameSupplier" value="#{gameController.newGame.supplier}"/>
+                                <h:outputLabel for="min_age" value="Minimun Age:"/>
+                                <b:inputText id="min_age" value="#{gameController.newGame.minAge}"/>
+                            </b:column>
+                        </b:row>
+                        <b:commandButton value="Submit" action="#{gameController.submitGame()}"/>
+                    </b:panel>
             </b:form>
 
-            <p>List of Lp's</p>
-            <h:form id="lpTable">
-                <b:dataTable value="#{lpController.lps}" var = "lp">
-                    <b:dataTableColumn value="#{lp.id}"/>
-                    <b:dataTableColumn value="#{lp.title}"/>
-                    <b:dataTableColumn value="#{lp.artist}"/>
-                    <b:dataTableColumn value="#{lp.supplier}"/>
-                    <b:dataTableColumn value="#{lp.musicGenre}"/>
-                    <b:dataTableColumn value="#{lp.price}"/>
-                </b:dataTable>
-            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>

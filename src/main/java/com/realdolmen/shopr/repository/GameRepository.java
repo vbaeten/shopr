@@ -20,7 +20,10 @@ public class GameRepository {
     }
 
     public void insertGame(Game game) {
-        entityManager.persist(game);
+        entityManager.merge(game);
     }
 
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(Game.class, id));
+    }
 }

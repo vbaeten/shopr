@@ -18,7 +18,7 @@ public class Game extends Article implements Serializable {
     public static final String FIND_ALL = "Game.findAll";
 
     //TODO unique in combination title
-    @Max(100)
+//    @Max(100)
     @Column(name = "publisher")
     private String publisher;
 

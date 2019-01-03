@@ -21,4 +21,8 @@ public class BookRepository {
     public void insert(Book book) {
         entityManager.persist(book);
     }
+
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(Book.class, id));
+    }
 }

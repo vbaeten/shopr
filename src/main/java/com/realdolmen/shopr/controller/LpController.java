@@ -33,4 +33,8 @@ public class LpController {
         this.lpService.insertLp(newLp);
     }
 
+    public void deleteLp(int id){
+        this.lpService.deleteLp(id);
+    }
+
 }

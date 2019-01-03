@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -19,11 +20,11 @@ public class Book extends Article implements Serializable {
 
     public static final String FIND_ALL = "Book.findAll";
 
-    @Max(100)
+    @Size(max = 100)
     @Column(name = "author")
     private String Author;
 
-    //TODO 978-90-1234-567-8, validate format, uniek
+    //TODO unique
     @Column(name = "isbn")
     @NotNull
     @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d")

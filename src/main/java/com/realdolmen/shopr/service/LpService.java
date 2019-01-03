@@ -23,4 +23,8 @@ public class LpService {
     public void insertLp(Lp lp) {
         lpRepository.insertLp(lp);
     }
+
+    public void deleteLp(int id){
+        lpRepository.delete(id);
+    }
 }

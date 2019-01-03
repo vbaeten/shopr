@@ -33,9 +33,9 @@
                 <b:panel header="Add User">
                     <b:panelGrid columns ="6">
                         <h:outputLabel value="Name:" for="userName"/>
-                        <b:inputText id="userName" value="#{userController.newUser.name}"/>
+                        <b:inputText id="userName" value="#{userController.newUser.name}" required="true"/>
                         <h:outputLabel value="First Name:" for="userFirstName"/>
-                        <b:inputText id="userFirstName" value="#{userController.newUser.firstName}"/>
+                        <b:inputText id="userFirstName" value="#{userController.newUser.firstName}" required="true"/>
                         <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginUser" />
                     </b:panelGrid>
                 </b:panel>
@@ -47,6 +47,11 @@
                     <b:dataTableColumn value="#{user.id}"/>
                     <b:dataTableColumn value="#{user.name}"/>
                     <b:dataTableColumn value="#{user.firstName}"/>
+                    <b:dataTableColumn>
+                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}">
+                            <f:ajax execute="@this" render="@form" />
+                        </b:commandButton>
+                    </b:dataTableColumn>
                 </b:dataTable>
             </h:form>
         </ui:define>
