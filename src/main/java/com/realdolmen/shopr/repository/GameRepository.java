@@ -20,8 +20,11 @@ public class GameRepository {
         this.entityManager.persist(newGame);
     }
 
-    public Game findById(Long id) {
+    public Game findById(int id) {
         return entityManager.find(Game.class, id);
     }
 
+    public void delete(Game toDeleteG) {
+        this.entityManager.remove(entityManager.contains(toDeleteG)? toDeleteG: entityManager.merge(toDeleteG));
+    }
 }

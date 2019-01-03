@@ -37,7 +37,9 @@
                         <b:dataTableColumn value="#{game.minAge}"/>
                         <b:dataTableColumn value="#{game.genre.name}"/>
                         <b:dataTableColumn>
-                            <b:button value="Details" href="/shopr/detail-pages/games-detail.xhtml"/>
+                        <h:link value="details" outcome="/detail-pages/games-detail.xhtml">
+                            <f:param name="id" value="#{game.id}"/>
+                        </h:link>
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>

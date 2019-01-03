@@ -24,10 +24,14 @@ public class GameService {
     }
 
 
-    public Game findById(Long id) {
+    public Game findById(int id) {
 
        return this.gameRepository.findById(id);
 
 
+    }
+    @Transactional
+    public void delete(Game toDeleteG) {
+        this.gameRepository.delete(toDeleteG);
     }
 }

@@ -28,7 +28,7 @@ CREATE TABLE games(
   id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   publisher VARCHAR(255),
   genre VARCHAR(255),
-  minAge INT
+  minAge SMALLINT
 
 
 );

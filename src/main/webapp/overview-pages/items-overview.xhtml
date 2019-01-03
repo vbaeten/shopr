@@ -39,9 +39,12 @@
                         <b:dataTableColumn value="#{item.price}"/>
                         <b:dataTableColumn value="#{item.type}"/>
                         <b:dataTableColumn>
-                            <h:link value="details" outcome="/detail-pages/games-detail.xhtml">
-                                <f:param name="id" value="#{item.id}"/>
-                            </h:link>
+                            <!--<h:link value="details" outcome="/detail-pages/games-detail.xhtml">-->
+                                <!--<f:param name="id" value="#{item.id}"/>-->
+                            <!--</h:link>-->
+                            <b:commandButton value="Details" action="#{itemController.redirect(item.type)}" immediate="true"/>
+
+
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>

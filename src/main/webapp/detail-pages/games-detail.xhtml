@@ -27,10 +27,11 @@
             <h:outputLabel value="#{gameDetailController.game.genre}"/><br/>
             <h:outputLabel value="#{gameDetailController.game.minAge}"/><br/>
 
-            <b:button value="edit"/>
-            <b:button value="order"/>
-            <b:button value="delete"/>
-
+            <b:form action="">
+            <b:commandButton value="edit"/>
+            <b:commandButton value="order"/>
+            <b:commandButton value="delete" action="#{gameDetailController.delete}"/>
+            </b:form>
         </div>
 
 

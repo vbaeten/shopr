@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class GameDetailController {
 
 
-    private Long id;
+    private int id;
     private Game game;
 
 
@@ -23,25 +23,32 @@ public class GameDetailController {
 
 
     public void init(){
-        if (id==null){
+        if (id==0){
             game = new Game();
         }else
         getGameById(id);
     }
 
 
-    private void getGameById(Long id){
+    private void getGameById(int id){
         game = gameService.findById(id);
     }
 
+    public void delete(){
+        game = this.gameService.findById(id);
+        this.gameService.delete(game);
+    }
 
 
 
-    public Long getId() {
+
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int   id) {
         this.id = id;
     }
 
