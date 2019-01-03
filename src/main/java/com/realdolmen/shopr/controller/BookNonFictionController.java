@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Book;
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookNonFiction;
 import com.realdolmen.shopr.service.BookFictionService;
@@ -16,6 +17,10 @@ public class BookNonFictionController {
     BookNonFictionService bookNonFictionService;
 
     public BookNonFiction getBookNonFiction() { return  this.bookNonFiction;}
+
+    public BookNonFiction getBookNonFictionbyId(Long id) {
+        return bookNonFictionService.findBookNonFictionById(id);
+    }
 
     public void setBookNonFiction(BookNonFiction bookNonFiction){
         this.bookNonFiction = bookNonFiction;

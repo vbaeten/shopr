@@ -22,7 +22,7 @@ public class BookController {
     public void setBook(Book book){
         this.book = book;
     }
-
+    public String getBookTypeById(Long id) {return this.bookService.findBookById(id).getBooktype();}
     public List<Book> getBooks(){
         return this.bookService.findAllBooks();
     }
