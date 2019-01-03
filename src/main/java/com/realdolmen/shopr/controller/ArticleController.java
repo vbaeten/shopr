@@ -6,12 +6,13 @@ import com.realdolmen.shopr.service.*;
 import org.hamcrest.core.IsInstanceOf;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ArticleController {
     @Inject
     LPController lpController;
@@ -23,9 +24,11 @@ public class ArticleController {
     BookFictionController bookFictionController;
     @Inject
     BookNonFictionController bookNonFictionController;
-    Article article = new Article();
-    LP lp = new LP();
-    Book book = new Book();
+    Article article;
+    LP lp;
+    Book book ;
+    BookFiction bookFiction;
+    BookNonFiction bookNonFiction;
     Game game = new Game();
     @Inject
     private ArticleService articleService;
@@ -47,15 +50,10 @@ public class ArticleController {
             return "lpdetail";
         } else if (Game.class.isInstance((article))) {
             return "gamedetail";
-        } else if (Book.class.isInstance(article)) {
-            book = (Book) article;
-            if (book.getBooktype().equals("nonfiction")) {
-                book = bookNonFictionService.findBookNonFictionById(article.getId());
-                return "booknonfictiondetail";
-            } else {
-                book = bookFictionService.findBookFictionById(article.getId());
-                return "bookfictiondetail";
-            }
+        } else if (BookFiction.class.isInstance(article)) {
+            return "bookfictiondetail";
+        } else if (BookNonFiction.class.isInstance(article)) {
+            return "booknonfictiondetail";
         } else {
             return "ERROR";
         }
@@ -77,10 +75,26 @@ public class ArticleController {
         this.book = book;
     }
 
+    public BookFiction getBookFiction() {
+        return bookFiction;
+    }
+
+    public void setBookFiction(BookFiction bookFiction) {
+        this.bookFiction = bookFiction;
+    }
+
+    public BookNonFiction getBookNonFiction() {
+        return bookNonFiction;
+    }
+
+    public void setBookNonFiction(BookNonFiction bookNonFiction) {
+        this.bookNonFiction = bookNonFiction;
+    }
+
     public String creator(Article article) {
         if (article.getType().equals("lp")) {
             return lpController.getLPById(article.getId()).getArtist();
-        } else if (article.getType().equals("book")) {
+        } else if (article.getType().equals("nonfiction") || article.getType().equals("fiction")) {
             return bookController.getBookbyId(article.getId()).getAuthor();
         } else {
             return gameController.getGamebyId(article.getId()).getPublisher();

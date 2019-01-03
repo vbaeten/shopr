@@ -9,17 +9,14 @@
 <h:body>
     <p>book fiction detail</p>
     <h:form>
-        <b:dataTable value="#{articleController.book}"
+        <b:dataTable value="#{articleController.bookFiction}"
                      var="bookfiction" caption="This is a the detail page for a book of the type fiction.">
-            <b:dataTableColumn value="#{car.brand}" />>
-
             <b:dataTableColumn value="#{bookfiction.type}" label="type" />
             <b:dataTableColumn value="#{bookfiction.title}" label="title" />
             <b:dataTableColumn value="#{bookfiction.price}" label="price"/>
             <b:dataTableColumn value="#{bookfiction.author}"  label="author"/>
             <b:dataTableColumn value="#{bookfiction.isbn}"  label="isbn"/>
             <b:dataTableColumn value="#{bookfiction.numberOfPages}"  label="number of pages"/>
-            <b:dataTableColumn value="#{bookfiction.booktype}"  label="booktype"/>
             <b:dataTableColumn value="#{bookfiction.bookGenre}"  label="bookgenre"/>
             <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
             <b:dataTableColumn value="#{bookfiction.id}" label="productcode"/>
@@ -29,10 +26,6 @@
                 <b:commandButton value="Edit"
                                  icon="edit"
                                  look="primary"/>
-                                 <!--ajax="true"-->
-                                 <!--update="@(#editModal)"-->
-                                 <!--onclick="ajax:locationBean.setCurrentLocation(location);"-->
-                                 <!--oncomplete="$('#edition').modal('show')"/>-->
             </b:dataTableColumn>
             <b:dataTableColumn label="Delete"
                                orderable="false"
@@ -40,10 +33,6 @@
                 <b:commandButton value="Delete"
                                  icon="delete"
                                  look="danger"/>
-                                 <!--ajax="true"-->
-                                 <!--update="@(#deleteModal)"-->
-                                 <!--onclick="ajax:bookf"-->
-                <!--oncomplete="$('#suppression').modal('show')"/>-->
             </b:dataTableColumn>
         </b:dataTable>
     </h:form>

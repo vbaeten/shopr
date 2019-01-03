@@ -12,7 +12,8 @@ public class ArticleService {
     private ArticleRepository articleRepository;
 
     public List<Article> findAllArticles() {
-        return articleRepository.findAll();
+        List<Article> articles = articleRepository.findAll();
+        return articles;
     }
 
     public void updateTitle(Long id, String newTitle) {

@@ -7,7 +7,9 @@ import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.service.BookFictionService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class BookFictionController {
     BookFiction bookFiction = new BookFiction();
 
@@ -41,5 +43,7 @@ public class BookFictionController {
         return bookFictionService.findBookFictionById(id);
     }
 
-    public void saveBookFiction() {this.bookFictionService.insert(bookFiction);}
+    public void saveBookFiction() {
+        this.bookFictionService.insert(bookFiction);
+    }
 }

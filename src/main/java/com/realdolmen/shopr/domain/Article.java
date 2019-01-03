@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
-public class Article {
+public abstract class Article {
     @Id
     @GeneratedValue
     private Long id;
