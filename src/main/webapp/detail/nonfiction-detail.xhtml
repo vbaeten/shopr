@@ -11,6 +11,26 @@
 <h:body>
     <ui:composition template="../templates/common.xhtml">
         <ui:define name="content">
+            <f:metadata>
+                <f:viewParam name="id" value="#{nonFictionDetailController.id}"/>
+                <f:event listener="#{nonFictionDetailController.init}" type="preRenderView"/>
+            </f:metadata>
+
+            <p:panel header="Details" style="margin-bottom: 10px;">
+                <h:outputText value="#{nonFictionDetailController.nonFiction.title}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.author}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.type}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.nonFictionSubject.name}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.isbn}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.pages}"/><br/>
+                <h:outputText value="#{nonFictionDetailController.nonFiction.price}"/><br/>
+                <b:form>
+                    <b:commandButton value="Delete" action="#{nonFictionDetailController.delete}"/><br/>
+                    <h:link value="Edit" outcome="/cu/cu-nonfiction.xhtml" includeViewParams="true">
+                        <f:param id="id" value="#{nonFictionDetailController.nonFiction.id}"/>
+                    </h:link>
+                </b:form>
+            </p:panel>
         </ui:define>
 
         <ui:define name="footer">

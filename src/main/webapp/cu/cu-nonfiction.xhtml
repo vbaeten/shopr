@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<h:body>
+    <ui:composition template="../templates/common.xhtml">
+        <ui:define name="content">
+            <f:metadata>
+                <f:viewParam name="id" value="#{cuNonFictionController.id}"/>
+                <f:event listener="#{cuNonFictionController.init}" type="preRenderView"/>
+            </f:metadata>
+
+            <p:panel header="Add a non-fiction book" style="margin-bottom: 10px;">
+                <b:form id="addNonFictionForm">
+                    <b:inputText placeholder="Title" value="#{cuNonFictionController.nonFiction.title}"/>
+                    <b:inputText placeholder="Author" value="#{cuNonFictionController.nonFiction.author}"/>
+
+                    <!--insert-->
+                    <b:selectOneMenu rendered="#{cuNonFictionController.nonFiction.id eq null}" value="#{cuNonFictionController.nonFiction.nonFictionSubject}" required="true">
+                        <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems var="nonFictionSubject" value="#{cuNonFictionController.nonFictionSubjects}" itemValue="#{nonFictionSubject}"
+                                       itemLabel="#{nonFictionSubject.name}"/>
+                    </b:selectOneMenu>
+
+                    <!--update-->
+                    <b:selectOneMenu rendered="#{cuNonFictionController.nonFiction.id ne null}" value="#{cuNonFictionController.nonFiction.nonFictionSubject}" required="true">
+                        <f:selectItems var="nonFictionSubject" value="#{cuNonFictionController.nonFictionSubjects}" itemValue="#{nonFictionSubject}"
+                                       itemLabel="#{nonFictionSubject.name}" />
+                    </b:selectOneMenu>
+                    <b:inputText placeholder="ISBN" value="#{cuNonFictionController.nonFiction.isbn}"/>
+                    <b:inputText placeholder="Pages" value="#{cuNonFictionController.nonFiction.pages}"/>
+                    <b:inputText placeholder="Price" value="#{cuNonFictionController.nonFiction.price}"/>
+                    <b:commandButton value="Submit" action="#{cuNonFictionController.submit}"/>
+                </b:form>
+            </p:panel>
+        </ui:define>
+
+        <ui:define name="footer">
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
