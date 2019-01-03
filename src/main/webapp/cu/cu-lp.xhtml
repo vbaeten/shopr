@@ -18,22 +18,22 @@
 
             <p:panel header="Add an LP" style="margin-bottom: 10px;">
                 <b:form id="addLpForm">
-                    <b:inputText placeholder="Title" value="#{cuLpController.newLp.title}"/>
-                    <b:inputText placeholder="Artist" value="#{cuLpController.newLp.artist}"/>
+                    <b:inputText placeholder="Title" value="#{cuLpController.lp.title}"/>
+                    <b:inputText placeholder="Artist" value="#{cuLpController.lp.artist}"/>
 
                     <!--insert-->
-                    <b:selectOneMenu rendered="#{cuLpController.newLp.id eq null}" value="#{cuLpController.newLp.lpGenre}" required="true">
+                    <b:selectOneMenu rendered="#{cuLpController.lp.id eq null}" value="#{cuLpController.lp.lpGenre}" required="true">
                         <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
                         <f:selectItems var="lpGenre" value="#{cuLpController.lpGenres}" itemValue="#{lpGenre}"
                                        itemLabel="#{lpGenre.name}"/>
                     </b:selectOneMenu>
 
                     <!--update-->
-                    <b:selectOneMenu rendered="#{cuLpController.newLp.id ne null}" value="#{cuLpController.newLp.lpGenre}" required="true">
+                    <b:selectOneMenu rendered="#{cuLpController.lp.id ne null}" value="#{cuLpController.lp.lpGenre}" required="true">
                         <f:selectItems var="lpGenre" value="#{cuLpController.lpGenres}" itemValue="#{lpGenre}"
                                        itemLabel="#{lpGenre.name}" />
                     </b:selectOneMenu>
-                    <b:inputText placeholder="Price" value="#{cuLpController.newLp.price}"/>
+                    <b:inputText placeholder="Price" value="#{cuLpController.lp.price}"/>
                     <b:commandButton value="Submit" action="#{cuLpController.submit}"/>
                 </b:form>
             </p:panel>
