@@ -8,11 +8,44 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>book fiction detail</p>
-<h:form>
-    <b:dataTable value="#{articleController.article}"
-                 var="article">
-        <b:dataTableColumn value="#{article.type}" label="type" />
-    </b:dataTable>
+    <h:form>
+        <b:dataTable value="#{articleController.book}"
+                     var="bookfiction" caption="This is a the detail page for a book of the type fiction.">
+            <b:dataTableColumn value="#{car.brand}" />>
+
+            <b:dataTableColumn value="#{bookfiction.type}" label="type" />
+            <b:dataTableColumn value="#{bookfiction.title}" label="title" />
+            <b:dataTableColumn value="#{bookfiction.price}" label="price"/>
+            <b:dataTableColumn value="#{bookfiction.author}"  label="author"/>
+            <b:dataTableColumn value="#{bookfiction.isbn}"  label="isbn"/>
+            <b:dataTableColumn value="#{bookfiction.numberOfPages}"  label="number of pages"/>
+            <b:dataTableColumn value="#{bookfiction.booktype}"  label="booktype"/>
+            <b:dataTableColumn value="#{bookfiction.bookGenre}"  label="bookgenre"/>
+            <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
+            <b:dataTableColumn value="#{bookfiction.id}" label="productcode"/>
+            <b:dataTableColumn label="Edit"
+                               orderable="false"
+                               style="text-align:center">
+                <b:commandButton value="Edit"
+                                 icon="edit"
+                                 look="primary"/>
+                                 <!--ajax="true"-->
+                                 <!--update="@(#editModal)"-->
+                                 <!--onclick="ajax:locationBean.setCurrentLocation(location);"-->
+                                 <!--oncomplete="$('#edition').modal('show')"/>-->
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Delete"
+                               orderable="false"
+                               style="text-align:center">
+                <b:commandButton value="Delete"
+                                 icon="delete"
+                                 look="danger"/>
+                                 <!--ajax="true"-->
+                                 <!--update="@(#deleteModal)"-->
+                                 <!--onclick="ajax:bookf"-->
+                <!--oncomplete="$('#suppression').modal('show')"/>-->
+            </b:dataTableColumn>
+        </b:dataTable>
     </h:form>
 </h:body>
 </html>

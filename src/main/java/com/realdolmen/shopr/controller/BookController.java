@@ -13,7 +13,8 @@ import java.util.List;
 @SessionScoped
 public class BookController {
     Book book = new Book();
-
+    @Inject
+    BookFictionController bookFictionController;
     @Inject
     BookService bookService;
 

@@ -8,37 +8,16 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>lp detail page</p>
-    <b:form>
-    <b:container fluid="true">
-        <b:row>
-            <b:column span="1"><h:outputText value="id"/></b:column>
-            <b:column span="1"><h:outputText value="#{lPController.lp.id}"/></b:column>
-        </b:row>
-        <b:row>
-            <b:column span="1"><h:outputText value="artist"/></b:column>
-            <b:column span="1"><h:outputText value="#{lPController.lp.artist}"/></b:column>
-        </b:row>
-        <b:row>
-            <b:column span="1"><h:outputText value="price"/></b:column>
-            <b:column span="1"><h:outputText value="#{lPController.lp.price}"/></b:column>
-        </b:row>
-        <b:row>
-        <b:column span="1"><h:outputText value="title"/></b:column>
-        <b:column span="1"><h:outputText value="#{lPController.lp.title}"/></b:column>
-    </b:row>
-        <b:row>
-            <b:column span="1"><h:outputText value="Music Genre"/></b:column>
-            <b:column span="1"><h:outputText value="#{lPController.lp.LPMusicGenre.toString}"/></b:column>
-        </b:row>
-        <b:row>
-            <b:column span="1"><h:outputText value="Supplier ID"/></b:column>
-            <b:column span="1"><h:outputText value="#{lPController.lp.supplierId}"/></b:column>
-        </b:row>
-        <b:row>
-            <b:column span="1"><h:outputText value="span=1"/></b:column>
-            <b:column span="1"><h:outputText value="span=1"/></b:column>
-        </b:row>
-    </b:container>
-    </b:form>
+
+    <h:form>
+        <b:dataTable value="#{articleController.article}"
+                     var="lp" caption="This is a the detail page for an LP.">
+            <b:dataTableColumn value="#{lp.type}" label="type" />
+            <b:dataTableColumn value="#{lp.title}" label="title" />
+            <b:dataTableColumn value="#{lp.price}" label="price"/>
+            <b:dataTableColumn value="#{lp.artist}"  label="artist"/>
+            <b:dataTableColumn value="#{lp.id}" label="productcode"/>
+        </b:dataTable>
+    </h:form>
 </h:body>
 </html>

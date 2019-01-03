@@ -6,9 +6,12 @@ import com.realdolmen.shopr.domain.BookNonFiction;
 import com.realdolmen.shopr.service.BookFictionService;
 import com.realdolmen.shopr.service.BookNonFictionService;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
-
+@ManagedBean
+@SessionScoped
 public class BookNonFictionController {
 
     BookNonFiction bookNonFiction = new BookNonFiction();

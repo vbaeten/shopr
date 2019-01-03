@@ -31,6 +31,11 @@ public class ArticleController {
     private ArticleService articleService;
 
     @Inject
+    private BookFictionService bookFictionService;
+
+    @Inject
+    private BookNonFictionService bookNonFictionService;
+    @Inject
     private BookService bookService;
 
     @Inject
@@ -45,8 +50,10 @@ public class ArticleController {
         } else if (Book.class.isInstance(article)) {
             book = (Book) article;
             if (book.getBooktype().equals("nonfiction")) {
+                book = bookNonFictionService.findBookNonFictionById(article.getId());
                 return "booknonfictiondetail";
             } else {
+                book = bookFictionService.findBookFictionById(article.getId());
                 return "bookfictiondetail";
             }
         } else {
@@ -62,6 +69,14 @@ public class ArticleController {
         return this.articleService.findAllArticles();
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
     public String creator(Article article) {
         if (article.getType().equals("lp")) {
             return lpController.getLPById(article.getId()).getArtist();
@@ -71,4 +86,5 @@ public class ArticleController {
             return gameController.getGamebyId(article.getId()).getPublisher();
         }
     }
+
 }

@@ -8,11 +8,19 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>book non fiction detail</p>
-<h:form>
-    <b:dataTable value="#{articleController.article}"
-                 var="article">
-        <b:dataTableColumn value="#{article.type}" label="type" />
-    </b:dataTable>
+    <h:form>
+        <b:dataTable value="#{articleController.book}"
+                     var="booknonfiction" caption="This is a the detail page for a book of the type non-fiction.">
+            <b:dataTableColumn value="#{booknonfiction.type}" label="type" />
+            <b:dataTableColumn value="#{booknonfiction.title}" label="title" />
+            <b:dataTableColumn value="#{booknonfiction.price}" label="price"/>
+            <b:dataTableColumn value="#{booknonfiction.author}"  label="author"/>
+            <b:dataTableColumn value="#{booknonfiction.isbn}"  label="isbn"/>
+            <b:dataTableColumn value="#{booknonfiction.numberOfPages}"  label="number of pages"/>
+            <b:dataTableColumn value="#{booknonfiction.booktype}"  label="booktype"/>
+            <b:dataTableColumn value="#{booknonfiction.bookSubjectNF}"  label="bookgenre"/>
+            <b:dataTableColumn value="#{booknonfiction.id}" label="productcode"/>
+        </b:dataTable>
     </h:form>
 </h:body>
 </html>

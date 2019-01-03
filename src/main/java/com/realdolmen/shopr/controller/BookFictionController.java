@@ -5,9 +5,12 @@ import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.service.BookFictionService;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
-
+@ManagedBean
+@SessionScoped
 public class BookFictionController {
     BookFiction bookFiction = new BookFiction();
 
