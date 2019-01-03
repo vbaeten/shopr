@@ -4,9 +4,10 @@ import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.BookFictionRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
-
+@Stateless
 public class BookFictionService {
     @Inject
     private BookFictionRepository bookFictionRepository;

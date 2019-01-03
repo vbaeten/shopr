@@ -4,9 +4,10 @@ import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.repository.GameRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
-
+@Stateless
 public class GameService {
     @Inject
     private GameRepository gameRepository;

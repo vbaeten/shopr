@@ -7,8 +7,9 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
-    <b:panel title="Create a Non Fiction Book" collapsible="false">
+    <b:panel title="Create a Fiction Book" collapsible="false">
         <h:outputText value="Panel Content" />
+        <b:form>
         <b:panelGrid columns="2">
             <b:inputText value="#{bookFictionController.bookFiction.title}"
                          label="Title" render-label="true"/>
@@ -22,13 +23,16 @@
                          label="Isbn" render-label="true"/>
             <b:inputText value="#{bookFictionController.bookFiction.numberOfPages}"
                          label="Number Of Pages" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.summary}"
-                         label="Summary" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.numberOfPages}"
-                         label="Number Of Pages" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.numberOfPages}"
-                         label="Number Of Pages" render-label="true"/>
+            <b:inputTextarea placeholder="Type summary here..." value="#{bookFictionController.bookFiction.summary}" label="Summary">
+            </b:inputTextarea>
+            <b:selectOneMenu value="#{bookFictionController.bookFiction.bookGenre}" ajax="true" label="Choose bookgenre">
+                <f:selectItems value="#{bookFictionController.bookGenres}" var="bookGenre"
+                               itemValue="#{bookGenre}" itemLabel="#{bookGenre}" />
+            </b:selectOneMenu>
+            <b:commandButton action="#{bookFictionController.saveBookFiction}" value="Add this book"
+                             look="info" />
         </b:panelGrid>
+        </b:form>
     </b:panel>
 </h:body>
 </html>

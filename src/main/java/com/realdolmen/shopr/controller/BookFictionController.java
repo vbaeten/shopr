@@ -3,11 +3,16 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Book;
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookFiction;
+import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.service.BookFictionService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @ManagedBean
 @SessionScoped
@@ -18,6 +23,8 @@ public class BookFictionController {
     BookFictionService bookFictionService;
 
     public BookFiction getBookFiction() { return  this.bookFiction;}
+
+    public List<BookGenre> getBookGenres() {return Arrays.asList(BookGenre.values());}
 
     public void setBookFiction(BookFiction bookFiction){
         this.bookFiction = bookFiction;
@@ -33,4 +40,6 @@ public class BookFictionController {
     public BookFiction getBookFictionbyId(Long id) {
         return bookFictionService.findBookFictionById(id);
     }
+
+    public void saveBookFiction() {this.bookFictionService.insert(bookFiction);}
 }

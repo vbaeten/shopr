@@ -3,9 +3,10 @@ package com.realdolmen.shopr.service;
 import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.repository.*;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
-
+@Stateless
 public class ArticleService {
     @Inject
     private ArticleRepository articleRepository;

@@ -16,6 +16,7 @@ public class Book extends Article {
     private String author;
     @Column(unique = true)
     @Pattern(regexp = "\\d{3}\\-\\d{2}\\-\\d{4}\\-\\d{3}\\-\\d")
+    @NotNull
     private String isbn;
     @Column
     private int numberOfPages;
