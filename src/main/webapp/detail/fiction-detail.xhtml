@@ -11,6 +11,27 @@
 <h:body>
     <ui:composition template="../templates/common.xhtml">
         <ui:define name="content">
+            <f:metadata>
+                <f:viewParam name="id" value="#{fictionDetailController.id}"/>
+                <f:event listener="#{fictionDetailController.init}" type="preRenderView"/>
+            </f:metadata>
+
+            <p:panel header="Details" style="margin-bottom: 10px;">
+                <h:outputText value="#{fictionDetailController.fiction.title}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.author}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.type}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.fictionGenre.name}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.isbn}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.pages}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.summary}"/><br/>
+                <h:outputText value="#{fictionDetailController.fiction.price}"/><br/>
+                <b:form>
+                    <b:commandButton value="Delete" action="#{fictionDetailController.delete}"/><br/>
+                    <h:link value="Edit" outcome="/cu/cu-fiction.xhtml" includeViewParams="true">
+                        <f:param id="id" value="#{fictionDetailController.fiction.id}"/>
+                    </h:link>
+                </b:form>
+            </p:panel>
         </ui:define>
 
         <ui:define name="footer">

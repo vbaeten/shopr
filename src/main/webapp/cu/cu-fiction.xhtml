@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<h:body>
+    <ui:composition template="../templates/common.xhtml">
+        <ui:define name="content">
+            <f:metadata>
+                <f:viewParam name="id" value="#{cuFictionController.id}"/>
+                <f:event listener="#{cuFictionController.init}" type="preRenderView"/>
+            </f:metadata>
+
+            <p:panel header="Add a fiction book" style="margin-bottom: 10px;">
+                <b:form id="addFictionForm">
+                    <b:inputText placeholder="Title" value="#{cuFictionController.fiction.title}"/>
+                    <b:inputText placeholder="Author" value="#{cuFictionController.fiction.author}"/>
+
+                    <!--insert-->
+                    <b:selectOneMenu rendered="#{cuFictionController.fiction.id eq null}" value="#{cuFictionController.fiction.fictionGenre}" required="true">
+                        <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems var="fictionGenre" value="#{cuFictionController.fictionGenres}" itemValue="#{fictionGenre}"
+                                       itemLabel="#{fictionGenre.name}"/>
+                    </b:selectOneMenu>
+
+                    <!--update-->
+                    <b:selectOneMenu rendered="#{cuFictionController.fiction.id ne null}" value="#{cuFictionController.fiction.fictionGenre}" required="true">
+                        <f:selectItems var="fictionGenre" value="#{cuFictionController.fictionGenres}" itemValue="#{fictionGenre}"
+                                       itemLabel="#{fictionGenre.name}" />
+                    </b:selectOneMenu>
+                    <b:inputText placeholder="ISBN" value="#{cuFictionController.fiction.isbn}"/>
+                    <b:inputText placeholder="Pages" value="#{cuFictionController.fiction.pages}"/>
+                    <b:inputTextarea placeholder="Summary" value="#{cuFictionController.fiction.summary}"/>
+                    <b:inputText placeholder="Price" value="#{cuFictionController.fiction.price}"/>
+                    <b:commandButton value="Submit" action="#{cuFictionController.submit}"/>
+                </b:form>
+            </p:panel>
+        </ui:define>
+
+        <ui:define name="footer">
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
