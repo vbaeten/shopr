@@ -14,8 +14,16 @@
             <p:panel header="List of books" style="margin-bottom: 10px;">
                 <b:form>
                     <b:dataTable value="#{booksController.books}" var="book">
-                        <b:dataTableColumn value="#{book.title}"/>
+                        <b:dataTableColumn label="Title">
+                            <h:link rendered="#{book.type eq 'Fiction'}" value="#{book.title}" outcome="/detail/fiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{book.id}"/>
+                            </h:link>
+                            <h:link rendered="#{book.type eq 'Non fiction'}" value="#{book.title}" outcome="/detail/nonfiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{book.id}"/>
+                            </h:link>
+                        </b:dataTableColumn>
                         <b:dataTableColumn value="#{book.author}"/>
+                        <b:dataTableColumn value="#{book.type}"/>
                         <b:dataTableColumn value="#{book.price}"/>
                     </b:dataTable>
                 </b:form>

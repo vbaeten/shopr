@@ -14,7 +14,20 @@
             <p:panel header="List of items" style="margin-bottom: 10px;">
                 <b:form>
                     <b:dataTable value="#{itemsController.items}" var="item">
-                        <b:dataTableColumn value="#{item.title}"/>
+                        <b:dataTableColumn label="Title">
+                            <h:link rendered="#{item.type eq 'Fiction'}" value="#{item.title}" outcome="/detail/fiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'Non fiction'}" value="#{item.title}" outcome="/detail/nonfiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'Game'}" value="#{item.title}" outcome="/detail/game-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'LP'}" value="#{item.title}" outcome="/detail/lp-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                        </b:dataTableColumn>
                         <b:dataTableColumn value="#{item.type}"/>
                         <b:dataTableColumn value="#{item.price}"/>
                     </b:dataTable>
