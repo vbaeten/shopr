@@ -11,9 +11,11 @@ INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VA
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('game', '2', 'idgames', '60', 'quake');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('fictie', '3', 'vatican', '34', 'bijbel');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('nonFictie', '4', 'dsfsdf', '21', 'quantumMechanics');
+INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('nonFictie', '5', 'microsoft', '213', '.net');
 
 INSERT INTO `shopr`.`boek` (`aantalPaginas`, `auteur`, `isbn`, `id`) VALUES ('230', 'jesus', '99921-58-10-7', '3');
 INSERT INTO `shopr`.`boek` (`aantalPaginas`, `auteur`, `isbn`, `id`) VALUES ('500', 'hawkins', '9971-5-0210-0', '4');
+INSERT INTO `shopr`.`boek` (`aantalPaginas`, `auteur`, `isbn`, `id`) VALUES ('500', 'gates', '9971-5-0230-0', '5');
 
 
 INSERT INTO `shopr`.`game` (`enumGameGenre`, `minLeeftijd`, `uitgever`, `id`) VALUES ('FPS', '18', 'activision', '2');

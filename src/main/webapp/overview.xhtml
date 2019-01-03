@@ -17,26 +17,36 @@
             <h:form id="form">
                 <p:growl id="msgs"/>
 
-                <p:dataTable style="width: 55em" tableStyle="width: auto" id="overviewArtikels" var="artikel"
-                             value="#{overviewController.artikels()}">
+                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewArtikels"  resizeMode="expand" var="artikel"
+                             value="#{overviewController.artikels()}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
 
-                    <p:column style="width:auto" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Search all fields:" />
+                            <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()" style="width:150px" placeholder="Zoek"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
                         <h:outputText value="#{artikel.type}"/>
                     </p:column>
-                    <p:column style="width:auto" headerText="#{msgs['artikel.titel']}"
+                    <p:column resizable="true"  headerText="#{msgs['artikel.titel']}"
                               sortBy="#{artikel.titel}">
                         <h:outputText value="#{artikel.titel}"/>
                     </p:column>
-                    <p:column style="width:auto" headerText="#{msgs['artikel.leverancier']}"
+                    <p:column resizable="true"  headerText="#{msgs['artikel.leverancier']}"
                               sortBy="#{artikel.leverancier}">
                         <h:outputText value="#{artikel.leverancier}"/>
                     </p:column>
-                    <p:column style="width:auto" headerText="#{msgs['artikel.prijs']}"
+                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
                               sortBy="#{artikel.prijs}">
                         <h:outputText value="$ #{artikel.prijs}"/>
                     </p:column>
 
-                    <p:column style="width:auto" headerText="#{msgs['artikel.details']}">
+                    <p:column resizable="true" headerText="#{msgs['artikel.details']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.details']}"
                                          action="#{overviewController.details(artikel)}">
@@ -46,7 +56,7 @@
                 </p:dataTable>
 
 
-            <p:panel id="panelLp" style="margin-bottom:10px; width: auto" class="panelStyle"
+            <p:panel id="panelLp" style="margin-bottom:10px; width: 55em"
                      rendered="#{overviewController.getPanelNumber() eq 1}">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -66,11 +76,14 @@
                     <h:outputLabel for="prijslp" value="#{msgs['toevoegen.prijs']}  : "/>
                     <h:outputLabel id="prijslp" value="#{overviewController.artikelSelected.prijs}"/>
 
-                    <h:commandButton value="#{msgs['overview.aantal']}" action="#{winkelmandjeController.artikelToevoegen}" update=":lpDataTable"/>
+                    <h:outputLabel for="aantal" value="#{msgs['overview.aantal']}"/>
+                    <p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
+
+                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
                 </h:panelGrid>
             </p:panel>
 
-            <p:panel id="panelGames" style="margin-bottom:10px; width: auto" class="panelStyle"
+            <p:panel id="panelGames" style="margin-bottom:10px; width: 55em"
                      rendered="#{overviewController.getPanelNumber() eq 2}">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -93,11 +106,15 @@
                     <h:outputLabel for="prijsGame" value="#{msgs['toevoegen.prijs']}  : "/>
                     <h:outputLabel id="prijsGame" value="#{overviewController.artikelSelected.prijs}"/>
 
+                    <h:outputLabel for="aantalgame" value="#{msgs['overview.aantal']}"/>
+                    <p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
+
+                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
 
                 </h:panelGrid>
             </p:panel>
 
-            <p:panel id="panelNonFictie" style="margin-bottom:10px; width: auto" class="panelStyle"
+            <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
                      rendered="#{overviewController.getPanelNumber() eq 4}">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -123,11 +140,15 @@
                     <h:outputLabel for="prijsnonfictie" value="#{msgs['toevoegen.prijs']}  : "/>
                     <h:outputLabel id="prijsnonfictie" value="#{overviewController.artikelSelected.prijs}"/>
 
+                    <h:outputLabel for="aantalnonfictie" value="#{msgs['overview.aantal']}"/>
+                    <p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
+
+                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
 
                 </h:panelGrid>
             </p:panel>
 
-            <p:panel id="panelFictie" style="margin-bottom:10px; width: auto" class="panelStyle"
+            <p:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
                      rendered="#{overviewController.getPanelNumber() eq 3}">
 
                 <h:panelGrid columns="2" cellpadding="5">
@@ -157,9 +178,24 @@
                     <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}  : "/>
                     <h:outputLabel id="prijsfictie" value="#{overviewController.artikelSelected.prijs}"/>
 
+                    <h:outputLabel for="aantalfictie" value="#{msgs['overview.aantal']}"/>
+                    <p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
 
+                    <h:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                                     onclick="PF('dlg1').show()" action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                    </h:commandButton>
                 </h:panelGrid>
             </p:panel>
+
+
+                <p:dialog id="dialog" header="Toegevoegd aan winkelmandje" widgetVar="dlg1" minHeight="40">
+                    <h:outputLabel for="aantal2" value="#{msgs['toevoegen.aantal']}  : "/>
+                    <h:outputText id="aantal2" value="#{winkelmandjeController.aantalArtikel}" />
+                    <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}  : "/>
+                    <h:outputText id="titel" value="#{winkelmandjeController.artikel.titel}" />
+                    <h:outputLabel for="prijs" value="#{msgs['toevoegen.prijs']}  : "/>
+                    <h:outputText id="prijs" value="#{winkelmandjeController.artikel.prijs}" />
+                </p:dialog>
 
 
 

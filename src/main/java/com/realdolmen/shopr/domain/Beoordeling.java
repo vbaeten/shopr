@@ -20,8 +20,8 @@ public class Beoordeling
     private String onschrijving;
     @ManyToOne
     private User user;
-    @ManyToMany
-    private List <Artikel> artikels;
+   @ManyToOne
+   private Artikel artikel;
 
     public Long getId()
     {
