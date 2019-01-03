@@ -10,7 +10,7 @@ import java.util.List;
 @Stateless
 public class OverviewService
 {
-    public String detailsSoort;
+    public int detailsSoort;
 
     @Inject
     OverviewRepository overviewRepository;
@@ -34,25 +34,28 @@ public class OverviewService
 
     public List<Artikel> findAllArtikels()
     {
-    return overviewRepository.findAllArtikels();
+        return overviewRepository.findAllArtikels();
     }
 
-    public String detailsPaginaSoort(String type)
+    public int detailsPaginaSoort(String type)
     {
         switch (type)
         {
-            case "lp": detailsSoort = "lpdetails";
+            case "lp":
+                detailsSoort = 1;
                 break;
-            case "game": System.out.println("gamedetailks");
-                detailsSoort = "gamedetails";
+            case "game":
+                detailsSoort = 2;
                 break;
-            case "fictie": detailsSoort = "fictiedetails";
+            case "fictie":
+                detailsSoort = 3;
                 break;
-            case "nonFictie": detailsSoort = "nonfictiedetails";
+            case "nonFictie":
+                detailsSoort = 4;
                 break;
 
         }
-        System.out.println("gamedetailks");
-return detailsSoort;
+
+        return detailsSoort;
     }
 }

@@ -18,6 +18,24 @@ public class OverviewController implements Serializable
 
     Artikel artikelSelected = new Artikel();
 
+    public int getPanelNumber()
+    {
+        return panelNumber;
+    }
+
+    private int panelNumber;
+
+
+    public Artikel getArtikelSelected()
+    {
+        return artikelSelected;
+    }
+
+    public void setArtikelSelected(Artikel artikelSelected)
+    {
+        this.artikelSelected = artikelSelected;
+    }
+
     public String getNaamPaginaDetail()
     {
         return naamPaginaDetail;
@@ -33,21 +51,17 @@ public class OverviewController implements Serializable
 
     public List<Artikel> artikels()
     {
-        System.out.println("artikels ophalen");
         return this.overviewService.findAllArtikels();
     }
 
-    public String details(Artikel a)
+    public void details(Artikel a)
     {
-        System.out.println("detailspagina");
 //        artikelSelected = overviewService.findArtikelById(a.getId());
+        setArtikelSelected(a);
+        this.panelNumber = overviewService.detailsPaginaSoort(a.getType());
 
-        System.out.println("detailspagina" + artikelSelected.getTitel());
-        System.out.println(artikelSelected.getType());
-        setNaamPaginaDetail(overviewService.detailsPaginaSoort(a.getType()));
 
-        System.out.println("#################################################" + a.getType());
-        return "/lpdetails.xhtml?faces-redirect=true&id=" + a.getId();
+//       return "/details.xhtml?faces-redirect=true&id=" + a.getId();
 
     }
 
