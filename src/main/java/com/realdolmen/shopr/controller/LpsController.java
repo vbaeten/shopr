@@ -11,20 +11,10 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class LpsController {
-    private Lp lp = new Lp();
-
     @Inject
     private LpService lpService;
 
     public List<Lp> getLps() {
         return this.lpService.findAllLps();
-    }
-
-    public Lp getLp() {
-        return lp;
-    }
-
-    public void setLp(Lp lp) {
-        this.lp = lp;
     }
 }

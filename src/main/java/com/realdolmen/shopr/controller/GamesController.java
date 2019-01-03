@@ -11,20 +11,10 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class GamesController {
-    private Game game = new Game();
-
     @Inject
     private GameService gameService;
 
     public List<Game> getGames() {
         return this.gameService.findAllGames();
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     }
 }

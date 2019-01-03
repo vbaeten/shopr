@@ -11,20 +11,10 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class ItemsController {
-    private Item item = new Item();
-
     @Inject
     private ItemService itemService;
 
     public List<Item> getItems() {
         return this.itemService.findAllItems();
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
     }
 }
