@@ -30,8 +30,10 @@ public class LPController {
         return this.lpService.findAllLps();
     }
 
-    public void submit(){
+    public String submit(){
       this.lpService.insert(newLP);
+        return "/overview-pages/lps-overview.xhtml?faces-redirect=true";
+
     }
 
 

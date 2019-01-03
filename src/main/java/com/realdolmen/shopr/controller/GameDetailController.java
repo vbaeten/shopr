@@ -34,9 +34,11 @@ public class GameDetailController {
         game = gameService.findById(id);
     }
 
-    public void delete(){
+    public String delete(){
         game = this.gameService.findById(id);
         this.gameService.delete(game);
+
+        return "/overview-pages/games-overview.xhtml?faces-redirect=true";
     }
 
 

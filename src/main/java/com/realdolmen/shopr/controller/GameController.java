@@ -20,8 +20,9 @@ public class GameController {
     private GameService gameService;
 
 
-    public void submit(){
+    public String submit(){
         this.gameService.insert(newGame);
+        return "/overview-pages/games-overview.xhtml?faces-redirect=true";
     }
 
 

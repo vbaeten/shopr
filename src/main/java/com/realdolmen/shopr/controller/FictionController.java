@@ -27,8 +27,10 @@ public class FictionController {
     }
 
 
-    public void submit(){
+    public String submit(){
         this.fictionService.insert(newFiction);
+        return "/overview-pages/fiction-overview.xhtml?faces-redirect=true";
+
     }
     public BookGenre[]getGenres(){
         return BookGenre.values();

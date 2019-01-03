@@ -28,8 +28,10 @@ public class NonFictionController {
     public Subject[] getSubjects(){
         return Subject.values();
     }
-    public void submit(){
+    public String submit(){
         this.nonFictionService.insert(newNonFiction);
+        return "/overview-pages/nonFiction-overview.xhtml?faces-redirect=true";
+
     }
 
     public NonFiction getNewNonFiction() {
