@@ -8,35 +8,35 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:o="http://omnifaces.org/ui"
       xmlns:of="http://omnifaces.org/functions"
-      xmlns:b="http://bootsfaces.net/ui">>
+      xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
-<b:container>
-            <b:form id="addLocationForm">
-                <p:panel id="panel"  style="height: 85%;  display: inline-block; position: center " >
-                    <h:panelGrid columns="1" cellpadding="5">
-                        <h:outputLabel for="gebruiker" value="Gebruiker:"/>
+            <b:container>
+                <b:form id="addLocationForm">
+                    <p:panel id="panel" style="height: 85%;  display: inline-block; position: center ">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <h:outputLabel for="gebruiker" value="Gebruiker:"/>
 
-                        <p:selectOneMenu id="gebruiker" value="#{loginController.currentUserName}">
-                                        >
+                            <p:selectOneMenu id="gebruiker" value="#{loginController.currentUserName}">
+                                >
 
-                            <f:selectItems value="#{userController.users}" var="user"
-                                           itemLabel="#{user.name}"
-                                           itemValue="#{user.name}"/>
+                                <f:selectItems value="#{userController.users}" var="user"
+                                               itemLabel="#{user.name}"
+                                               itemValue="#{user.name}"/>
 
-                        </p:selectOneMenu>
-                        <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                  value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
+                            </p:selectOneMenu>
+                            <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                             value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
 
-                    </h:panelGrid>
-                </p:panel>
-            </b:form>
+                        </h:panelGrid>
+                    </p:panel>
+                </b:form>
 
 
-</b:container>
+            </b:container>
         </ui:define>
     </ui:composition>
 </h:body>

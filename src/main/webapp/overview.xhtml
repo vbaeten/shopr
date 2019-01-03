@@ -17,7 +17,8 @@
             <h:form id="form">
                 <p:growl id="msgs"/>
 
-                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewArtikels"  resizeMode="expand" var="artikel"
+                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewArtikels" resizeMode="expand"
+                             var="artikel"
                              value="#{overviewController.artikels()}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -25,19 +26,20 @@
 
                     <f:facet name="header">
                         <p:outputPanel>
-                            <h:outputText value="Search all fields:" />
-                            <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()" style="width:150px" placeholder="Zoek"/>
+                            <h:outputText value="Search all fields:"/>
+                            <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()" style="width:150px"
+                                         placeholder="Zoek"/>
                         </p:outputPanel>
                     </f:facet>
 
                     <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
                         <h:outputText value="#{artikel.type}"/>
                     </p:column>
-                    <p:column resizable="true"  headerText="#{msgs['artikel.titel']}"
+                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
                               sortBy="#{artikel.titel}">
                         <h:outputText value="#{artikel.titel}"/>
                     </p:column>
-                    <p:column resizable="true"  headerText="#{msgs['artikel.leverancier']}"
+                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
                               sortBy="#{artikel.leverancier}">
                         <h:outputText value="#{artikel.leverancier}"/>
                     </p:column>
@@ -51,155 +53,209 @@
                                          value="#{msgs['artikel.details']}"
                                          action="#{overviewController.details(artikel)}">
                         </b:commandButton>
+                        <!--<b:commandButton  value="#{msgs['overview.beoordeling']}"-->
+                        <!--onclick="PF('dlg2').show()">-->
+                        <!--</b:commandButton>-->
+
+
                     </p:column>
 
                 </p:dataTable>
 
 
-            <p:panel id="panelLp" style="margin-bottom:10px; width: 55em"
-                     rendered="#{overviewController.getPanelNumber() eq 1}">
+                <p:panel id="panelLp" style="margin-bottom:10px; width: 55em"
+                         rendered="#{overviewController.getPanelNumber() eq 1}">
 
-                <h:panelGrid columns="2" cellpadding="5">
+                    <h:panelGrid columns="2" cellpadding="5">
 
-                    <h:outputLabel for="titellp" value="#{msgs['toevoegen.titel']}  : "/>
-                    <h:outputLabel id="titellp" value="#{overviewController.artikelSelected.titel}"/>
+                        <h:outputLabel for="titellp" value="#{msgs['toevoegen.titel']}  : "/>
+                        <h:outputLabel id="titellp" value="#{overviewController.artikelSelected.titel}"/>
 
-                    <h:outputLabel for="leverancierlp" value="#{msgs['toevoegen.leverancier']}  :"/>
-                    <h:outputLabel id="leverancierlp" value="#{overviewController.artikelSelected.leverancier}"/>
+                        <h:outputLabel for="leverancierlp" value="#{msgs['toevoegen.leverancier']}  :"/>
+                        <h:outputLabel id="leverancierlp" value="#{overviewController.artikelSelected.leverancier}"/>
 
-                    <h:outputLabel for="uitgeverlp" value="#{msgs['toevoegen.uitvoerder']}  : "/>
-                    <h:outputLabel id="uitgeverlp" value="#{overviewController.artikelSelected.uitvoerder}"/>
+                        <h:outputLabel for="uitgeverlp" value="#{msgs['toevoegen.uitvoerder']}  : "/>
+                        <h:outputLabel id="uitgeverlp" value="#{overviewController.artikelSelected.uitvoerder}"/>
 
-                    <h:outputLabel for="genrelp" value="#{msgs['toevoegen.genre']}  : "/>
-                    <h:outputLabel id="genrelp" value="#{overviewController.artikelSelected.enumMuziekGenre}"/>
+                        <h:outputLabel for="genrelp" value="#{msgs['toevoegen.genre']}  : "/>
+                        <h:outputLabel id="genrelp" value="#{overviewController.artikelSelected.enumMuziekGenre}"/>
 
-                    <h:outputLabel for="prijslp" value="#{msgs['toevoegen.prijs']}  : "/>
-                    <h:outputLabel id="prijslp" value="#{overviewController.artikelSelected.prijs}"/>
+                        <h:outputLabel for="prijslp" value="#{msgs['toevoegen.prijs']}  : "/>
+                        <h:outputLabel id="prijslp" value="#{overviewController.artikelSelected.prijs}"/>
 
-                    <h:outputLabel for="aantal" value="#{msgs['overview.aantal']}"/>
-                    <p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
+                        <h:outputLabel for="aantal" value="#{msgs['overview.aantal']}"/>
+                        <p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1"
+                                   max="10"/>
 
-                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
-                </h:panelGrid>
-            </p:panel>
-
-            <p:panel id="panelGames" style="margin-bottom:10px; width: 55em"
-                     rendered="#{overviewController.getPanelNumber() eq 2}">
-
-                <h:panelGrid columns="2" cellpadding="5">
-
-                    <h:outputLabel for="titelgame" value="#{msgs['toevoegen.titel']}  : "/>
-                    <h:outputLabel id="titelgame" value="#{overviewController.artikelSelected.titel}"/>
-
-                    <h:outputLabel for="leveranciergame" value="#{msgs['toevoegen.leverancier']}  :"/>
-                    <h:outputLabel id="leveranciergame" value="#{overviewController.artikelSelected.leverancier}"/>
-
-                    <h:outputLabel for="uitgevergame" value="#{msgs['toevoegen.uitgever']}  : "/>
-                    <h:outputLabel id="uitgevergame" value="#{overviewController.artikelSelected.uitgever}"/>
-
-                    <h:outputLabel for="leeftijdgame" value="#{msgs['toevoegen.uitgever']}  : "/>
-                    <h:outputLabel id="leeftijdgame" value="#{overviewController.artikelSelected.minLeeftijd}"/>
-
-                    <h:outputLabel for="genregame" value="#{msgs['toevoegen.genre']}  : "/>
-                    <h:outputLabel id="genregame" value="#{overviewController.artikelSelected.enumGameGenre}"/>
-
-                    <h:outputLabel for="prijsGame" value="#{msgs['toevoegen.prijs']}  : "/>
-                    <h:outputLabel id="prijsGame" value="#{overviewController.artikelSelected.prijs}"/>
-
-                    <h:outputLabel for="aantalgame" value="#{msgs['overview.aantal']}"/>
-                    <p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
-
-                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
-
-                </h:panelGrid>
-            </p:panel>
-
-            <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
-                     rendered="#{overviewController.getPanelNumber() eq 4}">
-
-                <h:panelGrid columns="2" cellpadding="5">
-
-                    <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}  : "/>
-                    <h:outputLabel id="titelnonfictie" value="#{overviewController.artikelSelected.titel}"/>
-
-                    <h:outputLabel for="leveranciernonfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                    <h:outputLabel id="leveranciernonfictie" value="#{overviewController.artikelSelected.leverancier}"/>
-
-                    <h:outputLabel for="auteurnonfictie" value="#{msgs['toevoegen.auteur']}  : "/>
-                    <h:outputLabel id="auteurnonfictie" value="#{overviewController.artikelSelected.auteur}"/>
-
-                    <h:outputLabel for="isbnnonfictie" value="#{msgs['toevoegen.isbn']}  : "/>
-                    <h:outputLabel id="isbnnonfictie" value="#{overviewController.artikelSelected.isbn}"/>
-
-                    <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}  : "/>
-                    <h:outputLabel id="paginasnonfictie" value="#{overviewController.artikelSelected.aantalPaginas}"/>
-
-                    <h:outputLabel for="genrenonfictie" value="#{msgs['toevoegen.genre']}  : "/>
-                    <h:outputLabel id="genrenonfictie" value="#{overviewController.artikelSelected.enumNonFictieGenre}"/>
-
-                    <h:outputLabel for="prijsnonfictie" value="#{msgs['toevoegen.prijs']}  : "/>
-                    <h:outputLabel id="prijsnonfictie" value="#{overviewController.artikelSelected.prijs}"/>
-
-                    <h:outputLabel for="aantalnonfictie" value="#{msgs['overview.aantal']}"/>
-                    <p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
-
-                    <h:commandButton class="btn btn-primary" onclick="PF('dlg1').show()" value="#{msgs['overview.voegtoe']}" action="#{winkelmandjeController.artikelToevoegen(artikel)}"/>
-
-                </h:panelGrid>
-            </p:panel>
-
-            <p:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
-                     rendered="#{overviewController.getPanelNumber() eq 3}">
-
-                <h:panelGrid columns="2" cellpadding="5">
-
-                    <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}  : "/>
-                    <h:outputLabel id="titelfictie" value="#{overviewController.artikelSelected.titel}"/>
-
-                    <h:outputLabel for="leverancierfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                    <h:outputLabel id="leverancierfictie" value="#{overviewController.artikelSelected.leverancier}"/>
-
-                    <h:outputLabel for="auteurfictie" value="#{msgs['toevoegen.auteur']}  : "/>
-                    <h:outputLabel id="auteurfictie" value="#{overviewController.artikelSelected.auteur}"/>
-
-                    <h:outputLabel for="isbnfictie" value="#{msgs['toevoegen.isbn']}  : "/>
-                    <h:outputLabel id="isbnfictie" value="#{overviewController.artikelSelected.isbn}"/>
+                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                                         onclick="$('.bevestiging').modal()"
+                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                        </b:commandButton>
+                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                                  onclick="$('.modalPseudoClass').modal()"/>
 
 
-                    <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}  : "/>
-                    <h:outputLabel id="paginasfictie" value="#{overviewController.artikelSelected.aantalPaginas}"/>
+                    </h:panelGrid>
+                </p:panel>
 
-                    <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}  : "/>
-                    <h:outputLabel id="inhoudfictie" value="#{overviewController.artikelSelected.korteInhoud}"/>
+                <p:panel id="panelGames" style="margin-bottom:10px; width: 55em"
+                         rendered="#{overviewController.getPanelNumber() eq 2}">
 
-                    <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.genre']}  : "/>
-                    <h:outputLabel id="genrefictie" value="#{overviewController.artikelSelected.enumFictieGenre}"/>
+                    <h:panelGrid columns="2" cellpadding="5">
 
-                    <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}  : "/>
-                    <h:outputLabel id="prijsfictie" value="#{overviewController.artikelSelected.prijs}"/>
+                        <h:outputLabel for="titelgame" value="#{msgs['toevoegen.titel']}  : "/>
+                        <h:outputLabel id="titelgame" value="#{overviewController.artikelSelected.titel}"/>
 
-                    <h:outputLabel for="aantalfictie" value="#{msgs['overview.aantal']}"/>
-                    <p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1" max="10"/>
+                        <h:outputLabel for="leveranciergame" value="#{msgs['toevoegen.leverancier']}  :"/>
+                        <h:outputLabel id="leveranciergame" value="#{overviewController.artikelSelected.leverancier}"/>
 
-                    <h:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
-                                     onclick="PF('dlg1').show()" action="#{winkelmandjeController.artikelToevoegen(artikel)}">
-                    </h:commandButton>
-                </h:panelGrid>
-            </p:panel>
+                        <h:outputLabel for="uitgevergame" value="#{msgs['toevoegen.uitgever']}  : "/>
+                        <h:outputLabel id="uitgevergame" value="#{overviewController.artikelSelected.uitgever}"/>
+
+                        <h:outputLabel for="leeftijdgame" value="#{msgs['toevoegen.uitgever']}  : "/>
+                        <h:outputLabel id="leeftijdgame" value="#{overviewController.artikelSelected.minLeeftijd}"/>
+
+                        <h:outputLabel for="genregame" value="#{msgs['toevoegen.genre']}  : "/>
+                        <h:outputLabel id="genregame" value="#{overviewController.artikelSelected.enumGameGenre}"/>
+
+                        <h:outputLabel for="prijsGame" value="#{msgs['toevoegen.prijs']}  : "/>
+                        <h:outputLabel id="prijsGame" value="#{overviewController.artikelSelected.prijs}"/>
+
+                        <h:outputLabel for="aantalgame" value="#{msgs['overview.aantal']}"/>
+                        <p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
+                                   min="1" max="10"/>
+
+                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                                         onclick="$('.bevestiging').modal()"
+                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                        </b:commandButton>
+                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                                  onclick="$('.modalPseudoClass').modal()"/>
 
 
-                <p:dialog id="dialog" header="Toegevoegd aan winkelmandje" widgetVar="dlg1" minHeight="40">
-                    <h:outputLabel for="aantal2" value="#{msgs['toevoegen.aantal']}  : "/>
-                    <h:outputText id="aantal2" value="#{winkelmandjeController.aantalArtikel}" />
-                    <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}  : "/>
-                    <h:outputText id="titel" value="#{winkelmandjeController.artikel.titel}" />
-                    <h:outputLabel for="prijs" value="#{msgs['toevoegen.prijs']}  : "/>
-                    <h:outputText id="prijs" value="#{winkelmandjeController.artikel.prijs}" />
-                </p:dialog>
+                    </h:panelGrid>
+                </p:panel>
+
+                <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
+                         rendered="#{overviewController.getPanelNumber() eq 4}">
+
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}  : "/>
+                        <h:outputLabel id="titelnonfictie" value="#{overviewController.artikelSelected.titel}"/>
+
+                        <h:outputLabel for="leveranciernonfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
+                        <h:outputLabel id="leveranciernonfictie"
+                                       value="#{overviewController.artikelSelected.leverancier}"/>
+
+                        <h:outputLabel for="auteurnonfictie" value="#{msgs['toevoegen.auteur']}  : "/>
+                        <h:outputLabel id="auteurnonfictie" value="#{overviewController.artikelSelected.auteur}"/>
+
+                        <h:outputLabel for="isbnnonfictie" value="#{msgs['toevoegen.isbn']}  : "/>
+                        <h:outputLabel id="isbnnonfictie" value="#{overviewController.artikelSelected.isbn}"/>
+
+                        <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}  : "/>
+                        <h:outputLabel id="paginasnonfictie"
+                                       value="#{overviewController.artikelSelected.aantalPaginas}"/>
+
+                        <h:outputLabel for="genrenonfictie" value="#{msgs['toevoegen.genre']}  : "/>
+                        <h:outputLabel id="genrenonfictie"
+                                       value="#{overviewController.artikelSelected.enumNonFictieGenre}"/>
+
+                        <h:outputLabel for="prijsnonfictie" value="#{msgs['toevoegen.prijs']}  : "/>
+                        <h:outputLabel id="prijsnonfictie" value="#{overviewController.artikelSelected.prijs}"/>
+
+                        <h:outputLabel for="aantalnonfictie" value="#{msgs['overview.aantal']}"/>
+                        <p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
+                                   min="1" max="10"/>
+
+                        <b:commandButton class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                                         onclick="$('.bevestiging').modal()"
+                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                        </b:commandButton>
+                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                                  onclick="$('.modalPseudoClass').modal()"/>
 
 
+                    </h:panelGrid>
+                </p:panel>
 
-</h:form>
+                <p:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
+                         rendered="#{overviewController.getPanelNumber() eq 3}">
+
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}  : "/>
+                        <h:outputLabel id="titelfictie" value="#{overviewController.artikelSelected.titel}"/>
+
+                        <h:outputLabel for="leverancierfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
+                        <h:outputLabel id="leverancierfictie"
+                                       value="#{overviewController.artikelSelected.leverancier}"/>
+
+                        <h:outputLabel for="auteurfictie" value="#{msgs['toevoegen.auteur']}  : "/>
+                        <h:outputLabel id="auteurfictie" value="#{overviewController.artikelSelected.auteur}"/>
+
+                        <h:outputLabel for="isbnfictie" value="#{msgs['toevoegen.isbn']}  : "/>
+                        <h:outputLabel id="isbnfictie" value="#{overviewController.artikelSelected.isbn}"/>
+
+
+                        <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}  : "/>
+                        <h:outputLabel id="paginasfictie" value="#{overviewController.artikelSelected.aantalPaginas}"/>
+
+                        <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}  : "/>
+                        <h:outputLabel id="inhoudfictie" value="#{overviewController.artikelSelected.korteInhoud}"/>
+
+                        <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.genre']}  : "/>
+                        <h:outputLabel id="genrefictie" value="#{overviewController.artikelSelected.enumFictieGenre}"/>
+
+                        <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}  : "/>
+                        <h:outputLabel id="prijsfictie" value="#{overviewController.artikelSelected.prijs}"/>
+
+                        <h:outputLabel for="aantalfictie" value="#{msgs['overview.aantal']}"/>
+                        <p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
+                                   min="1" max="10"/>
+
+                        <b:button class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
+                                         onclick="$('.bevestiging').modal()">
+                        </b:button>
+                        <b:button class="btn btn-primary" value="#{msgs['overview.beoordeling']}"
+                                  onclick="$('.modalPseudoClass').modal()"/>
+
+                    </h:panelGrid>
+                </p:panel>
+
+
+            </h:form>
+
+            <b:modal id="reviewmodal" styleClass="modalPseudoClass">
+                <h:form>
+                    <h:panelGrid columns="1" >
+                        <h:outputLabel for="review" value="#{msgs['overview.rating']}"/>
+                        <b:touchSpin id="spin1" col-md="1"
+                                     min="0" max="10" step="1"
+                        prefix="$"/>
+                        <!--value="#{overviewController}" -->
+                        <h:outputLabel for="review" value="#{msgs['overview.beoordeling']}"/>
+                        <b:inputTextarea id="review" >
+                                         <!--value="#{overviewController}"-->
+
+                        </b:inputTextarea>
+                        <b:commandButton class="btn btn-primary" value="#{msgs['toevoegen.voegtoe']}"></b:commandButton>
+                                         <!--action="#{overviewController}"/>-->
+                    </h:panelGrid>
+
+                </h:form>
+            </b:modal>
+            <b:modal id="bevestigingsmodal" styleClass="bevestiging">
+
+
+                <h:outputLabel for="aantal2" value="#{msgs['toevoegen.aantal']}  : "/>
+                <h:outputText id="aantal2" value="#{winkelmandjeController.aantalArtikel}"/>
+                <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}  : "/>
+                <h:outputText id="titel" value="#{winkelmandjeController.artikel.titel}"/>
+                <h:outputLabel for="prijs" value="#{msgs['toevoegen.prijs']}  : "/>
+                <h:outputText id="prijs" value="#{winkelmandjeController.artikel.prijs}"/>
+            </b:modal>
         </ui:define>
     </ui:composition>
 </h:body>
