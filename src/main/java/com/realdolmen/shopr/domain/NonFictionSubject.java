@@ -1,6 +1,6 @@
 package com.realdolmen.shopr.domain;
 
-public enum Topic {
+public enum NonFictionSubject {
     HISTORY ("History"),
     COOKBOOK ("Cookery Book"),
     SCIENCE ("Science"),
@@ -8,7 +8,7 @@ public enum Topic {
 
     private final String name;
 
-    Topic(String name) {
+    NonFictionSubject(String name) {
         this.name = name;
     }
 

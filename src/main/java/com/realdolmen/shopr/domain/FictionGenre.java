@@ -1,6 +1,6 @@
 package com.realdolmen.shopr.domain;
 
-public enum BookGenre {
+public enum FictionGenre {
     THRILLER ("Thriller"),
     FANTASY ("Fantasy"),
     DETECTIVE ("Detective"),
@@ -9,7 +9,7 @@ public enum BookGenre {
 
     private final String name;
 
-    BookGenre(String name) {
+    FictionGenre(String name) {
         this.name = name;
     }
 
