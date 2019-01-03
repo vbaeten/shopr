@@ -3,7 +3,9 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
@@ -19,12 +21,12 @@ import java.util.List;
                 )
         }
 )
-public class User {
+public class User implements Serializable {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "name")
     private String name;
@@ -73,4 +75,18 @@ public class User {
         this.beoordelingen = beoordelingen;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                name.equals(user.name) &&
+                firstName.equals(user.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, firstName);
+    }
 }

@@ -16,6 +16,7 @@
     <p>#{artikelController.artikel.titel}</p>
 
     <h:form id="details">
+
         <b:dataTable var="boek" value="#{artikelController.artikel}" id="fictieArtikelDetailsDataTabel"
                      rendered="#{artikelController.isFictie()}">
             <b:dataTableColumn label="Id" value="#{boek.id}">

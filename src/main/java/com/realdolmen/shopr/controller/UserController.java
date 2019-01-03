@@ -7,18 +7,18 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.security.PrivateKey;
 import java.util.List;
 
 @ManagedBean
-@RequestScoped
-public class UserController {
-
-    private User newUser = new User();
-    private User selectedUser;
+@SessionScoped
+public class UserController implements Serializable {
 
     @Inject
     private UserService userService;
+
+    private User selectedUser = new User();
 
     public User getSelectedUser() {
         return selectedUser;
@@ -28,20 +28,8 @@ public class UserController {
         this.selectedUser = selectedUser;
     }
 
-    public User getNewUser() {
-        return newUser;
-    }
-
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
-    }
-
     public List<User> getUsers() {
         return this.userService.findAllUsers();
-    }
-
-    public void submit() {
-        this.userService.insert(newUser);
     }
 
     public void remove(int id) {

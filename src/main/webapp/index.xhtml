@@ -4,50 +4,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
-    <h:form id="dataUsers">
-
-        <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
-            <p:column headerText="Id">
+    <b:form id="dataUsers">
+<b:panel id="panel" title="Artikels" style="margin-top:10px">
+        <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
+            <b:dataTableColumn label="Id">
                 <h:outputText value="#{user.id}"/>
-            </p:column>
-            <p:column headerText="Name">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Name">
                 <h:outputText value="#{user.name}"/>
-            </p:column>
-            <p:column headerText="First name">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="First name">
                 <h:outputText value="#{user.firstName}"/>
-            </p:column>
-            <p:column headerText="Delete">
-                <h:commandButton value="X" action="#{userController.remove(user.id)}" update=":userDataTable"/>
-            </p:column>
-        </p:dataTable>
-    </h:form>
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <h:commandButton value="Delete" look="danger" action="#{userController.remove(user.id)}" update=":userDataTable"/>
+            </b:dataTableColumn>
+        </b:dataTable>
+</b:panel>
+   </b:form>
 
-    <h:form id="addLocationForm">
-        <p:panel id="panel" header="Register" style="margin-bottom:10px;">
-            <h:panelGrid columns="4" cellpadding="5">
+    <b:form id="registerForm" horizontal="true">
+        <b:panel id="panel" header="Register" style="margin-bottom:10px;">
                 <h:outputLabel for="userName" value="Name:"/>
-                <p:inputText id="userName" value="#{userController.newUser.name}">
-                </p:inputText>
+                <b:inputText id="userName" value="#{registerController.newUser.name}">
+                </b:inputText>
                 <h:outputLabel for="userFirstName" value="First name:"/>
-                <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
-                </p:inputText>
-                <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"/>
-            </h:panelGrid>
-        </p:panel>
-    </h:form>
+                <b:inputText id="userFirstName" value="#{registerController.newUser.firstName}">
+                </b:inputText>
+                <h:commandButton value="Toevoegen" look="success" action="#{registerController.submit()}" update="userDataTable"/>
+        </b:panel>
+    </b:form>
 
-    <h:form id="userLogin">
-        <p:panel id="loginpanel" header="Login">
-            <h:selectOneMenu value="#{user.name}">
-                <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.name} #{user.firstName}"/>
-            </h:selectOneMenu>
-            <h:button value="Login" outcome="artikelOverzicht"/>
-        </p:panel>
-    </h:form>
+    <b:form id="userLogin">
+        <b:messages/>
+        <b:panel id="loginpanel" header="Login">
+            <b:selectOneMenu value="#{userController.selectedUser}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
+            </b:selectOneMenu>
+            <h:commandButton value="Login" look="success" action="artikelOverzicht" update="userLogin" />
+        </b:panel>
+    </b:form>
 
 </h:body>
 </html>

@@ -9,7 +9,12 @@
 <h:head><title>ShopR!</title></h:head>
 
 <h:body>
-    <h:form id="artikelBeheer">
+
+    <p>Welcome #{userController.selectedUser.firstName}</p>
+    <p>Welkom #{registerController.newUser.firstName}</p>
+
+
+    <h:form id="artikelOverzicht">
         <b:dataTable var="artikel" value="#{artikelController.allArtikels}" id="artikelDataTabel">
             <b:dataTableColumn label="Id" value="#{artikel.id}">
             </b:dataTableColumn>
