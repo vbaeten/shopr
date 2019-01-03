@@ -34,7 +34,7 @@ public class GameService {
         gameRepository.insert(game);
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         gameRepository.remove(id);
     }
 }

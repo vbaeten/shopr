@@ -1,10 +1,10 @@
 package com.realdolmen.shopr.domain;
 
 public enum NonFictieOnderwerp {
-    GESCHIEDENIS ("geschiedenis"),
-    KOOKBOEK ("kookboek"),
-    WETENSCHAP ("wetenschap"),
-    SPORT ("sport");
+    GESCHIEDENIS("geschiedenis"),
+    KOOKBOEK("kookboek"),
+    WETENSCHAP("wetenschap"),
+    SPORT("sport");
 
     private String nonFictieOnderwerp;
 

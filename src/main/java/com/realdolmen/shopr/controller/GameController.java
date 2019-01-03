@@ -32,7 +32,7 @@ public class GameController {
         this.game = game;
     }
 
-    public Game findById(int id){
+    public Game findById(int id) {
         return this.gameService.findById(id);
     }
 
@@ -40,11 +40,11 @@ public class GameController {
         return this.gameService.findAll();
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         this.gameService.removeById(id);
     }
 
-    public void submit(Game game){
+    public void submit(Game game) {
         this.gameService.insert(game);
     }
 }

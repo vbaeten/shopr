@@ -35,14 +35,14 @@ public class Artikel {
     @Column(name = "titel")
     private String titel;
     @NotNull
-    @Digits(integer=6, fraction=2)
+    @Digits(integer = 6, fraction = 2)
     @Column(name = "prijs")
     private BigDecimal prijs;
     @NotNull
     @Size(max = 100)
     @Column(name = "ID_leverancier")
     private String idLeverancier;
-    @Column(name ="type", insertable = false, updatable = false)
+    @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
     @OneToMany

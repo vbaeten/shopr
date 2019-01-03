@@ -17,6 +17,11 @@ public class FictieController {
     @Inject
     private FictieService fictieService;
 
+    public String gotoDetails(Fictie fictie) {
+        this.fictie = fictie;
+        return "fictieDetails";
+    }
+
     public Fictie getFictie() {
         return fictie;
     }
@@ -25,7 +30,7 @@ public class FictieController {
         this.fictie = fictie;
     }
 
-    public Fictie findById(int id){
+    public Fictie findById(int id) {
         return this.fictieService.findById(id);
     }
 
@@ -33,11 +38,11 @@ public class FictieController {
         return this.fictieService.findAll();
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         this.fictieService.removeById(id);
     }
 
-    public void submit(Fictie fictie){
+    public void submit(Fictie fictie) {
         this.fictieService.insert(fictie);
     }
 

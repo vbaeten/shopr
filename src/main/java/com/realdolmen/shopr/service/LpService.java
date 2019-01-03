@@ -34,7 +34,7 @@ public class LpService {
         lpRepository.insert(lp);
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         lpRepository.remove(id);
     }
 

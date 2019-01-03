@@ -1,9 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.*;
-import com.realdolmen.shopr.service.ArtikelService;
-import com.realdolmen.shopr.service.GameService;
-import com.realdolmen.shopr.service.LpService;
+import com.realdolmen.shopr.service.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,6 +16,10 @@ public class ArtikelController {
     @Inject
     private ArtikelService artikelService;
     @Inject
+    private FictieService fictieService;
+    @Inject
+    private NonFictieService nonFictieService;
+    @Inject
     private GameService gameService;
     @Inject
     private LpService lpService;
@@ -29,14 +31,20 @@ public class ArtikelController {
 
     public String gotoDetails(Artikel artikel) {
         this.artikel = artikel;
+        this.artikel.setType(artikel.getType());
         if (artikel instanceof Game) {
             return "gameDetails";
         } else if (artikel instanceof Lp) {
             return "lpDetails";
-        } else if (artikel.getType().equals("fictie")) {
-            return "fictieDetails";
-        } else if (artikel.getType().equals("nonFictie")) {
-            return "nonFictieDetails";
+        } else if (artikel instanceof Boek) {
+            boek = (Boek) artikel;
+            if (boek.getBoekType().equals("fictie")) {
+                boek = fictieService.findById(artikel.getId());
+                return "fictieDetails";
+            } else if (boek.getBoekType().equals("nonFictie")) {
+                boek = nonFictieService.findById(artikel.getId());
+                return "nonFictieDetails";
+            }
         }
         return null;
     }
@@ -87,4 +95,21 @@ public class ArtikelController {
     public void setBoek(Boek boek) {
         this.boek = boek;
     }
+
+    public boolean isGame() {
+        return artikel instanceof Game;
+    }
+
+    public boolean isLp() {
+        return artikel instanceof Lp;
+    }
+
+    public boolean isFictie() {
+        return artikel instanceof Fictie;
+    }
+
+    public boolean isNonFictie() {
+        return artikel instanceof NonFictie;
+    }
+
 }

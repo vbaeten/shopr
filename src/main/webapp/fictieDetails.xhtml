@@ -16,7 +16,8 @@
     <p>#{artikelController.artikel.titel}</p>
 
     <h:form id="details">
-        <b:dataTable var="boek" value="#{artikelController.boek}" id="detailsDataTabel">
+        <b:dataTable var="boek" value="#{artikelController.artikel}" id="fictieArtikelDetailsDataTabel"
+                     rendered="#{artikelController.isFictie()}">
             <b:dataTableColumn label="Id" value="#{boek.id}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Id leverancier" value="#{boek.idLeverancier}">
@@ -27,12 +28,37 @@
             </b:dataTableColumn>
             <b:dataTableColumn label="Prijs" value="#{boek.prijs}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Korte_inhoud" value="#{boek.korteInhoud}">
+            <b:dataTableColumn label="Korte inhoud" value="#{boek.korteInhoud}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Genre" value="#{boek.fictieGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
                 <b:commandButton value="delete" action="#{artikelController.removeArtikelById(boek.id)}"/>
+            </b:dataTableColumn>
+        </b:dataTable>
+
+        <b:dataTable var="fictie" value="#{fictieController.fictie}" id="FictieDetailsDataTabel"
+                     rendered="#{!artikelController.isFictie()}">
+            <b:dataTableColumn label="Id" value="#{fictie.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Id leverancier" value="#{fictie.idLeverancier}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Isbn" value="#{fictie.isbn}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Auteur" value="#{fictie.auteur}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{fictie.fictieGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Titel" value="#{fictie.titel}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Prijs" value="#{fictie.prijs}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Aantal paginas" value="#{fictie.aantalPaginas}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Korte inhoud" value="#{fictie.korteInhoud}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(fictie.id)}"/>
             </b:dataTableColumn>
         </b:dataTable>
 

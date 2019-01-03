@@ -32,10 +32,10 @@ public class User {
     private String firstName;
 
     @OneToMany
-    private List <Bestelling> bestellingen;
+    private List<Bestelling> bestellingen;
 
     @OneToMany
-    private List <Beoordeling> beoordelingen;
+    private List<Beoordeling> beoordelingen;
 
     public int getId() {
         return id;

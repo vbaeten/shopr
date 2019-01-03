@@ -32,10 +32,10 @@ public class Boek extends Artikel {
     private String auteur;
     @NotNull
     @Column(name = "isbn", unique = true)
-    @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
     @Column(name = "aantal_paginas")
-    private  int aantalPaginas;
+    private int aantalPaginas;
     @Column(insertable = false, updatable = false)
     private String boekType;
 

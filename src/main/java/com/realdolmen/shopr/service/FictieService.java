@@ -34,7 +34,7 @@ public class FictieService {
         fictieRepository.insert(fictie);
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         fictieRepository.remove(id);
     }
 

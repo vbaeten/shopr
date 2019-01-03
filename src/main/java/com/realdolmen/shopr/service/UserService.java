@@ -34,8 +34,7 @@ public class UserService {
     }
 
 
-
-    public void removeById (int id){
+    public void removeById(int id) {
         userRepository.remove(id);
     }
 

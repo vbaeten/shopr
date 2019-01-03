@@ -36,11 +36,11 @@ public class UserController {
         this.newUser = newUser;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
+    public void submit() {
         this.userService.insert(newUser);
     }
 

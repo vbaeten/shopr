@@ -16,23 +16,43 @@
     <p>#{artikelController.artikel.titel}</p>
 
     <h:form id="details">
-        <b:dataTable var="artikel" value="#{artikelController.artikel}" id="lpDetailsDataTabel">
-            <b:dataTableColumn label="Id" value="#{artikel.id}">
+        <b:dataTable var="lp" value="#{artikelController.artikel}" id="lpArtikelDetailsDataTabel"
+                     rendered="#{artikelController.isLp()}">
+            <b:dataTableColumn label="Id" value="#{lp.id}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Id leverancier" value="#{artikel.idLeverancier}">
+            <b:dataTableColumn label="Id leverancier" value="#{lp.idLeverancier}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Type" value="#{artikel.type}">
+            <b:dataTableColumn label="Type" value="#{lp.type}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Titel" value="#{artikel.titel}">
+            <b:dataTableColumn label="Titel" value="#{lp.titel}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Prijs" value="#{artikel.prijs}">
+            <b:dataTableColumn label="Prijs" value="#{lp.prijs}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Uitvoerder" value="#{artikel.uitvoerder}">
+            <b:dataTableColumn label="Uitvoerder" value="#{lp.uitvoerder}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Genre" value="#{artikel.lpGenre}">
+            <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(artikel.id)}"/>
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(lp.id)}"/>
+            </b:dataTableColumn>
+        </b:dataTable>
+
+        <b:dataTable var="lp" value="#{lpController.lp}" id="lpDetailsDataTabel"
+                     rendered="#{!artikelController.isLp()}">
+            <b:dataTableColumn label="Id" value="#{lp.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Id leverancier" value="#{lp.idLeverancier}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Uitvoerder" value="#{lp.uitvoerder}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Titel" value="#{lp.titel}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Prijs" value="#{lp.prijs}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(lp.id)}"/>
             </b:dataTableColumn>
         </b:dataTable>
 

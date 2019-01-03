@@ -16,6 +16,11 @@ public class NonFictieController {
     @Inject
     private NonFictieService nonFictieService;
 
+    public String gotoDetails(NonFictie nonFictie) {
+        this.nonFictie = nonFictie;
+        return "nonFictieDetails";
+    }
+
     public NonFictie getNonFictie() {
         return nonFictie;
     }
@@ -24,7 +29,7 @@ public class NonFictieController {
         this.nonFictie = nonFictie;
     }
 
-    public NonFictie findById(int id){
+    public NonFictie findById(int id) {
         return this.nonFictieService.findById(id);
     }
 
@@ -32,11 +37,11 @@ public class NonFictieController {
         return this.nonFictieService.findAll();
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         this.nonFictieService.removeById(id);
     }
 
-    public void submit(NonFictie nonFictie){
+    public void submit(NonFictie nonFictie) {
         this.nonFictieService.insert(nonFictie);
     }
 

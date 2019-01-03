@@ -17,6 +17,11 @@ public class LpController {
     @Inject
     private LpService lpService;
 
+    public String gotoDetails(Lp lp) {
+        this.lp = lp;
+        return "lpDetails";
+    }
+
     public Lp getLp() {
         return lp;
     }
@@ -25,7 +30,7 @@ public class LpController {
         this.lp = lp;
     }
 
-    public Lp findById(int id){
+    public Lp findById(int id) {
         return this.lpService.findById(id);
     }
 
@@ -33,11 +38,11 @@ public class LpController {
         return this.lpService.findAll();
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         this.lpService.removeById(id);
     }
 
-    public void submit(Lp lp){
+    public void submit(Lp lp) {
         this.lpService.insert(lp);
     }
 
