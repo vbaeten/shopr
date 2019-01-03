@@ -1,19 +1,20 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "non_fiction")
 @DiscriminatorValue("Non fiction")
 public class NonFiction extends Book {
     @Enumerated(EnumType.STRING)
-    private Topic topic;
+    @Column(name = "nonfiction_subject")
+    private NonFictionSubject nonFictionSubject;
 
-    public Topic getTopic() {
-        return topic;
+    public NonFictionSubject getNonFictionSubject() {
+        return nonFictionSubject;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setNonFictionSubject(NonFictionSubject nonFictionSubject) {
+        this.nonFictionSubject = nonFictionSubject;
     }
 }

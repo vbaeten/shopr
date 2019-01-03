@@ -13,7 +13,7 @@ import javax.persistence.*;
 )
 @DiscriminatorColumn(name = "type")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Item {
+public abstract class Item {
     public static final String FIND_ALL = "Item.findAll";
 
     @Id
