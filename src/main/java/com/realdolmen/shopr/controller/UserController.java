@@ -3,18 +3,18 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
-@RequestScoped
-public class UserController {
+@SessionScoped
+public class UserController implements Serializable {
 
     private User newUser = new User();
+    private User currentUser = new User();
 
     @Inject
     private UserService userService;
@@ -27,11 +27,23 @@ public class UserController {
         this.newUser = newUser;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
+    public void submit() {
         this.userService.insert(newUser);
+    }
+
+    public String gotoArticles() {
+        return "articles.xhtml";
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

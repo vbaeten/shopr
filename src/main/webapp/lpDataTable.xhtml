@@ -9,7 +9,10 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
-        <p:dataTable var="lp" value="#{lpController.lps}" styleClass="table table-striped">
+        <p:dataTable var="lp"
+                     value="#{lpController.lps}"
+                     rows="10"
+                     paginator="true">
             <p:column headerText="Id">
                 <h:outputText value="#{lp.id}"/>
             </p:column>

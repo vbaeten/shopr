@@ -14,8 +14,13 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <h:form>
-            <p:fieldset legend="#{gameController.newGame.title}" cellPadding="5">
+            <p:fieldset legend="Game details" cellPadding="5">
+                <p:commandButton value="delete" action="#{gameController.delete}"/>
+
                 <p:panelGrid columns="2" cellPaddinig="5">
+                    <h:outputText value="Title:" />
+                    <h:outputText value="#{gameController.newGame.title}"/>
+
                     <h:outputText value="Publisher:" />
                     <h:outputText value="#{gameController.newGame.publisher}"/>
 
@@ -30,10 +35,42 @@
 
                     <h:outputText value="Price:" />
                     <h:outputText value="#{gameController.newGame.price} €"/>
+
+                    <p:commandButton value="Order" action="#{gameController.delete}"/>
+                    <p:spinner id="amount" value="" min="1" max="20"  />
                 </p:panelGrid>
-                <p:commandButton value="delete" action="#{gameController.delete}"/>
             </p:fieldset>
         </h:form>
+        <br/>
+        <h:form>
+            <p:fieldset legend="Write a review" cellPadding="5">
+                <p:panelGrid columns="2" cellPaddinig="5" >
+                    <h:outputText value="Rating:" />
+                    <p:rating value="#{ratingController.newRating.score}" stars="10" cancel="false"/>
+
+                    <h:outputText value="Comments: "/>
+                    <p:inputTextarea rows="10"
+                                     cols="100"/>
+                    <p:commandButton value="Submit"/>
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+
+        <h:form>
+            <p:fieldset>
+                <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(param['id'])}"
+                            emptyMessage="There are no reviews for this article yet."
+                            type="definition">
+                    #{rating.user.firstName} #{rating.user.name}
+                    <p:rating value="#{rating.score}" readonly="true" stars="10" />
+                    <h:outputText value="#{rating.description}"/>
+                    <p:separator/>
+                </p:dataList>
+
+
+            </p:fieldset>
+        </h:form>
+
     </ui:define>
 </ui:composition>
 

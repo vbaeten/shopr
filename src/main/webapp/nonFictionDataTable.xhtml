@@ -9,7 +9,10 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
-        <p:dataTable var="nonFiction" value="#{nonFictionController.nonFictions}" styleClass="table table-striped">
+        <p:dataTable var="nonFiction"
+                     value="#{nonFictionController.nonFictions}"
+                     rows="10"
+                     paginator="true">
             <p:column headerText="Id">
                 <h:outputText value="#{nonFiction.id}"/>
             </p:column>
@@ -33,7 +36,7 @@
             </p:column>
 
             <p:column headerText="Isbn">
-                <h:outputText value="#{nonFiction.formattedIsbn}"/>
+                <h:outputText value="#{nonFiction.isbn}"/>
             </p:column>
 
             <p:column headerText="Price" >

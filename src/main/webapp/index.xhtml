@@ -19,23 +19,24 @@
                 <h:outputLabel for="userFirstName" value="First name:"/>
                 <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
                 </p:inputText>
-                <p:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"/>
+                <p:commandButton value="Toevoegen" action="#{userController.submit}" update="userDataTable login"/>
             </h:panelGrid>
         </p:panel>
     </h:form>
-
-    <h:form>
+    <h:form id="login">
+        <p:messages id="messages" showDetail="true" closable="true">
+        </p:messages>
         <p:panel header="Login" style="margin-bottom:10px;">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="user" value="User: "/>
-                <p:selectOneMenu id="user" style="width:150px">
-                    <f:selectItem itemLabel="--- Select User ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems var="user"
-                                   value="#{userController.users}"
-                                   itemValue="#{user}"
-                                   itemLabel="#{user.firstName} #{user.name}"/>
+                <p:selectOneMenu id="user" style="width:150px" value="#{userController.currentUser}" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItem itemLabel="--- Select User ---" noSelectionOption="true"/>
+                    <f:selectItems var="loginguser"
+                                   value="#{userController.getUsers()}"
+                                   itemValue="#{loginguser}"
+                                   itemLabel="${loginguser.firstName} ${loginguser.name}"/>
                 </p:selectOneMenu>
-                <p:commandButton value="Login" action="articles.xhtml"/>
+                <p:commandButton value="Login" action="#{userController.gotoArticles()}" update="login"/>
             </h:panelGrid>
         </p:panel>
     </h:form>

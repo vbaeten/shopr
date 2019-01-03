@@ -15,7 +15,12 @@
     <ui:define name="pageContent">
         <h:form>
             <p:fieldset legend="#{nonFictionController.newNonFiction.title}" cellPadding="5">
+                <p:commandButton value="delete" action="#{nonFictionController.delete}"/>
+
                 <p:panelGrid columns="2" cellPaddinig="5">
+                    <h:outputText value="Title:" />
+                    <h:outputText value="#{nonFictionController.newNonFiction.title}"/>
+
                     <h:outputText value="Author:" />
                     <h:outputText value="#{nonFictionController.newNonFiction.author}"/>
 
@@ -26,19 +31,45 @@
                     <h:outputText value="#{nonFictionController.newNonFiction.numberOfPages}"/>
 
                     <h:outputText value="Isbn:" />
-                    <h:outputText value="#{nonFictionController.newNonFiction.formattedIsbn}"/>
+                    <h:outputText value="#{nonFictionController.newNonFiction.isbn}"/>
 
                     <h:outputText value="Supplier ID:" />
                     <h:outputText value="#{nonFictionController.newNonFiction.supplierId}"/>
 
                     <h:outputText value="Price:" />
                     <h:outputText value="#{nonFictionController.newNonFiction.price}"/>
+
+                    <p:commandButton value="Order" action="#{nonFictionController.delete}"/>
+                    <p:spinner id="amount" value="" min="1" max="20"  />
                 </p:panelGrid>
-                <p:commandButton value="delete" action="#{nonFictionController.delete}"/>
+            </p:fieldset>
+        </h:form>
+        <br/>
+        <h:form>
+            <p:fieldset legend="Write a review" cellPadding="5">
+                <p:panelGrid columns="2" cellPaddinig="5" >
+                    <h:outputText value="Rating:" />
+                    <p:rating value="#{ratingController.newRating.score}" stars="10" cancel="false"/>
+
+                    <h:outputText value="Comments: "/>
+                    <p:inputTextarea rows="10"
+                                     cols="100"/>
+                    <p:commandButton value="Submit"/>
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+        <h:form>
+            <p:fieldset>
+                <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(param['id'])}"
+                            emptyMessage="There are no reviews for this article yet."
+                            type="definition">
+                    #{rating.user.firstName} #{rating.user.name}
+                    <p:rating value="#{rating.score}" readonly="true" stars="10" />
+                    <h:outputText value="#{rating.description}"/>
+                    <p:separator/>
+                </p:dataList>
             </p:fieldset>
         </h:form>
     </ui:define>
 </ui:composition>
-
-
 </html>
