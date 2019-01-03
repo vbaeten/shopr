@@ -29,6 +29,7 @@ public class User {
     private String name;
     @Column(name = "first_name")
     private String firstName;
+
     @ManyToMany
     private List <Beoordeling> beoordelingen;
 

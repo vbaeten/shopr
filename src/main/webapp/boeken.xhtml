@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:growl id="msgs"/>
+
+
+                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewBoeken" resizeMode="expand"
+                             rendered="true"
+                             var="boek"
+                             value="#{boekController.boeken()}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Search all fields:"/>
+                            <p:inputText id="globalFilter" onkeyup="PF('overviewBoeken').filter()" style="width:150px"
+                                         placeholder="Zoek Boek"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{boek.type}">
+                        <h:outputText value="#{boek.type}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
+                              sortBy="#{boek.titel}">
+                        <h:outputText value="#{boek.titel}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
+                              sortBy="#{boek.leverancier}">
+                        <h:outputText value="#{boek.leverancier}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
+                              sortBy="#{boek.prijs}">
+                        <h:outputText value="$ #{boek.prijs}"/>
+                    </p:column>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.edit']}"
+                                         action="#{overviewController.details(artikel)}">
+                        </b:commandButton>
+
+                    </p:column>
+
+                </p:dataTable>
+                <br></br>
+                <br></br>
+                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewGames" resizeMode="expand"
+                             rendered="true"
+                             var="game"
+                             value="#{gameController.games}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Search all fields:"/>
+                            <p:inputText id="globalFilterGames" onkeyup="PF('overviewGames').filter()"
+                                         style="width:150px"
+                                         placeholder="Zoek Game"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{game.type}">
+                        <h:outputText value="#{game.type}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
+                              sortBy="#{boek.titel}">
+                        <h:outputText value="#{game.titel}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
+                              sortBy="#{game.prijs}">
+                        <h:outputText value="$ #{game.prijs}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
+                              sortBy="#{game.leverancier}">
+                        <h:outputText value="#{game.leverancier}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['toevoegen.uitgever']}"
+                              sortBy="#{game.uitgever}">
+                        <h:outputText value="#{game.uitgever}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['toevoegen.leeftijd']}"
+                              sortBy="#{game.minLeeftijd}">
+                        <h:outputText value="#{game.minLeeftijd}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['toevoegen.genre']}"
+                              sortBy="#{game.enumGameGenre}">
+                        <h:outputText value="#{game.enumGameGenre}"/>
+                    </p:column>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.edit']}"
+                                         action="#{overviewController.details(artikel)}">
+                        </b:commandButton>
+
+                    </p:column>
+
+                </p:dataTable>
+                <br></br>
+                <br></br>
+                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewLp" resizeMode="expand"
+                             rendered="true"
+                             var="lp"
+                             value="#{lpController.getlps()}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Search all fields:"/>
+                            <p:inputText id="globalFilterLp" onkeyup="PF('overviewLp').filter()"
+                                         style="width:150px"
+                                         placeholder="Zoek Lp"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{lp.type}">
+                        <h:outputText value="#{lp.type}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
+                              sortBy="#{lp.titel}">
+                        <h:outputText value="#{lp.titel}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
+                              sortBy="#{lp.prijs}">
+                        <h:outputText value="$ #{lp.prijs}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
+                              sortBy="#{lp.leverancier}">
+                        <h:outputText value="#{lp.leverancier}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['toevoegen.uitvoerder']}"
+                              sortBy="#{lp.uitvoerder}">
+                        <h:outputText value="#{lp.uitvoerder}"/>
+                    </p:column>
+
+                    <p:column resizable="true" headerText="#{msgs['toevoegen.genre']}"
+                              sortBy="#{lp.enumMuziekGenre}">
+                        <h:outputText value="#{lp.enumMuziekGenre}"/>
+                    </p:column>
+
+                    <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.edit']}"
+                                         action="#{overviewController.details(artikel)}">
+                        </b:commandButton>
+
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
