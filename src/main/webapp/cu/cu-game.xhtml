@@ -16,14 +16,14 @@
                 <f:event listener="#{cuGameController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="Add a game" style="margin-bottom: 10px;">
+            <p:panel header="#{msg['cuGame.panel.header.addGame']}" style="margin-bottom: 10px;">
                 <b:form id="addGameForm">
-                    <b:inputText placeholder="Title" value="#{cuGameController.game.title}"/>
-                    <b:inputText placeholder="Publisher" value="#{cuGameController.game.publisher}"/>
+                    <b:inputText placeholder="#{msg['cuGame.inputText.placeholder.title']}" value="#{cuGameController.game.title}"/>
+                    <b:inputText placeholder="#{msg['cuGame.inputText.placeholder.publisher']}" value="#{cuGameController.game.publisher}"/>
 
                     <!--insert-->
                     <b:selectOneMenu rendered="#{cuGameController.game.id eq null}" value="#{cuGameController.game.gameGenre}" required="true">
-                        <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="#{msg['cuGame.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
                         <f:selectItems var="gameGenre" value="#{cuGameController.gameGenres}" itemValue="#{gameGenre}"
                                        itemLabel="#{gameGenre.name}"/>
                     </b:selectOneMenu>
@@ -33,9 +33,9 @@
                         <f:selectItems var="gameGenre" value="#{cuGameController.gameGenres}" itemValue="#{gameGenre}"
                                        itemLabel="#{gameGenre.name}" />
                     </b:selectOneMenu>
-                    <b:inputText placeholder="Minimum age" value="#{cuGameController.game.minAge}"/>
-                    <b:inputText placeholder="Price" value="#{cuGameController.game.price}"/>
-                    <b:commandButton value="Submit" action="#{cuGameController.submit}"/>
+                    <b:inputText placeholder="#{msg['cuGame.inputText.placeholder.minAge']}" value="#{cuGameController.game.minAge}"/>
+                    <b:inputText placeholder="#{msg['cuGame.inputText.placeholder.price']}" value="#{cuGameController.game.price}"/>
+                    <b:commandButton value="#{msg['cuGame.commandButton.submit']}" action="#{cuGameController.submit}"/>
                 </b:form>
             </p:panel>
         </ui:define>

@@ -16,14 +16,14 @@
                 <f:event listener="#{cuNonFictionController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="Add a non-fiction book" style="margin-bottom: 10px;">
+            <p:panel header="#{msg['cuNonFiction.panel.header.addBook']}" style="margin-bottom: 10px;">
                 <b:form id="addNonFictionForm">
-                    <b:inputText placeholder="Title" value="#{cuNonFictionController.nonFiction.title}"/>
-                    <b:inputText placeholder="Author" value="#{cuNonFictionController.nonFiction.author}"/>
+                    <b:inputText placeholder="#{msg['cuNonFiction.inputText.placeholder.title']}" value="#{cuNonFictionController.nonFiction.title}"/>
+                    <b:inputText placeholder="#{msg['cuNonFiction.inputText.placeholder.author']}" value="#{cuNonFictionController.nonFiction.author}"/>
 
                     <!--insert-->
                     <b:selectOneMenu rendered="#{cuNonFictionController.nonFiction.id eq null}" value="#{cuNonFictionController.nonFiction.nonFictionSubject}" required="true">
-                        <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="#{msg['cuNonFiction.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
                         <f:selectItems var="nonFictionSubject" value="#{cuNonFictionController.nonFictionSubjects}" itemValue="#{nonFictionSubject}"
                                        itemLabel="#{nonFictionSubject.name}"/>
                     </b:selectOneMenu>
@@ -33,10 +33,10 @@
                         <f:selectItems var="nonFictionSubject" value="#{cuNonFictionController.nonFictionSubjects}" itemValue="#{nonFictionSubject}"
                                        itemLabel="#{nonFictionSubject.name}" />
                     </b:selectOneMenu>
-                    <b:inputText placeholder="ISBN" value="#{cuNonFictionController.nonFiction.isbn}"/>
-                    <b:inputText placeholder="Pages" value="#{cuNonFictionController.nonFiction.pages}"/>
-                    <b:inputText placeholder="Price" value="#{cuNonFictionController.nonFiction.price}"/>
-                    <b:commandButton value="Submit" action="#{cuNonFictionController.submit}"/>
+                    <b:inputText placeholder="#{msg['cuNonFiction.inputText.placeholder.isbn']}" value="#{cuNonFictionController.nonFiction.isbn}"/>
+                    <b:inputText placeholder="#{msg['cuNonFiction.inputText.placeholder.pages']}" value="#{cuNonFictionController.nonFiction.pages}"/>
+                    <b:inputText placeholder="#{msg['cuNonFiction.inputText.placeholder.price']}" value="#{cuNonFictionController.nonFiction.price}"/>
+                    <b:commandButton value="#{msg['cuNonFiction.commandButton.submit']}" action="#{cuNonFictionController.submit}"/>
                 </b:form>
             </p:panel>
         </ui:define>

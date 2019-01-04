@@ -10,8 +10,8 @@
             <supported-locale>nl</supported-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>translations/template</base-name>
-            <var>trantemp</var>
+            <base-name>messages</base-name>
+            <var>msg</var>
         </resource-bundle>
     </application>
 

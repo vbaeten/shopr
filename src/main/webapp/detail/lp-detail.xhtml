@@ -16,14 +16,14 @@
                 <f:event listener="#{lpDetailController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="Details" style="margin-bottom: 10px;">
+            <p:panel header="#{msg['details.panel.header.details']}" style="margin-bottom: 10px;">
                 <h:outputText value="#{lpDetailController.lp.title}"/><br/>
                 <h:outputText value="#{lpDetailController.lp.artist}"/><br/>
                 <h:outputText value="#{lpDetailController.lp.lpGenre.name}"/><br/>
                 <h:outputText value="#{lpDetailController.lp.price}"/>
                 <b:form>
-                    <b:commandButton value="Delete" action="#{lpDetailController.delete}"/><br/>
-                    <h:link value="Edit" outcome="/cu/cu-lp.xhtml" includeViewParams="true">
+                    <b:commandButton value="#{msg['details.commandButton.delete']}" action="#{lpDetailController.delete}"/><br/>
+                    <h:link value="#{msg['details.link.edit']}" outcome="/cu/cu-lp.xhtml" includeViewParams="true">
                         <f:param id="id" value="#{lpDetailController.lp.id}"/>
                     </h:link>
                 </b:form>

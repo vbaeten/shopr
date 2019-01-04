@@ -16,14 +16,14 @@
                 <f:event listener="#{cuFictionController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="Add a fiction book" style="margin-bottom: 10px;">
+            <p:panel header="#{msg['cuFiction.panel.header.addBook']}" style="margin-bottom: 10px;">
                 <b:form id="addFictionForm">
-                    <b:inputText placeholder="Title" value="#{cuFictionController.fiction.title}"/>
-                    <b:inputText placeholder="Author" value="#{cuFictionController.fiction.author}"/>
+                    <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.title']}" value="#{cuFictionController.fiction.title}"/>
+                    <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.author']}" value="#{cuFictionController.fiction.author}"/>
 
                     <!--insert-->
                     <b:selectOneMenu rendered="#{cuFictionController.fiction.id eq null}" value="#{cuFictionController.fiction.fictionGenre}" required="true">
-                        <f:selectItem itemLabel="(Please select)" itemValue="" noSelectionOption="true"/>
+                        <f:selectItem itemLabel="#{msg['cuFiction.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
                         <f:selectItems var="fictionGenre" value="#{cuFictionController.fictionGenres}" itemValue="#{fictionGenre}"
                                        itemLabel="#{fictionGenre.name}"/>
                     </b:selectOneMenu>
@@ -33,11 +33,11 @@
                         <f:selectItems var="fictionGenre" value="#{cuFictionController.fictionGenres}" itemValue="#{fictionGenre}"
                                        itemLabel="#{fictionGenre.name}" />
                     </b:selectOneMenu>
-                    <b:inputText placeholder="ISBN" value="#{cuFictionController.fiction.isbn}"/>
-                    <b:inputText placeholder="Pages" value="#{cuFictionController.fiction.pages}"/>
-                    <b:inputTextarea placeholder="Summary" value="#{cuFictionController.fiction.summary}"/>
-                    <b:inputText placeholder="Price" value="#{cuFictionController.fiction.price}"/>
-                    <b:commandButton value="Submit" action="#{cuFictionController.submit}"/>
+                    <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.isbn']}" value="#{cuFictionController.fiction.isbn}"/>
+                    <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.pages']}" value="#{cuFictionController.fiction.pages}"/>
+                    <b:inputTextarea placeholder="#{msg['cuFiction.inputTextArea.placeholder.summary']}" value="#{cuFictionController.fiction.summary}"/>
+                    <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.price']}" value="#{cuFictionController.fiction.price}"/>
+                    <b:commandButton value="#{msg['cuFiction.commandButton.submit']}" action="#{cuFictionController.submit}"/>
                 </b:form>
             </p:panel>
         </ui:define>

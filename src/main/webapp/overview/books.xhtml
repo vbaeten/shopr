@@ -11,10 +11,10 @@
 <h:body>
     <ui:composition template="../template/common.xhtml">
         <ui:define name="content">
-            <p:panel header="List of books" style="margin-bottom: 10px;">
+            <p:panel header="#{msg['books.panel.header.listBooks']}" style="margin-bottom: 10px;">
                 <b:form>
                     <b:dataTable value="#{booksController.books}" var="book">
-                        <b:dataTableColumn label="Title">
+                        <b:dataTableColumn label="#{msg['books.dataTableColumn.title']}">
                             <h:link rendered="#{book.type eq 'Fiction'}" value="#{book.title}" outcome="/detail/fiction-detail.xhtml" includeViewParams="true">
                                 <f:param name="id" value="#{book.id}"/>
                             </h:link>
@@ -22,9 +22,9 @@
                                 <f:param name="id" value="#{book.id}"/>
                             </h:link>
                         </b:dataTableColumn>
-                        <b:dataTableColumn value="#{book.author}"/>
-                        <b:dataTableColumn value="#{book.type}"/>
-                        <b:dataTableColumn value="#{book.price}"/>
+                        <b:dataTableColumn label="#{msg['books.dataTableColumn.author']}" value="#{book.author}"/>
+                        <b:dataTableColumn label="#{msg['books.dataTableColumn.type']}" value="#{book.type}"/>
+                        <b:dataTableColumn label="#{msg['books.dataTableColumn.price']}" value="#{book.price}"/>
                     </b:dataTable>
                 </b:form>
             </p:panel>
