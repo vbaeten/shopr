@@ -2,6 +2,17 @@ body{
     background-color: #79968d;
     font-family: "Segoe UI", Verdana, Arial, sans-serif;
 }
+.errorPage{
+    text-align: center;
+}
+.errorLink {
+    text-decoration: none;
+    font-weight: bold;
+    color: darkgreen;
+}
+.errorLink:hover{
+    text-decoration: underline;
+}
 .priceColumn{
     font-weight: bold;
     color: #00c400;
@@ -22,17 +33,7 @@ body{
 .detailsLeftSide{
     font-weight: bold;
 }
-.errorPage{
-    text-align: center;
-}
-/*.errorPage > a, a:visited{*/
-    /*text-decoration: none;*/
-    /*font-weight: bold;*/
-    /*color: darkgreen;*/
-/*}*/
-/*.errorPage > a:hover{*/
-    /*text-decoration: underline;*/
-/*}*/
+
 .pageNotFoundIcon{
     max-height: 250px;
 }

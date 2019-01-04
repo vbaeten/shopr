@@ -6,6 +6,7 @@
 <h:head>
     <title>ShopR!</title>
     <link rel="stylesheet" type="text/css" href="../shopr/styles/style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
 
 </h:head>
 <h:body>
@@ -36,7 +37,7 @@
                                    itemValue="#{loginguser}"
                                    itemLabel="${loginguser.firstName} ${loginguser.name}"/>
                 </p:selectOneMenu>
-                <p:commandButton value="Login" action="#{userController.gotoArticles()}" update="login"/>
+                <p:commandButton value="Login" action="#{userController.gotoArticles()}" update="login" />
             </h:panelGrid>
         </p:panel>
     </h:form>

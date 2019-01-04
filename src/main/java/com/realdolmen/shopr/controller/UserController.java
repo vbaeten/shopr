@@ -6,6 +6,7 @@ import com.realdolmen.shopr.service.UserService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.Serializable;
 import java.util.List;
 
@@ -45,5 +46,9 @@ public class UserController implements Serializable {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public User getUserById(int id){
+        return this.userService.findUserById(id);
     }
 }

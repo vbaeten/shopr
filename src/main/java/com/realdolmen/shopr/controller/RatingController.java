@@ -2,14 +2,16 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Rating;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.RatingService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
-
+// TODO: bij delete article, zien dat ook alle review voor dat article gewist worden
 @ManagedBean
 @RequestScoped
 public class RatingController {
@@ -34,10 +36,9 @@ public class RatingController {
         this.newRating = rating;
     }
 
-    public void submit(int id){
-        // currentUser is null op dit moment
-        newRating.setUser(userController.getCurrentUser());
-        this.ratingService.insert(newRating, id);
+    public void submit(int articleId, int currentUserId){
+        newRating.setUser(userController.getUserById(currentUserId));
+        this.ratingService.insert(newRating, articleId);
         this.newRating = new Rating();
     }
 

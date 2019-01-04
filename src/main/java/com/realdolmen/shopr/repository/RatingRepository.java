@@ -22,8 +22,8 @@ public class RatingRepository {
         return entityManager.createNamedQuery(Rating.FIND_BY_ARTICLE_ID,Rating.class).setParameter("id", id).getResultList();
     }
 
-    public void insert(Rating rating, int id){
-        Article article = entityManager.find(Article.class, id);
+    public void insert(Rating rating, int articleId){
+        Article article = entityManager.find(Article.class, articleId);
         rating.setArticle(article);
         entityManager.persist(rating);
     }

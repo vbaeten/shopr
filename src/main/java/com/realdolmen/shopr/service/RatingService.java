@@ -25,8 +25,8 @@ public class RatingService {
         return ratingRepository.findByArticleId(id);
     }
 
-    public void insert(Rating rating, int id){
-        ratingRepository.insert(rating, id);
+    public void insert(Rating rating, int articleId){
+        ratingRepository.insert(rating, articleId);
     }
 
 }

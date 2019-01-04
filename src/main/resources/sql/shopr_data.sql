@@ -130,13 +130,13 @@ insert into book(id, author, isbn, numberOfPages) values(56, 'Rob Minto', '978-1
 insert into book(id, author, isbn, numberOfPages) values(57, 'Tom English', '978-19-0971-552-3', 320);
 insert into book(id, author, isbn, numberOfPages) values(58, 'Michael Carrick', '978-17-8870-049-8', 400);
 
-insert into fiction(id, genre, summary) values(31, 'fantasy', 'All three parts of the epic masterpiece The Lord of the Rings – The Fellowship of the Ring, The Two Towers & The Return of the King.');
+insert into fiction(id, genre, summary) values(31, 'fantasy', 'All three parts of the epic masterpiece The Lord of the Rings: The Fellowship of the Ring, The Two Towers & The Return of the King.');
 insert into fiction(id, genre, summary) values(32, 'fantasy', 'Bilbo Baggins enjoys a quiet life, with no desire to travel far from home; then one day the wizard Gandalf and a band of dwarves arrive unexpectedly and enlist his services as a burglar on an expedition to raid Smaug the dragon.');
 insert into fiction(id, genre, summary) values(33, 'fantasy', 'The Silmarillion is an account of the Elder Days, of the First Age of Tolkien''s world. It is the ancient drama to which the characters in The Lord of the Rings look back, and in whose events some of them such as Elrond and Galadriel took part.');
 insert into fiction(id, genre, summary) values(34, 'romance', 'In 1918 Ernest Hemingway went to war, to the ''war to end all wars''. He volunteered for ambulance service in Italy, was wounded and twice decorated. Out of his experiences came his early masterpiece, A Farewell to Arms.');
 insert into fiction(id, genre, summary) values(35, 'thriller', 'Collecting uniquely uncanny tales from the master of American horror, H.P. Lovecraft''s The Call of Cthulhu and Other Weird Stories is edited with an introduction and notes by S.T. Joshi in Penguin Modern Classics.');
 insert into fiction(id, genre, summary) values(36, 'thriller', 'The year is 1Q84. This is the real world, there is no doubt about that. But in this world, there are two moons in the sky. Something extraordinary is starting.');
-insert into fiction(id, genre, summary) values(37, 'sciFi', 'The year is 1Q84. This is the real world, there is no doubt about that. But in this world, there are two moons in the sky. Something extraordinary is starting.');
+insert into fiction(id, genre, summary) values(37, 'sciFi', 'Could a robot ever show true creativity? Is it wise to trust self-driving cars? Will robotic body parts transform human beings into machines? Will organic technology allow robots to become human?');
 insert into fiction(id, genre, summary) values(38, 'thriller', 'Danny is only five years old, but in the words of old Mr Hallorann he is a ''shiner'', aglow with psychic voltage. When his father becomes caretaker of the Overlook Hotel, Danny''s visions grow out of control.');
 insert into fiction(id, genre, summary) values(39, 'thriller', 'A collection of Lovecraftian short stories by editor supremo August Derleth that seek to build on the Cthulhu Mythos in various ways. ');
 insert into fiction(id, genre, summary) values(40, 'thriller', '2 friends, they went their separate ways. Now they are together again, though they holds secrets from eachother in his heart. They speak of a world shadowed with rumors of war. They speak of strange monsters, creatures of myth, creatures of legend.');
@@ -164,3 +164,17 @@ insert into rating(id, score, description, user_id, article_id) values (1, 8, 'I
 insert into rating(id, score, description, user_id, article_id) values (2, 2, 'This is awful stuff! It makes me want to kill things.', 4, 1);
 insert into rating(id, score, description, user_id, article_id) values (3, 0, 'There''s no place for music in communism. You go to camp if we catch you with this.', 3, 1);
 insert into rating(id, score, description, user_id, article_id) values (4, 9, 'I love me some good old Vivaldi when I''m killing American imperialists', 5, 1);
+
+insert into rating(id, score, description, user_id, article_id) values (5, 10, 'BEST. BOOK. EVER.', 2, 31);
+insert into rating(id, score, description, user_id, article_id) values (6, 0, 'There is no place for literature in communism! Go to the killing fields!', 3, 31);
+insert into rating(id, score, description, user_id, article_id) values (7, 3, 'This makes me scared.', 2, 35);
+insert into rating(id, score, description, user_id, article_id) values (8, 7, 'Viva la revolucion!', 5, 33);
+insert into rating(id, score, description, user_id, article_id) values (9, 2, 'I like this book.', 2, 32);
+insert into rating(id, score, description, user_id, article_id) values (10, 5, 'WAAAAAR!!!', 4, 34);
+
+insert into rating(id, score, description, user_id, article_id) values (11, 0, 'There''s not place for food in communism! Go to camp!', 3, 47);
+insert into rating(id, score, description, user_id, article_id) values (12, 2, 'Fake news!', 5, 44);
+
+insert into rating(id, score, description, user_id, article_id) values (13, 9, 'Lootin'' and pillagin''! I like this one!', 4, 16);
+insert into rating(id, score, description, user_id, article_id) values (14, 9, 'Great race game', 1, 17);
+insert into rating(id, score, description, user_id, article_id) values (15, 0, 'There''s no place for games in communism! Die!', 3, 17);

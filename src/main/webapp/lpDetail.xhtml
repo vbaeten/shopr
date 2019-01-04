@@ -2,8 +2,11 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xml:lang="en" lang="en">
 
 <f:metadata>
@@ -15,7 +18,7 @@
     <ui:define name="pageContent">
         <h:form>
             <p:fieldset legend="LP details" cellPadding="5">
-                <p:commandButton value="delete" action="#{lpController.delete}" styleClass="ui-btn-left warning"/>
+                <p:commandButton value="delete" action="#{lpController.delete}" styleClass=""/>
 
                 <p:panelGrid columns="2" cellPaddinig="5">
                     <h:outputText value="Title:" class="detailsLeftSide"/>
@@ -33,40 +36,43 @@
                     <h:outputText value="Price:" class="detailsLeftSide"/>
                     <h:outputText value="#{lpController.newLp.price} €"/>
 
-                    <p:commandButton value="Order" action="#{lpController.delete}"/>
-                    <p:spinner id="amount" value="" min="1" max="20"  />
+                    <p:commandButton value="Order"/>
+                    <p:spinner id="amount" placeholder="1" value="" min="1" max="20"/>
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
         <br/>
-        <h:form>
+        <h:form id="addReview">
             <p:fieldset legend="Write a review" cellPadding="5">
-                <p:panelGrid columns="2" cellPaddinig="5" >
-                    <h:outputText value="Rating:" />
+                <p:panelGrid columns="2" cellPaddinig="5">
+                    <h:outputText value="Rating:"/>
                     <p:rating value="#{ratingController.newRating.score}" stars="10"/>
 
                     <h:outputText value="Comments: "/>
                     <p:inputTextarea rows="10"
                                      cols="100"
                                      value="#{ratingController.newRating.description}"/>
-                    <p:commandButton value="Submit" action="#{ratingController.submit(param['id'])}" update="ratingsList"/>
+                    <p:commandButton value="Submit"
+                                     action="#{ratingController.submit(lpController.newLp.id, userController.currentUser.id)}"
+                                     update="ratingsList"/>
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
 
-        <h:form id="ratingsList">
-            <p:fieldset>
-                <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(param['id'])}"
-                            emptyMessage="There are no reviews for this article yet."
-                            type="definition">
-                    #{rating.user.firstName} #{rating.user.name}
-                    <p:rating value="#{rating.score}" readonly="true" stars="10" />
-                    <h:outputText value="#{rating.description}"/>
-                    <p:separator/>
-                </p:dataList>
-            </p:fieldset>
-        </h:form>
+        <p:fieldset id="ratingsList">
+            <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(lpController.lpId)}"
+                        emptyMessage="There are no reviews for this article yet."
+                        type="definition" >
+                #{rating.user.firstName} #{rating.user.name}
+                <p:rating value="#{rating.score}" readonly="true" stars="10"/>
+                <h:outputText value="#{rating.description}"/>
+                <p:separator/>
+            </p:dataList>
+        </p:fieldset>
 
+        <!--<ui:insert name="ratings">-->
+            <!--<ui:include src="templates/ratings.xhtml"/>-->
+        <!--</ui:insert>-->
 
 
     </ui:define>

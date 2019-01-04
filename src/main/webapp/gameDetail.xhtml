@@ -37,37 +37,38 @@
                     <h:outputText value="#{gameController.newGame.price} €"/>
 
                     <p:commandButton value="Order" action="#{gameController.delete}"/>
-                    <p:spinner id="amount" value="" min="1" max="20"  />
+                    <p:spinner id="amount" value="" min="1" max="20"/>
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
         <br/>
-        <h:form>
+        <h:form id="addReview">
             <p:fieldset legend="Write a review" cellPadding="5">
-                <p:panelGrid columns="2" cellPaddinig="5" >
-                    <h:outputText value="Rating:" />
+                <p:panelGrid columns="2" cellPaddinig="5">
+                    <h:outputText value="Rating:"/>
                     <p:rating value="#{ratingController.newRating.score}" stars="10"/>
 
                     <h:outputText value="Comments: "/>
                     <p:inputTextarea rows="10"
-                                     cols="100"/>
-                    <p:commandButton value="Submit"/>
+                                     cols="100"
+                                     value="#{ratingController.newRating.description}"/>
+                    <p:commandButton value="Submit"
+                                     action="#{ratingController.submit(gameController.newGame.id, userController.currentUser.id)}"
+                                     update="ratingsList"/>
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
 
-        <h:form>
-            <p:fieldset>
-                <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(param['id'])}"
-                            emptyMessage="There are no reviews for this article yet."
-                            type="definition">
-                    #{rating.user.firstName} #{rating.user.name}
-                    <p:rating value="#{rating.score}" readonly="true" stars="10" />
-                    <h:outputText value="#{rating.description}"/>
-                    <p:separator/>
-                </p:dataList>
-            </p:fieldset>
-        </h:form>
+        <p:fieldset id="ratingsList">
+            <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(gameController.gameId)}"
+                        emptyMessage="There are no reviews for this article yet."
+                        type="definition">
+                #{rating.user.firstName} #{rating.user.name}
+                <p:rating value="#{rating.score}" readonly="true" stars="10"/>
+                <h:outputText value="#{rating.description}"/>
+                <p:separator/>
+            </p:dataList>
+        </p:fieldset>
 
     </ui:define>
 </ui:composition>
