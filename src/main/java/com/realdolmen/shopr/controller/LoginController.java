@@ -25,8 +25,16 @@ public class LoginController implements Serializable {
     @Inject
     private UserService userService;
 
-    @ManagedProperty("#{}")
+//    @ManagedProperty("#{logged_user}")
     private User loggedUser;
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
+    }
 
     private int id;
     private String name;
