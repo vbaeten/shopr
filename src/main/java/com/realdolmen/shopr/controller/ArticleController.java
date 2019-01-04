@@ -15,6 +15,8 @@ import java.util.List;
 @RequestScoped
 public class ArticleController {
     @Inject
+    GameService gameService;
+    @Inject
     LPController lpController;
     @Inject
     GameController gameController;
@@ -46,13 +48,13 @@ public class ArticleController {
 
     public String goToArticleDetail(Article article) {
         this.article = article;
-        if (LP.class.isInstance(article)) {
+        if (article instanceof LP) {
             return "lpdetail";
-        } else if (Game.class.isInstance((article))) {
+        } else if (article instanceof Game) {
             return "gamedetail";
-        } else if (BookFiction.class.isInstance(article)) {
+        } else if (article instanceof BookFiction) {
             return "bookfictiondetail";
-        } else if (BookNonFiction.class.isInstance(article)) {
+        } else if (article instanceof BookNonFiction) {
             return "booknonfictiondetail";
         } else {
             return "ERROR";
@@ -75,6 +77,10 @@ public class ArticleController {
         this.book = book;
     }
 
+    public String removeGame(Long id) {
+        gameService.removeById(id);
+        return "overview";
+    }
     public BookFiction getBookFiction() {
         return bookFiction;
     }

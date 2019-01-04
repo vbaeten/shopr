@@ -9,7 +9,7 @@
 <h:body>
     <p>book fiction detail</p>
     <h:form>
-        <b:dataTable value="#{articleController.bookFiction}"
+        <b:dataTable value="#{articleController.article}"
                      var="bookfiction" caption="This is a the detail page for a book of the type fiction.">
             <b:dataTableColumn value="#{bookfiction.type}" label="type" />
             <b:dataTableColumn value="#{bookfiction.title}" label="title" />
@@ -32,7 +32,8 @@
                                style="text-align:center">
                 <b:commandButton value="Delete"
                                  icon="delete"
-                                 look="danger"/>
+                                 look="danger"
+                            />
             </b:dataTableColumn>
         </b:dataTable>
     </h:form>

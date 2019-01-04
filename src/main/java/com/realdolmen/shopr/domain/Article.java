@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 public abstract class Article {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     @Size(max = 100 )

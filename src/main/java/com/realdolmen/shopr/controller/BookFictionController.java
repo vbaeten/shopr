@@ -43,7 +43,8 @@ public class BookFictionController {
         return bookFictionService.findBookFictionById(id);
     }
 
-    public void saveBookFiction() {
+    public String saveBookFiction() {
         this.bookFictionService.insert(bookFiction);
+        return "overview";
     }
 }

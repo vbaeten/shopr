@@ -18,6 +18,21 @@
             <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
             <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
             <b:dataTableColumn value="#{game.id}" label="product code"/>
+            <b:dataTableColumn label="Edit"
+                               orderable="false"
+                               style="text-align:center">
+                <b:commandButton value="Edit"
+                                 icon="edit"
+                                 look="primary"/>
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Delete"
+                               orderable="false"
+                               style="text-align:center">
+                <h:commandButton value="Delete"
+                                 icon="delete"
+                                 look="danger"
+                                 action="#{articleController.removeGame(game.id)}"/>
+            </b:dataTableColumn>
         </b:dataTable>
     </h:form>
 
