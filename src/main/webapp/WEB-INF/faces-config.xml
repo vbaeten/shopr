@@ -24,6 +24,24 @@
         </navigation-case>
 
         <navigation-case>
+            <from-outcome>goToLogin</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>goToLogout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>goToEditUsers</from-outcome>
+            <to-view-id>/users.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
             <from-outcome>goToWinkelwagen</from-outcome>
             <to-view-id>/winkelwagen.xhtml</to-view-id>
             <redirect/>

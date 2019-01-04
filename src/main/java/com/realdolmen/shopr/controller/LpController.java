@@ -12,12 +12,35 @@ import java.util.List;
 @ViewScoped
 public class LpController
 {
-private Lp newLp = new Lp();
 
-@Inject
+    @Inject
     LpService lpService;
 
-public Lp getNewLp()
+    private Lp newLp = new Lp();
+    private boolean loadPanel;
+    private Lp editLp = new Lp();
+
+    public Lp getEditLp()
+    {
+        return editLp;
+    }
+
+    public void setEditLp(Lp editLp)
+    {
+        this.editLp = editLp;
+    }
+
+    public boolean getLoadPanel()
+    {
+        return loadPanel;
+    }
+
+    public void setLoadPanel(Boolean b)
+    {
+        this.loadPanel = b;
+    }
+
+    public Lp getNewLp()
 {
     return newLp;
 }
@@ -37,5 +60,20 @@ public void submit()
     this.lpService.insert(newLp);
 }
 
+public void deleteLp()
+{
+
+}
+
+public void update()
+{
+lpService.update(this.editLp);
+}
+
+public void booleanAndLpPanelLp(Lp lp)
+{
+    this.loadPanel = true;
+    this.editLp = lp;
+}
 
 }

@@ -16,18 +16,19 @@
         <ui:define name="content">
             <b:container>
                 <b:form id="loginForm">
-                    <p:panel id="panel" style="height: 85%;  display: inline-block; position: center ">
+                    <p:panel id="panel" class="panelStyle" style="width: 500px;background-color: #f45b69">
                         <h:panelGrid columns="1" cellpadding="5">
                             <h:outputLabel for="gebruiker" value="Gebruiker:"/>
 
-                            <p:selectOneMenu id="gebruiker" value="#{loginController.enumRoles}">
-                                >
+                            <!--primefaces selectitemsindexconverter bootsfaces  selectitemsconverter-->
+                            <b:selectOneMenu id="gebruiker" value="#{loginController.id}"
+                                             converter="omnifaces.SelectItemsConverter">
+
 
                                 <f:selectItems value="#{userController.users}" var="user"
-                                               itemLabel="#{user.name}"
-                                               itemValue="#{user.role}"/>
-
-                            </p:selectOneMenu>
+                                               itemLabel="#{user.firstName}"
+                                               itemValue="#{user.id}"/>
+                            </b:selectOneMenu>
                             <b:commandButton class="btn btn-primary" style="background: #52489c"
                                              value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
 

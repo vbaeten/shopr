@@ -63,7 +63,7 @@
                 </p:dataTable>
 
 
-                <p:panel id="panelLp" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelLp" style="margin-bottom:10px; width: 60em"
                          rendered="#{overviewController.getPanelNumber() eq 1}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -83,9 +83,11 @@
                         <h:outputLabel for="prijslp" value="#{msgs['toevoegen.prijs']}  : "/>
                         <h:outputLabel id="prijslp" value="#{overviewController.artikelSelected.prijs}"/>
 
-                        <h:outputLabel for="aantal" value="#{msgs['overview.aantal']}"/>
-                        <p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1"
-                                   max="10"/>
+                        <h:outputLabel for="aantallp" value="#{msgs['overview.aantal']}"/>
+                        <b:touchSpin id="aantallp" col-md="2" value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1" />
+
+                        <!--<p:spinner id="aantal" value="#{winkelmandjeController.aantalArtikel}" placeholder="1" min="1"-->
+                        <!--max="10"/>-->
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
@@ -96,9 +98,9 @@
 
 
                     </h:panelGrid>
-                </p:panel>
+                </b:panel>
 
-                <p:panel id="panelGames" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelGames" style="margin-bottom:10px; width: 55em"
                          rendered="#{overviewController.getPanelNumber() eq 2}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -122,8 +124,11 @@
                         <h:outputLabel id="prijsGame" value="#{overviewController.artikelSelected.prijs}"/>
 
                         <h:outputLabel for="aantalgame" value="#{msgs['overview.aantal']}"/>
-                        <p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
-                                   min="1" max="10"/>
+                        <b:touchSpin id="aantalgame" col-md="2" value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1" />
+
+                        <!--<h:outputLabel for="aantalgame" value="#{msgs['overview.aantal']}"/>-->
+                        <!--<p:spinner id="aantalgame" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"-->
+                                   <!--min="1" max="10"/>-->
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
@@ -134,9 +139,9 @@
 
 
                     </h:panelGrid>
-                </p:panel>
+                </b:panel>
 
-                <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
                          rendered="#{overviewController.getPanelNumber() eq 4}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -166,8 +171,11 @@
                         <h:outputLabel id="prijsnonfictie" value="#{overviewController.artikelSelected.prijs}"/>
 
                         <h:outputLabel for="aantalnonfictie" value="#{msgs['overview.aantal']}"/>
-                        <p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
-                                   min="1" max="10"/>
+                        <b:touchSpin id="aantalnonfictie" col-md="2" value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1" />
+
+                        <!--<h:outputLabel for="aantalnonfictie" value="#{msgs['overview.aantal']}"/>-->
+                        <!--<p:spinner id="aantalnonfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"-->
+                                   <!--min="1" max="10"/>-->
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
@@ -178,9 +186,9 @@
 
 
                     </h:panelGrid>
-                </p:panel>
+                </b:panel>
 
-                <p:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
                          rendered="#{overviewController.getPanelNumber() eq 3}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -211,9 +219,13 @@
                         <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}  : "/>
                         <h:outputLabel id="prijsfictie" value="#{overviewController.artikelSelected.prijs}"/>
 
+                        <!--<h:outputLabel for="aantalfictie" value="#{msgs['overview.aantal']}"/>-->
+
                         <h:outputLabel for="aantalfictie" value="#{msgs['overview.aantal']}"/>
-                        <p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"
-                                   min="1" max="10"/>
+                        <b:touchSpin id="aantalfictie" col-md="2" value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1" />
+
+                        <!--<p:spinner id="aantalfictie" value="#{winkelmandjeController.aantalArtikel}" placeholder="1"-->
+                                   <!--min="1" max="10"/>-->
 
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()">
@@ -222,7 +234,7 @@
                                   onclick="$('.modalPseudoClass').modal()"/>
 
                     </h:panelGrid>
-                </p:panel>
+                </b:panel>
 
 
             </h:form>

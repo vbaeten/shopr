@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LpRepository
 {
-@PersistenceContext
+@PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
     public Lp findById(int id) {
@@ -27,6 +27,14 @@ public class LpRepository
 
     public Lp findByName(String titel) {
         return entityManager.createNamedQuery(Lp.FIND_BY_NAME, Lp.class).setParameter("lp", titel).getSingleResult();
+    }
+
+    public void update(Lp lp) {
+        entityManager.merge(lp);
+    }
+
+    public void delete(Lp lp) {
+        entityManager.remove(lp);
     }
 
 }

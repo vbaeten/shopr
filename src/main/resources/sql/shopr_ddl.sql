@@ -3,9 +3,9 @@
 --   name              VARCHAR(255) NOT NULL,
 --   first_name        VARCHAR(255) NOT NULL
 -- );
-insert into user(id, name , first_name, role ) values(10, 'Koen', 'Meyers', 'ADMIN');
-insert into user(id, name , first_name, role ) values(11, 'Indy', 'Meyers', 'USER');
-insert into user(id, name , first_name, role ) values(12, 'Odin', 'Meyers', 'USER');
+insert into user(id, name , first_name, role ) values(10, 'Meyers', 'Koen', 'ADMIN');
+insert into user(id, name , first_name, role ) values(11, 'Meyers', 'Indy', 'USER');
+insert into user(id, name , first_name, role ) values(12, 'Meyers', 'Odin', 'USER');
 
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('lp', '1', 'records', '20', 'opus');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('game', '2', 'idgames', '60', 'quake');

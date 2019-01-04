@@ -36,4 +36,9 @@ public class GameController
     {
         this.gameService.insert(newGame);
     }
+
+    public void deleteGame()
+    {
+
+    }
 }

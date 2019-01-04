@@ -42,4 +42,8 @@ private Boek boek;
     {
         return this.boekService.findAllBooks();
     }
+
+    public void deleteBoek()
+    {
+    }
 }

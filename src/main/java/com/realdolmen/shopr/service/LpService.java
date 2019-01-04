@@ -33,4 +33,24 @@ public class LpService
         lpRepository.insert(lp);
     }
 
+    public void editLpinDb(Lp lp)
+    {
+        Lp oldLp = findLpById(lp.getId());
+        oldLp.setTitel(lp.getTitel());
+        oldLp.setLeverancier(lp.getLeverancier());
+        oldLp.setUitvoerder(lp.getUitvoerder());
+        oldLp.setEnumMuziekGenre(lp.getEnumMuziekGenre());
+        oldLp.setPrijs(lp.getPrijs());
+
+
+    }
+    public void update(Lp lp) {
+        lpRepository.update(lp);
+    }
+
+    public void delete(int id) {
+        Lp lp = lpRepository.findById(id);
+        lpRepository.delete(lp);
+    }
+
 }

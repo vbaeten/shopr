@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions">
+      xmlns:of="http://omnifaces.org/functions" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title>
     <h:outputStylesheet  name="css/style.css"/></h:head>
 <h:body>
@@ -37,36 +37,36 @@
 
                                 <h:outputLabel for="titelLp" value="#{msgs['toevoegen.titel']}"/>
 
-                                <p:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true">
+                                <b:inputText id="titelLp" value="#{lpController.newLp.titel}" required="true">
                                     <f:validateLength maximum="100"/>
-                                </p:inputText>
+                                </b:inputText>
 
                                 <h:outputLabel for="prijsLp" value="#{msgs['toevoegen.prijs']}"/>
-                                <p:inputText id="prijsLp" value="#{lpController.newLp.prijs}" required="true">
+                                <b:inputText id="prijsLp" value="#{lpController.newLp.prijs}" required="true">
                                     <f:validateDoubleRange minimum="1"/>
-                                </p:inputText>
+                                </b:inputText>
 
                                 <h:outputLabel for="leverancierLp" value="#{msgs['toevoegen.leverancier']}"/>
 
-                                <p:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"
+                                <b:inputText id="leverancierLp" value="#{lpController.newLp.leverancier}"
                                              required="true">
                                     <f:validateLength maximum="100"/>
-                                </p:inputText>
+                                </b:inputText>
 
                                 <h:outputLabel for="uitvoerderLp" value="#{msgs['toevoegen.uitvoerder']}"/>
 
-                                <p:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}" required="true">
+                                <b:inputText id="uitvoerderLp" value="#{lpController.newLp.uitvoerder}" required="true">
                                     <f:validateLength maximum="100"/>
-                                </p:inputText>
+                                </b:inputText>
 
                                 <o:importConstants type="com.realdolmen.shopr.domain.EnumMuziekGenre"/>
 
                                 <h:outputLabel for="muziekGenre" value="#{msgs['toevoegen.genre']}"/>
-                                <p:selectOneMenu id="muziekGenre" value="#{lpController.newLp.enumMuziekGenre}">
+                                <b:selectOneMenu id="muziekGenre" value="#{lpController.newLp.enumMuziekGenre}">
                                     <f:selectItems value="#{EnumMuziekGenre}"/>
-                                </p:selectOneMenu>
+                                </b:selectOneMenu>
 
-                                <h:commandButton value="Add Lp" action="#{lpController.submit}" update=":lpDataTable"/>
+                                <b:commandButton value="Add Lp" action="#{lpController.submit}" />
 
 
                     </h:panelGrid>
@@ -77,25 +77,25 @@
                          rendered="#{2 eq toevoegController.getSelectPanel()}">
                     <h:panelGrid columns="1" cellpadding="5">
                         <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}"/>
-                        <p:inputText id="titel" value="#{gameController.newGame.titel}" required="true">
+                        <b:inputText id="titel" value="#{gameController.newGame.titel}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="prijs" value="#{msgs['toevoegen.prijs']}"/>
-                        <p:inputText id="prijs" value="#{gameController.newGame.prijs}" required="true">
+                        <b:inputText id="prijs" value="#{gameController.newGame.prijs}" required="true">
                             <f:validateDoubleRange minimum="1"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="leverancier" value="#{msgs['toevoegen.leverancier']}"/>
-                        <p:inputText id="leverancier" value="#{gameController.newGame.leverancier}" required="true">
+                        <b:inputText id="leverancier" value="#{gameController.newGame.leverancier}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
 
                         <h:outputLabel for="uitgever" value="#{msgs['toevoegen.uitgever']}"/>
-                        <p:inputText id="uitgever" value="#{gameController.newGame.uitgever}" required="true">
+                        <b:inputText id="uitgever" value="#{gameController.newGame.uitgever}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
 
                         <h:outputLabel for="leeftijd" value="#{msgs['toevoegen.leeftijd']}"/>
@@ -104,12 +104,12 @@
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
 
                         <h:outputLabel for="genre" value="#{msgs['toevoegen.genre']}"/>
-                        <p:selectOneMenu id="genre" value="#{gameController.newGame.enumGameGenre}">
+                        <b:selectOneMenu id="genre" value="#{gameController.newGame.enumGameGenre}">
                             <f:selectItems value="#{EnumGameGenre}"/>
-                        </p:selectOneMenu>
+                        </b:selectOneMenu>
 
 
-                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{gameController.submit}" update=":gameDataTable"/>
+                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{gameController.submit}" />
                     </h:panelGrid>
 
 
@@ -120,44 +120,44 @@
 
                     <h:panelGrid columns="1" cellpadding="5">
                         <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}"/>
-                        <p:inputText id="titelnonfictie" value="#{nonFictieController.newNonFictie.titel}" required="true">
+                        <b:inputText id="titelnonfictie" value="#{nonFictieController.newNonFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="prijsnonfictie" value="#{msgs['toevoegen.prijs']}"/>
-                        <p:inputText id="prijsnonfictie" value="#{nonFictieController.newNonFictie.prijs}" required="true">
+                        <b:inputText id="prijsnonfictie" value="#{nonFictieController.newNonFictie.prijs}" required="true">
                             <f:validateDoubleRange minimum="1"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="leveranciernonfictie" value="#{msgs['toevoegen.leverancier']}"/>
-                        <p:inputText id="leveranciernonfictie" value="#{nonFictieController.newNonFictie.leverancier}" required="true">
+                        <b:inputText id="leveranciernonfictie" value="#{nonFictieController.newNonFictie.leverancier}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
 
                         <h:outputLabel for="auteurnonfictie" value="#{msgs['toevoegen.auteur']}"/>
-                        <p:inputText id="auteurnonfictie" value="#{nonFictieController.newNonFictie.auteur}" required="true">
+                        <b:inputText id="auteurnonfictie" value="#{nonFictieController.newNonFictie.auteur}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="isbnnonfictie" value="#{msgs['toevoegen.isbn']}"/>
-                        <p:inputText id="isbnnonfictie" value="#{nonFictieController.newNonFictie.isbn}" required="true">
+                        <b:inputText id="isbnnonfictie" value="#{nonFictieController.newNonFictie.isbn}" required="true">
                             <!--<f:validateRegex/>-->
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}"/>
-                        <p:inputText id="paginasnonfictie" value="#{nonFictieController.newNonFictie.aantalPaginas}" >
-                         </p:inputText>
+                        <b:inputText id="paginasnonfictie" value="#{nonFictieController.newNonFictie.aantalPaginas}" >
+                         </b:inputText>
 
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumNonFictieGenre"/>
 
                         <h:outputLabel for="genrenonfictie" value="#{msgs['toevoegen.inhoud']}"/>
-                        <p:selectOneMenu id="genrenonfictie" value="#{nonFictieController.newNonFictie.enumNonFictieGenre}">
+                        <b:selectOneMenu id="genrenonfictie" value="#{nonFictieController.newNonFictie.enumNonFictieGenre}">
                             <f:selectItems value="#{EnumNonFictieGenre}"/>
-                        </p:selectOneMenu>
+                        </b:selectOneMenu>
 
 
-                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{nonFictieController.submit}" update=":nonFictieDataTable"/>
+                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{nonFictieController.submit}" />
                     </h:panelGrid>
                 </p:panel>
 
@@ -166,48 +166,48 @@
 
                     <h:panelGrid columns="1" cellpadding="5">
                         <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}"/>
-                        <p:inputText id="titelfictie" value="#{fictieController.newFictie.titel}" required="true">
+                        <b:inputText id="titelfictie" value="#{fictieController.newFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}"/>
-                        <p:inputText id="prijsfictie" value="#{fictieController.newFictie.prijs}" required="true">
+                        <b:inputText id="prijsfictie" value="#{fictieController.newFictie.prijs}" required="true">
                             <f:validateDoubleRange minimum="1"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="leverancierfictie" value="#{msgs['toevoegen.leverancier']}"/>
-                        <p:inputText id="leverancierfictie" value="#{fictieController.newFictie.leverancier}" required="true">
+                        <b:inputText id="leverancierfictie" value="#{fictieController.newFictie.leverancier}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
 
                         <h:outputLabel for="auteurfictie" value="#{msgs['toevoegen.auteur']}"/>
-                        <p:inputText id="auteurfictie" value="#{fictieController.newFictie.auteur}" required="true">
+                        <b:inputText id="auteurfictie" value="#{fictieController.newFictie.auteur}" required="true">
                             <f:validateLength maximum="100"/>
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="isbnfictie" value="#{msgs['toevoegen.isbn']}"/>
-                        <p:inputText id="isbnfictie" value="#{fictieController.newFictie.isbn}" required="true">
+                        <b:inputText id="isbnfictie" value="#{fictieController.newFictie.isbn}" required="true">
                             <!--<f:validateRegex/>-->
-                        </p:inputText>
+                        </b:inputText>
 
                         <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}"/>
-                        <p:inputText id="paginasfictie" value="#{fictieController.newFictie.aantalPaginas}" >
-                        </p:inputText>
+                        <b:inputText id="paginasfictie" value="#{fictieController.newFictie.aantalPaginas}" >
+                        </b:inputText>
 
                         <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}"/>
-                        <p:inputText id="inhoudfictie" value="#{fictieController.newFictie.korteInhoud}" >
-                        </p:inputText>
+                        <b:inputText id="inhoudfictie" value="#{fictieController.newFictie.korteInhoud}" >
+                        </b:inputText>
 
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumFictieGenre"/>
 
                         <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.genre']}"/>
-                        <p:selectOneMenu id="genrefictie" value="#{fictieController.newFictie.enumFictieGenre}">
+                        <b:selectOneMenu id="genrefictie" value="#{fictieController.newFictie.enumFictieGenre}">
                             <f:selectItems value="#{EnumFictieGenre}"/>
-                        </p:selectOneMenu>
+                        </b:selectOneMenu>
 
 
-                        <h:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{fictieController.submit}" update=":fictieDataTable"/>
+                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{fictieController.submit}" />
                     </h:panelGrid>
                 </p:panel>
 

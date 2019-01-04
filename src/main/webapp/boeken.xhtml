@@ -55,6 +55,12 @@
                                          value="#{msgs['artikel.edit']}"
                                          action="#{overviewController.details(artikel)}">
                         </b:commandButton>
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.delete']}"
+                                         action="#{boekController.deleteBoek}"
+                                         update="overviewBoeken">
+
+                        </b:commandButton>
 
                     </p:column>
 
@@ -112,6 +118,13 @@
                                          action="#{overviewController.details(artikel)}">
                         </b:commandButton>
 
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.delete']}"
+                                         action="#{gameController.deleteGame}"
+                                         update="overviewGames">
+
+                        </b:commandButton>
+
                     </p:column>
 
                 </p:dataTable>
@@ -162,12 +175,70 @@
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.edit']}"
-                                         action="#{overviewController.details(artikel)}">
+                                         action="#{lpController.booleanAndLpPanelLp(lp)}">
+                        </b:commandButton>
+
+                        <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                         value="#{msgs['artikel.delete']}"
+                                         action="#{lpController.deleteLp}"
+                                         update="overviewLp">
+
                         </b:commandButton>
 
                     </p:column>
 
                 </p:dataTable>
+                <b:panel id="panelLpEdit" style="margin-bottom:10px; width: 60em"
+                         rendered="#{lpController.loadPanel eq true}">
+                    <b:form>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="titelLp" value="#{msgs['toevoegen.titel']}  : "/>
+                            <b:inputText id="titelLp" placeholder="#{lpController.editLp.titel}"
+                                         value="#{lpController.editLp.titel}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="leverancierLp" value="#{msgs['toevoegen.leverancier']}  :"/>
+                            <b:inputText id="leverancierLp" placeholder="#{lpController.editLp.leverancier}"
+                                         value="#{lpController.editLp.leverancier}"
+                                         required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="uitvoerderLp" value="#{msgs['toevoegen.uitvoerder']}  : "/>
+                            <b:inputText id="uitvoerderLp" placeholder="#{lpController.editLp.uitvoerder}"
+                                         value="#{lpController.editLp.uitvoerder}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <o:importConstants type="com.realdolmen.shopr.domain.EnumMuziekGenre"/>
+
+                            <h:outputLabel for="muziekGenre" value="#{msgs['toevoegen.genre']}  : "/>
+                            <b:selectOneMenu id="muziekGenre" value="#{lpController.editLp.enumMuziekGenre}">
+                                <f:selectItems placeholder="#{lpController.editLp.enumMuziekGenre}"
+                                               value="#{EnumMuziekGenre}"/>
+                            </b:selectOneMenu>
+
+                            <h:outputLabel for="prijsLp" value="#{msgs['toevoegen.prijs']}  : "/>
+                            <b:inputText id="prijsLp" placeholder="#{lpController.editLp.prijs}"
+                                         value="#{lpController.editLp.prijs}" required="true">
+                                <f:validateDoubleRange minimum="1"/>
+                            </b:inputText>
+
+
+                            <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
+                                             value="#{msgs['artikel.edit']}"
+                                             onclick="$('.bevestiging').modal()"
+                                             action="#{lpController.update}">
+                            </b:commandButton>
+
+
+                        </h:panelGrid>
+                    </b:form>
+                </b:panel>
+
             </h:form>
         </ui:define>
     </ui:composition>

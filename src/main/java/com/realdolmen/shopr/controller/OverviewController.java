@@ -56,12 +56,9 @@ public class OverviewController implements Serializable
 
     public void details(Artikel a)
     {
-//        artikelSelected = overviewService.findArtikelById(a.getId());
+
         setArtikelSelected(a);
         this.panelNumber = overviewService.detailsPaginaSoort(a.getType());
-
-
-//       return "/details.xhtml?faces-redirect=true&id=" + a.getId();
 
     }
 

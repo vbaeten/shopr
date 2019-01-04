@@ -10,7 +10,7 @@
                   style="background: #59c3c3">
 
             <b:navbarLinks>
-                <b:navCommandLink action="goToZoek"><b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
+                <b:navCommandLink action="goToZoek"><b:button
                     class="btn btn-primary" style="background: #52489c"
                                                               value="#{msgs['header.zoek']}">
 
@@ -20,15 +20,18 @@
                                                                    value="#{msgs['header.toevoegen']}">
 
                 </b:button ></b:navCommandLink>
-                <b:navCommandLink action="goToEdit"><b:button class="btn btn-primary" style="background: #f45b69"
-                                                                   value="#{msgs['header.edit']}">
+                <b:navCommandLink action="goToEdit">
+                    <b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
+                    class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.edit']}">
 
                 </b:button></b:navCommandLink>
 
             </b:navbarLinks>
             <b:navbarLinks pull="right" styleClass="hidden-xs">
                 <h:form id="login_form">
-                    <b:label value="#{loginController.currentUserName}"/>
+                    <b:badge severity="info" value="#{loginController.currentUserName}"/>
+
+
 
                 </h:form>
 
@@ -36,6 +39,24 @@
             <b:navbarLinks pull="right" styleClass="hidden-xs">
             <b:navCommandLink rendered="#{loginController.enumRoles eq 'USER'}" action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #4062bb"
                                                                  value="#{msgs['header.winkelwagen']}">
+
+
+                    </b:button></b:navCommandLink>
+
+                <b:navCommandLink action="goToLogin">
+                    <b:button rendered="#{loginController.enumRoles eq null }"
+                              class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.login']}">
+
+            </b:button></b:navCommandLink>
+
+                <b:navCommandLink action="#{loginController.logout}">
+                    <b:button rendered="#{loginController.enumRoles eq 'USER' || loginController.enumRoles eq 'ADMIN' }"
+                              class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.logout']}">
+
+            </b:button></b:navCommandLink>
+
+                <b:navCommandLink rendered="#{loginController.enumRoles eq 'ADMIN'}" action="goToEditUsers"><b:button class="btn btn-primary" style="background: #4062bb"
+                                                                 value="#{msgs['header.admin']}">
 
             </b:button></b:navCommandLink>
             </b:navbarLinks>

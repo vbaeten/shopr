@@ -2,10 +2,13 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.UserService;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.*;
@@ -16,14 +19,23 @@ import java.util.List;
 @SessionScoped
 public class LoginController
 {
-    @PersistenceContext
-    EntityManager entityManager;
-//    @Resource
-//    UserTransaction utx;
+    @Inject
+    UserService userService;
 
     private User currentUser;
     private String currentUserName;
     private EnumRoles enumRoles;
+    private int id;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public String getCurrentUserName()
     {
@@ -47,37 +59,32 @@ public class LoginController
 
     public LoginController()
     {
-//        addUsers();
-    }
-
-
-    public void setCurrentUser(int id )
-    {
-        this.currentUser = entityManager.find(User.class, id);
-
-
-
-
-
     }
 
     public String loggedIn()
     {
-        System.out.println(currentUserName);
+        currentUser = userService.findUserById(id);
+        setEnumRoles(currentUser.getRole());
+        setCurrentUserName(currentUser.getFirstName());
+
         return "/index.xhtml?faces-redirect=true" ;
 
     }
 
-
-//    public List<User> findAllUsers(){
-//
-//
-//        return entityManager.createQuery("select u from User u", User.class).getResultList();
-//    }
-
     public User getCurrentUser()
     {
         return currentUser;
+    }
+
+    public String logout()
+    {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index?faces-redirect=true";
+//        currentUser = new User();
+//        loggedIn();
+//        return "login.xhtml?faces-redirect=true";
+
+
     }
 
 
