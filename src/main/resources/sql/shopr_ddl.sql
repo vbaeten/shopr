@@ -8,7 +8,8 @@ CREATE TABLE article (
   id INT     NOT NULL     AUTO_INCREMENT PRIMARY KEY,
   title      VARCHAR(255) NOT NULL,
   price      DOUBLE       NOT NULL,
-  supplier   VARCHAR(50)  NOT NULL
+  supplier   VARCHAR(50)  NOT NULL,
+  type       VARCHAR(50)
 );
 
 CREATE TABLE book
@@ -46,10 +47,5 @@ CREATE TABLE fiction
   synopsis varchar(255)
 
 );
-
-CREATE TABLE rating (
-
-);
-
 
 

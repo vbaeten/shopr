@@ -31,6 +31,7 @@ public class LpController {
 
     public void submitLp() {
         this.lpService.insertLp(newLp);
+        newLp = new Lp();
     }
 
     public void deleteLp(int id){

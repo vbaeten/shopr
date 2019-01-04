@@ -12,25 +12,11 @@ import java.util.List;
 @ViewScoped
 public class BookController {
 
-    private Book newBook = new Book();
-
     @Inject
     private BookService bookService;
 
-    public Book getNewBook() {
-        return newBook;
-    }
-
-    public void setNewBook(Book newBook) {
-        this.newBook = newBook;
-    }
-
     public List<Book> getBooks() {
         return this.bookService.findAllBooks();
-    }
-
-    public void submit() {
-        this.bookService.insert(newBook);
     }
 
     public void deleteBook(int id){

@@ -21,6 +21,15 @@
                     <b:dataTableColumn value="#{article.id}" label="Id"/>
                     <b:dataTableColumn value="#{article.title}" label="Title"/>
                     <b:dataTableColumn value="#{article.supplier}" label="Supplier"/>
+                    <b:dataTableColumn value="#{article.price}" label="Price"/>
+                    <b:dataTableColumn value="#{article.type}" label="Type"/>
+                    <b:dataTableColumn>
+                        <b:commandButton value="Delete" action="#{articleController.deleteArticle(article.id)}">
+                            <f:ajax excecute="@this" render="@form"/>
+                        </b:commandButton>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn>
+                    </b:dataTableColumn>
                 </b:dataTable>
             </h:form>
         </ui:define>

@@ -29,5 +29,4 @@ public class UserRepository {
     public void delete(int id) {
         entityManager.remove(entityManager.getReference(User.class, id));
     }
-
 }

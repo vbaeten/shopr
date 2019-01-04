@@ -20,7 +20,7 @@ public class NonFictionRepository {
     }
 
     public void insertNonFiction(NonFiction nonFiction) {
-        entityManager.merge(nonFiction);
+        entityManager.persist(nonFiction);
     }
 
     public void delete(int id) {

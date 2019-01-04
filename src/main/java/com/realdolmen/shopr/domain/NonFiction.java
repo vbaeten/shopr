@@ -3,6 +3,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@DiscriminatorValue("Non-Fiction")
 @Entity
 @Table(name = "non_fiction")
 @NamedQueries(

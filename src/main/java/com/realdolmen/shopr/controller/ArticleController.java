@@ -12,25 +12,12 @@ import java.util.List;
 @ViewScoped
 public class ArticleController {
 
-    private Article newArticle = new Article();
 
     @Inject
     ArticleService articleService;
 
-    public Article getNewArticle() {
-        return newArticle;
-    }
-
-    public void setNewArticle(Article newArticle) {
-        this.newArticle = newArticle;
-    }
-
     public List<Article> getArticles() {
         return this.articleService.findAllArticles();
-    }
-
-    public void submit() {
-        this.articleService.insert(newArticle);
     }
 
     public void deleteArticle(int id){

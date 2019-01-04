@@ -9,24 +9,28 @@
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <title>ShopR!</title>
 </h:head>
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
+            <p>Logged in as #{loginController.id} #{loginController.firstName} #{loginController.name}</p>
+
             <h3>Welcome to SHOPR!!!</h3>
             <p>Login</p>
 
             <b:form id="loginUser">
                 <b:formGroup>
-                    <b:selectOneMenu value="#{user}" style="width:200px" select2="true">
+                    <b:selectOneMenu style="width:200px" select2="true">
                         <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.name}"
+                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
                                        itemLabel="#{user.firstName} #{user.name}"/>
                     </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{loginController.login}" disabled="true"/>
+                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true" autoUpdate="true"/>
                 </b:formGroup>
             </b:form>
+
 
             <p>Register a new user</p>
             <b:form id="addUser">
@@ -48,12 +52,13 @@
                     <b:dataTableColumn value="#{user.name}"/>
                     <b:dataTableColumn value="#{user.firstName}"/>
                     <b:dataTableColumn>
-                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}">
+                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}" actionListener="#{messagesBean.info}" update="@form">
                             <f:ajax execute="@this" render="@form" />
                         </b:commandButton>
                     </b:dataTableColumn>
                 </b:dataTable>
             </h:form>
+
         </ui:define>
 
         <ui:define name="js">

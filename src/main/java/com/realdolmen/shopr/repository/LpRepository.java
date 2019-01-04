@@ -23,11 +23,7 @@ public class LpRepository {
     }
 
     public void insertLp(Lp lp) {
-        entityManager.merge(lp);
-    }
-
-    public void deleteLp(Lp lp) {
-        entityManager.remove(lp);
+        entityManager.persist(lp);
     }
 
     public void delete(int id) {

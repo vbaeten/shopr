@@ -2,12 +2,12 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@DiscriminatorColumn(name = "type")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @NamedQueries(
@@ -22,7 +22,7 @@ import java.util.List;
                 )
         }
 )
-public class Article implements Serializable {
+public abstract class Article implements Serializable {
 
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
@@ -52,6 +52,9 @@ public class Article implements Serializable {
     @JoinColumn(name="article_ratings")
     @Transient
     private List<Rating> ratings;
+
+    @Column(name="type", insertable = false, updatable = false)
+    private String type;
 
     public int getId() {
         return id;
@@ -83,6 +86,14 @@ public class Article implements Serializable {
 
     public void setSupplier(String supplier) {
         this.supplier = supplier;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
 

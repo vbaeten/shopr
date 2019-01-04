@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "fiction")
+@DiscriminatorValue("Fiction")
 @NamedQueries(
         @NamedQuery(
                 name = Fiction.FIND_ALL,

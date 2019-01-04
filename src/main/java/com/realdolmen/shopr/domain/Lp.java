@@ -5,6 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@DiscriminatorValue("Lp")
 @Entity
 @Table(name = "lp")
 @Inheritance(strategy = InheritanceType.JOINED)

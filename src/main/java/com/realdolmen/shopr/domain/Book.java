@@ -1,14 +1,12 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "book")
 @NamedQueries(
         @NamedQuery(
@@ -16,7 +14,7 @@ import java.io.Serializable;
                 query = "SELECT a FROM Book a"
         )
 )
-public class Book extends Article implements Serializable {
+public abstract class Book extends Article implements Serializable {
 
     public static final String FIND_ALL = "Book.findAll";
 
@@ -27,7 +25,7 @@ public class Book extends Article implements Serializable {
     //TODO unique
     @Column(name = "isbn")
     @NotNull
-    @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d")
+//    @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d")
     private long isbn;
 
     @Column (name = "pages")

@@ -25,6 +25,9 @@ function setNavMenuItemActive(navMenuItem){
             $("#nav-menu-items-shoppingbag").addClass("active");
             console.log("In Shoppingbag");
             break;
+        case "search":
+            $("#nav-menu-items-search").addClass("active");
+            break;
         default:
             console.log("In Default");
     }

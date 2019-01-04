@@ -31,6 +31,7 @@ public class NonFictionController {
 
     public void submitNonFiction() {
         this.nonFictionService.insertNonFiction(newNonFiction);
+        newNonFiction = new NonFiction();
     }
 
     public void deleteNonFiction(int id){

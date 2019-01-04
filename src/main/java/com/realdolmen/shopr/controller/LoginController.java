@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -23,21 +24,55 @@ public class LoginController implements Serializable {
     @Inject
     private UserService userService;
 
+    private User loggedUser;
+
+    private int id;
     private String name;
+    private String firstName;
 
-    private User user;
-
-    public void login() {
-
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-
-        Principal principal = request.getUserPrincipal();
-        this.user = userService.findUserByName(principal.getName());
-        log.info("Authentication done for user: " + principal.getName());
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String, Object> sessionMap = externalContext.getSessionMap();
-        sessionMap.put("User", user);
-
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @PostConstruct
+    private void init() {
+        this.loggedUser = new User();
+    }
+
+    public void login(User user) {
+        this.loggedUser = user;
+    }
+
+//    public String logout() {
+//        loggedUser = new User();
+//        return "/index.xhtml";
+//    }
+//
+//    public boolean isLoggedIn(){
+//        if( loggedUser == null){
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
 }

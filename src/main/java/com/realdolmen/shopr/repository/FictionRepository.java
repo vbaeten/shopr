@@ -19,7 +19,7 @@ public class FictionRepository {
     }
 
     public void insertFiction(Fiction fiction) {
-        entityManager.merge(fiction);
+        entityManager.persist(fiction);
     }
 
     public void delete(int id) {

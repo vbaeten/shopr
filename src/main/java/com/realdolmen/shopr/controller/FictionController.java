@@ -31,6 +31,7 @@ public class FictionController {
 
     public void submitFiction() {
         this.fictionService.insertFiction(newFiction);
+        newFiction = new Fiction();
     }
 
     public void deleteFiction(int id){

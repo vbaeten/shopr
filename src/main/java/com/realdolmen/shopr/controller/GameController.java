@@ -32,6 +32,7 @@ public class GameController {
 
     public void submitGame() {
         this.gameService.insertGame(newGame);
+        newGame = new Game();
     }
 
     public void deleteGame(int id){

@@ -20,7 +20,7 @@ public class GameRepository {
     }
 
     public void insertGame(Game game) {
-        entityManager.merge(game);
+        entityManager.persist(game);
     }
 
     public void delete(int id) {
