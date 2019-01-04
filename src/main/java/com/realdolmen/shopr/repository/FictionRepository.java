@@ -20,4 +20,18 @@ public class FictionRepository {
     public List<Fiction> findAllFictions() {
         return entityManager.createNamedQuery(Fiction.FIND_ALL, Fiction.class).getResultList();
     }
+
+    public Fiction findById(int id) {
+        return entityManager.find(Fiction.class, id);
+    }
+
+
+    public void delete(Fiction toDeleteF) {
+        this.entityManager.remove(entityManager.contains(toDeleteF) ? toDeleteF : entityManager.merge(toDeleteF));
+    }
+
+    public void update(Fiction fiction) {
+        this.entityManager.merge(fiction);
+    }
+
 }

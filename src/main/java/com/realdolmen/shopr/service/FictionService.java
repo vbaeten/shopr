@@ -21,4 +21,23 @@ public class FictionService {
     public List<Fiction> findAllFictions() {
         return this.fictionRepository.findAllFictions();
     }
+
+
+
+    public Fiction findById(int id) {
+
+        return this.fictionRepository.findById(id);
+
+    }
+
+
+    @Transactional
+    public void delete(Fiction toDeleteF) {
+        this.fictionRepository.delete(toDeleteF);
+    }
+
+    @Transactional
+    public void update(Fiction fiction) {
+        this.fictionRepository.update(fiction);
+    }
 }

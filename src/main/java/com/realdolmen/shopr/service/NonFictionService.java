@@ -21,4 +21,20 @@ public class NonFictionService {
     public List<NonFiction> findAllNonFictions() {
         return this.nonFictionRepository.findAllNonFictions();
     }
+
+    public NonFiction findById(int id) {
+
+        return this.nonFictionRepository.findById(id);
+
+    }
+
+    @Transactional
+    public void delete(NonFiction toDeleteN) {
+        this.nonFictionRepository.delete(toDeleteN);
+    }
+
+    @Transactional
+    public void update(NonFiction nonFiction) {
+        this.nonFictionRepository.update(nonFiction);
+    }
 }

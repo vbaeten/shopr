@@ -20,5 +20,20 @@ public class NonFictionRepository {
 
         return entityManager.createNamedQuery(NonFiction.FIND_ALL, NonFiction.class).getResultList();
     }
+
+
+    public NonFiction findById(int id) {
+        return entityManager.find(NonFiction.class, id);
+    }
+
+
+    public void delete(NonFiction toDeleteN) {
+        this.entityManager.remove(entityManager.contains(toDeleteN) ? toDeleteN : entityManager.merge(toDeleteN));
+    }
+
+    public void update(NonFiction nonFiction) {
+        this.entityManager.merge(nonFiction);
+    }
+
 }
 

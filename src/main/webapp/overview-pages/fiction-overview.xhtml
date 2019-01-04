@@ -48,7 +48,9 @@
                         <b:dataTableColumn value="#{fiction.totalPages}"/>
                         <b:dataTableColumn value="#{fiction.preview}"/>
                         <b:dataTableColumn>
-                            <b:button value="Details" href="/shopr/detail-pages/fiction-detail.xhtml"/>
+                            <h:link value="details" outcome="/detail-pages/fiction-detail.xhtml">
+                                <f:param name="id" value="#{fiction.id}"/>
+                            </h:link>
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>
