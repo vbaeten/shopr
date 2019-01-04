@@ -6,6 +6,7 @@ import com.realdolmen.shopr.repository.LPRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
@@ -21,6 +22,22 @@ public class LPService {
 
     public List<LP> findAllLps() {
         return lpRepository.findAllLps();
+    }
+
+
+    public LP findById(int id) {
+       return this.lpRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(LP toDeleteLp) {
+        this.lpRepository.delete(toDeleteLp);
+    }
+
+
+    @Transactional
+    public void update(LP lp) {
+        this.lpRepository.update(lp);
     }
 
 

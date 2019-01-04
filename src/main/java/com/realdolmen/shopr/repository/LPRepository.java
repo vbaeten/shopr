@@ -21,4 +21,17 @@ public class LPRepository {
         entityManager.persist(lp);
 
     }
+
+    public void delete(LP toDeleteLp) {
+        this.entityManager.remove(entityManager.contains(toDeleteLp) ? toDeleteLp : entityManager.merge(toDeleteLp));
+    }
+
+    public LP findById(int id) {
+        return entityManager.find(LP.class, id);
+    }
+
+    public void update(LP lp) {
+        this.entityManager.merge(lp);
+    }
+
 }

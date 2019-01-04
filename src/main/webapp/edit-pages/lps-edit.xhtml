@@ -12,6 +12,11 @@
     <ui:define name="pageContent">
         <h:outputStylesheet library="css" name="create.css"/>
 
+        <f:metadata>
+            <f:viewParam name="id" value="#{lpDetailController.id}"/>
+            <f:event type="preRenderView" listener="#{lpDetailController.init}"/>
+        </f:metadata>
+
 
         <div class="afterNav">
 
@@ -31,7 +36,7 @@
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{lPController.newLP.title}"/>
+                                <b:inputText placeholder="title" value="#{lpDetailController.lp.title}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -39,7 +44,7 @@
                                 <h:outputText value="publisher:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="publisher" value="#{lPController.newLP.publisher}"/>
+                                <b:inputText placeholder="publisher" value="#{lpDetailController.lp.publisher}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -47,7 +52,7 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{lPController.newLP.price}"/>
+                                <b:inputText placeholder="price" value="#{lpDetailController.lp.price}"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -55,15 +60,14 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{lPController.newLP.genre}">
-                                    <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}"
-                                                   styleClass="inputField"/>
+                                <b:selectOneMenu value="#{lpDetailController.lp.genre}">
+                                    <f:selectItems value="#{lpDetailController.genres}"/>
                                 </b:selectOneMenu>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Create LP" style="width:100%" action="#{lPController.submit}"/>
+                                <b:commandButton value="Edit LP" style="width:100%" action="#{lpDetailController.update}"/>
                             </b:column>
                         </b:row>
 

@@ -34,7 +34,9 @@
                         <b:dataTableColumn value="#{lp.price}"/>
                         <b:dataTableColumn value="#{lp.genre.name}"/>
                         <b:dataTableColumn>
-                            <b:button value="Details" href="/shopr/detail-pages/lps-detail.xhtml"/>
+                            <h:link value="details" outcome="/detail-pages/lps-detail.xhtml">
+                                <f:param name="id" value="#{lp.id}"/>
+                            </h:link>
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>
