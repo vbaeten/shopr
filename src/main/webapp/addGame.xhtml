@@ -13,10 +13,10 @@
                 <p:messages id="msgs"/>
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="title" value="Title: "/>
-                    <p:inputText id="title" value="#{gameController.newGame.title}"/>
+                    <p:inputText id="title" value="#{gameController.newGame.title}" required="true"/>
 
                     <p:outputLabel for="artist" value="Publisher: "/>
-                    <p:inputText id="artist" value="#{gameController.newGame.publisher}"/>
+                    <p:inputText id="artist" value="#{gameController.newGame.publisher}" required="true"/>
 
                     <p:outputLabel for="genre" value="Genre: "/>
                     <p:selectOneMenu id="genre" style="width:150px" value="#{gameController.newGame.genre}">
@@ -28,10 +28,15 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="minimumAge" value="Minimum age: "/>
-                    <p:inputNumber id="minimumAge" value="#{gameController.newGame.minimumAge}" decimalPlaces="0" minValue="0" maxValue="18" />
+                    <p:inputNumber id="minimumAge"
+                                   value="#{gameController.newGame.minimumAge}"
+                                   decimalPlaces="0"
+                                   minValue="0"
+                                   maxValue="18"
+                                   required="true"/>
 
                     <p:outputLabel for="supplierID" value="Supplier ID: "/>
-                    <p:inputText id="supplierID" value="#{gameController.newGame.supplierId}"/>
+                    <p:inputText id="supplierID" value="#{gameController.newGame.supplierId}" required="true"/>
 
                     <p:outputLabel for="price" value="price: "/>
                     <p:inputNumber id="price"
@@ -39,7 +44,8 @@
                                    symbol=" €"
                                    symbolPosition="s"
                                    decimalSeparator=","
-                                   thousandSeparator="."/>
+                                   thousandSeparator="."
+                                   required="true"/>
 
                 </h:panelGrid>
                 <p:commandButton value="Submit" action="#{gameController.submit}" update="@form"/>

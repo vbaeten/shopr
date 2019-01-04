@@ -18,9 +18,7 @@
             </p:column>
 
             <p:column headerText="Title">
-                <h:link value="#{game.title}" outcome="gameDetail.xhtml" includeViewParams="true">
-                    <f:param name="id" value="#{game.id}"/>
-                </h:link>
+                <h:outputText value="#{game.title}" styleClass="titleColumn"/>
             </p:column>
 
             <p:column headerText="Publisher">
@@ -37,6 +35,12 @@
 
             <p:column headerText="Price">
                 <h:outputText value="#{game.price}€"  styleClass="priceColumn"/>
+            </p:column>
+
+            <p:column>
+                <p:button value="Show details" outcome="gameDetail.xhtml" includeViewParams="true">
+                    <f:param name="id" value="#{game.id}"/>
+                </p:button>
             </p:column>
         </p:dataTable>
     </ui:define>

@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,15 +22,16 @@ public class Rating {
     public static final String FIND_BY_ARTICLE_ID = "Rating.findByArticleId";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Size(min=0, max=10)
+    @Min(0)
+    @Max(10)
     int score;
 
     String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     User user;
 
     @ManyToOne

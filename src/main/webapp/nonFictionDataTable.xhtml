@@ -18,9 +18,8 @@
             </p:column>
 
             <p:column headerText="Title" >
-                <h:link value="#{nonFiction.title}" outcome="nonFictionDetail.xhtml" includeViewParams="true">
-                    <f:param name="id" value="#{nonFiction.id}"/>
-                </h:link>
+                <h:outputText value="#{nonFiction.title}"  styleClass="titleColumn"/>
+
             </p:column>
 
             <p:column headerText="Author">
@@ -41,6 +40,12 @@
 
             <p:column headerText="Price" >
                 <h:outputText value="#{nonFiction.price}€" styleClass="priceColumn"/>
+            </p:column>
+
+            <p:column>
+                <p:button value="Show details" outcome="nonFictionDetail.xhtml" includeViewParams="true">
+                    <f:param name="id" value="#{nonFiction.id}"/>
+                </p:button>
             </p:column>
         </p:dataTable>
     </ui:define>

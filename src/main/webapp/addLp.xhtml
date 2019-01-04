@@ -14,19 +14,22 @@
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <p:outputLabel for="title" value="Title: "/>
-                    <p:inputText id="title" value="#{lpController.newLp.title}"/>
+                    <p:inputText id="title" value="#{lpController.newLp.title}" required="true"/>
 
                     <p:outputLabel for="artist" value="Artist: "/>
-                    <p:inputText id="artist" value="#{lpController.newLp.artist}"/>
+                    <p:inputText id="artist" value="#{lpController.newLp.artist}" required="true"/>
 
                     <p:outputLabel for="genre" value="Genre: "/>
                     <p:selectOneMenu id="genre" style="width:150px" value="#{lpController.newLp.genre}">
                         <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="#{lpController.getLpGenre()}" var="genre" itemValue="#{genre}" itemLabel="#{genre.description}"/>
+                        <f:selectItems value="#{lpController.getLpGenre()}"
+                                       var="genre"
+                                       itemValue="#{genre}"
+                                       itemLabel="#{genre.description}"/>
                     </p:selectOneMenu>
 
 
-                    <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                    <p:outputLabel for="supplierID" value="Supplier ID: " required="true"/>
                     <p:inputText id="supplierID" value="#{lpController.newLp.supplierId}"/>
 
                     <p:outputLabel for="price" value="price: "/>
@@ -35,7 +38,8 @@
                                    symbol=" €"
                                    symbolPosition="s"
                                    decimalSeparator=","
-                                   thousandSeparator="."/>
+                                   thousandSeparator="."
+                                   required="true"/>
 
                 </h:panelGrid>
                 <p:commandButton value="Submit" action="#{lpController.submit}" update="@form"/>

@@ -14,32 +14,32 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <h:form>
-            <p:fieldset legend="Book details" cellPadding="5">
+            <p:fieldset legend="Fiction book details" cellPadding="5">
                 <p:commandButton value="delete" action="#{fictionController.delete}"/>
 
                 <p:panelGrid columns="2" cellPaddinig="5">
-                    <h:outputText value="Author:" />
+                    <h:outputText value="Author:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.author}"/>
 
-                    <h:outputText value="Author:" />
+                    <h:outputText value="Author:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.author}"/>
 
-                    <h:outputText value="Genre:" />
+                    <h:outputText value="Genre:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.genre}"/>
 
-                    <h:outputText value="Number of Pages:" />
+                    <h:outputText value="Number of Pages:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.numberOfPages}"/>
 
-                    <h:outputText value="Summary:" />
+                    <h:outputText value="Summary:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.summary}"/>
 
-                    <h:outputText value="Isbn:" />
+                    <h:outputText value="Isbn:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.isbn}"/>
 
-                    <h:outputText value="Supplier ID:" />
+                    <h:outputText value="Supplier ID:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.supplierId}"/>
 
-                    <h:outputText value="Price:" />
+                    <h:outputText value="Price:" class="detailsLeftSide"/>
                     <h:outputText value="#{fictionController.newFiction.price} €"/>
 
                     <p:commandButton value="Order" action="#{fictionController.delete}"/>
@@ -52,7 +52,7 @@
             <p:fieldset legend="Write a review" cellPadding="5">
                 <p:panelGrid columns="2" cellPaddinig="5" >
                     <h:outputText value="Rating:" />
-                    <p:rating value="#{ratingController.newRating.score}" stars="10" cancel="false"/>
+                    <p:rating value="#{ratingController.newRating.score}" stars="10"/>
 
                     <h:outputText value="Comments: "/>
                     <p:inputTextarea rows="10"

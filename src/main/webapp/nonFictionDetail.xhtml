@@ -14,29 +14,29 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <h:form>
-            <p:fieldset legend="#{nonFictionController.newNonFiction.title}" cellPadding="5">
+            <p:fieldset legend="Non-Fiction book details" cellPadding="5">
                 <p:commandButton value="delete" action="#{nonFictionController.delete}"/>
 
                 <p:panelGrid columns="2" cellPaddinig="5">
-                    <h:outputText value="Title:" />
+                    <h:outputText value="Title:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.title}"/>
 
-                    <h:outputText value="Author:" />
+                    <h:outputText value="Author:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.author}"/>
 
-                    <h:outputText value="Subject:" />
+                    <h:outputText value="Subject:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.subject}"/>
 
-                    <h:outputText value="Number of Pages:" />
+                    <h:outputText value="Number of Pages:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.numberOfPages}"/>
 
-                    <h:outputText value="Isbn:" />
+                    <h:outputText value="Isbn:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.isbn}"/>
 
-                    <h:outputText value="Supplier ID:" />
+                    <h:outputText value="Supplier ID:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.supplierId}"/>
 
-                    <h:outputText value="Price:" />
+                    <h:outputText value="Price:" class="detailsLeftSide"/>
                     <h:outputText value="#{nonFictionController.newNonFiction.price}"/>
 
                     <p:commandButton value="Order" action="#{nonFictionController.delete}"/>
@@ -49,7 +49,7 @@
             <p:fieldset legend="Write a review" cellPadding="5">
                 <p:panelGrid columns="2" cellPaddinig="5" >
                     <h:outputText value="Rating:" />
-                    <p:rating value="#{ratingController.newRating.score}" stars="10" cancel="false"/>
+                    <p:rating value="#{ratingController.newRating.score}" stars="10"/>
 
                     <h:outputText value="Comments: "/>
                     <p:inputTextarea rows="10"

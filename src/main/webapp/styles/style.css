@@ -1,5 +1,6 @@
 body{
     background-color: #79968d;
+    font-family: "Segoe UI", Verdana, Arial, sans-serif;
 }
 .priceColumn{
     font-weight: bold;
@@ -8,15 +9,30 @@ body{
 .titleColumn{
     font-weight: bold;
 }
-.titleColumn > a, a:visited{
-    text-decoration: none;
-}
-.titleColumn a:hover{
-    text-decoration: underline;
-}
+
 .authorColumn{
     font-weight: bold;
 }
 .topMenu{
     margin-bottom: 20px;
+}
+.pageContent{
+    margin: 0 20%;
+}
+.detailsLeftSide{
+    font-weight: bold;
+}
+.errorPage{
+    text-align: center;
+}
+/*.errorPage > a, a:visited{*/
+    /*text-decoration: none;*/
+    /*font-weight: bold;*/
+    /*color: darkgreen;*/
+/*}*/
+/*.errorPage > a:hover{*/
+    /*text-decoration: underline;*/
+/*}*/
+.pageNotFoundIcon{
+    max-height: 250px;
 }

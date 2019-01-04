@@ -18,22 +18,22 @@
                 <p:commandButton value="delete" action="#{gameController.delete}"/>
 
                 <p:panelGrid columns="2" cellPaddinig="5">
-                    <h:outputText value="Title:" />
+                    <h:outputText value="Title:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.title}"/>
 
-                    <h:outputText value="Publisher:" />
+                    <h:outputText value="Publisher:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.publisher}"/>
 
-                    <h:outputText value="Genre:" />
+                    <h:outputText value="Genre:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.genre}"/>
 
-                    <h:outputText value="Minimum age:" />
+                    <h:outputText value="Minimum age:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.minimumAge}"/>
 
-                    <h:outputText value="Supplier ID:" />
+                    <h:outputText value="Supplier ID:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.supplierId}"/>
 
-                    <h:outputText value="Price:" />
+                    <h:outputText value="Price:" class="detailsLeftSide"/>
                     <h:outputText value="#{gameController.newGame.price} €"/>
 
                     <p:commandButton value="Order" action="#{gameController.delete}"/>
@@ -46,7 +46,7 @@
             <p:fieldset legend="Write a review" cellPadding="5">
                 <p:panelGrid columns="2" cellPaddinig="5" >
                     <h:outputText value="Rating:" />
-                    <p:rating value="#{ratingController.newRating.score}" stars="10" cancel="false"/>
+                    <p:rating value="#{ratingController.newRating.score}" stars="10"/>
 
                     <h:outputText value="Comments: "/>
                     <p:inputTextarea rows="10"
@@ -66,8 +66,6 @@
                     <h:outputText value="#{rating.description}"/>
                     <p:separator/>
                 </p:dataList>
-
-
             </p:fieldset>
         </h:form>
 

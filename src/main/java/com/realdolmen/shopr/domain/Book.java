@@ -12,8 +12,10 @@ public abstract class Book extends Article{
     @NotNull
     @Column(nullable = false)
     private String author;
+
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
+
     private int numberOfPages;
 
     public String getAuthor() {

@@ -13,14 +13,14 @@
                      value="#{lpController.lps}"
                      rows="10"
                      paginator="true">
+
+
             <p:column headerText="Id">
                 <h:outputText value="#{lp.id}"/>
             </p:column>
 
             <p:column headerText="Title">
-                <h:link value="#{lp.title}" outcome="lpDetail.xhtml" includeViewParams="true">
-                    <f:param name="id" value="#{lp.id}"/>
-                </h:link>
+                <h:outputText value="#{lp.artist}" styleClass="titleColumn"/>
             </p:column>
 
             <p:column headerText="Artist">
@@ -33,6 +33,12 @@
 
             <p:column headerText="Price">
                 <h:outputText value="#{lp.price}€" styleClass="priceColumn"/>
+            </p:column>
+
+            <p:column>
+                <p:button value="Show details" outcome="lpDetail.xhtml" includeViewParams="true">
+                    <f:param name="id" value="#{lp.id}"/>
+                </p:button>
             </p:column>
         </p:dataTable>
     </ui:define>

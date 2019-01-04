@@ -24,6 +24,7 @@ public class Lp extends Article {
 
     @Size(max=100)
     private String artist;
+
     @Enumerated(EnumType.STRING)
     private LpGenre genre;
 

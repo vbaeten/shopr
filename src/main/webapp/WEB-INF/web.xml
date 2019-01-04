@@ -26,4 +26,11 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>afterdark</param-value>
     </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pageNotFound.xhtml</location>
+    </error-page>
+    <error-page>
+        <location>/error.xhtml</location>
+    </error-page>
 </web-app>

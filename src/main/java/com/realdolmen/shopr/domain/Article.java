@@ -12,12 +12,15 @@ public abstract class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NotNull
     @Size(max=100)
     private String title;
+
     @NotNull
     @Digits(integer=6, fraction=2)
     private double price;
+
     @NotNull
     @Size(max=100)
     private String supplierId;

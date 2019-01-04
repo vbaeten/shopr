@@ -5,18 +5,22 @@ import com.realdolmen.shopr.domain.Rating;
 import com.realdolmen.shopr.service.RatingService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class RatingController {
     Rating newRating = new Rating();
     int ratingId;
 
     @Inject
     RatingService ratingService;
+
+    @Inject
+    UserController userController;
 
     public void init(){
         newRating = getRatingById(ratingId);
@@ -30,8 +34,10 @@ public class RatingController {
         this.newRating = rating;
     }
 
-    public void submit(){
-        this.ratingService.insert(newRating);
+    public void submit(int id){
+        // currentUser is null op dit moment
+        newRating.setUser(userController.getCurrentUser());
+        this.ratingService.insert(newRating, id);
         this.newRating = new Rating();
     }
 
@@ -44,7 +50,6 @@ public class RatingController {
     }
 
     public List<Rating> getRatingsByArticleId(int id){
-
         return ratingService.getRatingsByArticleId(id);
     }
 

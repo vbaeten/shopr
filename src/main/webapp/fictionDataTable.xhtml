@@ -20,9 +20,7 @@
             </p:column>
 
             <p:column headerText="Title" >
-                <h:link value="#{fiction.title}" outcome="fictionDetail.xhtml" includeViewParams="true" class="titleColumn">
-                    <f:param name="id" value="#{fiction.id}"/>
-                </h:link>
+                <h:outputText value="#{fiction.title}" styleClass="titleColumn"/>
             </p:column>
 
             <p:column headerText="Author" >
@@ -43,6 +41,12 @@
 
             <p:column headerText="Price" >
                 <h:outputText value="#{fiction.price}€" styleClass="priceColumn"/>
+            </p:column>
+
+            <p:column>
+                <p:button value="Show details" outcome="fictionDetail.xhtml" includeViewParams="true">
+                    <f:param name="id" value="#{fiction.id}"/>
+                </p:button>
             </p:column>
         </p:dataTable>
     </ui:define>

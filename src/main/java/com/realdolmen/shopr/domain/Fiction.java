@@ -21,6 +21,7 @@ public class Fiction extends Book {
 
     @Enumerated(EnumType.STRING)
     private FictionGenre genre;
+
     @Size(max = 255)
     private String summary;
 
