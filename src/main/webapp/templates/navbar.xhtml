@@ -9,12 +9,11 @@
       xmlns:b="http://bootsfaces.net/ui">
 <h:head>
     <h:outputStylesheet library="css" name="style.css"/>
-    <h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
     <title>ShopR!</title>
 </h:head>
 <h:body>
-    <b:navBar class="navbar" inverse="true">
-        <b:navbarLinks id="nav-menu-items">
+    <b:navBar class="navbar" inverse="true" fluid="true">
+        <b:navbarLinks id="nav-menu-items" pull="left">
             <b:navLink id="nav-menu-items-home" value="Home" outcome="/index"/>
             <b:navLink id="nav-menu-items-user" value="User" outcome="/user"/>
             <b:navLink id="nav-menu-items-shop" value="Shop" outcome="/shop"/>
@@ -22,7 +21,12 @@
             <b:navLink id="nav-menu-items-addproducts" value="Add Products" outcome="/addproducts"/>
             <b:navLink id="nav-menu-items-shoppingbag" value="Shopping Bag" outcome="/shoppingbag"/>
             <b:navLink id="nav-menu-items-search" value="Search" outcome="/search"/>
-            <b:dropMenu iconAwesome="fa fa-user" value="Guest"/>
+        </b:navbarLinks>
+        <b:navbarLinks pull="right">
+            <b:dropMenu iconAwesome="user" value="Guest" iconAlign="right">
+                <b:navLink value="logout"/>
+                <b:navLink value="shoppingbag" outcome="/shoppingbag"/>
+            </b:dropMenu>
         </b:navbarLinks>
     </b:navBar>
 </h:body>
