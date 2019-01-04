@@ -13,4 +13,5 @@ public class LoginBean {
     @ManagedProperty("#{param.user}")
     private User user;
 
+
 }

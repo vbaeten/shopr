@@ -33,6 +33,11 @@
                             <f:param name="id" value="#{article.id}"/>
                         </b:button>
                     </b:dataTableColumn>
+                    <b:dataTableColumn label="Details">
+                        <h:link value="Details" outcome="/detail.xhtml" includeViewParams="true">
+                            <f:param name="id" value="#{article.id}"/>
+                        </h:link>
+                    </b:dataTableColumn>
                 </b:dataTable>
             </h:form>
         </ui:define>

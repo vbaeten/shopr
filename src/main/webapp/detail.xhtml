@@ -15,9 +15,12 @@
     <ui:composition template="templates/basetemplate.xhtml">
 
         <ui:define name="content">
-            <p>Details of this Article</p>
+            <f:metadata>
+                <f:viewParam name="id" value="#{articleDetailBean.id}"/>
+            </f:metadata>
+            <p>Details of this Article #{articleDetailBean.id}</p>
             <b:panel>
-                <h:outputText value="Basic panel example "/>
+                <h:outputText value="#{articleDetailBean.id}"/>
 
                 <b:form inline="true">
                     <b:inputText value="1" mask="numeric" size="5"/>

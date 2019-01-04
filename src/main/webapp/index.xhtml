@@ -15,9 +15,14 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <h:outputText id="loggedIn" value="Logged in as #{loginController.name}"/>
-            <p>Logged in as #{loginController.id} #{loginController.firstName} #{loginController.name}</p>
-            <b:form inline="true" >
+            <f:metadata>
+                <f:viewParam name="loggedUser" value="#{loginController.loggedUser}"/>
+            </f:metadata>
+            <h:outputText id="loggedIn" value="Logged in as #{loginController.loggedUser.name}"/>
+            <p>Logged in as
+                <h:outputText>#{loginController.id}  #{loginController.loggedUser.firstName} #{loginController.name}</h:outputText> #{loginController.id}
+            </p>
+            <b:form inline="true">
 
             </b:form>
             <div>
@@ -35,7 +40,8 @@
                         <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
                                        itemLabel="#{user.firstName} #{user.name}"/>
                     </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true" update="loggedIn"/>
+                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true"
+                                     update="loggedIn"/>
                 </b:formGroup>
             </b:form>
 
@@ -43,25 +49,26 @@
             <p>Register a new user</p>
             <b:form id="addUser">
                 <b:panel header="Add User">
-                    <b:panelGrid columns ="6">
+                    <b:panelGrid columns="6">
                         <h:outputLabel value="Name:" for="userName"/>
                         <b:inputText id="userName" value="#{userController.newUser.name}" required="true"/>
                         <h:outputLabel value="First Name:" for="userFirstName"/>
                         <b:inputText id="userFirstName" value="#{userController.newUser.firstName}" required="true"/>
-                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginUser" />
+                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginUser"/>
                     </b:panelGrid>
                 </b:panel>
             </b:form>
 
             <p>List of users</p>
             <h:form id="userTable">
-                <b:dataTable value="#{userController.users}" var = "user">
+                <b:dataTable value="#{userController.users}" var="user">
                     <b:dataTableColumn value="#{user.id}"/>
                     <b:dataTableColumn value="#{user.name}"/>
                     <b:dataTableColumn value="#{user.firstName}"/>
                     <b:dataTableColumn>
-                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}" actionListener="#{messagesBean.info}" update="@form">
-                            <f:ajax execute="@this" render="@form" />
+                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}"
+                                         actionListener="#{messagesBean.info}" update="@form">
+                            <f:ajax execute="@this" render="@form"/>
                         </b:commandButton>
                     </b:dataTableColumn>
                 </b:dataTable>
@@ -70,7 +77,7 @@
         </ui:define>
 
         <ui:define name="js">
-            <script type="text/javascript" >
+            <script type="text/javascript">
                 setNavMenuItemActive("home");
             </script>
         </ui:define>
@@ -90,8 +97,8 @@
             </h:panelGrid>
             <p:separator/>
 
-        <p:commandButton value="Submit" update="msgs" action="#{loginController.login}"/>
-    </p:panel>
+            <p:commandButton value="Submit" update="msgs" action="#{loginController.login}"/>
+        </p:panel>
     </h:form>
     <h2>Let's try again to add a game.</h2>
     <h:form id="addGameForm">
