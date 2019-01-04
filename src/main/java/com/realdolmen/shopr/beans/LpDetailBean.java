@@ -1,4 +1,4 @@
 package com.realdolmen.shopr.beans;
 
-public class nonFictionDetailBean {
+public class LpDetailBean {
 }

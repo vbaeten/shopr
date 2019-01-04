@@ -15,7 +15,7 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <p>Logged in as #{loginController.id} #{loginController.firstName} #{loginController.name}</p>
-
+            <f:viewParam id="logged" name="user" value="Logged in as #{loginController.firstName}"/>
             <h3>Welcome to SHOPR!!!</h3>
             <p>Login</p>
 
@@ -26,7 +26,7 @@
                         <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
                                        itemLabel="#{user.firstName} #{user.name}"/>
                     </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true" autoUpdate="true"/>
+                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true" update="logged"/>
                 </b:formGroup>
             </b:form>
 

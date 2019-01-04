@@ -39,4 +39,8 @@ public class GameController {
         this.gameService.deleteGame(id);
     }
 
+    public void showDetails(int id) {
+
+    }
+
 }

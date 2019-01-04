@@ -1,4 +1,4 @@
 package com.realdolmen.shopr.beans;
 
-public class gameDetailBean {
+public class FictionDetailBean {
 }
