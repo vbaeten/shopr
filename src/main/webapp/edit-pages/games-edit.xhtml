@@ -10,7 +10,7 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet  library = "css" name="create.css"/>
+        <h:outputStylesheet library="css" name="create.css"/>
 
         <f:metadata>
             <f:viewParam name="id" value="#{gameDetailController.id}"/>
@@ -60,14 +60,15 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{gameDetailController.game.genre}" >
-                                    <f:selectItems value="#{gameDetailController.genres}" />
+                                <b:selectOneMenu value="#{gameDetailController.game.genre}">
+                                    <f:selectItems value="#{gameDetailController.genres}"/>
                                 </b:selectOneMenu>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Edit game"  style="width:100%" action="#{gameDetailController.update}" update="@form:editForm" />
+                                <b:commandButton value="Edit game" style="width:100%"
+                                                 action="#{gameDetailController.update}" update="@form:editForm"/>
                             </b:column>
                         </b:row>
 

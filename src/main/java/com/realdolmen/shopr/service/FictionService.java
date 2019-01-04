@@ -19,6 +19,6 @@ public class FictionService {
     }
 
     public List<Fiction> findAllFictions() {
-       return this.fictionRepository.findAllFictions();
+        return this.fictionRepository.findAllFictions();
     }
 }

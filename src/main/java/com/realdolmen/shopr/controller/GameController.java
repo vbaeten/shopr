@@ -26,9 +26,6 @@ public class GameController {
     }
 
 
-
-
-
     public GameGenre[] getGenres() {
         return GameGenre.values();
     }

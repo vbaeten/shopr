@@ -9,24 +9,23 @@
       xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/WEB-INF/layout.xhtml">
-<ui:define name="pageContent">
-<h:outputStylesheet  library = "css" name="create.css"/>
+    <ui:define name="pageContent">
+        <h:outputStylesheet library="css" name="create.css"/>
 
 
-<h1>Create Items</h1>
+        <h1>Create Items</h1>
 
 
+        <div class="afterNav">
 
-    <div class="afterNav">
+            <b:button value="Books" href="/shopr/create-pages/create-book.xhtml"/>
+            <b:button value="Lps" href="/shopr/create-pages/create-lp.xhtml"/>
+            <b:button value="Games" href="/shopr/create-pages/create-game.xhtml"/>
 
-        <b:button value="Books" href="/shopr/create-pages/create-book.xhtml" />
-        <b:button value="Lps" href="/shopr/create-pages/create-lp.xhtml"/>
-        <b:button value="Games" href="/shopr/create-pages/create-game.xhtml"/>
-
-    </div>
+        </div>
 
 
-</ui:define>
+    </ui:define>
 </ui:composition>
 
 </html>

@@ -20,18 +20,17 @@ public class LPController {
     private LPService lpService;
 
 
-
-    public LPGenre[] getGenres(){
+    public LPGenre[] getGenres() {
         return LPGenre.values();
     }
 
 
-    public List<LP> getLPs(){
+    public List<LP> getLPs() {
         return this.lpService.findAllLps();
     }
 
-    public String submit(){
-      this.lpService.insert(newLP);
+    public String submit() {
+        this.lpService.insert(newLP);
         return "/overview-pages/lps-overview.xhtml?faces-redirect=true";
 
     }

@@ -9,18 +9,15 @@ import javax.faces.bean.ViewScoped;
 public class utilityController {
 
 
+    public String redirect(String link) {
 
-
-
-    public String redirect(String link){
-
-        switch (link){
+        switch (link) {
 
             case "fiction":
                 return "/overview-pages/fiction-overview.xhtml";
 
             case "nonFiction":
-                return"/overview-pages/nonFiction-overview.xhtml";
+                return "/overview-pages/nonFiction-overview.xhtml";
 
             case "games":
                 return "/overview-pages/games-overview.xhtml";
@@ -29,7 +26,8 @@ public class utilityController {
                 return "/overview-pages/lps-overview.xhtml";
 
 
-        }return "items-overview.xhtml";
+        }
+        return "items-overview.xhtml";
 
     }
 

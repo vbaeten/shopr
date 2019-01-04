@@ -19,16 +19,15 @@ public class NonFictionController {
     private NonFictionService nonFictionService;
 
 
-
-
-    public List<NonFiction> getNonFictions(){
+    public List<NonFiction> getNonFictions() {
         return this.nonFictionService.findAllNonFictions();
     }
 
-    public Subject[] getSubjects(){
+    public Subject[] getSubjects() {
         return Subject.values();
     }
-    public String submit(){
+
+    public String submit() {
         this.nonFictionService.insert(newNonFiction);
         return "/overview-pages/nonFiction-overview.xhtml?faces-redirect=true";
 

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="fiction")
+@Table(name = "fiction")
 @DiscriminatorValue("fiction")
 @NamedQueries({
         @NamedQuery(
@@ -21,8 +21,6 @@ public class Fiction extends Book {
 
     public static final String FIND_ALL = "Fiction.findAll";
     private String preview;
-
-
 
 
     public BookGenre getBookGenre() {

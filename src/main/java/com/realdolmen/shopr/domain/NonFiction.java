@@ -11,14 +11,11 @@ import javax.persistence.*;
                 query = "SELECT nf FROM NonFiction nf"
         )
 })
-public class NonFiction extends Book{
+public class NonFiction extends Book {
 
     @Enumerated(EnumType.STRING)
     private Subject subject;
     public static final String FIND_ALL = "NonFiction.findAll";
-
-
-
 
 
     public Subject getSubject() {

@@ -13,5 +13,6 @@ public class ItemRepository {
 
 
     public List<Item> findAllItems() {
-        return entityManager.createNamedQuery(Item.FIND_ALL, Item.class).getResultList();    }
+        return entityManager.createNamedQuery(Item.FIND_ALL, Item.class).getResultList();
+    }
 }

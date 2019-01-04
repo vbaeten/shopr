@@ -10,21 +10,20 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet  library = "css" name="create.css"/>
+        <h:outputStylesheet library="css" name="create.css"/>
 
         <div class="afterNav">
 
-            <b:button value="Books" href="create-book.xhtml" />
+            <b:button value="Books" href="create-book.xhtml"/>
             <b:button value="Lps" href="create-lp.xhtml"/>
             <b:button value="Games" href="create-game.xhtml"/>
 
         </div>
 
         <div class="afterNav">
-            <b:button value="fiction" href="create-fiction.xhtml" />
-            <b:button value="non fiction" href="create-nonFiction.xhtml" />
+            <b:button value="fiction" href="create-fiction.xhtml"/>
+            <b:button value="non fiction" href="create-nonFiction.xhtml"/>
         </div>
-
 
 
         <div class="afterNav">
@@ -72,7 +71,8 @@
                                 <h:outputText value="Total Pages:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="Total Pages" value="#{fictionController.newFiction.totalPages}"/>
+                                <b:inputText placeholder="Total Pages"
+                                             value="#{fictionController.newFiction.totalPages}"/>
                             </b:column>
                         </b:row>
 
@@ -81,8 +81,8 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{fictionController.newFiction.bookGenre}" >
-                                    <f:selectItems value="#{fictionController.genres}"  />
+                                <b:selectOneMenu value="#{fictionController.newFiction.bookGenre}">
+                                    <f:selectItems value="#{fictionController.genres}"/>
                                 </b:selectOneMenu>
                             </b:column>
                         </b:row>
@@ -92,14 +92,16 @@
                                 <h:outputText value="Preview:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputTextarea  placeholder="Write a preview" value="#{fictionController.newFiction.preview}" styleClass="textArea"/>
+                                <b:inputTextarea placeholder="Write a preview"
+                                                 value="#{fictionController.newFiction.preview}" styleClass="textArea"/>
                             </b:column>
                         </b:row>
 
 
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Create Book"  style="width:100%" action="#{fictionController.submit}" />
+                                <b:commandButton value="Create Book" style="width:100%"
+                                                 action="#{fictionController.submit}"/>
                             </b:column>
                         </b:row>
 

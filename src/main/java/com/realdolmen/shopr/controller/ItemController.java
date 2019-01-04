@@ -7,7 +7,6 @@ import com.realdolmen.shopr.service.ItemService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import java.util.List;
 
 @ManagedBean

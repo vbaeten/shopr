@@ -15,8 +15,7 @@ public class LPService {
     private LPRepository lpRepository = new LPRepository();
 
 
-    public void insert(LP lp)
-    {
+    public void insert(LP lp) {
         this.lpRepository.insert(lp);
     }
 

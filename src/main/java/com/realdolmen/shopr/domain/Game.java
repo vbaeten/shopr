@@ -4,7 +4,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Games")
+@Table(name = "Games")
 @DiscriminatorValue("game")
 @NamedQueries({
 
@@ -24,10 +24,6 @@ public class Game extends Item {
 
     @Enumerated(EnumType.STRING)
     private GameGenre genre;
-
-
-
-
 
 
     public String getPublisher() {

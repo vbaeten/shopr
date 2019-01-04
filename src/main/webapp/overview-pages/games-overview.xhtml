@@ -11,11 +11,10 @@
 
 
         <div class="afterNav">
-            <b:button value="All" href="items-overview.xhtml" />
-            <b:button value="Books" href="books-overview.xhtml" />
+            <b:button value="All" href="items-overview.xhtml"/>
+            <b:button value="Books" href="books-overview.xhtml"/>
             <b:button value="Lps" href="lps-overview.xhtml"/>
             <b:button value="Games" href="games-overview.xhtml"/>
-
 
 
         </div>
@@ -37,9 +36,9 @@
                         <b:dataTableColumn value="#{game.minAge}"/>
                         <b:dataTableColumn value="#{game.genre.name}"/>
                         <b:dataTableColumn>
-                        <h:link value="details" outcome="/detail-pages/games-detail.xhtml">
-                            <f:param name="id" value="#{game.id}"/>
-                        </h:link>
+                            <h:link value="details" outcome="/detail-pages/games-detail.xhtml">
+                                <f:param name="id" value="#{game.id}"/>
+                            </h:link>
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>

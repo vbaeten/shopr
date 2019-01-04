@@ -6,7 +6,6 @@ import com.realdolmen.shopr.domain.GameGenre;
 import com.realdolmen.shopr.service.GameService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 

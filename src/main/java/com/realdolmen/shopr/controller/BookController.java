@@ -7,7 +7,6 @@ import com.realdolmen.shopr.service.BookService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.persistence.Entity;
 import java.util.List;
 
 @ManagedBean
@@ -21,22 +20,23 @@ public class BookController {
     private BookService bookService;
 
 
-    public List<Book> getBooks(){
+    public List<Book> getBooks() {
 
         return this.bookService.findAllBooks();
     }
 
     public String redirect(String bookType) {
 
-        switch (bookType){
+        switch (bookType) {
 
             case "fiction":
                 return "/detail-pages/fiction-detail.xhtml";
 
             case "non fiction":
-                return"/detail-pages/nonFiction-detail.xhtml";
+                return "/detail-pages/nonFiction-detail.xhtml";
 
-        }return "books-overview.xhtml";
+        }
+        return "books-overview.xhtml";
     }
 
 

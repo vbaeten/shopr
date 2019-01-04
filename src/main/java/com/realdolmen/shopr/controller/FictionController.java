@@ -21,23 +21,25 @@ public class FictionController {
     private FictionService fictionService;
 
 
-
-    public List<Fiction> getFictions(){
+    public List<Fiction> getFictions() {
         return this.fictionService.findAllFictions();
     }
 
 
-    public String submit(){
+    public String submit() {
         this.fictionService.insert(newFiction);
         return "/overview-pages/fiction-overview.xhtml?faces-redirect=true";
 
     }
-    public BookGenre[]getGenres(){
+
+    public BookGenre[] getGenres() {
         return BookGenre.values();
     }
+
     public Fiction getNewFiction() {
         return newFiction;
     }
+
     public void setNewFiction(Fiction newFiction) {
         this.newFiction = newFiction;
     }

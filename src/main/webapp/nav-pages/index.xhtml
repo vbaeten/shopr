@@ -8,63 +8,64 @@
       xmlns:b="http://bootsfaces.net/ui">
 
 <ui:composition template="/WEB-INF/layout.xhtml">
-<ui:define name="pageContent">
-    <h:outputStylesheet  library = "css" name="index.css" />
+    <ui:define name="pageContent">
+        <h:outputStylesheet library="css" name="index.css"/>
 
-    <div class="afterNav">
+        <div class="afterNav">
 
-    <div class="title">
-        <h2>Welcome to the ShopR Webshop!</h2>
-        <p>to shop here together</p>
-    </div>
+            <div class="title">
+                <h2>Welcome to the ShopR Webshop!</h2>
+                <p>to shop here together</p>
+            </div>
 
-    </div>
+        </div>
 
-    <div class="afterNav">
-    <div class="loginMessage">
-        <h4>Please create a user or select a user to log in</h4>
-    </div>
+        <div class="afterNav">
+            <div class="loginMessage">
+                <h4>Please create a user or select a user to log in</h4>
+            </div>
 
-      <h:form styleClass="addLocationForm">
+            <h:form styleClass="addLocationForm">
 
-               <h:outputLabel for="userName" value="Name: " />
-               <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
-               <h:outputLabel for="userFirstName" value="First name: " />
-               <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
-               </p:inputText>
-          <div>
-               <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable" styleClass="cmdButton" />
-          </div>
-      </h:form>
+                <h:outputLabel for="userName" value="Name: "/>
+                <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
+                <h:outputLabel for="userFirstName" value="First name: "/>
+                <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
+                </p:inputText>
+                <div>
+                    <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable"
+                                     styleClass="cmdButton"/>
+                </div>
+            </h:form>
 
 
+            <h:form>
+                <p:messages>
+                </p:messages>
 
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel for="user" value="User: "/>
+                    <p:selectOneMenu id="user" value="#{user}" style="width:125px">
+                        <f:selectItem itemLable="select user"/>
+                        <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}"
+                                       itemValue="#{user.firstName}"/>
 
-   <h:form>
-      <p:messages>
-      </p:messages>
+                    </p:selectOneMenu>
+                    <h:commandButton value="Delete user" action="#{userController.delete}" update=":userDataTable"
+                                     styleClass="cmdButton"/>
 
-      <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-      <p:outputLabel for="user" value="User: " />
-      <p:selectOneMenu id="user" value="#{user}"  style="width:125px">
-          <f:selectItem itemLable="select user" />
-          <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}" itemValue="#{user.firstName}" />
+                </h:panelGrid>
 
-      </p:selectOneMenu>
-         <h:commandButton value="Delete user" action="#{userController.delete}" update=":userDataTable" styleClass="cmdButton"/>
+            </h:form>
 
-      </h:panelGrid>
+        </div>
 
-      </h:form>
-
-    </div>
-
-</ui:define>
+    </ui:define>
 
     <ui:define name="JavaScript">
         <script type="" src="/resources/shopr.js"/>
     </ui:define>
-    
+
 </ui:composition>
 
 </html>

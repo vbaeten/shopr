@@ -13,26 +13,26 @@
     <h:outputStylesheet library="css" name="layout.css"/>
 </h:head>
 
-    <h:body styleClass="templateBody">
+<h:body styleClass="templateBody">
 
-                <h:form>
-                    <p:growl id="messages"/>
-                    <p:menubar styleClass="navBar">
-                        <p:menuitem value="Home" url="/nav-pages/index.xhtml" />
-                        <p:menuitem value="Overview" url="/overview-pages/items-overview.xhtml" />
-                        <p:menuitem value="Add Item" url="/nav-pages/items-create.xhtml"/>
-                        <p:menuitem value="Cart" />
-                    </p:menubar>
-                </h:form>
+    <h:form>
+        <p:growl id="messages"/>
+        <p:menubar styleClass="navBar">
+            <p:menuitem value="Home" url="/nav-pages/index.xhtml"/>
+            <p:menuitem value="Overview" url="/overview-pages/items-overview.xhtml"/>
+            <p:menuitem value="Add Item" url="/nav-pages/items-create.xhtml"/>
+            <p:menuitem value="Cart"/>
+        </p:menubar>
+    </h:form>
 
-        <ui:insert name="pageContent">
-            <p></p>
-        </ui:insert>
+    <ui:insert name="pageContent">
+        <p></p>
+    </ui:insert>
 
-        <ui:insert name="JavaScript">
-            <p></p>
-        </ui:insert>
+    <ui:insert name="JavaScript">
+        <p></p>
+    </ui:insert>
 
-    </h:body>
+</h:body>
 
 </html>

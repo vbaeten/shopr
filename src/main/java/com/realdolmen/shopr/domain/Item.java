@@ -5,14 +5,14 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn( name = "type")
+@DiscriminatorColumn(name = "type")
 @NamedQueries({
         @NamedQuery(
                 name = Item.FIND_ALL,
                 query = "SELECT i FROM Item i"
         )
 })
-public  class Item {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +22,13 @@ public  class Item {
 
     private String title;
 
-    @Column(name = "type",insertable = false, updatable = false)
+    @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
     private double price;
 
     @Transient
     private String supplierId;
-
-
-
-
-
 
 
     public int getId() {

@@ -10,20 +10,20 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet  library = "css" name="create.css"/>
+        <h:outputStylesheet library="css" name="create.css"/>
 
 
         <div class="afterNav">
 
-            <b:button value="Books" href="create-book.xhtml" />
+            <b:button value="Books" href="create-book.xhtml"/>
             <b:button value="Lps" href="create-lp.xhtml"/>
             <b:button value="Games" href="create-game.xhtml"/>
 
         </div>
 
         <div class="afterNav">
-            <b:button value="fiction" href="create-fiction.xhtml" />
-            <b:button value="non fiction" href="create-nonFiction.xhtml" />
+            <b:button value="fiction" href="create-fiction.xhtml"/>
+            <b:button value="non fiction" href="create-nonFiction.xhtml"/>
         </div>
 
 
@@ -72,7 +72,8 @@
                                 <h:outputText value="Total Pages:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="Total Pages" value="#{nonFictionController.newNonFiction.totalPages}"/>
+                                <b:inputText placeholder="Total Pages"
+                                             value="#{nonFictionController.newNonFiction.totalPages}"/>
                             </b:column>
                         </b:row>
 
@@ -81,15 +82,16 @@
                                 <h:outputText value="Subject:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{nonFictionController.newNonFiction.subject}" >
-                                    <f:selectItems value="#{nonFictionController.subjects}"  />
+                                <b:selectOneMenu value="#{nonFictionController.newNonFiction.subject}">
+                                    <f:selectItems value="#{nonFictionController.subjects}"/>
                                 </b:selectOneMenu>
                             </b:column>
                         </b:row>
 
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Create Book"  style="width:100%" action="#{nonFictionController.submit}" />
+                                <b:commandButton value="Create Book" style="width:100%"
+                                                 action="#{nonFictionController.submit}"/>
                             </b:column>
                         </b:row>
 
@@ -98,8 +100,6 @@
                 </b:form>
             </div>
         </div>
-
-
 
 
     </ui:define>

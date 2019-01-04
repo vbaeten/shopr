@@ -6,63 +6,62 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/WEB-INF/layout.xhtml">
-<ui:define name="pageContent">
-    <h:outputStylesheet library="css" name="overview.css"/>
+    <ui:define name="pageContent">
+        <h:outputStylesheet library="css" name="overview.css"/>
 
 
-    <div class="afterNav">
+        <div class="afterNav">
 
-        <b:button value="All" href="items-overview.xhtml" />
-        <b:button value="Books" href="books-overview.xhtml" />
-        <b:button value="Lps" href="lps-overview.xhtml"/>
-        <b:button value="Games" href="games-overview.xhtml"/>
+            <b:button value="All" href="items-overview.xhtml"/>
+            <b:button value="Books" href="books-overview.xhtml"/>
+            <b:button value="Lps" href="lps-overview.xhtml"/>
+            <b:button value="Games" href="games-overview.xhtml"/>
 
-
-
-    </div>
-
-
-    <div class="afterNav">
-
-        <h3>Books</h3>
-
-        <b:button value="All Books" href="books-overview.xhtml" />
-        <b:button value="fiction" href="fiction-overview.xhtml" />
-        <b:button value="non fiction" href="nonFiction-overview.xhtml" />
-
-
-    </div>
-
-
-    <div class="afterNav">
-
-        <div>
-            <h3>List of books</h3>
 
         </div>
 
 
-        <div>
-            <h:form>
-                <b:dataTable value="#{bookController.books}"
-                             var="book">
-                    <b:dataTableColumn value="#{book.title}"/>
-                    <b:dataTableColumn value="#{book.author}"/>
-                    <b:dataTableColumn value="#{book.price}"/>
-                    <b:dataTableColumn value="#{book.totalPages}"/>
-                    <b:dataTableColumn value="#{book.bookType}"/>
-                    <b:dataTableColumn>
-                        <b:commandButton value="Details" action="#{bookController.redirect(book.bookType)}" immediate="true"/>
-                    </b:dataTableColumn>
-                </b:dataTable>
-            </h:form>
+        <div class="afterNav">
+
+            <h3>Books</h3>
+
+            <b:button value="All Books" href="books-overview.xhtml"/>
+            <b:button value="fiction" href="fiction-overview.xhtml"/>
+            <b:button value="non fiction" href="nonFiction-overview.xhtml"/>
+
 
         </div>
 
-    </div>
+
+        <div class="afterNav">
+
+            <div>
+                <h3>List of books</h3>
+
+            </div>
 
 
+            <div>
+                <h:form>
+                    <b:dataTable value="#{bookController.books}"
+                                 var="book">
+                        <b:dataTableColumn value="#{book.title}"/>
+                        <b:dataTableColumn value="#{book.author}"/>
+                        <b:dataTableColumn value="#{book.price}"/>
+                        <b:dataTableColumn value="#{book.totalPages}"/>
+                        <b:dataTableColumn value="#{book.bookType}"/>
+                        <b:dataTableColumn>
+                            <b:commandButton value="Details" action="#{bookController.redirect(book.bookType)}"
+                                             immediate="true"/>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
 
-</ui:define>
+            </div>
+
+        </div>
+
+
+    </ui:define>
 </ui:composition>
 </html>

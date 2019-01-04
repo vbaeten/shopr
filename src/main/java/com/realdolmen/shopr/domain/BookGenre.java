@@ -9,7 +9,7 @@ public enum BookGenre {
     SCIFI("Scifi");
 
 
-   private final String genre;
+    private final String genre;
 
     BookGenre(String genre) {
         this.genre = genre;

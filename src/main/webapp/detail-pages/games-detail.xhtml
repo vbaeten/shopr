@@ -10,77 +10,77 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet  library = "css" name="create.css"/>
+        <h:outputStylesheet library="css" name="create.css"/>
 
 
-<f:metadata>
-        <f:viewParam name="id" value="#{gameDetailController.id}"/>
-        <f:event type="preRenderView" listener="#{gameDetailController.init}"/>
-</f:metadata>
+        <f:metadata>
+            <f:viewParam name="id" value="#{gameDetailController.id}"/>
+            <f:event type="preRenderView" listener="#{gameDetailController.init}"/>
+        </f:metadata>
 
 
+        <div class="afterNav">
+            <div class="insideForm">
+                <b:form>
+                    <b:container fluid="true">
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="title:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel placeholder="title" value="#{gameDetailController.game.title}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="publisher:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel placeholder="publisher" value="#{gameDetailController.game.publisher}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="price:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel placeholder="price" value="#{gameDetailController.game.price}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="Minimum age:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel placeholder="min age" value="#{gameDetailController.game.minAge}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="genre:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel value="#{gameDetailController.game.genre}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="2">
+                                <h:link value="edit" outcome="/edit-pages/games-edit.xhtml">
+                                    <f:param name="id" value="#{gameDetailController.game.id}"/>
+                                </h:link>
+                                <b:commandButton value="add to card" style="width:100%"/>
+                                <b:commandButton value="delete game" style="width:100%"
+                                                 action="#{gameDetailController.delete}"/>
+                            </b:column>
+                        </b:row>
 
-                <div class="afterNav">
-                    <div class="insideForm">
-                        <b:form>
-                            <b:container fluid="true">
-                                <b:row>
-                                    <b:column mediumScreen="2">
-                                        <h:outputText value="title:"/>
-                                    </b:column>
-                                    <b:column mediumScreen="4">
-                                        <h:outputLabel placeholder="title" value="#{gameDetailController.game.title}"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column mediumScreen="2">
-                                        <h:outputText value="publisher:"/>
-                                    </b:column>
-                                    <b:column mediumScreen="4">
-                                        <h:outputLabel placeholder="publisher" value="#{gameDetailController.game.publisher}"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column mediumScreen="2">
-                                        <h:outputText value="price:"/>
-                                    </b:column>
-                                    <b:column mediumScreen="4">
-                                        <h:outputLabel placeholder="price" value="#{gameDetailController.game.price}"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column mediumScreen="2">
-                                        <h:outputText value="Minimum age:"/>
-                                    </b:column>
-                                    <b:column mediumScreen="4">
-                                        <h:outputLabel placeholder="min age" value="#{gameDetailController.game.minAge}"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column mediumScreen="2">
-                                        <h:outputText value="genre:"/>
-                                    </b:column>
-                                    <b:column mediumScreen="4">
-                                        <h:outputLabel value="#{gameDetailController.game.genre}"/>
-                                    </b:column>
-                                </b:row>
-                                <b:row>
-                                    <b:column span="2">
-                                        <h:link value="edit" outcome="/edit-pages/games-edit.xhtml">
-                                            <f:param name="id" value="#{gameDetailController.game.id}"/>
-                                        </h:link>
-                                        <b:commandButton value="add to card"  style="width:100%"/>
-                                        <b:commandButton value="delete game"  style="width:100%" action="#{gameDetailController.delete}" />
-                                    </b:column>
-                                </b:row>
+                    </b:container>
 
-                            </b:container>
-
-                        </b:form>
-                    </div>
-                </div>
+                </b:form>
+            </div>
+        </div>
 
 
-            </ui:define>
-        </ui:composition>
-        </html>
+    </ui:define>
+</ui:composition>
+</html>

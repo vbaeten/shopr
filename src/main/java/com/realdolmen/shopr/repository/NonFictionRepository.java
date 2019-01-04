@@ -18,7 +18,7 @@ public class NonFictionRepository {
 
     public List<NonFiction> findAllNonFictions() {
 
-            return entityManager.createNamedQuery(NonFiction.FIND_ALL, NonFiction.class).getResultList();
-        }
+        return entityManager.createNamedQuery(NonFiction.FIND_ALL, NonFiction.class).getResultList();
     }
+}
 

@@ -10,81 +10,68 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet  library = "css" name="create.css"/>
-
+        <h:outputStylesheet library="css" name="create.css"/>
 
 
         <div class="afterNav">
 
-            <b:button value="Books" href="create-book.xhtml" />
+            <b:button value="Books" href="create-book.xhtml"/>
             <b:button value="Lps" href="create-lp.xhtml"/>
             <b:button value="Games" href="create-game.xhtml"/>
 
         </div>
 
 
-
         <div class="afterNav">
             <div class="insideForm">
-            <b:form>
-            <b:container fluid="true">
-                <b:row>
-                    <b:column mediumScreen="2">
-                        <h:outputText value="title:"/>
-                    </b:column>
-                    <b:column mediumScreen="4">
-                        <b:inputText placeholder="title" value="#{lPController.newLP.title}"/>
-                    </b:column>
-                </b:row>
-                <b:row>
-                    <b:column mediumScreen="2">
-                        <h:outputText value="publisher:"/>
-                    </b:column>
-                    <b:column mediumScreen="4">
-                        <b:inputText placeholder="publisher" value="#{lPController.newLP.publisher}"/>
-                    </b:column>
-                </b:row>
-                <b:row>
-                    <b:column mediumScreen="2">
-                        <h:outputText value="price:"/>
-                    </b:column>
-                    <b:column mediumScreen="4">
-                        <b:inputText placeholder="price" value="#{lPController.newLP.price}"/>
-                    </b:column>
-                </b:row>
-                <b:row>
-                    <b:column mediumScreen="2">
-                        <h:outputText value="genre:"/>
-                    </b:column>
-                    <b:column mediumScreen="4">
-                        <b:selectOneMenu value="#{lPController.newLP.genre}" >
-                        <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}" styleClass="inputField" />
-                        </b:selectOneMenu>
-                    </b:column>
-                </b:row>
-                <b:row>
-                    <b:column span="2">
-                        <b:commandButton value="Create LP"  style="width:100%" action="#{lPController.submit}" />
-                    </b:column>
-                </b:row>
+                <b:form>
+                    <b:container fluid="true">
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="title:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <b:inputText placeholder="title" value="#{lPController.newLP.title}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="publisher:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <b:inputText placeholder="publisher" value="#{lPController.newLP.publisher}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="price:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <b:inputText placeholder="price" value="#{lPController.newLP.price}"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="genre:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <b:selectOneMenu value="#{lPController.newLP.genre}">
+                                    <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}"
+                                                   styleClass="inputField"/>
+                                </b:selectOneMenu>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="2">
+                                <b:commandButton value="Create LP" style="width:100%" action="#{lPController.submit}"/>
+                            </b:column>
+                        </b:row>
 
-            </b:container>
+                    </b:container>
 
-            </b:form>
+                </b:form>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </ui:define>
