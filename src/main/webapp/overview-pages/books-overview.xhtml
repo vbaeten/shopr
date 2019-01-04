@@ -49,10 +49,16 @@
                         <b:dataTableColumn value="#{book.author}"/>
                         <b:dataTableColumn value="#{book.price}"/>
                         <b:dataTableColumn value="#{book.totalPages}"/>
-                        <b:dataTableColumn value="#{book.bookType}"/>
+                        <b:dataTableColumn value="#{book.type}"/>
                         <b:dataTableColumn>
-                            <b:commandButton value="Details" action="#{bookController.redirect(book.bookType)}"
-                                             immediate="true"/>
+                            <h:link value="details"
+                                    rendered= "#{book.type eq 'fiction book'}" outcome="/detail-pages/fiction-detail.xhtml">
+                                <f:param name="id" value="#{book.id}"/>
+                            </h:link>
+                            <h:link value="details"
+                                    rendered= "#{book.type eq 'non-fiction book'}" outcome="/detail-pages/nonFiction-detail.xhtml">
+                                <f:param name="id" value="#{book.id}"/>
+                            </h:link>
                         </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>

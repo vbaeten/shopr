@@ -5,8 +5,6 @@ import javax.persistence.*;
 
 
 @Entity
-@DiscriminatorColumn(name = "type")
-@DiscriminatorValue("book")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
         @NamedQuery(
@@ -14,15 +12,15 @@ import javax.persistence.*;
                 query = "SELECT b FROM Book b"
         )
 })
-public class Book extends Item {
+public abstract class Book extends Item {
 
     private String author;
     private String isbn;
     private short totalPages;
     public static final String FIND_ALL = "Book.findAll";
 
-    @Column(name = "type")
-    private String bookType;
+//    @Column(name = "type")
+//    private String bookType;
 
 
     public String getAuthor() {
@@ -49,11 +47,11 @@ public class Book extends Item {
         this.totalPages = totalPages;
     }
 
-    public String getBookType() {
-        return bookType;
-    }
-
-    public void setBookType(String bookType) {
-        this.bookType = bookType;
-    }
+//    public String getBookType() {
+//        return bookType;
+//    }
+//
+//    public void setBookType(String bookType) {
+//        this.bookType = bookType;
+//    }
 }

@@ -13,9 +13,6 @@ import java.util.List;
 @ViewScoped
 public class ItemController {
 
-    private Item newItem = new Item();
-
-
     @Inject
     private ItemService itemService;
 
@@ -26,32 +23,4 @@ public class ItemController {
     }
 
 
-    public Item getNewItem() {
-        return newItem;
-    }
-
-    public void setNewItem(Item newItem) {
-        this.newItem = newItem;
-    }
-
-
-//    public String redirect(String type) {
-//
-//        switch (type){
-//
-//            case "fiction":
-//                return "/detail-pages/fiction-detail.xhtml";
-//
-//            case "nonFiction":
-//                return"/detail-pages/nonFiction-detail.xhtml";
-//
-//            case "game":
-//              return "/detail-pages/games-detail.xhtml";
-//
-//            case "lp":
-//               return "/detail-pages/lps-detail.xhtml";
-//
-//
-//        }return "items-overview.xhtml";
-//    }
 }

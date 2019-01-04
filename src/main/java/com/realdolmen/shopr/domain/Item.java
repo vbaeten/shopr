@@ -12,7 +12,7 @@ import javax.persistence.*;
                 query = "SELECT i FROM Item i"
         )
 })
-public class Item {
+public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

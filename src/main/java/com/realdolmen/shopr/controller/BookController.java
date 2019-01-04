@@ -14,7 +14,7 @@ import java.util.List;
 public class BookController {
 
 
-    private Book newBook = new Book();
+
 
     @Inject
     private BookService bookService;
@@ -40,11 +40,5 @@ public class BookController {
     }
 
 
-    public Book getNewBook() {
-        return newBook;
-    }
 
-    public void setNewBook(Book newBook) {
-        this.newBook = newBook;
-    }
 }

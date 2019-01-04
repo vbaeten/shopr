@@ -37,12 +37,22 @@
                         <b:dataTableColumn value="#{item.price}"/>
                         <b:dataTableColumn value="#{item.type}"/>
                         <b:dataTableColumn>
-                            <!--<h:link value="details" outcome="/detail-pages/games-detail.xhtml">-->
-                            <!--<f:param name="id" value="#{item.id}"/>-->
-                            <!--</h:link>-->
-                            <b:commandButton value="Details" action="#{itemController.redirect(item.type)}"
-                                             immediate="true"/>
-
+                            <h:link value="details"
+                                    rendered= "#{item.type eq 'game'}" outcome="/detail-pages/games-detail.xhtml">
+                            <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link value="details"
+                                    rendered= "#{item.type eq 'lp'}" outcome="/detail-pages/lps-detail.xhtml">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link value="details"
+                                    rendered= "#{item.type eq 'fiction book'}" outcome="/detail-pages/fiction-detail.xhtml">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link value="details"
+                                    rendered= "#{item.type eq 'non-fiction book'}" outcome="/detail-pages/nonFiction-detail.xhtml">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
 
                         </b:dataTableColumn>
                     </b:dataTable>
