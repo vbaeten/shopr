@@ -10,25 +10,12 @@
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet library="css" name="create.css"/>
+        <h:outputStylesheet library="css"/>
 
         <f:metadata>
             <f:viewParam name="id" value="#{fictionDetailController.id}"/>
             <f:event type="preRenderView" listener="#{fictionDetailController.init}"/>
         </f:metadata>
-
-        <div class="afterNav">
-
-            <b:button value="Books" href="create-book.xhtml"/>
-            <b:button value="Lps" href="create-lp.xhtml"/>
-            <b:button value="Games" href="create-game.xhtml"/>
-
-        </div>
-
-        <div class="afterNav">
-            <b:button value="fiction" href="create-fiction.xhtml"/>
-            <b:button value="non fiction" href="create-nonFiction.xhtml"/>
-        </div>
 
 
         <div class="afterNav">

@@ -29,13 +29,13 @@ public class LPService {
        return this.lpRepository.findById(id);
     }
 
-    @Transactional
+
     public void delete(LP toDeleteLp) {
         this.lpRepository.delete(toDeleteLp);
     }
 
 
-    @Transactional
+
     public void update(LP lp) {
         this.lpRepository.update(lp);
     }

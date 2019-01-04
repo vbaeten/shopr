@@ -15,23 +15,43 @@
 
 <h:body styleClass="templateBody">
 
+
+
+<div id="navbar">
     <h:form>
-        <p:growl id="messages"/>
-        <p:menubar styleClass="navBar">
-            <p:menuitem value="Home" url="/nav-pages/index.xhtml"/>
-            <p:menuitem value="Overview" url="/overview-pages/items-overview.xhtml"/>
-            <p:menuitem value="Add Item" url="/nav-pages/items-create.xhtml"/>
-            <p:menuitem value="Cart"/>
-        </p:menubar>
+        <b:navBar brand="ShopR" fluid="true" styleClass="navBar">
+            <b:navbarLinks>
+                <b:navLink styleClass="menuItems" value="Home" href="/shopr/nav-pages/index.xhtml"/>
+                <b:dropMenu styleClass="menuItems" value="Overview">
+                    <b:navLink styleClass="menuItems" value="All" href="/shopr/overview-pages/items-overview.xhtml"/>
+                    <b:dropMenu styleClass="menuItems" value="Books" href="/shopr/overview-pages/books-overview.xhtml">
+                        <b:navLink styleClass="menuItems" value="Fiction" href="/shopr/overview-pages/fiction-overview.xhtml"/>
+                        <b:navLink styleClass="menuItems" value="non-Fiction" href="/shopr/overview-pages/nonFiction-overview.xhtml"/>
+                    </b:dropMenu>
+                    <b:navLink styleClass="menuItems" value="Games" href="/shopr/overview-pages/books-overview.xhtml"/>
+                    <b:navLink styleClass="menuItems" value="Lps" href="/shopr/overview-pages/lps-overview.xhtml"/>
+                </b:dropMenu>
+                <b:dropMenu styleClass="menuItems" value="Add Item">
+                    <b:dropMenu styleClass="menuItems" value="Books">
+                        <b:navLink styleClass="menuItems" value="Fiction" href="/shopr/create-pages/create-fiction.xhtml"/>
+                        <b:navLink styleClass="menuItems" value="non-Fiction" href="/shopr/create-pages/create-nonFiction.xhtml"/>
+                    </b:dropMenu>
+                    <b:navLink styleClass="menuItems" value="Games" href="/shopr/create-pages/create-game.xhtml"/>
+                    <b:navLink styleClass="menuItems" value="Lps" href="/shopr/create-pages/create-lp.xhtml"/>
+                </b:dropMenu>
+            </b:navbarLinks>
+        </b:navBar>
     </h:form>
+</div>
 
     <ui:insert name="pageContent">
-        <p></p>
+
+        <div class="afterNav">
+
+        </div>
+
     </ui:insert>
 
-    <ui:insert name="JavaScript">
-        <p></p>
-    </ui:insert>
 
 </h:body>
 

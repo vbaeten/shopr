@@ -7,30 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
-        <h:outputStylesheet library="css" name="overview.css"/>
-
-
-        <div class="afterNav">
-
-            <b:button value="All" href="items-overview.xhtml"/>
-            <b:button value="Books" href="books-overview.xhtml"/>
-            <b:button value="Lps" href="lps-overview.xhtml"/>
-            <b:button value="Games" href="games-overview.xhtml"/>
-
-
-        </div>
-
-
-        <div class="afterNav">
-
-            <h3>Books</h3>
-
-            <b:button value="All Books" href="books-overview.xhtml"/>
-            <b:button value="fiction" href="fiction-overview.xhtml"/>
-            <b:button value="non fiction" href="nonFiction-overview.xhtml"/>
-
-
-        </div>
+        <h:outputStylesheet library="css" />
 
 
         <div class="afterNav">
@@ -52,11 +29,13 @@
                         <b:dataTableColumn value="#{book.type}"/>
                         <b:dataTableColumn>
                             <h:link value="details"
-                                    rendered= "#{book.type eq 'fiction book'}" outcome="/detail-pages/fiction-detail.xhtml">
+                                    rendered="#{book.type eq 'fiction book'}"
+                                    outcome="/detail-pages/fiction-detail.xhtml">
                                 <f:param name="id" value="#{book.id}"/>
                             </h:link>
                             <h:link value="details"
-                                    rendered= "#{book.type eq 'non-fiction book'}" outcome="/detail-pages/nonFiction-detail.xhtml">
+                                    rendered="#{book.type eq 'non-fiction book'}"
+                                    outcome="/detail-pages/nonFiction-detail.xhtml">
                                 <f:param name="id" value="#{book.id}"/>
                             </h:link>
                         </b:dataTableColumn>

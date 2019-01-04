@@ -49,6 +49,13 @@ public class GameDetailController {
     }
 
 
+    public void addToCart(){
+
+    }
+
+
+
+
     public GameGenre[]getGenres(){
         return GameGenre.values();
     }

@@ -25,20 +25,6 @@ public class BookController {
         return this.bookService.findAllBooks();
     }
 
-    public String redirect(String bookType) {
-
-        switch (bookType) {
-
-            case "fiction":
-                return "/detail-pages/fiction-detail.xhtml";
-
-            case "non fiction":
-                return "/detail-pages/nonFiction-detail.xhtml";
-
-        }
-        return "books-overview.xhtml";
-    }
-
 
 
 }

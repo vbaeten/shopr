@@ -3,17 +3,19 @@ package com.realdolmen.shopr.service;
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.repository.FictionRepository;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Stateless
 public class FictionService {
 
 
     @Inject
     private FictionRepository fictionRepository = new FictionRepository();
 
-    @Transactional
+
     public void insert(Fiction newFiction) {
         fictionRepository.insert(newFiction);
     }
@@ -31,12 +33,12 @@ public class FictionService {
     }
 
 
-    @Transactional
+
     public void delete(Fiction toDeleteF) {
         this.fictionRepository.delete(toDeleteF);
     }
 
-    @Transactional
+
     public void update(Fiction fiction) {
         this.fictionRepository.update(fiction);
     }

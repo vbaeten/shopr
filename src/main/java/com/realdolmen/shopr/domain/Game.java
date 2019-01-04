@@ -2,6 +2,7 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Games")
@@ -19,7 +20,9 @@ public class Game extends Item {
 
     public static final String FIND_ALL = "Game.findAll";
 
+    @Size(max=100)
     private String publisher;
+
     private int minAge;
 
     @Enumerated(EnumType.STRING)

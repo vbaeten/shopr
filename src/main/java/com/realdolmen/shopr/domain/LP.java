@@ -2,6 +2,7 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "lp")
@@ -16,6 +17,8 @@ import javax.persistence.*;
 public class LP extends Item {
 
     public static final String FIND_ALL = "LP.findAll";
+
+    @Size(max=100)
 
     private String publisher;
 

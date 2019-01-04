@@ -2,6 +2,7 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -19,6 +20,7 @@ public class Fiction extends Book {
     private BookGenre bookGenre;
 
     public static final String FIND_ALL = "Fiction.findAll";
+    @Size(max=255)
     private String preview;
 
 

@@ -2,14 +2,21 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 
 public class Review {
 
     @Id
     private int id;
+
+    @Min(0)
+    @Max(10)
     private short score;
+
     private String description;
+
     private User user;
     private Item item;
 

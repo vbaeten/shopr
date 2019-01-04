@@ -1,9 +1,41 @@
 .templateBody{
-    background-color: #DAFFEF;
+    background: rgba(170, 213, 237, 0.85);
+    font-family: "Lucida Sans Unicode", Courier, monospace;
 }
 
-.navBar{
-    background-color:#64B6AC; ;
-    margin-bottom: 5%;
+
+#navbar{
+    margin: 2%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
 }
 
+.navbar.navbar-default.navBar{
+    background-color: rgba(112, 0, 80, 0.99);
+    border-style: none ;
+
+}
+
+
+.menuItems{
+    border-radius: 10px;
+
+}
+
+.menuItems:hover{
+
+    background-color: rgba(255, 252, 208, 0.79);
+    color: black;
+}
+
+.afterNav{
+
+    margin: 2%;
+    background: rgb(255, 251, 228);
+    padding: 2%;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+
+}

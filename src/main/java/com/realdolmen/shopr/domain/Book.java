@@ -2,6 +2,8 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -14,13 +16,14 @@ import javax.persistence.*;
 })
 public abstract class Book extends Item {
 
+    @Size(max=100)
     private String author;
+    @NotNull
+    @Column(unique = true)
     private String isbn;
     private short totalPages;
     public static final String FIND_ALL = "Book.findAll";
 
-//    @Column(name = "type")
-//    private String bookType;
 
 
     public String getAuthor() {
@@ -47,11 +50,5 @@ public abstract class Book extends Item {
         this.totalPages = totalPages;
     }
 
-//    public String getBookType() {
-//        return bookType;
-//    }
-//
-//    public void setBookType(String bookType) {
-//        this.bookType = bookType;
-//    }
+
 }

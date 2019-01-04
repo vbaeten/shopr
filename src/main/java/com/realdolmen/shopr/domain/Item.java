@@ -2,6 +2,9 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,14 +23,19 @@ public abstract class Item {
 
     public static final String FIND_ALL = "Item.findAll";
 
+    @NotNull
+    @Size(max=100)
     private String title;
 
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
+    @NotNull
     private double price;
 
     @Transient
+    @NotNull
+    @Size(max=100)
     private String supplierId;
 
 
