@@ -138,7 +138,11 @@
                     <b:panel title="List of LP's">
                         <b:dataTable value="#{lpController.lps}" var="lp">
                             <b:dataTableColumn value="#{lp.id}"/>
-                            <b:dataTableColumn value="#{lp.title}"/>
+                            <b:dataTableColumn label="Title">
+                                <h:link value="#{lp.title}" outcome="/detail/lpdetail.xhtml" includeViewParams="true">
+                                    <f:param name="id" value="#{lp.id}"/>
+                                </h:link>
+                            </b:dataTableColumn>
                             <b:dataTableColumn value="#{lp.artist}"/>
                             <b:dataTableColumn value="#{lp.supplier}"/>
                             <b:dataTableColumn value="#{lp.musicGenre}"/>

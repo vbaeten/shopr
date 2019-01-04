@@ -23,13 +23,15 @@
                     <b:dataTableColumn value="#{article.supplier}" label="Supplier"/>
                     <b:dataTableColumn value="#{article.price}" label="Price"/>
                     <b:dataTableColumn value="#{article.type}" label="Type"/>
-                    <b:dataTableColumn value="Delete">
+                    <b:dataTableColumn>
                         <b:commandButton value="Delete" action="#{articleController.deleteArticle(article.id)}">
                             <f:ajax excecute="@this" render="@form"/>
                         </b:commandButton>
                     </b:dataTableColumn>
-                    <b:dataTableColumn value="Details">
-                        <b:commandButton value="Details" action="#{}"/>
+                    <b:dataTableColumn>
+                        <b:button value="Details" href="detail/lpdetail.xhtml" includeViewParams="true">
+                            <f:param name="id" value="#{article.id}"/>
+                        </b:button>
                     </b:dataTableColumn>
                 </b:dataTable>
             </h:form>
