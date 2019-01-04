@@ -23,7 +23,7 @@ import java.util.List;
                 )
         }
 )
-public class Artikel {
+public abstract class Artikel {
     public static final String FIND_ALL = "Artikel.findAll";
     public static final String FIND_BY_TITLE = "Artikel.findByTitle";
 

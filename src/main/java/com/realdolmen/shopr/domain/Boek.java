@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "boek")
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "boekType")
 @DiscriminatorValue("boek")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(
@@ -23,7 +22,7 @@ import java.util.List;
                 )
         }
 )
-public class Boek extends Artikel {
+public abstract class Boek extends Artikel {
     public static final String FIND_ALL = "Boek.findAll";
     public static final String FIND_BY_ID = "Boek.findById";
 
