@@ -42,7 +42,7 @@ public class FictieController {
         this.fictieService.removeById(id);
     }
 
-    public void submit(Fictie fictie) {
+    public void submit() {
         this.fictieService.insert(fictie);
     }
 

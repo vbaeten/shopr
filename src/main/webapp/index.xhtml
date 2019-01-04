@@ -9,45 +9,45 @@
 <h:body>
 
     <b:form id="dataUsers">
-<b:panel id="panel" title="Artikels" style="margin-top:10px">
-        <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
-            <b:dataTableColumn label="Id">
-                <h:outputText value="#{user.id}"/>
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Name">
-                <h:outputText value="#{user.name}"/>
-            </b:dataTableColumn>
-            <b:dataTableColumn label="First name">
-                <h:outputText value="#{user.firstName}"/>
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Operations">
-                <h:commandButton value="Delete" look="danger" action="#{userController.remove(user.id)}" update=":userDataTable"/>
-            </b:dataTableColumn>
-        </b:dataTable>
-</b:panel>
-   </b:form>
-
-    <b:form id="registerForm" horizontal="true">
-        <b:panel id="panel" header="Register" style="margin-bottom:10px;">
-                <h:outputLabel for="userName" value="Name:"/>
-                <b:inputText id="userName" value="#{registerController.newUser.name}">
-                </b:inputText>
-                <h:outputLabel for="userFirstName" value="First name:"/>
-                <b:inputText id="userFirstName" value="#{registerController.newUser.firstName}">
-                </b:inputText>
-                <h:commandButton value="Toevoegen" look="success" action="#{registerController.submit()}" update="userDataTable"/>
+        <b:panel id="panel" title="Artikels" style="margin-top:10px">
+            <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
+                <b:dataTableColumn label="Id">
+                    <h:outputText value="#{user.id}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn label="Name">
+                    <h:outputText value="#{user.name}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn label="First name">
+                    <h:outputText value="#{user.firstName}"/>
+                </b:dataTableColumn>
+                <b:dataTableColumn label="Operations">
+                    <b:commandButton value="Delete" look="danger" action="#{userController.remove(user.id)}"
+                                     update="dataUsers"/>
+                </b:dataTableColumn>
+            </b:dataTable>
         </b:panel>
     </b:form>
 
-    <b:form id="userLogin">
-        <b:messages/>
-        <b:panel id="loginpanel" header="Login">
-            <b:selectOneMenu value="#{userController.selectedUser}" converter="omnifaces.SelectItemsConverter">
+    <b:panel>
+        <b:form id="registerForm" horizontal="true">
+            <b:inputText labelColMd="1" colMd="3" label="Name:" id="userName"
+                         value="#{registerController.newUser.name}"/>
+            <b:inputText labelColMd="1" colMd="3" label="First name:" id="userFirstName"
+                         value="#{registerController.newUser.firstName}"/>
+            <b:commandButton value="Toevoegen" look="success" action="#{registerController.submit()}"
+                             update="dataUsers userLogin" />
+        </b:form>
+    </b:panel>
+
+    <b:panel>
+        <b:form id="userLogin">
+            <b:messages/>
+            <b:selectOneMenu colMd="4" value="#{userController.selectedUser}" converter="omnifaces.SelectItemsConverter">
                 <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
             </b:selectOneMenu>
-            <h:commandButton value="Login" look="success" action="artikelOverzicht" update="userLogin" />
-        </b:panel>
-    </b:form>
-
+            <b:commandButton value="Login klant" look="success" action="artikelOverzicht?faces-redirect=true" update="userLogin"/>
+            <b:commandButton value="Login admin" look="success" action="artikelBeheer?faces-redirect=true" update="userLogin"/>
+        </b:form>
+    </b:panel>
 </h:body>
 </html>

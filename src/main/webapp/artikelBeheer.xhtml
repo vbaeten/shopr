@@ -5,21 +5,165 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
-<head>
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head>
     <title>Artikelbeheer</title>
-</head>
-<body>
+</h:head>
 
-<b:form id="NieuwArtikel">
-    <b:selectOneMenu value="#{artikelController.getArtikelTypes}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
-        <f:selectItem itemLabel="(Please select)" itemValue="" />
-        <f:selectItem itemLabel="Fiat" itemValue="1" />
-        <f:selectItem itemLabel="Honda" itemValue="2" />
-        <f:selectItem itemLabel="Opel" itemValue="3" />
-    </b:selectOneMenu>
-</b:form>
+<h:body>
+
+    <p>Welkom #{userController.selectedUser.firstName}</p>
+    <o:importConstants type="com.realdolmen.shopr.domain.ArtikelTypes"/>
+    <b:container fluid="true">
+        <b:panel>
+            <b:form id="NieuwArtikel" horizontal="true">
+                <b:container>
+                    <b:column colMd="3">
+                        <b:selectOneMenu value="#{artikelController.selectedArtikelType}" required="true"
+                                         valueChangeListener="#{artikelController.submitSelectedArtikelType}"
+                                         update="fictieBoekToevoegen nonFictieBoekToevoegen gameToevoegen"
+                                         label="Selecteer het type artikel:"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems value="#{ArtikelTypes}" var="type"
+                                           itemValue="#{type}" itemLabel="#{type}"/>
+                        </b:selectOneMenu>
+                    </b:column>
+                </b:container>
+            </b:form>
+        </b:panel>
+
+        <b:form id="fictieBoekToevoegen">
+            <b:panel rendered="#{artikelController.selectedArtikelType eq 'fictie'}">
+                <b:container>
+                    <b:row>
+                        <b:column colMd="5">
+                            <b:inputText placeholder="fictie" id="fictieBoekType" label="Boek type: "
+                                         value="#{fictieController.fictie.boekType}"/>
+                            <b:inputText id="fictieIdLeverancier" label="Leverancier ID: "
+                                         value="#{fictieController.fictie.idLeverancier}"/>
+                            <b:inputText id="fictieIsbn" label="Isbn: "
+                                         value="#{fictieController.fictie.isbn}"/>
+                            <b:inputText id="fictieAuteur" label="Auteur: "
+                                         value="#{fictieController.fictie.auteur}"/>
+                        </b:column>
+                        <b:column colMd="5">
+                            <o:importConstants type="com.realdolmen.shopr.domain.FictieGenre"/>
+                            <b:selectOneMenu id="fictieGenre" label="Genre: "
+                                             value="#{fictieController.fictie.fictieGenre}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItems value="#{FictieGenre}" var="fictieGenre"
+                                               itemValue="#{fictieGenre}" itemLabel="#{fictieGenre}"/>
+                            </b:selectOneMenu>
+                            <b:inputText id="fictieTitel" label="Titel: "
+                                         value="#{fictieController.fictie.titel}"/>
+                            <b:inputText id="fictiePrijs" label="Prijs: "
+                                         value="#{fictieController.fictie.prijs}"/>
+                            <b:inputText id="fictieAantalPaginas" label="Aantal paginas: "
+                                         value="#{fictieController.fictie.aantalPaginas}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column colMd="10">
+                            <b:inputTextarea id="fictieKorteInhoud" label="Korte inhoud: "
+                                             value="#{fictieController.fictie.korteInhoud}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column>
+
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:panel>
+            <b:commandButton value="Artikel toevoegen" look="success"
+                             action="#{fictieController.submit}" update="@form"/>
+        </b:form>
 
 
-</body>
+        <b:form id="nonFictieBoekToevoegen">
+            <b:panel rendered="#{artikelController.selectedArtikelType eq 'nonFictie'}">
+                <b:container>
+                    <b:row>
+                        <b:column colMd="5">
+                            <b:inputText placeholder="nonFictie" id="nonFictieBoekType" label="Boek type: "
+                                         value="#{nonFictieController.nonFictie.boekType}"/>
+                            <b:inputText id="nonFictieIdLeverancier" label="Leverancier ID: "
+                                         value="#{nonFictieController.nonFictie.idLeverancier}"/>
+                            <b:inputText id="nonFictieIsbn" label="Isbn: "
+                                         value="#{nonFictieController.nonFictie.isbn}"/>
+                            <b:inputText id="nonFictieAuteur" label="Auteur: "
+                                         value="#{nonFictieController.nonFictie.auteur}"/>
+                        </b:column>
+
+                        <b:column colMd="5">
+                            <o:importConstants type="com.realdolmen.shopr.domain.NonFictieOnderwerp"/>
+                            <b:selectOneMenu id="nonFictieGenre" label="Genre: "
+                                             value="#{nonFictieController.nonFictie.nonFictieOnderwerp}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItems value="#{NonFictieOnderwerp}" var="nonFictieOnderwerp"
+                                               itemValue="#{nonFictieOnderwerp}" itemLabel="#{nonFictieOnderwerp}"/>
+                            </b:selectOneMenu>
+                            <b:inputText id="nonFictieTitel" label="Titel: "
+                                         value="#{nonFictieController.nonFictie.titel}"/>
+                            <b:inputText id="nonFictiePrijs" label="Prijs: "
+                                         value="#{nonFictieController.nonFictie.prijs}"/>
+                            <b:inputText id="nonFictieAantalPaginas" label="Aantal paginas: "
+                                         value="#{nonFictieController.nonFictie.aantalPaginas}"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column>
+                            <b:commandButton value="Artikel toevoegen" look="success"
+                                             action="#{nonFictieController.submit}"/>
+                        </b:column>
+                    </b:row>
+
+                </b:container>
+            </b:panel>
+        </b:form>
+
+        <b:form id="gameToevoegen">
+            <b:panel rendered="#{artikelController.selectedArtikelType eq 'game'}">
+                <b:container>
+                    <b:row>
+                        <b:column colMd="5">
+                            <b:inputText id="gameIdLeverancier" label="Leverancier ID: "
+                                         value="#{gameController.game.idLeverancier}"/>
+                            <b:inputText id="gameMinimumLeeftijd" label="MinimumLeeftijd: "
+                                         value="#{gameController.game.minimumLeeftijd}"/>
+                            <b:inputText id="gameUitgever" label="Uitgever: "
+                                         value="#{gameController.game.uitgever}"/>
+                        </b:column>
+
+                        <b:column colMd="5">
+                            <o:importConstants type="com.realdolmen.shopr.domain.GameGenre"/>
+                            <b:selectOneMenu id="gameGenre" label="Genre: "
+                                             value="#{gameController.game.gameGenre}"
+                                             converter="omnifaces.SelectItemsConverter">
+                                <f:selectItems value="#{GameGenre}" var="gameGenre"
+                                               itemValue="#{gameGenre}" itemLabel="#{gameGenre}"/>
+                            </b:selectOneMenu>
+                            <b:inputText id="gameTitel" label="Titel: "
+                                         value="#{gameController.game.titel}"/>
+                            <b:inputText id="gamePrijs" label="Prijs: "
+                                         value="#{gameController.game.prijs}"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column>
+                            <b:commandButton value="Artikel toevoegen" look="success"
+                                             action="#{gameController.submit}"/>
+                        </b:column>
+                    </b:row>
+
+                </b:container>
+            </b:panel>
+        </b:form>
+
+    </b:container>
+
+</h:body>
 </html>

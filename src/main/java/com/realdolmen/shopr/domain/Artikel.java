@@ -28,7 +28,7 @@ public class Artikel {
     public static final String FIND_BY_TITLE = "Artikel.findByTitle";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Size(max = 100)

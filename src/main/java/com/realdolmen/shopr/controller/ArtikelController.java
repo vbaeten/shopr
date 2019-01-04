@@ -5,10 +5,8 @@ import com.realdolmen.shopr.service.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @ManagedBean
@@ -28,9 +26,17 @@ public class ArtikelController {
     private LpService lpService;
     private int id;
     private Artikel artikel;
+    private ArtikelTypes selectedArtikelType;
     private Game game;
     private Boek boek;
 
+    public ArtikelTypes[] getArtikelTypes() {
+        return ArtikelTypes.values();
+    }
+
+    public void submitSelectedArtikelType(ValueChangeEvent e) {
+        selectedArtikelType = (ArtikelTypes) e.getNewValue();
+    }
 
     public String gotoDetails(Artikel artikel) {
         this.artikel = artikel;
@@ -51,13 +57,6 @@ public class ArtikelController {
         }
         return null;
     }
-
-    public List<String> getGetArtikelTypes() {
-        return artikelTypes;
-    }
-
-
-    public List<String> artikelTypes = new ArrayList<String>(Arrays.asList("game","lp","fictie","nonFictie"));
 
     public Game getGameById(int id) {
         return this.gameService.findById(id);
@@ -121,4 +120,11 @@ public class ArtikelController {
         return artikel instanceof NonFictie;
     }
 
+    public ArtikelTypes getSelectedArtikelType() {
+        return selectedArtikelType;
+    }
+
+    public void setSelectedArtikelType(ArtikelTypes selectedArtikelType) {
+        this.selectedArtikelType = selectedArtikelType;
+    }
 }
