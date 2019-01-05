@@ -68,9 +68,11 @@ public class Order {
 
     public void setPrice() {
         if (this.getOrderLines() != null && this.getOrderLines().size() > 0) {
+            int tempPrice = 0;
             for (OrderLine orderLine : this.getOrderLines()) {
-                this.price += orderLine.getSubTotal();
+                tempPrice += orderLine.getSubTotal();
             }
+            this.price = tempPrice;
         }
     }
 

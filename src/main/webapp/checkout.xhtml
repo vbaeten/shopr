@@ -57,7 +57,82 @@
                 <p:tab id="payment" title="Payment">
                     <p:panel>
                         <div style="max-width: 60%; margin: 10px auto;">
-                            This is where you pay
+                            <p:panel header="Enter credit card information">
+                                <h:selectOneRadio id="paymentMethods">
+                                    <div class="ui-g">
+                                        <div class="ui-g-4">
+                                            <h:outputLabel for="visa">
+                                                <h:graphicImage value="/images/payment/cards-visa.png"/>
+                                            </h:outputLabel>
+                                            <f:selectItem id="visa" itemValue="visa"/>
+                                        </div>
+
+                                        <div class="ui-g-4">
+                                            <h:outputLabel for="mc">
+                                                <h:graphicImage value="/images/payment/cards-mc.png"/>
+                                            </h:outputLabel>
+                                            <f:selectItem id="mc" itemValue="mc"/>
+                                        </div>
+
+                                        <div class="ui-g-4">
+                                            <h:outputLabel for="amex">
+                                                <h:graphicImage value="/images/payment/cards-amex.png"/>
+                                            </h:outputLabel>
+                                            <f:selectItem id="amex" itemValue="amex"/>
+                                        </div>
+                                    </div>
+                                </h:selectOneRadio>
+
+                                <p:panelGrid columns="2" cellPadding="5">
+                                    <p:outputLabel for="cardNumber" value="Credit card number"/>
+                                    <p:inputMask id="cardNumber"
+                                                 mask="9999-9999-9999-9999"
+                                                 required="true"/>
+
+                                    <p:outputLabel for="expMonth" value="Expiration month"/>
+                                    <p:selectOneMenu id="expMonth">
+                                        <f:selectItems value="#{flowBean.months}"
+                                                       var="year"
+                                                       itemLabel="#{year}"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="expYear" value="Expiration year"/>
+                                    <p:selectOneMenu id="expYear">
+                                        <f:selectItems value="#{flowBean.years}"
+                                                       var="year"
+                                                       itemLabel="#{year}"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel for="cvc" value="CVC code"/>
+                                    <p:inputMask id="cvc"
+                                                 mask="999"
+                                                 required="true"
+                                                 style="max-width: 30px;"/>
+
+                                </p:panelGrid>
+                            </p:panel>
+                            <p:panel header="Cardholder information">
+                                <p:panelGrid columns="2" cellPadding="5">
+                                    <p:outputLabel for="firstName" value="First name: "/>
+                                    <p:inputText id="firstName"/>
+
+                                    <p:outputLabel for="lastName" value="Last name: "/>
+                                    <p:inputText id="lastName"/>
+
+                                    <p:outputLabel for="address" value="Address: "/>
+                                    <p:inputText id="address"/>
+
+                                    <p:outputLabel for="city" value="City: "/>
+                                    <p:inputText id="city"/>
+
+                                    <p:outputLabel for="zip" value="Zip/Postal code: "/>
+                                    <p:inputText id="zip"/>
+
+                                    <p:outputLabel for="country" value="Country: "/>
+                                    <p:inputText id="country"/>
+
+                                </p:panelGrid>
+                            </p:panel>
                         </div>
                     </p:panel>
                 </p:tab>
@@ -65,13 +140,35 @@
                 <p:tab id="confirmation" title="Confirmation">
                     <p:panel>
                         <div style="max-width: 60%; margin: 10px auto;">
-                            <i class="far fa-smile fa-10x"></i><br/>
-                            We thank you for your order!<br/>
-                            Your item(s) will be shipped ASAP!
+                            <p:panel header="Please confirm your order">
+                                <p:dataTable value="#{orderController.currentOrder.orderLines}"
+                                             var="line">
+                                    <p:column headerText="Article Id">
+                                        <h:outputText value="#{line.id}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Title">
+                                        <h:outputText value="#{line.article.title}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Unit price">
+                                        <h:outputText value="#{line.article.price}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Amount">
+                                        <h:outputText value="#{line.amount}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Subtotal">
+                                        <h:outputText value="#{line.subTotal}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panel>
+                            <p:commandButton value="Submit" action="#{orderController.submit}"/>
                         </div>
                     </p:panel>
-
                 </p:tab>
+
             </p:wizard>
         </h:form>
     </ui:define>

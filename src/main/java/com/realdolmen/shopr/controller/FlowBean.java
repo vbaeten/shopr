@@ -4,10 +4,13 @@ import org.primefaces.event.FlowEvent;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.time.LocalDate;
 
 @ManagedBean
 @ViewScoped
 public class FlowBean {
+
+
 //    private User user = new User();
 
     private boolean skip;
@@ -35,11 +38,30 @@ public class FlowBean {
 
     public String onFlowProcess(FlowEvent event) {
         if(skip) {
-            skip = false;   //reset in case user goes back
+            skip = false;
             return "confirm";
         }
         else {
             return event.getNewStep();
         }
     }
+
+    public int[] getYears(){
+        int year = LocalDate.now().getYear();
+        int[] years = new int[15];
+        for (int i = 0;i<15;i++){
+            years[i] = year+i;
+        }
+        return years;
+    }
+
+    public int[] getMonths(){
+        int[] months = new int[12];
+        for (int i = 0;i<12;i++){
+            months[i] = i+1;
+        }
+        return months;
+    }
+
+
 }
