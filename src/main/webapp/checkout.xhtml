@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<f:metadata>
+    <f:viewParam name="id" value="#{lpController.lpId}"/>
+    <f:event listener="#{lpController.init}" type="preRenderView"/>
+</f:metadata>
+
+<ui:composition template="templates/templ.xhtml">
+    <ui:define name="pageContent">
+        <div class="shoppingCartTitle">
+            #{userController.currentUser.firstName}'s shopping cart
+        </div>
+        <h:form>
+            <p:wizard flowListener="#{flowBean.onFlowProcess}">
+                <p:tab id="review" title="Review your order">
+                    <p:panel>
+                        <div style="max-width: 60%; margin: 10px auto;">
+                            <p:dataList var="line" value="#{orderController.currentOrder.orderLines}"
+                                        emptyMessage="No items have been added to your shopping cart yet."
+                                        type="ordered">
+                                <h:outputText value="#{line.article.title}" style="font-weight: bold;"/><br/>
+                                <div class="ui-g">
+                                    <div class="ui-g-1">#{line.amount}</div>
+                                    <div class="ui-g-1">x</div>
+                                    <div class="ui-g-2">#{line.article.price}€</div>
+                                    <div class="ui-g-5" style="text-align: right;">=</div>
+                                    <div class="ui-g-2" style="text-align: right;">#{line.subTotal}€</div>
+                                    <div class="ui-g-1">
+                                        <p:commandLink styleClass="removeLink">
+                                            <i class="far fa-trash-alt"></i>
+                                        </p:commandLink>
+                                    </div>
+                                </div>
+                            </p:dataList>
+                            <p:separator/>
+                            <div class="ui-g">
+                                <div class="ui-g-6">Total price</div>
+                                <div class="ui-g-5" style="text-align: right; font-weight: bold;">
+                                    <h:outputText value="#{orderController.currentOrder.price}">
+                                        <f:convertNumber pattern="0.00 €"/>
+                                    </h:outputText>
+                                </div>
+                                <div class="ui-g-1"></div>
+                            </div>
+                        </div>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="payment" title="Payment">
+                    <p:panel>
+                        <div style="max-width: 60%; margin: 10px auto;">
+                            This is where you pay
+                        </div>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="confirmation" title="Confirmation">
+                    <p:panel>
+                        <div style="max-width: 60%; margin: 10px auto;">
+                            <i class="far fa-smile fa-10x"></i><br/>
+                            We thank you for your order!<br/>
+                            Your item(s) will be shipped ASAP!
+                        </div>
+                    </p:panel>
+
+                </p:tab>
+            </p:wizard>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

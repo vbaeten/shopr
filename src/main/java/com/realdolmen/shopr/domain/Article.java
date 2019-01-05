@@ -8,7 +8,21 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Article {
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Article.FIND_BY_TITLE,
+                        query = "SELECT a FROM Article a WHERE a.title = :title"
+                ),
+                @NamedQuery(
+                        name = Article.FIND_ALL,
+                        query = "SELECT a FROM Article a"
+                )
+        })
+public class Article {
+    public static final String FIND_ALL = "Article.findAll";
+    public static final String FIND_BY_TITLE = "Article.findByTitle";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

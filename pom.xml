@@ -39,6 +39,10 @@
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

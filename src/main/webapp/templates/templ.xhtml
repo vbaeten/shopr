@@ -23,8 +23,9 @@
                     <p:menuitem value="Fiction" url="./fictionDataTable.xhtml"/>
                     <p:menuitem value="Non-Fiction" url="./nonFictionDataTable.xhtml"/>
                 </p:submenu>
+
                 <p:menuitem value="|"/>
-                <p:submenu label="Add Articles">
+                <p:submenu label="Add Articles" style="margin-right: 60%;">
                     <p:menuitem value="LPs" url="./addLp.xhtml"/>
                     <p:menuitem value="Games" url="./addGame.xhtml"/>
                     <p:submenu label="Books">
@@ -32,7 +33,10 @@
                         <p:menuitem value="Non-Fiction" url="addNonFiction.xhtml"/>
                     </p:submenu>
                 </p:submenu>
-                <p:menuitem url="./index.xhtml"><i class="fas fa-sign-out-alt"></i> Logout</p:menuitem>
+                <p:menuitem url="./checkout.xhtml"><i class="fas fa-shopping-cart"></i> Checkout</p:menuitem>
+
+
+                <p:menuitem><i class="fas fa-sign-out-alt"></i> Logout</p:menuitem>
             </p:menubar>
         </h:form>
     </div>

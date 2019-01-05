@@ -37,3 +37,14 @@ body{
 .pageNotFoundIcon{
     max-height: 250px;
 }
+.shoppingCartTitle{
+    font-size: 3em;
+    font-family: "Segoe UI", Verdana, Arial, sans-serif;
+    font-weight: bold;
+    margin: 10px;
+    color: #666666;
+    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+}
+.removeLink a:hover{
+    color:red;
+}
