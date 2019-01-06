@@ -17,11 +17,23 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <h:form>
-            <p:growl id="message" showDetail="true" />
+            <p:growl id="message" showDetail="true"/>
             <p:fieldset legend="LP details" cellPadding="5">
-                <p:commandButton value="delete" action="#{lpController.delete}">
-                    <!--<p:confirm header="Confirmation" message="Are you sure you want to delete this item?" icon="pi pi-exclamation-triangle" />-->
-                </p:commandButton>
+                <div class="ui-g">
+                    <div class="ui-g-2">
+                        <p:commandButton value="delete" action="#{lpController.delete}">
+                            <!--<p:confirm header="Confirmation" message="Are you sure you want to delete this item?" icon="pi pi-exclamation-triangle" />-->
+                        </p:commandButton>
+                    </div>
+                    <div class="ui-g-1">
+                        <p:commandLink>
+                            <i class="far fa-heart fa-lg"></i>
+                        </p:commandLink>
+                        <p:commandLink style="color: red;">
+                            <i class="fas fa-heart fa-lg red"></i>
+                        </p:commandLink>
+                    </div>
+                </div>
 
                 <p:panelGrid columns="2" cellPaddinig="5">
                     <h:outputText value="Title:" class="detailsLeftSide"/>
@@ -39,8 +51,15 @@
                     <h:outputText value="Price:" class="detailsLeftSide"/>
                     <h:outputText value="#{lpController.newLp.price} €"/>
 
-                    <p:commandButton value="Order" action="#{orderController.addOrderLine(lpController.lpId, orderController.newAmount)}"/>
-                    <p:spinner id="amount" placeholder="1" value="#{orderController.newAmount}" min="1" max="20" immediate="true"/>
+                    <p:commandButton value="Order"
+                                     action="#{orderController.addOrderLine(lpController.lpId)}"
+                                     update="@form"/>
+                    <p:spinner id="amount"
+                               placeholder="1"
+                               value="#{orderController.newOrderLine.amount}"
+                               min="1"
+                               max="20"
+                               immediate="true"/>
                 </p:panelGrid>
             </p:fieldset>
         </h:form>
@@ -65,7 +84,7 @@
         <p:fieldset id="ratingsList">
             <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(lpController.lpId)}"
                         emptyMessage="There are no reviews for this article yet."
-                        type="definition" >
+                        type="definition">
                 #{rating.user.firstName} #{rating.user.name}
                 <p:rating value="#{rating.score}" readonly="true" stars="10"/>
                 <h:outputText value="#{rating.description}"/>
@@ -73,13 +92,7 @@
             </p:dataList>
         </p:fieldset>
 
-        <!--<ui:insert name="ratings">-->
-            <!--<ui:include src="templates/ratings.xhtml"/>-->
-        <!--</ui:insert>-->
-
-
     </ui:define>
 </ui:composition>
-
 
 </html>

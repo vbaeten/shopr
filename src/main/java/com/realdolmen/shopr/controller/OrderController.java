@@ -23,7 +23,7 @@ import java.util.List;
 @ManagedBean
 public class OrderController {
     Order currentOrder = new Order();
-    private int newAmount;
+    OrderLine newOrderLine = new OrderLine();
 
     @Inject
     UserController userController;
@@ -32,17 +32,14 @@ public class OrderController {
     OrderService orderService;
 
     @Inject
-    OrderLineController orderLineController;
-
-    @Inject
     ArticleService articleService;
 
-    public int getNewAmount() {
-        return newAmount;
+    public OrderLine getNewOrderLine() {
+        return newOrderLine;
     }
 
-    public void setNewAmount(int newAmount) {
-        this.newAmount = newAmount;
+    public void setNewOrderLine(OrderLine orderLine) {
+        this.newOrderLine = orderLine;
     }
 
     public Order getCurrentOrder() {
@@ -53,31 +50,27 @@ public class OrderController {
         this.currentOrder = newOrder;
     }
 
-    public void addOrderLine(int articleId, int amount){
+    public void addOrderLine(int articleId){
         Article article = articleService.findById(articleId);
         List<OrderLine> orderLines = new ArrayList<>();
         boolean found = false;
         if (currentOrder.getOrderLines() != null){
             orderLines = currentOrder.getOrderLines();
-            for (OrderLine orderLine : orderLines){
-                if (orderLine.getArticle().getId() == articleId){
-                    orderLine.setAmount(orderLine.getAmount() + amount);
-                    orderLine.setSubTotal();
+            for (OrderLine line : orderLines){
+                if (line.getArticle().getId() == articleId){
+                    line.setAmount(line.getAmount() + newOrderLine.getAmount());
+                    line.setSubTotal();
                     found = true;
+                    newOrderLine = new OrderLine();
                 }
             }
         }
 
         if (!found){
-            OrderLine orderLine = orderLineController.getNewOrderLine();
-            orderLine.setArticle(article);
-            orderLine.setAmount(amount);
-            orderLine.setSubTotal();
-            currentOrder.addOrderLine(orderLine);
+            newOrderLine.setArticle(article);
+            currentOrder.addOrderLine(newOrderLine);
+            newOrderLine = new OrderLine();
         }
-        System.out.println("article: " + article.getTitle());
-        System.out.println("amount: " + amount);
-        System.out.println(currentOrder.getOrderLines().size());
     }
 
     public String submit(){
@@ -90,4 +83,7 @@ public class OrderController {
         return "orderConfirmed?faces-redirect=true";
     }
 
+    public void deleteOrderLine(int id){
+        this.currentOrder.getOrderLines().remove(id);
+    }
 }

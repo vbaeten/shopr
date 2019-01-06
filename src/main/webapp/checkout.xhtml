@@ -25,18 +25,23 @@
                     <p:panel>
                         <div style="max-width: 60%; margin: 10px auto;">
                             <p:dataList var="line" value="#{orderController.currentOrder.orderLines}"
-                                        emptyMessage="No items have been added to your shopping cart yet."
+                                        emptyMessage="There are no items in your shopping cart."
                                         type="ordered">
                                 <h:outputText value="#{line.article.title}" style="font-weight: bold;"/><br/>
                                 <div class="ui-g">
                                     <div class="ui-g-1">#{line.amount}</div>
                                     <div class="ui-g-1">x</div>
                                     <div class="ui-g-2">#{line.article.price}€</div>
-                                    <div class="ui-g-5" style="text-align: right;">=</div>
+                                    <div class="ui-g-4" style="text-align: right;">=</div>
                                     <div class="ui-g-2" style="text-align: right;">#{line.subTotal}€</div>
                                     <div class="ui-g-1">
-                                        <p:commandLink styleClass="removeLink">
+                                        <p:commandLink styleClass="removeLink" action="#{orderController.deleteOrderLine(line.id)}" update="@form">
                                             <i class="far fa-trash-alt"></i>
+                                        </p:commandLink>
+                                    </div>
+                                    <div class="ui-g-1">
+                                        <p:commandLink styleClass="removeLink" update="@form">
+                                            <i class="fas fa-pencil-alt"></i>
                                         </p:commandLink>
                                     </div>
                                 </div>
@@ -44,12 +49,12 @@
                             <p:separator/>
                             <div class="ui-g">
                                 <div class="ui-g-6">Total price</div>
-                                <div class="ui-g-5" style="text-align: right; font-weight: bold;">
+                                <div class="ui-g-4" style="text-align: right; font-weight: bold;">
                                     <h:outputText value="#{orderController.currentOrder.price}">
                                         <f:convertNumber pattern="0.00 €"/>
                                     </h:outputText>
                                 </div>
-                                <div class="ui-g-1"></div>
+                                <div class="ui-g-2"></div>
                             </div>
                         </div>
                     </p:panel>
