@@ -7,7 +7,6 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
-
     <h:form>
         <b:dataTable value="#{articleController.articles}"
                      var="article">
@@ -17,7 +16,13 @@
             <b:dataTableColumn value="#{article.price}" label="price"/>
             <b:dataTableColumn value="#{article.id}" label="detail"/>
             <b:dataTableColumn>
-                <b:commandButton value="Detail" action="#{articleController.goToArticleDetail(article)}"/>
+                <b:commandButton value="click" action="#{articleController.test()}" />
+
+            </b:dataTableColumn>
+            <b:dataTableColumn>
+                <b:commandButton value="Detail" action="#{articleController.goToArticleDetail(article)}">
+                    <f:param name="id" value="#{article.id}"/>
+                </b:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
     </h:form>

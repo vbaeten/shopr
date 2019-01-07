@@ -21,4 +21,8 @@ public class ArticleService {
         article.setTitle(newTitle);
     }
 
+    public Article findById(Long id){
+        return articleRepository.findById(id);
+    }
+
 }

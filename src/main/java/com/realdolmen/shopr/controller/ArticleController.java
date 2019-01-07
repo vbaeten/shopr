@@ -3,16 +3,17 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.service.*;
 
-import javax.ejb.Init;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
 @RequestScoped
-public class ArticleController {
+public class ArticleController implements Serializable {
     @Inject
     GameService gameService;
     @Inject
@@ -27,14 +28,18 @@ public class ArticleController {
     BookNonFictionController bookNonFictionController;
     Article article;
     LP lp;
-    Book book ;
+    Book book;
     BookFiction bookFiction;
     BookNonFiction bookNonFiction;
     Game game = new Game();
+    @ManagedProperty(value = "#{param.id}")
+    private Long selectedId;
 
-    @Init
-    public void getData(){
-
+    @PostConstruct
+    public void getData() {
+        if(selectedId != null){
+            article = articleService.findById(selectedId);
+        }
     }
 
     @Inject
@@ -54,14 +59,13 @@ public class ArticleController {
     public String goToArticleDetail(Article article) {
         this.article = article;
         if (article instanceof LP) {
-            return "lpdetail";
+            return "lpdetail?faces-redirect=true&includeViewParams=true";
         } else if (article instanceof Game) {
-            gameController.setGame((Game) article);
-            return "gamedetail";
+            return "gamedetail?faces-redirect=true&includeViewParams=true";
         } else if (article instanceof BookFiction) {
-            return "bookfictiondetail";
+            return "bookfictiondetail?faces-redirect=true&includeViewParams=true";
         } else if (article instanceof BookNonFiction) {
-            return "booknonfictiondetail";
+            return "booknonfictiondetail?faces-redirect=true&includeViewParams=true";
         } else {
             return "ERROR";
         }
@@ -89,13 +93,16 @@ public class ArticleController {
         return "overview";
     }
 
-    public void removeGameArticle(Game game) {
-        gameService.removeById(game.getId());
+    public void removeGameArticle(Long id) {
+        if(id != 0 && id != null){
+            gameService.removeById(id);
+        }
     }
 
-    public void test(){
+    public void test() {
         System.out.println("test");
     }
+
     public BookFiction getBookFiction() {
         return bookFiction;
     }
@@ -122,4 +129,11 @@ public class ArticleController {
         }
     }
 
+    public Long getSelectedId() {
+        return selectedId;
+    }
+
+    public void setSelectedId(Long selectedId) {
+        this.selectedId = selectedId;
+    }
 }

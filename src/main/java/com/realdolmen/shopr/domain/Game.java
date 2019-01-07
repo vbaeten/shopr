@@ -20,7 +20,6 @@ public class Game extends Article{
     public Game() {
     }
 
-
     public String getPublisher() {
         return publisher;
     }

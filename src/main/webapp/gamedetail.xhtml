@@ -8,49 +8,22 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>game detail page</p>
+    <b:messages/>
+    <f:metadata>
+        <f:viewParam name="id" value="#{articleController.selectedId}"/>
+    </f:metadata>
     <b:form id="games">
-        <b:messages/>
-        <b:dataTable value="#{articleController.article}" id="gamesTable"
-                     var="game" caption="This is a the detail page for a game.">
-            <b:dataTableColumn value="#{game.type}" label="type" />
-            <b:dataTableColumn value="#{game.title}" label="title" />
-            <b:dataTableColumn value="#{game.price}" label="price"/>
-            <b:dataTableColumn value="#{game.publisher}"  label="publisher"/>
-            <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
-            <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
-            <b:dataTableColumn value="#{game.id}" label="product code"/>
-            <b:dataTableColumn label="Edit"
-                               orderable="false"
-                               style="text-align:center">
+
+        <b:dataTable value="#{articleController.article}"
+                      >
+
+            <b:dataTableColumn>
+                <b:commandButton value="click" onclick="#{articleController.test()}" />
+
             </b:dataTableColumn>
-            <h:column>
-                <h:commandLink value="verwijder" immediate="true" action="#{gameController.removeGame(game)}"/>
-                <!--&lt;!&ndash;<b:commandButton value="verwijder" immediate="true" action="#{articleController.removeGame(game)}" >&ndash;&gt;-->
-                <!--</b:commandButton>-->
-            </h:column>
         </b:dataTable>
-        <b:commandButton value="verwijder" immediate="true" action="#{gameController.removeGame(game)}" >
-        </b:commandButton>
+
     </b:form>
-<h:form>
-    <p:dataTable var="game" value="#{articleController.article}">
-        <p:column headerText="Id">
-            <h:outputText value="#{game.id}" />
-        </p:column>
 
-        <p:column headerText="title">
-            <h:outputText value="#{game.title}" />
-        </p:column>
-
-        <p:column headerText="genre">
-            <h:outputText value="#{game.gameGenre}" />
-        </p:column>
-
-        <p:column headerText="Delete">
-            <b:commandButton value="verwijder" immediate="true" action="#{gameController.removeGame(game)}" >
-            </b:commandButton>
-        </p:column>
-    </p:dataTable>
-</h:form>
 </h:body>
 </html>
