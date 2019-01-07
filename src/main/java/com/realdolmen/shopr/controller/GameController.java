@@ -16,6 +16,28 @@ public class GameController
     private GameService gameService;
 
     private Game newGame = new Game();
+    private Game editGame = new Game();
+    private boolean loadpanel;
+
+    public boolean isLoadpanel()
+    {
+        return loadpanel;
+    }
+
+    public void setLoadpanel(boolean loadpanel)
+    {
+        this.loadpanel = loadpanel;
+    }
+
+    public Game getEditGame()
+    {
+        return editGame;
+    }
+
+    public void setEditGame(Game editGame)
+    {
+        this.editGame = editGame;
+    }
 
     public Game getNewGame()
     {
@@ -37,8 +59,20 @@ public class GameController
         this.gameService.insert(newGame);
     }
 
-    public void deleteGame()
+    public void delete(Game game)
     {
+gameService.delete(game.getId());
+    }
 
+    public void update()
+    {
+        this.loadpanel = false;
+        gameService.update(this.editGame);
+    }
+
+    public void booleanAndGamePanelGame(Game game)
+    {
+        this.loadpanel = true;
+        this.editGame = game;
     }
 }

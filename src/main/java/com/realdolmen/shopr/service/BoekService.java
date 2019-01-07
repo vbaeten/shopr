@@ -18,5 +18,16 @@ public class BoekService
         return boekRepository.findAllBooks();
     }
 
+    public void update(Boek boek)
+    {
+        boekRepository.update(boek);
+    }
+
+    public void delete(int id)
+    {
+        Boek boek = boekRepository.findById(id);
+        boekRepository.delete(boek);
+    }
+
 
 }

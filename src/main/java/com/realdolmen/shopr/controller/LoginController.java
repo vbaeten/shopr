@@ -72,6 +72,7 @@ public class LoginController
     }
 
     public User getCurrentUser()
+
     {
         return currentUser;
     }
@@ -80,9 +81,7 @@ public class LoginController
     {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";
-//        currentUser = new User();
-//        loggedIn();
-//        return "login.xhtml?faces-redirect=true";
+
 
 
     }

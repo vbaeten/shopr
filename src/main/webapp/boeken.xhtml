@@ -14,12 +14,28 @@
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
-            <h:form id="form">
+
+            <h:form>
+            <p:panel  class="panelStyle" style="width: 100%;background-color: #f45b69">
+                <p:selectOneRadio required="true" id="artikelSoort" value="#{editController.selectPanel}">
+                    <f:selectItem itemLabel="#{msgs['edit.lps']}"
+                                  itemValue="1"/>
+                    <f:selectItem itemLabel="#{msgs['edit.games']}"
+                                  itemValue="2"/>
+                    <f:selectItem itemLabel="#{msgs['edit.boeken']}"
+                                  itemValue="3"/>
+
+                    <f:ajax execute="@this" render="@form"/>
+                </p:selectOneRadio>
+            </p:panel>
+            <!--</h:form>-->
+
+            <!--<h:form id="form">-->
                 <p:growl id="msgs"/>
 
 
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewBoeken" resizeMode="expand"
-                             rendered="true"
+                             rendered="#{editController.selectPanel eq 3}"
                              var="boek"
                              value="#{boekController.boeken()}" rows="10"
                              paginator="true"
@@ -53,11 +69,11 @@
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.edit']}"
-                                         action="#{overviewController.details(artikel)}">
+                                         action="#{boekController.loadpanelEdit(boek)}">
                         </b:commandButton>
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.delete']}"
-                                         action="#{boekController.deleteBoek}"
+                                         action="#{boekController.delete(boek)}"
                                          update="overviewBoeken">
 
                         </b:commandButton>
@@ -68,7 +84,7 @@
                 <br></br>
                 <br></br>
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewGames" resizeMode="expand"
-                             rendered="true"
+                             rendered="#{editController.selectPanel eq 2}"
                              var="game"
                              value="#{gameController.games}" rows="10"
                              paginator="true"
@@ -115,12 +131,12 @@
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.edit']}"
-                                         action="#{overviewController.details(artikel)}">
+                                         action="#{gameController.booleanAndGamePanelGame(game)}">
                         </b:commandButton>
 
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.delete']}"
-                                         action="#{gameController.deleteGame}"
+                                         action="#{gameController.delete(game)}"
                                          update="overviewGames">
 
                         </b:commandButton>
@@ -131,7 +147,7 @@
                 <br></br>
                 <br></br>
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewLp" resizeMode="expand"
-                             rendered="true"
+                             rendered="#{editController.selectPanel eq 1}"
                              var="lp"
                              value="#{lpController.getlps()}" rows="10"
                              paginator="true"
@@ -180,7 +196,7 @@
 
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
                                          value="#{msgs['artikel.delete']}"
-                                         action="#{lpController.deleteLp}"
+                                         action="#{lpController.delete(lp)}"
                                          update="overviewLp">
 
                         </b:commandButton>
@@ -232,6 +248,189 @@
                                              value="#{msgs['artikel.edit']}"
                                              onclick="$('.bevestiging').modal()"
                                              action="#{lpController.update}">
+                            </b:commandButton>
+
+
+                        </h:panelGrid>
+                    </b:form>
+                </b:panel>
+
+                <b:panel id="panelGameEdit" style="margin-bottom:10px; width: 60em"
+                         rendered="#{gameController.loadpanel eq true}">
+                    <b:form>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="titelGame" value="#{msgs['toevoegen.titel']}  : "/>
+                            <b:inputText id="titelGame" placeholder="#{gameController.editGame.titel}"
+                                         value="#{gameController.editGame.titel}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="leverancierGame" value="#{msgs['toevoegen.leverancier']}  :"/>
+                            <b:inputText id="leverancierGame" placeholder="#{gameController.editGame.leverancier}"
+                                         value="#{gameController.editGame.leverancier}"
+                                         required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="uitvoerderGame" value="#{msgs['toevoegen.uitgever']}  : "/>
+                            <b:inputText id="uitvoerderGame" placeholder="#{gameController.editGame.uitgever}"
+                                         value="#{gameController.editGame.uitgever}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="leeftijdGame" value="#{msgs['toevoegen.leeftijd']}"/>
+                            <p:spinner id="leeftijdGame" value="#{gameController.editGame.minLeeftijd}" min="6" max="18"/>
+
+                            <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
+
+                            <h:outputLabel for="gameGenre" value="#{msgs['toevoegen.genre']}  : "/>
+                            <b:selectOneMenu id="gameGenre" value="#{gameController.editGame.enumGameGenre}">
+                                <f:selectItems placeholder="#{gameController.editGame.enumGameGenre}"
+                                               value="#{EnumGameGenre}"/>
+                            </b:selectOneMenu>
+
+                            <h:outputLabel for="prijsGame" value="#{msgs['toevoegen.prijs']}  : "/>
+                            <b:inputText id="prijsGame" placeholder="#{gameController.editGame.prijs}"
+                                         value="#{gameController.editGame.prijs}" required="true">
+                                <f:validateDoubleRange minimum="1"/>
+                            </b:inputText>
+
+
+                            <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
+                                             value="#{msgs['artikel.edit']}"
+                                             onclick="$('.bevestiging').modal()"
+                                             action="#{gameController.update}">
+                            </b:commandButton>
+
+
+                        </h:panelGrid>
+                    </b:form>
+                </b:panel>
+
+                <b:panel id="panelFictieEdit" style="margin-bottom:10px; width: 60em"
+                         rendered="#{boekController.loadPanelEditBoek eq 3}">
+                    <b:form>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="titelFictie" value="#{msgs['toevoegen.titel']}  : "/>
+                            <b:inputText id="titelFictie" placeholder="#{boekController.editFictieBoek.titel}"
+                                         value="#{boekController.editFictieBoek.titel}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="leverancierFictie" value="#{msgs['toevoegen.leverancier']}  :"/>
+                            <b:inputText id="leverancierFictie" placeholder="#{boekController.editFictieBoek.leverancier}"
+                                         value="#{boekController.editFictieBoek.leverancier}"
+                                         required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="uitvoerderAuteur" value="#{msgs['toevoegen.auteur']}  : "/>
+                            <b:inputText id="uitvoerderAuteur" placeholder="#{boekController.editFictieBoek.auteur}"
+                                         value="#{boekController.editFictieBoek.auteur}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="isbnfictie" value="#{msgs['toevoegen.isbn']}"/>
+                            <b:inputText id="isbnfictie" placeholder="#{boekController.editFictieBoek.isbn}"
+                                         value="#{boekController.editFictieBoek.isbn}" required="true">
+                                <!--<f:validateRegex/>-->
+                            </b:inputText>
+
+                            <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}"/>
+                            <b:inputText id="paginasfictie" placeholder="#{boekController.editFictieBoek.aantalPaginas}"
+                                         value="#{boekController.editFictieBoek.aantalPaginas}" >
+                            </b:inputText>
+
+                            <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}"/>
+                            <b:inputText id="inhoudfictie" placeholder="#{boekController.editFictieBoek.korteInhoud}"
+                                         value="#{boekController.editFictieBoek.korteInhoud}" >
+                            </b:inputText>
+
+                            <o:importConstants type="com.realdolmen.shopr.domain.EnumFictieGenre"/>
+
+                            <h:outputLabel for="fictieGenre" value="#{msgs['toevoegen.genre']}  : "/>
+                            <b:selectOneMenu id="fictieGenre" value="#{boekController.editFictieBoek.enumFictieGenre}">
+                                <f:selectItems placeholder="#{boekController.editFictieBoek.enumFictieGenre}"
+                                               value="#{EnumFictieGenre}"/>
+                            </b:selectOneMenu>
+
+                            <h:outputLabel for="prijsFictie" value="#{msgs['toevoegen.prijs']}  : "/>
+                            <b:inputText id="prijsFictie" placeholder="#{boekController.editFictieBoek.prijs}"
+                                         value="#{boekController.editFictieBoek.prijs}" required="true">
+                                <f:validateDoubleRange minimum="1"/>
+                            </b:inputText>
+
+
+                            <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
+                                             value="#{msgs['artikel.edit']}"
+                                             onclick="$('.bevestiging').modal()"
+                                             action="#{boekController.update}">
+                            </b:commandButton>
+
+
+                        </h:panelGrid>
+                    </b:form>
+                </b:panel>
+
+                <b:panel id="panelNonFictieEdit" style="margin-bottom:10px; width: 60em"
+                         rendered="#{boekController.loadPanelEditBoek eq 4}">
+                    <b:form>
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="titelNonFictie" value="#{msgs['toevoegen.titel']}  : "/>
+                            <b:inputText id="titelNonFictie" placeholder="#{boekController.editNonFictieBoek.titel}"
+                                         value="#{boekController.editNonFictieBoek.titel}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="leverancierNonFictie" value="#{msgs['toevoegen.leverancier']}  :"/>
+                            <b:inputText id="leverancierNonFictie" placeholder="#{boekController.editNonFictieBoek.leverancier}"
+                                         value="#{boekController.editNonFictieBoek.leverancier}"
+                                         required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="AuteurNonFictie" value="#{msgs['toevoegen.auteur']}  : "/>
+                            <b:inputText id="AuteurNonFictie" placeholder="#{boekController.editNonFictieBoek.auteur}"
+                                         value="#{boekController.editNonFictieBoek.auteur}" required="true">
+                                <f:validateLength maximum="100"/>
+                            </b:inputText>
+
+                            <h:outputLabel for="isbnnonfictie" value="#{msgs['toevoegen.isbn']}"/>
+                            <b:inputText id="isbnnonfictie" placeholder="#{boekController.editNonFictieBoek.isbn}"
+                                         value="#{boekController.editNonFictieBoek.isbn}" required="true">
+                                <!--<f:validateRegex/>-->
+                            </b:inputText>
+
+                            <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}"/>
+                            <b:inputText id="paginasnonfictie" placeholder="#{boekController.editNonFictieBoek.aantalPaginas}"
+                                         value="#{boekController.editNonFictieBoek.aantalPaginas}" >
+                            </b:inputText>
+
+                            <o:importConstants type="com.realdolmen.shopr.domain.EnumNonFictieGenre"/>
+
+                            <h:outputLabel for="nonfictieGenre" value="#{msgs['toevoegen.genre']}  : "/>
+                            <b:selectOneMenu id="nonfictieGenre" value="#{boekController.editNonFictieBoek.enumNonFictieGenre}">
+                                <f:selectItems placeholder="#{boekController.editNonFictieBoek.enumNonFictieGenre}"
+                                               value="#{EnumNonFictieGenre}"/>
+                            </b:selectOneMenu>
+
+                            <h:outputLabel for="prijsNonFictie" value="#{msgs['toevoegen.prijs']}  : "/>
+                            <b:inputText id="prijsNonFictie" placeholder="#{boekController.editNonFictieBoek.prijs}"
+                                         value="#{boekController.editNonFictieBoek.prijs}" required="true">
+                                <f:validateDoubleRange minimum="1"/>
+                            </b:inputText>
+
+
+                            <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
+                                             value="#{msgs['artikel.edit']}"
+                                             onclick="$('.bevestiging').modal()"
+                                             action="#{boekController.update}">
                             </b:commandButton>
 
 

@@ -30,5 +30,16 @@ public class GameRepository
         return entityManager.createNamedQuery(Game.FIND_BY_NAME, Game.class).setParameter("game", titel).getSingleResult();
     }
 
+    public void update(Game game)
+    {
+
+        entityManager.merge(game);
+    }
+
+    public void delete(Game game)
+    {
+        entityManager.remove(game);
+    }
+
 
 }

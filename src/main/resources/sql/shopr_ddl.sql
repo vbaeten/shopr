@@ -23,3 +23,11 @@ INSERT INTO `shopr`.`lp` (`enumMuziekGenre`, `uitvoerder`, `id`) VALUES ('METAL'
 INSERT INTO `shopr`.`fictie` (`genre`, `korteInhoud`, `id`) VALUES ('FANTASY', 'zombies', '3');
 INSERT INTO `shopr`.`nonfictie` (`enumNonFictieGenre`, `id`) VALUES ('WETENSCHAP', '4');
 
+INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('2', 'boring', '1', '1');
+UPDATE `shopr`.`reviews` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '1' WHERE (`id` = '1');
+INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('3', 'average', '3', '1');
+INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('4', 'great ++', '5', '1');
+
+
+
+

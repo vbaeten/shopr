@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Artikel;
+import com.realdolmen.shopr.domain.Beoordeling;
 import com.realdolmen.shopr.service.OverviewService;
 
 import javax.faces.bean.ManagedBean;
@@ -18,12 +19,13 @@ public class OverviewController implements Serializable
 
     Artikel artikelSelected = new Artikel();
 
+    private int panelNumber;
+
+
     public int getPanelNumber()
     {
         return panelNumber;
     }
-
-    private int panelNumber;
 
 
     public Artikel getArtikelSelected()

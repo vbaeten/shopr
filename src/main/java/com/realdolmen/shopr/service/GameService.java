@@ -37,4 +37,13 @@ public class GameService
         gameRepository.insert(game);
     }
 
+     public void update(Game game) {
+        gameRepository.update(game);
+    }
+
+    public void delete(int id) {
+        Game game = gameRepository.findById(id);
+        gameRepository.delete(game);
+    }
+
 }

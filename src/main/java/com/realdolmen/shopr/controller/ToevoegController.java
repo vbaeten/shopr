@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 public class ToevoegController
 {
 
-    public int selectPanel = 1;
+    private int selectPanel = 1;
 
 
     public void setSelectPanel(int selectPanel)

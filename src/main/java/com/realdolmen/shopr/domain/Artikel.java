@@ -5,7 +5,6 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import java.util.List;
 
 import static javax.persistence.DiscriminatorType.STRING;
 
@@ -41,9 +40,8 @@ public class Artikel
     @Column(insertable = false, updatable = false)
     private String type;
 
-    @OneToMany
-    private List<Beoordeling> beoordeling;
-
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artikel")
+//    private List<Beoordeling> beoordeling;
 
     public String getType()
     {

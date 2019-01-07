@@ -60,14 +60,15 @@ public void submit()
     this.lpService.insert(newLp);
 }
 
-public void deleteLp()
+public void delete(Lp lp)
 {
-
+lpService.delete(lp.getId());
 }
 
 public void update()
 {
-lpService.update(this.editLp);
+this.loadPanel = false;
+    lpService.update(this.editLp);
 }
 
 public void booleanAndLpPanelLp(Lp lp)

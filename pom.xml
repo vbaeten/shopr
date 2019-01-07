@@ -38,7 +38,6 @@
             <version>2.7</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.primefaces.themes/ui-lightness -->
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>ui-lightness</artifactId>
