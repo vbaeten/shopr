@@ -41,4 +41,8 @@ public class UserService {
     protected void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    public User getUserById(int id) {
+        return this.userRepository.findById(id);
+    }
 }

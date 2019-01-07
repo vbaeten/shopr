@@ -1,5 +1,7 @@
+INSERT into user(id,name,first_name) VALUE (1,'trol','lolol');
+
 INSERT INTO item(id,title,price,type) VALUES (1,'StartWards',59.99,'game');
-INSERT INTO item(id,title,price,type) VALUES (2,'MIFA',49.99,'game');
+INSERT INTO item(id,title,price,type) VALUES (2,'MIFA',49.99,'game' );
 INSERT INTO item(id,title,price,type) VALUES (3,'League Of Reagents',0.00,'game');
 INSERT INTO item(id,title,price,type) VALUES (4,'CounterTrike',15.99,'game');
 INSERT INTO item(id,title,price,type) VALUES (5,'World Of WardCraft',9000,'game');

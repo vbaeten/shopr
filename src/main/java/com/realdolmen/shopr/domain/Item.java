@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -34,10 +36,19 @@ public abstract class Item {
     private double price;
 
     @Transient
-    @NotNull
     @Size(max=100)
     private String supplierId;
 
+
+    @OneToMany(mappedBy = "item")
+    @Transient
+    private List <Review> reviews;
+
+
+
+    public void getItemById(){
+
+    }
 
     public int getId() {
         return id;
@@ -78,4 +89,21 @@ public abstract class Item {
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
     }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview(Review review){
+        if(this.reviews == null) {
+            this.reviews = new ArrayList<>();
+        }
+        this.reviews.add(review);
+    }
+
+
 }

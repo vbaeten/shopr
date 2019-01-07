@@ -1,23 +1,31 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 
+@Entity
+@Table(name =  "item_review")
 public class Review {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="item_id", insertable=false, updatable=false)
     private int id;
 
     @Min(0)
     @Max(10)
     private short score;
 
+
     private String description;
 
+    @Transient
     private User user;
+
+    @ManyToOne
     private Item item;
 
 
@@ -60,4 +68,6 @@ public class Review {
     public void setItem(Item item) {
         this.item = item;
     }
+
+
 }

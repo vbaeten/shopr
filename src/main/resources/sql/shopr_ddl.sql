@@ -4,6 +4,15 @@ CREATE TABLE user (
   first_name        VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE item_review(
+
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  description VARCHAR(1000),
+  score smallint,
+  item INT
+
+);
+
 
 CREATE TABLE item(
 
@@ -21,6 +30,8 @@ CREATE TABLE lp (
 
 
 );
+
+
 
 
 CREATE TABLE games(

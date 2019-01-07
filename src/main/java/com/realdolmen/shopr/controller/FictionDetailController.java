@@ -2,7 +2,11 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.BookGenre;
 import com.realdolmen.shopr.domain.Fiction;
+import com.realdolmen.shopr.domain.Review;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.FictionService;
+import com.realdolmen.shopr.service.ReviewService;
+import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -12,29 +16,37 @@ import javax.inject.Inject;
 @ViewScoped
 public class FictionDetailController {
 
+//    Todo : REMOVE USERSERVICE AND MOCKED USER AND make everything work with itemcontroller
+
 
     private Fiction fiction;
     private int id;
+    private Review review = new Review();
+
 
     @Inject
     private FictionService fictionService;
 
+    @Inject
 
+    public void init() {
 
-    public void init(){
-
-            getFictionById(id);
+        this.review = new Review();
+        getFictionById(id);
     }
 
     public BookGenre[] getGenres() {
         return BookGenre.values();
     }
 
-    private void getFictionById(int id){
-        fiction =  fictionService.findById(id);
+
+
+
+    private void getFictionById(int id) {
+        fiction = fictionService.findById(id);
     }
 
-    public String delete(){
+    public String delete() {
         fiction = this.fictionService.findById(id);
         this.fictionService.delete(fiction);
 
@@ -47,8 +59,6 @@ public class FictionDetailController {
 
         return "/overview-pages/fiction-overview.xhtml?faces-redirect=true";
     }
-
-
 
 
     public Fiction getFiction() {
@@ -65,5 +75,13 @@ public class FictionDetailController {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Review getReview() {
+        return review;
+    }
+
+    public void setReview(Review review) {
+        this.review = review;
     }
 }

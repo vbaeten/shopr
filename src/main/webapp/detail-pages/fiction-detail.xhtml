@@ -15,6 +15,7 @@
 
         <f:metadata>
             <f:viewParam name="id" value="#{fictionDetailController.id}"/>
+            <f:viewParam name="id" value="#{reviewController.id}"/>
             <f:event type="preRenderView" listener="#{fictionDetailController.init}"/>
         </f:metadata>
 
@@ -71,11 +72,22 @@
                                 <h:outputLabel value="#{fictionDetailController.fiction.bookGenre}"/>
                             </b:column>
                         </b:row>
+
+                        <b:row>
+                            <b:column mediumScreen="2">
+                                <h:outputText value="Preview:"/>
+                            </b:column>
+                            <b:column mediumScreen="4">
+                                <h:outputLabel placeholder="Preview" value="#{fictionDetailController.fiction.preview}"/>
+                            </b:column>
+                        </b:row>
+
                         <b:row>
                             <b:column span="2">
                                 <h:link value="edit" outcome="/edit-pages/fiction-edit.xhtml">
                                     <f:param name="id" value="#{fictionDetailController.fiction.id}"/>
                                 </h:link>
+
                                 <b:commandButton value="add to card" style="width:100%"/>
                                 <b:commandButton value="delete book" style="width:100%"
                                                  action="#{fictionDetailController.delete}"/>
@@ -89,6 +101,34 @@
         </div>
 
 
+        <!--<div class="afterNav">-->
+
+            <!--<h:outputLabel placeholder="Review" value="#{fictionDetailController.fiction.reviews}"/>-->
+            <!--<h:outputLabel placeholder="Review" value="#{fictionDetailController.review.description}"/>-->
+
+        <!--</div>-->
+
+
+
+
+        <div class="afterNav">
+
+            <b:form>
+
+
+
+
+                <b:inputTextarea placeholder="Write a review"
+                             styleClass="textArea" required="true" value="#{reviewController.review.description}" />
+                <b:inputText  value="#{reviewController.review.score}"/>
+            <b:message for="@previous"/>
+                <b:commandButton value="Add Review" style="width:100%"
+                                 action="#{reviewController.addReview()}" update="@form"/>
+
+            </b:form>
+        </div>
     </ui:define>
+
+
 </ui:composition>
 </html>

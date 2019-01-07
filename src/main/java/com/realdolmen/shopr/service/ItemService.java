@@ -19,4 +19,8 @@ public class ItemService {
 
         return this.itemRepository.findAllItems();
     }
+
+    public Item getById(int id) {
+        return this.itemRepository.findById(id);
+    }
 }
