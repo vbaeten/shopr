@@ -20,24 +20,24 @@
                 <f:event listener="#{loginBean.init}" type="preRenderView"/>
             </f:metadata>
 
-            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser.name eq 'User'}">You are not logged in. LoginBean</b:panel>
+            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser.name eq null}">You are not logged in. LoginBean</b:panel>
 
             <b:panel>
                 <p>Login with bean.</p>
                 <b:form id="loginuserbean" inline="true">
                     <b:formGroup>
-                        <b:selectOneMenu value="#{loginBean.loggedUser.id}" style="width:200px" select2="true">
+                        <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true">
                             <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
                             <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
                                            itemLabel="#{user.firstName} #{user.name}"/>
                         </b:selectOneMenu>
-                        <b:commandButton value="Submit" action="#{loginBean.login(user.id)}" ajax="true"
-                                         update="loginviewbean" autoUpdate="true">
-                            <f:param name="loggedUser" value="#{loginBean.loggedUser.id}"/>
+                        <b:commandButton value="Submit" action="#{loginBean.login(loginBean.loggedUser.id)}" ajax="true"
+                                         update="loginviewbean loginpanel" autoUpdate="true">
+                            <f:param name="loggedUser" value="#{loginBean.id}"/>
                         </b:commandButton>
                     </b:formGroup>
                 </b:form>
-                <b:button value="Logout" action="#{loginBean.logout}" ajax="true" autoUpdate="true"/>
+                <b:button value="Logout" action="#{loginBean.logout()}" ajax="true" autoUpdate="true" update="loginviewbean loginpanel"/>
             </b:panel>
 
             <b:panel id="loginpanel">
