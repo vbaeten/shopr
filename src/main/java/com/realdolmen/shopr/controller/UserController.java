@@ -16,11 +16,13 @@ import java.util.List;
 @SessionScoped
 public class UserController implements Serializable {
 
-    private User newUser = new User();
-    private User currentUser = new User();
+    private User newUser ;
+    private User currentUser ;
 
     @Inject
     private UserService userService;
+
+
 
     public User getNewUser() {
         return newUser;

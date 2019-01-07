@@ -30,7 +30,9 @@
         <p:panel header="Login" style="margin-bottom:10px;">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="user" value="User: "/>
-                <p:selectOneMenu id="user" style="width:150px" value="#{userController.currentUser}" converter="omnifaces.SelectItemsConverter">
+                <p:selectOneMenu id="user" style="width:150px"
+                                 value="#{userController.currentUser}"
+                                 converter="omnifaces.SelectItemsConverter">
                     <f:selectItem itemLabel="--- Select User ---" noSelectionOption="true"/>
                     <f:selectItems var="loginguser"
                                    value="#{userController.getUsers()}"

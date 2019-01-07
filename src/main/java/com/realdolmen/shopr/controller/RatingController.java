@@ -11,7 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
-// TODO: bij delete article, zien dat ook alle review voor dat article gewist worden
+// TODO: bij delete article, zien dat ook alle reviews voor dat article gewist worden
 @ManagedBean
 @RequestScoped
 public class RatingController {

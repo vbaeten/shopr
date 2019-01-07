@@ -7,13 +7,14 @@ import com.realdolmen.shopr.service.LpService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class LpController {
+public class LpController implements Serializable {
     Lp newLp = new Lp();
     int lpId;
 

@@ -8,12 +8,13 @@ import com.realdolmen.shopr.service.GameService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class GameController {
+public class GameController implements Serializable {
     Game newGame = new Game();
     int gameId;
 

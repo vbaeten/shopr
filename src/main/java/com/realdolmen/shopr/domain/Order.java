@@ -20,8 +20,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "time_stamp")
-    private Timestamp timeStamp;
+//    @Column(name = "time_stamp")
+//    private Timestamp timeStamp;
 
     @OneToMany(mappedBy = "id")
     private List<OrderLine> orderLines = new ArrayList<>();
@@ -39,14 +39,14 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
-
-    public Timestamp getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(Timestamp timeStamp) {
-        this.timeStamp = timeStamp;
-    }
+//
+//    public Timestamp getTimeStamp() {
+//        return timeStamp;
+//    }
+//
+//    public void setTimeStamp(Timestamp timeStamp) {
+//        this.timeStamp = timeStamp;
+//    }
 
     public List<OrderLine> getOrderLines() {
         return orderLines;

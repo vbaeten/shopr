@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ import java.util.Map;
 
 @SessionScoped
 @ManagedBean
-public class OrderController {
+public class OrderController implements Serializable {
     Order currentOrder = new Order();
     OrderLine newOrderLine = new OrderLine();
 
@@ -75,9 +76,9 @@ public class OrderController {
     }
 
     public String submit(){
-        LocalDateTime now = LocalDateTime.now();
-        Timestamp orderTime = Timestamp.valueOf(now);
-        this.currentOrder.setTimeStamp(orderTime);
+//        LocalDateTime now = LocalDateTime.now();
+//        Timestamp orderTime = Timestamp.valueOf(now);
+//        this.currentOrder.setTimeStamp(orderTime);
         this.currentOrder.setUser(userController.getCurrentUser());
         this.orderService.insert(currentOrder);
         currentOrder = new Order();
