@@ -2,24 +2,26 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.GameGenre;
-import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.GameService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean
-@ViewScoped
+@Named
+@SessionScoped
 public class GameController implements Serializable {
     Game newGame = new Game();
     int gameId;
 
     @Inject
     private GameService gameService;
+
+    @Inject
+    private UserController userController;
+
 
     public void init(){
         newGame = getGameById(gameId);
@@ -60,6 +62,10 @@ public class GameController implements Serializable {
         gameService.delete(newGame.getId());
         newGame = new Game();
         return "gamesDataTable?faces-redirect=true";
+    }
+
+    public void update(){
+        this.gameService.update(newGame);
     }
 
 

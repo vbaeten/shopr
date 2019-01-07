@@ -4,11 +4,9 @@ import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.domain.FictionGenre;
 import com.realdolmen.shopr.service.FictionService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -59,6 +57,10 @@ public class FictionController {
         fictionService.delete(newFiction.getId());
         newFiction = new Fiction();
         return "fictionDataTable?faces-redirect=true";
+    }
+
+    public void update(){
+        this.fictionService.update(newFiction);
     }
 
 

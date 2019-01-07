@@ -28,4 +28,8 @@ public class GameRepository {
         Game game = entityManager.find(Game.class, id);
         entityManager.remove(game);
     }
+
+    public void update(Game game){
+        entityManager.merge(game);
+    }
 }

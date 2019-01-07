@@ -28,4 +28,8 @@ public class FictionRepository {
         Fiction fiction = entityManager.find(Fiction.class, id);
         entityManager.remove(fiction);
     }
+
+    public void update(Fiction fiction){
+        entityManager.merge(fiction);
+    }
 }

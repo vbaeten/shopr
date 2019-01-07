@@ -11,10 +11,20 @@ public class OrderLine {
     @OneToOne
     Article article;
 
+    private int orderId;
+
     private int amount = 0;
 
     @Transient
     private double subTotal;
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
 
     public int getId() {
         return id;

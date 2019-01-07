@@ -36,4 +36,8 @@ public class LpService {
     public void delete(int id){
         lpRepository.delete(id);
     }
+
+    public void update(Lp lp){
+        lpRepository.update(lp);
+    }
 }

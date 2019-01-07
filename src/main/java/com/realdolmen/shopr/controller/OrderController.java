@@ -3,26 +3,19 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
-import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderService;
-import com.realdolmen.shopr.service.UserService;
 
-import javax.faces.application.FacesMessage;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @SessionScoped
-@ManagedBean
+@Named
 public class OrderController implements Serializable {
     Order currentOrder = new Order();
     OrderLine newOrderLine = new OrderLine();

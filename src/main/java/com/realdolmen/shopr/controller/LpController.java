@@ -64,5 +64,9 @@ public class LpController implements Serializable {
         return "lpDataTable?faces-redirect=true";
     }
 
+    public void update(){
+        this.lpService.update(newLp);
+    }
+
 
 }

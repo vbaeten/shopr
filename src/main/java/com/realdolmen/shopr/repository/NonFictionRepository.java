@@ -30,4 +30,8 @@ public class NonFictionRepository {
         NonFiction nonFiction = entityManager.find(NonFiction.class, id);
         entityManager.remove(nonFiction);
     }
+
+    public void update(NonFiction nonFiction){
+        entityManager.merge(nonFiction);
+    }
 }

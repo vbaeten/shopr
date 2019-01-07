@@ -29,4 +29,8 @@ public class LpRepository {
         entityManager.remove(lp);
     }
 
+    public void update(Lp lp){
+        entityManager.merge(lp);
+    }
+
 }

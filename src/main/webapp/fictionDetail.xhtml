@@ -13,6 +13,7 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
+
         <h:form>
             <p:growl id="message" showDetail="true"/>
             <p:fieldset legend="Fiction book details" cellPadding="5">
@@ -24,10 +25,73 @@
                         </p:commandLink>
                     </div>
                     <div class="ui-g-1">
-                        <p:commandLink action="#{fictionController.delete}">
-                            <!--<p:confirm header="Confirmation" message="Are you sure you want to delete this item?" icon="pi pi-exclamation-triangle" />-->
+                        <p:commandLink id="editBtn">
                             <i class="fas fa-edit fa-2x editArticle"></i>
                         </p:commandLink>
+                        <p:overlayPanel for="editBtn" hideEffect="fade">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="title" value="Title: "/>
+                                <p:inputText id="title" value="#{fictionController.newFiction.title}" required="true"/>
+
+                                <p:outputLabel for="author" value="Author: "/>
+                                <p:inputText id="author" value="#{fictionController.newFiction.author}"
+                                             required="true"/>
+
+                                <p:outputLabel for="genre" value="Genre: "/>
+                                <p:selectOneMenu id="genre" style="width:150px"
+                                                 value="#{fictionController.newFiction.genre}">
+                                    <f:selectItem itemLabel="--- Select genre ---" itemValue=""
+                                                  noSelectionOption="true"/>
+                                    <f:selectItems value="#{fictionController.getFictionGenre()}"
+                                                   var="genre"
+                                                   itemValue="#{genre}"
+                                                   itemLabel="#{genre.description}"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel for="nbOfPages" value="Number of pages: "/>
+                                <p:inputNumber id="nbOfPages"
+                                               value="#{fictionController.newFiction.numberOfPages}"
+                                               decimalPlaces="0"
+                                               minValue="0"
+                                               required="true"/>
+
+                                <p:outputLabel for="isbn" value="ISBN:"/>
+                                <p:inputMask id="isbn"
+                                             mask="999-99-9999-999-9"
+                                             value="#{fictionController.newFiction.isbn}"
+                                             required="true"/>
+
+                                <p:outputLabel for="summary" value="Summary: "/>
+                                <p:inputTextarea id="summary"
+                                                 rows="5"
+                                                 cols="50"
+                                                 counter="counter"
+                                                 maxlength="255"
+                                                 counterTemplate="{0} characters remaining."
+                                                 autoResize="true"
+                                                 value="#{fictionController.newFiction.summary}"
+                                                 required="true"/>
+                                <p:column/>
+                                <p:column>
+                                    <h:outputText id="counter"/>
+                                </p:column>
+
+                                <p:outputLabel for="supplierID" value="Supplier ID: "/>
+                                <p:inputText id="supplierID"
+                                             value="#{fictionController.newFiction.supplierId}" required="true"/>
+
+                                <p:outputLabel for="price" value="price: "/>
+                                <p:inputNumber id="price"
+                                               value="#{fictionController.newFiction.price}"
+                                               symbol=" €"
+                                               symbolPosition="s"
+                                               decimalSeparator=","
+                                               thousandSeparator="."
+                                               required="true"/>
+
+                            </h:panelGrid>
+                            <p:commandButton value="Save changes" action="#{fictionController.update}" update="@form"/>
+                        </p:overlayPanel>
                     </div>
                     <div class="ui-g-10">
                         <p:commandLink action="#{userController.updateFavourites(fictionController.newFiction)}"
@@ -101,7 +165,7 @@
         <p:fieldset id="ratingsList">
             <p:dataList var="rating" value="#{ratingController.getRatingsByArticleId(fictionController.fictionId)}"
                         emptyMessage="There are no reviews for this article yet."
-                        type="definition" >
+                        type="definition">
                 #{rating.user.firstName} #{rating.user.name}
                 <p:rating value="#{rating.score}" readonly="true" stars="10"/>
                 <h:outputText value="#{rating.description}"/>

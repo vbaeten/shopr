@@ -8,8 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @ManagedBean
@@ -60,6 +58,10 @@ public class NonFictionController implements Serializable {
         nonFictionService.delete(newNonFiction.getId());
         newNonFiction = new NonFiction();
         return "nonFictionDataTable?faces-redirect=true";
+    }
+
+    public void update(){
+        this.nonFictionService.update(newNonFiction);
     }
 
 

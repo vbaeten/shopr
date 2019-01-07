@@ -5,10 +5,11 @@ import com.realdolmen.shopr.repository.ArticleRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class ArticleService {
+public class ArticleService implements Serializable {
     @Inject
     ArticleRepository articleRepository;
 
@@ -29,9 +30,6 @@ public class ArticleService {
 //        article.setTitle(newTitle);
 //    }
 
-//    public void insert(Article article) {
-//        articleRepository.insert(article);
-//    }
 //
 //    public void delete(int id){
 //        articleRepository.delete(id);

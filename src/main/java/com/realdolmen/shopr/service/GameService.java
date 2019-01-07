@@ -5,10 +5,11 @@ import com.realdolmen.shopr.repository.GameRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class GameService {
+public class GameService implements Serializable {
     @Inject
     private GameRepository gameRepository;
 
@@ -35,5 +36,9 @@ public class GameService {
 
     public void delete(int id){
         gameRepository.delete(id);
+    }
+
+    public void update(Game game){
+        gameRepository.update(game);
     }
 }

@@ -36,4 +36,8 @@ public class FictionService {
     public void delete(int id){
         fictionRepository.delete(id);
     }
+
+    public void update(Fiction fiction){
+        fictionRepository.update(fiction);
+    }
 }

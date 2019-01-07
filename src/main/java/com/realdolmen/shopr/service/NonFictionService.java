@@ -37,4 +37,8 @@ public class NonFictionService {
         nonFictionRepository.delete(id);
     }
 
+    public void update(NonFiction nonFiction){
+        nonFictionRepository.update(nonFiction);
+    }
+
 }

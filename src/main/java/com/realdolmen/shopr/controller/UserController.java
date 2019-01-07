@@ -2,17 +2,16 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.User;
-import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.UserService;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import javax.inject.Singleton;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class UserController implements Serializable {
 

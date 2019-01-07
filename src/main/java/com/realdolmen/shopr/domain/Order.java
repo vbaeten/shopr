@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 // TODO:
 
 @Entity
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,10 +24,11 @@ public class Order {
 //    @Column(name = "time_stamp")
 //    private Timestamp timeStamp;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "orderId")
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(name="user_id")
     private User user;
 
     @Transient

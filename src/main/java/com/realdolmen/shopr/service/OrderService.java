@@ -5,9 +5,10 @@ import com.realdolmen.shopr.repository.OrderRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 
 @Stateless
-public class OrderService {
+public class OrderService implements Serializable {
     @Inject
     OrderRepository orderRepository;
 
