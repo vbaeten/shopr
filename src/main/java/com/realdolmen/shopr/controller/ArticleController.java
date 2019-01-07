@@ -1,10 +1,9 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.*;
-import com.realdolmen.shopr.repository.LPRepository;
 import com.realdolmen.shopr.service.*;
-import org.hamcrest.core.IsInstanceOf;
 
+import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -32,6 +31,12 @@ public class ArticleController {
     BookFiction bookFiction;
     BookNonFiction bookNonFiction;
     Game game = new Game();
+
+    @Init
+    public void getData(){
+
+    }
+
     @Inject
     private ArticleService articleService;
 
@@ -51,6 +56,7 @@ public class ArticleController {
         if (article instanceof LP) {
             return "lpdetail";
         } else if (article instanceof Game) {
+            gameController.setGame((Game) article);
             return "gamedetail";
         } else if (article instanceof BookFiction) {
             return "bookfictiondetail";
@@ -77,9 +83,18 @@ public class ArticleController {
         this.book = book;
     }
 
-    public String removeGame(Long id) {
+    public String removeGame(long id) {
+        System.out.println("test");
         gameService.removeById(id);
         return "overview";
+    }
+
+    public void removeGameArticle(Game game) {
+        gameService.removeById(game.getId());
+    }
+
+    public void test(){
+        System.out.println("test");
     }
     public BookFiction getBookFiction() {
         return bookFiction;

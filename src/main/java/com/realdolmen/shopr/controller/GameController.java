@@ -45,9 +45,8 @@ public class GameController {
         this.gameService.insert(game);
         return "overview";
     }
-
-    public String removeGame(Long id){
-        this.gameService.removeById(id);
-        return "overview";
+    public void removeGame(Game game) {
+        gameService.removeById(game.getId());
     }
+
 }

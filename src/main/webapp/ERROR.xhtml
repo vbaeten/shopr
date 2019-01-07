@@ -11,6 +11,7 @@
 <h:form> detail
     <b:dataTable value="#{articleController.article}"
                  var="article">
+        <!--<param name="id" value="#{articleController.article.id}"/>-->
         <b:dataTableColumn value="#{article.type}" label="type" />
     </b:dataTable>
     </h:form>

@@ -33,6 +33,9 @@ public class GameService {
     }
 
     public void removeById (Long id) {
-        gameRepository.remove(id);
+        Game game = gameRepository.findById(id);
+        gameRepository.remove(game);
     }
+
+
 }
