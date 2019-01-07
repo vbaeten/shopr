@@ -9,7 +9,7 @@ CREATE TABLE item_review(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   description VARCHAR(1000),
   score smallint,
-  item INT
+  item_id INT
 
 );
 

@@ -21,7 +21,6 @@ public class FictionDetailController {
 
     private Fiction fiction;
     private int id;
-    private Review review = new Review();
 
 
     @Inject
@@ -31,7 +30,6 @@ public class FictionDetailController {
 
     public void init() {
 
-        this.review = new Review();
         getFictionById(id);
     }
 
@@ -77,11 +75,5 @@ public class FictionDetailController {
         this.id = id;
     }
 
-    public Review getReview() {
-        return review;
-    }
 
-    public void setReview(Review review) {
-        this.review = review;
-    }
 }

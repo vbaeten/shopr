@@ -21,48 +21,50 @@
         </div>
 
 
-            <div class="loginMessage">
-                <h4>Please create a user or select a user to log in</h4>
-            </div>
+        <div class="loginMessage">
+            <h4>Please create a user or select a user to log in</h4>
+        </div>
 
         <div class="loginForm">
+
+
             <div class="afterNav" id="loginForm1">
                 <h4>Register</h4>
-            <b:form styleClass="addLocationForm">
+                <b:form styleClass="addLocationForm">
 
-                <h:outputLabel for="userName" value="Name: "/>
-                <b:inputText id="userName" value="#{userController.newUser.name}" required="true" maxlength="20"/>
-                <b:message for="@previous"/>
-                <h:outputLabel for="userFirstName" value="First name: "/>
-                <b:inputText id="userFirstName" value="#{userController.newUser.firstName}" required="true"
-                             maxlength="20"/>
-                <b:message for="@previous"/>
-                <div>
-                    <b:commandButton value="register" action="#{userController.submit}"
-                                     styleClass="cmdButton" update="@form"/>
-                </div>
-            </b:form>
+                    <h:outputLabel for="userName" value="Name: "/>
+                    <b:inputText id="userName" value="#{userController.newUser.name}" required="true" maxlength="20"/>
+                    <b:message for="@previous"/>
+                    <h:outputLabel for="userFirstName" value="First name: "/>
+                    <b:inputText id="userFirstName" value="#{userController.newUser.firstName}" required="true"
+                                 maxlength="20"/>
+                    <b:message for="@previous"/>
+                    <div>
+                        <b:commandButton value="register" action="#{userController.submit}"
+                                         styleClass="cmdButton" update="@form"/>
+                    </div>
+                </b:form>
             </div>
             <div class="afterNav" id="loginForm2">
                 <h4>Login</h4>
 
                 <b:form styleClass="addLocationForm">
 
-                <h:outputLabel for="user" value="User: "/>
-                <b:selectOneMenu id="user" value="#{user}" style="width:125px" required="true">
-                    <f:selectItem itemLable="select user"/>
-                    <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}"
-                                   itemValue="#{user.firstName}"/>
-                </b:selectOneMenu>
-                <b:message for="@previous"/>
-                <div>
-                    <b:commandButton value="Login" action="#{loginController.login}"
-                                     styleClass="cmdButton" update="@form"/>
-                    <b:commandButton value="Delete user" action="#{userController.delete}"
-                                     styleClass="cmdButton" update="@form"/>
+                    <h:outputLabel for="user" value="User: "/>
+                    <b:selectOneMenu id="user" value="#{user}" style="width:125px" required="true">
+                        <f:selectItem itemLable="select user"/>
+                        <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}"
+                                       itemValue="#{user.firstName}"/>
+                    </b:selectOneMenu>
+                    <b:message for="@previous"/>
+                    <div>
+                        <b:commandButton value="Login" action="#{loginController.login}"
+                                         styleClass="cmdButton" update="@form"/>
+                        <b:commandButton value="Delete user" action="#{userController.delete}"
+                                         styleClass="cmdButton" update="@form"/>
 
-                </div>
-            </b:form>
+                    </div>
+                </b:form>
             </div>
 
         </div>

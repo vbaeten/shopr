@@ -12,7 +12,6 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="item_id", insertable=false, updatable=false)
     private int id;
 
     @Min(0)
@@ -26,6 +25,7 @@ public class Review {
     private User user;
 
     @ManyToOne
+    @JoinColumn
     private Item item;
 
 
