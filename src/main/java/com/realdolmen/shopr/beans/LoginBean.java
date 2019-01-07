@@ -21,6 +21,7 @@ public class LoginBean implements Serializable {
     private UserService userService;
 
     @PostConstruct
+
     public void init() {
         this.loggedUser = new User(0,"User", "Guest");
     }
