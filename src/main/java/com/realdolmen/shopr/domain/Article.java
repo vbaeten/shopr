@@ -5,6 +5,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @DiscriminatorColumn(name = "type")
@@ -53,6 +54,10 @@ public abstract class Article implements Serializable {
     @Transient
     private List<Rating> ratings;
 
+    @OneToMany
+    @JoinColumn(name="order_id")
+    private List<OrderLine> orderLines = new ArrayList<>();
+
     @Column(name="type", insertable = false, updatable = false)
     private String type;
 
@@ -94,6 +99,22 @@ public abstract class Article implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public List<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public void setOrderLines(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 }
 

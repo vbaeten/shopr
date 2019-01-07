@@ -14,7 +14,13 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <p>This is where the user can see his details.</p>
+            <f:metadata>
+                <f:viewParam name="id" value="#{loginBean.id}"/>
+                <f:event type="preRenderView" listener="#{loginBean.init}"/>
+            </f:metadata>
+            <b:panel>
+                <h:outputText value = "Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!"/>
+            </b:panel>
         </ui:define>
         <ui:define name="js">
             <script type="text/javascript" >

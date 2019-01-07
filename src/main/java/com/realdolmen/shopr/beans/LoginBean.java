@@ -3,28 +3,52 @@ package com.realdolmen.shopr.beans;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
 
     private int id;
-    private User user;
+    private User loggedUser;
 
     @Inject
     private UserService userService;
 
-    public void init(int id) {
+    public void init() {
         getUserById(id);
     }
 
-    private void getUserById(int id) {
-        user = userService.findUserById(id);
+    public void getUserById(int id) {
+        loggedUser = userService.findUserById(id);
     }
 
+    public void login(int id) {
+        this.loggedUser = userService.findUserById(id);
+    }
 
+    public void logout() {
+        this.loggedUser = new User();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User user) {
+        this.loggedUser = user;
+    }
 }

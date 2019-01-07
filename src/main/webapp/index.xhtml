@@ -16,33 +16,74 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <f:metadata>
-                <f:viewParam name="loggedUser" value="#{loginController.loggedUser}"/>
+                <f:viewParam name="id" value="#{loginController.id}"/>
+                <f:viewParam name="id" value="#{loginBean.id}"/>
+                <f:viewParam name="loggedUser" value="#{loginBean.loggedUser.id}"/>
                 <f:event listener="#{loginController.init}" type="preRenderView"/>
+                <f:event listener="#{loginBean.init}" type="preRenderView"/>
             </f:metadata>
-            <b:panel id="loginview" rendered="#{loginController.loggedUser eq null}">You are not logged in.</b:panel>
+
+            <b:panel id="loginviewcontroller" rendered="#{loginController.loggedUser eq null}">You are not logged in. LoginController</b:panel>
+
             <b:panel>
+                <p>Login with controller.</p>
+                <b:form id="loginusercontroller" inline="true">
+                    <b:formGroup>
+                        <b:selectOneMenu value="#{loginController.loggedUser}" style="width:200px" select2="true">
+                            <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
+                                           itemLabel="#{user.firstName} #{user.name}"/>
+                        </b:selectOneMenu>
+                        <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true"
+                                         update="loginviewcontroller" autoUpdate="true">
+                            <f:param name="loggedUser" value="#{loginController.loggedUser.id}"/>
+                        </b:commandButton>
+                    </b:formGroup>
+                </b:form>
+            </b:panel>
+
+
+            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser eq null}">You are not logged in. LoginBean</b:panel>
+
+            <b:panel>
+                <p>Login with bean.</p>
+                <b:form id="loginuserbean" inline="true">
+                    <b:formGroup>
+                        <b:selectOneMenu value="#{loginBean.loggedUser}" style="width:200px" select2="true">
+                            <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
+                                           itemLabel="#{user.firstName} #{user.name}"/>
+                        </b:selectOneMenu>
+                        <b:commandButton value="Submit" action="#{loginBean.init}" ajax="true"
+                                         update="loginviewbean" autoUpdate="true">
+                            <f:param name="loggedUser" value="#{loginBean.loggedUser.id}"/>
+                        </b:commandButton>
+                    </b:formGroup>
+                </b:form>
+                <b:button value="Logout" action="#{loginBean.logout}"/>
+            </b:panel>
+
+            <b:panel id="loginpanel">
                 <h3>Welcome to SHOPR!!!</h3>
-                <p>Logged in as
-                    <h:outputText>#{loginController.id}  #{loginController.loggedUser.firstName} #{loginController.name}</h:outputText> #{loginController.id}
-                </p>
-                <div>
-                    <h:outputText value="#{loginController.loggedUser.id}"/>
-                    <h:outputLabel value="#{loginController.loggedUser.name}"/>
-                </div>
+                <h:outputText value="logincontroller: #{loginController.loggedUser.name}"/>
+                <h:outputText value="loginbean: Logged in as #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
             </b:panel>
 
 
             <p>Login</p>
 
-            <b:form id="loginUser" inline="true">
+
+            <b:form id="loginUserBean" inline="true">
                 <b:formGroup>
-                    <b:selectOneMenu value="#{loginController.loggedUser}" style="width:200px" select2="true">
+                    <b:selectOneMenu value="#{loginBean.loggedUser}" style="width:200px" select2="true">
                         <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}"
+                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
                                        itemLabel="#{user.firstName} #{user.name}"/>
                     </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true"
-                                     update="loginview"/>
+                    <b:commandButton value="Submit" action="#{loginBean.login(user.id)}"
+                                     update="loginviewbean">
+                        <f:param name="loggedUser" value="#{loginBean.loggedUser}"/>
+                    </b:commandButton>
                 </b:formGroup>
             </b:form>
 
@@ -55,7 +96,7 @@
                         <b:inputText id="userName" value="#{userController.newUser.name}" required="true"/>
                         <h:outputLabel value="First Name:" for="userFirstName"/>
                         <b:inputText id="userFirstName" value="#{userController.newUser.firstName}" required="true"/>
-                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginUser"/>
+                        <b:commandButton value="Submit" action="#{userController.submit}" update="userTable loginuserbean loginusercontroller"/>
                     </b:panelGrid>
                 </b:panel>
             </b:form>
