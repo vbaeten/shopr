@@ -25,7 +25,6 @@ public class LoginController implements Serializable {
     @Inject
     private UserService userService;
 
-    @ManagedProperty("#{loggedUser}")
     private User loggedUser;
 
     public User getLoggedUser() {
@@ -64,10 +63,10 @@ public class LoginController implements Serializable {
         this.firstName = firstName;
     }
 
-//    @PostConstruct
-//    private void init() {
-//        this.loggedUser = new User();
-//    }
+    @PostConstruct
+    public void init() {
+        this.loggedUser = null;
+    }
 
     public void login(User user) {
         this.loggedUser = user;

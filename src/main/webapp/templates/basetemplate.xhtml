@@ -8,9 +8,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
 <f:view>
-    <f:metadata>
 
-    </f:metadata>
     <h:head>
         <h:outputStylesheet library="css" name="style.css"/>
         <h:outputScript library="js" name="script.js"/>
@@ -19,6 +17,9 @@
     </h:head>
 
     <h:body styleClass="baseBody">
+        <f:metadata>
+            <f:viewParam name="loggedUser"/>
+        </f:metadata>
         <div id="page">
             <div id="header-container">
                 <div id="header">

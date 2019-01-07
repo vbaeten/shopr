@@ -17,7 +17,7 @@
 
             <p>Content for adding products comes here.</p>
 
-            <b:form id="addProduct">
+            <b:form id="addGame">
                 <b:accordion>
                     <b:panel title="Add Game Here">
                         <b:row>
@@ -44,7 +44,6 @@
                 </b:accordion>
             </b:form>
 
-
             <b:form id="addLp">
                 <b:accordion>
                     <b:panel title="Add Lp's Here">
@@ -66,7 +65,7 @@
                 </b:accordion>
             </b:form>
 
-            <b:form>
+            <b:form id="addFiction">
                 <b:accordion>
                     <b:panel title="Add Fiction Book Here">
                         <b:inputText id="fictionTitle" value="#{fictionController.newFiction.title}"  required="true" label="Title:"/>
@@ -89,7 +88,7 @@
                 </b:accordion>
             </b:form>
 
-            <b:form>
+            <b:form id="addNonFiction">
                 <b:accordion>
                     <b:panel title="Add Non-Fiction Book Here">
                         <b:inputText id="nonFictionTitle" value="#{nonFictionController.newNonFiction.title}"  required="true" label="Title:"/>
@@ -110,14 +109,18 @@
                 </b:accordion>
             </b:form>
 
-
             <p>Check lists of different articles here.</p>
+
             <b:form id="gameDataTable">
                 <b:accordion>
                     <b:panel title="List of Games">
                         <b:dataTable value="#{gameController.games}" var="game">
                             <b:dataTableColumn value="#{game.id}"/>
-                            <b:dataTableColumn value="#{game.title}"/>
+                            <b:dataTableColumn label="Title">
+                                <h:link value="#{game.title}" outcome="/detail/gamedetail.xhtml" includeViewParams="true">
+                                    <f:param name="id" value="#{game.id}"/>
+                                </h:link>
+                            </b:dataTableColumn>
                             <b:dataTableColumn value="#{game.gameGenre}"/>
                             <b:dataTableColumn value="#{game.publisher}"/>
                             <b:dataTableColumn value="#{game.price}"/>
@@ -162,7 +165,11 @@
                     <b:panel title="List of Fiction Books">
                         <b:dataTable  value="#{fictionController.allFiction}" var="fiction">
                             <b:dataTableColumn value="#{fiction.id}"/>
-                            <b:dataTableColumn value="#{fiction.title}"/>
+                            <b:dataTableColumn label="Title">
+                                <h:link value="#{fiction.title}" outcome="/detail/fictiondetail.xhtml" includeViewParams="true">
+                                    <f:param name="id" value="#{fiction.id}"/>
+                                </h:link>
+                            </b:dataTableColumn>
                             <b:dataTableColumn value="#{fiction.author}"/>
                             <b:dataTableColumn value="#{fiction.pages}"/>
                             <b:dataTableColumn value="#{fiction.synopsis}"/>
@@ -184,7 +191,11 @@
                         <b:dataTable  value="#{nonFictionController.allNonFiction}"
                                      var="nonfiction">
                             <b:dataTableColumn value="#{nonfiction.id}"/>
-                            <b:dataTableColumn value="#{nonfiction.title}"/>
+                            <b:dataTableColumn label="Title">
+                                <h:link value="#{nonfiction.title}" outcome="/detail/nonfictiondetail.xhtml" includeViewParams="true">
+                                    <f:param name="id" value="#{nonfiction.id}"/>
+                                </h:link>
+                            </b:dataTableColumn>
                             <b:dataTableColumn value="#{nonfiction.author}"/>
                             <b:dataTableColumn value="#{nonfiction.pages}"/>
                             <b:dataTableColumn value="#{nonfiction.subject}"/>

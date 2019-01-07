@@ -13,13 +13,17 @@
 
         <ui:define name="content">
             <f:metadata>
-                <f:viewParam name="id" value="#{lpDetailBean.id}"/>
-                <f:event type="preRenderView" listener="#{lpDetailBean.init}"/>
+                <f:viewParam name="id" value="#{gameDetailBean.id}"/>
+                <f:event type="preRenderView" listener="#{gameDetailBean.init}"/>
             </f:metadata>
             <p>Details of this article</p>
             <b:panel>
-                <h:outputText styleClass="detail-title" value="#{lpDetailBean.lp.title} by #{lpDetailBean.lp.artist}"/>
+                <h:outputText styleClass="detail-title" value="#{gameDetailBean.game.title} by #{gameDetailBean.game.publisher}"/>
                 <h:outputText value=""/>
+                <b:form inline="true">
+                    <b:inputText value="1" mask="numeric" size="5"/>
+                    <b:commandButton value="Order"/>
+                </b:form>
             </b:panel>
         </ui:define>
 

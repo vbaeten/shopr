@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.beans;
 
 import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.ArticleService;
 
 import javax.faces.bean.ViewScoped;
@@ -14,6 +15,7 @@ public class ArticleDetailBean implements Serializable {
 
     private int id;
     private Article article;
+    private Lp lp;
 
     @Inject
     private ArticleService articleService;
@@ -22,7 +24,7 @@ public class ArticleDetailBean implements Serializable {
         getArticleById(id);
     }
 
-    public void getArticleById(int id) {
+    private void getArticleById(int id) {
         article = articleService.findArticleById(id);
     }
 

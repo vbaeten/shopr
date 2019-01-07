@@ -17,23 +17,24 @@
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="loggedUser" value="#{loginController.loggedUser}"/>
+                <f:event listener="#{loginController.init}" type="preRenderView"/>
             </f:metadata>
-            <h:outputText id="loggedIn" value="Logged in as #{loginController.loggedUser.name}"/>
-            <p>Logged in as
-                <h:outputText>#{loginController.id}  #{loginController.loggedUser.firstName} #{loginController.name}</h:outputText> #{loginController.id}
-            </p>
-            <b:form inline="true">
+            <b:panel id="loginview" rendered="#{loginController.loggedUser eq null}">You are not logged in.</b:panel>
+            <b:panel>
+                <h3>Welcome to SHOPR!!!</h3>
+                <p>Logged in as
+                    <h:outputText>#{loginController.id}  #{loginController.loggedUser.firstName} #{loginController.name}</h:outputText> #{loginController.id}
+                </p>
+                <div>
+                    <h:outputText value="#{loginController.loggedUser.id}"/>
+                    <h:outputLabel value="#{loginController.loggedUser.name}"/>
+                </div>
+            </b:panel>
 
-            </b:form>
-            <div>
-                <h:outputText value="#{loginController.loggedUser.id}"/>
-                <h:outputLabel value="#{loginController.loggedUser.name}"/>
-            </div>
 
-            <h3>Welcome to SHOPR!!!</h3>
             <p>Login</p>
 
-            <b:form id="loginUser">
+            <b:form id="loginUser" inline="true">
                 <b:formGroup>
                     <b:selectOneMenu value="#{loginController.loggedUser}" style="width:200px" select2="true">
                         <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
@@ -41,7 +42,7 @@
                                        itemLabel="#{user.firstName} #{user.name}"/>
                     </b:selectOneMenu>
                     <b:commandButton value="Submit" action="#{loginController.login(user)}" ajax="true"
-                                     update="loggedIn"/>
+                                     update="loginview"/>
                 </b:formGroup>
             </b:form>
 

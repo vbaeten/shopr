@@ -16,8 +16,9 @@
 
         <ui:define name="content">
             <f:metadata>
-                <f:viewParam name="id" value="#{articleDetailBean.id}"/>
+                <f:viewParam name="id" value=""
             </f:metadata>
+
             <p>Details of this Article #{articleDetailBean.id}</p>
             <b:panel>
                 <h:outputText value="#{articleDetailBean.id}"/>

@@ -28,13 +28,17 @@
                             <f:ajax excecute="@this" render="@form"/>
                         </b:commandButton>
                     </b:dataTableColumn>
-                    <b:dataTableColumn>
-                        <b:button value="Details" href="detail/lpdetail.xhtml" includeViewParams="true">
-                            <f:param name="id" value="#{article.id}"/>
-                        </b:button>
-                    </b:dataTableColumn>
                     <b:dataTableColumn label="Details">
-                        <h:link value="Details" outcome="/detail.xhtml" includeViewParams="true">
+                        <h:link value="Details" outcome="/detail/lpdetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Lp'}">
+                            <f:param name="id" value="#{article.id}"/>
+                        </h:link>
+                        <h:link value="Details" outcome="/detail/gamedetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Game'}">
+                            <f:param name="id" value="#{article.id}"/>
+                        </h:link>
+                        <h:link value="Details" outcome="/detail/fictiondetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Fiction'}">
+                            <f:param name="id" value="#{article.id}"/>
+                        </h:link>
+                        <h:link value="Details" outcome="/detail/nonfictiondetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Non-Fiction'}">
                             <f:param name="id" value="#{article.id}"/>
                         </h:link>
                     </b:dataTableColumn>
