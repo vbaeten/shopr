@@ -19,7 +19,7 @@ public class LpController {
 
     public String gotoDetails(Lp lp) {
         this.lp = lp;
-        return "lpDetails";
+        return "lpDetails?faces-redirect=true";
     }
 
     public Lp getLp() {
@@ -42,8 +42,9 @@ public class LpController {
         this.lpService.removeById(id);
     }
 
-    public void submit(Lp lp) {
+    public String save() {
         this.lpService.insert(lp);
+        return "artikelBeheer?faces-redirect=true";
     }
 
 }

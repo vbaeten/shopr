@@ -21,7 +21,7 @@ public class GameController {
 
     public String gotoDetails(Game game) {
         this.game = game;
-        return "gameDetails";
+        return "gameDetails?faces-redirect=true&includeViewParams=true";
     }
 
     public Game getGame() {
@@ -44,7 +44,8 @@ public class GameController {
         this.gameService.removeById(id);
     }
 
-    public void submit(Game game) {
+    public String save() {
         this.gameService.insert(game);
+        return "artikelBeheer?faces-redirect=true";
     }
 }

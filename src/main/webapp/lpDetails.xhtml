@@ -8,6 +8,11 @@
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
+
+    <f:metadata>
+        <f:viewParam id="id" name="id" value="#{artikelController.selectedId}"/>
+    </f:metadata>
+
     <title>Details</title>
 
 </h:head>
@@ -16,8 +21,8 @@
     <p>#{artikelController.artikel.titel}</p>
 
     <h:form id="details">
-        <b:dataTable var="lp" value="#{artikelController.artikel}" id="lpArtikelDetailsDataTabel"
-                     rendered="#{artikelController.isLp()}">
+        <b:dataTable var="lp" value="#{artikelController.getArtikelById(artikelController.selectedId)}"
+                     id="lpArtikelDetailsDataTabel">
             <b:dataTableColumn label="Id" value="#{lp.id}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Id leverancier" value="#{lp.idLeverancier}">
@@ -33,26 +38,7 @@
             <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(lp.id)}"/>
-            </b:dataTableColumn>
-        </b:dataTable>
-
-        <b:dataTable var="lp" value="#{lpController.lp}" id="lpDetailsDataTabel"
-                     rendered="#{!artikelController.isLp()}">
-            <b:dataTableColumn label="Id" value="#{lp.id}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Id leverancier" value="#{lp.idLeverancier}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Uitvoerder" value="#{lp.uitvoerder}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Titel" value="#{lp.titel}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Prijs" value="#{lp.prijs}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(lp.id)}"/>
+                <b:commandButton value="delete" onclick="#{artikelController.removeArtikelById(lp.id)}"/>
             </b:dataTableColumn>
         </b:dataTable>
 

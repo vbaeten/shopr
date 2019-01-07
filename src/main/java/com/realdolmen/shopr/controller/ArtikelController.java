@@ -3,8 +3,12 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.service.*;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Init;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 import java.util.List;
@@ -21,46 +25,64 @@ public class ArtikelController {
     @Inject
     private NonFictieService nonFictieService;
     @Inject
-    private GameService gameService;
+    private GameController gameController;
     @Inject
     private LpService lpService;
     private int id;
     private Artikel artikel;
-    private ArtikelTypes selectedArtikelType;
-    private Game game;
+    private String selectedArtikelType;
+    private Game game = new Game();
     private Boek boek;
+
+    @ManagedProperty("#{param.id}")
+    private int selectedId;
 
     public ArtikelTypes[] getArtikelTypes() {
         return ArtikelTypes.values();
     }
 
-    public void submitSelectedArtikelType(ValueChangeEvent e) {
-        selectedArtikelType = (ArtikelTypes) e.getNewValue();
+    @PostConstruct
+    public void init(){
+        System.out.println(selectedId);
     }
 
-    public String gotoDetails(Artikel artikel) {
-        this.artikel = artikel;
-        this.artikel.setType(artikel.getType());
-        if (artikel instanceof Game) {
-            return "gameDetails";
-        } else if (artikel instanceof Lp) {
-            return "lpDetails";
-        } else if (artikel instanceof Boek) {
-            boek = (Boek) artikel;
-            if (boek.getBoekType().equals("fictie")) {
-                boek = fictieService.findById(artikel.getId());
-                return "fictieDetails";
-            } else if (boek.getBoekType().equals("nonFictie")) {
-                boek = nonFictieService.findById(artikel.getId());
-                return "nonFictieDetails";
-            }
+//    public void submitSelectedArtikelType(ValueChangeEvent e) {
+//        selectedArtikelType = (ArtikelTypes) e.getNewValue();
+//    }
+
+    public String selectArtikelTypeButton() {
+        switch (selectedArtikelType) {
+            case "game":
+                return "gameToevoegen?faces-redirect=true";
+            case "lp":
+                return "lpToevoegen?faces-redirect=true";
+            case "fictie":
+                return "fictieBoekToevoegen?faces-redirect=true";
+            case "nonFictie":
+                return "nonFictieBoekToevoegen?faces-redirect=true";
         }
         return null;
     }
 
-    public Game getGameById(int id) {
-        return this.gameService.findById(id);
+
+
+    public String gotoDetails(Artikel artikel) {
+        this.artikel = artikel;
+        if (artikel instanceof Game) {
+            return "gameDetails?faces-redirect=true&includeViewParams=true";
+        } else if (artikel instanceof Lp) {
+            return "lpDetails?faces-redirect=true&includeViewParams=true";
+        } else if (artikel instanceof Fictie) {
+            return "fictieDetails?faces-redirect=true&includeViewParams=true";
+        } else if (artikel instanceof NonFictie) {
+            return "nonFictieDetails?faces-redirect=true&includeViewParams=true";
+        }
+        return null;
     }
+
+//    public Game getGameById(int id) {
+//        return this.gameService.findById(id);
+//    }
 
     public Lp getLpById(int id) {
         return this.lpService.findById(id);
@@ -76,9 +98,18 @@ public class ArtikelController {
     }
 
     public void removeArtikelById(int id) {
-        this.artikelService.removeArtikelById(id);
+        if(id == selectedId){
+            this.artikelService.removeArtikelById(id);
+        }
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     public int getId() {
         return id;
@@ -120,11 +151,19 @@ public class ArtikelController {
         return artikel instanceof NonFictie;
     }
 
-    public ArtikelTypes getSelectedArtikelType() {
+    public String getSelectedArtikelType() {
         return selectedArtikelType;
     }
 
-    public void setSelectedArtikelType(ArtikelTypes selectedArtikelType) {
+    public void setSelectedArtikelType(String selectedArtikelType) {
         this.selectedArtikelType = selectedArtikelType;
+    }
+
+    public int getSelectedId() {
+        return selectedId;
+    }
+
+    public void setSelectedId(int selectedId) {
+        this.selectedId = selectedId;
     }
 }

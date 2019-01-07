@@ -19,7 +19,7 @@ public class FictieController {
 
     public String gotoDetails(Fictie fictie) {
         this.fictie = fictie;
-        return "fictieDetails";
+        return "fictieDetails?faces-redirect=true";
     }
 
     public Fictie getFictie() {
@@ -42,8 +42,9 @@ public class FictieController {
         this.fictieService.removeById(id);
     }
 
-    public void submit() {
+    public String save() {
         this.fictieService.insert(fictie);
+        return "artikelBeheer?faces-redirect=true";
     }
 
 }

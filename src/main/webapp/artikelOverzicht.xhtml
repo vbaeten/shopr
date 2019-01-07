@@ -26,7 +26,10 @@
             <b:dataTableColumn label="Prijs" value="#{artikel.prijs}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <h:commandButton value="details" action="#{artikelController.gotoDetails(artikel)}"/>
+                <!--<h:link value="details" action="#{artikelController.gotoDetails(artikel)}" includeViewParams="true"/>-->
+                <h:commandButton value="details" action="#{artikelController.gotoDetails(artikel)}" >
+                    <f:param name="id" value="#{artikel.id}"/>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
 
@@ -47,7 +50,9 @@
             <b:dataTableColumn label="Prijs" value="#{game.prijs}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <h:commandButton value="details" action="#{gameController.gotoDetails(game)}"/>
+                <h:commandButton value="details" action="#{artikelController.gotoDetails(game)}">
+                    <f:param name="id" value="#{game.id}"/>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
 
@@ -65,7 +70,9 @@
             <b:dataTableColumn label="Prijs" value="#{lp.prijs}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <h:commandButton value="details" action="#{lpController.gotoDetails(lp)}"/>
+                <h:commandButton value="details" action="#{artikelController.gotoDetails(lp)}">
+                    <f:param name="id" value="#{lp.id}"/>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
 
@@ -89,7 +96,9 @@
             <b:dataTableColumn label="Korte inhoud" value="#{fictie.korteInhoud}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <h:commandButton value="details" action="#{fictieController.gotoDetails(fictie)}"/>
+                <h:commandButton value="details" action="#{artikelController.gotoDetails(fictie)}">
+                    <f:param name="id" value="#{fictie.id}"/>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
 
@@ -111,7 +120,9 @@
             <b:dataTableColumn label="Aantal paginas" value="#{nonFictie.aantalPaginas}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <h:commandButton value="details" action="#{nonFictieController.gotoDetails(nonFictie)}"/>
+                <h:commandButton value="details" action="#{artikelController.gotoDetails(nonFictie)}">
+                    <f:param name="id" value="#{nonFictie.id}"/>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
 

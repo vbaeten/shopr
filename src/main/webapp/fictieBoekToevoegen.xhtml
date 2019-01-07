@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head>
+    <title>Artikelbeheer</title>
+</h:head>
+<h:body>
+
+    <h4>Welkom #{userController.selectedUser.firstName}</h4>
+
+    <b:form id="NieuwArtikel" horizontal="true">
+        <b:container>
+            <b:panel>
+                <b:column colMd="3">
+                    <b:selectOneMenu value="#{artikelController.selectedArtikelType}" required="true"
+                                     label="Selecteer het type artikel:">
+                        <f:selectItem itemLabel="boek/fictie" itemValue="fictie"/>
+                        <f:selectItem itemLabel="boek/non-fictie" itemValue="nonFictie"/>
+                        <f:selectItem itemLabel="game" itemValue="game"/>
+                        <f:selectItem itemLabel="lp" itemValue="lp"/>
+                    </b:selectOneMenu>
+                </b:column>
+                <b:column>
+                    <b:commandButton value="Bevestig selectie" update="@form"
+                                     action="#{artikelController.selectArtikelTypeButton()}"/>
+                </b:column>
+            </b:panel>
+        </b:container>
+    </b:form>
+
+    <b:form id="fictieBoekToevoegen">
+        <b:messages/>
+        <b:container>
+            <b:panel>
+                <b:row>
+                    <b:column colMd="5">
+                        <b:inputText placeholder="fictie" id="fictieBoekType" label="Boek type: "
+                                     value="#{fictieController.fictie.boekType}"/>
+                        <b:inputText id="fictieIdLeverancier" label="Leverancier ID: "
+                                     value="#{fictieController.fictie.idLeverancier}"/>
+                        <b:inputText id="fictieIsbn" label="Isbn: "
+                                     value="#{fictieController.fictie.isbn}"/>
+                        <b:inputText id="fictieAuteur" label="Auteur: "
+                                     value="#{fictieController.fictie.auteur}"/>
+                    </b:column>
+                    <b:column colMd="5">
+                        <o:importConstants type="com.realdolmen.shopr.domain.FictieGenre"/>
+                        <b:selectOneMenu id="fictieGenre" label="Genre: "
+                                         value="#{fictieController.fictie.fictieGenre}"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems value="#{FictieGenre}" var="fictieGenre"
+                                           itemValue="#{fictieGenre}" itemLabel="#{fictieGenre}"/>
+                        </b:selectOneMenu>
+                        <b:inputText id="fictieTitel" label="Titel: "
+                                     value="#{fictieController.fictie.titel}"/>
+                        <b:inputText id="fictiePrijs" label="Prijs: "
+                                     value="#{fictieController.fictie.prijs}"/>
+                        <b:inputText id="fictieAantalPaginas" label="Aantal paginas: "
+                                     value="#{fictieController.fictie.aantalPaginas}"/>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column colMd="10">
+                        <b:inputTextarea id="fictieKorteInhoud" label="Korte inhoud: "
+                                         value="#{fictieController.fictie.korteInhoud}"/>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column>
+                        <b:commandButton value="Artikel toevoegen" look="success"
+                                         action="#{fictieController.save()}"/>
+                    </b:column>
+                </b:row>
+            </b:panel>
+        </b:container>
+    </b:form>
+
+</h:body>
+</html>

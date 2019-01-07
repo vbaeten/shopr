@@ -18,7 +18,7 @@ public class NonFictieController {
 
     public String gotoDetails(NonFictie nonFictie) {
         this.nonFictie = nonFictie;
-        return "nonFictieDetails";
+        return "nonFictieDetails?faces-redirect=true";
     }
 
     public NonFictie getNonFictie() {
@@ -41,8 +41,9 @@ public class NonFictieController {
         this.nonFictieService.removeById(id);
     }
 
-    public void submit(NonFictie nonFictie) {
+    public String save() {
         this.nonFictieService.insert(nonFictie);
+        return "artikelBeheer?faces-redirect=true";
     }
 
 }

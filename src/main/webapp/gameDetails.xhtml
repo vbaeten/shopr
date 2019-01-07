@@ -13,11 +13,15 @@
 </h:head>
 <h:body>
 
+    <f:metadata>
+        <f:viewParam id="id" name="id" value="#{artikelController.selectedId}"/>
+    </f:metadata>
+
     <p>#{artikelController.artikel.titel}</p>
 
     <h:form id="details">
-        <b:dataTable var="game" value="#{artikelController.artikel}" id="gameArtikelDetailsDataTabel"
-                     rendered="#{artikelController.isGame()}">
+        <b:dataTable var="game" value="#{artikelController.getArtikelById(artikelController.selectedId)}"
+                     id="gameArtikelDetailsDataTabel">
             <b:dataTableColumn label="Id" value="#{game.id}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Id leverancier" value="#{game.idLeverancier}">
@@ -38,28 +42,7 @@
                 <b:commandButton value="delete" action="#{artikelController.removeArtikelById(game.id)}"/>
             </b:dataTableColumn>
         </b:dataTable>
-        <b:dataTable var="game" value="#{gameController.game}" id="gameDetailsDataTabel"
-                     rendered="#{!artikelController.isGame()}">
-            <b:dataTableColumn label="Id" value="#{game.id}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Id leverancier" value="#{game.idLeverancier}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Type" value="#{game.type}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Titel" value="#{game.titel}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Prijs" value="#{game.prijs}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Uitgever" value="#{game.uitgever}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Minimum leeftijd" value="#{game.minimumLeeftijd}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
-            </b:dataTableColumn>
-            <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(game.id)}"/>
-            </b:dataTableColumn>
-        </b:dataTable>
+
     </h:form>
 
 
