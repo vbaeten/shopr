@@ -13,15 +13,23 @@
         <f:viewParam name="id" value="#{articleController.selectedId}"/>
     </f:metadata>
     <b:form id="games">
-
         <b:dataTable value="#{articleController.article}"
-                      >
-
+                     var="game" caption="This is a the detail page for a game.">
+            <b:dataTableColumn value="#{game.type}" label="type" />
+            <b:dataTableColumn value="#{game.title}" label="title" />
+            <b:dataTableColumn value="#{game.price}" label="price"/>
+            <b:dataTableColumn value="#{game.publisher}"  label="publisher"/>
+            <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
+            <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
+            <b:dataTableColumn value="#{game.id}" label="product code"/>
             <b:dataTableColumn>
                 <b:commandButton value="click" onclick="#{articleController.test()}" />
 
             </b:dataTableColumn>
         </b:dataTable>
+
+
+
 
     </b:form>
 

@@ -10,6 +10,9 @@
     <p>lp detail page</p>
 
     <h:form>
+        <f:metadata>
+            <f:viewParam name="id" value="#{articleController.selectedId}"/>
+        </f:metadata>
         <b:dataTable value="#{articleController.article}"
                      var="lp" caption="This is a the detail page for an LP.">
             <b:dataTableColumn value="#{lp.type}" label="type" />
