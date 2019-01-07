@@ -22,7 +22,6 @@ insert into article(id, title, price, supplierId) values(15, 'Rumours', 14.99, '
 
 insert into article(id, title, price, supplierId) values(16, 'Red Dead Redemption', 69.99, '8');
 insert into article(id, title, price, supplierId) values(17, 'Forza Horizon 4', 59.99, '7');
-insert into article(id, title, price, supplierId) values(16, 'Dirt Rally', 35.45, '7');
 insert into article(id, title, price, supplierId) values(18, 'Project Cars 2', 30.00, '7');
 insert into article(id, title, price, supplierId) values(19, 'F1 2016', 19.99, '7');
 insert into article(id, title, price, supplierId) values(20, 'Diablo 3', 64.99, '7');
@@ -66,6 +65,7 @@ insert into article(id, title, price, supplierId) values(55, 'Tiger Woods', 4.99
 insert into article(id, title, price, supplierId) values(56, 'Sports Geek: A visual tour of sporting myths, debate and data', 4.99, 12);
 insert into article(id, title, price, supplierId) values(57, 'When Lions Roared: The Lions, the All Blacks and the Legendary Tour of 1971', 14.58, 12);
 insert into article(id, title, price, supplierId) values(58, 'Michael Carrick: Between the Lines: My Autobiography', 9.49, 12);
+insert into article(id, title, price, supplierId) values(59, 'Dirt Rally', 35.45, '7');
 
 insert into lp(id, artist, genre) values(1, 'Vivaldi', 'classical');
 insert into lp(id, artist, genre) values(2, 'Iron Maiden', 'rock');
@@ -85,7 +85,6 @@ insert into lp(id, artist, genre) values(15, 'Fleetwood Mac', 'rock');
 
 insert into game(id,publisher, minimumAge, genre) values(16, 'Rockstar', '16', 'RPG');
 insert into game(id,publisher, minimumAge, genre) values(17, 'Playground Games', '6', 'RACE');
-insert into game(id,publisher, minimumAge, genre) values(16, 'Codemasters', '6', 'RACE');
 insert into game(id,publisher, minimumAge, genre) values(18, 'Slightly Mad', '6', 'RACE');
 insert into game(id,publisher, minimumAge, genre) values(19, 'Codemasters', '10', 'RACE');
 insert into game(id,publisher, minimumAge, genre) values(20, 'Blizzard', '12', 'RPG');
@@ -99,6 +98,7 @@ insert into game(id,publisher, minimumAge, genre) values(27, 'Microsoft', '8', '
 insert into game(id,publisher, minimumAge, genre) values(28, 'Ubisoft', '12', 'FPS');
 insert into game(id,publisher, minimumAge, genre) values(29, '2K Games', '12', 'FPS');
 insert into game(id,publisher, minimumAge, genre) values(30, 'Gearbox Software', '12', 'FPS');
+insert into game(id,publisher, minimumAge, genre) values(59, 'Codemasters', '6', 'RACE');
 
 insert into book(id, author, isbn, numberOfPages) values(31, 'J.R.R. Tolkien', '978-00-0732-259-6', 1209);
 insert into book(id, author, isbn, numberOfPages) values(32, 'J.R.R. Tolkien', '978-02-6110-328-3', 320);
@@ -178,3 +178,5 @@ insert into rating(id, score, description, user_id, article_id) values (12, 2, '
 insert into rating(id, score, description, user_id, article_id) values (13, 9, 'Lootin'' and pillagin''! I like this one!', 4, 16);
 insert into rating(id, score, description, user_id, article_id) values (14, 9, 'Great race game', 1, 17);
 insert into rating(id, score, description, user_id, article_id) values (15, 0, 'There''s no place for games in communism! Die!', 3, 17);
+
+insert into user_favourites(user_id, article_id) values(2, 1);

@@ -48,3 +48,6 @@ body{
 .removeLink a:hover{
     color:red;
 }
+.rightAlign{
+    text-align: right;
+}

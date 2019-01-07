@@ -22,11 +22,16 @@
                             <!--<p:confirm header="Confirmation" message="Are you sure you want to delete this item?" icon="pi pi-exclamation-triangle" />-->
                         </p:commandButton>
                     </div>
-                    <div class="ui-g-1">
-                        <p:commandLink>
+                    <div class="ui-g-10">
+                        <p:commandLink action="#{userController.updateFavourites(fictionController.newFiction)}"
+                                       rendered="#{not userController.currentUser.hasFavourite(fictionController.newFiction)}"
+                                       update="@form">
                             <i class="far fa-heart fa-lg"></i>
                         </p:commandLink>
-                        <p:commandLink style="color: red;">
+                        <p:commandLink style="color: red;"
+                                       action="#{userController.updateFavourites(fictionController.newFiction)}"
+                                       rendered="#{userController.currentUser.hasFavourite(fictionController.newFiction)}"
+                                       update="@form">
                             <i class="fas fa-heart fa-lg red"></i>
                         </p:commandLink>
                     </div>

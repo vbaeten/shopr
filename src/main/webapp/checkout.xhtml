@@ -27,15 +27,17 @@
                             <p:dataList var="line" value="#{orderController.currentOrder.orderLines}"
                                         emptyMessage="There are no items in your shopping cart."
                                         type="ordered">
-                                <h:outputText value="#{line.article.title}" style="font-weight: bold;"/><br/>
+                                <h:outputText value="#{line.article.title}" class="titleColumn"/><br/>
                                 <div class="ui-g">
                                     <div class="ui-g-1">#{line.amount}</div>
                                     <div class="ui-g-1">x</div>
                                     <div class="ui-g-2">#{line.article.price}€</div>
-                                    <div class="ui-g-4" style="text-align: right;">=</div>
-                                    <div class="ui-g-2" style="text-align: right;">#{line.subTotal}€</div>
+                                    <div class="ui-g-4 rightAlign">=</div>
+                                    <div class="ui-g-2 rightAlign">#{line.subTotal}€</div>
                                     <div class="ui-g-1">
-                                        <p:commandLink styleClass="removeLink" action="#{orderController.deleteOrderLine(line.id)}" update="@form">
+                                        <p:commandLink styleClass="removeLink"
+                                                       action="#{orderController.deleteOrderLine(line.id)}"
+                                                       update="@form">
                                             <i class="far fa-trash-alt"></i>
                                         </p:commandLink>
                                     </div>
@@ -49,7 +51,7 @@
                             <p:separator/>
                             <div class="ui-g">
                                 <div class="ui-g-6">Total price</div>
-                                <div class="ui-g-4" style="text-align: right; font-weight: bold;">
+                                <div class="ui-g-4 rightAlign titleColumn">
                                     <h:outputText value="#{orderController.currentOrder.price}">
                                         <f:convertNumber pattern="0.00 €"/>
                                     </h:outputText>

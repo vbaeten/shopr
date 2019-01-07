@@ -70,4 +70,16 @@ public class Article {
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
     }
+
+    @Override
+    public boolean equals(Object o){
+        try {
+            Article a = (Article) o;
+            return this.id == a.id;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }

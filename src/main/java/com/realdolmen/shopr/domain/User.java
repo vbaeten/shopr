@@ -1,9 +1,12 @@
 package com.realdolmen.shopr.domain;
 
 
+import javax.interceptor.AroundTimeout;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -34,6 +37,13 @@ public class User implements Serializable {
     @Column(name = "first_name")
     private String firstName;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="user_favourites",
+            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="article_id", referencedColumnName="id"))
+    private List<Article> favourites = new ArrayList<>();
+
     public int getId() {
         return id;
     }
@@ -56,6 +66,22 @@ public class User implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public List<Article> getFavourites() {
+        return favourites;
+    }
+
+    public void addFavourite(Article article) {
+        this.favourites.add(article);
+    }
+
+    public void deleteFavourite(Article article){
+        this.favourites.remove(article);
+    }
+
+    public boolean hasFavourite(Article article){
+        return this.getFavourites().contains(article);
     }
 
     @Override
