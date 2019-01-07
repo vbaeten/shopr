@@ -23,7 +23,8 @@
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{lPController.newLP.title}"/>
+                                <b:inputText placeholder="title" value="#{lPController.newLP.title}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -31,7 +32,8 @@
                                 <h:outputText value="publisher:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="publisher" value="#{lPController.newLP.publisher}"/>
+                                <b:inputText placeholder="publisher" value="#{lPController.newLP.publisher}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -39,7 +41,8 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{lPController.newLP.price}"/>
+                                <b:inputText placeholder="price" value="#{lPController.newLP.price}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -47,15 +50,16 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{lPController.newLP.genre}">
+                                <b:selectOneMenu value="#{lPController.newLP.genre}" required="true">
                                     <f:selectItems value="#{lPController.genres}" itemLabel="#{lPGenre.genre}"
                                                    styleClass="inputField"/>
                                 </b:selectOneMenu>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <b:commandButton value="Create LP" style="width:100%" action="#{lPController.submit}"/>
+                                <b:commandButton value="Create LP" style="width:100%" action="#{lPController.submit}" update="@form"/>
                             </b:column>
                         </b:row>
 

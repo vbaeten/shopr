@@ -3,9 +3,39 @@
     font-family: "Lucida Sans Unicode", Courier, monospace;
 }
 
+.loginMessage{
+    margin-left: 2%;
+}
+
+.loginForm{
+align-content: center;
+    justify-content: flex-start;
+}
+
+
+#loginForm1{
+
+    width: 33%;
+    margin-left: 2%;
+}
+
+#loginForm2{
+
+    width: 33%;
+    margin-left:2%;
+
+}
+
+.banner{
+
+    margin-left: 2%;
+    margin-right:2%;
+
+}
 
 #navbar{
-    margin: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
     border-radius: 5px;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 

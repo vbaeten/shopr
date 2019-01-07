@@ -27,7 +27,8 @@
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{fictionDetailController.fiction.title}"/>
+                                <b:inputText placeholder="title" value="#{fictionDetailController.fiction.title}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -36,7 +37,8 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{fictionDetailController.fiction.price}"/>
+                                <b:inputText placeholder="price" value="#{fictionDetailController.fiction.price}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -45,7 +47,8 @@
                                 <h:outputText value="Author:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="Author" value="#{fictionDetailController.fiction.author}"/>
+                                <b:inputText placeholder="Author" value="#{fictionDetailController.fiction.author}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -54,7 +57,8 @@
                                 <h:outputText value="ISBN:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="ISBN" value="#{fictionDetailController.fiction.isbn}"/>
+                                <b:inputText placeholder="ISBN" value="#{fictionDetailController.fiction.isbn}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -64,7 +68,8 @@
                             </b:column>
                             <b:column mediumScreen="4">
                                 <b:inputText placeholder="Total Pages"
-                                             value="#{fictionDetailController.fiction.totalPages}"/>
+                                             value="#{fictionDetailController.fiction.totalPages}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -73,9 +78,10 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{fictionDetailController.fiction.bookGenre}">
+                                <b:selectOneMenu value="#{fictionDetailController.fiction.bookGenre}" required="true">
                                     <f:selectItems value="#{fictionDetailController.genres}"/>
                                 </b:selectOneMenu>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -85,7 +91,9 @@
                             </b:column>
                             <b:column mediumScreen="4">
                                 <b:inputTextarea placeholder="Write a preview"
-                                                 value="#{fictionDetailController.fiction.preview}" styleClass="textArea"/>
+                                                 value="#{fictionDetailController.fiction.preview}" styleClass="textArea"  required="true" maxlength="255"/>
+
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -93,7 +101,7 @@
                         <b:row>
                             <b:column span="2">
                                 <b:commandButton value="Edit Book" style="width:100%"
-                                                 action="#{fictionDetailController.update}"/>
+                                                 action="#{fictionDetailController.update}" update="@form"/>
                             </b:column>
                         </b:row>
 

@@ -22,7 +22,8 @@
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{gameController.newGame.title}"/>
+                                <b:inputText placeholder="title" value="#{gameController.newGame.title}"  required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -30,7 +31,8 @@
                                 <h:outputText value="publisher:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="publisher" value="#{gameController.newGame.publisher}"/>
+                                <b:inputText placeholder="publisher" value="#{gameController.newGame.publisher}"  required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -38,7 +40,8 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{gameController.newGame.price}"/>
+                                <b:inputText placeholder="price" value="#{gameController.newGame.price}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -46,7 +49,8 @@
                                 <h:outputText value="Minimum age:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="min age" value="#{gameController.newGame.price}"/>
+                                <b:inputText placeholder="min age" value="#{gameController.newGame.minAge}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
@@ -54,15 +58,16 @@
                                 <h:outputText value="genre:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{gameController.newGame.genre}">
+                                <b:selectOneMenu value="#{gameController.newGame.genre}" required="true" maxlength="100">
                                     <f:selectItems value="#{gameController.genres}"/>
                                 </b:selectOneMenu>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
                         <b:row>
                             <b:column span="2">
                                 <b:commandButton value="Create game" style="width:100%"
-                                                 action="#{gameController.submit}"/>
+                                                 action="#{gameController.submit}" update="@form"/>
                             </b:column>
                         </b:row>
 

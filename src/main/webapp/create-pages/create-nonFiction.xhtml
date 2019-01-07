@@ -22,7 +22,8 @@
                                 <h:outputText value="title:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="title" value="#{nonFictionController.newNonFiction.title}"/>
+                                <b:inputText placeholder="title" value="#{nonFictionController.newNonFiction.title}"  required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -31,7 +32,8 @@
                                 <h:outputText value="price:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="price" value="#{nonFictionController.newNonFiction.price}"/>
+                                <b:inputText placeholder="price" value="#{nonFictionController.newNonFiction.price}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -40,7 +42,8 @@
                                 <h:outputText value="Author:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="Author" value="#{nonFictionController.newNonFiction.author}"/>
+                                <b:inputText placeholder="Author" value="#{nonFictionController.newNonFiction.author}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -49,7 +52,8 @@
                                 <h:outputText value="ISBN:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:inputText placeholder="ISBN" value="#{nonFictionController.newNonFiction.isbn}"/>
+                                <b:inputText placeholder="ISBN" value="#{nonFictionController.newNonFiction.isbn}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -59,7 +63,8 @@
                             </b:column>
                             <b:column mediumScreen="4">
                                 <b:inputText placeholder="Total Pages"
-                                             value="#{nonFictionController.newNonFiction.totalPages}"/>
+                                             value="#{nonFictionController.newNonFiction.totalPages}" required="true" maxlength="100"/>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
@@ -68,16 +73,17 @@
                                 <h:outputText value="Subject:"/>
                             </b:column>
                             <b:column mediumScreen="4">
-                                <b:selectOneMenu value="#{nonFictionController.newNonFiction.subject}">
+                                <b:selectOneMenu value="#{nonFictionController.newNonFiction.subject}" required="true">
                                     <f:selectItems value="#{nonFictionController.subjects}"/>
                                 </b:selectOneMenu>
+                                <b:message for="@previous"/>
                             </b:column>
                         </b:row>
 
                         <b:row>
                             <b:column span="2">
                                 <b:commandButton value="Create Book" style="width:100%"
-                                                 action="#{nonFictionController.submit}"/>
+                                                 action="#{nonFictionController.submit}" update="@form"/>
                             </b:column>
                         </b:row>
 

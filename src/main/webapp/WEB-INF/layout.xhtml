@@ -11,6 +11,11 @@
 
 <h:head>
     <h:outputStylesheet library="css" name="layout.css"/>
+
+    <div class="banner">
+    <b:image value="https://www.in-akustik.de/fileadmin/user_upload/Seiten/news/KuZ/Premium_Phono_Slider.jpg" alt=""
+            style="width:100%; height:200px"/>
+    </div>
 </h:head>
 
 <h:body styleClass="templateBody">
@@ -19,7 +24,7 @@
 
 <div id="navbar">
     <h:form>
-        <b:navBar brand="ShopR" fluid="true" styleClass="navBar">
+        <b:navBar brand="ShopR" fluid="true" styleClass="navBar" inverse="true">
             <b:navbarLinks>
                 <b:navLink styleClass="menuItems" value="Home" href="/shopr/nav-pages/index.xhtml"/>
                 <b:dropMenu styleClass="menuItems" value="Overview">
