@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @SessionScoped
 @ManagedBean
@@ -83,8 +84,8 @@ public class OrderController {
         return "orderConfirmed?faces-redirect=true";
     }
 
-    public void deleteOrderLine(int id){
-        this.currentOrder.getOrderLines().remove(id);
+    public void deleteOrderLine(OrderLine line){
+        this.currentOrder.getOrderLines().remove(line);
     }
 
 }

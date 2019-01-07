@@ -51,3 +51,12 @@ body{
 .rightAlign{
     text-align: right;
 }
+.deleteArticle:hover{
+    color:red;
+}
+.editArticle:hover{
+    color:gold;
+}
+.likeButton:hover{
+    color:red;
+}

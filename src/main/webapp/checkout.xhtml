@@ -33,10 +33,14 @@
                                     <div class="ui-g-1">x</div>
                                     <div class="ui-g-2">#{line.article.price}€</div>
                                     <div class="ui-g-4 rightAlign">=</div>
-                                    <div class="ui-g-2 rightAlign">#{line.subTotal}€</div>
+                                    <div class="ui-g-2 rightAlign">
+                                        <h:outputText value="#{line.subTotal}">
+                                            <f:convertNumber pattern="0.00 €"/>
+                                        </h:outputText>
+                                    </div>
                                     <div class="ui-g-1">
                                         <p:commandLink styleClass="removeLink"
-                                                       action="#{orderController.deleteOrderLine(line.id)}"
+                                                       action="#{orderController.deleteOrderLine(line)}"
                                                        update="@form">
                                             <i class="far fa-trash-alt"></i>
                                         </p:commandLink>
