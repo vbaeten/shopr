@@ -38,6 +38,15 @@ public class User implements Serializable {
     @NotNull
     private String firstName;
 
+    public User() {
+    }
+
+    public User(int id, String name, String firstName) {
+        this.id = id;
+        this.name = name;
+        this.firstName = firstName;
+    }
+
     public int getId() {
         return id;
     }
