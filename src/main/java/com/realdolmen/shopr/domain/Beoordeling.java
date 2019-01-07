@@ -3,7 +3,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Reviews")
+@Table(name = "Beoordeling")
 @NamedQueries({
         @NamedQuery(name = Beoordeling.FIND_ALL,
                 query = "select b from Beoordeling b")})
@@ -19,7 +19,7 @@ public class Beoordeling
     @Column
     private Long id;
     @Column
-    private int score = 5;
+    private int score = 3;
     @Column
     private String onschrijving;
     @ManyToOne

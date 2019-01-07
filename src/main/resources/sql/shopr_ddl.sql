@@ -23,10 +23,21 @@ INSERT INTO `shopr`.`lp` (`enumMuziekGenre`, `uitvoerder`, `id`) VALUES ('METAL'
 INSERT INTO `shopr`.`fictie` (`genre`, `korteInhoud`, `id`) VALUES ('FANTASY', 'zombies', '3');
 INSERT INTO `shopr`.`nonfictie` (`enumNonFictieGenre`, `id`) VALUES ('WETENSCHAP', '4');
 
-INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('2', 'boring', '1', '1');
-UPDATE `shopr`.`reviews` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '1' WHERE (`id` = '1');
-INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('3', 'average', '3', '1');
-INSERT INTO `shopr`.`reviews` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('4', 'great ++', '5', '1');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('2', 'boring', '1', '1');
+UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '1' WHERE (`id` = '1');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('3', 'average', '3', '1');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('4', 'great ++', '5', '1');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('10', 'great ++++++++++', '5', '1');
+
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('6', '--', '1', '2');
+UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '5' WHERE (`id` = '2');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('7', '-----', '3', '2');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('8', '---', '5', '2');
+
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('10', 'fsdfsdfsdf', '1', '3');
+UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '9' WHERE (`id` = '3');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('11', 'sdfsdfsdfsdfsdfd', '3', '3');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('12', '-dsfsdfsdfsdfsdf', '5', '3');
 
 
 

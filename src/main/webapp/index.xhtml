@@ -82,7 +82,7 @@
                         <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantallp"
                                        value="#{msgs['overview.aantal']}"/>
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="2"
-                                     value="#{winkelmandjeController.artikel.aantal}" min="1" max="10" step="1"/>
+                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                          value="#{msgs['overview.voegtoe']}"
@@ -91,8 +91,8 @@
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
-                                  onclick="$('.modalPseudoClass').modal()"
-                        action="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"/>
+                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                  onclick="$('.modalPseudoClass').modal()"/>
 
 
                     </h:panelGrid>
@@ -133,7 +133,9 @@
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
+                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"/>
+
 
 
                     </h:panelGrid>
@@ -180,7 +182,9 @@
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
+                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"/>
+
 
 
                     </h:panelGrid>
@@ -228,6 +232,7 @@
                         </b:button>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
+                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"/>
 
                     </h:panelGrid>
@@ -239,7 +244,7 @@
             <b:modal id="reviewmodal" styleClass="modalPseudoClass">
                 <p:dataTable value="#{ratingController.beoordelingslijstBepaaldArtikel}" var="beoordeling">
                     <p:column resizable="true" headerText="#{msgs['artikel.rating']}" >
-                        <h:outputText value="#{beoordeling.score}"/>
+                      <p:rating value="#{beoordeling.score}" readonly="true" />
                     </p:column>
                     <p:column resizable="true" headerText="#{msgs['artikel.beoordeling']}">
                         <h:outputText value="#{beoordeling.onschrijving}"/>
@@ -250,9 +255,9 @@
                 <h:form>
                     <h:panelGrid columns="1">
                         <h:outputLabel for="review" value="#{msgs['overview.rating']}"/>
-                        <b:touchSpin id="spin1" col-md="1" min="0" max="10" step="1" prefix="" value="#{ratingController.beoordeling.score}"/>
-
+                       <p:rating value="#{ratingController.beoordeling.score}"  />
                         <h:outputLabel for="review" value="#{msgs['overview.beoordeling']}"/>
+
                         <b:inputTextarea id="review" value="#{ratingController.beoordeling.onschrijving}">
 
 

@@ -5,6 +5,7 @@ import com.realdolmen.shopr.domain.Beoordeling;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 public class RatingRepository
@@ -19,7 +20,10 @@ public List<Beoordeling> findAllBeoordelingen()
 
 public List<Beoordeling> findBeoordelingenBepaaldArtikel(int id)
 {
-    return entityManager.createQuery("select b from Beoordeling b where Artikel.id = :id ").getResultList();
+    Query a = entityManager.createQuery("select b from Beoordeling b where b.artikel.id =:id ");
+    a.setParameter("id", id);
+    return a.getResultList();
+
 }
 
 public void insert(Beoordeling beoordeling)

@@ -3,29 +3,51 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.Beoordeling;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.OverviewService;
 import com.realdolmen.shopr.service.RatingService;
+import com.realdolmen.shopr.service.UserService;
+
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class RatingController
 {
     @Inject
     RatingService ratingService;
 
     @Inject
+    UserService userService;
+
+    @Inject
     LoginController loginController;
 
-    Artikel reivewArtikel = new Artikel();
-    Beoordeling beoordeling = new Beoordeling();
-    List<Beoordeling> beoordelingslijstBepaaldArtikel = new ArrayList<>();
+    @Inject
+    OverviewService overviewService;
 
+
+
+    Artikel reivewArtikel = new Artikel();
+    Beoordeling beoordeling= new Beoordeling();
+    List<Beoordeling> beoordelingslijstBepaaldArtikel = new ArrayList<>();
+    User currentuser;
+
+
+
+    public User getCurrentuser()
+    {
+        return currentuser;
+    }
+
+    public void setCurrentuser(User currentuser)
+    {
+        this.currentuser = currentuser;
+    }
 
     public List<Beoordeling> getBeoordelingslijstBepaaldArtikel()
     {
@@ -64,7 +86,8 @@ public class RatingController
 
     public void addBeoordeling()
     {
-        beoordeling.setUser(loginController.getCurrentUser());
+        User user = userService.findUserById(11);
+        beoordeling.setUser(user);
         beoordeling.setArtikel(reivewArtikel);
         ratingService.insert(this.beoordeling);
     }
@@ -72,6 +95,9 @@ public class RatingController
     public void beoordelingenGeselecteerdAtikelOphalen(int id)
     {
         this.beoordelingslijstBepaaldArtikel = ratingService.beoordelingenBepaaldArtikel(id);
+
+        this.setReivewArtikel(overviewService.findArtikelById(id));
     }
+
 
 }

@@ -4,20 +4,17 @@ import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
-import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.*;
-import java.io.Console;
-import java.util.List;
+import java.io.Serializable;
+
 
 @ManagedBean
 @SessionScoped
-public class LoginController
+public class LoginController implements Serializable
 {
     @Inject
     UserService userService;
@@ -63,18 +60,17 @@ public class LoginController
 
     public String loggedIn()
     {
-        currentUser = userService.findUserById(id);
+        this.currentUser = userService.findUserById(id);
         setEnumRoles(currentUser.getRole());
         setCurrentUserName(currentUser.getFirstName());
 
         return "/index.xhtml?faces-redirect=true" ;
 
     }
-
     public User getCurrentUser()
 
     {
-        return currentUser;
+        return this.currentUser;
     }
 
     public String logout()

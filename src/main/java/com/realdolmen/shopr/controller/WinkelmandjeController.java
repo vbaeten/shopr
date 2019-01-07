@@ -14,7 +14,7 @@ public class WinkelmandjeController
 
 
     private List<Artikel> artikels = new ArrayList<>();
-    private Artikel artikel;
+    private Artikel artikelGeselecteerd;
     private int aantalArtikel;
     private int aantalArtikelsTotaal = 0;
 
@@ -28,15 +28,11 @@ public class WinkelmandjeController
         this.artikels = artikels;
     }
 
-    public Artikel getArtikel()
+    public Artikel getArtikelGeselecteerd()
     {
-        return artikel;
+        return artikelGeselecteerd;
     }
 
-    public void setArtikel(Artikel artikel)
-    {
-        this.artikel = artikel;
-    }
 
     public int getAantalArtikel()
     {
@@ -46,7 +42,7 @@ public class WinkelmandjeController
     public void setAantalArtikel(int aantalArtikel)
     {
         this.aantalArtikel = aantalArtikel;
-        aantalArtikelsTotaal+=aantalArtikelsTotaal;
+        aantalArtikelsTotaal += aantalArtikelsTotaal;
     }
 
     public int getAantalArtikelsTotaal()
@@ -61,6 +57,9 @@ public class WinkelmandjeController
 
     public void artikelToevoegen(Artikel a)
     {
+        artikelGeselecteerd = new Artikel();
+        artikelGeselecteerd = a;
+        artikels.add(a);
 
     }
 
