@@ -2,6 +2,7 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.repository.LpRepository;
+import com.realdolmen.shopr.repository.RatingRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,9 @@ import java.util.List;
 public class LpService {
     @Inject
     private LpRepository lpRepository;
+
+    @Inject
+    RatingRepository ratingRepository;
 
     public Lp findLpById(int id) {
         return lpRepository.findById(id);
@@ -33,8 +37,9 @@ public class LpService {
         lpRepository.insert(lp);
     }
 
-    public void delete(int id){
-        lpRepository.delete(id);
+    public void delete(Lp lp){
+        ratingRepository.deleteByArticle(lp);
+        lpRepository.delete(lp.getId());
     }
 
     public void update(Lp lp){

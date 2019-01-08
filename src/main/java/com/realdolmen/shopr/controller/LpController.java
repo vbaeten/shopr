@@ -61,7 +61,7 @@ public class LpController implements Serializable {
     }
 
     public String delete(){
-        lpService.delete(newLp.getId());
+        lpService.delete(newLp);
         newLp = new Lp();
         return "lpDataTable?faces-redirect=true";
     }
@@ -69,7 +69,7 @@ public class LpController implements Serializable {
     public void update(){
         this.lpService.update(newLp);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Item successfully updated"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully updated", newLp.getTitle()));
     }
 
 

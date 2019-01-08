@@ -60,3 +60,11 @@ body{
 .orderDetailsTable{
     margin: 10px auto;
 }
+
+.confirmDialogYes:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00b400, 0 0 30px #00b400, 0 0 40px #00b400, 0 0 55px #00b400, 0 0 75px #00b400;
+}
+
+.confirmDialogNo:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0003, 0 0 30px #ff0003, 0 0 40px #ff0003, 0 0 55px #ff0003, 0 0 75px #ff0003;
+}

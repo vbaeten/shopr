@@ -2,6 +2,7 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.repository.GameRepository;
+import com.realdolmen.shopr.repository.RatingRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,6 +13,9 @@ import java.util.List;
 public class GameService implements Serializable {
     @Inject
     private GameRepository gameRepository;
+
+    @Inject
+    private RatingRepository ratingRepository;
 
     public Game findGameById(int id) {
         return gameRepository.findById(id);
@@ -34,8 +38,9 @@ public class GameService implements Serializable {
         gameRepository.insert(game);
     }
 
-    public void delete(int id){
-        gameRepository.delete(id);
+    public void delete(Game game){
+        ratingRepository.deleteByArticle(game);
+        gameRepository.delete(game.getId());
     }
 
     public void update(Game game){

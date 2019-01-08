@@ -38,6 +38,8 @@ public class FictionController {
 
     public void submit(){
         this.fictionService.insert(newFiction);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully created", newFiction.getTitle()));
         this.newFiction = new Fiction();
     }
 
@@ -56,7 +58,7 @@ public class FictionController {
     public FictionGenre[] getFictionGenre() { return FictionGenre.values(); }
 
     public String delete(){
-        fictionService.delete(newFiction.getId());
+        fictionService.delete(newFiction);
         newFiction = new Fiction();
         return "fictionDataTable?faces-redirect=true";
     }
@@ -64,7 +66,7 @@ public class FictionController {
     public void update(){
         this.fictionService.update(newFiction);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Item successfully updated"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully updated", newFiction.getTitle()));
     }
 
 

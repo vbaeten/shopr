@@ -57,7 +57,7 @@ public class NonFictionController implements Serializable {
     public NonFictionSubject[] getNonFictionSubject() { return NonFictionSubject.values(); }
 
     public String delete(){
-        nonFictionService.delete(newNonFiction.getId());
+        nonFictionService.delete(newNonFiction);
         newNonFiction = new NonFiction();
         return "nonFictionDataTable?faces-redirect=true";
     }
@@ -65,7 +65,7 @@ public class NonFictionController implements Serializable {
     public void update(){
         this.nonFictionService.update(newNonFiction);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Item successfully updated"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully updated", newNonFiction.getTitle()));
     }
 
 

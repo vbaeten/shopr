@@ -2,6 +2,7 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.repository.FictionRepository;
+import com.realdolmen.shopr.repository.RatingRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,9 @@ import java.util.List;
 public class FictionService {
     @Inject
     private FictionRepository fictionRepository;
+
+    @Inject
+    private RatingRepository ratingRepository;
 
     public Fiction findFictionById(int id) {
         return fictionRepository.findById(id);
@@ -33,8 +37,9 @@ public class FictionService {
         fictionRepository.insert(fiction);
     }
 
-    public void delete(int id){
-        fictionRepository.delete(id);
+    public void delete(Fiction fiction){
+        ratingRepository.deleteByArticle(fiction);
+        fictionRepository.delete(fiction.getId());
     }
 
     public void update(Fiction fiction){

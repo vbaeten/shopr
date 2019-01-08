@@ -15,7 +15,7 @@ public class RatingRepository {
     }
 
     public List<Rating> findByArticle(Article article){
-        return entityManager.createNamedQuery(Rating.FIND_BY_ARTICLE_ID,Rating.class).setParameter("article", article).getResultList();
+        return entityManager.createNamedQuery(Rating.FIND_BY_ARTICLE,Rating.class).setParameter("article", article).getResultList();
     }
 
     public List<Rating> findByArticleId(int id){
@@ -26,6 +26,17 @@ public class RatingRepository {
         Article article = entityManager.find(Article.class, articleId);
         rating.setArticle(article);
         entityManager.persist(rating);
+    }
+
+    public void delete(Rating rating){
+        entityManager.remove(rating);
+    }
+
+    public void deleteByArticle(Article article){
+        List<Rating> ratingList = this.findByArticle(article);
+        for (Rating rating: ratingList){
+            entityManager.remove(rating);
+        }
     }
 
 }

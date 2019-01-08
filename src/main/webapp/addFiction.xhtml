@@ -10,7 +10,7 @@
     <ui:define name="pageContent">
         <p:fieldset legend="Add Fiction Book" style="margin-bottom:20px">
             <h:form>
-                <p:messages id="msgs"/>
+                <p:growl id="message" showDetail="true"/>
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="title" value="Title: "/>
                     <p:inputText id="title" value="#{fictionController.newFiction.title}" required="true"/>
@@ -69,7 +69,7 @@
                                    required="true"/>
 
                 </h:panelGrid>
-                <p:commandButton value="Submit" action="#{fictionController.submit}" update="@form"/>
+                <p:commandButton value="Submit" action="#{fictionController.submit}" update="@All"/>
             </h:form>
         </p:fieldset>
     </ui:define>

@@ -61,7 +61,7 @@ public class GameController implements Serializable {
     public GameGenre[] getGameGenre() { return GameGenre.values(); }
 
     public String delete(){
-        gameService.delete(newGame.getId());
+        gameService.delete(newGame);
         newGame = new Game();
         return "gamesDataTable?faces-redirect=true";
     }
@@ -69,7 +69,7 @@ public class GameController implements Serializable {
     public void update(){
         this.gameService.update(newGame);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Item successfully updated"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully updated", newGame.getTitle()));
     }
 
 

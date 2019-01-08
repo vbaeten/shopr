@@ -179,4 +179,4 @@ insert into rating(id, score, description, user_id, article_id) values (13, 9, '
 insert into rating(id, score, description, user_id, article_id) values (14, 9, 'Great race game', 1, 17);
 insert into rating(id, score, description, user_id, article_id) values (15, 0, 'There''s no place for games in communism! Die!', 3, 17);
 
-insert into user_favourites(user_id, article_id) values(2, 1);
+# insert into user_favourites(user_id, article_id) values(2, 1);
