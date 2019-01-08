@@ -10,6 +10,10 @@ public class ItemRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
+    public Item findById(Long id) {
+        return entityManager.find(Item.class, id);
+    }
+
     public List<Item> findAll() {
         return entityManager.createNamedQuery(Item.FIND_ALL, Item.class).getResultList();
     }

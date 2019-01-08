@@ -12,6 +12,10 @@ public class ItemService {
     @Inject
     private ItemRepository itemRepository;
 
+    public Item findItemById(Long id) {
+        return itemRepository.findById(id);
+    }
+
     public List<Item> findAllItems() {
         return itemRepository.findAll();
     }
