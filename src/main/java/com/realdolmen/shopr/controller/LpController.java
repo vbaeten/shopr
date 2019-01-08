@@ -41,6 +41,8 @@ public class LpController implements Serializable {
 
     public void submit() {
         this.lpService.insert(newLp);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully Created", newLp.getTitle()));
         newLp = new Lp();
     }
 

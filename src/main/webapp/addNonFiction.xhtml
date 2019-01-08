@@ -10,7 +10,7 @@
     <ui:define name="pageContent">
         <p:fieldset legend="Add Non-Fiction Book" style="margin-bottom:20px">
             <h:form>
-                <p:messages id="msgs"/>
+                <p:growl id="message" showDetail="true" />
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="title" value="Title: "/>
                     <p:inputText id="title" value="#{nonFictionController.newNonFiction.title}" required="true"/>

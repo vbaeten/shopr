@@ -9,8 +9,11 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
-        <h1>Welcome to Shopr, #{userController.currentUser.firstName} !</h1>
+        <div class="pageTitle">
+            <p>Welcome to Shopr, #{userController.currentUser.firstName} !</p>
+        </div>
         <p>Please select one of the article types above.</p>
+
     </ui:define>
 </ui:composition>
 

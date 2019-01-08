@@ -39,6 +39,8 @@ public class NonFictionController implements Serializable {
 
     public void submit(){
         this.nonFictionService.insert(newNonFiction);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully Created", newNonFiction.getTitle()));
         newNonFiction = new NonFiction();
     }
 

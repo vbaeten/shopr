@@ -43,6 +43,8 @@ public class GameController implements Serializable {
 
     public void submit(){
         this.gameService.insert(newGame);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item successfully Created", newGame.getTitle()));
         this.newGame = new Game();
     }
 

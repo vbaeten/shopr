@@ -37,7 +37,7 @@ body{
 .pageNotFoundIcon{
     max-height: 250px;
 }
-.shoppingCartTitle{
+.pageTitle{
     font-size: 3em;
     font-family: "Segoe UI", Verdana, Arial, sans-serif;
     font-weight: bold;
