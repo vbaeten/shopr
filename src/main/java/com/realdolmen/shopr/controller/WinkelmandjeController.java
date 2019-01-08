@@ -1,9 +1,11 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Artikel;
+import com.realdolmen.shopr.domain.ArtikelInWinkelMand;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,25 +14,28 @@ import java.util.List;
 public class WinkelmandjeController
 {
 
+    @Inject
+    ArtikelInWinkelMand artikelInWinkelMand;
 
-    private List<Artikel> artikels = new ArrayList<>();
-    private Artikel artikelGeselecteerd;
+    private List<ArtikelInWinkelMand> artikelsInMandje = new ArrayList<>();
+    private Artikel artikel;
     private int aantalArtikel;
     private int aantalArtikelsTotaal = 0;
 
-    public List<Artikel> getArtikels()
+
+    public List<ArtikelInWinkelMand> getArtikelsInMandje()
     {
-        return artikels;
+        return artikelsInMandje;
     }
 
-    public void setArtikels(List<Artikel> artikels)
+    public void setArtikelsInMandje(List<ArtikelInWinkelMand> artikelsInMandje)
     {
-        this.artikels = artikels;
+        this.artikelsInMandje = artikelsInMandje;
     }
 
-    public Artikel getArtikelGeselecteerd()
+    public Artikel getArtikel()
     {
-        return artikelGeselecteerd;
+        return artikel;
     }
 
 
@@ -57,9 +62,11 @@ public class WinkelmandjeController
 
     public void artikelToevoegen(Artikel a)
     {
-        artikelGeselecteerd = new Artikel();
-        artikelGeselecteerd = a;
-        artikels.add(a);
+        artikelInWinkelMand = new ArtikelInWinkelMand();
+        artikelInWinkelMand.setAantal(aantalArtikel);
+        artikelInWinkelMand.setArtikel(a);
+        artikelsInMandje.add(artikelInWinkelMand);
+
 
     }
 

@@ -57,7 +57,7 @@
                     </p:column>
 
                 </p:dataTable>
-
+<!--#####################################################################################################################################details___________________-->
 
                 <b:panel id="panelLp" style="margin-bottom:10px; width: 60em"
                          rendered="#{overviewController.getPanelNumber() eq 1}">
@@ -87,7 +87,7 @@
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                          value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
@@ -241,6 +241,9 @@
 
             </h:form>
 
+
+<!--#############################################################################################################################################Modal________________-->
+
             <b:modal id="reviewmodal" styleClass="modalPseudoClass">
                 <p:dataTable value="#{ratingController.beoordelingslijstBepaaldArtikel}" var="beoordeling">
                     <p:column resizable="true" headerText="#{msgs['artikel.rating']}" >
@@ -270,15 +273,9 @@
             </b:modal>
             <b:modal id="bevestigingsmodal" styleClass="bevestiging">
 
-                <b:form>
-                <h:outputLabel for="aantal2" value="#{msgs['toevoegen.aantal']}  : "/>
-                <h:outputText id="aantal2" value="#{winkelmandjeController.aantalArtikel}"/>
-                <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}  : "/>
-                <h:outputText id="titel" value="#{winkelmandjeController.artikel.titel}"/>
-                <h:outputLabel for="prijs" value="#{msgs['toevoegen.prijs']}  : "/>
-                <h:outputText id="prijs" value="#{winkelmandjeController.artikel.prijs}"/>
-                </b:form>
+
             </b:modal>
+
         </ui:define>
     </ui:composition>
 </h:body>
