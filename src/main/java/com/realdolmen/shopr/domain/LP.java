@@ -19,7 +19,6 @@ public class LP extends Item {
     public static final String FIND_ALL = "LP.findAll";
 
     @Size(max=100)
-
     private String publisher;
 
     @Enumerated(EnumType.STRING)

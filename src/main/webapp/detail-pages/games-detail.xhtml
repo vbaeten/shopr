@@ -71,7 +71,10 @@
                                     <f:param name="id" value="#{gameDetailController.game.id}"/>
                                 </h:link>
 
-                                <b:commandButton value="add to card" style="width:100%"/>
+                                <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(gameDetailController.game.id)}"/>
+
+
+
                                 <b:commandButton value="delete game" style="width:100%"
                                                  action="#{gameDetailController.delete}"/>
                             </b:column>
@@ -88,7 +91,7 @@
         <div class="afterNav">
             <h3>Reviews</h3>
             <h:form>
-                <b:dataTable value="#{reviewController.reviews}" var="review">
+                <b:dataTable value="#{reviewController.reviews}" var="review" >
 
                     <b:dataTableColumn value="#{review.description}"/>
                     <b:dataTableColumn value="#{review.score}"/>

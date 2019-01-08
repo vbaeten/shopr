@@ -3,7 +3,9 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.GameGenre;
+import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.GameService;
+import com.realdolmen.shopr.service.OrderLineService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -49,9 +51,7 @@ public class GameDetailController {
     }
 
 
-    public void addToCart(){
 
-    }
 
 
 
@@ -76,4 +76,5 @@ public class GameDetailController {
     public void setGame(Game game) {
         this.game = game;
     }
+
 }

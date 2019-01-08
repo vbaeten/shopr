@@ -4,19 +4,22 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
+@Entity
+@Table(name = "order_line")
 public class OrderLine {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany
+    @ManyToOne
     private Item item;
 
-    @OneToMany
+    @Transient
     private Order order;
+
+    private int quantity;
 
 
 

@@ -13,14 +13,21 @@ CREATE TABLE item_review(
 
 );
 
-# CREATE TABLE order(
-#
-#   id int not null auto_increment primary key,
-#   orderline varchar(255),
-#   user_id int,
-#
-#
-# );
+CREATE TABLE orders(
+
+  id int not null auto_increment primary key,
+  orderline_id int,
+  user_id int
+
+);
+
+CREATE TABLE order_line(
+
+  id int not null auto_increment primary key,
+  order_id int,
+  quantity int
+
+);
 
 
 CREATE TABLE item(

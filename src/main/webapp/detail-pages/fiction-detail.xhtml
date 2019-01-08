@@ -103,7 +103,7 @@
         <div class="afterNav">
         <h3>Reviews</h3>
         <h:form>
-            <b:dataTable value="#{reviewController.reviews}" var="review">
+            <b:dataTable value="#{reviewController.reviews}" var="review" >
 
                 <b:dataTableColumn value="#{review.description}"/>
                 <b:dataTableColumn value="#{review.score}"/>

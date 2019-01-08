@@ -17,10 +17,26 @@ public class ItemController {
     private ItemService itemService;
 
 
+    private int id;
+
     public List<Item> getItems(){
 
         return this.itemService.findAllItems();
     }
 
+    public ItemService getItemService() {
+        return itemService;
+    }
 
+    public void setItemService(ItemService itemService) {
+        this.itemService = itemService;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
