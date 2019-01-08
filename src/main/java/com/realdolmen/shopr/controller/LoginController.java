@@ -6,22 +6,28 @@ import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
+
 
 @ManagedBean
 @SessionScoped
 public class LoginController {
 
     private User currentUser = new User();
-    private UserService userService;
+
+    @Inject
+    private UserService userService = new UserService();
+
     private int id;
 
 
     public void login(){
-        currentUser = this.userService.getUserById(id);
+        this.currentUser = this.userService.getUserById(id);
+
     }
 
     public void logout(){
-        this.id=0;
+
         currentUser = new User();
 
     }
@@ -35,5 +41,13 @@ public class LoginController {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

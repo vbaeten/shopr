@@ -26,7 +26,7 @@
             </div>
 
         <div class="loginForm">
-            <div class="afterNav" id="loginForm1">
+            <div class="left">
                 <h4>Register</h4>
             <b:form styleClass="addLocationForm">
 
@@ -43,21 +43,23 @@
                 </div>
             </b:form>
             </div>
-            <div class="afterNav" id="loginForm2">
+
+            <div class="right">
                 <h4>Login</h4>
 
                 <b:form styleClass="addLocationForm">
 
                 <h:outputLabel for="user" value="User: "/>
-                <b:selectOneMenu id="user" value="#{user}" style="width:125px" required="true">
+                <b:selectOneMenu id="user" value="#{loginController.id}" style="width:125px" required="true">
                     <f:selectItem itemLable="select user"/>
                     <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}"
-                                   itemValue="#{user.firstName}"/>
+                                   itemValue="#{user.id}"/>
                 </b:selectOneMenu>
                 <b:message for="@previous"/>
                 <div>
                     <b:commandButton value="Login" action="#{loginController.login}"
-                                     styleClass="cmdButton" update="@form"/>
+                                     styleClass="cmdButton" update="@form">
+                    </b:commandButton>
                     <b:commandButton value="Delete user" action="#{userController.delete}"
                                      styleClass="cmdButton" update="@form"/>
 
