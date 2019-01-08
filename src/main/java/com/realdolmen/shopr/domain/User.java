@@ -37,12 +37,23 @@ public class User implements Serializable {
     @Column(name = "first_name")
     private String firstName;
 
+    @OneToMany(mappedBy="user")
+    private List<Order> orders;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="user_favourites",
             joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
             inverseJoinColumns=@JoinColumn(name="article_id", referencedColumnName="id"))
     private List<Article> favourites = new ArrayList<>();
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public int getId() {
         return id;

@@ -8,8 +8,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: growl message met bevestiging van bestelling bij "add-item-to-shopping-cart" button
-// TODO: confirm dialog bij delete button -> backend moet nog message meegeven voor de growl message
 // TODO: waarom geen primefaces icons in commandbuttons?
 // TODO: op artikeldetail: aantal default op 1 zetten
 // TODO: bij overzicht winkelmandje: delete knop geeft altijd 0 mee als id
@@ -18,6 +16,7 @@ import java.util.List;
 // TODO:
 
 @Entity
+@Table(name="orders")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +25,7 @@ public class Order implements Serializable {
 //    @Column(name = "time_stamp")
 //    private Timestamp timeStamp;
 
-    @OneToMany(mappedBy = "orderId")
+    @OneToMany(mappedBy = "order", cascade={CascadeType.PERSIST,  CascadeType.REMOVE})
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @ManyToOne

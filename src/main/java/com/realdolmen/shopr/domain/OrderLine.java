@@ -11,19 +11,21 @@ public class OrderLine {
     @OneToOne
     Article article;
 
-    private int orderId;
+    @ManyToOne
+    @JoinColumn(name="order_id")
+    private Order order;
 
     private int amount = 0;
 
     @Transient
     private double subTotal;
 
-    public int getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public int getId() {
