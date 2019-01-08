@@ -45,9 +45,6 @@ body{
     color: #666666;
     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
 }
-.removeLink a:hover{
-    color:red;
-}
 .rightAlign{
     text-align: right;
 }
@@ -59,4 +56,7 @@ body{
 }
 .likeButton:hover{
     color:red;
+}
+.orderDetailsTable{
+    margin: 10px auto;
 }

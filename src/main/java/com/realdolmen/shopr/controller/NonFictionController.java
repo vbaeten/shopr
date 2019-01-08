@@ -4,8 +4,10 @@ import com.realdolmen.shopr.domain.NonFiction;
 import com.realdolmen.shopr.domain.NonFictionSubject;
 import com.realdolmen.shopr.service.NonFictionService;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
@@ -62,6 +64,8 @@ public class NonFictionController implements Serializable {
 
     public void update(){
         this.nonFictionService.update(newNonFiction);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Item successfully updated"));
     }
 
 

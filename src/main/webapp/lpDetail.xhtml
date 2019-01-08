@@ -102,7 +102,7 @@
 
                     <p:commandButton value="Order"
                                      action="#{orderController.addOrderLine(lpController.lpId)}"
-                                     update="@form"/>
+                                     update="message"/>
                     <p:spinner id="amount"
                                placeholder="1"
                                value="#{orderController.newOrderLine.amount}"

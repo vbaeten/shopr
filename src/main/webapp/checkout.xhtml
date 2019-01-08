@@ -42,13 +42,26 @@
                                         <p:commandLink styleClass="removeLink"
                                                        action="#{orderController.deleteOrderLine(line)}"
                                                        update="@form">
-                                            <i class="far fa-trash-alt"></i>
+                                            <i class="far fa-trash-alt deleteArticle"></i>
                                         </p:commandLink>
                                     </div>
                                     <div class="ui-g-1">
-                                        <p:commandLink styleClass="removeLink" update="@form">
-                                            <i class="fas fa-pencil-alt"></i>
+                                        <p:commandLink id="changeAmount" styleClass="removeLink" update="@form">
+                                            <i class="fas fa-pencil-alt editArticle"></i>
                                         </p:commandLink>
+                                        <p:overlayPanel for="changeAmount" hideEffect="fade">
+                                            <p:panelGrid columns="2" cellSpacing="5">
+                                                <!-- TODO: change amount knop -> action??  -->
+                                                <p:commandButton value="Change amount"
+                                                                 update="@form"
+                                                                 style="max-width: 20px;"/>
+                                                <p:spinner id="amount"
+                                                           value="#{orderController.currentOrder.orderLines.get(line.id).amount}"
+                                                           min="1"
+                                                           max="20"
+                                                           immediate="true"/>
+                                            </p:panelGrid>
+                                        </p:overlayPanel>
                                     </div>
                                 </div>
                             </p:dataList>
@@ -125,22 +138,22 @@
                             <p:panel header="Cardholder information">
                                 <p:panelGrid columns="2" cellPadding="5">
                                     <p:outputLabel for="firstName" value="First name: "/>
-                                    <p:inputText id="firstName"/>
+                                    <p:inputText id="firstName" value="#{flowBean.firstName}"/>
 
                                     <p:outputLabel for="lastName" value="Last name: "/>
-                                    <p:inputText id="lastName"/>
+                                    <p:inputText id="lastName" value="#{flowBean.lastName}"/>
 
                                     <p:outputLabel for="address" value="Address: "/>
-                                    <p:inputText id="address"/>
+                                    <p:inputText id="address" value="#{flowBean.address}"/>
 
                                     <p:outputLabel for="city" value="City: "/>
-                                    <p:inputText id="city"/>
+                                    <p:inputText id="city" value="#{flowBean.city}"/>
 
                                     <p:outputLabel for="zip" value="Zip/Postal code: "/>
-                                    <p:inputText id="zip"/>
+                                    <p:inputText id="zip" value="#{flowBean.zip}"/>
 
                                     <p:outputLabel for="country" value="Country: "/>
-                                    <p:inputText id="country"/>
+                                    <p:inputText id="country" value="#{flowBean.country}"/>
 
                                 </p:panelGrid>
                             </p:panel>
@@ -152,8 +165,23 @@
                     <p:panel>
                         <div style="max-width: 60%; margin: 10px auto;">
                             <p:panel header="Please confirm your order">
+                                <h:outputText value="Billing address:" class="titleColumn"/><br/>
+                                <div class="p-grid">
+                                    <div class="p-col-6 p-offset-3">
+                                        <div>#{flowBean.firstName}</div>
+                                        <div>#{flowBean.lastName}</div>
+                                        <div>#{flowBean.address}</div>
+                                        <div>#{flowBean.city}</div>
+                                        <div>#{flowBean.country}</div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <h:outputText value="Number of different articles: "/>
+                                <h:outputText value="#{orderController.currentOrder.numberOfDifferentArticles}"/><br/>
+                                <h:outputText value="Total number of  articles: "/>
+                                <h:outputText value="#{orderController.currentOrder.totalNumberOfArticles}"/>
                                 <p:dataTable value="#{orderController.currentOrder.orderLines}"
-                                             var="line">
+                                             var="line" class="orderDetailsTable">
                                     <p:column headerText="Article Id">
                                         <h:outputText value="#{line.id}"/>
                                     </p:column>
@@ -174,6 +202,15 @@
                                         <h:outputText value="#{line.subTotal}"/>
                                     </p:column>
                                 </p:dataTable>
+
+                                <div class="ui-g-6">Total price</div>
+                                <div class="ui-g-5 rightAlign titleColumn">
+                                    <h:outputText value="#{orderController.currentOrder.price}">
+                                        <f:convertNumber pattern="0.00 €"/>
+                                    </h:outputText>
+                                </div>
+                                <div class="ui-g-1"></div>
+
                             </p:panel>
                             <p:commandButton value="Submit" action="#{orderController.submit}"/>
                         </div>

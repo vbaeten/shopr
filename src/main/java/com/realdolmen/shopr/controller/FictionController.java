@@ -4,8 +4,10 @@ import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.domain.FictionGenre;
 import com.realdolmen.shopr.service.FictionService;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -61,6 +63,8 @@ public class FictionController {
 
     public void update(){
         this.fictionService.update(newFiction);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Item successfully updated"));
     }
 
 

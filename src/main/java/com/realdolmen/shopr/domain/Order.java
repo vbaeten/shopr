@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.domain;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -83,6 +85,25 @@ public class Order implements Serializable {
 
     public void addOrderLine(OrderLine orderLine){
         this.orderLines.add(orderLine);
+    }
+
+    public int getTotalNumberOfArticles(){
+        int number = 0;
+        if (orderLines != null){
+            for (OrderLine line: orderLines){
+                number += line.getAmount();
+            }
+        }
+        return number;
+    }
+
+    public int getNumberOfDifferentArticles(){
+        if (orderLines != null){
+            return orderLines.size();
+        }
+        else {
+            return 0;
+        }
     }
 
 }

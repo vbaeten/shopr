@@ -5,6 +5,8 @@ import com.realdolmen.shopr.domain.GameGenre;
 import com.realdolmen.shopr.service.GameService;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -66,6 +68,8 @@ public class GameController implements Serializable {
 
     public void update(){
         this.gameService.update(newGame);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Item successfully updated"));
     }
 
 

@@ -7,7 +7,8 @@ import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderService;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -56,7 +57,6 @@ public class OrderController implements Serializable {
                     line.setAmount(line.getAmount() + newOrderLine.getAmount());
                     line.setSubTotal();
                     found = true;
-                    newOrderLine = new OrderLine();
                 }
             }
         }
@@ -64,8 +64,12 @@ public class OrderController implements Serializable {
         if (!found){
             newOrderLine.setArticle(article);
             currentOrder.addOrderLine(newOrderLine);
-            newOrderLine = new OrderLine();
         }
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Item added to shopping cart", newOrderLine.getAmount() + " x " + newOrderLine.getArticle().getTitle()));
+        newOrderLine = new OrderLine();
+
     }
 
     public String submit(){
@@ -81,5 +85,7 @@ public class OrderController implements Serializable {
     public void deleteOrderLine(OrderLine line){
         this.currentOrder.getOrderLines().remove(line);
     }
+
+
 
 }

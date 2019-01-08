@@ -4,8 +4,10 @@ import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.domain.LpGenre;
 import com.realdolmen.shopr.service.LpService;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -66,6 +68,8 @@ public class LpController implements Serializable {
 
     public void update(){
         this.lpService.update(newLp);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Item successfully updated"));
     }
 
 
