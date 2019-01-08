@@ -11,6 +11,7 @@ import com.realdolmen.shopr.service.UserService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ManagedBean
 @ViewScoped
@@ -34,6 +35,10 @@ public class ReviewController {
         this.review.setItem(getItemById());
         this.reviewService.addReview(this.review);
         this.review = new Review();
+    }
+
+    public List<Review> getReviews() {
+        return this.reviewService.findAllReviews();
     }
 
 

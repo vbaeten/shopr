@@ -16,6 +16,8 @@
         <f:metadata>
             <f:viewParam name="id" value="#{nonFictionDetailController.id}"/>
             <f:event type="preRenderView" listener="#{nonFictionDetailController.init}"/>
+            <f:viewParam name="id" value="#{reviewController.id}"/>
+
         </f:metadata>
 
         <div class="afterNav">
@@ -85,6 +87,32 @@
 
                 </b:form>
             </div>
+        </div>
+
+        <div class="afterNav">
+            <h3>Reviews</h3>
+            <h:form>
+                <b:dataTable value="#{reviewController.reviews}" var="review">
+
+                    <b:dataTableColumn value="#{review.description}"/>
+                    <b:dataTableColumn value="#{review.score}"/>
+
+                </b:dataTable>
+            </h:form>
+        </div>
+
+        <div class="afterNav">
+
+            <b:form>
+
+                <b:inputTextarea placeholder="Write a review"
+                                 styleClass="textArea" required="true" value="#{reviewController.review.description}" />
+                <b:inputText  value="#{reviewController.review.score}"/>
+                <b:message for="@previous"/>
+                <b:commandButton value="Add Review" style="width:100%"
+                                 action="#{reviewController.addReview()}" update="@form"/>
+
+            </b:form>
         </div>
 
 
