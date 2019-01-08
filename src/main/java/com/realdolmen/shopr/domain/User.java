@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.domain;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +15,7 @@ import javax.persistence.*;
                 )
         }
 )
+@Table(name = "user")
 public class User {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";

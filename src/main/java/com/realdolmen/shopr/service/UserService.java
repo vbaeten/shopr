@@ -5,10 +5,11 @@ import com.realdolmen.shopr.repository.UserRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class UserService {
+public class UserService implements Serializable {
     @Inject
     private UserRepository userRepository;
 

@@ -15,10 +15,19 @@
             <b:navLink value="#{msg['header.navbar.books']}" href="#{request.contextPath}/overview/books.xhtml"/>
             <b:navLink value="#{msg['header.navbar.games']}" href="#{request.contextPath}/overview/games.xhtml"/>
             <b:navLink value="#{msg['header.navbar.lps']}" href="#{request.contextPath}/overview/lps.xhtml"/>
-            <b:navLink value="#{msg['header.navbar.addFiction']}" href="#{request.contextPath}/cu/cu-fiction.xhtml"/>
-            <b:navLink value="#{msg['header.navbar.addNonFiction']}" href="#{request.contextPath}/cu/cu-nonfiction.xhtml"/>
+            <b:navLink value="#{msg['header.navbar.addFiction']}"
+                       href="#{request.contextPath}/cu/cu-fiction.xhtml"/>
+            <b:navLink value="#{msg['header.navbar.addNonFiction']}"
+                       href="#{request.contextPath}/cu/cu-nonfiction.xhtml"/>
             <b:navLink value="#{msg['header.navbar.addGame']}" href="#{request.contextPath}/cu/cu-game.xhtml"/>
             <b:navLink value="#{msg['header.navbar.addLp']}" href="#{request.contextPath}/cu/cu-lp.xhtml"/>
+            <b:navLink value="#{msg['header.navbar.checkout']}" href="#{request.contextPath}/order.xhtml"/>
+            <b:navLink rendered="#{userController.currentUser.id eq null}" value="#{msg['header.navbar.login']}"
+                       href="#{request.contextPath}/login.xhtml"/>
+            <b:form>
+                <b:navCommandLink rendered="#{userController.currentUser.id ne null}"
+                                  value="#{msg['header.navbar.logout']}" action="#{userController.logOut}"/>
+            </b:form>
         </b:navbarLinks>
     </b:navBar>
 </ui:composition>
