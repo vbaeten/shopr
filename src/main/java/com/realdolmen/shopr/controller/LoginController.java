@@ -5,13 +5,14 @@ import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-
+//@Named
 @ManagedBean
 @SessionScoped
 public class LoginController implements Serializable
@@ -23,6 +24,7 @@ public class LoginController implements Serializable
     private String currentUserName;
     private EnumRoles enumRoles;
     private int id;
+
 
     public int getId()
     {

@@ -23,7 +23,7 @@ INSERT INTO `shopr`.`lp` (`enumMuziekGenre`, `uitvoerder`, `id`) VALUES ('METAL'
 INSERT INTO `shopr`.`fictie` (`genre`, `korteInhoud`, `id`) VALUES ('FANTASY', 'zombies', '3');
 INSERT INTO `shopr`.`nonfictie` (`enumNonFictieGenre`, `id`) VALUES ('WETENSCHAP', '4');
 
-INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('2', 'boring', '1', '1');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('2', 'boring', '1', '1', '10');
 UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '1' WHERE (`id` = '1');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('3', 'average', '3', '1');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('4', 'great ++', '5', '1');
@@ -39,6 +39,16 @@ UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artik
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('11', 'sdfsdfsdfsdfsdfd', '3', '3');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('12', '-dsfsdfsdfsdfsdf', '5', '3');
 
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '2');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '3');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '4');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '6');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '7');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '8');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '10');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '11');
+UPDATE `shopr`.`beoordeling` SET `user_id` = '11' WHERE (`id` = '12');
+INSERT INTO `shopr`.`beoordeling` (`user_id`) VALUES ('');
 
 
 

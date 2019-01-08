@@ -42,6 +42,12 @@
         </navigation-case>
 
         <navigation-case>
+            <from-outcome>goToBetaal</from-outcome>
+            <to-view-id>/betaal.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+
+        <navigation-case>
             <from-outcome>goToWinkelwagen</from-outcome>
             <to-view-id>/winkelwagen.xhtml</to-view-id>
             <redirect/>

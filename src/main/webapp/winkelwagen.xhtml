@@ -13,13 +13,38 @@
                 <b:form>
                     <b:panel>
                         <b:form>
-                            <b:dataTable value="#{winkelmandjeController.artikelsInMandje}" var="artikels">
-                                <b:dataTableColumn value="#{artikels.artikel.type}"/>
-                                <b:dataTableColumn value="#{artikels.artikel.titel}"/>
-                                <b:dataTableColumn value="#{artikels.aantal}"/>
-                                <b:dataTableColumn value="#{artikels.artikel.prijs}" order="asc"/>
+                            <b:dataTable value="#{winkelmandjeController.artikelsInMandje}" var="artikels"
+                                         border="false" paginated="false"
+                                         searching="false" info="false"
+                                           >
+                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.type}"/>
+                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.titel}"/>
+                                <b:dataTableColumn orderable="false" value="#{artikels.aantal}"/>
+                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.prijs}"/>
+                                <b:dataTableColumn orderable="false" label="#{msgs['artikel.totaal']}" value="#{artikels.totaalBedragLijn}" order="asc"/>
                             </b:dataTable>
+                            <h:outputLabel for="inhoudfictie" value="#{msgs['artikel.totaal']}  :   "/>
+                            <h:outputLabel id="inhoudfictie" value="$ #{winkelmandjeController.totaalBedragBestelling}"/>
+
+                            <b:commandButton rendered="#{winkelmandjeController.betaalButtonHide eq true}"
+                                             class="btn btn-primary" style="background: #52489c"
+                                             value="#{msgs['bestelling.betaal']}"
+
+                                             action="#{winkelmandjeController.betaalPaneel}">
+                            </b:commandButton>
+
+                            <b:commandButton class="btn btn-primary" style="background: #52489c"
+                                             value="#{msgs['bestelling.reset']}"
+                                             action="#{winkelmandjeController.resetWinkelmand}">
+                            </b:commandButton>
+
                         </b:form>
+                    </b:panel>
+                    <b:panel rendered="#{winkelmandjeController.betalingsPanel eq true}">
+
+
+
+
                     </b:panel>
                 </b:form>
             </b:container>

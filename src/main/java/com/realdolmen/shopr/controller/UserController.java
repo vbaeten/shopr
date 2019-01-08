@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
 @ManagedBean
@@ -33,5 +34,7 @@ public class UserController {
     public void submit(){
         this.userService.insert(newUser);
     }
+
+
 
 }

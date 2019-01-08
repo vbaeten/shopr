@@ -129,7 +129,7 @@
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                          value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
@@ -178,7 +178,7 @@
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                          value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(artikel)}">
+                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
@@ -226,10 +226,11 @@
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie" col-md="2"
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
-                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  value="#{msgs['overview.voegtoe']}"
-                                  onclick="$('.bevestiging').modal()">
-                        </b:button>
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                                         value="#{msgs['overview.voegtoe']}"
+                                         onclick="$('.bevestiging').modal()"
+                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                        </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
                                   outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
@@ -251,6 +252,9 @@
                     </p:column>
                     <p:column resizable="true" headerText="#{msgs['artikel.beoordeling']}">
                         <h:outputText value="#{beoordeling.onschrijving}"/>
+                    </p:column>
+                    <p:column resizable="true" headerText="#{msgs['artikel.user']}">
+                        <h:outputText value="#{beoordeling.user.firstName}"/>
                     </p:column>
 
                 </p:dataTable>
@@ -279,4 +283,6 @@
         </ui:define>
     </ui:composition>
 </h:body>
+
+
 </html>
