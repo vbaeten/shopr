@@ -38,13 +38,13 @@ CREATE TABLE book
 
 CREATE TABLE fiction
 (
-  id         BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   fiction_genre VARCHAR(255),
-  summary    VARCHAR(255)
+  summary       VARCHAR(255)
 );
 
 CREATE TABLE non_fiction
 (
-  id    BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id                 BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nonfiction_subject VARCHAR(255)
 );
