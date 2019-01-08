@@ -1,7 +1,9 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Lp;
+import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.LpService;
+import com.realdolmen.shopr.service.OrderLineService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;

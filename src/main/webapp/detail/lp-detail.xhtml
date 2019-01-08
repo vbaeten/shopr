@@ -27,6 +27,11 @@
                         <f:param id="id" value="#{lpDetailController.lp.id}"/>
                     </h:link>
                 </b:form>
+
+                <b:form>
+                    <b:inputText placeholder="#{msg['details.inputText.amount']}" value="#{orderLineController.newOrderLine.amount}"/>
+                    <b:commandButton value="#{msg['details.commandButton.addOrderLine']}" action="#{orderLineController.submit(lpDetailController.id)}"/>
+                </b:form>
             </p:panel>
         </ui:define>
 
