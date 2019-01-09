@@ -18,26 +18,14 @@
                 <b:dataTableColumn label="Name">
                     <h:outputText value="#{user.name}"/>
                 </b:dataTableColumn>
-                <b:dataTableColumn label="Operations">
-                    <b:commandButton value="Delete" look="danger" action="#{userController.remove(user.id)}"
+                <b:dataTableColumn label="Delete">
+                    <b:commandButton value="Delete" look="danger" action="#{userController.removeUserById(user.id)}"
                                      update="dataUsersForm"/>
                 </b:dataTableColumn>
             </b:dataTable>
     </b:form>
-      <p:dataTable var="user" value="#{userController.users}" id="userDataTable">
-         <p:column headerText="Id">
-            <h:outputText value="#{user.id}" />
-         </p:column>
 
-         <p:column headerText="Name">
-            <h:outputText value="#{user.name}" />
-         </p:column>
-
-         <p:column headerText="First name">
-            <h:outputText value="#{user.firstName}" />
-         </p:column>
-      </p:dataTable>
-      <h:form id="addLocationForm">
+      <h:form id="registerUserForm">
          <p:panel id="panel" header="Form" style="margin-bottom:10px;">
             <h:panelGrid columns="4" cellpadding="5">
                <h:outputLabel for="userFirstName" value="First name:" />
@@ -45,27 +33,19 @@
                </p:inputText>
                 <h:outputLabel for="userName" value="Name:" />
                 <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
-               <h:commandButton value="Toevoegen" action="#{userController.submit}" update=":userDataTable" />
+               <h:commandButton value="Add" action="#{userController.submit}" update="dataUsersForm" />
             </h:panelGrid>
          </p:panel>
       </h:form>
-    <h:form>
-        <p:growl id="msgs" showDetail="true" />
+    <b:panel>
+        <b:form id="userLogin">
+            <b:messages/>
+            <b:selectOneMenu colMd="4" value="#{userController.newUser}" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
+            </b:selectOneMenu>
+            <b:commandButton value="Login" look="success" action="overview?faces-redirect=true" update="userLogin"/>
+        </b:form>
+    </b:panel>
 
-        <p:panel header="Select a User" style="margin-bottom:10px;">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="user" value="User: " />
-                <p:selectOneMenu id="user" value="#{userController.newUser}" style="width:150px">
-                    <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true" />
-                    <f:selectItems var="user" value="#{userController.users}" itemValue="=#{user}" itemLabel="#{user.firstName}" />
-                </p:selectOneMenu>
-
-            </h:panelGrid>
-
-            <p:separator />
-
-            <b:commandButton value="Login" action="overview.xhtml"/>
-        </p:panel>
-    </h:form>
 </h:body>
 </html>

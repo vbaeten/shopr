@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.UserRepository;
 

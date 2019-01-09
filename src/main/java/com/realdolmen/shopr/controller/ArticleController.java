@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.service.ArticleService;
 
 import javax.faces.bean.ManagedBean;
@@ -17,5 +18,9 @@ public class ArticleController {
 
     public List<Article> getArticles() {
         return this.articleService.findAllArticles();
+    }
+
+    public void removeArticle(Article article) {
+        articleService.removeArticleById(article.getId());
     }
 }

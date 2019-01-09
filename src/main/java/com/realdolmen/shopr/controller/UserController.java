@@ -35,6 +35,10 @@ public class UserController {
         this.userService.insert(newUser);
     }
 
+    public void removeUserById(int id) {
+        this.userService.removeUserById(id);
+    }
+
 //    public void login() {
 //        this.loggedInUser =
 //    }

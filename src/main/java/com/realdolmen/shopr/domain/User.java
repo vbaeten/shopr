@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -25,11 +26,11 @@ public class User implements Serializable {
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column(name = "name")
     private String name;
-    @Column
+    @Column(name = "firstname")
     private String firstName;
 
     @OneToMany
@@ -58,10 +59,6 @@ public class User implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -78,4 +75,18 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId() &&
+                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getFirstName(), user.getFirstName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getFirstName());
+    }
 }
