@@ -10,8 +10,6 @@ import java.util.List;
 public class ShoppingCart implements Serializable {
 
     @Id
-    private int id;
-
     @MapsId
     @OneToOne
     private User user;
@@ -22,8 +20,8 @@ public class ShoppingCart implements Serializable {
     public ShoppingCart() {
     }
 
-    public ShoppingCart(int id) {
-        this.id = id;
+    public ShoppingCart(User user) {
+        this.user = user;
     }
 
     public User getUser() {

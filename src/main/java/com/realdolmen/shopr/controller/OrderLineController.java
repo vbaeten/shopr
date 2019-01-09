@@ -42,6 +42,7 @@ public class OrderLineController implements Serializable {
     }
 
     public void addToCart(int id, int quantity, int userId) {
+        shoppingCartService.findShoppingCartById(userId);
         orderLine = new OrderLine();
         this.orderLine.setUser(userService.findUserById(userId));
         this.orderLine.setQuantity(quantity);
