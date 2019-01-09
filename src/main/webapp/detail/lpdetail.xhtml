@@ -19,6 +19,10 @@
             <b:panel>
                 <h:outputText styleClass="detail-title" value="#{lpDetailBean.lp.title} by #{lpDetailBean.lp.artist}"/>
                 <h:outputText value=""/>
+                <b:form inline="true">
+                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                    <b:commandButton value="Order" action="#{orderLineController.addToCart(lpDetailBean.id, orderLineController.quantity)}"/>
+                </b:form>
             </b:panel>
         </ui:define>
 

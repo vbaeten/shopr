@@ -15,16 +15,17 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <b:panel id="shoppingbagnologin" rendered="#{loginBean.loggedUser eq null}">You are not logged in.</b:panel>
-            <b:panel id="shoppingbagview" rendered="#{loginBean.loggedUser != null}">
+            <b:panel id="shoppingbagview">
                 Hi, #{loginBean.loggedUser.firstName}!
                 Order here or continue shopping.
                 <b:form id="shoppingbag">
-                    <b:dataTable>
-                        <b:dataTableColumn label="" value="Article Id"/>
-                        <b:dataTableColumn label="Title" value="Article Type"/>
-                        <b:dataTableColumn label="Price" value="Article Type"/>
-                        <b:dataTableColumn value="Quantity"/>
-                        <b:dataTableColumn value="Total">
+                    <b:dataTable value="#{orderLineController.orderLines}" var="orderLine">
+                        <b:dataTableColumn label="Article ID" value="#{orderLine.id}"/>
+                        <b:dataTableColumn label="Title" value="#{orderLine.article.title}"/>
+                        <b:dataTableColumn label="Price" value="#{orderLine.article.price}"/>
+                        <b:dataTableColumn label="Quantity" value="#{orderLine.quantity}"/>
+                        <b:dataTableColumn label="Type" value="#{orderLine.article.type}"/>
+                        <b:dataTableColumn label="Delete">
                             <b:commandButton value="Remove from Order"/>
                         </b:dataTableColumn>
                     </b:dataTable>

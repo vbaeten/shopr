@@ -7,12 +7,10 @@ import com.realdolmen.shopr.service.OrderLineService;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean
 public class OrderLineController implements Serializable {
-
-    private OrderLine orderLine;
-
 
     @Inject
     private OrderLineService orderLineService;
@@ -20,9 +18,27 @@ public class OrderLineController implements Serializable {
     @Inject
     private ArticleService articleService;
 
-    public void addToCart(int id) {
-        orderLine.setArticle(articleService.findArticleById(id));
+    private OrderLine orderLine;
+    private int quantity;
+    private double subtotal;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void addToCart(int id, int quantity) {
+        orderLine = new OrderLine();
+        this.orderLine.setQuantity(quantity);
+        this.orderLine.setArticle(articleService.findArticleById(id));
         orderLineService.insertOrderLine(orderLine);
+    }
+
+    public List<OrderLine> getOrderLines() {
+        return orderLineService.findAllOrderLines();
     }
 
     public OrderLine getOrderLine() {

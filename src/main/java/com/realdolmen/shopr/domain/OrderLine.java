@@ -4,9 +4,19 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "order_line")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = OrderLine.FIND_ALL,
+                        query = "SELECT o FROM OrderLine o"
+                )
+        }
+)
 public class OrderLine {
+    public static final String FIND_ALL = "OrderLine.findAll";
 
     @Id
+    @GeneratedValue
     private int id;
 
     private int quantity;

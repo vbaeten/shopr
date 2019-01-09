@@ -4,14 +4,19 @@ import com.realdolmen.shopr.domain.OrderLine;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class OrderLineRepository {
 
     @PersistenceContext(name="shoprPU")
-    EntityManager entityManager;
+    public EntityManager entityManager;
 
     public OrderLine findById(int id) {
         return entityManager.find(OrderLine.class, id);
+    }
+
+    public List<OrderLine> findAll() {
+        return entityManager.createNamedQuery(OrderLine.FIND_ALL, OrderLine.class).getResultList();
     }
 
     public void insertOrderLine(OrderLine orderLine) {

@@ -5,6 +5,7 @@ import com.realdolmen.shopr.repository.OrderLineRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class OrderLineService {
@@ -14,6 +15,10 @@ public class OrderLineService {
 
     public OrderLine findOrderLineById(int id) {
         return orderLineRepository.findById(id);
+    }
+
+    public List<OrderLine> findAllOrderLines() {
+        return orderLineRepository.findAll();
     }
 
     public void insertOrderLine(OrderLine orderLine) {

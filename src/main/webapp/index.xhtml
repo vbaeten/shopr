@@ -22,11 +22,11 @@
 
             <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser eq null}" autoUpdate="true">You are not logged in.</b:panel>
 
-            <b:panel>
+            <b:panel id="loginPanel">
                 <p>Login with bean.</p>
-                <b:form id="loginuserbean" inline="true">
-                    <b:formGroup>
-                        <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true">
+                <b:form id="loginuserbean">
+                    <b:formGroup inline="true">
+                        <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true" inline="true">
                             <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
                             <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
                                            itemLabel="#{user.firstName} #{user.name}"/>
