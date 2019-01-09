@@ -35,6 +35,8 @@ public class User implements Serializable {
     @NotNull
     private String firstName;
 
+    private ShoppingCart shoppingCart;
+
     public User() {
     }
 
@@ -66,5 +68,13 @@ public class User implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 }

@@ -25,7 +25,7 @@ public class LoginController implements Serializable {
     @Inject
     private UserService userService;
 
-    private User loggedUser;
+    private User loggedUser = null;
 
     public User getLoggedUser() {
         return loggedUser;
@@ -61,11 +61,6 @@ public class LoginController implements Serializable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    @PostConstruct
-    public void init() {
-        this.loggedUser = null;
     }
 
     public void login(User user) {

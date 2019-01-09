@@ -6,27 +6,16 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="shoppingcart")
 public class ShoppingCart implements Serializable {
 
     @Id
-    @GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
+    @OneToOne
     private User user;
 
     @OneToMany
     private List<OrderLine> orderLines;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public User getUser() {
         return user;
@@ -36,11 +25,11 @@ public class ShoppingCart implements Serializable {
         this.user = user;
     }
 
-    public List<OrderLine> getOrderlines() {
+    public List<OrderLine> getOrderLines() {
         return orderLines;
     }
 
-    public void setOrderlines(List<OrderLine> orderlines) {
-        this.orderLines = orderlines;
+    public void setOrderLines(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 }
