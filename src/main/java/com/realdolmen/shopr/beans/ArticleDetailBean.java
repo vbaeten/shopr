@@ -16,7 +16,6 @@ public class ArticleDetailBean implements Serializable {
 
     private int id;
     private Article article;
-    private Lp lp;
 
     @Inject
     private ArticleService articleService;

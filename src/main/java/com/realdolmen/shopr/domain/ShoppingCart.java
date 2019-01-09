@@ -6,16 +6,25 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table
 public class ShoppingCart implements Serializable {
 
     @Id
     private int id;
 
+    @MapsId
     @OneToOne
     private User user;
 
     @OneToMany
     private List<OrderLine> orderLines;
+
+    public ShoppingCart() {
+    }
+
+    public ShoppingCart(int id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;

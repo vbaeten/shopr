@@ -9,11 +9,17 @@ import javax.persistence.*;
                 @NamedQuery(
                         name = OrderLine.FIND_ALL,
                         query = "SELECT o FROM OrderLine o"
+                ),
+
+                @NamedQuery(
+                        name = OrderLine.FIND_BY_USER,
+                        query = "Select o FROM OrderLine o WHERE o.user = :user"
                 )
         }
 )
 public class OrderLine {
     public static final String FIND_ALL = "OrderLine.findAll";
+    public static final String FIND_BY_USER = "OrderLine.findByUser";
 
     @Id
     @GeneratedValue
@@ -30,6 +36,10 @@ public class OrderLine {
     @ManyToOne
     @JoinColumn(name="order_id")
     private Order order;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
 
     public int getId() {
@@ -68,5 +78,11 @@ public class OrderLine {
         return article.getPrice() * quantity;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

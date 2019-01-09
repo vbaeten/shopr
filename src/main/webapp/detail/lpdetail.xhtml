@@ -14,6 +14,8 @@
             <f:metadata>
                 <f:viewParam name="id" value="#{lpDetailBean.id}"/>
                 <f:event type="preRenderView" listener="#{lpDetailBean.init}"/>
+                <f:event listener="#{loginBean.init}" type="preRenderView"/>
+
             </f:metadata>
             <p>Details of this article</p>
             <b:panel>
@@ -24,7 +26,7 @@
                     <b:commandButton value="Cart" action="#{orderLineController.addToCart(lpDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
                     <b:form inline="true">
                         <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                        <b:commandButton value="Order" action="#{orderLineController.addToOrder(lpDetailBean.id, orderLineController.quantity)}"/>
+                        <b:commandButton value="Order" action="#{orderLineController.addToOrder(lpDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
                     </b:form>
                 </b:form>
             </b:panel>

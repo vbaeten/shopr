@@ -35,8 +35,6 @@ public class User implements Serializable {
     @NotNull
     private String firstName;
 
-    private ShoppingCart shoppingCart;
-
     public User() {
     }
 
@@ -70,11 +68,4 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
 }

@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.beans.LoginBean;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.ShoppingCart;
@@ -23,8 +24,10 @@ public class OrderLineController implements Serializable {
     private ShoppingCartService shoppingCartService;
     @Inject
     private UserService userService;
+    @Inject
+    private LoginBean loginBean;
 
-    private ShoppingCart shoppingCart = new ShoppingCart();
+    private ShoppingCart newShoppingCart;
     private Order newOrder = new Order();
     private OrderLine orderLine;
     private int quantity = 1;
@@ -39,17 +42,17 @@ public class OrderLineController implements Serializable {
     }
 
     public void addToCart(int id, int quantity, int userId) {
-        shoppingCartService.createShoppingCart(shoppingCart);
-        shoppingCart.setUser(userService.findUserById(userId));
         orderLine = new OrderLine();
+        this.orderLine.setUser(userService.findUserById(userId));
         this.orderLine.setQuantity(quantity);
         this.orderLine.setArticle(articleService.findArticleById(id));
         orderLineService.insertOrderLine(orderLine);
     }
 
-    public void addToOrder(int id, int quantity) {
+    public void addToOrder(int id, int quantity, int userId) {
         orderService.createOrder(newOrder);
         orderLine = new OrderLine();
+        this.orderLine.setUser(userService.findUserById(userId));
         this.orderLine.setQuantity(quantity);
         this.orderLine.setArticle(articleService.findArticleById(id));
         orderLineService.insertOrderLine(orderLine);

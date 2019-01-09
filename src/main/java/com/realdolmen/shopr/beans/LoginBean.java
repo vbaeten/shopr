@@ -54,6 +54,7 @@ public class LoginBean implements Serializable {
 
     public void login(int id) {
         this.loggedUser = userService.findUserById(id);
+        this.shoppingCart = shoppingCartService.findShoppingCartById(id);
         System.out.println(this.loggedUser);
     }
 

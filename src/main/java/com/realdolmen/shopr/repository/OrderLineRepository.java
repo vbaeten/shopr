@@ -19,6 +19,10 @@ public class OrderLineRepository {
         return entityManager.createNamedQuery(OrderLine.FIND_ALL, OrderLine.class).getResultList();
     }
 
+    public OrderLine finddOrderLinesByUser(int id) {
+        return null;
+    }
+
     public void insertOrderLine(OrderLine orderLine) {
         entityManager.persist(orderLine);
     }

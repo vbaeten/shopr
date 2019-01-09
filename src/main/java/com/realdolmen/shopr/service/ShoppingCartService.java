@@ -16,7 +16,7 @@ public class ShoppingCartService {
         return shoppingCartRepository.findById(id);
     }
 
-    public void createShoppingCart(ShoppingCart shoppingCart) {
+    public void insert(ShoppingCart shoppingCart) {
         shoppingCartRepository.createShoppingCart(shoppingCart);
     }
 

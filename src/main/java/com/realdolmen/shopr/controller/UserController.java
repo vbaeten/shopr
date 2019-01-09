@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.ShoppingCartService;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
@@ -12,10 +14,13 @@ import java.util.List;
 @ViewScoped
 public class UserController {
 
-    private User newUser = new User();
-
     @Inject
     private UserService userService;
+    @Inject
+    private ShoppingCartService shoppingCartService;
+
+    private User newUser = new User();
+    private ShoppingCart newShoppingCart = new ShoppingCart();
 
     public User getNewUser() {
         return newUser;

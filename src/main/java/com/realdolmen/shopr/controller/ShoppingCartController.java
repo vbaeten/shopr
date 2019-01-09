@@ -21,13 +21,13 @@ public class ShoppingCartController {
     @Inject
     private ShoppingCartService shoppingCartService;
 
-    private ShoppingCart shoppingCart = new ShoppingCart();
+    private ShoppingCart shoppingCart;
     private int id;
     private User user;
     private List<OrderLine> orderLines;
 
     public void createShoppingCart() {
-        this.shoppingCartService.createShoppingCart(shoppingCart);
+        this.shoppingCartService.insert(shoppingCart);
     }
 
     public ShoppingCart getShoppingCart() {
