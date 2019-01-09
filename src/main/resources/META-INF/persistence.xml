@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-<persistence-unit name="">
+<persistence-unit name="" transaction-type="JTA">
     <jta-data-source>java:/shoprDS</jta-data-source>
     <properties>
         <property name="hibernate.show_sql" value="true" />
@@ -10,6 +10,10 @@
         <property name="hibernate.id.new_generator_mappings" value="true" />
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        <property name="javax.persistence.sql-load-script-source" value="sql/shopr_ddl.sql" />
+
+
+
     </properties>
 </persistence-unit>
 </persistence>

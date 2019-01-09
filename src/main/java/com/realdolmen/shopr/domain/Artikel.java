@@ -1,15 +1,21 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Created by TLMBM39 on 26/12/2018.
  */
-@MappedSuperclass
-public abstract  class Artikel {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
+                @NamedQuery(
+                        name = Artikel.FIND_ALL,
+                        query = "SELECT u FROM Artikel u"
+                )
+
+
+public   class Artikel {
+    public static final String FIND_ALL = "Artikel.findAll";
     @Id
     @GeneratedValue
     private int id;

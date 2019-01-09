@@ -32,5 +32,8 @@ public class UserService {
     public void insert(User user) {
         userRepository.insert(user);
     }
+    public void removeById(int id) {
+        userRepository.remove(id);
+    }
 
 }

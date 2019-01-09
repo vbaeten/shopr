@@ -7,15 +7,14 @@ import java.io.Serializable;
  * Created by TLMBM39 on 26/12/2018.
  */
 
-@MappedSuperclass
+@Entity
 @Table(name = "Boek")
 @DiscriminatorValue("Boek")
 @Inheritance(strategy = InheritanceType.JOINED)
 
+
 public  abstract class Boek extends Artikel implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+
     @Column
     private  String Auteur;
     @Column
@@ -23,10 +22,7 @@ public  abstract class Boek extends Artikel implements Serializable{
     @Column
     private String ISBN;
 
-    @Override
-    public int getId() {
-        return Id;
-    }
+
 
     public String getISBN() {
         return ISBN;
