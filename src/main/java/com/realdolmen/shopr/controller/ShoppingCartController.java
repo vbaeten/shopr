@@ -5,6 +5,7 @@ import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.ShoppingCartService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -26,7 +27,7 @@ public class ShoppingCartController {
     private User user;
     private List<OrderLine> orderLines;
 
-    public void createShoppingCart() {
+    public void loadShoppingCart() {
         this.shoppingCartService.insert(newShoppingCart);
     }
 
