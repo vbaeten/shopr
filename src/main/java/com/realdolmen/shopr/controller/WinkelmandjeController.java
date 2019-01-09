@@ -4,16 +4,12 @@ import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import static org.omnifaces.util.Faces.redirect;
 
 @SessionScoped
 @ManagedBean
@@ -33,16 +29,16 @@ public class WinkelmandjeController implements Serializable
     private int aantalArtikelsTotaal = 0;
     private int totaalBedragBestelling;
     private boolean betalingsPanel = false;
-    private boolean betaalButtonHide = false ;
+    private boolean winkelmandButtonsHide = false ;
 
-    public boolean isBetaalButtonHide()
+    public boolean isWinkelmandButtonsHide()
     {
-        return betaalButtonHide;
+        return winkelmandButtonsHide;
     }
 
-    public void setBetaalButtonHide(boolean betaalButtonHide)
+    public void setWinkelmandButtonsHide(boolean winkelmandButtonsHide)
     {
-        this.betaalButtonHide = betaalButtonHide;
+        this.winkelmandButtonsHide = winkelmandButtonsHide;
     }
 
     public boolean isBetalingsPanel()
@@ -108,7 +104,7 @@ public class WinkelmandjeController implements Serializable
         boolean notFound = true;
 
         legeLijst = artikelsInMandje.isEmpty();
-        betaalButtonHide = !artikelsInMandje.isEmpty();
+        winkelmandButtonsHide = !artikelsInMandje.isEmpty();
 
         if (legeLijst == false)
         {
@@ -154,7 +150,8 @@ totaalBestelling();
     public void resetWinkelmand()
     {
         artikelsInMandje = new ArrayList<>();
-        betaalButtonHide = false;
+         winkelmandButtonsHide = false;
+         totaalBedragBestelling = 0;
 //        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 //        return "index?faces-redirect=true";
     }

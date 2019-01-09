@@ -6,6 +6,7 @@ public enum EnumGameGenre
     RPG,
     FPS,
     RTS,
-    RACE
+    RACE,
+    PUZZLE
 
 }

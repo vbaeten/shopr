@@ -4,48 +4,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <b:container>
                 <b:form>
-                    <b:panel>
-                        <b:form>
-                            <b:dataTable value="#{winkelmandjeController.artikelsInMandje}" var="artikels"
-                                         border="false" paginated="false"
-                                         searching="false" info="false"
-                                           >
-                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.type}"/>
-                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.titel}"/>
-                                <b:dataTableColumn orderable="false" value="#{artikels.aantal}"/>
-                                <b:dataTableColumn orderable="false" value="#{artikels.artikel.prijs}"/>
-                                <b:dataTableColumn orderable="false" label="#{msgs['artikel.totaal']}" value="#{artikels.totaalBedragLijn}" order="asc"/>
-                            </b:dataTable>
-                            <h:outputLabel for="inhoudfictie" value="#{msgs['artikel.totaal']}  :   "/>
-                            <h:outputLabel id="inhoudfictie" value="$ #{winkelmandjeController.totaalBedragBestelling}"/>
 
-                            <b:commandButton rendered="#{winkelmandjeController.betaalButtonHide eq true}"
-                                             class="btn btn-primary" style="background: #52489c"
-                                             value="#{msgs['bestelling.betaal']}"
+                    <p:panelGrid>
+                        <p:dataList value="#{winkelmandjeController.artikelsInMandje}" var="artikels"
+                                    emptyMessage="Winkelwagen leeg"
+                                    type="definition">
+                            <f:facet name="header">
+                                Winkelwagen
+                            </f:facet>
 
-                                             action="#{winkelmandjeController.betaalPaneel}">
-                            </b:commandButton>
+                            #{artikels.artikel.type}, Titel: #{artikels.artikel.titel}
+                            <br></br>
+                            <f:facet name="description">
+                                #{artikels.aantal} X $ #{artikels.artikel.prijs} = $ #{artikels.totaalBedragLijn}
+                            </f:facet>
+                        </p:dataList>
 
-                            <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                             value="#{msgs['bestelling.reset']}"
-                                             action="#{winkelmandjeController.resetWinkelmand}">
-                            </b:commandButton>
+    Totaal: $ #{winkelmandjeController.totaalBedragBestelling}
+<p:row>
+    <b:commandButton rendered="#{winkelmandjeController.winkelmandButtonsHide eq true}"
+    class="btn btn-primary" style="background: #52489c"
+    value="#{msgs['bestelling.betaal']}"
 
-                        </b:form>
-                    </b:panel>
-                    <b:panel rendered="#{winkelmandjeController.betalingsPanel eq true}">
+    action="#{winkelmandjeController.betaalPaneel}">
+    </b:commandButton>
 
+    <b:commandButton rendered="#{winkelmandjeController.winkelmandButtonsHide eq true}"
+    class="btn btn-primary" style="background: #52489c"
+    value="#{msgs['bestelling.reset']}"
+    action="#{winkelmandjeController.resetWinkelmand}">
+    </b:commandButton>
 
+</p:row>
 
-
-                    </b:panel>
+                    </p:panelGrid>
                 </b:form>
             </b:container>
         </ui:define>

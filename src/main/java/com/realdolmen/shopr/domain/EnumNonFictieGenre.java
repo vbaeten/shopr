@@ -5,7 +5,8 @@ public enum EnumNonFictieGenre
     GESCHIEDENIS,
     KOOKBOEK,
     WETENSCHAP,
-    SPORT
+    SPORT,
+    RELIGIE
 
 
 }
