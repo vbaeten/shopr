@@ -5,16 +5,17 @@ import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class UserController {
 
     private User newUser = new User();
-
+    private User loggedInUser = new User();
     @Inject
     private UserService userService;
 
@@ -33,5 +34,10 @@ public class UserController {
     public void submit(){
         this.userService.insert(newUser);
     }
+
+//    public void login() {
+//        this.loggedInUser =
+//    }
+
 
 }

@@ -3,17 +3,16 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:event type="preRenderView" listener="#{gameController.initDetailView(param.id)}" />
+</f:metadata>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>game detail page</p>
-    <b:messages/>
-    <f:metadata>
-        <f:viewParam name="id" value="#{articleController.selectedId}"/>
-    </f:metadata>
     <b:form id="games">
-        <b:dataTable value="#{articleController.article}"
+        <b:messages/>
+        <b:dataTable value="#{gameController.game}" id="gamesTable"
                      var="game" caption="This is a the detail page for a game.">
             <b:dataTableColumn value="#{game.type}" label="type" />
             <b:dataTableColumn value="#{game.title}" label="title" />
@@ -22,16 +21,16 @@
             <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
             <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
             <b:dataTableColumn value="#{game.id}" label="product code"/>
-            <b:dataTableColumn>
-                <b:commandButton value="click" onclick="#{articleController.test()}" />
-
+            <b:dataTableColumn label="Edit"
+                               orderable="false"
+                               style="text-align:center">
             </b:dataTableColumn>
+            <h:column>
+                <h:commandLink value="verwijder" immediate="true" action="#{gameController.removeGame(game)}"/>
+            </h:column>
         </b:dataTable>
-
-
-
-
+        <b:commandButton value="verwijder" immediate="true" action="#{gameController.removeGame(game)}" >
+        </b:commandButton>
     </b:form>
-
 </h:body>
 </html>

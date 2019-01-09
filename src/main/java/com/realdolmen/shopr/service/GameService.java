@@ -36,6 +36,4 @@ public class GameService {
         Game game = gameRepository.findById(id);
         gameRepository.remove(game);
     }
-
-
 }

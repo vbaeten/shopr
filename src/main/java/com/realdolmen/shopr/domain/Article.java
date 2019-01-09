@@ -87,4 +87,6 @@ public abstract class Article {
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
     }
+
+
 }

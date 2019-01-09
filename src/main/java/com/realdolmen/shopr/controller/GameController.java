@@ -1,39 +1,36 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Book;
 import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.domain.LP;
-import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.domain.enums.GameGenre;
 import com.realdolmen.shopr.service.GameService;
-import com.realdolmen.shopr.service.LPService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
-@RequestScoped
+
+@ViewScoped
 @ManagedBean
 public class GameController {
-    Game game = new Game();
 
     @Inject
     private GameService gameService;
+    private Game game = new Game();
 
-    public Game getGame() { return  this.game;}
-
-    public void setGame(Game game){
-        this.game = game;
+    public void initDetailView(Long id) {
+        this.game = gameService.findGameById(id);
     }
 
-    public List<Game> getGames(){
+    public List<Game> getGames() {
         return this.gameService.findAllGames();
     }
 
-    public List<GameGenre> getGameGenres() {return Arrays.asList(GameGenre.values());}
+    public List<GameGenre> getGameGenres() {
+        return Arrays.asList(GameGenre.values());
+    }
 
-    public void add(Game game){
+    public void add(Game game) {
         this.gameService.insert(game);
     }
 
@@ -45,8 +42,16 @@ public class GameController {
         this.gameService.insert(game);
         return "overview";
     }
+
     public void removeGame(Game game) {
         gameService.removeById(game.getId());
     }
 
+    public Game getGame() {
+        return this.game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }

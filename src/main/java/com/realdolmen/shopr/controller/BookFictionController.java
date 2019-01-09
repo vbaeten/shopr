@@ -1,44 +1,37 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Book;
-import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.service.BookFictionService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class BookFictionController {
-    BookFiction bookFiction = new BookFiction();
-
     @Inject
-    BookFictionService bookFictionService;
+    private BookFictionService bookFictionService;
+    private BookFiction bookFiction = new BookFiction();
 
-    public BookFiction getBookFiction() { return  this.bookFiction;}
-
-    public List<BookGenre> getBookGenres() {return Arrays.asList(BookGenre.values());}
-
-    public void setBookFiction(BookFiction bookFiction){
-        this.bookFiction = bookFiction;
+    public void initDetailView(Long id) {
+        this.bookFiction = bookFictionService.findBookFictionById(id);
     }
 
-    public List<BookFiction> getBookFictions(){
-        return this.bookFictionService.findAllBooksFictions();
+    public List<BookFiction> getBookFictions() {
+        return this.bookFictionService.findAllBookFictions();
     }
 
-    public void add(BookFiction bookFiction){
+    public List<BookGenre> getBookGenres() {
+        return Arrays.asList(BookGenre.values());
+    }
+
+    public void add(BookFiction bookFiction) {
         this.bookFictionService.insert(bookFiction);
     }
+
     public BookFiction getBookFictionbyId(Long id) {
         return bookFictionService.findBookFictionById(id);
     }
@@ -46,5 +39,17 @@ public class BookFictionController {
     public String saveBookFiction() {
         this.bookFictionService.insert(bookFiction);
         return "overview";
+    }
+
+    public void removeBookFiction(BookFiction bookFiction) {
+        bookFictionService.removeBookFictionById(bookFiction.getId());
+    }
+
+    public BookFiction getBookFiction() {
+        return this.bookFiction;
+    }
+
+    public void setBookFiction(BookFiction bookFiction) {
+        this.bookFiction = bookFiction;
     }
 }

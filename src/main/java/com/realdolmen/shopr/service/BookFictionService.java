@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.BookFiction;
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.BookFictionRepository;
 
@@ -16,7 +17,7 @@ public class BookFictionService {
         return bookFictionRepository.findById(id);
     }
 
-    public List<BookFiction> findAllBooksFictions() {
+    public List<BookFiction> findAllBookFictions() {
         return bookFictionRepository.findAll();
     }
 
@@ -31,6 +32,11 @@ public class BookFictionService {
 
     public void insert(BookFiction bookFiction) {
         bookFictionRepository.insert(bookFiction);
+    }
+
+    public void removeBookFictionById (Long id) {
+        BookFiction bookFiction = bookFictionRepository.findById(id);
+        bookFictionRepository.remove(bookFiction);
     }
 
 }

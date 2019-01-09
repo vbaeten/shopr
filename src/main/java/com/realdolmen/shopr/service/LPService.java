@@ -28,7 +28,7 @@ public class LPService {
         lP.setTitle(newTitle);
     }
 
-    public void removeLP(Long id){
+    public void removeLPById(Long id){
         LP lP = lPRepository.findById(id);
         lPRepository.removeLP(lP);
     }

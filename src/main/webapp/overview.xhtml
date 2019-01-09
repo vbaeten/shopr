@@ -3,8 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <h:form>
@@ -12,18 +11,35 @@
                      var="article">
             <b:dataTableColumn value="#{article.type}" label="type"/>
             <b:dataTableColumn value="#{article.title}" label="title"/>
-            <b:dataTableColumn value="#{articleController.creator(article)}" label="Author/Artist/Publisher"/>
+            <b:dataTableColumn label="Author/Artist/Publisher">
+                <!--Get author/artist/publisher based on type of article-->
+                <h:outputText rendered="#{article.type eq 'lp'}" value="#{article.artist}"/>
+                <h:outputText rendered="#{article.type eq 'game'}" value="#{article.publisher}"/>
+                <h:outputText rendered="#{article.type eq 'fiction'}" value="#{article.author}"/>
+                <h:outputText rendered="#{article.type eq 'nonfiction'}" value="#{article.author}"/>
+                <!---->
+            </b:dataTableColumn>  label="Author/Artist/Publisher"/>
             <b:dataTableColumn value="#{article.price}" label="price"/>
             <b:dataTableColumn value="#{article.id}" label="detail"/>
-            <!--<b:dataTableColumn>-->
-                <!--<b:commandButton value="click" action="#{articleController.test()}" />-->
-
-            <!--</b:dataTableColumn>-->
-            <b:dataTableColumn>
-                <b:commandButton value="Detail" action="#{articleController.goToArticleDetail(article)}">
-                    <f:param name="id" value="#{article.id}"/>
-                </b:commandButton>
+            <b:dataTableColumn label="Details">
+                <!-- Call different view on article type and pass id param -->
+                <h:link rendered="#{article.type eq 'lp'}" value="Details" outcome="lpdetail">
+                    <f:param name="id" value="#{article.id}" />
+                </h:link>
+                <h:link rendered="#{article.type eq 'game'}" value="Details" outcome="gamedetail">
+                    <f:param name="id" value="#{article.id}" />
+                </h:link>
+                <h:link rendered="#{article.type eq 'fiction'}" value="Details" outcome="bookfictiondetail">
+                    <f:param name="id" value="#{article.id}" />
+                </h:link>
+                <h:link rendered="#{article.type eq 'nonfiction'}" value="Details" outcome="booknonfictiondetail">
+                    <f:param name="id" value="#{article.id}" />
+                </h:link>
+                <!---->
             </b:dataTableColumn>
+        <b:dataTableColumn>
+            <b:commandButton value="verwijder" immediate="true" action="#{articleController.removeGame(game)}" />
+        </b:dataTableColumn>
         </b:dataTable>
     </h:form>
     <b:navLink value="Add an article to Shopr" href="articlecreation.xhtml"></b:navLink>

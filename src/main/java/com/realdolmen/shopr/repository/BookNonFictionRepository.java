@@ -27,5 +27,8 @@ public class BookNonFictionRepository {
     public void insert(BookNonFiction bookNonFiction) {
         entityManager.persist(bookNonFiction);
     }
+
+    public void remove(BookNonFiction bookNonFiction) {
+        entityManager.remove(bookNonFiction);}
 }
 

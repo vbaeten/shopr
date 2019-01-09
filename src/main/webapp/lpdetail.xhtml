@@ -5,22 +5,26 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+<f:metadata>
+    <f:event type="preRenderView" listener="#{lPController.initDetailView(param.id)}" />
+</f:metadata>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
     <p>lp detail page</p>
-
-    <h:form>
-        <f:metadata>
-            <f:viewParam name="id" value="#{articleController.selectedId}"/>
-        </f:metadata>
-        <b:dataTable value="#{articleController.article}"
-                     var="lp" caption="This is a the detail page for an LP.">
+    <b:form id="lps">
+        <b:messages/>
+        <b:dataTable value="#{lPController.LP}" id="lpsTable"
+                     var="lp" caption="This is a the detail page for a lp.">
             <b:dataTableColumn value="#{lp.type}" label="type" />
             <b:dataTableColumn value="#{lp.title}" label="title" />
             <b:dataTableColumn value="#{lp.price}" label="price"/>
-            <b:dataTableColumn value="#{lp.artist}"  label="artist"/>
-            <b:dataTableColumn value="#{lp.id}" label="productcode"/>
+            <b:dataTableColumn value="#{lp.artist}" label="artist"/>
+            <b:dataTableColumn value="#{lp.LPMusicGenre}" label="Music Genre"/>
+            <b:dataTableColumn value="#{lp.id}" label="Product code"/>
+            <h:column>
+                <h:commandLink value="verwijder" immediate="true" action="#{lPController.removeLP(lPController.getLPbyId(lp))}"/>
+            </h:column>
         </b:dataTable>
-    </h:form>
+    </b:form>
 </h:body>
 </html>

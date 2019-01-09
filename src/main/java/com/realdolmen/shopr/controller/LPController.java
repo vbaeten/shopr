@@ -1,51 +1,55 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
-import com.realdolmen.shopr.domain.enums.GameGenre;
 import com.realdolmen.shopr.domain.enums.LPMusicGenre;
 import com.realdolmen.shopr.service.LPService;
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class LPController {
-
-    LP lp = new LP();
 
     @Inject
     private LPService lpService;
+    private LP lp = new LP();
 
-    public LP getLp(){
-        return this.lp;
+    public void initDetailView(Long id) {
+        this.lp = lpService.findLPById(id);
     }
 
-    public LP getLPById(Long id) {
-        return lpService.findLPById(id);
-    }
-
-    public void setLp(LP lp){
-        this.lp = lp;
-    }
-
-    public List<LP> getLPS(){
+    public List<LP> getLPs() {
         return this.lpService.findAllLPS();
     }
 
-    public void add(LP lp){
+    public List<LPMusicGenre> getLPGenres() {
+        return Arrays.asList(LPMusicGenre.values());
+    }
+
+    public void add(LP lp) {
         this.lpService.insert(lp);
     }
 
-    public List<LPMusicGenre> getMusicGenres() {return Arrays.asList(LPMusicGenre.values());}
+    public LP getLPbyId(Long id) {
+        return lpService.findLPById(id);
+    }
 
     public String saveLP() {
         this.lpService.insert(lp);
         return "overview";
+    }
+
+    public void removeLP(LP lp) {
+        lpService.removeLPById(lp.getId());
+    }
+
+    public LP getLP() {
+        return this.lp;
+    }
+
+    public void setLP(LP lp) {
+        this.lp = lp;
     }
 }

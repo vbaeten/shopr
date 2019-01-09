@@ -6,14 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
+<f:metadata>
+    <f:event type="preRenderView" listener="#{bookFictionController.initDetailView(param.id)}" />
+</f:metadata>
 <h:body>
-    <p>book fiction detail</p>
-    <f:metadata>
-        <f:viewParam name="id" value="#{articleController.selectedId}"/>
-    </f:metadata>
-    <h:form>
-        <b:dataTable value="#{articleController.article}"
-                     var="bookfiction" caption="This is a the detail page for a book of the type fiction.">
+    <p>book fiction detail page</p>
+    <b:form id="bookfictions">
+        <b:messages/>
+        <b:dataTable value="#{bookFictionController.bookFiction}" id="bookFictionTable"
+                     var="bookfiction" caption="This is a the detail page for a Fiction Book.">
             <b:dataTableColumn value="#{bookfiction.type}" label="type" />
             <b:dataTableColumn value="#{bookfiction.title}" label="title" />
             <b:dataTableColumn value="#{bookfiction.price}" label="price"/>
@@ -23,22 +24,7 @@
             <b:dataTableColumn value="#{bookfiction.bookGenre}"  label="bookgenre"/>
             <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
             <b:dataTableColumn value="#{bookfiction.id}" label="productcode"/>
-            <!--<b:dataTableColumn label="Edit"-->
-                               <!--orderable="false"-->
-                               <!--style="text-align:center">-->
-                <!--<b:commandButton value="Edit"-->
-                                 <!--icon="edit"-->
-                                 <!--look="primary"/>-->
-            <!--</b:dataTableColumn>-->
-            <!--<b:dataTableColumn label="Delete"-->
-                               <!--orderable="false"-->
-                               <!--style="text-align:center">-->
-                <!--<b:commandButton value="Delete"-->
-                                 <!--icon="delete"-->
-                                 <!--look="danger"-->
-                            <!--/>-->
-            <!--</b:dataTableColumn>-->
         </b:dataTable>
-    </h:form>
+    </b:form>
 </h:body>
 </html>

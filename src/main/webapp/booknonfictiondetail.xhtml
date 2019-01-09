@@ -6,22 +6,23 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
+<f:metadata>
+    <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.id)}" />
+</f:metadata>
 <h:body>
-    <p>book non fiction detail</p>
-    <f:metadata>
-        <f:viewParam name="id" value="#{articleController.selectedId}"/>
-    </f:metadata>
-    <h:form>
-        <b:dataTable value="#{articleController.article}"
-                     var="booknonfiction" caption="This is a the detail page for a book of the type non-fiction.">
-            <b:dataTableColumn value="#{booknonfiction.title}" label="title" />
-            <b:dataTableColumn value="#{booknonfiction.price}" label="price"/>
-            <b:dataTableColumn value="#{booknonfiction.author}"  label="author"/>
-            <b:dataTableColumn value="#{booknonfiction.isbn}"  label="isbn"/>
-            <b:dataTableColumn value="#{booknonfiction.numberOfPages}"  label="number of pages"/>
-            <b:dataTableColumn value="#{booknonfiction.bookSubjectNF}"  label="bookgenre"/>
-            <b:dataTableColumn value="#{booknonfiction.id}" label="productcode"/>
+    <p>book non fiction detail page</p>
+    <b:form id="booknonfictions">
+        <b:messages/>
+        <b:dataTable value="#{bookNonFictionController.bookNonFiction}" id="bookNonFictionTable"
+                     var="booknonfiction" caption="This is a the detail page for a Fiction Book.">
+        <b:dataTableColumn value="#{booknonfiction.title}" label="title" />
+        <b:dataTableColumn value="#{booknonfiction.price}" label="price"/>
+        <b:dataTableColumn value="#{booknonfiction.author}"  label="author"/>
+        <b:dataTableColumn value="#{booknonfiction.isbn}"  label="isbn"/>
+        <b:dataTableColumn value="#{booknonfiction.numberOfPages}"  label="number of pages"/>
+        <b:dataTableColumn value="#{booknonfiction.bookSubjectNF}"  label="bookgenre"/>
+        <b:dataTableColumn value="#{booknonfiction.id}" label="productcode"/>
         </b:dataTable>
-    </h:form>
+    </b:form>
 </h:body>
 </html>

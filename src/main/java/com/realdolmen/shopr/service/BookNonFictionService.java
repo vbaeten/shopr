@@ -31,4 +31,9 @@ public class BookNonFictionService {
     public void insert(BookNonFiction bookNonFiction) {
         bookNonFictionRepository.insert(bookNonFiction);
     }
+
+    public void removeBookNonFictionById (Long id) {
+        BookNonFiction bookNonFiction = bookNonFictionRepository.findById(id);
+        bookNonFictionRepository.remove(bookNonFiction);
+    }
 }

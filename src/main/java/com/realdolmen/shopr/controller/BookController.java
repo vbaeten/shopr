@@ -1,17 +1,14 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Book;
-import com.realdolmen.shopr.domain.Book;
-import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.service.BookService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class BookController {
     Book book;
     @Inject
@@ -24,7 +21,6 @@ public class BookController {
     public void setBook(Book book){
         this.book = book;
     }
-//    public String getBookTypeById(Long id) {return this.bookService.findBookById(id).getBooktype();}
     public List<Book> getBooks(){
         return this.bookService.findAllBooks();
     }
