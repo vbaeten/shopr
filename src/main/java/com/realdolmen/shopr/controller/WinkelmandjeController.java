@@ -137,6 +137,46 @@ public class WinkelmandjeController implements Serializable
 totaalBestelling();
 
     }
+
+    public void artikelToevoegenPerStuk(Artikel a)
+    {
+        boolean legeLijst;
+        boolean notFound = true;
+
+        legeLijst = artikelsInMandje.isEmpty();
+        winkelmandButtonsHide = !artikelsInMandje.isEmpty();
+
+        if (legeLijst == false)
+        {
+
+                for (ArtikelLijnInBestelling al: artikelsInMandje)
+                {
+                    if (al.getId() == a.getId())
+                    {
+                        int aantal = al.getAantal() + 1;
+                        al.setAantal(aantal);
+                        int totaal = aantal * a.getPrijs();
+                        al.setTotaalBedragLijn(totaal);
+                        aantalArtikel = 0;
+                        notFound = false;
+                    }
+                }
+
+
+        }
+        if ((legeLijst) || (notFound))
+        {
+            artikelLijnInBestelling = new ArtikelLijnInBestelling();
+            artikelLijnInBestelling.setTotaalBedragLijn(a.getPrijs());
+            artikelLijnInBestelling.setAantal(1);
+            artikelLijnInBestelling.setArtikel(a);
+            artikelLijnInBestelling.setId(a.getId());
+            artikelsInMandje.add(artikelLijnInBestelling);
+            aantalArtikel = 0;
+        }
+totaalBestelling();
+
+    }
     private void totaalBestelling()
     {
         totaalBedragBestelling = 0;
