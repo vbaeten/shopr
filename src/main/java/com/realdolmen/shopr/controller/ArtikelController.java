@@ -25,7 +25,7 @@ public class ArtikelController {
     @Inject
     private NonFictieService nonFictieService;
     @Inject
-    private GameController gameController;
+    private GameService gameService;
     @Inject
     private LpService lpService;
     private int id;
@@ -36,6 +36,15 @@ public class ArtikelController {
 
     @ManagedProperty("#{param.id}")
     private int selectedId;
+
+    private boolean editable;
+
+    public boolean isEditable() {
+        return editable;
+    }
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
 
     public ArtikelTypes[] getArtikelTypes() {
         return ArtikelTypes.values();
@@ -93,14 +102,26 @@ public class ArtikelController {
         return this.artikelService.findArtikelById(id);
     }
 
+    public String editArtikelById(int id) {
+        this.artikel = artikelService.findArtikelById(id);
+        this.editable = true;
+        return null;
+    }
+
+    public String saveArtikelById(int id){
+        this.editable = false;
+        return null;
+    }
+
     public List<Artikel> getAllArtikels() {
         return this.artikelService.findAllArtikels();
     }
 
-    public void removeArtikelById(int id) {
+    public String removeArtikelById(int id) {
         if(id == selectedId){
             this.artikelService.removeArtikelById(id);
         }
+        return "artikelOverzicht?faces-redirect=true";
     }
 
     public Game getGame() {

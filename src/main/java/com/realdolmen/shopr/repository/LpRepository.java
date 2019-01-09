@@ -27,8 +27,7 @@ public class LpRepository {
         entityManager.persist(lp);
     }
 
-    public void remove(int id) {
-        Lp lpById = findById(id);
-        entityManager.remove(lpById);
+    public void remove(Lp lp) {
+        entityManager.remove(lp);
     }
 }

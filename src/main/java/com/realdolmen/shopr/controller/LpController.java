@@ -4,6 +4,7 @@ import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.LpService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;

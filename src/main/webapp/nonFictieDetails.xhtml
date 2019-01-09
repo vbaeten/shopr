@@ -35,7 +35,7 @@
             <b:dataTableColumn label="Onderwerp" value="#{boek.nonFictieOnderwerp}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(boek.id)}"/>
+                <b:commandButton value="delete" onclick="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
             </b:dataTableColumn>
         </b:dataTable>
 

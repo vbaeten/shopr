@@ -20,7 +20,7 @@
 
     <p>#{artikelController.artikel.titel}</p>
 
-    <h:form id="details">
+    <b:form id="details">
         <b:dataTable var="lp" value="#{artikelController.getArtikelById(artikelController.selectedId)}"
                      id="lpArtikelDetailsDataTabel">
             <b:dataTableColumn label="Id" value="#{lp.id}">
@@ -38,10 +38,14 @@
             <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" onclick="#{artikelController.removeArtikelById(lp.id)}"/>
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
             </b:dataTableColumn>
         </b:dataTable>
+    </b:form>
+    <h:form>
+        <b:inputText label="Quantity" id="quantity" value="#{bestellingLijnController.bestellingLijn.quantity}"/>
 
+        <b:commandButton id="submit" value="Submit" action="#{bestellingLijnController.submitQuantity(artikelController.selectedId)}"/>
     </h:form>
 
 

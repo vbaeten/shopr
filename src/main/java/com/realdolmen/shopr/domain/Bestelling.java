@@ -16,12 +16,17 @@ import java.util.List;
                 @NamedQuery(
                         name = Bestelling.FIND_ALL,
                         query = "SELECT b FROM Bestelling b"
+                ),
+                @NamedQuery(
+                        name = Bestelling.FIND_BY_USER_ID,
+                        query = "SELECT b FROM Bestelling b WHERE b.user.id = :id"
                 )
         }
 )
 public class Bestelling {
     public static final String FIND_ALL = "Bestelling.findAll";
     public static final String FIND_BY_ID = "Bestelling.findById";
+    public static final String FIND_BY_USER_ID = "Bestelling.findByUserId";
 
     @Id
     @GeneratedValue
@@ -32,10 +37,11 @@ public class Bestelling {
     private Date datumVanBestelling;
 
     @ManyToMany
-    private List<Artikel> artikels;
+    private List<Artikel> Artikels;
 
     @ManyToOne
     private User user;
+
 
 
     public int getId() {
@@ -51,11 +57,11 @@ public class Bestelling {
     }
 
     public List<Artikel> getArtikels() {
-        return artikels;
+        return Artikels;
     }
 
     public void setArtikels(List<Artikel> artikels) {
-        this.artikels = artikels;
+        Artikels = artikels;
     }
 
     public User getUser() {

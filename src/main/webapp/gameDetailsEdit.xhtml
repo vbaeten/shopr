@@ -45,9 +45,15 @@
             <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Delete">
-                <b:commandButton value="delete" onclick="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
+                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
+            </b:dataTableColumn>
+            <b:dataTableColumn>
+                <b:commandButton value="edit" update="@(.gameArtikelDetailsDataTabel)" onclick="ajax:artikelController.editArtikelById(artikelController.selectedId)"
+                               rendered="#{!artikelController.editable}"/>
             </b:dataTableColumn>
         </b:dataTable>
+
+        <b:commandButton value="Save Changes" onclick="#{artikelController.saveArtikelById(artikelController.selectedId)}" />
 
     </h:form>
 

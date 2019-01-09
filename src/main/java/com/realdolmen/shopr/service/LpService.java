@@ -35,7 +35,8 @@ public class LpService {
     }
 
     public void removeById(int id) {
-        lpRepository.remove(id);
+        Lp lp = lpRepository.findById(id);
+        lpRepository.remove(lp);
     }
 
 }

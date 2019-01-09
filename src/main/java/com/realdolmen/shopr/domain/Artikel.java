@@ -56,6 +56,10 @@ public abstract class Artikel {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitel() {
         return titel;
     }
