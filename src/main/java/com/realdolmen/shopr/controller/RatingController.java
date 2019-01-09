@@ -35,9 +35,29 @@ public class RatingController
     Artikel reivewArtikel = new Artikel();
     Beoordeling beoordeling= new Beoordeling();
     List<Beoordeling> beoordelingslijstBepaaldArtikel = new ArrayList<>();
+    List<Beoordeling> ratingsUser = new ArrayList<>();
     User currentuser;
+    private boolean detailPanel = false;
 
+    public List<Beoordeling> getRatingsUser()
+    {
+        return ratingsUser;
+    }
 
+    public void setRatingsUser(List<Beoordeling> ratingsUser)
+    {
+        this.ratingsUser = ratingsUser;
+    }
+
+    public boolean isDetailPanel()
+    {
+        return detailPanel;
+    }
+
+    public void setDetailPanel(boolean detailPanel)
+    {
+        this.detailPanel = detailPanel;
+    }
 
     public User getCurrentuser()
     {
@@ -97,6 +117,12 @@ public class RatingController
         this.beoordelingslijstBepaaldArtikel = ratingService.beoordelingenBepaaldArtikel(id);
 
         this.setReivewArtikel(overviewService.findArtikelById(id));
+    }
+
+    public void ratingsUser()
+    {
+        detailPanel = true;
+        this.ratingService.findAllBeoordelingenByUserId(11);
     }
 
 

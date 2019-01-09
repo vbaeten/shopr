@@ -7,22 +7,22 @@
     <h:form>
         <p:growl id="messages"/>
         <b:navBar brand="#{msgs['header.brand']}" brandHref="login.xhtml"  class="navbar navbar-expand-lg navbar-dark bg-primary"
-                  style="background: #59c3c3">
+                  style="background: #749da0">
 
             <b:navbarLinks>
-                <b:navCommandLink action="goToZoek"><b:button
-                    class="btn btn-primary" style="background: #52489c"
+                <b:navCommandLink action="goToZoek"><b:button rendered="#{loginController.enumRoles eq 'USER'}"
+                    class="btn btn-primary" style="background: #eca400"
                                                               value="#{msgs['header.zoek']}">
 
                 </b:button></b:navCommandLink>
                 <b:navCommandLink action="goToToevoegen"><b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
-                                                                   class="btn btn-primary" style="background: #f45b69"
+                                                                   class="btn btn-primary" style="background: #eca400"
                                                                    value="#{msgs['header.toevoegen']}">
 
                 </b:button ></b:navCommandLink>
                 <b:navCommandLink action="goToEdit">
                     <b:button rendered="#{loginController.enumRoles eq 'ADMIN'}"
-                    class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.edit']}">
+                    class="btn btn-primary" style="background: #eca400" value="#{msgs['header.edit']}">
 
                 </b:button></b:navCommandLink>
 
@@ -37,26 +37,27 @@
 
             </b:navbarLinks>
             <b:navbarLinks pull="right" styleClass="hidden-xs">
-            <b:navCommandLink rendered="#{loginController.enumRoles eq 'USER'}" action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #4062bb"
-                                                                 value="#{msgs['header.winkelwagen']}">
+            <b:navCommandLink rendered="#{loginController.enumRoles eq 'USER'}" action="goToWinkelwagen"><b:button class="btn btn-primary" style="background: #eca400"
+                                                                iconAwesome="shopping-cart"  value="#{msgs['header.winkelwagen']}">
 
 
                     </b:button></b:navCommandLink>
 
                 <b:navCommandLink action="goToLogin">
                     <b:button rendered="#{loginController.enumRoles eq null }"
-                              class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.login']}">
+                              class="btn btn-primary" style="background: #eca400" iconAwesome="sign-in" value="#{msgs['header.login']}">
 
             </b:button></b:navCommandLink>
 
                 <b:navCommandLink action="#{loginController.logout}">
                     <b:button rendered="#{loginController.enumRoles eq 'USER' || loginController.enumRoles eq 'ADMIN' }"
-                              class="btn btn-primary" style="background: #f45b69" value="#{msgs['header.logout']}">
+                              class="btn btn-primary" style="background: #eca400" iconAwesome="sign-out" value="#{msgs['header.logout']}">
 
             </b:button></b:navCommandLink>
 
-                <b:navCommandLink rendered="#{loginController.enumRoles eq 'ADMIN'}" action="goToEditUsers"><b:button class="btn btn-primary" style="background: #4062bb"
-                                                                 value="#{msgs['header.admin']}">
+                <b:navCommandLink rendered="#{loginController.enumRoles eq 'ADMIN'}" action="goToEditUsers">
+                    <b:button class="btn btn-primary" style="background: #eca400"
+                              iconAwesome="unlock" value="#{msgs['header.admin']}">
 
             </b:button></b:navCommandLink>
             </b:navbarLinks>
