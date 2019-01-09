@@ -3,11 +3,9 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.service.FictionService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
 @ManagedBean
@@ -39,7 +37,7 @@ public class FictionController {
         return this.service.findByTitle(title);
     }
 
-    public void submit() {
+    public void save() {
         this.service.save(newFiction);
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Fiction extends Book {
 
     @Enumerated
-    private Book_Genre genre;
+    private FictionGenre genre;
 
     @Column(length = 255)
     private String summary;
@@ -16,11 +16,11 @@ public class Fiction extends Book {
     public Fiction() {
     }
 
-    public Book_Genre getGenre() {
+    public FictionGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(Book_Genre bookGenre) {
+    public void setGenre(FictionGenre bookGenre) {
         this.genre = bookGenre;
     }
 

@@ -16,7 +16,7 @@ public class LPController {
     @Inject
     private LPService service;
 
-    public void submit() {
+    public void save() {
         this.service.save(newLp);
         newLp = new LP();
     }

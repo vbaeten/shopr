@@ -13,20 +13,22 @@
             <b:panel>
                 <b:row>
                     <b:column colMd="5">
-                        <!-- TODO write book fields -->
-                        <b:inputText label="Author:" value="#{fictionController.newFiction.author}"></b:inputText>
-                        <b:inputText label="ISBN:" value="#{fictionController.newFiction.isbn}"></b:inputText>
-                        <b:inputText label="Pages:" value="#{fictionController.newFiction.nbPages}"></b:inputText>
-                        <b:inputTextarea label="Summary:" value="#{fictionController.newFiction.summary}"></b:inputTextarea>
-                        <o:importConstants type="com.realdolmen.shopr.domain.Book_Genre"/>
+                        <b:inputText label="Title:" value="#{fictionController.newFiction.title}"/>
+                        <b:inputText label="Author:" value="#{fictionController.newFiction.author}"/>
+                        <b:inputText label="Publisher:" value="#{fictionController.newFiction.publisher}"/>
+                        <b:inputText label="ISBN:" value="#{fictionController.newFiction.isbn}"/>
+                        <b:inputText label="Pages:" value="#{fictionController.newFiction.nbPages}"/>
+                        <b:inputText label="Price:" value="#{fictionController.newFiction.price}"/>
+                        <b:inputTextarea label="Summary:" value="#{fictionController.newFiction.summary}"/>
+                        <o:importConstants type="com.realdolmen.shopr.domain.FictionGenre"/>
                         <b:selectOneMenu label="Genre:"
                                          value="#{fictionController.newFiction.genre}" converter="omnifaces.SelectItemsConverter">
-                            <f:selectItems value="#{Book_Genre}" var="fictionGenre"
-                                           itemLabel="#{fictionGenre}" itemValue="#{fictionGenre}"></f:selectItems>
+                            <f:selectItems value="#{FictionGenre}" var="fictionGenre"
+                                           itemLabel="#{fictionGenre}" itemValue="#{fictionGenre}"/>
                         </b:selectOneMenu>
                     </b:column>
                 </b:row>
-                <b:commandButton action="#{fictionController.submit}" value="submit" look="success" update="@form"></b:commandButton>
+                <b:commandButton action="#{fictionController.save}" value="submit" look="success" update="@form"/>
                 <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
             </b:panel>
         </b:container>

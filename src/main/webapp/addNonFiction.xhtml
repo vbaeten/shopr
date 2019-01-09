@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+
+<b:form>
+    <b:container>
+        <b:panel>
+            <b:row>
+                <b:column colMd="5">
+                    <b:inputText label="Title:" value="#{nonFictionController.newNonFiction.title}"/>
+                    <b:inputText label="Author:" value="#{nonFictionController.newNonFiction.author}"/>
+                    <b:inputText label="Publisher:" value="#{nonFictionController.newNonFiction.publisher}"/>
+                    <b:inputText label="ISBN:" value="#{nonFictionController.newNonFiction.isbn}"/>
+                    <b:inputText label="Pages:" value="#{nonFictionController.newNonFiction.nbPages}"/>
+                    <b:inputText label="Price:" value="#{nonFictionController.newNonFiction.price}"/>
+                    <o:importConstants type="com.realdolmen.shopr.domain.NonFictionGenre"/>
+                    <b:selectOneMenu label="Genre:"
+                                     value="#{nonFictionController.newNonFiction.nonFictionGenre}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItems value="#{NonFictionGenre}" var="nonFictionGenre"
+                                       itemLabel="#{nonFictionGenre}" itemValue="#{nonFictionGenre}"/>
+                    </b:selectOneMenu>
+                </b:column>
+            </b:row>
+            <b:commandButton action="#{nonFictionController.save}" value="submit" look="success" update="@form"/>
+            <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
+        </b:panel>
+    </b:container>
+</b:form>
+
+</h:body>
+</html>

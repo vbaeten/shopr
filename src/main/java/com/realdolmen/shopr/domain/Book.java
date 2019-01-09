@@ -14,7 +14,7 @@ public abstract class Book extends Product {
     private String isbn;
 
     @Column(name = "nb_pages")
-    private Integer nbPages;
+    private int nbPages;
 
     public Book() {
     }
@@ -35,7 +35,7 @@ public abstract class Book extends Product {
         this.isbn = isbn;
     }
 
-    public Integer getNbPages() {
+    public int getNbPages() {
         return nbPages;
     }
 

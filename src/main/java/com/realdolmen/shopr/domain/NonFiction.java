@@ -9,13 +9,13 @@ import javax.persistence.Enumerated;
 public class NonFiction extends Book {
 
     @Enumerated
-    private Subject subject;
+    private NonFictionGenre nonFictionGenre;
 
-    public Subject getSubject() {
-        return subject;
+    public NonFictionGenre getNonFictionGenre() {
+        return nonFictionGenre;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setNonFictionGenre(NonFictionGenre nonFictionGenre) {
+        this.nonFictionGenre = nonFictionGenre;
     }
 }

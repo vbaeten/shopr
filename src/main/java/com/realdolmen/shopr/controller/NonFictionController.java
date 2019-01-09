@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
 @ManagedBean
@@ -15,8 +14,6 @@ import java.util.List;
 public class NonFictionController {
 
     private NonFiction newNonFiction = new NonFiction();
-
-    private NonFiction SelectedItem;
 
     @Inject
     private NonFictionService service;
@@ -33,11 +30,6 @@ public class NonFictionController {
 
     public NonFiction getNonFictionByTitle(String title) { return this.service.findByTitle(title); }
 
-    public void submit() { this.service.save(newNonFiction); }
-
-    @PostConstruct
-    public void init() {
-        newNonFiction.getSubject();
-    }
+    public void save() { this.service.save(newNonFiction); }
 
 }

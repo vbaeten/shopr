@@ -48,10 +48,10 @@ INSERT INTO fiction (id, genre, summary) VALUES (1003, 2,'Detective Summary');
 INSERT INTO fiction (id, genre, summary) VALUES (1004, 3,'Romance Summary');
 INSERT INTO fiction (id, genre, summary) VALUES (1005, 4,'Sci-Fi Summary');
 
-INSERT INTO nonfiction (id, subject) VALUES (1006, 'HISTORY');
-INSERT INTO nonfiction (id, subject) VALUES (1007, 'COOKING');
-INSERT INTO nonfiction (id, subject) VALUES (1008, 'SCIENCE');
-INSERT INTO nonfiction (id, subject) VALUES (1009, 'SPORT');
+INSERT INTO nonfiction (id, nonFictionGenre) VALUES (1006, 'HISTORY');
+INSERT INTO nonfiction (id, nonFictionGenre) VALUES (1007, 'COOKING');
+INSERT INTO nonfiction (id, nonFictionGenre) VALUES (1008, 'SCIENCE');
+INSERT INTO nonfiction (id, nonFictionGenre) VALUES (1009, 'SPORT');
 
 INSERT INTO lp (id, interpreter, genre) VALUES (1010, 'Mikey Gill', 'CLASSIC');
 INSERT INTO lp (id, interpreter, genre)VALUES (1011, 'Leyton Rawlings', 'POP');
