@@ -12,7 +12,7 @@
     <title>ShopR!</title>
 </h:head>
 <h:body>
-    <b:navBar styleClass="myNavBar" inverse="true" fluid="true">
+    <b:navBar id="shoprinavbar" styleClass="myNavBar" inverse="true" fluid="true">
         <b:navbarLinks id="nav-menu-items" pull="left">
             <b:navLink id="nav-menu-items-home" value="Home" outcome="/index"/>
             <b:navLink id="nav-menu-items-user" value="User" outcome="/user"/>
@@ -23,8 +23,25 @@
             <b:navLink id="nav-menu-items-search" value="Search" outcome="/search"/>
         </b:navbarLinks>
         <b:navbarLinks pull="right">
-            <b:dropMenu iconAwesome="user" value="Guest" iconAlign="right">
+            <b:dropMenu iconAwesome="user" value="#{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"
+                        iconAlign="right">
                 <b:navLink value="logout"/>
+                <b:navLink value="login">
+                    <b:form id="navbarlogin" inline="true">
+                        <b:formGroup>
+                            <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true">
+                                <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
+                                <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
+                                               itemLabel="#{user.firstName} #{user.name}"/>
+                            </b:selectOneMenu>
+                            <b:commandButton value="Submit" action="#{loginBean.login(loginBean.loggedUser.id)}"
+                                             ajax="true" update="shoprinavbar"
+                                             autoUpdate="true">
+                                <f:param name="loggedUser" value="#{loginBean.id}"/>
+                            </b:commandButton>
+                        </b:formGroup>
+                    </b:form>
+                </b:navLink>
                 <b:navLink value="shoppingbag" outcome="/shoppingbag"/>
             </b:dropMenu>
         </b:navbarLinks>

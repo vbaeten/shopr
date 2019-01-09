@@ -15,7 +15,6 @@
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
             <f:metadata>
-                <f:viewParam name="id" value="#{loginBean.id}"/>
                 <f:event type="preRenderView" listener="#{loginBean.init}"/>
             </f:metadata>
             <b:panel>

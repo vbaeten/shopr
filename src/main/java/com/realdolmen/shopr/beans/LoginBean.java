@@ -21,7 +21,6 @@ public class LoginBean implements Serializable {
     private UserService userService;
 
     @PostConstruct
-
     public void init() {
         getUserById(id);
     }
@@ -37,8 +36,7 @@ public class LoginBean implements Serializable {
     }
 
     public void logout() {
-        this.id = 0;
-        this.loggedUser = new User();
+        this.loggedUser = null;
     }
 
     public int getId() {

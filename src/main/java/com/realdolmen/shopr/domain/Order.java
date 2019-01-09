@@ -1,45 +1,52 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Order {
+@Table(name = "orders")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Order.FIND_ALL,
+                        query = "SELECT o from Order o"
+                )
+        }
+)
+public class Order implements Serializable {
+
+    public static final String FIND_ALL = "Order.FindAll";
 
     @Id
-    @GeneratedValue
-    private int orderId;
+    private int id;
 
     @Column(name = "order_date")
     private Timestamp orderDate;
 
-//    @OneToMany
-//    @JoinColumn(name = "id")
-//    private List<Article> articles = new ArrayList<>();
-
     @ManyToOne
-    @JoinColumn(name = "user_fk")
+    @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    public double calculateTotal (){
+    public double calculateTotal() {
         double total = 0;
-        for(OrderLine orderLine : orderLines) {
+        for (OrderLine orderLine : orderLines) {
             total += orderLine.calculateSubtotal();
         }
         return total;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getId() {
+        return id;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Timestamp getOrderDate() {

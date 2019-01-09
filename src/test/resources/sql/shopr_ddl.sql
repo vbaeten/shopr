@@ -50,8 +50,7 @@ CREATE TABLE fiction
 
 CREATE TABLE order
 (
-  orderId     int NOT NULL PRIMARY KEY,
-  orderLine
+  orderId int NOT NULL,
 
   PRIMARY KEY (orderId)
   FOREIGN KEY (user_fk) REFERENCES user_id

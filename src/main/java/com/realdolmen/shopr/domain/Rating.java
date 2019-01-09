@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.websocket.OnClose;
 
 @Entity
@@ -8,17 +10,20 @@ import javax.websocket.OnClose;
 public class Rating {
 
     @Id
+    @GeneratedValue
     private int id;
 
     //TODO van 0 tot 10
     @Column
+    @Min(0)
+    @Max(10)
     private int score;
 
     @Column
     private String description;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="user_fk")
     private User user;
 
     @ManyToOne

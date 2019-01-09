@@ -14,10 +14,30 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <p>Add Content Here</p>
+            <b:panel id="shoppingbagnologin" rendered="#{loginBean.loggedUser eq null}">You are not logged in.</b:panel>
+            <b:panel id="shoppingbagview" rendered="#{loginBean.loggedUser != null}">
+                Hi, #{loginBean.loggedUser.firstName}!
+                Order here or continue shopping.
+                <b:form id="shoppingbag">
+                    <b:dataTable>
+                        <b:dataTableColumn label="" value="Article Id"/>
+                        <b:dataTableColumn label="Title" value="Article Type"/>
+                        <b:dataTableColumn label="Price" value="Article Type"/>
+                        <b:dataTableColumn value="Quantity"/>
+                        <b:dataTableColumn value="Total">
+                            <b:commandButton value="Remove from Order"/>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:form>
+            </b:panel>
+            <h:outputText value="Shoppingbag of #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
+            <b:form>
+                <b:commandButton value="Order"></b:commandButton>
+                <b:commandButton value="Empty List"></b:commandButton>
+            </b:form>
         </ui:define>
         <ui:define name="js">
-            <script type="text/javascript" >
+            <script type="text/javascript">
                 setNavMenuItemActive("shoppingbag");
             </script>
         </ui:define>

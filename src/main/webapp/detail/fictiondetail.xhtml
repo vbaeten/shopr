@@ -26,7 +26,7 @@
                 <h:outputText value="#{fictionDetailBean.fiction.synopsis}"/>
                 <b:form inline="true">
                     <b:inputText value="1" mask="numeric" size="5"/>
-                    <b:commandButton value="Order"/>
+                    <b:commandButton value="Order" action="#{orderLineController.addToCart(fictionDetailBean.id)}"/>
                 </b:form>
             </b:panel>
         </ui:define>

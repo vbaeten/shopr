@@ -20,7 +20,7 @@
                 <f:event listener="#{loginBean.init}" type="preRenderView"/>
             </f:metadata>
 
-            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser.name eq null}">You are not logged in. LoginBean</b:panel>
+            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser eq null}" autoUpdate="true">You are not logged in.</b:panel>
 
             <b:panel>
                 <p>Login with bean.</p>
@@ -31,38 +31,21 @@
                             <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
                                            itemLabel="#{user.firstName} #{user.name}"/>
                         </b:selectOneMenu>
-                        <b:commandButton value="Submit" action="#{loginBean.login(loginBean.loggedUser.id)}" ajax="true"
-                                         update="loginviewbean loginpanel" autoUpdate="true">
-                            <f:param name="loggedUser" value="#{loginBean.id}"/>
+                        <b:commandButton value="Submit" actionListener="#{loginBean.login(loginBean.loggedUser.id)}" ajax="true"
+                                         update=":loginviewbean loginpanel shoprinavbar" autoUpdate="true" render=":loginviebean">
+                            <f:param name="loggedUser" value="#{loginBean.id}" />
                         </b:commandButton>
                     </b:formGroup>
                 </b:form>
-                <b:button value="Logout" action="#{loginBean.logout()}" ajax="true" autoUpdate="true" update="loginviewbean loginpanel"/>
+                <b:form>
+                    <b:commandButton value="Logout" action="#{loginBean.logout()}" ajax="true" autoUpdate="true" update="loginviewbean loginpanel"/>
+                </b:form>
             </b:panel>
 
             <b:panel id="loginpanel">
                 <h3>Welcome to SHOPR!!!</h3>
-                <h:outputText value="loginbean: Logged in as #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
+                <h:outputText value="Logged in as #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
             </b:panel>
-
-
-            <p>Login</p>
-
-
-            <b:form id="loginUserBean" inline="true">
-                <b:formGroup>
-                    <b:selectOneMenu value="#{loginBean.loggedUser}" style="width:200px" select2="true">
-                        <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
-                                       itemLabel="#{user.firstName} #{user.name}"/>
-                    </b:selectOneMenu>
-                    <b:commandButton value="Submit" action="#{loginBean.login(user.id)}"
-                                     update="loginviewbean">
-                        <f:param name="loggedUser" value="#{loginBean.loggedUser}"/>
-                    </b:commandButton>
-                </b:formGroup>
-            </b:form>
-
 
             <p>Register a new user</p>
             <b:form id="addUser">
@@ -85,7 +68,7 @@
                     <b:dataTableColumn value="#{user.firstName}"/>
                     <b:dataTableColumn>
                         <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}"
-                                         actionListener="#{messagesBean.info}" update="@form">
+                                         update="@form" ajax="true">
                             <f:ajax execute="@this" render="@form"/>
                         </b:commandButton>
                     </b:dataTableColumn>

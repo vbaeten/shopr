@@ -1,14 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -30,10 +24,13 @@ public class User implements Serializable {
     public static final String FIND_BY_NAME = "User.findByName";
 
     @Id
+    @GeneratedValue
     private int id;
+
     @Column(name = "name")
     @NotNull
     private String name;
+
     @Column(name = "first_name")
     @NotNull
     private String firstName;

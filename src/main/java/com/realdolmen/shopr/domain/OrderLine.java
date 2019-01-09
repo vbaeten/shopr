@@ -1,11 +1,9 @@
 package com.realdolmen.shopr.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "order_line")
 public class OrderLine {
 
     @Id
@@ -13,12 +11,14 @@ public class OrderLine {
 
     private int quantity;
 
+    private double subTotal;
+
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="article_id")
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name="order_fk")
+    @JoinColumn(name="order_id")
     private Order order;
 
     public int getId() {
@@ -35,6 +35,22 @@ public class OrderLine {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public double calculateSubtotal() {
