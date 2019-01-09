@@ -66,7 +66,9 @@
                                     <f:selectItems value="#{EnumMuziekGenre}"/>
                                 </b:selectOneMenu>
 
-                                <b:commandButton value="Add Lp" action="#{lpController.submit}" />
+                                <b:commandButton styleClass="btn btn-primary"  action="#{lpController.submit}" >
+                        <b:iconAwesome name="save"></b:iconAwesome>
+                                </b:commandButton>
 
 
                     </h:panelGrid>
@@ -109,7 +111,9 @@
                         </b:selectOneMenu>
 
 
-                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{gameController.submit}" />
+                        <b:commandButton styleClass="btn btn-primary"  action="#{gameController.submit}" >
+                            <b:iconAwesome name="save"></b:iconAwesome>
+                        </b:commandButton>
                     </h:panelGrid>
 
 
@@ -157,7 +161,9 @@
                         </b:selectOneMenu>
 
 
-                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{nonFictieController.submit}" />
+                        <b:commandButton styleClass="btn btn-primary"  action="#{nonFictieController.submit}" >
+                            <b:iconAwesome name="save"></b:iconAwesome>
+                        </b:commandButton>
                     </h:panelGrid>
                 </p:panel>
 
@@ -207,7 +213,9 @@
                         </b:selectOneMenu>
 
 
-                        <b:commandButton value="#{msgs['toevoegen.voegtoe']}" action="#{fictieController.submit}" />
+                        <b:commandButton styleClass="btn btn-primary"  action="#{fictieController.submit}" >
+                            <b:iconAwesome name="save"></b:iconAwesome>
+                        </b:commandButton>
                     </h:panelGrid>
                 </p:panel>
 

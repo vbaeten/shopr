@@ -49,15 +49,23 @@
                     </p:column>
 
                     <p:column resizable="true" headerText="#{msgs['artikel.details']}">
-                        <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.details']}"
+                        <b:commandButton styleClass="btn btn-primary"
+
                                          action="#{overviewController.details(artikel)}">
+                            <b:iconAwesome name="info"></b:iconAwesome>
                         </b:commandButton>
+
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                         styleClass="btn btn-primary"
+                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+                        </b:commandButton>
+
 
                     </p:column>
 
                 </p:dataTable>
-<!--#####################################################################################################################################details___________________-->
+                <!--#####################################################################################################################################details___________________-->
 
                 <b:panel id="panelLp" style="margin-bottom:10px; width: 60em"
                          rendered="#{overviewController.getPanelNumber() eq 1}">
@@ -84,10 +92,11 @@
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="2"
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                         value="#{msgs['overview.voegtoe']}"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" styleClass="btn btn-primary"
+
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
@@ -127,15 +136,15 @@
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                         value="#{msgs['overview.voegtoe']}"
+
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
                                   outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"/>
-
 
 
                     </h:panelGrid>
@@ -176,15 +185,15 @@
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                         value="#{msgs['overview.voegtoe']}"
+
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   value="#{msgs['overview.beoordeling']}"
                                   outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"/>
-
 
 
                     </h:panelGrid>
@@ -227,14 +236,16 @@
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                         value="#{msgs['overview.voegtoe']}"
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  value="#{msgs['overview.beoordeling']}"
                                   outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                  onclick="$('.modalPseudoClass').modal()"/>
+                                  onclick="$('.modalPseudoClass').modal()"
+                        iconAwesome="star">
+
+                        </b:button>
 
                     </h:panelGrid>
                 </b:panel>
@@ -243,12 +254,12 @@
             </h:form>
 
 
-<!--#############################################################################################################################################Modal________________-->
+            <!--#############################################################################################################################################Modal________________-->
 
             <b:modal id="reviewmodal" styleClass="modalPseudoClass">
                 <p:dataTable value="#{ratingController.beoordelingslijstBepaaldArtikel}" var="beoordeling">
-                    <p:column resizable="true" headerText="#{msgs['artikel.rating']}" >
-                      <p:rating value="#{beoordeling.score}" readonly="true" />
+                    <p:column resizable="true" headerText="#{msgs['artikel.rating']}">
+                        <p:rating value="#{beoordeling.score}" readonly="true"/>
                     </p:column>
                     <p:column resizable="true" headerText="#{msgs['artikel.beoordeling']}">
                         <h:outputText value="#{beoordeling.onschrijving}"/>
@@ -262,7 +273,7 @@
                 <h:form>
                     <h:panelGrid columns="1">
                         <h:outputLabel for="review" value="#{msgs['overview.rating']}"/>
-                       <p:rating value="#{ratingController.beoordeling.score}"  />
+                        <p:rating value="#{ratingController.beoordeling.score}"/>
                         <h:outputLabel for="review" value="#{msgs['overview.beoordeling']}"/>
 
                         <b:inputTextarea id="review" value="#{ratingController.beoordeling.onschrijving}">
@@ -270,7 +281,7 @@
 
                         </b:inputTextarea>
                         <b:commandButton class="btn btn-primary" value="#{msgs['toevoegen.voegtoe']}"
-                        action="#{ratingController.addBeoordeling()}"/>
+                                         action="#{ratingController.addBeoordeling()}"/>
                     </h:panelGrid>
 
                 </h:form>

@@ -67,14 +67,17 @@
                     </p:column>
 
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
-                        <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.edit']}"
+                        <b:commandButton class="btn btn-primary"
+
                                          action="#{boekController.loadpanelEdit(boek)}">
+                            <b:iconAwesome name="edit"></b:iconAwesome>
+
                         </b:commandButton>
-                        <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.delete']}"
+                        <b:commandButton class="btn btn-primary"
+
                                          action="#{boekController.delete(boek)}"
                                          update="overviewBoeken">
+                            <b:iconAwesome name="trash"></b:iconAwesome>
 
                         </b:commandButton>
 
@@ -130,14 +133,16 @@
 
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.edit']}"
+
                                          action="#{gameController.booleanAndGamePanelGame(game)}">
+                            <b:iconAwesome name="edit"></b:iconAwesome>
                         </b:commandButton>
 
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.delete']}"
+
                                          action="#{gameController.delete(game)}"
                                          update="overviewGames">
+                            <b:iconAwesome name="trash"></b:iconAwesome>
 
                         </b:commandButton>
 
@@ -190,14 +195,16 @@
 
                     <p:column resizable="true" headerText="#{msgs['artikel.edit']}">
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.edit']}"
+
                                          action="#{lpController.booleanAndLpPanelLp(lp)}">
+                            <b:iconAwesome name="edit"></b:iconAwesome>
                         </b:commandButton>
 
                         <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                         value="#{msgs['artikel.delete']}"
+
                                          action="#{lpController.delete(lp)}"
                                          update="overviewLp">
+                            <b:iconAwesome name="trash"></b:iconAwesome>
 
                         </b:commandButton>
 
@@ -245,9 +252,10 @@
 
 
                             <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
-                                             value="#{msgs['artikel.edit']}"
+
                                              onclick="$('.bevestiging').modal()"
                                              action="#{lpController.update}">
+                                <b:iconAwesome name="save"></b:iconAwesome>
                             </b:commandButton>
 
 
@@ -299,9 +307,10 @@
 
 
                             <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
-                                             value="#{msgs['artikel.edit']}"
+
                                              onclick="$('.bevestiging').modal()"
                                              action="#{gameController.update}">
+                                <b:iconAwesome name="save"></b:iconAwesome>
                             </b:commandButton>
 
 
@@ -366,9 +375,10 @@
 
 
                             <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
-                                             value="#{msgs['artikel.edit']}"
+
                                              onclick="$('.bevestiging').modal()"
                                              action="#{boekController.update}">
+                                <b:iconAwesome name="save"></b:iconAwesome>
                             </b:commandButton>
 
 
@@ -428,9 +438,10 @@
 
 
                             <b:commandButton rendered="#{loginController.enumRoles eq 'ADMIN'}" class="btn btn-primary"
-                                             value="#{msgs['artikel.edit']}"
+
                                              onclick="$('.bevestiging').modal()"
                                              action="#{boekController.update}">
+                                <b:iconAwesome name="save"></b:iconAwesome>
                             </b:commandButton>
 
 
