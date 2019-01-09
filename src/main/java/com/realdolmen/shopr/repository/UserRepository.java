@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.repository;
 
+import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.User;
 
 import javax.persistence.EntityManager;
@@ -35,4 +36,6 @@ public class UserRepository {
     {
         entityManager.merge(user);
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.UserRepository;
 
@@ -56,6 +57,20 @@ public class UserService
     public void update(User user)
     {
         userRepository.update(user);
+    }
+
+    public boolean isFavoriet(Artikel a, User currentUser)
+    {
+        boolean favoriet = false;
+
+        userRepository.findById(currentUser.getId());
+
+        for (Artikel x : currentUser.getFavorieten() )
+        {
+            favoriet = true;
+        }
+        return favoriet;
+
     }
 
 }

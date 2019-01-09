@@ -33,7 +33,8 @@ public class User {
     private EnumRoles role;
     @ManyToMany
     private List <Beoordeling> beoordelingen;
-
+@OneToMany
+private List<Artikel> favorieten;
     public User()
     {
     }
@@ -42,6 +43,16 @@ public class User {
     {
         this.name = name;
         this.firstName = firstName;
+    }
+
+    public List<Artikel> getFavorieten()
+    {
+        return favorieten;
+    }
+
+    public void setFavorieten(List<Artikel> favorieten)
+    {
+        this.favorieten = favorieten;
     }
 
     public EnumRoles getRole()

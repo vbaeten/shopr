@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
@@ -11,8 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-//@Named
 @ManagedBean
 @SessionScoped
 public class LoginController implements Serializable
@@ -24,7 +26,17 @@ public class LoginController implements Serializable
     private String currentUserName;
     private EnumRoles enumRoles;
     private int id;
+    private List<Artikel> favorieten = new ArrayList<>();
 
+    public List<Artikel> getFavorieten()
+    {
+        return favorieten;
+    }
+
+    public void setFavorieten(List<Artikel> favorieten)
+    {
+        this.favorieten = favorieten;
+    }
 
     public int getId()
     {
@@ -83,6 +95,13 @@ public class LoginController implements Serializable
 
 
     }
+
+    public boolean isFavoriet(Artikel a)
+    {
+        return userService.isFavoriet(a, currentUser);
+    }
+
+
 
 
 }

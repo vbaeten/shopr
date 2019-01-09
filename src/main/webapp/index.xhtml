@@ -61,13 +61,21 @@
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
 
+                        <b:commandButton rendered="#{loginController.isFavoriet(artikel)}"
+                                         styleClass="btn btn-primary"
+                                         action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
+                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+                        </b:commandButton>
+
+
+
 
                     </p:column>
 
                 </p:dataTable>
                 <!--#####################################################################################################################################details___________________-->
 
-                <b:panel id="panelLp" style="margin-bottom:10px; width: 60em"
+                <b:panel id="panelLp" style="margin-bottom:10px; width: 80em"
                          rendered="#{overviewController.getPanelNumber() eq 1}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -89,8 +97,8 @@
 
                         <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantallp"
                                        value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="2"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
+                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="3"
+                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" styleClass="btn btn-primary"
 
@@ -132,8 +140,8 @@
 
                         <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalgame"
                                        value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalgame" col-md="2"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
+                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalgame" col-md="3"
+                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
 
@@ -181,8 +189,8 @@
 
                         <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalnonfictie"
                                        value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalnonfictie" col-md="2"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
+                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalnonfictie" col-md="3"
+                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
 
@@ -232,8 +240,8 @@
 
                         <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalfictie"
                                        value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie" col-md="2"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="10" step="1"/>
+                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie" col-md="3"
+                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                          onclick="$('.bevestiging').modal()"

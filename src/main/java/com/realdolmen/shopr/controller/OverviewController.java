@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.Beoordeling;
 import com.realdolmen.shopr.service.OverviewService;
+import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -16,6 +17,7 @@ public class OverviewController implements Serializable
 {
     @Inject
     OverviewService overviewService;
+
 
     Artikel artikelSelected = new Artikel();
 
@@ -63,6 +65,10 @@ public class OverviewController implements Serializable
         this.panelNumber = overviewService.detailsPaginaSoort(a.getType());
 
     }
+
+
+
+
 
 
 }
