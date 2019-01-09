@@ -7,7 +7,15 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
-    <h3>Welcome : #{userController.selectedUser.firstName}</h3>
+
+    <h:form>
+        <b:buttonGroup>
+            <b:commandButton action="manageGames?faces-redirect=true" value="Manage Games" look="success"><b:iconAwesome value="gamepad" /></b:commandButton>
+            <b:commandButton action="manageFictionBooks?faces-redirect=true" value="Manage Fiction Books" look="warning"><b:icon value="book"/></b:commandButton>
+            <b:commandButton action="manageNonFictionBooks?faces-redirect=true" value="Manage Non Fiction Books" look="danger"><b:icon value="book"/></b:commandButton>
+            <b:commandButton action="manageLps?faces-redirect=true" value="Mange LP's" look="info"><b:icon value="music"/></b:commandButton>
+        </b:buttonGroup>
+    </h:form>
 
     <h:form>
         <b:dataTable var="product" value="#{productController.products}" select="true" >
@@ -23,5 +31,7 @@
             </b:dataTableColumn>
         </b:dataTable>
     </h:form>
+
+
 </h:body>
 </html>

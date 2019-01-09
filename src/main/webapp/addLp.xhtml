@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+    <b:form>
+        <b:container>
+            <b:row>
+                <b:column colMd="5">
+                    <b:inputText label="Title:" value="#{lPController.newLp.title}"/>
+                    <b:inputText label="Price:" value="#{lPController.newLp.price}"/>
+                    <b:inputText label="Interpreter:" value="#{lPController.newLp.interpreter}"/>
+                    <b:selectOneMenu label="Genre">
+                        <f:selectItem itemValue="" itemLabel="Please select" noSelectionOption="true"/>
+                        <f:selectItems value="#{lPController.LPGenres}" var="lPGenre"
+                                       itemLabel="#{lPGenre.name}" itemValue="#{lPGenre}"/>
+                    </b:selectOneMenu>
+                </b:column>
+            </b:row>
+        </b:container>
+        <b:commandButton value="Submit" action="#{lPController.submit}" look="success"/>
+        <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
+    </b:form>
+</h:body>
+
+</html>

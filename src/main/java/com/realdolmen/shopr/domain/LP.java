@@ -3,35 +3,30 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(
-        name = "LP",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"title", "interpreter"})}
-)
+@Table(name = "lp")
+@DiscriminatorValue("lp")
 public class LP extends Product {
 
-    @Column(length = 100, name = "interpreter")
-    private String Interpreter;
+//    @Column(length = 100, name = "interpreter")
+    private String interpreter;
 
     @Enumerated
-    private LPGenre genre;
+    @Column(name = "lp_genre")
+    private LPGenre lpGenre;
 
     public String getInterpreter() {
-        return Interpreter;
-    }
-
-    public LP() {
+        return interpreter;
     }
 
     public void setInterpreter(String interpreter) {
-        Interpreter = interpreter;
+        this.interpreter = interpreter;
     }
 
-    public LPGenre getGenre() {
-        return genre;
+    public LPGenre getLpGenre() {
+        return lpGenre;
     }
 
-    public void setGenre(LPGenre genre) {
-        this.genre = genre;
+    public void setLpGenre(LPGenre lpGenre) {
+        this.lpGenre = lpGenre;
     }
 }

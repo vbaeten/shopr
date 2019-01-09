@@ -1,34 +1,35 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "product")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "product_type")
 public abstract class Product {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(length = 100, name = "title")
-    @NotNull
+//    @Column(length = 100, name = "title")
     private String title;
 
-    @Column(name = "price")
-    @NotNull
+//    @Column(name = "price")
+//    @NotNull
     private double price;
 
-    @Column(length = 100, name = "publisher")
-    @NotNull
+//    @Column(length = 100, name = "publisher")
     private String publisher;
 
-    @OneToMany
-    private List<Rating> ratings;
+//    @OneToMany(fetch = FetchType.EAGER)
+//    private List<Rating> ratings;
 
-    public Product() {
-    }
+    @Column(name = "product_type", insertable = false, updatable = false)
+    private String productType;
+
+//    public Product() {
+//    }
 
     public Long getId() {
         return id;
@@ -61,12 +62,21 @@ public abstract class Product {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+//
+//    public List<Rating> getRatings() {
+//        return ratings;
+//    }
+//
+//    public void setRatings(List<Rating> ratings) {
+//        this.ratings = ratings;
+//    }
 
-    public List<Rating> getRatings() {
-        return ratings;
+
+    public String getProductType() {
+        return productType;
     }
 
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 }

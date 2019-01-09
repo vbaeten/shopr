@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+
+    <b:form>
+        <b:container>
+            <b:panel>
+                <b:row>
+                    <b:column colMd="5">
+                        <b:inputText label="Title:" value="#{gameController.newGame.title}"/>
+
+                        <b:inputText label="Editor:" value="#{gameController.newGame.editor}"/>
+                        <b:inputText label="Publisher:" value="#{gameController.newGame.publisher}"/>
+                        <b:inputText label="Pegi:" value="#{gameController.newGame.pegiRating}"/>
+                        <b:inputText label="Price:" value="#{gameController.newGame.price}"/>
+                        <o:importConstants type="com.realdolmen.shopr.domain.GameGenre"/>
+                        <b:selectOneMenu label="Genre">
+                            <f:selectItems value="#{GameGenre}" var="gameGenre" itemValue="#{gameGenre}" itemLabel="#{gameGenre}"/>
+                        </b:selectOneMenu>
+                    </b:column>
+                </b:row>
+                <b:commandButton action="#{gameController.save}" value="submit" look="success" update="@form"/>
+                <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
+            </b:panel>
+        </b:container>
+    </b:form>
+</h:body>
+</html>

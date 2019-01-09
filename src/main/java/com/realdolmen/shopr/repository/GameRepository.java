@@ -23,5 +23,5 @@ public class GameRepository {
         return  entityManager.createQuery("select g from Game g where g.title = :title", Game.class).getSingleResult();
     }
 
-    public void save(Game game) { entityManager.persist(game);}
+    public void save(Game game) { this.entityManager.persist(game); }
 }

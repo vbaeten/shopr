@@ -3,11 +3,8 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(
-        name = "game",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"title", "editor"})}
-)
+@Table(name = "game")
+@DiscriminatorValue("game")
 public class Game extends Product {
 
     @Column(length = 100, name = "editor")

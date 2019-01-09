@@ -13,12 +13,20 @@ public class GameService {
     @Inject
     private GameRepository gameRepository;
 
-    public Game findById(Long id) { return gameRepository.findById(id); }
+    public Game findById(Long id) {
+        return gameRepository.findById(id);
+    }
 
-    public List<Game> findAll() { return gameRepository.findAll(); }
+    public List<Game> findAll() {
+        return gameRepository.findAll();
+    }
 
-    public Game findByTitle(String title) { return gameRepository.findByTile(title); }
+    public Game findByTitle(String title) {
+        return gameRepository.findByTile(title);
+    }
 
-    public void save(Game game) { gameRepository.save(game);}
+    public void save(Game game) {
+        gameRepository.save(game);
+    }
 
 }

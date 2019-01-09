@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+
+    <b:form>
+        <b:container>
+            <b:panel>
+                <b:row>
+                    <b:column colMd="5">
+                        <!-- TODO write book fields -->
+                        <b:inputText label="Author:" value="#{fictionController.newFiction.author}"></b:inputText>
+                        <b:inputText label="ISBN:" value="#{fictionController.newFiction.isbn}"></b:inputText>
+                        <b:inputText label="Pages:" value="#{fictionController.newFiction.nbPages}"></b:inputText>
+                        <b:inputTextarea label="Summary:" value="#{fictionController.newFiction.summary}"></b:inputTextarea>
+                        <o:importConstants type="com.realdolmen.shopr.domain.Book_Genre"/>
+                        <b:selectOneMenu label="Genre:"
+                                         value="#{fictionController.newFiction.genre}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems value="#{Book_Genre}" var="fictionGenre"
+                                           itemLabel="#{fictionGenre}" itemValue="#{fictionGenre}"></f:selectItems>
+                        </b:selectOneMenu>
+                    </b:column>
+                </b:row>
+                <b:commandButton action="#{fictionController.submit}" value="submit" look="success" update="@form"></b:commandButton>
+                <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
+            </b:panel>
+        </b:container>
+    </b:form>
+</h:body>
+</html>

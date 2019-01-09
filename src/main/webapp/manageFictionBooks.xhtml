@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+
+    <h:form>
+        <b:commandButton action="addFiction" value="Add Fiction" look="success"/>
+        <b:dataTable var="fiction" value="#{fictionController.fictions}" select="true" >
+            <b:dataTableColumn value="#{fiction.id}" />
+            <b:dataTableColumn value="#{fiction.title}" />
+            <b:dataTableColumn value="#{fiction.publisher}" />
+            <b:dataTableColumn value="#{fiction.price}" />
+            <b:dataTableColumn label="Action">
+                <b:commandButton action="#{productController.goToDetail}" value="edit" look="warning"><b:icon value="edit"/>
+                    <f:param name="id" value="#{product.id}" />
+                </b:commandButton>
+                <b:commandButton action="#{productController.goToDetail}" value="detail" look="danger"><b:icon value="trash"/>
+                    <f:param name="id" value="#{product.id}" />
+                </b:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+    </h:form>
+
+
+</h:body>
+</html>

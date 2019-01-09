@@ -24,4 +24,8 @@ public class NonFictionRepository {
     public NonFiction findByTitle(String title) {
         return entityManager.createQuery("select f from Fiction f where f.title = :title", NonFiction.class).getSingleResult();
     }
+
+    public NonFiction findByAuthor(String author) {
+        return entityManager.createQuery("select f from Fiction f where f.author = :author", NonFiction.class).getSingleResult();
+    }
 }

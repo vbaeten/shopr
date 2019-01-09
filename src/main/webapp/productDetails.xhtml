@@ -6,19 +6,20 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
-
-    <h3>Welcome : #{userController.selectedUser.firstName}</h3>
+    <f:metadata>
+        <f:viewParam name="id" value="#{productDetailsController.id}"/>
+        <f:event listener="#{productDetailsController.loadProduct}" type="preRenderView"/>
+    </f:metadata>
 
     <h:form>
-        <b:dataTable var="product" value="#{productController.products}" select="true" >
+        <b:dataTable value="#{productDetailsController.product}" var="product">
             <b:dataTableColumn value="#{product.id}" />
             <b:dataTableColumn value="#{product.title}" />
-            <b:dataTableColumn value="#{product.publisher}" />
-            <b:dataTableColumn value="#{product.productType}" />
+            <b:dataTableColumn value="#{product.product_type}" />
+            <b:dataTableColumn value="#{product.publisher}"  order="asc"/>
             <b:dataTableColumn value="#{product.price}" />
             <b:dataTableColumn label="Action">
-                <b:commandButton action="#{productController.goToDetail}" value="detail" look="info"><b:icon value="search"/>
-                    <f:param name="id" value="#{product.id}" />
+                <b:commandButton action="#{productDetailsController.addToCart}" value="add to cart" look="success"><b:icon value="plus"/>
                 </b:commandButton>
             </b:dataTableColumn>
         </b:dataTable>

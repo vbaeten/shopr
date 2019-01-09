@@ -22,4 +22,8 @@ public class FictionRepository {
     public Fiction findByTitle(String title) {
         return entityManager.createQuery("select f from Fiction f where f.title = :title", Fiction.class).getSingleResult();
     }
+
+    public Fiction findByAuthor(String author) {
+        return entityManager.createQuery("select f from Fiction f where f.author = :author", Fiction.class).getSingleResult();
+    }
 }

@@ -3,6 +3,8 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "fiction")
+@DiscriminatorValue("fiction")
 public class Fiction extends Book {
 
     @Enumerated

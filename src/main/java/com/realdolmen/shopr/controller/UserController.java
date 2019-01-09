@@ -3,42 +3,24 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class UserController {
 
-    private User newUser = new User();
-
-    private User selectedUser;
+    private User selectedUser = new User();
 
     @Inject
     private UserService userService;
 
-    public User getNewUser() {
-        return newUser;
-    }
-
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
-    }
-
-    public List<User> getUsers(){
-        return this.userService.findAllUsers();
-    }
-
-    public void submit(){
-        this.userService.insert(newUser);
-    }
-
-    public String goToProducts() {
-
-        System.out.println("Selected user: " + this.selectedUser);
-        return "products";
+    @PostConstruct
+    public void init() {
+        System.out.println(this.selectedUser);
     }
 
     public User getSelectedUser() {
@@ -48,5 +30,8 @@ public class UserController {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
+
+    public List<User> getUsers() { return this.userService.findAllUsers(); }
+
 
 }

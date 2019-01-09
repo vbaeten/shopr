@@ -4,12 +4,13 @@ import com.realdolmen.shopr.domain.NonFiction;
 import com.realdolmen.shopr.service.NonFictionService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
-@Named
+@ManagedBean
 @ViewScoped
 public class NonFictionController {
 
@@ -27,6 +28,10 @@ public class NonFictionController {
     public List<NonFiction> getNonFictions() {
         return this.service.findAll();
     }
+
+    public NonFiction getNonFictionById(Long id) { return this.service.findById(id); }
+
+    public NonFiction getNonFictionByTitle(String title) { return this.service.findByTitle(title); }
 
     public void submit() { this.service.save(newNonFiction); }
 

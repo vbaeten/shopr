@@ -4,18 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "book")
 public abstract class Book extends Product {
 
     @Column(length = 100, name = "author")
     private String author;
 
-    @NotNull
     @Column(name = "isbn", unique = true)
     private String isbn;
 
     @Column(name = "nb_pages")
-    private int nbPages;
+    private Integer nbPages;
 
     public Book() {
     }
@@ -36,7 +35,7 @@ public abstract class Book extends Product {
         this.isbn = isbn;
     }
 
-    public int getNbPages() {
+    public Integer getNbPages() {
         return nbPages;
     }
 
