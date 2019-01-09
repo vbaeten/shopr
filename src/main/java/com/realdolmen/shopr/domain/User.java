@@ -1,6 +1,9 @@
 package com.realdolmen.shopr.domain;
 
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.interceptor.AroundTimeout;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -38,6 +41,7 @@ public class User implements Serializable {
     private String firstName;
 
     @OneToMany(mappedBy="user")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Order> orders;
 
     @ManyToMany(fetch = FetchType.EAGER)

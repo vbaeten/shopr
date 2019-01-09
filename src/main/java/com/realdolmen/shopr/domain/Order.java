@@ -29,7 +29,6 @@ public class Order implements Serializable {
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name="user_id")
     private User user;
 
     @Transient
@@ -50,6 +49,8 @@ public class Order implements Serializable {
 //    public void setTimeStamp(Timestamp timeStamp) {
 //        this.timeStamp = timeStamp;
 //    }
+
+
 
     public List<OrderLine> getOrderLines() {
         return orderLines;
@@ -83,6 +84,7 @@ public class Order implements Serializable {
     }
 
     public void addOrderLine(OrderLine orderLine){
+        orderLine.setOrder(this);
         this.orderLines.add(orderLine);
     }
 

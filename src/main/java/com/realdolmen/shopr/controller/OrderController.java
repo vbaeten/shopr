@@ -48,7 +48,7 @@ public class OrderController implements Serializable {
 
     public void addOrderLine(int articleId){
         Article article = articleService.findById(articleId);
-        List<OrderLine> orderLines = new ArrayList<>();
+        List<OrderLine> orderLines;
         boolean found = false;
         if (currentOrder.getOrderLines() != null){
             orderLines = currentOrder.getOrderLines();
