@@ -7,6 +7,8 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
     <b:panel title="Create Game" collapsible="false">
         <h:outputText value="Panel Content" />
         <b:form>
@@ -30,5 +32,7 @@
             </b:panelGrid>
         </b:form>
     </b:panel>
+</ui:define>
+</ui:composition>
 </h:body>
 </html>

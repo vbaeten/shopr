@@ -4,48 +4,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
+
 <h:body>
-    <b:form id="dataUsersForm">
-            <b:dataTable var="user" value="#{userController.users}" id="dataUsers">
-                <b:dataTableColumn label="Id">
-                    <h:outputText value="#{user.id}"/>
-                </b:dataTableColumn>
-                <b:dataTableColumn label="First name">
-                    <h:outputText value="#{user.firstName}"/>
-                </b:dataTableColumn>
-                <b:dataTableColumn label="Name">
-                    <h:outputText value="#{user.name}"/>
-                </b:dataTableColumn>
-                <b:dataTableColumn label="Delete">
-                    <b:commandButton value="Delete" look="danger" action="#{userController.removeUserById(user.id)}"
-                                     update="dataUsersForm"/>
-                </b:dataTableColumn>
-            </b:dataTable>
-    </b:form>
-
-      <h:form id="registerUserForm">
-         <p:panel id="panel" header="Form" style="margin-bottom:10px;">
-            <h:panelGrid columns="4" cellpadding="5">
-               <h:outputLabel for="userFirstName" value="First name:" />
-               <p:inputText id="userFirstName" value="#{userController.newUser.firstName}">
-               </p:inputText>
-                <h:outputLabel for="userName" value="Name:" />
-                <p:inputText id="userName" value="#{userController.newUser.name}"></p:inputText>
-               <h:commandButton value="Add" action="#{userController.submit}" update="dataUsersForm" />
-            </h:panelGrid>
-         </p:panel>
-      </h:form>
-    <b:panel>
-        <b:form id="userLogin">
-            <b:messages/>
-            <b:selectOneMenu colMd="4" value="#{userController.newUser}" converter="omnifaces.SelectItemsConverter">
-                <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
-            </b:selectOneMenu>
-            <b:commandButton value="Login" look="success" action="overview?faces-redirect=true" update="userLogin"/>
-        </b:form>
-    </b:panel>
-
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
+            <b:panel>
+                <b:form id="registrationForm" horizontal="true">
+                    <b:inputText labelColMd="1" colMd="2" label="Name:" id="userName"
+                                 value="#{registrationController.newUser.name}"/>
+                    <b:inputText labelColMd="1" colMd="2" label="First name:" id="userFirstName"
+                                 value="#{registrationController.newUser.firstName}"/>
+                    <b:commandButton labelColMd="1" colMd="1" value="Add" action="#{registrationController.submit()}"
+                                     update="Userdata LoginUser" />
+                </b:form>
+            </b:panel>
+            <b:form id="Userdata">
+                <b:panel id="panel" title="Users" style="margin-top:30px">
+                    <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
+                        <b:dataTableColumn label="Id">
+                            <h:outputText value="#{user.id}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Name">
+                            <h:outputText value="#{user.name}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="First name">
+                            <h:outputText value="#{user.firstName}"/>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Operations">
+                            <b:commandButton value="Delete" look="danger" action="#{userController.removeUserById(user.id)}"
+                                             update="Userdata"/>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:panel>
+            </b:form>
+            <b:panelGrid colSpans="2,10">
+                <b:form span="8" id="LoginUser">
+                    <b:messages/>
+                    <b:selectOneMenu span="8" colMd="4" value="#{userController.loggedInUser}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
+                    </b:selectOneMenu>
+                    <b:commandButton span="8" value="Login" look="danger" action="overview?faces-redirect=true" update="LoginUser"/>
+                </b:form>
+            </b:panelGrid>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

@@ -10,6 +10,8 @@
 </f:metadata>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
     <p>lp detail page</p>
     <b:form id="lps">
         <b:messages/>
@@ -26,5 +28,7 @@
             </h:column>
         </b:dataTable>
     </b:form>
+</ui:define>
+</ui:composition>
 </h:body>
 </html>

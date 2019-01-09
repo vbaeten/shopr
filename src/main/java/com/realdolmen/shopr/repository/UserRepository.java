@@ -2,6 +2,7 @@ package com.realdolmen.shopr.repository;
 
 import com.realdolmen.shopr.domain.User;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;

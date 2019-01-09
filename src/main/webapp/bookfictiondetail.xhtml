@@ -10,6 +10,8 @@
     <f:event type="preRenderView" listener="#{bookFictionController.initDetailView(param.id)}" />
 </f:metadata>
 <h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
     <p>book fiction detail page</p>
     <b:form id="bookfictions">
         <b:messages/>
@@ -26,5 +28,7 @@
             <b:dataTableColumn value="#{bookfiction.id}" label="productcode"/>
         </b:dataTable>
     </b:form>
+</ui:define>
+</ui:composition>
 </h:body>
 </html>

@@ -8,40 +8,32 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
 @SessionScoped
-public class UserController {
+public class UserController implements Serializable {
 
-    private User newUser = new User();
-    private User loggedInUser = new User();
     @Inject
     private UserService userService;
 
-    public User getNewUser() {
-        return newUser;
+    private User loggedInUser = new User();
+
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
 
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     public List<User> getUsers(){
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
-        this.userService.insert(newUser);
-    }
-
     public void removeUserById(int id) {
         this.userService.removeUserById(id);
     }
-
-//    public void login() {
-//        this.loggedInUser =
-//    }
-
 
 }

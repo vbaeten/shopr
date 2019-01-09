@@ -3,9 +3,12 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
+    <ui:composition template="templates/template.xhtml">
+    <ui:define name="content">
     <h:form>
         <b:dataTable value="#{articleController.articles}"
                      var="article">
@@ -38,10 +41,12 @@
                 <!---->
             </b:dataTableColumn>
         <b:dataTableColumn>
-            <b:commandButton value="verwijder" immediate="true" action="#{articleController.removeArticle(article)}" />
+            <b:commandButton value="Delete" immediate="true" action="#{articleController.removeArticle(article)}" />
         </b:dataTableColumn>
         </b:dataTable>
     </h:form>
     <b:navLink value="Add an article to Shopr" href="articlecreation.xhtml"></b:navLink>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>
