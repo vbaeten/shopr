@@ -21,7 +21,11 @@
                 <h:outputText value=""/>
                 <b:form inline="true">
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{orderLineController.addToCart(lpDetailBean.id, orderLineController.quantity)}"/>
+                    <b:commandButton value="Cart" action="#{orderLineController.addToCart(lpDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
+                    <b:form inline="true">
+                        <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                        <b:commandButton value="Order" action="#{orderLineController.addToOrder(lpDetailBean.id, orderLineController.quantity)}"/>
+                    </b:form>
                 </b:form>
             </b:panel>
         </ui:define>

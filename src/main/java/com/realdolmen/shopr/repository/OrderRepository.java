@@ -18,7 +18,7 @@ public class OrderRepository {
         return entityManager.createNamedQuery(Order.FIND_ALL, Order.class).getResultList();
     }
 
-    public void insert(Order order) {
+    public void createOrder(Order order) {
         entityManager.persist(order);
     }
 

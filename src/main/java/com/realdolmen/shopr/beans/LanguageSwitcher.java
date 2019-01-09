@@ -1,11 +1,12 @@
 package com.realdolmen.shopr.beans;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.util.Locale;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class LanguageSwitcher {
 

@@ -21,6 +21,7 @@ public class Order implements Serializable {
     public static final String FIND_ALL = "Order.FindAll";
 
     @Id
+    @GeneratedValue
     private int id;
 
     @Column(name = "order_date")

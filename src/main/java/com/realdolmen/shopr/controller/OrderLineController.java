@@ -1,8 +1,9 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
-import com.realdolmen.shopr.service.ArticleService;
-import com.realdolmen.shopr.service.OrderLineService;
+import com.realdolmen.shopr.domain.ShoppingCart;
+import com.realdolmen.shopr.service.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
@@ -14,12 +15,19 @@ public class OrderLineController implements Serializable {
 
     @Inject
     private OrderLineService orderLineService;
-
     @Inject
     private ArticleService articleService;
+    @Inject
+    private OrderService orderService;
+    @Inject
+    private ShoppingCartService shoppingCartService;
+    @Inject
+    private UserService userService;
 
+    private ShoppingCart shoppingCart = new ShoppingCart();
+    private Order newOrder = new Order();
     private OrderLine orderLine;
-    private int quantity;
+    private int quantity = 1;
     private double subtotal;
 
     public int getQuantity() {
@@ -30,7 +38,17 @@ public class OrderLineController implements Serializable {
         this.quantity = quantity;
     }
 
-    public void addToCart(int id, int quantity) {
+    public void addToCart(int id, int quantity, int userId) {
+        shoppingCartService.createShoppingCart(shoppingCart);
+        shoppingCart.setUser(userService.findUserById(userId));
+        orderLine = new OrderLine();
+        this.orderLine.setQuantity(quantity);
+        this.orderLine.setArticle(articleService.findArticleById(id));
+        orderLineService.insertOrderLine(orderLine);
+    }
+
+    public void addToOrder(int id, int quantity) {
+        orderService.createOrder(newOrder);
         orderLine = new OrderLine();
         this.orderLine.setQuantity(quantity);
         this.orderLine.setArticle(articleService.findArticleById(id));

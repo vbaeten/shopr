@@ -23,8 +23,8 @@
                 <h:outputText value="Isbn: #{nonFictionDetailBean.nonFiction.isbn}"/>
                 <h:outputText value="Topic: #{nonFictionDetailBean.nonFiction.subject}"/>
                 <b:form inline="true">
-                    <b:inputText value="1" mask="numeric" size="5"/>
-                    <b:commandButton value="Order"/>
+                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                    <b:commandButton value="Order" action="#{orderLineController.addToOrder(nonFictionDetailBean.id, orderLineController.quantity)}"/>
                 </b:form>
             </b:panel>
         </ui:define>

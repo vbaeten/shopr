@@ -4,12 +4,13 @@ import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.ArticleService;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named
+@ManagedBean
 @ViewScoped
 public class ArticleDetailBean implements Serializable {
 

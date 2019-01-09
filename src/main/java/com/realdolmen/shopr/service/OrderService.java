@@ -16,4 +16,8 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
+    public void createOrder(Order order) {
+        orderRepository.createOrder(order);
+    }
+
 }

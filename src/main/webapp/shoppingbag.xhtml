@@ -19,8 +19,8 @@
                 Hi, #{loginBean.loggedUser.firstName}!
                 Order here or continue shopping.
                 <b:form id="shoppingbag">
-                    <b:dataTable value="#{orderLineController.orderLines}" var="orderLine">
-                        <b:dataTableColumn label="Article ID" value="#{orderLine.id}"/>
+                    <b:dataTable value="#{shoppingCartController.orderLines}" var="orderLine">
+                        <b:dataTableColumn label="Article ID" value="#{orderLine.article.id}"/>
                         <b:dataTableColumn label="Title" value="#{orderLine.article.title}"/>
                         <b:dataTableColumn label="Price" value="#{orderLine.article.price}"/>
                         <b:dataTableColumn label="Quantity" value="#{orderLine.quantity}"/>

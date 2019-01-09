@@ -21,8 +21,12 @@
                 <h:outputText styleClass="detail-title" value="#{gameDetailBean.game.title} by #{gameDetailBean.game.publisher}"/>
                 <h:outputText value=""/>
                 <b:form inline="true">
-                    <b:inputText value="1" mask="numeric" size="5"/>
-                    <b:commandButton value="Order"/>
+                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                    <b:commandButton value="Order" action="#{orderLineController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
+                </b:form>
+                <b:form inline="true">
+                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                    <b:commandButton value="Order" action="#{orderLineController.addToOrder(gameDetailBean.id, orderLineController.quantity)}"/>
                 </b:form>
             </b:panel>
         </ui:define>
