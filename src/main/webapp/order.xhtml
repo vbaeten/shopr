@@ -11,7 +11,21 @@
 <h:body>
     <ui:composition template="template/common.xhtml">
         <ui:define name="content">
-            <h:outputText value="#{userController.currentOrder.user.firstName}"/>
+            <b:form>
+                <b:dataTable value="#{orderController.orderLines}" var="orderLine">
+                    <b:dataTableColumn label="#{msg['order.dataTableColumn.type']}" value="#{orderLine.item.type}"/>
+                    <b:dataTableColumn label="#{msg['order.dataTableColumn.title']}" value="#{orderLine.item.title}"/>
+                    <b:dataTableColumn label="#{msg['order.dataTableColumn.amount']}" value="#{orderLine.amount}"/>
+                    <b:dataTableColumn label="#{msg['order.dataTableColumn.priceUnit']}"
+                                       value="#{orderLine.item.price}"/>
+                    <b:dataTableColumn label="#{msg['order.dataTableColumn.subtotal']}"
+                                       value="#{orderLine.orderLineTotalPrice}"/>
+                </b:dataTable>
+                <h:outputLabel value="#{msg['order.outputText.totalPrice']}"/>
+                <h:outputText value="#{orderController.orderTotalPrice}"/>
+                <b:commandButton value="#{msg['order.commandButton.confirm']}" action="#{orderController.confirm}"/>
+                <b:commandButton value="#{msg['order.commandButton.cancel']}" action="#{orderController.cancel}" immediate="true"/>
+            </b:form>
         </ui:define>
 
         <ui:define name="footer">

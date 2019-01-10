@@ -2,10 +2,10 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.OrderService;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -13,14 +13,16 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class UserController implements Serializable {
+public class LoginController implements Serializable {
     private User newUser = new User();
     private User currentUser;
-    private Order currentOrder = new Order();
+    private Order order;
     private Long id;
 
     @Inject
     private UserService userService;
+    @Inject
+    private OrderService orderService;
 
     public List<User> getUsers() {
         return this.userService.findAllUsers();
@@ -36,8 +38,8 @@ public class UserController implements Serializable {
     }
 
     public String logIn() {
-        currentUser = this.userService.findUserById(id);
-        currentOrder.setUser(currentUser);
+        currentUser = userService.findUserById(id);
+        order = orderService.getCorrectOrderInstance(order, currentUser);
         return "/overview/items.xhtml?faces-redirect=true";
     }
 
@@ -62,12 +64,12 @@ public class UserController implements Serializable {
         this.currentUser = currentUser;
     }
 
-    public Order getCurrentOrder() {
-        return currentOrder;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setCurrentOrder(Order currentOrder) {
-        this.currentOrder = currentOrder;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Long getId() {

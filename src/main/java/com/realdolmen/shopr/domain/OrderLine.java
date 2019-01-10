@@ -3,8 +3,23 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = OrderLine.FIND_ALL,
+                        query = "SELECT ol FROM OrderLine ol"
+                ),
+                @NamedQuery(
+                        name = OrderLine.FIND_ALL_BY_ORDER_ID,
+                        query = "SELECT ol FROM OrderLine ol WHERE ol.order.id = :id"
+                )
+        }
+)
 @Table(name = "order_line")
 public class OrderLine {
+    public static final String FIND_ALL = "OrderLine.findAll";
+    public static final String FIND_ALL_BY_ORDER_ID = "OrderLine.findAllByOrderId";
+
     @Id
     @GeneratedValue
     private Long id;
@@ -13,6 +28,8 @@ public class OrderLine {
     private Item item;
     @ManyToOne
     private Order order;
+    @Transient
+    private Double orderLineTotalPrice;
 
     public Long getId() {
         return id;
@@ -44,5 +61,14 @@ public class OrderLine {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Double getOrderLineTotalPrice() {
+        this.orderLineTotalPrice = this.getAmount() * this.getItem().getPrice();
+        return orderLineTotalPrice;
+    }
+
+    public void setOrderLineTotalPrice(Double orderLineTotalPrice) {
+        this.orderLineTotalPrice = orderLineTotalPrice;
     }
 }
