@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderLineService;
@@ -11,12 +12,13 @@ import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ManagedBean
 @SessionScoped
 public class OrderLineController {
 
-    private List<OrderLine> sessionOrderLines = new ArrayList<>();
+    private ArrayList<OrderLine> sessionOrderLines = new ArrayList<>();
 
     @Inject
     private OrderLineService orderLineService;
@@ -39,20 +41,25 @@ public class OrderLineController {
         this.orderLine = orderLineService.findOrderLineById(orderlineId);
     }
 
-    public String createOrderLine(BigDecimal quantity, Article article){
-        OrderLine orderLine = new OrderLine();
-        orderLine.setQuantity(quantity);
-        orderLine.setArticle(article);
-        orderLine.setSubTotal(orderLineService.calculateSubtotal(quantity, article.getPrice()));
-        sessionOrderLines.add(orderLine);
+    public String createOrderLine(BigDecimal quantity, Article article) {
+        Optional<OrderLine> orderLine = sessionOrderLines.stream()
+                .filter(orderLine1 -> orderLine1.getArticle().getArticleId().equals(article.getArticleId())).findAny();
+        if(!orderLine.isPresent()){
+            OrderLine newOrderline = new OrderLine();
+            newOrderline.setArticle(article);
+            newOrderline.setQuantity(quantity);
+            newOrderline.setSubTotal(orderLineService.calculateSubtotal(quantity, article.getPrice()));
+            sessionOrderLines.add(newOrderline);
+        }else{
+            System.out.println("bestaat al");
+        }
         return "orderlineselected";
     }
-
-    public List<OrderLine> getSessionOrderLines() {
+    public ArrayList<OrderLine> getSessionOrderLines() {
         return sessionOrderLines;
     }
 
-    public void setSessionOrderLines(List<OrderLine> sessionOrderLines) {
+    public void setSessionOrderLines(ArrayList<OrderLine> sessionOrderLines) {
         this.sessionOrderLines = sessionOrderLines;
     }
 

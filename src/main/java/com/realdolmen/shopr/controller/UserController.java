@@ -4,9 +4,7 @@ import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
