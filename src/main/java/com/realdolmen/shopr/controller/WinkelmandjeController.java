@@ -2,6 +2,7 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
+import com.realdolmen.shopr.domain.Bestelling;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,6 @@ public class WinkelmandjeController implements Serializable
 
     @Inject
     ArtikelLijnInBestelling artikelLijnInBestelling;
-
 
    @Inject
     LoginController loginController;
