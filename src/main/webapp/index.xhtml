@@ -13,12 +13,12 @@
       <b:form id="userLogin">
          <b:messages/>
          <b:selectOneMenu colMd="4" value="#{currentUserController.currentUser}" converter="omnifaces.SelectItemsConverter">
-            <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
+            <f:selectItems value="#{currentUserController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
          </b:selectOneMenu>
          <b:commandButton value="Login"  action="artikelsview?faces-redirect=true" update="userLogin"/>
-
       </b:form>
    </b:panel>
+
 
 
 
@@ -34,7 +34,7 @@
    </b:panel>
    <b:form id="dataUsers">
       <b:panel id="panel" title="Users" style="margin-top:10px">
-         <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
+         <b:dataTable var="user" value="#{currentUserController.users}" id="userDataTable">
             <b:dataTableColumn label="Id">
                <h:outputText value="#{user.id}"/>
             </b:dataTableColumn>
@@ -46,7 +46,7 @@
             </b:dataTableColumn>
             <b:dataTableColumn label="Operations">
                <b:commandButton value="Delete"  action="#{userController.remove(user.id)}"
-                                update="dataUsers"/>
+                                update="dataUsers userLogin"/>
             </b:dataTableColumn>
          </b:dataTable>
       </b:panel>

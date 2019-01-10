@@ -10,7 +10,7 @@ public class UserRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public User findById(int id) {
+    public User findById(long id) {
         return em.find(User.class, id);
     }
 
@@ -26,7 +26,7 @@ public class UserRepository {
         em.persist(user);
     }
 
-    public void remove(int id) {
+    public void remove(long id) {
         User userById = findById(id);
         em.remove(userById);
     }

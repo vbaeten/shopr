@@ -16,11 +16,9 @@ import java.util.List;
 @RequestScoped
 public class UserController implements Serializable {
 
-    private User newUser ;
-    @PostConstruct
-    public void prepare(){
-        newUser = new User();
-    }
+    private User newUser = new User();
+
+
 
     @Inject
     private UserService userService;
@@ -41,7 +39,7 @@ public class UserController implements Serializable {
         this.userService.insert(newUser);
     }
 
-    public void remove(int id) {
+    public void remove(long id) {
         this.userService.removeById(id);
     }
 

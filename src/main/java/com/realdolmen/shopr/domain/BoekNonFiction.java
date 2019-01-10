@@ -27,13 +27,13 @@ public class BoekNonFiction extends Boek {
 
 
     @Enumerated(EnumType.STRING)
-    protected BoekGenreFictie Boekgenre;
+    protected BoekGenreNonFictie Boekgenrenonfictie;
 
-    public BoekGenreFictie getBoekgenre() {
-        return Boekgenre;
+    public BoekGenreNonFictie getBoekgenre() {
+        return Boekgenrenonfictie;
     }
 
-    public void setBoekgenre(BoekGenreFictie boekgenre) {
-        Boekgenre = boekgenre;
+    public void setBoekgenre(BoekGenreNonFictie boeknongenre) {
+        Boekgenrenonfictie = boeknongenre;
     }
 }

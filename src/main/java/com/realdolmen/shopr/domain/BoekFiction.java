@@ -28,7 +28,7 @@ public class BoekFiction extends Boek {
     @Column
     private String Inhoud;
     @Enumerated(EnumType.STRING)
-    protected BoekGenreFictie Boekgenre;
+    protected BoekGenreFictie Boekgenrefictie;
 
     public String getInhoud() {
         return Inhoud;
@@ -39,10 +39,10 @@ public class BoekFiction extends Boek {
     }
 
     public BoekGenreFictie getBoekgenre() {
-        return Boekgenre;
+        return Boekgenrefictie;
     }
 
     public void setBoekgenre(BoekGenreFictie boekgenre) {
-        Boekgenre = boekgenre;
+        Boekgenrefictie = boekgenre;
     }
 }
