@@ -26,6 +26,18 @@ public class OverviewController implements Serializable
 
     private int panelNumber;
 
+    private boolean favorietOfNietButton = false;
+
+
+    public boolean isFavorietOfNietButton()
+    {
+        return favorietOfNietButton;
+    }
+
+    public void setFavorietOfNietButton(boolean favorietOfNietButton)
+    {
+        this.favorietOfNietButton = favorietOfNietButton;
+    }
 
     public int getPanelNumber()
     {
@@ -63,15 +75,16 @@ public class OverviewController implements Serializable
 
     public Artikel geselecteerdArtikelDetails(int id)
     {
-        return this.artikelSelected = overviewService.findArtikelById(id);
+        return overviewService.findArtikelById(id);
 
 
 
     }
-    public void details(Artikel a)
+    public void details(Artikel a, User u)
     {
 
-        setArtikelSelected(a);
+        setArtikelSelected(geselecteerdArtikelDetails(a.getId()));
+        favorietOfNietButton = userService.isFavoriet(a,u);
         this.panelNumber = overviewService.detailsPaginaSoort(a.getType());
 
     }
@@ -79,6 +92,7 @@ public class OverviewController implements Serializable
     public void addFavoriet(User u)
     {
         userService.addFavoriet(artikelSelected, u);
+        details(artikelSelected,u);
 
 
     }
@@ -86,6 +100,7 @@ public class OverviewController implements Serializable
     public void removeFavoriet(User u)
     {
         userService.removeFavoriet(artikelSelected, u);
+        details(artikelSelected,u);
 
     }
 
