@@ -10,11 +10,7 @@
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
         <h:outputStylesheet library="css"/>
-        <f:metadata>
-            <f:viewParam name="id" value="#{fictionDetailController.id}"/>
-            <f:viewParam name="id" value="#{reviewController.id}"/>
-            <f:event type="preRenderView" listener="#{fictionDetailController.init}"/>
-        </f:metadata>
+
 
 
         <div class="afterNav">
@@ -24,14 +20,30 @@
 
                 <h:form>
 
-                    <h:outputLabel value="#{orderController}"
+                    <b:dataTable value="#{orderLineController.orderLines}" var="orderLine">
+                        <b:dataTableColumn value="#{orderLine.item.price}"/>
+                        <b:dataTableColumn value="#{orderLine.item.title}"/>
+                        <b:dataTableColumn value="#{orderLine.item.type}"/>
+                        <b:dataTableColumn value="#{orderLine.quantity}"/>
 
-                    <b:commandButton value="Order!" action="#{orderController.placeOrder}"/>
+
+                    </b:dataTable>
+
+                    <b:commandButton value="Order!" action="#{orderController.placeOrder(orderLineController.orderLines)}"/>
                 </h:form>
             </div>
 
 
+        <div>
 
+            <h:form>
+
+            <b:dataTable value="#{orderController.findAllOrderLines}" var="orderLine">
+                <b:dataTableColumn value="#{orderLine.quantity}"/>
+
+            </b:dataTable>
+            </h:form>
+        </div>
 
 
         </div>

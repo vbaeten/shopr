@@ -2,9 +2,11 @@ package com.realdolmen.shopr.repository;
 
 
 import com.realdolmen.shopr.domain.Order;
+import com.realdolmen.shopr.domain.OrderLine;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class OrderRepository {
 
@@ -14,7 +16,7 @@ public class OrderRepository {
 
 
 
-    public void submitOrder(Order order) {
+    public void submitOrder(List<OrderLine> order) {
 
         this.entityManager.persist(order);
     }

@@ -8,6 +8,7 @@ import com.realdolmen.shopr.service.OrderLineService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ManagedBean
 @RequestScoped
@@ -24,12 +25,25 @@ public class OrderLineController {
     private ItemService itemService;
 
 
+    public List<OrderLine> getOrderLines(){
+        return this.orderLineService.getOrderLines();
+    }
+
+
     public void addToCart(int id){
         item = itemService.getById(id);
         orderLine.setItem(item);
         this.orderLineService.submit(orderLine);
     }
 
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
 
 

@@ -6,12 +6,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "order_line")
+@NamedQueries({
+        @NamedQuery(
+                name = OrderLine.FIND_ALL,
+                query = "SELECT o FROM OrderLine o"
+        )
+})
 public class OrderLine {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    public static final String FIND_ALL = "OrderLine.findAll";
+
 
     @ManyToOne
     private Item item;
@@ -22,9 +31,13 @@ public class OrderLine {
     private int quantity;
 
 
+    public int getQuantity() {
+        return quantity;
+    }
 
-
-
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;

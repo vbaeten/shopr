@@ -71,6 +71,7 @@
                                     <f:param name="id" value="#{gameDetailController.game.id}"/>
                                 </h:link>
 
+                                <b:inputText value="#{orderLineController.orderLine.quantity}"/>
                                 <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(gameDetailController.game.id)}"/>
 
 

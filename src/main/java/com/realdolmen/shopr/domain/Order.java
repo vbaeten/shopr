@@ -7,7 +7,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-
+@Entity
+@Table(name="orders")
 public class Order {
 
     @Id
@@ -19,6 +20,8 @@ public class Order {
     @OneToMany
     private List<OrderLine> orderLines;
 
+
+    @Transient
     @ManyToOne
     @JoinColumn
     private User user;
