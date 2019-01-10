@@ -4,68 +4,68 @@ insert into user(id, name, first_name) values(3, 'Pot', 'Pol');
 insert into user(id, name, first_name) values(4, 'De Verschrikkelijke', 'Hagar');
 insert into user(id, name, first_name) values(5, 'Castro', 'Fidel');
 
-insert into article(id, title, price, supplierId) values(1, '4 Seasons', 9.99, '1');
-insert into article(id, title, price, supplierId) values(2, 'Fear Of The Dark', 14.99, '3');
-insert into article(id, title, price, supplierId) values(3, 'Invaders Must Die', 16.99, '2');
-insert into article(id, title, price, supplierId) values(4, 'Straight Outta Compton', 12.99, '6');
-insert into article(id, title, price, supplierId) values(5, 'Sign \"O\" The Times', 14.99, '4');
-insert into article(id, title, price, supplierId) values(6, 'Commotion', 15.99, '3');
-insert into article(id, title, price, supplierId) values(7, 'Cowboys From Hell', 13.99, '3');
-insert into article(id, title, price, supplierId) values(8, 'Sheik Yerbouti', 14.49, '3');
-insert into article(id, title, price, supplierId) values(9, 'Bad', 14.99, '5');
-insert into article(id, title, price, supplierId) values(10, 'Reverance', 12.50, '2');
-insert into article(id, title, price, supplierId) values(11, 'Arrival', 6.99, '5');
-insert into article(id, title, price, supplierId) values(12, 'Run DMC', 5.99, '6');
-insert into article(id, title, price, supplierId) values(13, 'Paul''s Boutique', 10.00, '6');
-insert into article(id, title, price, supplierId) values(14, 'It Takes A Nation Of Millions To Hold Us Back', 5.99, '6');
-insert into article(id, title, price, supplierId) values(15, 'Rumours', 14.99, '3');
+insert into article(id, title, price, supplierId, type) values(1, '4 Seasons', 9.99, '1', 'LP');
+insert into article(id, title, price, supplierId, type) values(2, 'Fear Of The Dark', 14.99, '3', 'LP');
+insert into article(id, title, price, supplierId, type) values(3, 'Invaders Must Die', 16.99, '2', 'LP');
+insert into article(id, title, price, supplierId, type) values(4, 'Straight Outta Compton', 12.99, '6', 'LP');
+insert into article(id, title, price, supplierId, type) values(5, 'Sign \"O\" The Times', 14.99, '4', 'LP');
+insert into article(id, title, price, supplierId, type) values(6, 'Commotion', 15.99, '3', 'LP');
+insert into article(id, title, price, supplierId, type) values(7, 'Cowboys From Hell', 13.99, '3', 'LP');
+insert into article(id, title, price, supplierId, type) values(8, 'Sheik Yerbouti', 14.49, '3', 'LP');
+insert into article(id, title, price, supplierId, type) values(9, 'Bad', 14.99, '5', 'LP');
+insert into article(id, title, price, supplierId, type) values(10, 'Reverance', 12.50, '2', 'LP');
+insert into article(id, title, price, supplierId, type) values(11, 'Arrival', 6.99, '5', 'LP');
+insert into article(id, title, price, supplierId, type) values(12, 'Run DMC', 5.99, '6', 'LP');
+insert into article(id, title, price, supplierId, type) values(13, 'Paul''s Boutique', 10.00, '6', 'LP');
+insert into article(id, title, price, supplierId, type) values(14, 'It Takes A Nation Of Millions To Hold Us Back', 5.99, '6', 'LP');
+insert into article(id, title, price, supplierId, type) values(15, 'Rumours', 14.99, '3', 'LP');
 
-insert into article(id, title, price, supplierId) values(16, 'Red Dead Redemption', 69.99, '8');
-insert into article(id, title, price, supplierId) values(17, 'Forza Horizon 4', 59.99, '7');
-insert into article(id, title, price, supplierId) values(18, 'Project Cars 2', 30.00, '7');
-insert into article(id, title, price, supplierId) values(19, 'F1 2016', 19.99, '7');
-insert into article(id, title, price, supplierId) values(20, 'Diablo 3', 64.99, '7');
-insert into article(id, title, price, supplierId) values(21, 'Assassin''s Creed: Odyssey', 70.00, '7');
-insert into article(id, title, price, supplierId) values(22, 'World Of Warcraft', 10.00, '7');
-insert into article(id, title, price, supplierId) values(23, 'Neverwinter', 9.99, '8');
-insert into article(id, title, price, supplierId) values(24, 'Tera', 4.99, '7');
-insert into article(id, title, price, supplierId) values(25, 'Legacy', 11.50, '9');
-insert into article(id, title, price, supplierId) values(26, 'Frostpunk', 69.99, '9');
-insert into article(id, title, price, supplierId) values(27, 'Age Of Empires 2: HD Edition', 69.99, '9');
-insert into article(id, title, price, supplierId) values(28, 'Far Cry 4', 50.00, '10');
-insert into article(id, title, price, supplierId) values(29, 'Bioshock Infinite', 35.00, '10');
-insert into article(id, title, price, supplierId) values(30, 'Borderlands 2', 19.99, '10');
+insert into article(id, title, price, supplierId, type) values(16, 'Red Dead Redemption', 69.99, '8', 'GAME');
+insert into article(id, title, price, supplierId, type) values(17, 'Forza Horizon 4', 59.99, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(18, 'Project Cars 2', 30.00, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(19, 'F1 2016', 19.99, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(20, 'Diablo 3', 64.99, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(21, 'Assassin''s Creed: Odyssey', 70.00, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(22, 'World Of Warcraft', 10.00, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(23, 'Neverwinter', 9.99, '8', 'GAME');
+insert into article(id, title, price, supplierId, type) values(24, 'Tera', 4.99, '7', 'GAME');
+insert into article(id, title, price, supplierId, type) values(25, 'Legacy', 11.50, '9', 'GAME');
+insert into article(id, title, price, supplierId, type) values(26, 'Frostpunk', 69.99, '9', 'GAME');
+insert into article(id, title, price, supplierId, type) values(27, 'Age Of Empires 2: HD Edition', 69.99, '9', 'GAME');
+insert into article(id, title, price, supplierId, type) values(28, 'Far Cry 4', 50.00, '10', 'GAME');
+insert into article(id, title, price, supplierId, type) values(29, 'Bioshock Infinite', 35.00, '10', 'GAME');
+insert into article(id, title, price, supplierId, type) values(30, 'Borderlands 2', 19.99, '10', 'GAME');
 
-insert into article(id, title, price, supplierId) values(31, 'The Lord Of The Rings', 20.00, '11');
-insert into article(id, title, price, supplierId) values(32, 'The Hobbit: 70th Anniversary Edition', 13.45, '11');
-insert into article(id, title, price, supplierId) values(33, 'The Silmarillion', 15.41, '11');
-insert into article(id, title, price, supplierId) values(34, 'A Farewell To Arms', 4.89, '11');
-insert into article(id, title, price, supplierId) values(35, 'The Call of Cthulhu and Other Weird Stories', 6.90, '11');
-insert into article(id, title, price, supplierId) values(36, '1Q84', 8.48, '11');
-insert into article(id, title, price, supplierId) values(37, 'The Complete Robot', 7.92, '11');
-insert into article(id, title, price, supplierId) values(38, 'The Shining', 7.19, '11');
-insert into article(id, title, price, supplierId) values(39, 'The Mask of Cthulhu', 16.49, '11');
-insert into article(id, title, price, supplierId) values(40, 'Dragons Of Autumn Twilight', 5.99, '11');
-insert into article(id, title, price, supplierId) values(41, 'The Catcher in the Rye', 4.99, '11');
-insert into article(id, title, price, supplierId) values(42, 'Murder on the Orient Express', 6.23, '11');
-insert into article(id, title, price, supplierId) values(43, 'The Da Vinci Code', 5.99, '11');
+insert into article(id, title, price, supplierId, type) values(31, 'The Lord Of The Rings', 20.00, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(32, 'The Hobbit: 70th Anniversary Edition', 13.45, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(33, 'The Silmarillion', 15.41, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(34, 'A Farewell To Arms', 4.89, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(35, 'The Call of Cthulhu and Other Weird Stories', 6.90, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(36, '1Q84', 8.48, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(37, 'The Complete Robot', 7.92, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(38, 'The Shining', 7.19, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(39, 'The Mask of Cthulhu', 16.49, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(40, 'Dragons Of Autumn Twilight', 5.99, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(41, 'The Catcher in the Rye', 4.99, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(42, 'Murder on the Orient Express', 6.23, '11', 'FICTION');
+insert into article(id, title, price, supplierId, type) values(43, 'The Da Vinci Code', 5.99, '11', 'FICTION');
 
-insert into article(id, title, price, supplierId) values(44, 'The Hidden Lives of Tudor Women: A Social History', 19.17, 12);
-insert into article(id, title, price, supplierId) values(45, 'The Templars', 17.13, 12);
-insert into article(id, title, price, supplierId) values(46, 'The Great Illyrian Revolt: Rome''s Forgotten War in the Balkans, AD 6 -9', 17.59, 12);
-insert into article(id, title, price, supplierId) values(47, '5 Ingredients - Quick & Easy Food', 11.59, 12);
-insert into article(id, title, price, supplierId) values(48, 'BOSH!: Simple Recipes. Amazing Food. All Plants.', 8.00, 12);
-insert into article(id, title, price, supplierId) values(49, 'Mums Know Best: The Hairy Bikers'' Family Cookbook', 7.84, 12);
-insert into article(id, title, price, supplierId) values(50, 'Death by Burrito', 14.99, 12);
-insert into article(id, title, price, supplierId) values(51, 'Eat What You Watch: A Cookbook for Movie Lovers', 10.44, 12);
-insert into article(id, title, price, supplierId) values(52, 'A Brief History Of Time', 6.98, 12);
-insert into article(id, title, price, supplierId) values(53, 'The Grand Design', 7.09, 12);
-insert into article(id, title, price, supplierId) values(54, 'On the Origin of Species', 7.80, 12);
-insert into article(id, title, price, supplierId) values(55, 'Tiger Woods', 4.99, 12);
-insert into article(id, title, price, supplierId) values(56, 'Sports Geek: A visual tour of sporting myths, debate and data', 4.99, 12);
-insert into article(id, title, price, supplierId) values(57, 'When Lions Roared: The Lions, the All Blacks and the Legendary Tour of 1971', 14.58, 12);
-insert into article(id, title, price, supplierId) values(58, 'Michael Carrick: Between the Lines: My Autobiography', 9.49, 12);
-insert into article(id, title, price, supplierId) values(59, 'Dirt Rally', 35.45, '7');
+insert into article(id, title, price, supplierId, type) values(44, 'The Hidden Lives of Tudor Women: A Social History', 19.17, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(45, 'The Templars', 17.13, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(46, 'The Great Illyrian Revolt: Rome''s Forgotten War in the Balkans, AD 6 -9', 17.59, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(47, '5 Ingredients - Quick & Easy Food', 11.59, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(48, 'BOSH!: Simple Recipes. Amazing Food. All Plants.', 8.00, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(49, 'Mums Know Best: The Hairy Bikers'' Family Cookbook', 7.84, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(50, 'Death by Burrito', 14.99, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(51, 'Eat What You Watch: A Cookbook for Movie Lovers', 10.44, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(52, 'A Brief History Of Time', 6.98, 12, 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(53, 'The Grand Design', 7.09, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(54, 'On the Origin of Species', 7.80, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(55, 'Tiger Woods', 4.99, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(56, 'Sports Geek: A visual tour of sporting myths, debate and data', 4.99, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(57, 'When Lions Roared: The Lions, the All Blacks and the Legendary Tour of 1971', 14.58, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(58, 'Michael Carrick: Between the Lines: My Autobiography', 9.49, '12', 'NON_FICTION');
+insert into article(id, title, price, supplierId, type) values(59, 'Dirt Rally', 35.45, '7', 'NON_FICTION');
 
 insert into lp(id, artist, genre) values(1, 'Vivaldi', 'classical');
 insert into lp(id, artist, genre) values(2, 'Iron Maiden', 'rock');
@@ -179,4 +179,46 @@ insert into rating(id, score, description, user_id, article_id) values (13, 9, '
 insert into rating(id, score, description, user_id, article_id) values (14, 9, 'Great race game', 1, 17);
 insert into rating(id, score, description, user_id, article_id) values (15, 0, 'There''s no place for games in communism! Die!', 3, 17);
 
-# insert into user_favourites(user_id, article_id) values(2, 1);
+insert into orders (id, time_stamp, user_id) values (1, '2018-01-18 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (2, '2017-05-02 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (3, '2019-07-30 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (4, '2018-02-11 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (5, '2016-11-28 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (6, '2017-01-10 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (7, '2018-06-25 17:13:47.0' , 1);
+insert into orders (id, time_stamp, user_id) values (8, '2019-01-05 17:13:47.0' , 1);
+
+insert into orderline(id, amount, article_id, order_id) values (1, 1, 1, 1);
+insert into orderline(id, amount, article_id, order_id) values (2, 2, 2, 1);
+insert into orderline(id, amount, article_id, order_id) values (3, 4, 20, 1);
+insert into orderline(id, amount, article_id, order_id) values (4, 1, 35, 1);
+
+insert into orderline(id, amount, article_id, order_id) values (5, 1, 3, 2);
+insert into orderline(id, amount, article_id, order_id) values (6, 2, 5, 2);
+insert into orderline(id, amount, article_id, order_id) values (7, 1, 42, 2);
+
+insert into orderline(id, amount, article_id, order_id) values (8, 3, 31, 3);
+
+insert into orderline(id, amount, article_id, order_id) values (8, 1, 10, 4);
+insert into orderline(id, amount, article_id, order_id) values (9, 5, 55, 4);
+insert into orderline(id, amount, article_id, order_id) values (10, 3, 22, 4);
+insert into orderline(id, amount, article_id, order_id) values (11, 2, 44, 4);
+
+insert into orderline(id, amount, article_id, order_id) values (12, 8, 6, 5);
+insert into orderline(id, amount, article_id, order_id) values (13, 1, 18, 5);
+
+insert into orderline(id, amount, article_id, order_id) values (14, 1, 29, 6);
+insert into orderline(id, amount, article_id, order_id) values (15, 6, 41, 6);
+insert into orderline(id, amount, article_id, order_id) values (16, 2, 52, 6);
+
+insert into orderline(id, amount, article_id, order_id) values (17, 1, 52, 7);
+
+insert into orderline(id, amount, article_id, order_id) values (18, 3, 56, 8);
+insert into orderline(id, amount, article_id, order_id) values (19, 2, 1, 8);
+insert into orderline(id, amount, article_id, order_id) values (20, 9, 16, 8);
+insert into orderline(id, amount, article_id, order_id) values (21, 1, 26, 8);
+insert into orderline(id, amount, article_id, order_id) values (22, 4, 14, 8);
+insert into orderline(id, amount, article_id, order_id) values (23, 2, 53, 8);
+
+
+

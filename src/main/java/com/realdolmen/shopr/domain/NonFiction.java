@@ -3,6 +3,7 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorValue("NON_FICTION")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -11,7 +12,7 @@ import javax.persistence.*;
                 ),
                 @NamedQuery(
                         name = NonFiction.FIND_ALL,
-                        query = "SELECT n FROM NonFiction n"
+                        query = "SELECT n FROM NonFiction n order by n.title"
                 )
         })
 public class NonFiction extends Book {

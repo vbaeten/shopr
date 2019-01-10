@@ -21,7 +21,7 @@
         </div>
 
         <p:accordionPanel value="#{userController.currentUser.orders}" var="oneOrder">
-            <p:tab title="[#{oneOrder.id}] - #{oneOrder.totalNumberOfArticles} items - #{oneOrder.price} €">
+            <p:tab title="#{oneOrder.timeStamp}  -  [#{oneOrder.id}]   -   #{oneOrder.totalNumberOfArticles} items   -   #{oneOrder.price} €">
                 <p:dataList var="line" value="#{oneOrder.orderLines}"
                             type="ordered">
                     <h:outputText value="#{line.article.title}" class="titleColumn"/><br/>

@@ -9,39 +9,33 @@
 
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
-        <p:dataTable var="lp"
-                     value="#{lpController.lps}"
+        <p:dataTable var="article"
+                     value="#{articleController.articles}"
                      rows="10"
                      paginator="true">
-
-
             <p:column headerText="Id">
-                <h:outputText value="#{lp.id}"/>
+                <h:outputText value="#{article.id}"/>
             </p:column>
 
-            <p:column headerText="Title">
-                <h:outputText value="#{lp.title}" styleClass="titleColumn"/>
+            <p:column headerText="Type">
+                <h:outputText value="#{article.type}"/>
             </p:column>
 
-            <p:column headerText="Artist">
-                <h:outputText value="#{lp.artist}" styleClass="authorColumn"/>
-            </p:column>
-
-            <p:column headerText="Genre">
-                <h:outputText value="#{lp.genre}"/>
+            <p:column headerText="Title" sortBy="#{article.title}">
+                <h:outputText value="#{article.title}"/>
             </p:column>
 
             <p:column headerText="Price">
-                <h:outputText value="#{lp.price}€" styleClass="priceColumn"/>
+                <h:outputText value="#{article.price}"/>
             </p:column>
 
             <p:column>
-                <p:button value="Show details" outcome="lpDetail.xhtml" includeViewParams="true">
-                    <f:param name="id" value="#{lp.id}"/>
+                <p:button value="Show details" outcome="#{articleController.navigateToDetailPage(article)}" includeViewParams="true">
+                    <f:param name="id" value="#{article.id}"/>
                 </p:button>
             </p:column>
+
         </p:dataTable>
     </ui:define>
 </ui:composition>
-
 </html>

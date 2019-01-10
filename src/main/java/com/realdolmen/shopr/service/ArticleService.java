@@ -16,10 +16,10 @@ public class ArticleService implements Serializable {
     public Article findById(int id) {
         return articleRepository.findById(id);
     }
-//
-//    public List<Article> findAllArticles() {
-//        return articleRepository.findAll();
-//    }
+
+    public List<Article> findAllArticles() {
+        return articleRepository.findAll();
+    }
 //
 //    public Article findByTitle(String title) {
 //        return ArticleRepository.findByTitle(title);

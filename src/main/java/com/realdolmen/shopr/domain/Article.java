@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@DiscriminatorColumn(name = "type")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(
@@ -16,12 +17,12 @@ import javax.validation.constraints.Size;
                 ),
                 @NamedQuery(
                         name = Article.FIND_ALL,
-                        query = "SELECT a FROM Article a"
+                        query = "SELECT a FROM Article a  order by a.title"
                 )
         })
 public class Article {
-    public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
+    public static final String FIND_ALL = "Article.findAll";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +39,8 @@ public class Article {
     @NotNull
     @Size(max=100)
     private String supplierId;
+
+    String type = new String();
 
     public int getId() {
         return id;
@@ -69,6 +72,14 @@ public class Article {
 
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

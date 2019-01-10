@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean
 @SessionScoped
@@ -17,11 +18,15 @@ public class ArticleController implements Serializable {
     @Inject
     ArticleService articleService;
 
-    public void init(){
+    public void init() {
         newArticle = getArticleById(articleId);
     }
 
-    public Article getArticleById(int id){
+    public List<Article> getArticles() {
+        return this.articleService.findAllArticles();
+    }
+
+    public Article getArticleById(int id) {
         return newArticle = articleService.findById(id);
     }
 
@@ -39,5 +44,19 @@ public class ArticleController implements Serializable {
 
     public void setArticleId(int articleId) {
         this.articleId = articleId;
+    }
+
+public String navigateToDetailPage(Article article) {
+        switch (article.getType()) {
+            case "LP":
+                return "lpDetail.xhtml?";
+            case "GAME":
+                return "gameDetail.xhtml";
+            case "FICTION":
+                return "fictionDetail.xhtml";
+            case "NON_FICTION":
+                return "nonFictionDetail.xhtml";
+        }
+        return "pageNotFound.xhtml";
     }
 }

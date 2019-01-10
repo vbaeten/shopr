@@ -14,6 +14,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +79,9 @@ public class OrderController implements Serializable {
     }
 
     public String submit(){
-//        LocalDateTime now = LocalDateTime.now();
-//        Timestamp orderTime = Timestamp.valueOf(now);
-//        this.currentOrder.setTimeStamp(orderTime);
+        LocalDateTime now = LocalDateTime.now();
+        Timestamp orderTime = Timestamp.valueOf(now);
+        this.currentOrder.setTimeStamp(orderTime);
         User currentUser = userController.getCurrentUser();
         this.currentOrder.setUser(currentUser);
         this.orderService.insert(currentOrder);

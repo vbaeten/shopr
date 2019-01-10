@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("FICTION")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
                 ),
                 @NamedQuery(
                         name = Fiction.FIND_ALL,
-                        query = "SELECT f FROM Fiction f"
+                        query = "SELECT f FROM Fiction f order by f.title"
                 )
         })
 public class Fiction extends Book {

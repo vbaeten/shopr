@@ -4,9 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-//@Table(name = "lp",
-//        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "artist"})
-//)
+@DiscriminatorValue("LP")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -15,7 +13,7 @@ import javax.validation.constraints.Size;
                 ),
                 @NamedQuery(
                         name = Lp.FIND_ALL,
-                        query = "SELECT l FROM Lp l"
+                        query = "SELECT l FROM Lp l order by l.title"
                 )
         })
 public class Lp extends Article {

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("GAME")
 @NamedQueries(
         {
                 @NamedQuery(
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
                 ),
                 @NamedQuery(
                         name = Game.FIND_ALL,
-                        query = "SELECT g FROM Game g"
+                        query = "SELECT g FROM Game g order by g.title"
                 )
         })
 //@Table(name = "game",

@@ -12,10 +12,10 @@ public class ArticleRepository {
 
     public Article findById(int id){ return entityManager.find(Article.class, id); }
 
-//    public List<Article> findAll() {
-//        return entityManager.createNamedQuery(Article.FIND_ALL, Article.class).getResultList();
-//    }
-//
+    public List<Article> findAll() {
+        return entityManager.createNamedQuery(Article.FIND_ALL, Article.class).getResultList();
+    }
+
 //    public Article findByTitle(String title) {
 //        return entityManager.createNamedQuery(Article.FIND_BY_TITLE, Article.class).setParameter("name", title).getSingleResult();
 //    }
