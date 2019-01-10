@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
-import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.service.ArticleService;
 
 import javax.faces.bean.ManagedBean;

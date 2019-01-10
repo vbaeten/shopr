@@ -2,7 +2,6 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.OrderLine;
-import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderLineService;
 
 import javax.faces.bean.ManagedBean;
@@ -17,28 +16,14 @@ import java.util.Optional;
 @SessionScoped
 public class OrderLineController {
 
+    private OrderLine orderLine = new OrderLine();
+
     private ArrayList<OrderLine> sessionOrderLines = new ArrayList<>();
-
-    @Inject
-    private OrderLineService orderLineService;
-
-    private ArticleService articleService;
 
     private Article selectedArticle;
 
-    public Article getSelectedArticle() {
-        return selectedArticle;
-    }
-
-    public void setSelectedArticle(Article selectedArticle) {
-        this.selectedArticle = selectedArticle;
-    }
-
-    private OrderLine orderLine = new OrderLine();
-
-    public void initDetailView(Long orderlineId) {
-        this.orderLine = orderLineService.findOrderLineById(orderlineId);
-    }
+    @Inject
+    private OrderLineService orderLineService;
 
     public String createOrderLine(BigDecimal quantity, Article article) {
         Optional<OrderLine> orderLine = sessionOrderLines.stream()
@@ -53,18 +38,6 @@ public class OrderLineController {
            orderLine.ifPresent(orderLine1 -> orderLine1.setQuantity(orderLine1.getQuantity().add(quantity)));
         }
         return "orderlineselected";
-    }
-    public ArrayList<OrderLine> getSessionOrderLines() {
-        return sessionOrderLines;
-    }
-
-    public void setSessionOrderLines(ArrayList<OrderLine> sessionOrderLines) {
-        this.sessionOrderLines = sessionOrderLines;
-    }
-
-
-    public List<OrderLine> getOrderLines() {
-        return this.orderLineService.findAllOrderLines();
     }
 
     public void add(OrderLine orderLine) {
@@ -86,5 +59,24 @@ public class OrderLineController {
 
     public void setOrderLine(OrderLine orderLine) {
         this.orderLine = orderLine;
+    }
+
+    public Article getSelectedArticle() {
+        return selectedArticle;
+    }
+
+    public void setSelectedArticle(Article selectedArticle) {
+        this.selectedArticle = selectedArticle;
+    }
+    public ArrayList<OrderLine> getSessionOrderLines() {
+        return sessionOrderLines;
+    }
+
+    public void setSessionOrderLines(ArrayList<OrderLine> sessionOrderLines) {
+        this.sessionOrderLines = sessionOrderLines;
+    }
+
+    public List<OrderLine> getOrderLines() {
+        return this.orderLineService.findAllOrderLines();
     }
 }

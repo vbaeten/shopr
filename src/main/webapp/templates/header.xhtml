@@ -11,5 +11,11 @@
         <b:navLink value="Create" href="articlecreation.xhtml"></b:navLink>
         <b:navLink value="Link" href="#"></b:navLink>
     </b:navbarLinks>
+    <b:navbarLinks pull="right"><b:navLink value="          " href="#"></b:navLink></b:navbarLinks>
+    <b:navbarLinks pull="right" styleClass="hidden-xs">
+        <b:navLink value="#{userController.sayHello(userController.loggedInUser)}" href="#"></b:navLink>
+        <b:dropMenu value="Menu">
+        </b:dropMenu>
+    </b:navbarLinks>
 </b:navBar>
 </html>
