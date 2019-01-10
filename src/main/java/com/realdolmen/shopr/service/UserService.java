@@ -12,6 +12,7 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
+
     public User findUserById(int id) {
         return userRepository.findById(id);
     }

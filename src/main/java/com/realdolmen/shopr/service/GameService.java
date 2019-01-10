@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.repository.ArtikelRepository;
 import com.realdolmen.shopr.repository.GameRepository;
 
 import javax.ejb.Stateless;
@@ -12,6 +11,7 @@ import java.util.List;
 public class GameService {
     @Inject
     private GameRepository gameRepository;
+
 
     public Game findById(int id) {
         return gameRepository.findById(id);
@@ -25,9 +25,9 @@ public class GameService {
         return gameRepository.findByTitle(title);
     }
 
-    public void updateTitle(int id, String newTitel) {
+    public void updateTitle(int id, String newTitle) {
         Game game = gameRepository.findById(id);
-        game.setTitel(newTitel);
+        game.setTitle(newTitle);
     }
 
     public void insert(Game game) {

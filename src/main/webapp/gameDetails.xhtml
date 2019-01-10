@@ -8,48 +8,48 @@
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-    <title>Details</title>
+    <title>Shopr! - Details</title>
 
 </h:head>
 <h:body>
 
     <f:metadata>
-        <f:viewParam id="id" name="id" value="#{artikelController.selectedId}"/>
+        <f:viewParam id="id" name="id" value="#{articleController.selectedId}"/>
     </f:metadata>
 
-    <p>#{artikelController.artikel.titel}</p>
+    <p>#{articleController.article.title}</p>
 
-    <h:form id="details">
-        <b:dataTable var="game" value="#{artikelController.getArtikelById(artikelController.selectedId)}"
-                     id="gameArtikelDetailsDataTabel">
+    <b:form id="details">
+        <b:dataTable var="game" value="#{articleController.getArticleById(articleController.selectedId)}"
+                     id="gameDetailsDataTabel">
             <b:dataTableColumn label="Id" value="#{game.id}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Id Leverancier">
-                <h:outputText value="#{game.idLeverancier}" rendered="#{!artikelController.editable}"/>
-                <b:inputText value="#{game.idLeverancier}" rendered="#{artikelController.editable}" />
+            <b:dataTableColumn label="Supplier Id">
+                <h:outputText value="#{game.supplierId}" rendered="#{!articleController.editable}"/>
+                <b:inputText value="#{game.supplierId}" rendered="#{articleController.editable}" />
             </b:dataTableColumn>
             <b:dataTableColumn label="Type" value="#{game.type}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Titel">
-                <h:outputText value="#{game.titel}" rendered="#{!artikelController.editable}"/>
-                <b:inputText value="#{game.titel}" rendered="#{artikelController.editable}" />
+            <b:dataTableColumn label="Title">
+                <h:outputText value="#{game.title}" rendered="#{!articleController.editable}"/>
+                <b:inputText value="#{game.title}" rendered="#{articleController.editable}" />
             </b:dataTableColumn>
-            <b:dataTableColumn label="Prijs">
-                <h:outputText value="#{game.prijs}" rendered="#{!artikelController.editable}"/>
-                <b:inputText value="#{game.prijs}" rendered="#{artikelController.editable}" />
+            <b:dataTableColumn label="Price">
+                <h:outputText value="#{game.price}" rendered="#{!articleController.editable}"/>
+                <b:inputText value="#{game.price}" rendered="#{articleController.editable}" />
             </b:dataTableColumn>
-            <b:dataTableColumn label="Uitgever" value="#{game.uitgever}">
+            <b:dataTableColumn label="Publisher" value="#{game.publisher}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Minimum leeftijd" value="#{game.minimumLeeftijd}">
+            <b:dataTableColumn label="Minimum age" value="#{game.minimumAge}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Delete">
-                <b:commandButton value="delete" onclick="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
+                <b:commandButton value="delete" onclick="#{articleController.removeArticleById(articleController.selectedId)}"/>
             </b:dataTableColumn>
         </b:dataTable>
 
-    </h:form>
+    </b:form>
 
 
 </h:body>

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "lp"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"uitvoerder", "titel"})*/)
+@Table(name = "lp"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"publisher", "title"})*/)
 @DiscriminatorValue("lp")
 @NamedQueries(
         {
@@ -18,23 +18,24 @@ import javax.validation.constraints.Size;
                 )
         }
 )
-public class Lp extends Artikel {
+public class Lp extends Article {
     public static final String FIND_ALL = "Lp.findAll";
     public static final String FIND_BY_GENRE = "Lp.findByGenre";
 
     @Size(max = 100)
-    @Column(name = "uitvoerder", unique = true)
-    private String uitvoerder;
+    @Column(name = "publisher", unique = true)
+    private String publisher;
 
     @Enumerated(EnumType.STRING)
     private LpGenre lpGenre;
 
-    public String getUitvoerder() {
-        return uitvoerder;
+
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setUitvoerder(String uitvoerder) {
-        this.uitvoerder = uitvoerder;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public LpGenre getLpGenre() {

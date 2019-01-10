@@ -13,6 +13,7 @@ public class LpService {
     @Inject
     private LpRepository lpRepository;
 
+
     public Lp findById(int id) {
         return lpRepository.findById(id);
     }
@@ -25,9 +26,9 @@ public class LpService {
         return lpRepository.findByTitle(title);
     }
 
-    public void updateTitle(int id, String newTitel) {
+    public void updateTitle(int id, String newTitle) {
         Lp lp = lpRepository.findById(id);
-        lp.setTitel(newTitel);
+        lp.setTitle(newTitle);
     }
 
     public void insert(Lp lp) {

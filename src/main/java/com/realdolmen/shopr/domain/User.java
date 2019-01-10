@@ -2,7 +2,6 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -28,19 +27,24 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "name")
     private String name;
     @Column(name = "first_name")
     private String firstName;
 
     @OneToMany
-    private List<Bestelling> bestellingen;
-
+    private List<Order> orders;
     @OneToMany
-    private List<Beoordeling> beoordelingen;
+    private List<Review> reviews;
+
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,21 +63,23 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public List<Bestelling> getBestellingen() {
-        return bestellingen;
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setBestellingen(List<Bestelling> bestellingen) {
-        this.bestellingen = bestellingen;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
-    public List<Beoordeling> getBeoordelingen() {
-        return beoordelingen;
+    public List<Review> getReviews() {
+        return reviews;
     }
 
-    public void setBeoordelingen(List<Beoordeling> beoordelingen) {
-        this.beoordelingen = beoordelingen;
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,7 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 public enum LpGenre {
-    KLASSIEK("klassiek"),
+    CLASSIC("Classic"),
     POP("pop"),
     ROCK("rock"),
     DANCE("dance"),

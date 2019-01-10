@@ -4,7 +4,6 @@ import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.LpService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
@@ -13,23 +12,11 @@ import java.util.List;
 @RequestScoped
 public class LpController {
 
-    private Lp lp = new Lp();
-
     @Inject
     private LpService lpService;
 
-    public String gotoDetails(Lp lp) {
-        this.lp = lp;
-        return "lpDetails?faces-redirect=true";
-    }
+    private Lp lp = new Lp();
 
-    public Lp getLp() {
-        return lp;
-    }
-
-    public void setLp(Lp lp) {
-        this.lp = lp;
-    }
 
     public Lp findById(int id) {
         return this.lpService.findById(id);
@@ -45,7 +32,21 @@ public class LpController {
 
     public String save() {
         this.lpService.insert(lp);
-        return "artikelBeheer?faces-redirect=true";
+        return "articleManagement?faces-redirect=true";
+    }
+
+    public String gotoDetails(Lp lp) {
+        this.lp = lp;
+        return "lpDetails?faces-redirect=true";
+    }
+
+
+    public Lp getLp() {
+        return lp;
+    }
+
+    public void setLp(Lp lp) {
+        this.lp = lp;
     }
 
 }

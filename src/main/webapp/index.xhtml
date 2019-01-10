@@ -8,8 +8,8 @@
 <h:head><title>ShopR!</title></h:head>
 <h:body>
 
-    <b:form id="dataUsers">
-        <b:panel id="panel" title="Artikels" style="margin-top:10px">
+    <b:form id="userData">
+        <b:panel title="Users" style="margin-top:10px">
             <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
                 <b:dataTableColumn label="Id">
                     <h:outputText value="#{user.id}"/>
@@ -22,31 +22,31 @@
                 </b:dataTableColumn>
                 <b:dataTableColumn label="Operations">
                     <b:commandButton value="Delete" look="danger" action="#{userController.remove(user.id)}"
-                                     update="dataUsers"/>
+                                     update="userData"/>
                 </b:dataTableColumn>
             </b:dataTable>
         </b:panel>
     </b:form>
 
-    <b:panel>
+    <b:panel title="Registration form">
         <b:form id="registerForm" horizontal="true">
             <b:inputText labelColMd="1" colMd="3" label="Name:" id="userName"
-                         value="#{registerController.newUser.name}"/>
+                         value="#{userController.newUser.name}"/>
             <b:inputText labelColMd="1" colMd="3" label="First name:" id="userFirstName"
-                         value="#{registerController.newUser.firstName}"/>
-            <b:commandButton value="Toevoegen" look="success" action="#{registerController.submit()}"
-                             update="dataUsers userLogin" />
+                         value="#{userController.newUser.firstName}"/>
+            <b:commandButton value="Submit" look="success" action="#{userController.submit()}"
+                             update="userData loginForm registerForm" />
         </b:form>
     </b:panel>
 
     <b:panel>
-        <b:form id="userLogin">
+        <b:form id="loginForm">
             <b:messages/>
-            <b:selectOneMenu colMd="4" value="#{userController.selectedUser}" converter="omnifaces.SelectItemsConverter">
+            <b:selectOneMenu colMd="4" value="#{loginController.selectedUser}" converter="omnifaces.SelectItemsConverter">
                 <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
             </b:selectOneMenu>
-            <b:commandButton value="Login klant" look="success" action="artikelOverzicht?faces-redirect=true" update="userLogin"/>
-            <b:commandButton value="Login admin" look="success" action="artikelBeheer?faces-redirect=true" update="userLogin"/>
+            <b:commandButton value="Login client" look="success" action="articleOverview?faces-redirect=true" update="loginForm"/>
+            <b:commandButton value="Login admin" look="success" action="articleManagement?faces-redirect=true" update="loginForm"/>
         </b:form>
     </b:panel>
 </h:body>

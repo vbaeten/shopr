@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.service.GameService;
 
@@ -13,24 +12,11 @@ import java.util.List;
 @RequestScoped
 public class GameController {
 
-    private Game game = new Game();
-
     @Inject
     private GameService gameService;
 
+    private Game game = new Game();
 
-    public String gotoDetails(Game game) {
-        this.game = game;
-        return "gameDetails?faces-redirect=true&includeViewParams=true";
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
 
     public Game findById(int id) {
         return this.gameService.findById(id);
@@ -46,6 +32,22 @@ public class GameController {
 
     public String save() {
         this.gameService.insert(game);
-        return "artikelBeheer?faces-redirect=true";
+        return "articleManagement?faces-redirect=true";
     }
+
+    public String gotoDetails(Game game) {
+        this.game = game;
+        return "gameDetails?faces-redirect=true&includeViewParams=true";
+    }
+
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<head>
+    <title>Shopping Cart</title>
+</head>
+<h:body>
+
+    Welcome #{loginController.selectedUser.firstName}<br/>
+    Id: #{loginController.selectedUser.id}<br/>
+
+<b:form>
+    order id = #{orderLineController.orderLine.order.id};<br/>
+    selected order id = #{orderController.selectedOrder.id};<br/>
+    article title = #{orderLineController.orderLine.article.title};<br/>
+    quantity = #{orderLineController.orderLine.quantity};<br/>
+    price = #{orderLineController.orderLine.article.price};<br/>
+    subtotaal = #{orderLineController.orderLine.subTotal};<br/>
+
+    <b:commandButton id="submit" value="Buy" action="#{orderController.submit()}"/>
+
+</b:form>
+</h:body>
+</html>

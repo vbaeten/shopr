@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head><title>ShopR! - Article Overview</title></h:head>
+
+<h:body>
+
+    Welcome #{loginController.selectedUser.firstName}<br/>
+    Id: #{loginController.selectedUser.id}<br/>
+
+
+    <b:form id="articleOverviewForm">
+        <b:panel>
+        <b:dataTable var="article" value="#{articleController.allArticles}" id="articleDataTabel">
+            <b:dataTableColumn label="Id" value="#{article.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Supplier Id" value="#{article.supplierId}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Type" value="#{article.type}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Title" value="#{article.title}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Price" value="#{article.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <!--<h:link value="details" action="#{articleController.gotoDetails(article)}" includeViewParams="true"/>-->
+                <h:commandButton value="details" action="#{articleController.gotoDetails(article)}" >
+                    <f:param name="id" value="#{article.id}"/>
+                </h:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        </b:panel>
+
+        <b:panel>
+        <b:dataTable var="game" value="#{gameController.findAll}" id="gameDataTabel">
+            <b:dataTableColumn label="Id" value="#{game.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Supplier Id" value="#{game.supplierId}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Publisher" value="#{game.publisher}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{game.gameGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Minimum age" value="#{game.minimumAge}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Title" value="#{game.title}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Price" value="#{game.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <h:commandButton value="details" action="#{articleController.gotoDetails(game)}">
+                    <f:param name="id" value="#{game.id}"/>
+                </h:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        </b:panel>
+
+        <b:panel>
+        <b:dataTable var="lp" value="#{lpController.findAll}" id="lpDataTabel">
+            <b:dataTableColumn label="Id" value="#{lp.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Supplier Id" value="#{lp.supplierId}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Publisher" value="#{lp.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Title" value="#{lp.title}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Price" value="#{lp.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <h:commandButton value="details" action="#{articleController.gotoDetails(lp)}">
+                    <f:param name="id" value="#{lp.id}"/>
+                </h:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        </b:panel>
+
+        <b:panel>
+        <b:dataTable var="fiction" value="#{fictionController.findAll}" id="fictionDataTabel">
+            <b:dataTableColumn label="Id" value="#{fiction.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Supplier Id" value="#{fiction.supplierId}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Isbn" value="#{fiction.isbn}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Author" value="#{fiction.author}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Genre" value="#{fiction.fictionGenre}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Title" value="#{fiction.title}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Price" value="#{fiction.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Nr. of Pages" value="#{fiction.nrOfPages}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Short Summary" value="#{fiction.shortSummery}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <h:commandButton value="details" action="#{articleController.gotoDetails(fiction)}">
+                    <f:param name="id" value="#{fiction.id}"/>
+                </h:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        </b:panel>
+
+        <b:panel>
+        <b:dataTable var="nonFiction" value="#{nonFictionController.findAll}" id="nonFictionDataTabel">
+            <b:dataTableColumn label="Id" value="#{nonFiction.id}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Supplier Id" value="#{nonFiction.supplierId}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Isbn" value="#{nonFiction.isbn}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Author" value="#{nonFiction.author}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Subject" value="#{nonFiction.nonFictionSubject}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Title" value="#{nonFiction.title}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Price" value="#{nonFiction.price}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Nr. of Pages" value="#{nonFiction.nrOfPages}">
+            </b:dataTableColumn>
+            <b:dataTableColumn label="Operations">
+                <h:commandButton value="details" action="#{articleController.gotoDetails(nonFiction)}">
+                    <f:param name="id" value="#{nonFiction.id}"/>
+                </h:commandButton>
+            </b:dataTableColumn>
+        </b:dataTable>
+        </b:panel>
+
+    </b:form>
+</h:body>
+
+</html>

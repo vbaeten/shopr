@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "game"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"uitgever", "titel"})*/)
+@Table(name = "game"/*, uniqueConstraints = @UniqueConstraint(columnNames = {"publisher", "title"})*/)
 @DiscriminatorValue("game")
 @NamedQueries(
         {
@@ -19,34 +19,35 @@ import javax.validation.constraints.Size;
                 )
         }
 )
-public class Game extends Artikel {
+public class Game extends Article {
     public static final String FIND_ALL = "Game.findAll";
     public static final String FIND_BY_GENRE = "Game.findByGenre";
 
     @Size(max = 100)
-    @Column(name = "uitgever", unique = true)
-    private String uitgever;
-
-    @Column(name = "minimum_leeftijd")
-    private int minimumLeeftijd;
+    @Column(name = "publisher", unique = true)
+    private String publisher;
+    @Column(name = "minimum_age")
+    private int minimumAge;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "game_genre")
     private GameGenre gameGenre;
 
-    public String getUitgever() {
-        return uitgever;
+
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setUitgever(String uitgever) {
-        this.uitgever = uitgever;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
-    public int getMinimumLeeftijd() {
-        return minimumLeeftijd;
+    public int getMinimumAge() {
+        return minimumAge;
     }
 
-    public void setMinimumLeeftijd(int minimumLeeftijd) {
-        this.minimumLeeftijd = minimumLeeftijd;
+    public void setMinimumAge(int minimumAge) {
+        this.minimumAge = minimumAge;
     }
 
     public GameGenre getGameGenre() {

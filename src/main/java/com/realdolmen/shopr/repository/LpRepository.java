@@ -11,6 +11,7 @@ public class LpRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
+
     public Lp findById(int id) {
         return entityManager.find(Lp.class, id);
     }

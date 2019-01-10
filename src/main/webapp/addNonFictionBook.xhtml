@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head>
+    <title>ShopR! - Article Management</title>
+</h:head>
+<h:body>
+
+    Welcome #{loginController.selectedUser.firstName}<br/>
+
+    <b:form id="newArticleSelect" horizontal="true">
+        <b:container>
+            <b:panel>
+                <b:column colMd="3">
+                    <b:selectOneMenu value="#{articleController.selectedArticleType}" required="true"
+                                     label="Select article type: ">
+                        <f:selectItem itemLabel="book/non-fiction" itemValue="nonFiction"/>
+                        <f:selectItem itemLabel="book/fiction" itemValue="fiction"/>
+                        <f:selectItem itemLabel="game" itemValue="game"/>
+                        <f:selectItem itemLabel="lp" itemValue="lp"/>
+                    </b:selectOneMenu>
+                </b:column>
+                <b:column>
+                    <b:commandButton value="Select type" update="@form"
+                                     action="#{articleController.submitArticleType()}"/>
+                </b:column>
+            </b:panel>
+        </b:container>
+    </b:form>
+
+    <b:form id="addNonFictionBook">
+        <b:container>
+            <b:panel>
+                <b:row>
+                    <b:column colMd="5">
+                        <b:inputText placeholder="nonFiction" label="Book type: "
+                                     value="#{nonFictionController.nonFiction.bookType}"/>
+                        <b:inputText label="Supplier ID: "
+                                     value="#{nonFictionController.nonFiction.supplierId}"/>
+                        <b:inputText label="Isbn: "
+                                     value="#{nonFictionController.nonFiction.isbn}"/>
+                        <b:inputText label="Author: "
+                                     value="#{nonFictionController.nonFiction.author}"/>
+                    </b:column>
+
+                    <b:column colMd="5">
+                        <o:importConstants type="com.realdolmen.shopr.domain.NonFictionSubject"/>
+                        <b:selectOneMenu id="nonFictionGenre" label="Genre: "
+                                         value="#{nonFictionController.nonFiction.nonFictionSubject}"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItems value="#{NonFictionSubject}" var="nonFictionSubject"
+                                           itemValue="#{nonFictionSubject}" itemLabel="#{nonFictionSubject}"/>
+                        </b:selectOneMenu>
+                        <b:inputText label="Title: "
+                                     value="#{nonFictionController.nonFiction.title}"/>
+                        <b:inputText label="Price: "
+                                     value="#{nonFictionController.nonFiction.price}"/>
+                        <b:inputText label="Nr. of Pages: "
+                                     value="#{nonFictionController.nonFiction.nrOfPages}"/>
+                    </b:column>
+                </b:row>
+
+                <b:row>
+                    <b:column>
+                        <b:commandButton value="Add" look="success"
+                                         action="#{nonFictionController.save}" update="@form"/>
+                    </b:column>
+                </b:row>
+
+            </b:panel>
+        </b:container>
+    </b:form>
+
+</h:body>
+</html>

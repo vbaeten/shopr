@@ -11,6 +11,7 @@ public class GameRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
+
     public Game findById(int id) {
         return entityManager.find(Game.class, id);
     }

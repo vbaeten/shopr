@@ -10,43 +10,46 @@
 <h:head>
 
     <f:metadata>
-        <f:viewParam id="id" name="id" value="#{artikelController.selectedId}"/>
+        <f:viewParam id="id" name="id" value="#{articleController.selectedId}"/>
     </f:metadata>
 
-    <title>Details</title>
+    <title>ShopR! - Details</title>
 
 </h:head>
 <h:body>
 
-    <p>#{artikelController.artikel.titel}</p>
+    Welcome #{loginController.selectedUser.firstName}<br/>
+    article = #{articleController.getArticleById(articleController.selectedId).title}<br/>
+    Id: #{loginController.selectedUser.id}<br/>
+
 
     <b:form id="details">
-        <b:dataTable var="lp" value="#{artikelController.getArtikelById(artikelController.selectedId)}"
-                     id="lpArtikelDetailsDataTabel">
+        <b:dataTable var="lp" value="#{articleController.getArticleById(articleController.selectedId)}"
+                     id="lpDetailsDataTabel">
             <b:dataTableColumn label="Id" value="#{lp.id}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Id leverancier" value="#{lp.idLeverancier}">
+            <b:dataTableColumn label="Supplier Id" value="#{lp.supplierId}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Type" value="#{lp.type}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Titel" value="#{lp.titel}">
+            <b:dataTableColumn label="Title" value="#{lp.title}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Prijs" value="#{lp.prijs}">
+            <b:dataTableColumn label="Price" value="#{lp.price}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Uitvoerder" value="#{lp.uitvoerder}">
+            <b:dataTableColumn label="Publisher" value="#{lp.publisher}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Genre" value="#{lp.lpGenre}">
             </b:dataTableColumn>
-            <b:dataTableColumn label="Operations">
-                <b:commandButton value="delete" action="#{artikelController.removeArtikelById(artikelController.selectedId)}"/>
-            </b:dataTableColumn>
+            <!--<b:dataTableColumn label="Operations">-->
+                <!--<b:commandButton value="delete" action="#{articleController.removeArticleById(articleController.selectedId)}"/>-->
+            <!--</b:dataTableColumn>-->
         </b:dataTable>
     </b:form>
-    <h:form>
-        <b:inputText label="Quantity" id="quantity" value="#{bestellingLijnController.bestellingLijn.quantity}"/>
+    <b:form>
+        <b:inputText label="Quantity" value="#{orderLineController.orderLine.quantity}"/>
 
-        <b:commandButton id="submit" value="Submit" action="#{bestellingLijnController.submitQuantity(artikelController.selectedId)}"/>
-    </h:form>
+        <b:commandButton id="submit" value="Submit" action="#{orderLineController.submitQuantity(orderLineController.orderLine.quantity,articleController.selectedId,loginController.selectedUser.id)}"/>
+    </b:form>
 
 
 </h:body>
