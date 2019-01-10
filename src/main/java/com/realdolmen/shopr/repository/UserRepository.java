@@ -11,8 +11,8 @@ public class UserRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public User findById(int id) {
-        return entityManager.find(User.class, id);
+    public User findByUserId(int userId) {
+        return entityManager.find(User.class, userId);
     }
 
     public List<User> findAll() {
@@ -27,8 +27,8 @@ public class UserRepository {
         entityManager.persist(user);
     }
 
-    public void removeUserById(int id){
-        User userById = findById(id);
+    public void removeUserByUserId(int userId){
+        User userById = findByUserId(userId);
         entityManager.remove(userById);
     }
 

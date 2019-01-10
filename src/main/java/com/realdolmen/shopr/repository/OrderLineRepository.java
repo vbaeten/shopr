@@ -10,8 +10,8 @@ public class OrderLineRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public OrderLine findById(Long id) {
-        return entityManager.find(OrderLine.class, id);
+    public OrderLine findByOrderLineId(Long orderlineId) {
+        return entityManager.find(OrderLine.class, orderlineId);
     }
 
     public List<OrderLine> findAll() {

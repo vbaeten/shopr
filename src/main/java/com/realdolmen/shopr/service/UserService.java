@@ -13,8 +13,8 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
-    public User findUserById(int id) {
-        return userRepository.findById(id);
+    public User findUserByUserId(int userId) {
+        return userRepository.findByUserId(userId);
     }
 
     public List<User> findAllUsers() {
@@ -25,8 +25,8 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
-    public void updateName(int id, String newName) {
-        User user = userRepository.findById(id);
+    public void updateName(int userId, String newName) {
+        User user = userRepository.findByUserId(userId);
         user.setName(newName);
     }
 
@@ -34,8 +34,8 @@ public class UserService {
         userRepository.insert(user);
     }
 
-    public void removeUserById(int id) {
-        userRepository.removeUserById(id);
+    public void removeUserByUserId(int userId) {
+        userRepository.removeUserByUserId(userId);
     }
 
 }

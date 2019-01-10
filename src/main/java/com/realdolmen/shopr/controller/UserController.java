@@ -32,8 +32,8 @@ public class UserController implements Serializable {
         return this.userService.findAllUsers();
     }
 
-    public void removeUserById(int id) {
-        this.userService.removeUserById(id);
+    public void removeUserById(int userId) {
+        this.userService.removeUserByUserId(userId);
     }
 
 }

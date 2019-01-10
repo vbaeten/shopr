@@ -1,18 +1,12 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Article;
-import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
-import com.realdolmen.shopr.domain.enums.GameGenre;
 import com.realdolmen.shopr.service.ArticleService;
-import com.realdolmen.shopr.service.GameService;
 import com.realdolmen.shopr.service.OrderLineService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import java.util.Arrays;
 import java.util.List;
 
 @ManagedBean
@@ -26,10 +20,15 @@ public class OrderLineController {
 
     private OrderLine orderLine = new OrderLine();
 
-    public String createOrderLine(Long id){
-        this.orderLine.setArticle(articleService.findById(id));
-        this.orderLine.setQuantity(orderLine.getQuantity());
-        return "overview";
+    public void initDetailView(Long orderlineId) {
+        this.orderLine = orderLineService.findOrderLineById(orderlineId);
+    }
+
+    public String createOrderLine(int quantity){
+        OrderLine orderLine = new OrderLine();
+        orderLine.setQuantity(quantity);
+        this.orderLine = orderLine;
+        return "orderlineselected";
     }
 
     public List<OrderLine> getOrderLines() {
@@ -40,17 +39,12 @@ public class OrderLineController {
         this.orderLineService.insert(orderLine);
     }
 
-    public OrderLine getOrderLinebyId(Long id) {
-        return orderLineService.findOrderLineById(id);
-    }
-
-    public String saveOrderLine() {
-        this.orderLineService.insert(orderLine);
-        return "overview";
+    public OrderLine getOrderLinebyId(Long orderlineId) {
+        return orderLineService.findOrderLineById(orderlineId);
     }
 
     public String removeOrderLine(OrderLine orderLine) {
-        orderLineService.removeById(orderLine.getId());
+        orderLineService.removeByOrderlineId(orderLine.getOrderlineId());
         return "overview";
     }
 

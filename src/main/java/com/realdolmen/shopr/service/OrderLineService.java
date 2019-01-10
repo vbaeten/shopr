@@ -12,8 +12,8 @@ public class OrderLineService {
     @Inject
     private OrderLineRepository orderLineRepository;
 
-    public OrderLine findOrderLineById(Long id) {
-        return orderLineRepository.findById(id);
+    public OrderLine findOrderLineById(Long orderlineId) {
+        return orderLineRepository.findByOrderLineId(orderlineId);
     }
 
     public List<OrderLine> findAllOrderLines() {
@@ -24,8 +24,8 @@ public class OrderLineService {
         orderLineRepository.insert(orderLine);
     }
 
-    public void removeById(Long id) {
-        OrderLine orderLine = orderLineRepository.findById(id);
+    public void removeByOrderlineId(Long orderlineId) {
+        OrderLine orderLine = orderLineRepository.findByOrderLineId(orderlineId);
         orderLineRepository.remove(orderLine);
     }
 }

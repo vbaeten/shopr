@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int userId;
     @Column(name = "name")
     private String name;
     @Column(name = "firstname")
@@ -55,8 +55,8 @@ public class User implements Serializable {
         this.ratings = ratings;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -80,13 +80,13 @@ public class User implements Serializable {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getId() == user.getId() &&
+        return getUserId() == user.getUserId() &&
                 Objects.equals(getName(), user.getName()) &&
                 Objects.equals(getFirstName(), user.getFirstName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getFirstName());
+        return Objects.hash(getUserId(), getName(), getFirstName());
     }
 }

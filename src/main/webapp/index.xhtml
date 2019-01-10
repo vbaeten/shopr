@@ -23,8 +23,8 @@
             <b:form id="Userdata">
                 <b:panel id="panel" title="Users" style="margin-top:30px">
                     <b:dataTable var="user" value="#{userController.users}" id="userDataTable">
-                        <b:dataTableColumn label="Id">
-                            <h:outputText value="#{user.id}"/>
+                        <b:dataTableColumn label="User Id">
+                            <h:outputText value="#{user.userId}"/>
                         </b:dataTableColumn>
                         <b:dataTableColumn label="Name">
                             <h:outputText value="#{user.name}"/>
@@ -33,7 +33,7 @@
                             <h:outputText value="#{user.firstName}"/>
                         </b:dataTableColumn>
                         <b:dataTableColumn label="Operations">
-                            <b:commandButton value="Delete" look="danger" action="#{userController.removeUserById(user.id)}"
+                            <b:commandButton value="Delete" look="danger" action="#{userController.removeUserById(user.userId)}"
                                              update="Userdata"/>
                         </b:dataTableColumn>
                     </b:dataTable>

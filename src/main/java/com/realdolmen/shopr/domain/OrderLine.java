@@ -8,7 +8,7 @@ public class OrderLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long orderlineId;
 
     @ManyToOne
     private Article article;
@@ -28,8 +28,8 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
-    public Long getId() {
-        return id;
+    public Long getOrderlineId() {
+        return orderlineId;
     }
 
     public Article getArticle() {
