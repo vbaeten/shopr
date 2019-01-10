@@ -14,23 +14,23 @@
         <ui:define name="content">
             <p:panel header="#{msg['index.panel.header.signIn']}" style="margin-bottom: 10px;">
                 <b:form id="selectUserForm">
-                    <b:selectOneMenu value="#{userController.id}" required="true">
+                    <b:selectOneMenu value="#{loginController.id}" required="true">
                         <i class="fas fa-user"/>
                         <f:selectItem itemLabel="#{msg['index.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems var="user" value="#{userController.users}" itemValue="#{user.id}"
+                        <f:selectItems var="user" value="#{loginController.users}" itemValue="#{user.id}"
                                        itemLabel="#{user.firstName}"/>
                     </b:selectOneMenu>
-                    <b:commandButton value="#{msg['index.commandButton.login']}" action="#{userController.logIn}"/>
-                    <b:commandButton value="#{msg['index.commandButton.delete']}" action="#{userController.deleteNewUser}"
+                    <b:commandButton value="#{msg['index.commandButton.login']}" action="#{loginController.logIn}"/>
+                    <b:commandButton value="#{msg['index.commandButton.delete']}" action="#{loginController.deleteNewUser}"
                                      update="@form"/>
                 </b:form>
             </p:panel>
 
             <p:panel header="#{msg['index.panel.header.register']}" style="margin-bottom:10px;">
                 <b:form id="addUserForm">
-                    <b:inputText placeholder="#{msg['index.inputText.placeholder.firstName']}" value="#{userController.newUser.firstName}"/>
-                    <b:inputText placeholder="#{msg['index.inputText.placeholder.lastName']}" value="#{userController.newUser.name}"/>
-                    <b:commandButton value="#{msg['index.commandButton.addUser']}" action="#{userController.submit}"/>
+                    <b:inputText placeholder="#{msg['index.inputText.placeholder.firstName']}" value="#{loginController.newUser.firstName}"/>
+                    <b:inputText placeholder="#{msg['index.inputText.placeholder.lastName']}" value="#{loginController.newUser.name}"/>
+                    <b:commandButton value="#{msg['index.commandButton.addUser']}" action="#{loginController.submit}"/>
                 </b:form>
             </p:panel>
         </ui:define>
