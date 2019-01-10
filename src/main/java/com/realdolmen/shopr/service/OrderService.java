@@ -17,7 +17,7 @@ public class OrderService {
     @Inject
     private OrderRepository orderRepository;
 
-    public void submitOrder(List<OrderLine> order) {
+    public void submitOrder(Order order) {
 
         this.orderRepository.submitOrder(order);
 

@@ -16,7 +16,7 @@ public class OrderRepository {
 
 
 
-    public void submitOrder(List<OrderLine> order) {
+    public void submitOrder(Order order) {
 
         this.entityManager.persist(order);
     }

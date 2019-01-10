@@ -67,23 +67,26 @@ public class GameServiceTest {
 
     }
 
-//    @Test
-//    public void shouldDeleteGame(){
-//
-//        when(gameRepository.delete(game)).thenReturn(null);
-//    }
-//
-//    @Test
-//    public void shouldInsertGame(){
-//
-//        when(gameRepository.insert(game)).thenReturn(game);
-//        Game newGame = gameRepository.insert(game);
-//    }
-//
-//    @Test
-//    public void shouldUpdateGame(){
-//
-//    }
+    @Test
+    public void shouldDeleteGame(){
+
+        gameService.delete(game);
+        verify(gameRepository,times(1)).delete(game);
+    }
+
+    @Test
+    public void shouldInsertGame(){
+
+      gameService.insert(game);
+      verify(gameRepository,times(1)).insert(game);
+    }
+
+    @Test
+    public void shouldUpdateGame(){
+        gameService.update(game);
+        verify(gameRepository,times(1)).update(game);
+
+    }
 
 
 

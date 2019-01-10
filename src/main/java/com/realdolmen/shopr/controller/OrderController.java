@@ -29,7 +29,7 @@ public class OrderController {
         this.orderLineService.getOrderLines();
     }
 
-    public void placeOrder(List<OrderLine> order){
+    public void placeOrder(Order order){
         this.orderService.submitOrder(order);
 
     }
