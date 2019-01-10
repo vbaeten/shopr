@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,14 +18,14 @@ public class OrderLine {
     private Order order;
 
     private BigDecimal subTotal;
+    @Digits(integer=6, fraction=0)
+    private BigDecimal quantity;
 
-    private int quantity;
-
-    public int getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 

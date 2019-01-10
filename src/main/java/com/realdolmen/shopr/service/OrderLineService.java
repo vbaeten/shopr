@@ -5,6 +5,7 @@ import com.realdolmen.shopr.repository.OrderLineRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Stateless
@@ -27,5 +28,9 @@ public class OrderLineService {
     public void removeByOrderlineId(Long orderlineId) {
         OrderLine orderLine = orderLineRepository.findByOrderLineId(orderlineId);
         orderLineRepository.remove(orderLine);
+    }
+
+    public BigDecimal calculateSubtotal(BigDecimal quantity, BigDecimal price){
+        return  quantity.multiply(price);
     }
 }

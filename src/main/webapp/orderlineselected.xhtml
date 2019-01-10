@@ -6,17 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
-<!--<f:metadata>-->
-    <!--<f:event type="preRenderView" listener="#{orderLineController.initDetailView(param.orderlineId)}" />-->
-<!--</f:metadata>-->
 <h:body>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
-            <h:outputText value="#{orderLineController.orderLine.quantity}"></h:outputText>
-            <!--<b:dataTable value="#{orderLineController.orderLines}"-->
-                         <!--var="orderLine">-->
-                <!--<b:dataTableColumn value="#{orderLine.quantity}" label="quantity"/>-->
-            <!--</b:dataTable>-->
+            <b:dataTable value="#{orderLineController.sessionOrderLines}" var="thisorderline">
+            <b:dataTableColumn value="#{thisorderline.article.title}"/>
+            <b:dataTableColumn value="#{thisorderline.article.price}"/>
+                <b:dataTableColumn value="#{thisorderline.quantity}"/>
+            <b:dataTableColumn value="#{thisorderline.subTotal}"/>
+            </b:dataTable>
         </ui:define>
     </ui:composition>
 </h:body>

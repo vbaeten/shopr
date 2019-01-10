@@ -28,6 +28,17 @@
             <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
     </b:form>
+
+            <b:form>
+                <b:panelGrid columns="1">
+                    <b:inputText value="#{orderLineController.orderLine.quantity}"
+                                 label="Quantity" render-label="true"/>
+                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, lPController.LP)}" value="Add to shoppingcart"
+                                     look="primary" >
+                        <f:param name="articleId" value="#{param.articleId}"/>
+                    </b:commandButton>
+                </b:panelGrid>
+            </b:form>
 </ui:define>
 </ui:composition>
 </h:body>

@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderLineService;
@@ -7,16 +8,30 @@ import com.realdolmen.shopr.service.OrderLineService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
 @SessionScoped
 public class OrderLineController {
 
+    private List<OrderLine> sessionOrderLines = new ArrayList<>();
+
     @Inject
     private OrderLineService orderLineService;
 
     private ArticleService articleService;
+
+    private Article selectedArticle;
+
+    public Article getSelectedArticle() {
+        return selectedArticle;
+    }
+
+    public void setSelectedArticle(Article selectedArticle) {
+        this.selectedArticle = selectedArticle;
+    }
 
     private OrderLine orderLine = new OrderLine();
 
@@ -24,12 +39,23 @@ public class OrderLineController {
         this.orderLine = orderLineService.findOrderLineById(orderlineId);
     }
 
-    public String createOrderLine(int quantity){
+    public String createOrderLine(BigDecimal quantity, Article article){
         OrderLine orderLine = new OrderLine();
         orderLine.setQuantity(quantity);
-        this.orderLine = orderLine;
+        orderLine.setArticle(article);
+        orderLine.setSubTotal(orderLineService.calculateSubtotal(quantity, article.getPrice()));
+        sessionOrderLines.add(orderLine);
         return "orderlineselected";
     }
+
+    public List<OrderLine> getSessionOrderLines() {
+        return sessionOrderLines;
+    }
+
+    public void setSessionOrderLines(List<OrderLine> sessionOrderLines) {
+        this.sessionOrderLines = sessionOrderLines;
+    }
+
 
     public List<OrderLine> getOrderLines() {
         return this.orderLineService.findAllOrderLines();
