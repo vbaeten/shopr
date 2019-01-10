@@ -4,6 +4,7 @@ import com.realdolmen.shopr.beans.LoginBean;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.ShoppingCart;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.*;
 
 import javax.faces.bean.ManagedBean;
@@ -27,7 +28,7 @@ public class OrderLineController implements Serializable {
     @Inject
     private LoginBean loginBean;
 
-    private ShoppingCart newShoppingCart;
+    private ShoppingCart shoppingCart;
     private Order newOrder = new Order();
     private OrderLine orderLine;
     private int quantity = 1;
@@ -41,14 +42,15 @@ public class OrderLineController implements Serializable {
         this.quantity = quantity;
     }
 
+    //TODO when an order is made and put to orderline it has to be persisted to the shoppingbag of the logged in user.
+
     public void addToCart(int id, int quantity, int userId) {
-        shoppingCartService.findShoppingCartById(id);
-        if (newShoppingCart == null) {
-            newShoppingCart = new ShoppingCart();
-            newShoppingCart.setUser(userService.findUserById(userId));
-            shoppingCartService.insert(newShoppingCart);
+        shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
+        if (shoppingCart == null) {
+            shoppingCart = new ShoppingCart();
+            shoppingCart.setUser(userService.findUserById(userId));
         } else {
-            newShoppingCart = shoppingCartService.findShoppingCartById(userId);
+            shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
         }
         orderLine = new OrderLine();
         this.orderLine.setUser(userService.findUserById(userId));

@@ -12,7 +12,6 @@ import java.util.List;
 @ViewScoped
 public class ArticleController {
 
-
     @Inject
     ArticleService articleService;
 

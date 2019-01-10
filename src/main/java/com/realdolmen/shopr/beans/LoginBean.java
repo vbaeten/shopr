@@ -7,7 +7,6 @@ import com.realdolmen.shopr.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -17,25 +16,10 @@ import java.io.Serializable;
 public class LoginBean implements Serializable {
 
     private int id;
+
     private User loggedUser = null;
+    private ShoppingCart shoppingCart = null;
 
-    private ShoppingCart shoppingCart;
-
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
-
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 
     @Inject
     private UserService userService;
@@ -45,17 +29,12 @@ public class LoginBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        getUserById(id);
-    }
-
-    public void getUserById(int id) {
         loggedUser = userService.findUserById(id);
     }
 
     public void login(int id) {
         this.loggedUser = userService.findUserById(id);
-        this.shoppingCart = shoppingCartService.findShoppingCartById(id);
-        System.out.println(this.loggedUser);
+        this.shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
     }
 
     public void logout() {

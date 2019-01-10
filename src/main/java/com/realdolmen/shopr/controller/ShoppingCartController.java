@@ -3,32 +3,44 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.ShoppingCartService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean
 @SessionScoped
-public class ShoppingCartController {
+public class ShoppingCartController implements Serializable {
 
-    @Inject
-    private OrderLineController orderLineController;
-    @Inject
-    private OrderController orderController;
-    @Inject
-    private ShoppingCartService shoppingCartService;
-
+    private int id = 0;
     private ShoppingCart newShoppingCart;
-    private int id;
-    private User user;
+    private ShoppingCart shoppingCart;
+    private User user = null;
     private List<OrderLine> orderLines;
 
+    @Inject
+    private ShoppingCartService shoppingCartService;
+    @Inject
+    private OrderLineService orderLineService;
+
+    //TODO Shoppingcartcontroller must load with site. Works like loggedUser
+//
+//    @PostConstruct
+//    public void init() {
+//        shoppingCartService.findShoppingCartByUserId(id);
+//    }
+
+    public void addOrderLine(int id, OrderLine orderLine) {
+        shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
+    }
+
     public void loadShoppingCart() {
-        this.shoppingCartService.insert(newShoppingCart);
+        this.shoppingCartService.createShoppingCart(newShoppingCart);
     }
 
     public ShoppingCart getShoppingCart() {
@@ -62,4 +74,5 @@ public class ShoppingCartController {
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
     }
+
 }

@@ -17,7 +17,9 @@ public class OrderController {
     @Inject
     private OrderService orderService;
 
+    //TODO order is created with orderlines in shoppingbag logged user
     public void submitOrder() {
+
         this.orderService.createOrder(newOrder);
     }
 }

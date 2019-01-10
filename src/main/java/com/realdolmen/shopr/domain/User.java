@@ -35,8 +35,8 @@ public class User implements Serializable {
     @NotNull
     private String firstName;
 
-    @OneToOne(mappedBy = "user")
-    private ShoppingCart shoppingCart;
+//    @OneToOne(mappedBy = "user")
+//    private ShoppingCart shoppingCart;
 
     public User() {
     }
@@ -71,11 +71,11 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
+//    public ShoppingCart getShoppingCart() {
+//        return shoppingCart;
+//    }
+//
+//    public void setShoppingCart(ShoppingCart shoppingCart) {
+//        this.shoppingCart = shoppingCart;
+//    }
 }
