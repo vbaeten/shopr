@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head><title>ShopR!</title></h:head>
+<h:body>
+    <h1>hey #{currentUserController.currentUser.firstName} !</h1>
+
+
+
+    <b:panel id="panel1" title="Games">
+    <b:form id="dataGames">
+        <b:dataTable value="#{gameController.games}" var="game" >
+
+            <b:dataTableColumn label="titel" value ="#{game.titel}"/>
+
+            <b:dataTableColumn label="price" value="#{game.price}"/>
+            <b:dataTableColumn label="details">
+                <b:commandButton value="details"  action="gamedetails?faces-redirect=true">
+
+                </b:commandButton>
+
+            </b:dataTableColumn>
+        </b:dataTable>
+</b:form>
+    </b:panel>
+
+    <b:panel id="panel2" title="LP">
+        <b:form id="dataLp">
+            <b:dataTable value="#{lpController.lp}" var="lp" >
+
+                <b:dataTableColumn label="titel" value="#{lp.titel}"/>
+                <b:dataTableColumn label="price" value="#{lp.price}"/>
+                <b:dataTableColumn label="details">
+                    <b:commandButton value="details"  action="gamedetails?faces-redirect=true"/>
+
+                </b:dataTableColumn>
+            </b:dataTable>
+        </b:form>
+    </b:panel>
+
+    <b:panel id="panel3" title="fictie boeken">
+        <b:form id="dataFictiebooks">
+            <b:dataTable value="#{boekFictieController.boekFiction}" var="fictieboek" >
+
+                <b:dataTableColumn label="titel" value="#{fictieboek.titel}"/>
+                <b:dataTableColumn label="price" value="#{fictieboek.price}"/>
+                <b:dataTableColumn label="details">
+                    <b:modal  title="details" styleClass="modalPseudoClass">
+
+                        <b:button value="Close" dismiss="modal" />
+                        <b:button value="Ok" look="primary" dismiss="modal" />
+
+                    </b:modal>
+                    <b:row>
+                      <b:column span="3">
+                        <b:button value="Details"  onclick="$('.modalPseudoClass').modal()" size="lg"/>
+                      </b:column>
+                    </b:row>
+
+
+
+                </b:dataTableColumn>
+            </b:dataTable>
+        </b:form>
+    </b:panel>
+
+    <b:panel id="panel4" title="nonfictie boeken">
+        <b:form id="dataNonfictiebooks">
+            <b:dataTable value="#{boekNonFictieController.boekNonFiction}" var="nonfictieboek" >
+
+                <b:dataTableColumn label="titel" value="#{nonfictieboek.titel}"/>
+                <b:dataTableColumn label="price" value="#{nonfictieboek.price}"/>
+                <b:dataTableColumn label="details">
+
+                    <b:commandButton value="details"  action="gamedetails?faces-redirect=true"/>
+
+                </b:dataTableColumn>
+            </b:dataTable>
+        </b:form>
+    </b:panel>
+
+
+
+
+
+
+
+
+
+
+</h:body>
+</html>
