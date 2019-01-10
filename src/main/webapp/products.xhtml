@@ -17,9 +17,9 @@
             <b:dataTableColumn value="#{product.productType}" />
             <b:dataTableColumn value="#{product.price}" />
             <b:dataTableColumn label="Action">
-                <b:commandButton action="#{productController.goToDetail}" value="detail" look="info"><b:icon value="search"/>
+                <h:commandButton action="#{productController.goToDetail}" value="detail" look="info"><b:icon value="search"/>
                     <f:param name="id" value="#{product.id}" />
-                </b:commandButton>
+                </h:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
     </h:form>

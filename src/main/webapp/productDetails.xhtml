@@ -12,17 +12,24 @@
     </f:metadata>
 
     <h:form>
+        <b:navCommandLink action="shoppingCart.xhtml?faces-redirect=true" value="Shopping cart" />
+    </h:form>
+
+    <b:form id="productDetails">
         <b:dataTable value="#{productDetailsController.product}" var="product">
             <b:dataTableColumn value="#{product.id}" />
             <b:dataTableColumn value="#{product.title}" />
-            <b:dataTableColumn value="#{product.product_type}" />
-            <b:dataTableColumn value="#{product.publisher}"  order="asc"/>
+            <b:dataTableColumn value="#{product.publisher}"/>
             <b:dataTableColumn value="#{product.price}" />
             <b:dataTableColumn label="Action">
-                <b:commandButton action="#{productDetailsController.addToCart}" value="add to cart" look="success"><b:icon value="plus"/>
+                <b:commandButton immediate="true" action="#{cartController.buy(productDetailsController.id)}" value="buy">
+                    <f:param id="id" value="#{param.id}" />
                 </b:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
-    </h:form>
+
+    </b:form>
+
+
 </h:body>
 </html>

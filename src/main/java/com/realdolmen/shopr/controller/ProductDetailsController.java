@@ -3,12 +3,12 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Product;
 import com.realdolmen.shopr.service.ProductService;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
-@Named
-@RequestScoped
+@ManagedBean
+@ViewScoped
 public class ProductDetailsController {
 
     private Long id;
@@ -38,12 +38,5 @@ public class ProductDetailsController {
         this.product = product;
     }
 
-    public void deleteProduct(Product product) {
-        this.productService.delete(product);
-    }
-
-    public String goToEditPage() {
-        return null;
-    }
 
 }

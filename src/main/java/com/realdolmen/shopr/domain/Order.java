@@ -5,22 +5,26 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "order_date")
     private Date orderDate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "OrderProducts",
-            joinColumns = { @JoinColumn(name = "order_id", referencedColumnName = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "product_id", referencedColumnName = "id") })
-    private List<Product> products;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "OrderProducts",
+//            joinColumns = { @JoinColumn(name = "order_id", referencedColumnName = "id") },
+//            inverseJoinColumns = { @JoinColumn(name = "product_id", referencedColumnName = "id") })
+//    private List<Product> products;
+
+    @OneToMany
+    private List<OrderLine> orderLine;
 
     @ManyToOne
     private User user;
@@ -36,12 +40,12 @@ public class Order {
         this.id = id;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderLine> getOrderLine() {
+        return orderLine;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setOrderLine(List<OrderLine> orderLine) {
+        this.orderLine = orderLine;
     }
 
     public User getUser() {

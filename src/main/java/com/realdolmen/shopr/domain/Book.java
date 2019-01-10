@@ -14,7 +14,7 @@ public abstract class Book extends Product {
     private String isbn;
 
     @Column(name = "nb_pages")
-    private int nbPages;
+    private Long nbPages;
 
     public Book() {
     }
@@ -35,11 +35,11 @@ public abstract class Book extends Product {
         this.isbn = isbn;
     }
 
-    public int getNbPages() {
+    public Long getNbPages() {
         return nbPages;
     }
 
-    public void setNbPages(int nbPages) {
+    public void setNbPages(Long nbPages) {
         this.nbPages = nbPages;
     }
 }

@@ -5,6 +5,7 @@
         <properties>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.hbm2ddl.import_files" value="sql/shopr_ddl.sql"/>
             <property name="hibernate.connection.useUnicode" value="true" />
             <property name="hibernate.connection.characterEncoding" value="UTF-8" />
             <property name="hibernate.id.new_generator_mappings" value="false" />

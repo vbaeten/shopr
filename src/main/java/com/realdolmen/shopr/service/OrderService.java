@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Order;
+import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.repository.OrderRepository;
 
 import javax.ejb.Stateless;
@@ -18,4 +19,8 @@ public class OrderService {
     public Order findByUsername(String username) { return orderRepository.findOrderByUsername(username); }
 
     public Order findByDate(LocalDate date) { return orderRepository.findOrderByDate(date); }
+
+    public void insert(OrderLine orderLine) {
+        orderRepository.insert(orderLine);
+    }
 }

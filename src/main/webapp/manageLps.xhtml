@@ -12,6 +12,7 @@
         <b:dataTable var="lp" value="#{lPController.newLp}" select="true" >
             <b:dataTableColumn value="#{lp.id}" />
             <b:dataTableColumn value="#{lp.title}" />
+            <b:dataTableColumn value="#{lp.publisher}"/>
             <b:dataTableColumn value="#{lp.price}" />
             <b:dataTableColumn label="Action">
                 <b:commandButton action="#{productController.goToDetail}" value="edit" look="warning"><b:icon value="edit"/>
@@ -22,7 +23,7 @@
                 </b:commandButton>
             </b:dataTableColumn>
         </b:dataTable>
-        <b:commandButton action="manageProducts" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
+        <b:commandButton action="manageProducts?faces-redirect=true" value="Go Back" look="info"><b:icon value="arrow-left"/></b:commandButton>
     </h:form>
 
 </h:body>
