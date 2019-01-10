@@ -68,12 +68,3 @@ UPDATE `shopr`.`beoordeling` SET `user_id` = '12' WHERE (`id` = '15');
 INSERT INTO `shopr`.`beoordeling` (`user_id`) VALUES ('');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('16', 'reertretert', '2', '10', '12');
 
-
-
-
-
-
-
-
-
-

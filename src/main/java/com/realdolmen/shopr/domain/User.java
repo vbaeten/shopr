@@ -34,8 +34,12 @@ public class User {
     @ManyToMany
     private List <Beoordeling> beoordelingen;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-private List<Artikel> favorieten;
+    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name="user_artikel",
+//    joinColumns = @JoinColumn(name = "User_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "favorieten_id", referencedColumnName = "id"))
+    public List<Artikel> favorieten;
+
     public User()
     {
     }
@@ -98,5 +102,22 @@ private List<Artikel> favorieten;
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+
+    public void favorietToevoegenAanUser(Artikel a)
+    {
+        if (favorieten.contains(a)) {
+            // Ignore add cause its already present in the list
+        } else {
+            favorieten.add(a);
+        }
+
+    }
+
+    public void favorietVerwijderenUser(Artikel a)
+    {
+       favorieten.remove(a);
+
     }
 }

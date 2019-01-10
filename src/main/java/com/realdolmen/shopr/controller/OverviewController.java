@@ -73,34 +73,34 @@ public class OverviewController implements Serializable
         return this.overviewService.findAllArtikels();
     }
 
-    public Artikel geselecteerdArtikelDetails(int id)
+    public Artikel geselecteerdArtikelDetailsUitDB(int id)
     {
         return overviewService.findArtikelById(id);
 
 
 
     }
-    public void details(Artikel a, User u)
+    public void details(int id, User u)
     {
 
-        setArtikelSelected(geselecteerdArtikelDetails(a.getId()));
-        favorietOfNietButton = userService.isFavoriet(a,u);
-        this.panelNumber = overviewService.detailsPaginaSoort(a.getType());
+        setArtikelSelected(geselecteerdArtikelDetailsUitDB(id));
+        favorietOfNietButton = userService.isFavoriet(artikelSelected,u);
+        this.panelNumber = overviewService.detailsPaginaSoort(artikelSelected.getType());
 
     }
 
     public void addFavoriet(User u)
     {
+        favorietOfNietButton = true;
         userService.addFavoriet(artikelSelected, u);
-        details(artikelSelected,u);
 
 
     }
 
     public void removeFavoriet(User u)
     {
+        favorietOfNietButton = false;
         userService.removeFavoriet(artikelSelected, u);
-        details(artikelSelected,u);
 
     }
 

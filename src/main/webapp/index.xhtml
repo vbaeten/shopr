@@ -48,8 +48,7 @@
 
                     <p:column resizable="true" headerText="#{msgs['artikel.details']}">
                         <b:commandButton styleClass="btn btn-primary"
-
-                                         action="#{overviewController.details(artikel, loginController.currentUser)}">
+                                         action="#{overviewController.details(artikel.id, loginController.currentUser)}">
                             <b:iconAwesome name="info"></b:iconAwesome>
                         </b:commandButton>
 
@@ -105,18 +104,18 @@
                                       onclick="$('.modalPseudoClass').modal()"/>
 
                             <b:commandButton
-                                      rendered="#{overviewController.favorietOfNietButton eq false}"
-                                      class="btn btn-primary"
-                                      action="#{overviewController.addFavoriet(loginController.currentUser)}"
-                                      iconAwesome="heart">
+                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    class="btn btn-primary"
+                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
 
                             </b:commandButton>
 
                             <b:commandButton
-                                      rendered="#{overviewController.favorietOfNietButton eq true}"
-                                      look="danger"
-                                      action="#{overviewController.removeFavoriet(loginController.currentUser)}"
-                                      iconAwesome="heart">
+                                    rendered="#{overviewController.favorietOfNietButton eq true}"
+                                    look="danger"
+                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
 
                             </b:commandButton>
 
@@ -161,11 +160,27 @@
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
-                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  value="#{msgs['overview.beoordeling']}"
-                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                  onclick="$('.modalPseudoClass').modal()"/>
+                        <p:row> <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                                          value="#{msgs['overview.beoordeling']}"
+                                          outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                          onclick="$('.modalPseudoClass').modal()"/>
 
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    class="btn btn-primary"
+                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq true}"
+                                    look="danger"
+                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+                        </p:row>
 
                     </h:panelGrid>
                 </b:panel>
@@ -210,10 +225,28 @@
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
-                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  value="#{msgs['overview.beoordeling']}"
-                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                  onclick="$('.modalPseudoClass').modal()"/>
+                        <p:row>
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                                      value="#{msgs['overview.beoordeling']}"
+                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                      onclick="$('.modalPseudoClass').modal()"/>
+
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    class="btn btn-primary"
+                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq true}"
+                                    look="danger"
+                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+                        </p:row>
 
 
                     </h:panelGrid>
@@ -260,12 +293,30 @@
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
-                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                  onclick="$('.modalPseudoClass').modal()"
-                                  iconAwesome="star">
+                        <p:row>
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                      onclick="$('.modalPseudoClass').modal()"
+                                      iconAwesome="star">
 
-                        </b:button>
+                            </b:button>
+
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    class="btn btn-primary"
+                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+
+                            <b:commandButton
+                                    rendered="#{overviewController.favorietOfNietButton eq true}"
+                                    look="danger"
+                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                    iconAwesome="heart">
+
+                            </b:commandButton>
+                        </p:row>
 
                     </h:panelGrid>
                 </b:panel>

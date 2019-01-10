@@ -24,7 +24,7 @@ public abstract class Boek extends Artikel
     @Column
     private String isbn;
     @Column
-    private int aantalPaginas;
+    private Integer aantalPaginas;
 
 
 
@@ -49,12 +49,12 @@ public abstract class Boek extends Artikel
         this.isbn = isbn;
     }
 
-    public int getAantalPaginas()
+    public Integer getAantalPaginas()
     {
         return aantalPaginas;
     }
 
-    public void setAantalPaginas(int aantalPaginas)
+    public void setAantalPaginas(Integer aantalPaginas)
     {
         this.aantalPaginas = aantalPaginas;
     }
