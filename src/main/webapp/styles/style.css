@@ -1,43 +1,52 @@
-body{
+body {
     background-color: #79968d;
     font-family: "Segoe UI", Verdana, Arial, sans-serif;
 }
-.errorPage{
+
+.errorPage {
     text-align: center;
 }
+
 .errorLink {
     text-decoration: none;
     font-weight: bold;
     color: darkgreen;
 }
-.errorLink:hover{
+
+.errorLink:hover {
     text-decoration: underline;
 }
-.priceColumn{
+
+.priceColumn {
     font-weight: bold;
     color: #00c400;
 }
-.titleColumn{
+
+.titleColumn {
     font-weight: bold;
 }
 
-.authorColumn{
+.authorColumn {
     font-weight: bold;
 }
-.topMenu{
+
+.topMenu {
     margin-bottom: 20px;
 }
-.pageContent{
+
+.pageContent {
     margin: 0 20%;
 }
-.detailsLeftSide{
+
+.detailsLeftSide {
     font-weight: bold;
 }
 
-.pageNotFoundIcon{
+.pageNotFoundIcon {
     max-height: 250px;
 }
-.pageTitle{
+
+.pageTitle {
     font-size: 3em;
     font-family: "Segoe UI", Verdana, Arial, sans-serif;
     font-weight: bold;
@@ -45,26 +54,50 @@ body{
     color: #666666;
     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
 }
-.rightAlign{
+
+.rightAlign {
     text-align: right;
 }
-.deleteArticle:hover{
-    color:red;
+
+.deleteArticle:hover {
+    color: red;
 }
-.editArticle:hover{
-    color:gold;
+
+.editArticle:hover {
+    color: gold;
 }
-.likeButton:hover{
-    color:red;
+
+.likeButton:hover {
+    color: red;
+    animation: .8s infinite beatHeart;
 }
-.orderDetailsTable{
+
+@keyframes beatHeart {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    40% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.orderDetailsTable {
     margin: 10px auto;
 }
 
-.confirmDialogYes:hover{
+.confirmDialogYes:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00b400, 0 0 30px #00b400, 0 0 40px #00b400, 0 0 55px #00b400, 0 0 75px #00b400;
 }
 
-.confirmDialogNo:hover{
+.confirmDialogNo:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0003, 0 0 30px #ff0003, 0 0 40px #ff0003, 0 0 55px #ff0003, 0 0 75px #ff0003;
 }

@@ -1,12 +1,10 @@
 package com.realdolmen.shopr.domain;
 
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import javax.interceptor.AroundTimeout;
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,15 +38,15 @@ public class User implements Serializable {
     @Column(name = "first_name")
     private String firstName;
 
-    @OneToMany(mappedBy="user")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Order> orders;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name="user_favourites",
-            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="article_id", referencedColumnName="id"))
+            name = "user_favourites",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "id"))
     private List<Article> favourites = new ArrayList<>();
 
     public List<Order> getOrders() {
@@ -91,11 +89,11 @@ public class User implements Serializable {
         this.favourites.add(article);
     }
 
-    public void deleteFavourite(Article article){
+    public void deleteFavourite(Article article) {
         this.favourites.remove(article);
     }
 
-    public boolean hasFavourite(Article article){
+    public boolean hasFavourite(Article article) {
         return this.getFavourites().contains(article);
     }
 

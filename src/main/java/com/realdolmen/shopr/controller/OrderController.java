@@ -3,8 +3,10 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderService;
+import com.realdolmen.shopr.service.UserService;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -30,6 +32,9 @@ public class OrderController implements Serializable {
     @Inject
     ArticleService articleService;
 
+    @Inject
+    UserService userService;
+
     public OrderLine getNewOrderLine() {
         return newOrderLine;
     }
@@ -50,7 +55,7 @@ public class OrderController implements Serializable {
         Article article = articleService.findById(articleId);
         List<OrderLine> orderLines;
         boolean found = false;
-        if (currentOrder.getOrderLines() != null){
+        if (currentOrder.getOrderLines() != null && currentOrder.getOrderLines().size() > 0){
             orderLines = currentOrder.getOrderLines();
             for (OrderLine line : orderLines){
                 if (line.getArticle().getId() == articleId){
@@ -67,18 +72,19 @@ public class OrderController implements Serializable {
         }
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "Item added to shopping cart", newOrderLine.getAmount() + " x " + newOrderLine.getArticle().getTitle()));
+                "Item added to shopping cart", newOrderLine.getAmount() + " x " + article.getTitle()));
         newOrderLine = new OrderLine();
-
     }
 
     public String submit(){
 //        LocalDateTime now = LocalDateTime.now();
 //        Timestamp orderTime = Timestamp.valueOf(now);
 //        this.currentOrder.setTimeStamp(orderTime);
-        this.currentOrder.setUser(userController.getCurrentUser());
+        User currentUser = userController.getCurrentUser();
+        this.currentOrder.setUser(currentUser);
         this.orderService.insert(currentOrder);
         currentOrder = new Order();
+        userController.setCurrentUser(userService.findUserById(currentUser.getId()));
         return "orderConfirmed?faces-redirect=true";
     }
 

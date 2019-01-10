@@ -1,10 +1,14 @@
 package com.realdolmen.shopr.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +26,11 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @Column(name = "time_stamp")
-//    private Timestamp timeStamp;
+    @Column(name = "time_stamp")
+    private Timestamp timeStamp;
 
-    @OneToMany(mappedBy = "order", cascade={CascadeType.PERSIST,  CascadeType.REMOVE})
+    @OneToMany(mappedBy = "order", cascade={CascadeType.PERSIST,  CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @ManyToOne
@@ -41,14 +46,14 @@ public class Order implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-//
-//    public Timestamp getTimeStamp() {
-//        return timeStamp;
-//    }
-//
-//    public void setTimeStamp(Timestamp timeStamp) {
-//        this.timeStamp = timeStamp;
-//    }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
+    }
 
 
 
@@ -79,7 +84,9 @@ public class Order implements Serializable {
             for (OrderLine orderLine : this.getOrderLines()) {
                 tempPrice += orderLine.getSubTotal();
             }
-            this.price = tempPrice;
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            this.price = Double.parseDouble(df.format(tempPrice));
         }
     }
 

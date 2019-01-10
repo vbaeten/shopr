@@ -198,7 +198,9 @@
                                     </p:column>
 
                                     <p:column headerText="Subtotal">
-                                        <h:outputText value="#{line.subTotal}"/>
+                                        <h:outputText value="#{line.subTotal}">
+                                            <f:convertNumber pattern="0.00 €"/>
+                                        </h:outputText>
                                     </p:column>
                                 </p:dataTable>
 

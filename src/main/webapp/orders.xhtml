@@ -20,55 +20,37 @@
             <p>Your orders</p>
         </div>
 
-        <p:accordionPanel multiple="true">
-            <c:forEach items="#{userController.currentUser.orders}" var="oneOrder">
-                <p:tab title="#{oneOrder.id} - #{oneOrder.totalNumberOfArticles} items - #{oneOrder.price} €">
-                    <h:panelGrid columns="2" cellpadding="10">
-
-
-                        <p:dataList var="line" value="#{oneOrder.orderLines}"
-                                    emptyMessage="There are no items in your shopping cart."
-                                    type="ordered">
-                            <h:outputText value="#{line.article.title}" class="titleColumn"/><br/>
-                            <div class="ui-g">
-                                <div class="ui-g-1">#{line.amount}</div>
-                                <div class="ui-g-1">x</div>
-                                <div class="ui-g-2">#{line.article.price}€</div>
-                                <div class="ui-g-4 rightAlign">=</div>
-                                <div class="ui-g-2 rightAlign">
-                                    <h:outputText value="#{line.subTotal}">
-                                        <f:convertNumber pattern="0.00 €"/>
-                                    </h:outputText>
-                                </div>
-                                <div class="ui-g-1">
-                                    <p:commandLink styleClass="removeLink"
-                                                   action="#{orderController.deleteOrderLine(line)}"
-                                                   update="@form">
-                                        <i class="far fa-trash-alt deleteArticle"></i>
-                                    </p:commandLink>
-                                </div>
-                                <div class="ui-g-1">
-                                    <p:commandLink id="changeAmount" styleClass="removeLink" update="@form">
-                                        <i class="fas fa-pencil-alt editArticle"></i>
-                                    </p:commandLink>
-                                    <p:overlayPanel for="changeAmount" hideEffect="fade">
-                                        <p:panelGrid columns="2" cellSpacing="5">
-                                            <p:commandButton value="Change amount"
-                                                             update="@form"
-                                                             style="max-width: 20px;"/>
-                                            <p:spinner id="amount"
-                                                       value="#{orderController.currentOrder.orderLines.get(line.id).amount}"
-                                                       min="1"
-                                                       max="20"
-                                                       immediate="true"/>
-                                        </p:panelGrid>
-                                    </p:overlayPanel>
-                                </div>
-                            </div>
-                        </p:dataList>
-                    </h:panelGrid>
-                </p:tab>
-            </c:forEach>
+        <p:accordionPanel value="#{userController.currentUser.orders}" var="oneOrder">
+            <p:tab title="[#{oneOrder.id}] - #{oneOrder.totalNumberOfArticles} items - #{oneOrder.price} €">
+                <p:dataList var="line" value="#{oneOrder.orderLines}"
+                            type="ordered">
+                    <h:outputText value="#{line.article.title}" class="titleColumn"/><br/>
+                    <div class="ui-g">
+                        <div class="ui-g-2">#{line.amount}</div>
+                        <div class="ui-g-2">x</div>
+                        <div class="ui-g-2">
+                            <h:outputText value="#{line.article.price}€">
+                                <f:convertNumber pattern="0.00 €"/>
+                            </h:outputText>
+                        </div>
+                        <div class="ui-g-4 rightAlign">=</div>
+                        <div class="ui-g-2 rightAlign">
+                            <h:outputText value="#{line.subTotal}">
+                                <f:convertNumber pattern="0.00 €"/>
+                            </h:outputText>
+                        </div>
+                    </div>
+                </p:dataList>
+                <p:separator/>
+                <div class="ui-g" style="font-weight: bold;">
+                    <div class="ui-g-10">Total Price:</div>
+                    <div class="ui-g-2">
+                        <h:outputText value="#{oneOrder.price}">
+                            <f:convertNumber pattern="0.00 €"/>
+                        </h:outputText>
+                    </div>
+                </div>
+            </p:tab>
         </p:accordionPanel>
 
     </ui:define>

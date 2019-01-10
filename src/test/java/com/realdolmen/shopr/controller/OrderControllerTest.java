@@ -12,11 +12,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import javax.faces.context.FacesContext;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(FacesContext.class)
 public class OrderControllerTest {
     @InjectMocks
     OrderController orderController;
@@ -25,11 +30,17 @@ public class OrderControllerTest {
     OrderService orderService;
 
     @Mock
+    UserController userController;
+
+    @Mock
     ArticleService articleService;
+
+    @Mock
+    FacesContext facesContext;
 
     Order currentOrder;
     OrderLine newOrderLine;
-    OrderLine orderLine2;
+    OrderLine newOrderLine2;
     User user;
     Article article;
     Article article2;
@@ -38,7 +49,7 @@ public class OrderControllerTest {
     public void init(){
         user = new User();
         newOrderLine = new OrderLine();
-        orderLine2 = new OrderLine();
+        newOrderLine2 = new OrderLine();
         article = new Article();
         article2 = new Article();
 
@@ -51,17 +62,16 @@ public class OrderControllerTest {
         article.setTitle("TestArtikel");
         article.setSupplierId("5");
 
-        article.setId(1);
-        article.setPrice(10);
-        article.setTitle("TestArtikel");
-        article.setSupplierId("5");
+        newOrderLine.setAmount(1);
+        orderController.setNewOrderLine(newOrderLine);
 
-        newOrderLine.setAmount(2);
-
+        newOrderLine2.setAmount(2);
     }
 
     @Test
     public void testAddOrderLineShouldHaveOneOrderLineAfterFirstAdd(){
+        PowerMockito.mockStatic(FacesContext.class);
+        when(FacesContext.getCurrentInstance()).thenReturn(facesContext);
         when(articleService.findById(1)).thenReturn(article);
         this.orderController.addOrderLine(1);
         Assert.assertEquals(1, orderController.currentOrder.getOrderLines().size());
@@ -69,19 +79,28 @@ public class OrderControllerTest {
 
     @Test
     public void testAddOrderLineTwoTimeTheSameArticleShouldSetOnlyOneOrderLine(){
+        PowerMockito.mockStatic(FacesContext.class);
+        when(FacesContext.getCurrentInstance()).thenReturn(facesContext);
         when(articleService.findById(1)).thenReturn(article);
         this.orderController.addOrderLine(1);
+        orderController.setNewOrderLine(newOrderLine2);
         this.orderController.addOrderLine(1);
         Assert.assertEquals(1, orderController.currentOrder.getOrderLines().size());
+        Assert.assertEquals(3, orderController.currentOrder.getOrderLines().get(0).getAmount());
+
     }
 
     @Test
-    public void testAddOrderLineTwoTimeTheSameArticleShouldAddAmounts(){
+    public void testeDeleteOrderLine(){
+        PowerMockito.mockStatic(FacesContext.class);
+        when(FacesContext.getCurrentInstance()).thenReturn(facesContext);
         when(articleService.findById(1)).thenReturn(article);
         this.orderController.addOrderLine(1);
-        this.orderController.addOrderLine(1);
-        Assert.assertEquals(4, orderController.currentOrder.getOrderLines().get(0).getAmount());
+        this.orderController.deleteOrderLine(newOrderLine);
+        Assert.assertEquals(0, orderController.currentOrder.getOrderLines().size());
+
     }
+
 
 
 

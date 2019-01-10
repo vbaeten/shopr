@@ -5,7 +5,6 @@ import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -20,8 +19,6 @@ public class UserController implements Serializable {
 
     @Inject
     private UserService userService;
-
-
 
     public User getNewUser() {
         return newUser;
@@ -64,5 +61,4 @@ public class UserController implements Serializable {
         }
         userService.update(currentUser);
     }
-
 }
