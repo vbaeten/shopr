@@ -43,8 +43,9 @@ public class GameController {
         return "overview";
     }
 
-    public void removeGame(Game game) {
+    public String removeGame(Game game) {
         gameService.removeById(game.getId());
+        return "overview";
     }
 
     public Game getGame() {

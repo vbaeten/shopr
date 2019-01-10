@@ -41,8 +41,9 @@ public class BookFictionController {
         return "overview";
     }
 
-    public void removeBookFiction(BookFiction bookFiction) {
+    public String removeBookFiction(BookFiction bookFiction) {
         bookFictionService.removeBookFictionById(bookFiction.getId());
+        return "overview";
     }
 
     public BookFiction getBookFiction() {

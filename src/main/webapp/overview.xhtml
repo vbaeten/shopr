@@ -15,17 +15,14 @@
             <b:dataTableColumn value="#{article.type}" label="type"/>
             <b:dataTableColumn value="#{article.title}" label="title"/>
             <b:dataTableColumn label="Author/Artist/Publisher">
-                <!--Get author/artist/publisher based on type of article-->
                 <h:outputText rendered="#{article.type eq 'lp'}" value="#{article.artist}"/>
                 <h:outputText rendered="#{article.type eq 'game'}" value="#{article.publisher}"/>
                 <h:outputText rendered="#{article.type eq 'fiction'}" value="#{article.author}"/>
                 <h:outputText rendered="#{article.type eq 'nonfiction'}" value="#{article.author}"/>
-                <!---->
-            </b:dataTableColumn>  label="Author/Artist/Publisher"/>
+            </b:dataTableColumn>  label="Author/Artist/Publisher">
             <b:dataTableColumn value="#{article.price}" label="price"/>
-            <b:dataTableColumn value="#{article.id}" label="detail"/>
+            <b:dataTableColumn value="#{article.id}" label="product code"/>
             <b:dataTableColumn label="Details">
-                <!-- Call different view on article type and pass id param -->
                 <h:link rendered="#{article.type eq 'lp'}" value="Details" outcome="lpdetail">
                     <f:param name="id" value="#{article.id}" />
                 </h:link>
@@ -38,11 +35,7 @@
                 <h:link rendered="#{article.type eq 'nonfiction'}" value="Details" outcome="booknonfictiondetail">
                     <f:param name="id" value="#{article.id}" />
                 </h:link>
-                <!---->
             </b:dataTableColumn>
-        <b:dataTableColumn>
-            <b:commandButton value="Delete" immediate="true" action="#{articleController.removeArticle(article)}" />
-        </b:dataTableColumn>
         </b:dataTable>
     </h:form>
     <b:navLink value="Add an article to Shopr" href="articlecreation.xhtml"></b:navLink>

@@ -42,8 +42,9 @@ public class BookNonFictionController {
         return "overview";
     }
 
-    public void removeBookNonFiction(BookNonFiction bookNonFiction) {
+    public String removeBookNonFiction(BookNonFiction bookNonFiction) {
         bookNonFictionService.removeBookNonFictionById(bookNonFiction.getId());
+        return "overview";
     }
 
     public BookNonFiction getBookNonFiction() {

@@ -12,10 +12,10 @@
         <ui:define name="content">
             <b:panel>
                 <b:form id="registrationForm" horizontal="true">
-                    <b:inputText labelColMd="1" colMd="2" label="Name:" id="userName"
-                                 value="#{registrationController.newUser.name}"/>
                     <b:inputText labelColMd="1" colMd="2" label="First name:" id="userFirstName"
                                  value="#{registrationController.newUser.firstName}"/>
+                    <b:inputText labelColMd="1" colMd="2" label="Name:" id="userName"
+                                 value="#{registrationController.newUser.name}"/>
                     <b:commandButton labelColMd="1" colMd="1" value="Add" action="#{registrationController.submit()}"
                                      update="Userdata LoginUser" />
                 </b:form>
@@ -45,7 +45,7 @@
                     <b:selectOneMenu span="8" colMd="4" value="#{userController.loggedInUser}" converter="omnifaces.SelectItemsConverter">
                         <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
                     </b:selectOneMenu>
-                    <b:commandButton span="8" value="Login" look="danger" action="overview?faces-redirect=true" update="LoginUser"/>
+                    <b:commandButton span="8" value="Login" look="primary" action="overview?faces-redirect=true" update="LoginUser"/>
                 </b:form>
             </b:panelGrid>
         </ui:define>

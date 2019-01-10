@@ -41,8 +41,9 @@ public class LPController {
         return "overview";
     }
 
-    public void removeLP(LP lp) {
+    public String removeLP(LP lp) {
         lpService.removeLPById(lp.getId());
+        return "overview";
     }
 
     public LP getLP() {

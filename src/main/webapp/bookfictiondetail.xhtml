@@ -27,6 +27,9 @@
             <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
             <b:dataTableColumn value="#{bookfiction.id}" label="productcode"/>
         </b:dataTable>
+        <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
+            <f:param name="id" value="#{param.id}"/>
+        </b:commandButton>
     </b:form>
 </ui:define>
 </ui:composition>

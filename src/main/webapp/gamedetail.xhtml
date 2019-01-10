@@ -24,15 +24,9 @@
             <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
             <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
             <b:dataTableColumn value="#{game.id}" label="product code"/>
-            <b:dataTableColumn label="Edit"
-                               orderable="false"
-                               style="text-align:center">
-            </b:dataTableColumn>
-            <h:column>
-                <h:commandLink value="verwijder" immediate="true" action="#{gameController.removeGame(game)}"/>
-            </h:column>
         </b:dataTable>
-        <b:commandButton value="verwijder" immediate="true" action="#{gameController.removeGame(game)}" >
+        <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(gameController.game)}" >
+            <f:param name="id" value="#{param.id}"/>
         </b:commandButton>
     </b:form>
 </ui:define>
