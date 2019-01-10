@@ -6,6 +6,7 @@ import com.realdolmen.shopr.repository.UserRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,6 +17,8 @@ public class UserService
 {
     @Inject
     private UserRepository userRepository;
+
+    List<Artikel> favorietenLijst;
 
     public User findUserById(int id)
     {
@@ -48,7 +51,7 @@ public class UserService
         userRepository.insert(user);
     }
 
-    public void delete (int id)
+    public void delete(int id)
     {
         User user = userRepository.findById(id);
         userRepository.delete(user);
@@ -59,17 +62,35 @@ public class UserService
         userRepository.update(user);
     }
 
-    public boolean isFavoriet(Artikel a, User currentUser)
+    public boolean isFavoriet(Artikel a, User u)
     {
-        boolean favoriet = false;
 
-        userRepository.findById(currentUser.getId());
-
-        for (Artikel x : currentUser.getFavorieten() )
+        for (Artikel x : u.getFavorieten() )
         {
-            favoriet = true;
+            if (x.getId() == a.getId())
+            {
+                return true;
+            }
+
         }
-        return favoriet;
+        return false;
+
+    }
+
+    public void addFavoriet(Artikel a, User u)
+    {
+        favorietenLijst = u.getFavorieten();
+        favorietenLijst.add(a);
+        u.setFavorieten(favorietenLijst);
+        update(u);
+    }
+
+    public void removeFavoriet(Artikel a, User u)
+    {
+        favorietenLijst = u.getFavorieten();
+        favorietenLijst.remove(a);
+        u.setFavorieten(favorietenLijst);
+        update(u);
 
     }
 

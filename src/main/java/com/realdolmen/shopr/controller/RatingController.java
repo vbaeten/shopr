@@ -11,9 +11,11 @@ import com.realdolmen.shopr.service.UserService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Named
 @ManagedBean
 @ViewScoped
 public class RatingController

@@ -192,8 +192,7 @@ totaalBestelling();
         artikelsInMandje = new ArrayList<>();
          winkelmandButtonsHide = false;
          totaalBedragBestelling = 0;
-//        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-//        return "index?faces-redirect=true";
+
     }
 
     public void betaalPaneel()

@@ -6,8 +6,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions"
       xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
@@ -51,24 +49,16 @@
                     <p:column resizable="true" headerText="#{msgs['artikel.details']}">
                         <b:commandButton styleClass="btn btn-primary"
 
-                                         action="#{overviewController.details(artikel)}">
+                                         action="#{overviewController.geselecteerdArtikelDetails(artikel.id)}">
                             <b:iconAwesome name="info"></b:iconAwesome>
                         </b:commandButton>
 
                         <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                         onclick="$('.bevestiging').modal()"
                                          styleClass="btn btn-primary"
                                          action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
-
-                        <b:commandButton rendered="#{loginController.isFavoriet(artikel)}"
-                                         styleClass="btn btn-primary"
-                                         action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                        </b:commandButton>
-
-
-
 
                     </p:column>
 
@@ -105,11 +95,33 @@
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+
                         </b:commandButton>
-                        <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-                                  value="#{msgs['overview.beoordeling']}"
-                                  outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                  onclick="$('.modalPseudoClass').modal()"/>
+
+                        <p:row>
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                                      value="#{msgs['overview.beoordeling']}"
+                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                      onclick="$('.modalPseudoClass').modal()"/>
+
+                            <b:commandButton
+                                      rendered="#{overviewController.checkFavoriet(loginController.currentUser) eq false}"
+                                      class="btn btn-primary"
+                                      action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                      iconAwesome="heart">
+
+                            </b:commandButton>
+
+                            <b:commandButton
+                                      rendered="#{overviewController.checkFavoriet(loginController.currentUser) eq true}"
+                                      look="danger"
+                                      action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                      iconAwesome="heart">
+
+                            </b:commandButton>
+
+
+                        </p:row>
 
 
                     </h:panelGrid>
@@ -251,7 +263,7 @@
                         <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
                                   outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                   onclick="$('.modalPseudoClass').modal()"
-                        iconAwesome="star">
+                                  iconAwesome="star">
 
                         </b:button>
 
@@ -295,7 +307,7 @@
                 </h:form>
             </b:modal>
             <b:modal id="bevestigingsmodal" styleClass="bevestiging">
-
+                <h1>In Winkelmand</h1>
 
             </b:modal>
 

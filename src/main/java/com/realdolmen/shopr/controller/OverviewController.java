@@ -1,7 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Artikel;
-import com.realdolmen.shopr.domain.Beoordeling;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.OverviewService;
 import com.realdolmen.shopr.service.UserService;
 
@@ -17,6 +17,9 @@ public class OverviewController implements Serializable
 {
     @Inject
     OverviewService overviewService;
+
+    @Inject
+    UserService userService;
 
 
     Artikel artikelSelected = new Artikel();
@@ -58,6 +61,13 @@ public class OverviewController implements Serializable
         return this.overviewService.findAllArtikels();
     }
 
+    public Artikel geselecteerdArtikelDetails(int id)
+    {
+        return this.artikelSelected = overviewService.findArtikelById(id);
+
+
+
+    }
     public void details(Artikel a)
     {
 
@@ -66,9 +76,23 @@ public class OverviewController implements Serializable
 
     }
 
+    public void addFavoriet(User u)
+    {
+        userService.addFavoriet(artikelSelected, u);
 
 
+    }
 
+    public void removeFavoriet(User u)
+    {
+        userService.removeFavoriet(artikelSelected, u);
+
+    }
+
+    public boolean checkFavoriet(User u)
+    {
+        return userService.isFavoriet(artikelSelected, u);
+    }
 
 
 }

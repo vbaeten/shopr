@@ -33,7 +33,8 @@ public class User {
     private EnumRoles role;
     @ManyToMany
     private List <Beoordeling> beoordelingen;
-@OneToMany
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 private List<Artikel> favorieten;
     public User()
     {

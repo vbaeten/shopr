@@ -29,7 +29,8 @@
             </b:navbarLinks>
             <b:navbarLinks pull="right" styleClass="hidden-xs">
                 <h:form id="login_form">
-                    <b:badge severity="info" value="#{loginController.currentUserName}"/>
+                    <b:badge rendered="#{loginController.enumRoles eq 'USER'}" severity="info" value="Welcome: #{loginController.currentUserName}"/>
+                    <b:badge rendered="#{loginController.enumRoles eq 'ADMIN'}" severity="info" value="Admin: #{loginController.currentUserName}"/>
 
 
 
