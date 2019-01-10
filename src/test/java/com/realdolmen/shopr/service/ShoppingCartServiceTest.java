@@ -47,8 +47,11 @@ public class ShoppingCartServiceTest {
     public void shoppingCartCanByFoundByUserId() {
         shoppingCartRepository.findShoppingCartByUserId(1);
         Assert.assertEquals("Seresia", shoppingCart.getUser().getName());
-
     }
 
+    @Test
+    public void newCartIsCreatedWhenUserHasNoShoppingCart() {
+        shoppingCartRepository.findShoppingCartByUserId('1');
+    }
 
 }

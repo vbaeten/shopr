@@ -37,6 +37,8 @@ public class ShoppingCartController implements Serializable {
 
     public void addOrderLine(int id, OrderLine orderLine) {
         shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
+        orderLines = shoppingCart.getOrderLines();
+        orderLines.add(orderLine);
     }
 
     public void loadShoppingCart() {

@@ -59,6 +59,13 @@ public class OrderLineController implements Serializable {
         orderLineService.insertOrderLine(orderLine);
     }
 
+    public void addOrderLine(int id, int quantity, int userId) {
+        shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
+        this.orderLine.setQuantity(quantity);
+        this.orderLine.setArticle(articleService.findArticleById(id));
+        shoppingCart.getOrderLines().add(orderLine);
+    }
+
     public void addToOrder(int id, int quantity, int userId) {
         orderService.createOrder(newOrder);
         orderLine = new OrderLine();

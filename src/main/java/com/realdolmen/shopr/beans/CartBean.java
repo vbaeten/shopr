@@ -1,12 +1,10 @@
 package com.realdolmen.shopr.beans;
 
-import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.User;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
 

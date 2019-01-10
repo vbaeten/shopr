@@ -18,13 +18,10 @@ public class LoginBean implements Serializable {
     private int id;
 
     private User loggedUser = null;
-    private ShoppingCart shoppingCart = null;
 
 
     @Inject
     private UserService userService;
-    @Inject
-    private ShoppingCartService shoppingCartService;
 
 
     @PostConstruct
@@ -34,7 +31,6 @@ public class LoginBean implements Serializable {
 
     public void login(int id) {
         this.loggedUser = userService.findUserById(id);
-        this.shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
     }
 
     public void logout() {
