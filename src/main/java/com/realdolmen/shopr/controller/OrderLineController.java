@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
-import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderLineService;
@@ -51,7 +50,7 @@ public class OrderLineController {
             newOrderline.setSubTotal(orderLineService.calculateSubtotal(quantity, article.getPrice()));
             sessionOrderLines.add(newOrderline);
         }else{
-            System.out.println("bestaat al");
+           orderLine.ifPresent(orderLine1 -> orderLine1.setQuantity(orderLine1.getQuantity().add(quantity)));
         }
         return "orderlineselected";
     }
