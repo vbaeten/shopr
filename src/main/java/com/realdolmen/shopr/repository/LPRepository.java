@@ -11,8 +11,8 @@ public class LPRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public LP findById(Long id) {
-        return entityManager.find(LP.class, id);
+    public LP findByArticleId(Long articleId) {
+        return entityManager.find(LP.class, articleId);
     }
 
     public List<LP> findAll() {

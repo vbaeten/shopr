@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public abstract class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long ArticleId;
     @Column
     @Size(max = 100 )
     @NotNull
@@ -56,12 +56,8 @@ public abstract class Article {
         this.supplierId = supplierId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Long getArticleId() {
+        return ArticleId;
     }
 
     public String getTitle() {

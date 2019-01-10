@@ -21,19 +21,19 @@
                 <h:outputText rendered="#{article.type eq 'nonfiction'}" value="#{article.author}"/>
             </b:dataTableColumn>  label="Author/Artist/Publisher">
             <b:dataTableColumn value="#{article.price}" label="price"/>
-            <b:dataTableColumn value="#{article.id}" label="product code"/>
+            <b:dataTableColumn value="#{article.articleId}" label="product code"/>
             <b:dataTableColumn label="Details">
                 <h:link rendered="#{article.type eq 'lp'}" value="Details" outcome="lpdetail">
-                    <f:param name="id" value="#{article.id}" />
+                    <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
                 <h:link rendered="#{article.type eq 'game'}" value="Details" outcome="gamedetail">
-                    <f:param name="id" value="#{article.id}" />
+                    <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
                 <h:link rendered="#{article.type eq 'fiction'}" value="Details" outcome="bookfictiondetail">
-                    <f:param name="id" value="#{article.id}" />
+                    <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
                 <h:link rendered="#{article.type eq 'nonfiction'}" value="Details" outcome="booknonfictiondetail">
-                    <f:param name="id" value="#{article.id}" />
+                    <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
             </b:dataTableColumn>
         </b:dataTable>

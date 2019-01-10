@@ -11,8 +11,8 @@ public class LPService {
     @Inject
     private LPRepository lPRepository;
 
-    public LP findLPById(Long id) {
-        return lPRepository.findById(id);
+    public LP findLPByArticleId(Long articleId) {
+        return lPRepository.findByArticleId(articleId);
     }
 
     public List<LP> findAllLPS() {
@@ -23,13 +23,13 @@ public class LPService {
         return lPRepository.findByTitle(title);
     }
 
-    public void updateTitle(Long id, String newTitle) {
-        LP lP = lPRepository.findById(id);
+    public void updateTitle(Long articleId, String newTitle) {
+        LP lP = lPRepository.findByArticleId(articleId);
         lP.setTitle(newTitle);
     }
 
-    public void removeLPById(Long id){
-        LP lP = lPRepository.findById(id);
+    public void removeLPByArticleId(Long articleId){
+        LP lP = lPRepository.findByArticleId(articleId);
         lPRepository.removeLP(lP);
     }
 

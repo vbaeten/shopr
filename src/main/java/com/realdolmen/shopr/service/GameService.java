@@ -12,8 +12,8 @@ public class GameService {
     @Inject
     private GameRepository gameRepository;
 
-    public Game findGameById(Long id) {
-        return gameRepository.findById(id);
+    public Game findGameByArticleId(Long articleId) {
+        return gameRepository.findByArticleId(articleId);
     }
 
     public List<Game> findAllGames() {
@@ -24,16 +24,16 @@ public class GameService {
         return gameRepository.findByTitle(title);
     }
 
-    public void updateTitle(Long id, String newTitle) {
-        Game bookFiction = gameRepository.findById(id);
+    public void updateTitle(Long articleId, String newTitle) {
+        Game bookFiction = gameRepository.findByArticleId(articleId);
         bookFiction.setTitle(newTitle);
     }
     public void insert(Game game){
         gameRepository.insert(game);
     }
 
-    public void removeById (Long id) {
-        Game game = gameRepository.findById(id);
+    public void removeByArticleId (Long articleId) {
+        Game game = gameRepository.findByArticleId(articleId);
         gameRepository.remove(game);
     }
 }

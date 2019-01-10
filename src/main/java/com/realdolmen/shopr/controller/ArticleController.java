@@ -21,6 +21,6 @@ public class ArticleController {
     }
 
     public void removeArticle(Article article) {
-        articleService.removeArticleById(article.getId());
+        articleService.removeArticleById(article.getArticleId());
     }
 }

@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <f:metadata>
-    <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.id)}" />
+    <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.articleId)}" />
 </f:metadata>
 <h:body>
     <ui:composition template="templates/template.xhtml">
@@ -23,10 +23,10 @@
         <b:dataTableColumn value="#{booknonfiction.isbn}"  label="isbn"/>
         <b:dataTableColumn value="#{booknonfiction.numberOfPages}"  label="number of pages"/>
         <b:dataTableColumn value="#{booknonfiction.bookSubjectNF}"  label="bookgenre"/>
-        <b:dataTableColumn value="#{booknonfiction.id}" label="productcode"/>
+        <b:dataTableColumn value="#{booknonfiction.articleId}" label="productcode"/>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFiction(bookNonFictionController.bookNonFiction)}" >
-            <f:param name="id" value="#{param.id}"/>
+            <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
     </b:form>
 </ui:define>

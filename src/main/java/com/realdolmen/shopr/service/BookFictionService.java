@@ -13,8 +13,8 @@ public class BookFictionService {
     @Inject
     private BookFictionRepository bookFictionRepository;
 
-    public BookFiction findBookFictionById(Long id) {
-        return bookFictionRepository.findById(id);
+    public BookFiction findBookFictionByArticleId(Long articleId) {
+        return bookFictionRepository.findByArticleId(articleId);
     }
 
     public List<BookFiction> findAllBookFictions() {
@@ -25,8 +25,8 @@ public class BookFictionService {
         return bookFictionRepository.findByTitle(title);
     }
 
-    public void updateTitle(Long id, String newTitle) {
-        BookFiction bookFiction = bookFictionRepository.findById(id);
+    public void updateTitle(Long articleId, String newTitle) {
+        BookFiction bookFiction = bookFictionRepository.findByArticleId(articleId);
         bookFiction.setTitle(newTitle);
     }
 
@@ -34,8 +34,8 @@ public class BookFictionService {
         bookFictionRepository.insert(bookFiction);
     }
 
-    public void removeBookFictionById (Long id) {
-        BookFiction bookFiction = bookFictionRepository.findById(id);
+    public void removeBookFictionByArticleId (Long articleId) {
+        BookFiction bookFiction = bookFictionRepository.findByArticleId(articleId);
         bookFictionRepository.remove(bookFiction);
     }
 

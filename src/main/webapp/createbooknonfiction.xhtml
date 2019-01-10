@@ -10,7 +10,6 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
     <b:panel title="Create a Non Fiction Book" collapsible="false">
-        <h:outputText value="Panel Content" />
         <b:form>
             <b:panelGrid columns="2">
                 <b:inputText value="#{bookNonFictionController.bookNonFiction.title}"
@@ -26,7 +25,7 @@
                 <b:inputText value="#{bookNonFictionController.bookNonFiction.numberOfPages}"
                              label="Number Of Pages" render-label="true"/>
                 <b:selectOneMenu value="#{bookNonFictionController.bookNonFiction.bookSubjectNF}" ajax="true" label="Choose booksubject">
-                    <f:selectItems value="#{bookNonFictionController.bookSubjects}" var="bookSubjectNF"
+                    <f:selectItems value="#{bookNonFictionController.bookNonFictionSubjects}" var="bookSubjectNF"
                                    itemValue="#{bookSubjectNF}" itemLabel="#{bookSubjectNF}" />
                 </b:selectOneMenu>
                 <b:commandButton action="#{bookNonFictionController.saveBookNonFiction}" value="Add this book"

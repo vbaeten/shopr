@@ -45,7 +45,9 @@
                     <b:selectOneMenu span="8" colMd="4" value="#{userController.loggedInUser}" converter="omnifaces.SelectItemsConverter">
                         <f:selectItems value="#{userController.users}" var="user" itemValue="#{user}" itemLabel="${user.name} ${user.firstName}"/>
                     </b:selectOneMenu>
-                    <b:commandButton span="8" value="Login" look="primary" action="overview?faces-redirect=true" update="LoginUser"/>
+                    <b:commandButton span="8" value="Login" look="primary" action="overview?faces-redirect=true" update="LoginUser">
+                        <f:param name="id" value="#{user}" />
+                </b:commandButton>
                 </b:form>
             </b:panelGrid>
         </ui:define>

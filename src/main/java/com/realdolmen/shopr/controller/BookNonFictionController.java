@@ -17,8 +17,8 @@ public class BookNonFictionController {
     private BookNonFictionService bookNonFictionService;
     private BookNonFiction bookNonFiction = new BookNonFiction();
 
-    public void initDetailView(Long id) {
-        this.bookNonFiction = bookNonFictionService.findBookNonFictionById(id);
+    public void initDetailView(Long articleId) {
+        this.bookNonFiction = bookNonFictionService.findBookNonFictionByArticleId(articleId);
     }
 
     public List<BookNonFiction> getBookNonFictions() {
@@ -33,8 +33,8 @@ public class BookNonFictionController {
         this.bookNonFictionService.insert(bookNonFiction);
     }
 
-    public BookNonFiction getBookNonFictionbyId(Long id) {
-        return bookNonFictionService.findBookNonFictionById(id);
+    public BookNonFiction getBookNonFictionbyId(Long articleId) {
+        return bookNonFictionService.findBookNonFictionByArticleId(articleId);
     }
 
     public String saveBookNonFiction() {
@@ -43,7 +43,7 @@ public class BookNonFictionController {
     }
 
     public String removeBookNonFiction(BookNonFiction bookNonFiction) {
-        bookNonFictionService.removeBookNonFictionById(bookNonFiction.getId());
+        bookNonFictionService.removeBookNonFictionByArticleId(bookNonFiction.getArticleId());
         return "overview";
     }
 

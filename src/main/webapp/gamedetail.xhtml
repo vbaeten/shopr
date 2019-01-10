@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <f:metadata>
-    <f:event type="preRenderView" listener="#{gameController.initDetailView(param.id)}" />
+    <f:event type="preRenderView" listener="#{gameController.initDetailView(param.articleId)}" />
 </f:metadata>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
@@ -23,12 +23,23 @@
             <b:dataTableColumn value="#{game.publisher}"  label="publisher"/>
             <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
             <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
-            <b:dataTableColumn value="#{game.id}" label="product code"/>
+            <b:dataTableColumn value="#{game.articleId}" label="product code"/>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(gameController.game)}" >
-            <f:param name="id" value="#{param.id}"/>
+            <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
     </b:form>
+
+            <b:form>
+                <b:panelGrid columns="1">
+                    <b:inputText value="#{orderLineController.orderLine.quantity}"
+                                 label="Quantity" render-label="true"/>
+                    <b:commandButton action="#{orderLineController.createOrderLine(gameController.game}" value="Add to shoppingcart"
+                                     look="primary" >
+                        <f:param name="orderLineId" value="#{param.orderLineId}"/>
+                    </b:commandButton>
+                </b:panelGrid>
+            </b:form>
 </ui:define>
 </ui:composition>
 </h:body>

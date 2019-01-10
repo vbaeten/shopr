@@ -10,8 +10,8 @@ public class GameRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public Game findById(Long id) {
-        return entityManager.find(Game.class, id);
+    public Game findByArticleId(Long articleId) {
+        return entityManager.find(Game.class, articleId);
     }
 
     public List<Game> findAll() {

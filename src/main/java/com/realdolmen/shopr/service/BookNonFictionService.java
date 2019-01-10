@@ -12,8 +12,8 @@ public class BookNonFictionService {
     @Inject
     private BookNonFictionRepository bookNonFictionRepository;
 
-    public BookNonFiction findBookNonFictionById(Long id) {
-        return bookNonFictionRepository.findById(id);
+    public BookNonFiction findBookNonFictionByArticleId(Long articleId) {
+        return bookNonFictionRepository.findByArticleId(articleId);
     }
 
     public List<BookNonFiction> findAllBooksNonFiction() {
@@ -24,16 +24,16 @@ public class BookNonFictionService {
         return bookNonFictionRepository.findByTitle(title);
     }
 
-    public void updateTitle(Long id, String newTitle) {
-        BookNonFiction bookNonFiction = bookNonFictionRepository.findById(id);
+    public void updateTitle(Long articleId, String newTitle) {
+        BookNonFiction bookNonFiction = bookNonFictionRepository.findByArticleId(articleId);
         bookNonFiction.setTitle(newTitle);
     }
     public void insert(BookNonFiction bookNonFiction) {
         bookNonFictionRepository.insert(bookNonFiction);
     }
 
-    public void removeBookNonFictionById (Long id) {
-        BookNonFiction bookNonFiction = bookNonFictionRepository.findById(id);
+    public void removeBookNonFictionByArticleId (Long articleId) {
+        BookNonFiction bookNonFiction = bookNonFictionRepository.findByArticleId(articleId);
         bookNonFictionRepository.remove(bookNonFiction);
     }
 }

@@ -16,17 +16,17 @@ public class ArticleService {
         return articles;
     }
 
-    public void updateTitle(Long id, String newTitle) {
-        Article article = articleRepository.findById(id);
+    public void updateTitle(Long articleId, String newTitle) {
+        Article article = articleRepository.findByArticleId(articleId);
         article.setTitle(newTitle);
     }
 
-    public Article findById(Long id){
-        return articleRepository.findById(id);
+    public Article findById(Long articleId){
+        return articleRepository.findByArticleId(articleId);
     }
 
-    public void removeArticleById (Long id) {
-        Article article = articleRepository.findById(id);
+    public void removeArticleById (Long articleId) {
+        Article article = articleRepository.findByArticleId(articleId);
         articleRepository.remove(article);
     }
 

@@ -18,8 +18,8 @@ public class GameController {
     private GameService gameService;
     private Game game = new Game();
 
-    public void initDetailView(Long id) {
-        this.game = gameService.findGameById(id);
+    public void initDetailView(Long articleId) {
+        this.game = gameService.findGameByArticleId(articleId);
     }
 
     public List<Game> getGames() {
@@ -34,8 +34,8 @@ public class GameController {
         this.gameService.insert(game);
     }
 
-    public Game getGamebyId(Long id) {
-        return gameService.findGameById(id);
+    public Game getGamebyArticleId(Long articleId) {
+        return gameService.findGameByArticleId(articleId);
     }
 
     public String saveGame() {
@@ -44,7 +44,7 @@ public class GameController {
     }
 
     public String removeGame(Game game) {
-        gameService.removeById(game.getId());
+        gameService.removeByArticleId(game.getArticleId());
         return "overview";
     }
 

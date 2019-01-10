@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <f:metadata>
-    <f:event type="preRenderView" listener="#{lPController.initDetailView(param.id)}" />
+    <f:event type="preRenderView" listener="#{lPController.initDetailView(param.articleId)}" />
 </f:metadata>
 <h:head><title>ShopR!</title></h:head>
 <h:body>
@@ -22,10 +22,10 @@
             <b:dataTableColumn value="#{lp.price}" label="price"/>
             <b:dataTableColumn value="#{lp.artist}" label="artist"/>
             <b:dataTableColumn value="#{lp.LPMusicGenre}" label="Music Genre"/>
-            <b:dataTableColumn value="#{lp.id}" label="Product code"/>
+            <b:dataTableColumn value="#{lp.articleId}" label="Product code"/>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lPController.LP)}" >
-            <f:param name="id" value="#{param.id}"/>
+            <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
     </b:form>
 </ui:define>

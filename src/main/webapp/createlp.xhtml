@@ -10,19 +10,18 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
     <b:panel title="Create LP" collapsible="false">
-        <h:outputText value="Panel Content" />
         <b:form>
             <b:panelGrid columns="2">
-                <b:inputText value="#{lPController.lp.title}"
+                <b:inputText value="#{lPController.LP.title}"
                              label="Title" render-label="true"/>
-                <b:inputText value="#{lPController.lp.price}"
+                <b:inputText value="#{lPController.LP.price}"
                              label="Price" render-label="true"/>
-                <b:inputText value="#{lPController.lp.supplierId}"
+                <b:inputText value="#{lPController.LP.supplierId}"
                              label="Supplier Id" render-label="true"/>
-                <b:inputText value="#{lPController.lp.artist}"
+                <b:inputText value="#{lPController.LP.artist}"
                              label="Artist" render-label="true"/>
-                <b:selectOneMenu value="#{lPController.lp.LPMusicGenre}" ajax="true" label="Choose Music genre">
-                    <f:selectItems value="#{lPController.musicGenres}" var="musicGenre"
+                <b:selectOneMenu value="#{lPController.LP.LPMusicGenre}" ajax="true" label="Choose Music genre">
+                    <f:selectItems value="#{lPController.LPGenres}" var="musicGenre"
                                    itemValue="#{musicGenre}" itemLabel="#{musicGenre}" />
                 </b:selectOneMenu>
                 <b:commandButton action="#{lPController.saveLP}" value="Add this LP"

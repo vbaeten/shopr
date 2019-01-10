@@ -11,8 +11,8 @@ public class BookRepository {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public Book findById(Long id) {
-        return entityManager.find(Book.class, id);
+    public Book findById(Long articleId) {
+        return entityManager.find(Book.class, articleId);
     }
 
     public List<Book> findAll() {

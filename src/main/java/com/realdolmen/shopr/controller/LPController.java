@@ -16,8 +16,8 @@ public class LPController {
     private LPService lpService;
     private LP lp = new LP();
 
-    public void initDetailView(Long id) {
-        this.lp = lpService.findLPById(id);
+    public void initDetailView(Long articleId) {
+        this.lp = lpService.findLPByArticleId(articleId);
     }
 
     public List<LP> getLPs() {
@@ -32,8 +32,8 @@ public class LPController {
         this.lpService.insert(lp);
     }
 
-    public LP getLPbyId(Long id) {
-        return lpService.findLPById(id);
+    public LP getLPbyId(Long articleId) {
+        return lpService.findLPByArticleId(articleId);
     }
 
     public String saveLP() {
@@ -42,7 +42,7 @@ public class LPController {
     }
 
     public String removeLP(LP lp) {
-        lpService.removeLPById(lp.getId());
+        lpService.removeLPByArticleId(lp.getArticleId());
         return "overview";
     }
 
