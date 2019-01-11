@@ -28,6 +28,9 @@
         <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(gameController.game)}" >
             <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
+        <b:commandButton value="edit" look="primary" immediate="true" action="updategame.xhtml" >
+            <f:param name="gameId" value="#{param.articleId}"/>
+        </b:commandButton>
     </b:form>
 
             <b:form>

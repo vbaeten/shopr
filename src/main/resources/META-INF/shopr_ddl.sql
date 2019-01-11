@@ -22,10 +22,10 @@ insert into game(articleId, gameGenre, minimumAge, publisher) VALUES (1006, 1, 1
 insert into article(articleId, title, price, supplierId, type) VALUES (1007, 'Game4', 10, 'Game Studio', 'game');
 insert into game(articleId, gameGenre, minimumAge, publisher) VALUES (1007, 3, 16, 'Dunno');
 
-insert into article(articleId, title, price, supplierId, type) VALUES (1008, 'BoekFictie1', 12, 'Book Studio', 'fiction');
-insert into book(articleId, author, isbn, numberOfPages ) VALUES (1008, 'kweni', '978-90-1234-567-8', 586);
-insert into bookfiction(articleId, bookGenre, summary) VALUES (1008, 2, 'eomqzioejzcfjeiuhpgciqzmjmfosfghaefjze iofergeqifjemqelsh');
+insert into article(articleId, title, price, supplierId, type) VALUES (1008, 'War and Peace', 22, 'Penguin Books Ltd', 'fiction');
+insert into book(articleId, author, isbn, numberOfPages ) VALUES (1008, 'Leo Tolstoy', '978-02-4126-554-3', 1440);
+insert into bookfiction(articleId, bookGenre, summary) VALUES (1008, 3, 'At a glittering society party in St Petersburg in 1805, conversations are dominated by the prospect of war. Terror swiftly engulfs the country as Napoleon''s army marches on Russia, and the lives of three young people are changed forever. The stories of quixotic Pierre, cynical Andrey and impetuous Natasha interweave with a huge cast, from aristocrats and peasants to soldiers and Napoleon himself.');
 
-insert into article(articleId, title, price, supplierId, type) VALUES (1009, 'BoekNONFictie1', 8, 'Book NON Studio', 'nonfiction');
-insert into book(articleId, author, isbn, numberOfPages ) VALUES (1009, 'dunno', '978-90-1234-567-9', 256);
-insert into booknonfiction(articleId, bookSubjectNF) VALUES (1009, 3);
+insert into article(articleId, title, price, supplierId, type) VALUES (1009, 'The Vegetable Butcher', 20.36, 'Workman Publishing New York', 'nonfiction');
+insert into book(articleId, author, isbn, numberOfPages ) VALUES (1009, 'Cara Mangini', '978-07-6118-052-4', 352);
+insert into booknonfiction(articleId, bookSubjectNF) VALUES (1009, 2);
