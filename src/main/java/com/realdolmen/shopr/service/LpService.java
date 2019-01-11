@@ -9,17 +9,30 @@ import com.realdolmen.shopr.repository.RatingRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
 public class LpService
 {
-@Inject
+    @Inject
     private LpRepository lpRepository;
-@Inject
-private RatingRepository ratingRepository;
-@Inject
-private OverviewRepository overviewRepository;
+    @Inject
+    private RatingRepository ratingRepository;
+    @Inject
+    private OverviewRepository overviewRepository;
+
+    private List<Beoordeling> beoordelingListLp = new ArrayList<>();
+
+    public List<Beoordeling> getBeoordelingListLp()
+    {
+        return beoordelingListLp;
+    }
+
+    public void setBeoordelingListLp(List<Beoordeling> beoordelingListLp)
+    {
+        this.beoordelingListLp = beoordelingListLp;
+    }
 
     public List<Lp> findAllLps()
     {
@@ -52,18 +65,25 @@ private OverviewRepository overviewRepository;
 
 
     }
+
     public void update(Lp lp)
     {
         lpRepository.update(lp);
     }
 
+    public void ratingsOpHalenLp(int id)
+    {
+        beoordelingListLp = ratingRepository.findBeoordelingenBepaaldArtikel(overviewRepository.findById(id).getId());
+    }
+
     public void delete(int id)
     {
-
-        for (Beoordeling b : ratingRepository.findBeoordelingenBepaaldArtikel(overviewRepository.findById(id).getId()))
+        ratingsOpHalenLp(id);
+        for (Beoordeling b : beoordelingListLp)
         {
             ratingRepository.delete(b);
         }
+
         Lp lp = lpRepository.findById(id);
         lpRepository.delete(lp);
     }
