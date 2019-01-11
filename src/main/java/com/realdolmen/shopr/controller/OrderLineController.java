@@ -22,8 +22,32 @@ public class OrderLineController {
 
     private Article selectedArticle;
 
+    private BigDecimal totalPrice;
+
     @Inject
     private OrderLineService orderLineService;
+
+    public String reset(){
+        this.sessionOrderLines.clear();
+        return "overview";
+    }
+
+    public String continueShopping (){
+        return "overview";
+    }
+
+    public String placeOrder(ArrayList<OrderLine> sessionOrderLines){
+        if (sessionOrderLines.size() > 0) {
+            return "ordercreated";
+        } else {
+            return "emptyshoppingcart";
+        }
+    }
+
+    public BigDecimal displayTotalPrice(){
+        this.totalPrice = orderLineService.calculateTotalPrice(sessionOrderLines);
+        return totalPrice;
+    }
 
     public String createOrderLine(BigDecimal quantity, Article article) {
         Optional<OrderLine> orderLine = sessionOrderLines.stream()
@@ -78,5 +102,13 @@ public class OrderLineController {
 
     public List<OrderLine> getOrderLines() {
         return this.orderLineService.findAllOrderLines();
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

@@ -2,6 +2,7 @@ package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -18,8 +19,19 @@ public class OrderLine {
     private Order order;
 
     private BigDecimal subTotal;
-    @Digits(integer=6, fraction=0)
+    @Digits(integer = 6, fraction = 0)
+    @NotNull
     private BigDecimal quantity;
+    @Digits(integer = 6, fraction = 0)
+    private BigDecimal totalPrice;
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public BigDecimal getQuantity() {
         return quantity;

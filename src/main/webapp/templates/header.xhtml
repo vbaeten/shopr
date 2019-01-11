@@ -6,16 +6,19 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <b:navBar brand="Shopr" brandHref="overview.xhtml" inverse="true">
+    <h:form>
     <b:navbarLinks>
         <b:navLink value="Home" href="overview.xhtml"></b:navLink>
         <b:navLink value="Create" href="articlecreation.xhtml"></b:navLink>
-        <b:navLink value="Link" href="#"></b:navLink>
+        <b:navLink value="Shopping Cart" href="orderlineselected.xhtml"></b:navLink>
     </b:navbarLinks>
     <b:navbarLinks pull="right"><b:navLink value="          " href="#"></b:navLink></b:navbarLinks>
     <b:navbarLinks pull="right" styleClass="hidden-xs">
-        <b:navLink value="#{userController.sayHello(userController.loggedInUser)}" href="#"></b:navLink>
+        <b:navCommandLink value="#{userController.sayHello(userController.loggedInUser)}" href="#"></b:navCommandLink>
         <b:dropMenu value="Menu">
+            <b:navCommandLink action="#{userController.logout}" value="logout"></b:navCommandLink>
         </b:dropMenu>
     </b:navbarLinks>
+    </h:form>
 </b:navBar>
 </html>

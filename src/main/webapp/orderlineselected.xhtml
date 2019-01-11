@@ -9,12 +9,27 @@
 <h:body>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
+            <h:form>
             <b:dataTable value="#{orderLineController.sessionOrderLines}" var="thisorderline">
             <b:dataTableColumn value="#{thisorderline.article.title}"/>
             <b:dataTableColumn value="#{thisorderline.article.price}"/>
                 <b:dataTableColumn value="#{thisorderline.quantity}"/>
             <b:dataTableColumn value="#{thisorderline.subTotal}"/>
             </b:dataTable>
+                <br/>
+                <br/>
+                <h:outputLabel value="Total price "/>
+                <h:outputText value=" #{orderLineController.displayTotalPrice()}"/>
+                <br/>
+                <br/>
+                <b:commandButton action="#{orderLineController.placeOrder}" value="Place order" look="primary"/>
+                <br/>
+                <br/>
+                <b:commandButton action="#{orderLineController.continueShopping}" value="Continue shopping" look="primary"/>
+               <br/>
+                <br/>
+                <b:commandButton action="#{orderLineController.reset}" value="Empty shopping cart" look="danger"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>
