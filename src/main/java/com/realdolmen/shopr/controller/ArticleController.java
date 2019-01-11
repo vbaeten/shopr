@@ -46,7 +46,7 @@ public class ArticleController implements Serializable {
         this.articleId = articleId;
     }
 
-public String navigateToDetailPage(Article article) {
+    public String navigateToDetailPage(Article article) {
         switch (article.getType()) {
             case "LP":
                 return "lpDetail.xhtml?";

@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -40,22 +42,37 @@ public class LpServiceTest {
     @Test
     public void testUpdateTitle(){
         when(lpRepository.findById(1)).thenReturn(lp);
-        lpService.updateTitle(1, "TestTitle");
-        Assert.assertEquals("TestTitle", lp.getTitle());
+        lpService.updateTitle(1, "NewTestTitle");
+        Assert.assertEquals("NewTestTitle", lp.getTitle());
     }
 
     @Test
     public void testInsert(){
-//        when(lpRepository.insert(any())).thenReturn(lp);
+        doNothing().when(lpRepository).insert(lp);
+        lpService.insert(lp);
+        verify(lpRepository, times(1)).insert(lp);
     }
 
-//    @Test
-//    public void testDelete(){
-//        ArgumentCaptor<Lp> valueCapture = ArgumentCaptor.forClass(Lp.class);
-//        doNothing().when(lpRepository).delete(valueCapture);
-//        lpService.delete(lp);
-//        verify(lpRepository, times(1)).delete(any());
-//    }
+    @Test
+    public void testDelete(){
+        doNothing().when(lpRepository).delete(1);
+        lpService.delete(lp);
+        verify(lpRepository, times(1)).delete(1);
+    }
+
+    @Test
+    public void testFindLpById(){
+        when(lpRepository.findById(1)).thenReturn(lp);
+        Lp checkedLp = lpService.findLpById(1);
+        assertEquals(checkedLp, lp);
+    }
+
+    @Test
+    public void testUpdate(){
+        when(lpRepository.findById(1)).thenReturn(lp);
+        lpService.update(lp);
+        verify(lpRepository, times(1)).update(lp);
+    }
 
 
 

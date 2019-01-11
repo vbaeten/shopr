@@ -22,17 +22,11 @@ import java.util.Objects;
                         name = User.FIND_ALL,
                         query = "SELECT u FROM User u"
                 ),
-//                @NamedQuery(
-//                        name = User.FIND_FAVOURITES,
-//                        query = 'SELECT a from Article a LEFT JOIN user_favourites uf ON a.id WHERE uf.id = :id'
-//                )
         }
 )
 public class User implements Serializable {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
-    public static final String FIND_FAVOURITES = "User.findFavourites";
-
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

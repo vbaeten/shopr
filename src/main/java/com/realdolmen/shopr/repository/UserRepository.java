@@ -31,8 +31,4 @@ public class UserRepository {
         entityManager.merge(user);
     }
 
-//    public List<Article> findFavourites(int userId){
-//        return entityManager.createNamedQuery(User.FIND_FAVOURITES);
-//    }
-
 }

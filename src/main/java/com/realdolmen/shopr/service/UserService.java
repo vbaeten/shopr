@@ -44,7 +44,4 @@ public class UserService implements Serializable {
         userRepository.update(user);
     }
 
-//    public List<Article> findFavourites(int id){
-//        return userRepository.findFavourites(id);
-//    }
 }

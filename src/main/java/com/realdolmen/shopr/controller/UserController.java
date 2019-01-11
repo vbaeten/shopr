@@ -61,8 +61,4 @@ public class UserController implements Serializable {
         }
         userService.update(currentUser);
     }
-
-//    public List<Article> findFavourites(){
-//        userService.findFavourites(currentUser.getId());
-//    }
 }
