@@ -16,22 +16,26 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
             <b:panel title="Update Game" collapsible="false">
+
                 <b:form>
-                    <b:panelGrid columns="2">
-                        <b:dataTable value="#{gameController.game}" id="gamesTableEdit"
-                                     var="game" caption="This is a the detail page for a game.">
-                            <b:dataTableColumn>
-                                <b:inputText placeholder="#{game.title}" value="#{gameController.game.title}" required="true" label="TestTitle" />
-                            </b:dataTableColumn>
-                        </b:dataTable>
-                        <b:inputText placeholder="#{gameController.game.title}" value="#{gameController.game.title}" required="true" label="TestTitle" >
-                        </b:inputText>
-                        <b:inputText value="#{gameController.game.title}"
-                                     label="Title" render-label="true"/>
-                        <b:commandButton action="#{gameController.saveGame}" value="Add this game"
-                                         look="info" />
-                    </b:panelGrid>
+                    <b:container>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="#{gameController.game.title}" value="#{gameController.game.title}" required="true" label="Title" />
+                                <b:inputText placeholder="#{gameController.game.price}" value="#{gameController.game.price}" required="true" label="Price" />
+                                <b:inputText placeholder="#{gameController.game.supplierId}" value="#{gameController.game.supplierId}" required="true" label="SupplierId" />
+                                <b:inputText placeholder="#{gameController.game.publisher}" value="#{gameController.game.publisher}" required="true" label="Publisher" />
+                                <b:inputText placeholder="#{gameController.game.minimumAge}" value="#{gameController.game.minimumAge}" required="true" label="Minimum Age" />
+                                <b:selectOneMenu placeholder="#{gameController.game.gameGenre}" value="#{gameController.game.gameGenre}" ajax="true" label="Game genre">
+                                    <f:selectItems value="#{gameController.gameGenres}" var="gameGenre"
+                                                   itemValue="#{gameGenre}" itemLabel="#{gameGenre}" />
+                                </b:selectOneMenu>
+
+                            </b:column>
+                        </b:row>
+                    </b:container>
                 </b:form>
+
             </b:panel>
         </ui:define>
     </ui:composition>
