@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.UserRepository;
 
@@ -42,4 +43,8 @@ public class UserService implements Serializable {
     public void update(User user){
         userRepository.update(user);
     }
+
+//    public List<Article> findFavourites(int id){
+//        return userRepository.findFavourites(id);
+//    }
 }

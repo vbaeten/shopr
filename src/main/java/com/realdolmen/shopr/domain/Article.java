@@ -17,8 +17,8 @@ import javax.validation.constraints.Size;
                 ),
                 @NamedQuery(
                         name = Article.FIND_ALL,
-                        query = "SELECT a FROM Article a  order by a.title"
-                )
+                        query = "SELECT a FROM Article a order by a.title"
+                ),
         })
 public class Article {
     public static final String FIND_BY_TITLE = "Article.findByTitle";

@@ -10,7 +10,7 @@
 <ui:composition template="templates/templ.xhtml">
     <ui:define name="pageContent">
         <p:dataTable var="article"
-                     value="#{articleController.articles}"
+                     value="#{userController.currentUser.favourites}"
                      rows="10"
                      paginator="true">
             <p:column headerText="Id">
