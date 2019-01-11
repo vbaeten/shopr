@@ -15,8 +15,10 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <b:container>
+                <br></br>
+                <br></br>
                 <b:form id="loginForm">
-                    <p:panel id="panel" class="panelStyle" style="width: 500px;background-color: #f45b69">
+                    <b:panel id="panel" class="panelStyle" style="width: 500px;background-color: #333333; border-color: #738290; border-width: 5px ">
                         <h:panelGrid columns="1" cellpadding="5">
                             <h:outputLabel for="gebruiker" value="Gebruiker:"/>
 
@@ -33,7 +35,7 @@
                                              value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
 
                         </h:panelGrid>
-                    </p:panel>
+                    </b:panel>
                 </b:form>
 
 

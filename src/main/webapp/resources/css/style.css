@@ -15,10 +15,10 @@
     background: #247ba0!important;
 }
 
-.panelStyle
-{
-    background-color: #ebebeb!important;
-}
+/*.panelStyle*/
+/*{*/
+    /*background-color: #ebebeb!important;*/
+/*}*/
 
 .footerStyle
 {
@@ -33,6 +33,28 @@
 
 #navbarStyle{
     background-color: #247ba0;
+}
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.content {
+    min-height: 100%;
+}
+.content {
+    padding: 20px;
+    padding-bottom: 50px;
+}
+.footer {
+    height: 50px;
+    margin-top: -50px;
+}
+
+.ui-datatable * {
+    border : 0px !important;
 }
 
 

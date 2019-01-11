@@ -15,7 +15,8 @@
             <h:form id="form">
                 <p:growl id="msgs"/>
 
-                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewArtikels" resizeMode="expand"
+                <p:dataTable style="width: 55em;  border : 0px !important; font-weight: bold; color: #fffffb"
+                             resizableColumns="true" id="overviewArtikels" resizeMode="expand"
                              var="artikel"
                              value="#{overviewController.artikels()}" rows="10"
                              paginator="true"
@@ -46,7 +47,7 @@
                         <h:outputText value=" $ #{artikel.prijs}"/>
                     </p:column>
 
-                    <p:column resizable="true" headerText="#{msgs['artikel.details']}">
+                    <p:column rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }" resizable="true" headerText="#{msgs['artikel.details']}">
                         <b:commandButton styleClass="btn btn-primary"
                                          action="#{overviewController.details(artikel.id, loginController.currentUser)}">
                             <b:iconAwesome name="info"></b:iconAwesome>

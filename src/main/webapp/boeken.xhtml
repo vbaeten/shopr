@@ -16,7 +16,8 @@
         <ui:define name="content">
 
             <h:form>
-            <p:panel  class="panelStyle" style="width: 100%;background-color: #f45b69">
+            <b:panel  class="panelStyle" style="margin-bottom:10px; color: #fffffb; background-color: #333333;
+             color: #fffffb;margin-bottom:0; border-color: #333333 ">
                 <p:selectOneRadio required="true" id="artikelSoort" value="#{editController.selectPanel}">
                     <f:selectItem itemLabel="#{msgs['edit.lps']}"
                                   itemValue="1"/>
@@ -27,13 +28,7 @@
 
                     <f:ajax execute="@this" render="@form"/>
                 </p:selectOneRadio>
-            </p:panel>
-            <!--</h:form>-->
-
-            <!--<h:form id="form">-->
-                <p:growl id="msgs"/>
-
-
+            </b:panel>
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewBoeken" resizeMode="expand"
                              rendered="#{editController.selectPanel eq 3}"
                              var="boek"

@@ -15,7 +15,7 @@
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <h:form>
-                <p:panel  class="panelStyle" style="width: 500px;background-color: #9a8c98">
+                <b:panel  class="panelStyle" style="background-color: #333333; color: #fffffb">
                     <p:selectOneRadio required="true" id="artikelSoort" value="#{toevoegController.selectPanel}">
                         <f:selectItem itemLabel="#{msgs['toevoegen.lp']}"
                                       itemValue="1"/>
@@ -28,12 +28,12 @@
 
                         <f:ajax execute="@this" render="@form"/>
                     </p:selectOneRadio>
-                </p:panel>
+                </b:panel>
 
 
-                <p:panel id="panelLp" style="margin-bottom:10px; width: 500px;" class="panelStyle"
+                <b:panel id="panelLp" style="margin-bottom:10px;border-color: #333333; width: 500px;background-color: #333333; color: #fffffb;  "
                          rendered="#{1 eq toevoegController.getSelectPanel()}">
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <b:panelGrid columns="2" cellpadding="5">
 
                                 <h:outputLabel for="titelLp" value="#{msgs['toevoegen.titel']}"/>
 
@@ -71,11 +71,11 @@
                                 </b:commandButton>
 
 
-                    </h:panelGrid>
-                </p:panel>
+                    </b:panelGrid>
+                </b:panel>
 
 
-                <p:panel id="panelGame" style="margin-bottom:10px; width: 500px;" class="panelStyle"
+                <b:panel id="panelGame" style="margin-bottom:10px; width: 500px; background-color: #333333; color: #fffffb" class="panelStyle"
                          rendered="#{2 eq toevoegController.getSelectPanel()}">
                     <b:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}"/>
@@ -101,10 +101,10 @@
 
 
                         <h:outputLabel for="leeftijd" value="#{msgs['toevoegen.leeftijd']}"/>
-                        <b:touchSpin id="leeftijd"  col-md="3"
+                        <b:touchSpin id="leeftijd"
                                      value="#{gameController.newGame.minLeeftijd}" min="6" max="18" step="1"/>
 
-                        <!--<p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}" min="6" max="18"/>-->
+
 
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
 
@@ -120,12 +120,12 @@
                     </b:panelGrid>
 
 
-                </p:panel>
+                </b:panel>
 
-                <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
+                <b:panel id="panelNonFictie" style="margin-bottom:10px; width: 500px; background-color: #333333; color: #fffffb" class="panelStyle"
                          rendered="#{3 eq toevoegController.getSelectPanel()}">
 
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <b:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}"/>
                         <b:inputText id="titelnonfictie" value="#{nonFictieController.newNonFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
@@ -167,13 +167,13 @@
                         <b:commandButton styleClass="btn btn-primary"  action="#{nonFictieController.submit}" >
                             <b:iconAwesome name="save"> Save</b:iconAwesome>
                         </b:commandButton>
-                    </h:panelGrid>
-                </p:panel>
+                    </b:panelGrid>
+                </b:panel>
 
-                <p:panel id="panelFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
+                <b:panel id="panelFictie" style="margin-bottom:10px; width: 500px; background-color: #333333; color: #fffffb" class="panelStyle"
                          rendered="#{4 eq toevoegController.getSelectPanel()}">
 
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <b:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}"/>
                         <b:inputText id="titelfictie" value="#{fictieController.newFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
@@ -219,8 +219,8 @@
                         <b:commandButton styleClass="btn btn-primary"  action="#{fictieController.submit}" >
                             <b:iconAwesome name="save"> Save</b:iconAwesome>
                         </b:commandButton>
-                    </h:panelGrid>
-                </p:panel>
+                    </b:panelGrid>
+                </b:panel>
 
 
             </h:form>
