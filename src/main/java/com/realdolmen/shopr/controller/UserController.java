@@ -40,7 +40,6 @@ public class UserController implements Serializable {
         return "index?faces-redirect=true";
     }
 
-
     public User getLoggedInUser() {
         return loggedInUser;
     }

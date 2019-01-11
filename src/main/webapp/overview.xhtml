@@ -19,7 +19,7 @@
                 <h:outputText rendered="#{article.type eq 'game'}" value="#{article.publisher}"/>
                 <h:outputText rendered="#{article.type eq 'fiction'}" value="#{article.author}"/>
                 <h:outputText rendered="#{article.type eq 'nonfiction'}" value="#{article.author}"/>
-            </b:dataTableColumn>  label="Author/Artist/Publisher">
+            </b:dataTableColumn>
             <b:dataTableColumn value="#{article.price}" label="price"/>
             <b:dataTableColumn value="#{article.articleId}" label="product code"/>
             <b:dataTableColumn label="Details">
