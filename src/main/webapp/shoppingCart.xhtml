@@ -7,24 +7,28 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
 
-<head>
+<h:head>
     <title>Shopping Cart</title>
-</head>
+</h:head>
 <h:body>
 
-    Welcome #{loginController.selectedUser.firstName}<br/>
-    Id: #{loginController.selectedUser.id}<br/>
+    <b:form>
+        <b:panel>
+            <b:dataTable id="orderOverview" var="orderline" value="#{orderLineController.orderLine}">
+                <b:dataTableColumn label="Order id" value="#{orderline.order.orderId}"/>
+                <b:dataTableColumn label="Orderline id" value="#{orderline.id}"/>
+                <b:dataTableColumn label="Article id" value="#{orderline.article.articleId}"/>
+                <b:dataTableColumn label="Article type" value="#{orderline.article.type}"/>
+                <b:dataTableColumn label="Article title" value="#{orderline.article.title}"/>
+                <b:dataTableColumn label="Article price" value="#{orderline.article.price}"/>
+                <b:dataTableColumn label="Quantity">
+                    <b:inputText value="#{orderline.quantity}" placeholder="#{orderline.quantity}"/>
+                </b:dataTableColumn>
+            </b:dataTable>
 
-<b:form>
-    order id = #{orderLineController.orderLine.order.id};<br/>
-    selected order id = #{orderController.selectedOrder.id};<br/>
-    article title = #{orderLineController.orderLine.article.title};<br/>
-    quantity = #{orderLineController.orderLine.quantity};<br/>
-    price = #{orderLineController.orderLine.article.price};<br/>
-    subtotaal = #{orderLineController.orderLine.subTotal};<br/>
+            <b:commandButton id="submit" value="Buy" action="#{orderLineController.buy}"/>
+        </b:panel>
+    </b:form>
 
-    <b:commandButton id="submit" value="Buy" action="#{orderController.submit()}"/>
-
-</b:form>
 </h:body>
 </html>

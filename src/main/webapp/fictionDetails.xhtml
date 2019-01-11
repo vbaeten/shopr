@@ -23,7 +23,7 @@
 
         <b:dataTable var="fictionBook" value="#{articleController.getArticleById(articleController.selectedId)}"
                      id="fictionArticleDetailsDataTabel">
-            <b:dataTableColumn label="Id" value="#{fictionBook.id}">
+            <b:dataTableColumn label="Id" value="#{fictionBook.articleId}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Supplier Id" value="#{fictionBook.supplierId}">
             </b:dataTableColumn>

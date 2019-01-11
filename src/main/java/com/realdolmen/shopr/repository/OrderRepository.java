@@ -12,8 +12,8 @@ public class OrderRepository {
     private EntityManager entityManager;
 
 
-    public Order findById(int id) {
-        return entityManager.createNamedQuery(Order.FIND_BY_ID, Order.class).getSingleResult();
+    public Order findById(int orderId) {
+        return entityManager.find(Order.class, orderId);
     }
 
     public List<Order> findAll() {
@@ -33,4 +33,7 @@ public class OrderRepository {
         entityManager.remove(orderById);
     }
 
+    public void update(Order order) {
+        entityManager.merge(order);
+    }
 }

@@ -22,7 +22,7 @@
     <b:form id="details">
         <b:dataTable var="game" value="#{articleController.getArticleById(articleController.selectedId)}"
                      id="gameEditDetailsDataTabel">
-            <b:dataTableColumn label="Id" value="#{game.id}">
+            <b:dataTableColumn label="Id" value="#{game.articleId}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Supplier Id">
                 <h:outputText value="#{game.supplierId}" rendered="#{!articleController.editable}"/>

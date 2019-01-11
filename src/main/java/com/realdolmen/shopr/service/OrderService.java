@@ -34,4 +34,7 @@ public class OrderService {
         orderRepository.remove(id);
     }
 
+    public void update(Order order) {
+        orderRepository.update(order);
+    }
 }

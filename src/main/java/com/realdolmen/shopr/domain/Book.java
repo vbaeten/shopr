@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
         {
                 @NamedQuery(
                         name = Book.FIND_BY_ID,
-                        query = "SELECT b FROM Book b WHERE b.id = :id"
+                        query = "SELECT b FROM Book b WHERE b.articleId = :id"
                 ),
                 @NamedQuery(
                         name = Book.FIND_ALL,

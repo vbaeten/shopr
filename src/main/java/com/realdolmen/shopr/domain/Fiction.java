@@ -24,19 +24,19 @@ public class Fiction extends Book {
 
     @Size(max = 255)
     @Column(name = "short_summary")
-    private String shortSummery;
+    private String shortSummary;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "fiction_genre")
     private FictionGenre fictionGenre;
 
 
-    public String getShortSummery() {
-        return shortSummery;
+    public String getShortSummary() {
+        return shortSummary;
     }
 
-    public void setShortSummery(String shortSummery) {
-        this.shortSummery = shortSummery;
+    public void setShortSummary(String shortSummary) {
+        this.shortSummary = shortSummary;
     }
 
     public FictionGenre getFictionGenre() {

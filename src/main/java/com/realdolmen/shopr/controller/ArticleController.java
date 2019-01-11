@@ -19,6 +19,7 @@ public class ArticleController {
 
     @ManagedProperty("#{param.id}")
     private int selectedId;
+
     private String selectedArticleType;
 
     private Article article;

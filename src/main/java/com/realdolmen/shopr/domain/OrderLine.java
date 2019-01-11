@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,24 +18,35 @@ import java.math.BigDecimal;
                 ),
                 @NamedQuery(
                         name = OrderLine.FIND_BY_ORDER_ID,
-                        query = "SELECT b FROM OrderLine b WHERE b.order.id = :id"
+                        query = "SELECT b FROM OrderLine b WHERE b.order.orderId = :id"
                 )
         })
-public class OrderLine {
+public class OrderLine implements Serializable {
     public static final String FIND_ALL = "OrderLine.findAll";
     public static final String FIND_BY_ID = "OrderLine.findById";
     public static final String FIND_BY_ORDER_ID = "OrderLine.findByOrderId";
 
+    public OrderLine() {
+    }
+
+    public OrderLine(Article article, BigDecimal quantity, Order order) {
+        this.article = article;
+        this.quantity = quantity;
+        this.order = order;
+    }
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "quantity")
     private BigDecimal quantity;
 
     @ManyToOne
+    @JoinColumn(name = "articleId", referencedColumnName = "articleId")
     private Article article;
     @ManyToOne
+    @JoinColumn(name = "orderId", referencedColumnName = "orderId")
     private Order order;
 
     @Transient

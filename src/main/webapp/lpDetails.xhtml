@@ -21,12 +21,14 @@
     Welcome #{loginController.selectedUser.firstName}<br/>
     article = #{articleController.getArticleById(articleController.selectedId).title}<br/>
     Id: #{loginController.selectedUser.id}<br/>
+    currentOrderUserName = #{loginController.currentOrder.user.name}<br/>
+    currentOrderId = #{loginController.currentOrder.orderId}<br/>
 
 
     <b:form id="details">
         <b:dataTable var="lp" value="#{articleController.getArticleById(articleController.selectedId)}"
                      id="lpDetailsDataTabel">
-            <b:dataTableColumn label="Id" value="#{lp.id}">
+            <b:dataTableColumn label="Id" value="#{lp.articleId}">
             </b:dataTableColumn>
             <b:dataTableColumn label="Supplier Id" value="#{lp.supplierId}">
             </b:dataTableColumn>
@@ -48,7 +50,7 @@
     <b:form>
         <b:inputText label="Quantity" value="#{orderLineController.orderLine.quantity}"/>
 
-        <b:commandButton id="submit" value="Submit" action="#{orderLineController.submitQuantity(orderLineController.orderLine.quantity,articleController.selectedId,loginController.selectedUser.id)}"/>
+        <b:commandButton id="submit" value="Submit" action="#{orderLineController.submitQuantity(articleController.getArticleById(articleController.selectedId), orderLineController.orderLine.quantity, loginController.currentOrder)}"/>
     </b:form>
 
 

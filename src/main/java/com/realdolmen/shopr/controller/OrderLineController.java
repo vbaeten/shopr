@@ -3,13 +3,17 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.exception.NotFoundException;
 import com.realdolmen.shopr.service.OrderLineService;
+import com.realdolmen.shopr.service.OrderService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @ManagedBean
 @SessionScoped
@@ -17,17 +21,16 @@ public class OrderLineController {
 
     @Inject
     private OrderLineService orderLineService;
-    @Inject
-    private LoginController loginController;
+    @ManagedProperty(value = "#{loginController}")
+    private LoginController loginController ;
     @Inject
     private ArticleController articleController;
     @Inject
-    private OrderController orderController;
+    private OrderService orderService;
 
     private Article article;
-    private OrderLine orderLine = new OrderLine();
-    private Order newOrder = new Order();
-
+    private OrderLine orderLine = new OrderLine() ;
+    private Order order;
 
     public OrderLine findById(int id) {
         return orderLineService.findById(id);
@@ -49,22 +52,53 @@ public class OrderLineController {
         orderLineService.removeById(id);
     }
 
-    public String submitQuantity(BigDecimal quantity, int articleId, int userId) {
-        this.orderLine.setArticle(articleController.getArticleById(articleId));
-        this.orderLine.setQuantity(quantity);
-        this.orderLine.setSubTotal(orderLine.getArticle().getPrice().multiply(quantity));
-        if (this.orderLine.getOrder() == null) {
-            this.orderLine.setOrder(newOrder);
-            newOrder.setUser(loginController.getSelectedUser());
-            newOrder.getUser().setId(userId);
-            orderController.setSelectedOrder(newOrder);
-            orderController.setCurrentUser(loginController.getSelectedUser());
-            orderController.getCurrentUser().setId(userId);
-        }
+    public String submitQuantity(Article article, BigDecimal quantity, Order order) {
+        createNewOrderline(article, quantity, order);
+
+        return "shoppingCart?faces-redirect=true";
+    }
+
+    private void createNewOrderline(Article article, BigDecimal quantity, Order order) {
+        OrderLine orderLine = new OrderLine(article, quantity, order);
+        this.setOrderLine(orderLine);
+        this.orderLine.setSubTotal(article.getPrice().multiply(quantity));
+        insert(orderLine);
+    }
+
+    public void buy(){
+        orderLine.getOrder().setConfirmed(true);
+        orderService.update(orderLine.getOrder());
+        createNewOrder();
+//        return "articleOverview?faces-redirect=true";
+    }
+
+    private void createNewOrder(){
+        Order newOrder = new Order(loginController.getSelectedUser());
+        orderService.insert(newOrder);
+        List<Order> orderList = orderService.findOrdersByUserId(loginController.getSelectedUser().getId());
+        Order unconfirmedOrder = orderList.stream().filter(order1 -> !order1.isConfirmed()).findFirst().orElseThrow(NotFoundException::new);
+        loginController.setCurrentOrder(unconfirmedOrder);
+    }
+
+
+
+//               if (this.orderLine.getOrder() == null) {
+//        this.setOrderLine(new OrderLine(articleController.getArticleById(articleId), quantity, ));
+//        this.orderLine.setArticle(articleController.getArticleById(articleId));
+//        this.orderLine.setQuantity(quantity);
+//        this.orderLine.setSubTotal(orderLine.getArticle().getPrice().multiply(quantity));
+//
+//            this.orderLine.setOrder(order);
+//            order.setUser(loginController.getSelectedUser());
+//            order.getUser().setId(userId);
+//            orderController.setSelectedOrder(order);
+//            orderController.setCurrentUser(loginController.getSelectedUser());
+//            orderController.getCurrentUser().setId(userId);
+//        }
 //        articleController.getOrderLines().add(this.orderLine);
 //        orderController.getOrderLines().add(this.orderLine);
-        return "shoppingCart?faces-redirect=true&include-viewParams=true";
-    }
+//        return "shoppingCart?faces-redirect=true&include-viewParams=true";
+//    }
 
 
     public Article getArticle() {
@@ -83,11 +117,19 @@ public class OrderLineController {
         this.orderLine = orderLine;
     }
 
-    public Order getNewOrder() {
-        return newOrder;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setNewOrder(Order newOrder) {
-        this.newOrder = newOrder;
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public LoginController getLoginController() {
+        return loginController;
+    }
+
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
     }
 }

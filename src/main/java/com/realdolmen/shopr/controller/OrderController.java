@@ -17,8 +17,10 @@ public class OrderController {
 
     @Inject
     private OrderService orderService;
+    @Inject
+    private LoginController loginController;
 
-    private Order selectedOrder = new Order();
+    private Order selectedOrder;
     private List<OrderLine> orderLines = new ArrayList<>();
     private User currentUser = new User();
 

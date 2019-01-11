@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,13 +24,13 @@ import java.util.List;
                 )
         }
 )
-public abstract class Article {
+public abstract class Article implements Serializable {
     public static final String FIND_ALL = "Article.findAll";
     public static final String FIND_BY_TITLE = "Article.findByTitle";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int articleId;
 
     @NotNull
     @Size(max = 100)
@@ -46,18 +47,14 @@ public abstract class Article {
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
-    @OneToMany
-    private List<Review> reviews;
-    @OneToMany
-    private List<OrderLine> orderLines;
 
 
-    public int getId() {
-        return id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setArticleId(int id) {
+        this.articleId = id;
     }
 
     public String getTitle() {
@@ -82,22 +79,6 @@ public abstract class Article {
 
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public List<OrderLine> getOrderLines() {
-        return orderLines;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
     }
 
     public String getType() {

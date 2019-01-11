@@ -27,16 +27,11 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "name")
     private String name;
     @Column(name = "first_name")
     private String firstName;
 
-    @OneToMany
-    private List<Order> orders;
-    @OneToMany
-    private List<Review> reviews;
 
 
     public int getId() {
@@ -63,22 +58,6 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
 
 
     @Override
