@@ -33,7 +33,7 @@
 
                 <p:panel id="panelLp" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{1 eq toevoegController.getSelectPanel()}">
-                    <h:panelGrid columns="1" cellpadding="5">
+                    <h:panelGrid columns="2" cellpadding="5">
 
                                 <h:outputLabel for="titelLp" value="#{msgs['toevoegen.titel']}"/>
 
@@ -67,7 +67,7 @@
                                 </b:selectOneMenu>
 
                                 <b:commandButton styleClass="btn btn-primary"  action="#{lpController.submit}" >
-                        <b:iconAwesome name="save"></b:iconAwesome>
+                        <b:iconAwesome name="save"> Save</b:iconAwesome>
                                 </b:commandButton>
 
 
@@ -77,7 +77,7 @@
 
                 <p:panel id="panelGame" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{2 eq toevoegController.getSelectPanel()}">
-                    <h:panelGrid columns="1" cellpadding="5">
+                    <b:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titel" value="#{msgs['toevoegen.titel']}"/>
                         <b:inputText id="titel" value="#{gameController.newGame.titel}" required="true">
                             <f:validateLength maximum="100"/>
@@ -101,7 +101,10 @@
 
 
                         <h:outputLabel for="leeftijd" value="#{msgs['toevoegen.leeftijd']}"/>
-                        <p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}" min="6" max="18"/>
+                        <b:touchSpin id="leeftijd"  col-md="3"
+                                     value="#{gameController.newGame.minLeeftijd}" min="6" max="18" step="1"/>
+
+                        <!--<p:spinner id="leeftijd" value="#{gameController.newGame.minLeeftijd}" min="6" max="18"/>-->
 
                         <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
 
@@ -112,9 +115,9 @@
 
 
                         <b:commandButton styleClass="btn btn-primary"  action="#{gameController.submit}" >
-                            <b:iconAwesome name="save"></b:iconAwesome>
+                            <b:iconAwesome name="save"> Save</b:iconAwesome>
                         </b:commandButton>
-                    </h:panelGrid>
+                    </b:panelGrid>
 
 
                 </p:panel>
@@ -122,7 +125,7 @@
                 <p:panel id="panelNonFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{3 eq toevoegController.getSelectPanel()}">
 
-                    <h:panelGrid columns="1" cellpadding="5">
+                    <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}"/>
                         <b:inputText id="titelnonfictie" value="#{nonFictieController.newNonFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
@@ -162,7 +165,7 @@
 
 
                         <b:commandButton styleClass="btn btn-primary"  action="#{nonFictieController.submit}" >
-                            <b:iconAwesome name="save"></b:iconAwesome>
+                            <b:iconAwesome name="save"> Save</b:iconAwesome>
                         </b:commandButton>
                     </h:panelGrid>
                 </p:panel>
@@ -170,7 +173,7 @@
                 <p:panel id="panelFictie" style="margin-bottom:10px; width: 500px;" class="panelStyle"
                          rendered="#{4 eq toevoegController.getSelectPanel()}">
 
-                    <h:panelGrid columns="1" cellpadding="5">
+                    <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}"/>
                         <b:inputText id="titelfictie" value="#{fictieController.newFictie.titel}" required="true">
                             <f:validateLength maximum="100"/>
@@ -214,7 +217,7 @@
 
 
                         <b:commandButton styleClass="btn btn-primary"  action="#{fictieController.submit}" >
-                            <b:iconAwesome name="save"></b:iconAwesome>
+                            <b:iconAwesome name="save"> Save</b:iconAwesome>
                         </b:commandButton>
                     </h:panelGrid>
                 </p:panel>

@@ -60,19 +60,16 @@
                                      value="#{betaalController.betalendeUser.name}" >
                         </b:inputText>
 
-                        <b:commandButton class="btn btn-primary"
+                        <b:button class="btn btn-primary"
                                          value="#{msgs['bestelling.betaal']}"
-                                         onclick="$('.betaald').modal()"
-                                         action="#{betaalController.betalingAfronden}">
 
-                        </b:commandButton>
+                                         outcome="merci">
+
+                        </b:button>
 
 
                     </b:modal>
 
-                    <b:modal id="betaald" styleClass="betaald">
-                    <h1>Betaald</h1>
-                    </b:modal>
                 </b:form>
             </b:container>
         </ui:define>

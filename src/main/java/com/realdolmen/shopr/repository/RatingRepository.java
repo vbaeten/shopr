@@ -49,4 +49,11 @@ public class RatingRepository
         return q.getResultList();
     }
 
+    public List<Beoordeling> findAllBeoordelingenByArtikel(int id)
+    {
+        Query q = entityManager.createQuery("select b from Beoordeling  b where b.artikel.id =:id");
+        q.setParameter("id", id);
+        return q.getResultList();
+    }
+
 }

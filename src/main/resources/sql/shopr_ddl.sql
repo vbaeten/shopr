@@ -39,7 +39,6 @@ INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) 
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('4', 'great ++', '5', '1');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('10', 'great ++++++++++', '5', '1');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('6', '--', '1', '2');
-UPDATE `shopr`.`beoordeling` SET `onschrijving` = 'great', `score` = '5', `artikel_id` = '5' WHERE (`id` = '2');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('7', '-----', '3', '2');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('8', '---', '5', '2');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`) VALUES ('10', 'fsdfsdfsdf', '1', '3');
@@ -67,4 +66,7 @@ UPDATE `shopr`.`beoordeling` SET `user_id` = '12' WHERE (`id` = '14');
 UPDATE `shopr`.`beoordeling` SET `user_id` = '12' WHERE (`id` = '15');
 INSERT INTO `shopr`.`beoordeling` (`user_id`) VALUES ('');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('16', 'reertretert', '2', '10', '12');
+
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('17', 'not bad', '4', '5', '12');
+INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('18', 'good', '5', '5', '11');
 
