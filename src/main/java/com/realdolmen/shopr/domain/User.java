@@ -25,6 +25,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column
     private int id;
 
     @Column(name = "name")
@@ -35,8 +36,8 @@ public class User implements Serializable {
     @NotNull
     private String firstName;
 
-//    @OneToOne(mappedBy = "user")
-//    private ShoppingCart shoppingCart;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private ShoppingCart shoppingCart;
 
     public User() {
     }

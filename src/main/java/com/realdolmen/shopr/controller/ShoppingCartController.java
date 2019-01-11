@@ -8,9 +8,11 @@ import com.realdolmen.shopr.service.ShoppingCartService;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.NoSuchEntityException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -40,17 +42,27 @@ public class ShoppingCartController implements Serializable {
 
 
     public void loadShoppingCart(int userId) {
-        shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
-        System.out.println("Shoppingcart loaded");
+        try {
+            shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
+        } catch (NoResultException nre) {
+            createShoppingCart(userId);
+        }
+    }
+
+    public void addToCart(int articleId, int quantity, int userId) {
+        loadShoppingCart(userId);
     }
 
 
+    public ShoppingCart loadShoppingCartCheck(int userId) {
+        return shoppingCartService.findShoppingCartByUserId(userId);
+    }
+
     public void createShoppingCart(int userId) {
-        newShoppingCart = new ShoppingCart();
-        newShoppingCart.setUser(userService.findUserById(userId));
-        newShoppingCart.setId(userId);
-        shoppingCartService.insert(newShoppingCart);
-        System.out.println("Shoppingcart created!");
+        shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(userService.findUserById(userId));
+        shoppingCart.setId(userId);
+        shoppingCartService.insert(shoppingCart);
     }
 
 

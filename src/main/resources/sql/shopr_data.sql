@@ -6,7 +6,7 @@ INSERT INTO user(id, name, first_name) VALUES (5, 'Van Gucht', 'Ines');
 INSERT INTO user(id, name, first_name) VALUES (6, 'Van Gucht', 'Laurens');
 INSERT INTO user(id, name, first_name) VALUES (7, 'Debruyne', 'Karel');
 INSERT INTO user(id, name, first_name) VALUES (8, 'De Clercq', 'Ellis');
-INSERT INTO user(id, name, first_name) VALUES (9, 'Debruyne', 'Karel');
+
 
 INSERT INTO article(id, title, price, supplier, type) VALUES (1, 'Zelda', 59, 'Dreamland', 'Game');
 INSERT INTO article(id, title, price, supplier, type) VALUES (2, 'Mitch Date Life', 130, 'De Eenhoorn', 'Non-Fiction');

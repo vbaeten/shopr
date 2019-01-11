@@ -22,10 +22,6 @@
                 <h:outputText value = "Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!"/>
             </b:panel>
             <b:panel>
-                Create a Shopping Cart
-                <b:form>
-                    <b:commandButton action="#{shoppingCartController.createShoppingCart(loginBean.loggedUser.id)}">ShoppingCart</b:commandButton>
-                </b:form>
                 Load a Shopping Cart
                 <b:form>
                     <b:commandButton action="#{shoppingCartController.loadShoppingCart(loginBean.loggedUser.id)}">ShoppingCart</b:commandButton>

@@ -29,4 +29,8 @@ public class ShoppingCartRepository {
     public void insert(ShoppingCart shoppingCart) {
         entityManager.persist(shoppingCart);
     }
+
+    public void delete(int id) {
+        entityManager.remove(entityManager.getReference(ShoppingCart.class, id));
+    }
 }

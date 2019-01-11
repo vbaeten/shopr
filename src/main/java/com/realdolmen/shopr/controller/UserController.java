@@ -20,7 +20,7 @@ public class UserController {
     private ShoppingCartService shoppingCartService;
 
     private User newUser = new User();
-    private ShoppingCart newShoppingCart = new ShoppingCart();
+    private ShoppingCart shoppingCart = new ShoppingCart();
 
     public User getNewUser() {
         return newUser;
@@ -36,7 +36,11 @@ public class UserController {
 
     public void submit(){
         this.userService.insert(newUser);
+        shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(newUser);
+        shoppingCartService.insert(shoppingCart);
         newUser = new User();
+        shoppingCart = new ShoppingCart();
     }
 
     public void deleteUser(int id){

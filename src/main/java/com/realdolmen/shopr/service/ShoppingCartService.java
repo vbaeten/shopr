@@ -30,4 +30,6 @@ public class ShoppingCartService {
         shoppingCartRepository.insert(shoppingCart);
     }
 
+    public void deleteCart(int id) { shoppingCartRepository.delete(id);}
+
 }

@@ -25,9 +25,11 @@ public class ShoppingCart implements Serializable {
     public static final String FIND_BY_USER_ID = "ShoppingCart.findByUserId";
 
     @Id
+    @GeneratedValue
     private int id;
 
     @OneToOne
+    @JoinColumn(name="user")
     private User user;
 
     @OneToMany
