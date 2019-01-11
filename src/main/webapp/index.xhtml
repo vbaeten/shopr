@@ -12,60 +12,67 @@
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
+            <br></br>
             <h:form id="form">
                 <p:growl id="msgs"/>
+                <b:panel
+                        style="width: 60em;  border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb">
+                    <p:dataTable style="width: 55em;  border : 2px !important; font-weight: bold; color: #fffffb"
+                                 resizableColumns="true" id="overviewArtikels" resizeMode="expand"
+                                 var="artikel"
+                                 value="#{overviewController.artikels()}" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15">
 
-                <p:dataTable style="width: 55em;  border : 0px !important; font-weight: bold; color: #fffffb"
-                             resizableColumns="true" id="overviewArtikels" resizeMode="expand"
-                             var="artikel"
-                             value="#{overviewController.artikels()}" rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                             rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields:"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()"
+                                             style="width:150px"
+                                             placeholder="Zoek"/>
+                            </p:outputPanel>
+                        </f:facet>
 
-                    <f:facet name="header">
-                        <p:outputPanel>
-                            <h:outputText value="Search all fields:"/>
-                            <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()" style="width:150px"
-                                         placeholder="Zoek"/>
-                        </p:outputPanel>
-                    </f:facet>
+                        <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
+                            <h:outputText value="#{artikel.type}"/>
+                        </p:column>
+                        <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
+                                  sortBy="#{artikel.titel}">
+                            <h:outputText value="#{artikel.titel}"/>
+                        </p:column>
+                        <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
+                                  sortBy="#{artikel.leverancier}">
+                            <h:outputText value="#{artikel.leverancier}"/>
+                        </p:column>
+                        <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
+                                  sortBy="#{artikel.prijs}">
+                            <h:outputText value=" $ #{artikel.prijs}"/>
+                        </p:column>
 
-                    <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
-                        <h:outputText value="#{artikel.type}"/>
-                    </p:column>
-                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
-                              sortBy="#{artikel.titel}">
-                        <h:outputText value="#{artikel.titel}"/>
-                    </p:column>
-                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
-                              sortBy="#{artikel.leverancier}">
-                        <h:outputText value="#{artikel.leverancier}"/>
-                    </p:column>
-                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
-                              sortBy="#{artikel.prijs}">
-                        <h:outputText value=" $ #{artikel.prijs}"/>
-                    </p:column>
+                        <p:column
+                                rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }"
+                                resizable="true" headerText="#{msgs['artikel.details']}">
+                            <b:commandButton styleClass="btn btn-primary" style="background-color: #738290;"
+                                             action="#{overviewController.details(artikel.id, loginController.currentUser)}">
+                                <b:iconAwesome name="info"></b:iconAwesome>
+                            </b:commandButton>
 
-                    <p:column rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }" resizable="true" headerText="#{msgs['artikel.details']}">
-                        <b:commandButton styleClass="btn btn-primary"
-                                         action="#{overviewController.details(artikel.id, loginController.currentUser)}">
-                            <b:iconAwesome name="info"></b:iconAwesome>
-                        </b:commandButton>
+                            <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                             onclick="$('.bevestiging').modal()"
+                                             styleClass="btn btn-primary" style="background-color: #738290;"
+                                             action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
+                                <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+                            </b:commandButton>
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                         onclick="$('.bevestiging').modal()"
-                                         styleClass="btn btn-primary"
-                                         action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                        </b:commandButton>
+                        </p:column>
 
-                    </p:column>
+                    </p:dataTable>
 
-                </p:dataTable>
+
                 <!--#####################################################################################################################################details___________________-->
 
-                <b:panel id="panelLp" style="margin-bottom:10px; width: 80em"
+                <b:panel id="panelLp" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
                          rendered="#{overviewController.getPanelNumber() eq 1}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -90,7 +97,7 @@
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="3"
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" styleClass="btn btn-primary"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" styleClass="btn btn-primary" style="background-color: #738290;"
 
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
@@ -99,13 +106,13 @@
                         </b:commandButton>
 
                         <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
                                       value="#{msgs['overview.beoordeling']}"
                                       outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                       onclick="$('.modalPseudoClass').modal()"/>
 
                             <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
                                     class="btn btn-primary"
                                     action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                     iconAwesome="heart">
@@ -127,7 +134,7 @@
                     </h:panelGrid>
                 </b:panel>
 
-                <b:panel id="panelGames" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelGames" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
                          rendered="#{overviewController.getPanelNumber() eq 2}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -155,20 +162,20 @@
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalgame" col-md="3"
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
 
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
-                        <p:row> <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                        <p:row> <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
                                           value="#{msgs['overview.beoordeling']}"
                                           outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                           onclick="$('.modalPseudoClass').modal()"/>
 
                             <b:commandButton
                                     rendered="#{overviewController.favorietOfNietButton eq false}"
-                                    class="btn btn-primary"
+                                    class="btn btn-primary" style="background-color: #738290;"
                                     action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                     iconAwesome="heart">
 
@@ -186,7 +193,7 @@
                     </h:panelGrid>
                 </b:panel>
 
-                <b:panel id="panelNonFictie" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelNonFictie" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
                          rendered="#{overviewController.getPanelNumber() eq 4}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -227,13 +234,13 @@
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
                                       value="#{msgs['overview.beoordeling']}"
                                       outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                       onclick="$('.modalPseudoClass').modal()"/>
 
                             <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
                                     class="btn btn-primary"
                                     action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                     iconAwesome="heart">
@@ -253,7 +260,7 @@
                     </h:panelGrid>
                 </b:panel>
 
-                <b:panel id="panelFictie" style="margin-bottom:10px; width: 55em"
+                <b:panel id="panelFictie" style=" border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
                          rendered="#{overviewController.getPanelNumber() eq 3}">
 
                     <h:panelGrid columns="2" cellpadding="5">
@@ -289,13 +296,13 @@
                         <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie" col-md="3"
                                      value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
                                          onclick="$('.bevestiging').modal()"
                                          action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                             <b:iconAwesome name="shopping-cart"></b:iconAwesome>
                         </b:commandButton>
                         <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
+                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
                                       outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                       onclick="$('.modalPseudoClass').modal()"
                                       iconAwesome="star">
@@ -303,7 +310,7 @@
                             </b:button>
 
                             <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}"
+                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
                                     class="btn btn-primary"
                                     action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                     iconAwesome="heart">
@@ -322,7 +329,7 @@
                     </h:panelGrid>
                 </b:panel>
 
-
+                </b:panel>
             </h:form>
 
 

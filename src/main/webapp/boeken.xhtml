@@ -14,21 +14,22 @@
 
     <ui:composition template="template/template.xhtml">
         <ui:define name="content">
-
             <h:form>
-            <b:panel  class="panelStyle" style="margin-bottom:10px; color: #fffffb; background-color: #333333;
+                <b:panel class="panelStyle" style="margin-bottom:10px; color: #fffffb; background-color: #333333;
              color: #fffffb;margin-bottom:0; border-color: #333333 ">
-                <p:selectOneRadio required="true" id="artikelSoort" value="#{editController.selectPanel}">
-                    <f:selectItem itemLabel="#{msgs['edit.lps']}"
-                                  itemValue="1"/>
-                    <f:selectItem itemLabel="#{msgs['edit.games']}"
-                                  itemValue="2"/>
-                    <f:selectItem itemLabel="#{msgs['edit.boeken']}"
-                                  itemValue="3"/>
+                    <p:selectOneRadio required="true" id="artikelSoort" value="#{editController.selectPanel}">
+                        <f:selectItem itemLabel="#{msgs['edit.lps']}"
+                                      itemValue="1"/>
+                        <f:selectItem itemLabel="#{msgs['edit.games']}"
+                                      itemValue="2"/>
+                        <f:selectItem itemLabel="#{msgs['edit.boeken']}"
+                                      itemValue="3"/>
 
-                    <f:ajax execute="@this" render="@form"/>
-                </p:selectOneRadio>
-            </b:panel>
+                        <f:ajax execute="@this" render="@form"/>
+                    </p:selectOneRadio>
+                </b:panel>
+                <b:panel
+                        style="width: 60em;  border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb">
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewBoeken" resizeMode="expand"
                              rendered="#{editController.selectPanel eq 3}"
                              var="boek"
@@ -284,7 +285,8 @@
                             </b:inputText>
 
                             <h:outputLabel for="leeftijdGame" value="#{msgs['toevoegen.leeftijd']}"/>
-                            <p:spinner id="leeftijdGame" value="#{gameController.editGame.minLeeftijd}" min="6" max="18"/>
+                            <p:spinner id="leeftijdGame" value="#{gameController.editGame.minLeeftijd}" min="6"
+                                       max="18"/>
 
                             <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
 
@@ -326,7 +328,8 @@
                             </b:inputText>
 
                             <h:outputLabel for="leverancierFictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                            <b:inputText id="leverancierFictie" placeholder="#{boekController.editFictieBoek.leverancier}"
+                            <b:inputText id="leverancierFictie"
+                                         placeholder="#{boekController.editFictieBoek.leverancier}"
                                          value="#{boekController.editFictieBoek.leverancier}"
                                          required="true">
                                 <f:validateLength maximum="100"/>
@@ -346,12 +349,12 @@
 
                             <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}"/>
                             <b:inputText id="paginasfictie" placeholder="#{boekController.editFictieBoek.aantalPaginas}"
-                                         value="#{boekController.editFictieBoek.aantalPaginas}" >
+                                         value="#{boekController.editFictieBoek.aantalPaginas}">
                             </b:inputText>
 
                             <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}"/>
                             <b:inputText id="inhoudfictie" placeholder="#{boekController.editFictieBoek.korteInhoud}"
-                                         value="#{boekController.editFictieBoek.korteInhoud}" >
+                                         value="#{boekController.editFictieBoek.korteInhoud}">
                             </b:inputText>
 
                             <o:importConstants type="com.realdolmen.shopr.domain.EnumFictieGenre"/>
@@ -394,7 +397,8 @@
                             </b:inputText>
 
                             <h:outputLabel for="leverancierNonFictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                            <b:inputText id="leverancierNonFictie" placeholder="#{boekController.editNonFictieBoek.leverancier}"
+                            <b:inputText id="leverancierNonFictie"
+                                         placeholder="#{boekController.editNonFictieBoek.leverancier}"
                                          value="#{boekController.editNonFictieBoek.leverancier}"
                                          required="true">
                                 <f:validateLength maximum="100"/>
@@ -413,14 +417,16 @@
                             </b:inputText>
 
                             <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}"/>
-                            <b:inputText id="paginasnonfictie" placeholder="#{boekController.editNonFictieBoek.aantalPaginas}"
-                                         value="#{boekController.editNonFictieBoek.aantalPaginas}" >
+                            <b:inputText id="paginasnonfictie"
+                                         placeholder="#{boekController.editNonFictieBoek.aantalPaginas}"
+                                         value="#{boekController.editNonFictieBoek.aantalPaginas}">
                             </b:inputText>
 
                             <o:importConstants type="com.realdolmen.shopr.domain.EnumNonFictieGenre"/>
 
                             <h:outputLabel for="nonfictieGenre" value="#{msgs['toevoegen.genre']}  : "/>
-                            <b:selectOneMenu id="nonfictieGenre" value="#{boekController.editNonFictieBoek.enumNonFictieGenre}">
+                            <b:selectOneMenu id="nonfictieGenre"
+                                             value="#{boekController.editNonFictieBoek.enumNonFictieGenre}">
                                 <f:selectItems placeholder="#{boekController.editNonFictieBoek.enumNonFictieGenre}"
                                                value="#{EnumNonFictieGenre}"/>
                             </b:selectOneMenu>
@@ -444,8 +450,9 @@
                     </b:form>
                 </b:panel>
 
+                </b:panel>
             </h:form>
-        </ui:define>
-    </ui:composition>
+    </ui:define>
+</ui:composition>
 </h:body>
-</html>
+        </html>

@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class BestellingsService
 {
-@Inject
+    @Inject
     BestellingsRepository bestellingsRepository;
 
     public void bestellingAanmaken(List<ArtikelLijnInBestelling> artikelLijnInBestellings, User u)

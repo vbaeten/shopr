@@ -82,7 +82,6 @@ public class LoginController implements Serializable
 
     }
     public User getCurrentUser()
-
     {
         return this.currentUser;
     }
