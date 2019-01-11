@@ -20,31 +20,38 @@
                 <f:event listener="#{loginBean.init}" type="preRenderView"/>
             </f:metadata>
 
-            <b:panel id="loginviewbean" rendered="#{loginBean.loggedUser eq null}" autoUpdate="true">You are not logged in.</b:panel>
+            <b:container id="indexcontainer">
+
+                <b:panel id="notLoggedIn" rendered="#{loginBean.loggedUser eq null}" autoUpdate="true">You are not logged in.</b:panel>
+
+            <b:panel id="loggedIn" rendered="#{loginBean.loggedUser != null}">
+                <h:outputText value="Logged in as #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name} Shoppingbag: #{shoppingCartController.shoppingCart.user.name}"/>
+            </b:panel>
 
             <b:panel id="loginPanel">
-                <p>Login with bean.</p>
-                <b:form id="loginuserbean">
-                    <b:formGroup inline="true">
-                        <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true" inline="true">
+                <b:form id="loginuserbean" inline="true">
+                    <b:formGroup>
+                        <b:selectOneMenu value="#{loginBean.id}" style="width:200px" select2="true">
                             <f:selectItem itemLabel="Select User" itemValue="" noSelectionOption="true"/>
                             <f:selectItems value="#{userController.users}" var="user" itemValue="#{user.id}"
                                            itemLabel="#{user.firstName} #{user.name}"/>
                         </b:selectOneMenu>
                         <b:commandButton value="Submit" actionListener="#{loginBean.login(loginBean.loggedUser.id)}" ajax="true"
-                                         update=":loginviewbean loginpanel shoprinavbar" autoUpdate="true" render=":loginviebean">
+                                         update="indexcontainer" autoUpdate="true">
                             <f:param name="loggedUser" value="#{loginBean.id}" />
                         </b:commandButton>
                     </b:formGroup>
                 </b:form>
                 <b:form>
-                    <b:commandButton value="Logout" action="#{loginBean.logout()}" ajax="true" autoUpdate="true" update="loginviewbean loginpanel"/>
+                    <b:commandButton value="Logout" actionListener="#{loginBean.logout()}" ajax="true"
+                                     update="indexcontainer" autoUpdate="true">
+                    <f:param name="loggedUser" value="" />
+                    </b:commandButton>
                 </b:form>
             </b:panel>
 
-            <b:panel id="loginpanel">
+            <b:panel>
                 <h3>Welcome to SHOPR!!!</h3>
-                <h:outputText value="Logged in as #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name} Shoppingbag: #{shoppingCartController.shoppingCart.user}"/>
             </b:panel>
 
             <p>Register a new user</p>
@@ -61,19 +68,23 @@
             </b:form>
 
             <p>List of users</p>
-            <h:form id="userTable">
-                <b:dataTable value="#{userController.users}" var="user">
-                    <b:dataTableColumn value="#{user.id}"/>
-                    <b:dataTableColumn value="#{user.name}"/>
-                    <b:dataTableColumn value="#{user.firstName}"/>
-                    <b:dataTableColumn>
-                        <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}"
-                                         update="@form" ajax="true">
-                            <f:ajax execute="@this" render="@form"/>
-                        </b:commandButton>
-                    </b:dataTableColumn>
-                </b:dataTable>
-            </h:form>
+            <b:panel>
+                <h:form id="userTable">
+                    <b:dataTable value="#{userController.users}" var="user">
+                        <b:dataTableColumn value="#{user.id}"/>
+                        <b:dataTableColumn value="#{user.name}"/>
+                        <b:dataTableColumn value="#{user.firstName}"/>
+                        <b:dataTableColumn>
+                            <b:commandButton value="Delete" action="#{userController.deleteUser(user.id)}"
+                                             update="@form" ajax="true">
+                                <f:ajax execute="@this" render="@form"/>
+                            </b:commandButton>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </b:panel>
+            </b:container>
+
 
         </ui:define>
 

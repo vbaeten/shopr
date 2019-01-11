@@ -19,19 +19,15 @@ public class ShoppingCartService {
     }
 
     public ShoppingCart findShoppingCartByUser(User user) {
-        return shoppingCartRepository.findShoppingCartByUser(user);
+        return shoppingCartRepository.findByUser(user);
     }
 
     public ShoppingCart findShoppingCartByUserId(int id) {
-        return shoppingCartRepository.findShoppingCartByUserId(id);
+        return shoppingCartRepository.findByUserId(id);
     }
 
-    public void createShoppingCart(ShoppingCart shoppingCart) {
-        shoppingCartRepository.createShoppingCart(shoppingCart);
+    public void insert(ShoppingCart shoppingCart) {
+        shoppingCartRepository.insert(shoppingCart);
     }
 
-    public void addOrderLine(int id, OrderLine orderLine) {
-        ShoppingCart shoppingCart = shoppingCartRepository.findShoppingCartByUserId(id);
-
-    }
 }

@@ -15,18 +15,18 @@ public class ShoppingCartRepository {
         return entityManager.find(ShoppingCart.class, id);
     }
 
-    public ShoppingCart findShoppingCartByUser(User user) {
+    public ShoppingCart findByUser(User user) {
         return entityManager.createNamedQuery(ShoppingCart.FIND_BY_USER, ShoppingCart.class)
                 .setParameter("user", user)
                 .getSingleResult();
     }
 
-    public ShoppingCart findShoppingCartByUserId(int id) {
+    public ShoppingCart findByUserId(int id) {
         return entityManager.createNamedQuery(ShoppingCart.FIND_BY_USER_ID, ShoppingCart.class)
                 .setParameter("id", id).getSingleResult();
     }
 
-    public void createShoppingCart(ShoppingCart shoppingCart) {
+    public void insert(ShoppingCart shoppingCart) {
         entityManager.persist(shoppingCart);
     }
 }

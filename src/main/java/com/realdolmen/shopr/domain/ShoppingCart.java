@@ -22,13 +22,11 @@ import java.util.List;
 public class ShoppingCart implements Serializable {
 
     public static final String FIND_BY_USER = "ShoppingCart.findByUser";
-    public static final String FIND_BY_USER_ID = "ShoppingCart.findByUserID";
+    public static final String FIND_BY_USER_ID = "ShoppingCart.findByUserId";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @MapsId
     @OneToOne
     private User user;
 

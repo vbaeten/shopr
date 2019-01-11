@@ -19,7 +19,7 @@
                 Hi, #{loginBean.loggedUser.firstName}!
                 Order here or continue shopping.
                 <b:form id="shoppingbag">
-                    <b:dataTable value="#{orderLineController.orderLines}" var="orderLine">
+                    <b:dataTable value="#{orderLineController.getOrderLinesByUser(loginBean.loggedUser.id)}" var="orderLine">
                         <b:dataTableColumn label="Article ID" value="#{orderLine.article.id}"/>
                         <b:dataTableColumn label="User Id" value="#{orderLine.user.id}"/>
                         <b:dataTableColumn label="Title" value="#{orderLine.article.title}"/>
@@ -34,8 +34,8 @@
             </b:panel>
             <h:outputText value="Shoppingbag of #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
             <b:form>
-                <b:commandButton value="Order"></b:commandButton>
-                <b:commandButton value="Empty List"></b:commandButton>
+                <b:commandButton value="Order" actionListener="#{orderController.submitOrder(loginBean.loggedUser.id)}"/>
+                <b:commandButton value="Empty List"/>
             </b:form>
         </ui:define>
         <ui:define name="js">

@@ -1,8 +1,6 @@
 package com.realdolmen.shopr.beans;
 
-import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
-import com.realdolmen.shopr.service.ShoppingCartService;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -16,13 +14,13 @@ import java.io.Serializable;
 public class LoginBean implements Serializable {
 
     private int id;
+    private int guestid;
 
     private User loggedUser = null;
-
+    private User guestUser = null;
 
     @Inject
     private UserService userService;
-
 
     @PostConstruct
     public void init() {
@@ -34,7 +32,7 @@ public class LoginBean implements Serializable {
     }
 
     public void logout() {
-        this.loggedUser = null;
+        this.loggedUser = new User();
     }
 
     public int getId() {
@@ -52,4 +50,5 @@ public class LoginBean implements Serializable {
     public void setLoggedUser(User user) {
         this.loggedUser = user;
     }
+
 }

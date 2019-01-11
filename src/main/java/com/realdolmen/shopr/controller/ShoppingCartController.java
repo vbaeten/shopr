@@ -5,6 +5,7 @@ import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.ShoppingCartService;
+import com.realdolmen.shopr.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,16 +18,18 @@ import java.util.List;
 @SessionScoped
 public class ShoppingCartController implements Serializable {
 
-    private int id = 0;
+    private int userId;
+    private int id;
     private ShoppingCart newShoppingCart;
     private ShoppingCart shoppingCart;
-    private User user = null;
     private List<OrderLine> orderLines;
 
     @Inject
     private ShoppingCartService shoppingCartService;
     @Inject
     private OrderLineService orderLineService;
+    @Inject
+    private UserService userService;
 
     //TODO Shoppingcartcontroller must load with site. Works like loggedUser
 //
@@ -35,15 +38,21 @@ public class ShoppingCartController implements Serializable {
 //        shoppingCartService.findShoppingCartByUserId(id);
 //    }
 
-    public void addOrderLine(int id, OrderLine orderLine) {
-        shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
-        orderLines = shoppingCart.getOrderLines();
-        orderLines.add(orderLine);
+
+    public void loadShoppingCart(int userId) {
+        shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
+        System.out.println("Shoppingcart loaded");
     }
 
-    public void loadShoppingCart() {
-        this.shoppingCartService.createShoppingCart(newShoppingCart);
+
+    public void createShoppingCart(int userId) {
+        newShoppingCart = new ShoppingCart();
+        newShoppingCart.setUser(userService.findUserById(userId));
+        newShoppingCart.setId(userId);
+        shoppingCartService.insert(newShoppingCart);
+        System.out.println("Shoppingcart created!");
     }
+
 
     public ShoppingCart getShoppingCart() {
         return newShoppingCart;
@@ -54,20 +63,13 @@ public class ShoppingCartController implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return userId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.userId = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public List<OrderLine> getOrderLines() {
         return orderLines;

@@ -24,14 +24,6 @@
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
                     <b:commandButton value="Order" action="#{orderLineController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
                 </b:form>
-                <b:form inline="true">
-                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{shoppingCartController.addOrderLine(loginBean.id, )}"/>
-                </b:form>
-                <b:form inline="true">
-                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{orderLineController.addToOrder(gameDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
-                </b:form>
             </b:panel>
         </ui:define>
 

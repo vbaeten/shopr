@@ -10,6 +10,7 @@ import com.realdolmen.shopr.service.*;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -33,6 +34,8 @@ public class OrderLineController implements Serializable {
     private OrderLine orderLine;
     private int quantity = 1;
     private double subtotal;
+    private List<OrderLine> orderLines = new ArrayList<OrderLine>();
+
 
     public int getQuantity() {
         return quantity;
@@ -42,32 +45,16 @@ public class OrderLineController implements Serializable {
         this.quantity = quantity;
     }
 
-    //TODO when an order is made and put to orderline it has to be persisted to the shoppingbag of the logged in user.
-
-    public void addToCart(int id, int quantity, int userId) {
+    public void addToOrder (int articleId, int quantity, int userId) {
+        //TODO get shopping cart of user or make new shoppingcart if ordercart does not excist
         shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
             shoppingCart.setUser(userService.findUserById(userId));
-        } else {
-            shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
         }
-        orderLine = new OrderLine();
-        this.orderLine.setUser(userService.findUserById(userId));
-        this.orderLine.setQuantity(quantity);
-        this.orderLine.setArticle(articleService.findArticleById(id));
-        orderLineService.insertOrderLine(orderLine);
     }
 
-    public void addOrderLine(int id, int quantity, int userId) {
-        shoppingCart = shoppingCartService.findShoppingCartByUserId(id);
-        this.orderLine.setQuantity(quantity);
-        this.orderLine.setArticle(articleService.findArticleById(id));
-        shoppingCart.getOrderLines().add(orderLine);
-    }
-
-    public void addToOrder(int id, int quantity, int userId) {
-        orderService.createOrder(newOrder);
+    public void addToCart (int id, int quantity, int userId) {
         orderLine = new OrderLine();
         this.orderLine.setUser(userService.findUserById(userId));
         this.orderLine.setQuantity(quantity);
@@ -79,6 +66,10 @@ public class OrderLineController implements Serializable {
         return orderLineService.findAllOrderLines();
     }
 
+    public List<OrderLine> getOrderLinesByUser(int id) {
+        return orderLineService.findOrderLinesByUser(userService.findUserById(id));
+    }
+
     public OrderLine getOrderLine() {
         return orderLine;
     }
@@ -86,4 +77,6 @@ public class OrderLineController implements Serializable {
     public void setOrderLine(OrderLine orderLine) {
         this.orderLine = orderLine;
     }
+
+
 }

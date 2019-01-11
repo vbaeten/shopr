@@ -17,20 +17,30 @@
             <f:metadata>
                 <f:event type="preRenderView" listener="#{loginBean.init}"/>
             </f:metadata>
+            <b:container>
             <b:panel>
                 <h:outputText value = "Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!"/>
             </b:panel>
+            <b:panel>
+                Create a Shopping Cart
+                <b:form>
+                    <b:commandButton action="#{shoppingCartController.createShoppingCart(loginBean.loggedUser.id)}">ShoppingCart</b:commandButton>
+                </b:form>
+                Load a Shopping Cart
+                <b:form>
+                    <b:commandButton action="#{shoppingCartController.loadShoppingCart(loginBean.loggedUser.id)}">ShoppingCart</b:commandButton>
+                </b:form>
+            </b:panel>
+            </b:container>
         </ui:define>
+
+
         <ui:define name="js">
             <script type="text/javascript" >
                 setNavMenuItemActive("user");
             </script>
         </ui:define>
     </ui:composition>
-    <ui:define name="js">
-        <script type="text/javascript" >
-            setNavMenuItemActive("user");
-        </script>
-    </ui:define>
+
 </h:body>
 </html>
