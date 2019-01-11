@@ -29,20 +29,15 @@
 
                     </b:dataTable>
 
-                    <b:commandButton value="Order!" action="#{orderController.placeOrder(orderLineController.orderLines)}"/>
+                    <b:commandButton value="Order!" action="#{orderController.placeOrder()}"/>
                 </h:form>
             </div>
 
 
         <div>
 
-            <h:form>
 
-            <b:dataTable value="#{orderController.findAllOrderLines}" var="orderLine">
-                <b:dataTableColumn value="#{orderLine.quantity}"/>
 
-            </b:dataTable>
-            </h:form>
         </div>
 
 

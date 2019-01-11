@@ -18,6 +18,7 @@ public class OrderLineController {
 
     private Item item;
     private OrderLine orderLine=new OrderLine();
+    private short quantity;
 
     @Inject
     private OrderLineService orderLineService;
@@ -33,6 +34,7 @@ public class OrderLineController {
     public void addToCart(int id){
         item = itemService.getById(id);
         orderLine.setItem(item);
+        orderLine.setQuantity(quantity);
         this.orderLineService.submit(orderLine);
     }
 
