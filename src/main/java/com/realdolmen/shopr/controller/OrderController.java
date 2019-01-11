@@ -8,10 +8,10 @@ import com.realdolmen.shopr.service.OrderService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -19,7 +19,7 @@ import java.util.List;
 public class OrderController implements Serializable {
     private User currentUser;
     private Order order;
-    private List<OrderLine> orderLines;
+    private List<OrderLine> orderLines = new ArrayList<>();
     private Double orderTotalPrice;
 
     @Inject
