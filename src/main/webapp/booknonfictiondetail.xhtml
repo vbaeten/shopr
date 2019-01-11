@@ -24,6 +24,11 @@
         <b:dataTableColumn value="#{booknonfiction.numberOfPages}"  label="number of pages"/>
         <b:dataTableColumn value="#{booknonfiction.bookSubjectNF}"  label="bookgenre"/>
         <b:dataTableColumn value="#{booknonfiction.articleId}" label="productcode"/>
+            <b:dataTableColumn label="Edit">
+                <h:link value="Edit" outcome="updatebooknonfiction">
+                    <f:param name="articleId" value="#{booknonfiction.articleId}" />
+                </h:link>
+            </b:dataTableColumn>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFiction(bookNonFictionController.bookNonFiction)}" >
             <f:param name="articleId" value="#{param.articleId}"/>

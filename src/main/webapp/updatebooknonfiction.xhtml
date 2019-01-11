@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<f:metadata>
+    <f:viewParam name="bookNonFictionId" value="#{bookNonFictionController.bookNonFiction.articleId}"/>
+    <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.articleId)}"/>
+</f:metadata>
+<h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
+            <b:panel title="Update Non-Fiction Book" collapsible="false">
+                <b:form>
+                    <b:container>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.title}" value="#{bookNonFictionController.bookNonFiction.title}"
+                                             label="Title" render-label="true"/>
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.price}" value="#{bookNonFictionController.bookNonFiction.price}"
+                                             label="Price" render-label="true"/>
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.supplierId}" value="#{bookNonFictionController.bookNonFiction.supplierId}"
+                                             label="Supplier Id" render-label="true"/>
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.author}" value="#{bookNonFictionController.bookNonFiction.author}"
+                                             label="Author" render-label="true"/>
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.isbn}" value="#{bookNonFictionController.bookNonFiction.isbn}"
+                                             label="Isbn" render-label="true"/>
+                                <b:inputText placeholder="#{bookNonFictionController.bookNonFiction.numberOfPages}" value="#{bookNonFictionController.bookNonFiction.numberOfPages}"
+                                             label="Number Of Pages" render-label="true"/>
+                                <b:selectOneMenu placeholder="#{bookNonFictionController.bookNonFiction.bookSubjectNF}" value="#{bookNonFictionController.bookNonFiction.bookSubjectNF}" ajax="true" label="Choose booksubject">
+                                    <f:selectItems value="#{bookNonFictionController.bookNonFictionSubjects}" var="bookSubjectNF"
+                                                   itemValue="#{bookSubjectNF}" itemLabel="#{bookSubjectNF}" />
+                                </b:selectOneMenu>
+                                <b:commandButton action="#{bookNonFictionController.update(bookNonFictionController.bookNonFiction)}" value="Update this game"
+                                                 look="info" />
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                </b:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

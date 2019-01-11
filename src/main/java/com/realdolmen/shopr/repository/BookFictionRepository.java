@@ -29,6 +29,9 @@ public class BookFictionRepository {
         entityManager.persist(bookFiction);
     }
 
+    public void update(BookFiction bookFiction) {entityManager.merge(bookFiction);}
+
     public void remove(BookFiction bookFiction) {
         entityManager.remove(bookFiction);}
+
 }

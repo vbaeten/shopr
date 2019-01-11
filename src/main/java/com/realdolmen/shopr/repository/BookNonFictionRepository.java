@@ -2,6 +2,7 @@ package com.realdolmen.shopr.repository;
 
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookNonFiction;
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.User;
 
 import javax.persistence.EntityManager;
@@ -27,6 +28,8 @@ public class BookNonFictionRepository {
     public void insert(BookNonFiction bookNonFiction) {
         entityManager.persist(bookNonFiction);
     }
+
+    public void update(BookNonFiction bookNonFiction) {entityManager.merge(bookNonFiction);}
 
     public void remove(BookNonFiction bookNonFiction) {
         entityManager.remove(bookNonFiction);}

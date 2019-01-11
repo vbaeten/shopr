@@ -30,8 +30,6 @@ public abstract class Article {
     @Column(insertable = false, updatable = false)
     private String type;
 
-//    private Order order;
-
     public Article() {
     }
 
@@ -84,5 +82,7 @@ public abstract class Article {
         this.supplierId = supplierId;
     }
 
-
+    public void setArticleId(Long articleId) {
+        ArticleId = articleId;
+    }
 }

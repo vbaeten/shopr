@@ -23,6 +23,11 @@
             <b:dataTableColumn value="#{lp.artist}" label="artist"/>
             <b:dataTableColumn value="#{lp.LPMusicGenre}" label="Music Genre"/>
             <b:dataTableColumn value="#{lp.articleId}" label="Product code"/>
+            <b:dataTableColumn label="Edit">
+                <h:link value="Edit" outcome="updatelp">
+                    <f:param name="articleId" value="#{lp.articleId}" />
+                </h:link>
+            </b:dataTableColumn>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lPController.LP)}" >
             <f:param name="articleId" value="#{param.articleId}"/>

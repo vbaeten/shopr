@@ -34,6 +34,10 @@ public class GameController {
         this.gameService.insert(game);
     }
 
+    public String update(Game game) {this.gameService.update(game);
+        return "overview.xhtml?faces-redirect=true";
+    }
+
     public Game getGamebyArticleId(Long articleId) {
         return gameService.findGameByArticleId(articleId);
     }

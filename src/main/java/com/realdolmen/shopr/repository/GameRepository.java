@@ -25,6 +25,8 @@ public class GameRepository {
     public void insert(Game game) {entityManager.persist(game);
     }
 
+    public void update(Game game) {entityManager.merge(game);}
+
     public void remove(Game game) {
         entityManager.remove(game);}
 }

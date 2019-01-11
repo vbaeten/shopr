@@ -2,6 +2,7 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.BookFiction;
 import com.realdolmen.shopr.domain.BookNonFiction;
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.repository.BookNonFictionRepository;
 
 import javax.ejb.Stateless;
@@ -31,6 +32,8 @@ public class BookNonFictionService {
     public void insert(BookNonFiction bookNonFiction) {
         bookNonFictionRepository.insert(bookNonFiction);
     }
+
+    public void update(BookNonFiction bookNonFiction) {bookNonFictionRepository.update(bookNonFiction);}
 
     public void removeBookNonFictionByArticleId (Long articleId) {
         BookNonFiction bookNonFiction = bookNonFictionRepository.findByArticleId(articleId);

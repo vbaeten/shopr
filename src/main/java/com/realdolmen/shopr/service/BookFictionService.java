@@ -34,6 +34,8 @@ public class BookFictionService {
         bookFictionRepository.insert(bookFiction);
     }
 
+    public void update(BookFiction bookFiction) {bookFictionRepository.update(bookFiction);}
+
     public void removeBookFictionByArticleId (Long articleId) {
         BookFiction bookFiction = bookFictionRepository.findByArticleId(articleId);
         bookFictionRepository.remove(bookFiction);

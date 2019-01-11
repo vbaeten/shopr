@@ -26,6 +26,11 @@
             <b:dataTableColumn value="#{bookfiction.bookGenre}"  label="bookgenre"/>
             <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
             <b:dataTableColumn value="#{bookfiction.articleId}" label="productcode"/>
+            <b:dataTableColumn label="Edit">
+                <h:link value="Edit" outcome="updatebookfiction">
+                    <f:param name="articleId" value="#{bookfiction.articleId}" />
+                </h:link>
+            </b:dataTableColumn>
         </b:dataTable>
         <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
             <f:param name="articleId" value="#{param.articleId}"/>

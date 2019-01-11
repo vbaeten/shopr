@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.repository.LPRepository;
 
@@ -32,6 +33,8 @@ public class LPService {
         LP lP = lPRepository.findByArticleId(articleId);
         lPRepository.removeLP(lP);
     }
+
+    public void update(LP lp) {lPRepository.update(lp);}
 
     public void insert(LP lp){
         lPRepository.insert(lp);

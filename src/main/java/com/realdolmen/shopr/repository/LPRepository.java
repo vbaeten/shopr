@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.repository;
 
 import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,7 @@ public class LPRepository {
 
     public void insert(LP lP) {entityManager.persist(lP);
     }
+    public void update(LP lP) {entityManager.merge(lP);}
 
     public void removeLP(LP lP){
         entityManager.remove(lP);

@@ -32,6 +32,8 @@ public class GameService {
         gameRepository.insert(game);
     }
 
+    public void update(Game game) {gameRepository.update(game);}
+
     public void removeByArticleId (Long articleId) {
         Game game = gameRepository.findByArticleId(articleId);
         gameRepository.remove(game);

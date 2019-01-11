@@ -30,12 +30,12 @@
                                     <f:selectItems value="#{gameController.gameGenres}" var="gameGenre"
                                                    itemValue="#{gameGenre}" itemLabel="#{gameGenre}" />
                                 </b:selectOneMenu>
-
+                                <b:commandButton action="#{gameController.update(gameController.game)}" value="Update this game"
+                                                 look="info" />
                             </b:column>
                         </b:row>
                     </b:container>
                 </b:form>
-
             </b:panel>
         </ui:define>
     </ui:composition>

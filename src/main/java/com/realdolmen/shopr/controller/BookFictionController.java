@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.BookFiction;
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.service.BookFictionService;
 
@@ -30,6 +31,10 @@ public class BookFictionController {
 
     public void add(BookFiction bookFiction) {
         this.bookFictionService.insert(bookFiction);
+    }
+
+    public String update(BookFiction bookFiction) {this.bookFictionService.update(bookFiction);
+        return "overview.xhtml?faces-redirect=true";
     }
 
     public BookFiction getBookFictionbyId(Long articleId) {

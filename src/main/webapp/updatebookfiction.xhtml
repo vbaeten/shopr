@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+<f:metadata>
+    <f:viewParam name="bookFictionId" value="#{bookFictionController.bookFiction.articleId}"/>
+    <f:event type="preRenderView" listener="#{bookFictionController.initDetailView(param.articleId)}"/>
+</f:metadata>
+<h:body>
+    <ui:composition template="templates/template.xhtml">
+        <ui:define name="content">
+            <b:panel title="Update Fiction Book" collapsible="false">
+                <b:form>
+                    <b:container>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.title}" value="#{bookFictionController.bookFiction.title}"
+                                             label="Title" render-label="true"/>
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.price}" value="#{bookFictionController.bookFiction.price}"
+                                             label="Price" render-label="true"/>
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.supplierId}" value="#{bookFictionController.bookFiction.supplierId}"
+                                             label="Supplier Id" render-label="true"/>
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.author}" value="#{bookFictionController.bookFiction.author}"
+                                             label="Author" render-label="true"/>
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.isbn}"  value="#{bookFictionController.bookFiction.isbn}"
+                                             label="Isbn" render-label="true"/>
+                                <b:inputText placeholder="#{bookFictionController.bookFiction.numberOfPages}" value="#{bookFictionController.bookFiction.numberOfPages}"
+                                             label="Number Of Pages" render-label="true"/>
+                                <b:inputTextarea placeholder="#{bookFictionController.bookFiction.summary}"  value="#{bookFictionController.bookFiction.summary}" label="Summary">
+                                </b:inputTextarea>
+                                <b:selectOneMenu placeholder="#{bookFictionController.bookFiction.bookGenre}" value="#{bookFictionController.bookFiction.bookGenre}" ajax="true" label="Choose bookgenre">
+                                    <f:selectItems value="#{bookFictionController.bookGenres}" var="bookGenre"
+                                                   itemValue="#{bookGenre}" itemLabel="#{bookGenre}" />
+                                </b:selectOneMenu>
+                                <b:commandButton action="#{bookFictionController.update(bookFictionController.bookFiction)}" value="Update this Fiction Book"
+                                                 look="info" />
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                </b:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

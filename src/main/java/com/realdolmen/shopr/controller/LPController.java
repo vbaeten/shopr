@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.controller;
 
+import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.domain.enums.LPMusicGenre;
 import com.realdolmen.shopr.service.LPService;
@@ -30,6 +31,10 @@ public class LPController {
 
     public void add(LP lp) {
         this.lpService.insert(lp);
+    }
+
+    public String update(LP lp) {this.lpService.update(lp);
+        return "overview.xhtml?faces-redirect=true";
     }
 
     public LP getLPbyId(Long articleId) {

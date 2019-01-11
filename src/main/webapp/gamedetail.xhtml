@@ -24,7 +24,7 @@
             <b:dataTableColumn value="#{game.minimumAge}" label="minimum age"/>
             <b:dataTableColumn value="#{game.gameGenre}" label="game genre"/>
             <b:dataTableColumn value="#{game.articleId}" label="product code"/>
-            <b:dataTableColumn label="edit">
+            <b:dataTableColumn label="Edit">
                 <h:link value="Edit" outcome="updategame">
                     <f:param name="articleId" value="#{game.articleId}" />
                 </h:link>
@@ -34,12 +34,6 @@
         <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(gameController.game)}" >
             <f:param name="articleId" value="#{param.articleId}"/>
         </b:commandButton>
-        <b:commandButton value="edit" look="primary" immediate="true" action="updategame.xhtml" >
-            <f:param name="gameId" value="#{param.articleId}"/>
-        </b:commandButton>
-        <h:commandLink value="Edit" outcome="updategame">
-            <f:param name="articleId" value="#{game.articleId}" />
-        </h:commandLink>
     </b:form>
 
             <b:form>
