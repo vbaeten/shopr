@@ -12,31 +12,62 @@
 <h:body>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
-    <p>book fiction detail page</p>
-    <b:form id="bookfictions">
-        <b:messages/>
-        <b:dataTable value="#{bookFictionController.bookFiction}" id="bookFictionTable"
-                     var="bookfiction" caption="This is a the detail page for a Fiction Book.">
-            <b:dataTableColumn value="#{bookfiction.type}" label="type" />
-            <b:dataTableColumn value="#{bookfiction.title}" label="title" />
-            <b:dataTableColumn value="#{bookfiction.price}" label="price"/>
-            <b:dataTableColumn value="#{bookfiction.author}"  label="author"/>
-            <b:dataTableColumn value="#{bookfiction.isbn}"  label="isbn"/>
-            <b:dataTableColumn value="#{bookfiction.numberOfPages}"  label="number of pages"/>
-            <b:dataTableColumn value="#{bookfiction.bookGenre}"  label="bookgenre"/>
-            <b:dataTableColumn value="#{bookfiction.summary}"  label="summary"/>
-            <b:dataTableColumn value="#{bookfiction.articleId}" label="productcode"/>
-            <b:dataTableColumn label="Edit">
-                <h:link value="Edit" outcome="updatebookfiction">
-                    <f:param name="articleId" value="#{bookfiction.articleId}" />
-                </h:link>
-            </b:dataTableColumn>
-        </b:dataTable>
-        <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
-            <f:param name="articleId" value="#{param.articleId}"/>
-        </b:commandButton>
-    </b:form>
-
+            <b:panel title="Fiction Book Detail" collapsible="false">
+                <b:form>
+                    <b:container>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <h:outputLabel value="type:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.type}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="title:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.title}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="price:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.price}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Author:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.author}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Isbn:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.isbn}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Number of pages:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.numberOfPages}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Book Genre:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.bookGenre}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Supplier Id"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.supplierId}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Product code:"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.articleId}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Summary"/>
+                                <h:outputText value="  #{bookFictionController.bookFiction.summary}"/>
+                                <br/>
+                                <br/>
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                    <h:link value="Edit" outcome="updatebookfiction">
+                        <f:param name="articleId" value="#{bookFictionController.bookFiction.articleId}" />
+                    </h:link>
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
+                        <f:param name="articleId" value="#{param.articleId}"/>
+                    </b:commandButton>
+                </b:form>
+            </b:panel>
             <b:form>
                 <b:panelGrid columns="1">
                     <b:inputText placeholder="1" value="#{orderLineController.orderLine.quantity}"

@@ -12,28 +12,50 @@
 <h:body>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
-    <p>lp detail page</p>
-    <b:form id="lps">
-        <b:messages/>
-        <b:dataTable value="#{lPController.LP}" id="lpsTable"
-                     var="lp" caption="This is a the detail page for a lp.">
-            <b:dataTableColumn value="#{lp.type}" label="type" />
-            <b:dataTableColumn value="#{lp.title}" label="title" />
-            <b:dataTableColumn value="#{lp.price}" label="price"/>
-            <b:dataTableColumn value="#{lp.artist}" label="artist"/>
-            <b:dataTableColumn value="#{lp.LPMusicGenre}" label="Music Genre"/>
-            <b:dataTableColumn value="#{lp.articleId}" label="Product code"/>
-            <b:dataTableColumn label="Edit">
-                <h:link value="Edit" outcome="updatelp">
-                    <f:param name="articleId" value="#{lp.articleId}" />
-                </h:link>
-            </b:dataTableColumn>
-        </b:dataTable>
-        <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lPController.LP)}" >
-            <f:param name="articleId" value="#{param.articleId}"/>
-        </b:commandButton>
-    </b:form>
-
+            <b:panel title="Game Detail" collapsible="false">
+                <b:form>
+                    <b:container>
+                        <b:row>
+                            <b:column medium-screen="4">
+                                <h:outputLabel value="type:"/>
+                                <h:outputText value="  #{lPController.LP.type}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="title:"/>
+                                <h:outputText value="  #{lPController.LP.title}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="price:"/>
+                                <h:outputText value="  #{lPController.LP.price}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="artist:"/>
+                                <h:outputText value="  #{lPController.LP.artist}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Music Genre:"/>
+                                <h:outputText value="  #{lPController.LP.LPMusicGenre}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Supplier Id"/>
+                                <h:outputText value="  #{lPController.LP.supplierId}"/>
+                                <br/>
+                                <br/>
+                                <h:outputLabel value="Product Id:"/>
+                                <h:outputText value="  #{lPController.LP.articleId}"/>
+                                <br/>
+                                <br/>
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                    <h:link value="Edit" outcome="updatelp">
+                        <f:param name="articleId" value="#{lPController.LP.articleId}" />
+                    </h:link>
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lPController.LP)}" >
+                        <f:param name="articleId" value="#{param.articleId}"/>
+                    </b:commandButton>
+                </b:form>
+            </b:panel>
             <b:form>
                 <b:panelGrid columns="1">
                     <b:inputText placeholder="1" value="#{orderLineController.orderLine.quantity}"
