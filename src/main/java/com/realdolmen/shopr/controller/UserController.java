@@ -37,6 +37,7 @@ public class UserController implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");
+
         return "index?faces-redirect=true";
     }
 

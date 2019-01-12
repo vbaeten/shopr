@@ -23,16 +23,16 @@
             <b:dataTableColumn value="#{article.price}" label="price"/>
             <b:dataTableColumn value="#{article.articleId}" label="product code"/>
             <b:dataTableColumn label="Details">
-                <h:link rendered="#{article.type eq 'lp'}" value="Details" outcome="lpdetail">
+                <h:link rendered="#{article.type eq 'lp'}" value="Details" outcome="detaillp">
                     <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
-                <h:link rendered="#{article.type eq 'game'}" value="Details" outcome="gamedetail">
+                <h:link rendered="#{article.type eq 'game'}" value="Details" outcome="detailgame">
                     <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
-                <h:link rendered="#{article.type eq 'fiction'}" value="Details" outcome="bookfictiondetail">
+                <h:link rendered="#{article.type eq 'fiction'}" value="Details" outcome="detailbookfiction">
                     <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
-                <h:link rendered="#{article.type eq 'nonfiction'}" value="Details" outcome="booknonfictiondetail">
+                <h:link rendered="#{article.type eq 'nonfiction'}" value="Details" outcome="detailbooknonfiction">
                     <f:param name="articleId" value="#{article.articleId}" />
                 </h:link>
             </b:dataTableColumn>
