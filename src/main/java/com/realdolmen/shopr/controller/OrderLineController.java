@@ -12,6 +12,9 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class OrderLineController {
     private OrderLine orderLine;
     private short quantity;
     private List<OrderLine> orderLines = new ArrayList<>();
+    private static  final SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd.HH.mm.ss");
+    private Timestamp timestamp;
 
     @Inject
     private OrderService orderService;
@@ -56,8 +61,11 @@ public class OrderLineController {
 
 
     public String placeOrder(){
+
+        timestamp=new Timestamp(System.currentTimeMillis());
         orderService.checkForUser();
         order = new Order();
+        order.setDate(timestamp);
         order.setOrderLines(orderLines);
         order.setUser(loginController.getCurrentUser());
         orderService.submitOrder(order);
