@@ -5,6 +5,7 @@ import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.repository.BoekFictieRepository;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class BoekFictieService {
@@ -22,5 +23,14 @@ public class BoekFictieService {
     public BoekFiction findBoekByTitel(String name) {
         return boekfictieRepository.findByTitel(name);
     }
+    @Transactional
+    public void removeById(int id) {
+        boekfictieRepository.remove(id);
+    }
+    @Transactional
+    public void insert(BoekFiction boekfiction) {
+        boekfictieRepository.insert(boekfiction);
+    }
+
 
 }

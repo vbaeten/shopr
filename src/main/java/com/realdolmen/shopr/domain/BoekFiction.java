@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by TLMBM39 on 26/12/2018.
@@ -27,8 +26,9 @@ public class BoekFiction extends Boek {
 
     @Column
     private String Inhoud;
+
     @Enumerated(EnumType.STRING)
-    protected BoekGenreFictie Boekgenrefictie;
+    private BoekGenreFictie boekgenrefictie;
 
     public String getInhoud() {
         return Inhoud;
@@ -38,11 +38,11 @@ public class BoekFiction extends Boek {
         Inhoud = inhoud;
     }
 
-    public BoekGenreFictie getBoekgenre() {
-        return Boekgenrefictie;
+    public BoekGenreFictie getBoekgenrefictie() {
+        return boekgenrefictie;
     }
 
-    public void setBoekgenre(BoekGenreFictie boekgenre) {
-        Boekgenrefictie = boekgenre;
+    public void setBoekgenrefictie(BoekGenreFictie boekgenrefictie) {
+        this.boekgenrefictie = boekgenrefictie;
     }
 }

@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.repository;
 
+import com.realdolmen.shopr.domain.Boek;
 import com.realdolmen.shopr.domain.BoekFiction;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,8 @@ public class BoekFictieRepository {
     }
 
     public List<BoekFiction> findAll() {
-        return em.createNamedQuery(BoekFiction.FIND_ALL, BoekFiction.class).getResultList();
+        List<BoekFiction> results =  em.createNamedQuery(BoekFiction.FIND_ALL, BoekFiction.class).getResultList();
+        return results;
     }
 
 
@@ -25,5 +27,9 @@ public class BoekFictieRepository {
 
     public void insert(BoekFiction boekfiction) {
         em.persist(boekfiction);
+    }
+    public void remove(int id) {
+        BoekFiction BoekfictionById = findById(id);
+        em.remove(BoekfictionById);
     }
 }

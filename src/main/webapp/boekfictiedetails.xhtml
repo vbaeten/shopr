@@ -1,11 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-
-<html lang="en">
-<head>
-
-    <title>Title</title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head><title>ShopR!</title></h:head>
 <body>
 
+<h:form id="details">
+
+
+
+    <b:dataTable var="boek" value="#{boekFictieController.getDetailsBoekFiction()}"
+                 id="fictieDetailsDataTabel">
+        <b:dataTableColumn label="Id" value="#{boek.id}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label=" leverancier" value="#{boek.leverancier}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Genre" value="#{boek.boekgenrefictie}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="Titel" value="#{boek.titel}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="price" value="#{boek.price}">
+        </b:dataTableColumn>
+        <b:dataTableColumn label="inhoud" value="#{boek.inhoud}">
+        </b:dataTableColumn>
+
+
+    </b:dataTable>
+
+</h:form>
+<b:form>
+<b:commandButton value="go back"  action="artikelsview?faces-redirect=true"/>
+</b:form>
 </body>
 </html>

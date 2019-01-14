@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Created by TLMBM39 on 26/12/2018.
  */
 @Entity
-public class Bestelling {
+public class Order {
     @Id
     @GeneratedValue
     private long Id;
@@ -18,6 +19,9 @@ public class Bestelling {
     private List<Artikel> Artikel= new ArrayList();
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "order", cascade={CascadeType.PERSIST,  CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    private List<OrderLine> orderLines = new ArrayList<>();
 
     public long getId() {
         return Id;
@@ -49,5 +53,13 @@ public class Bestelling {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public void setOrderLines(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 }

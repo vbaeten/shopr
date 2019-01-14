@@ -44,29 +44,26 @@
 
     <b:panel id="panel3" title="fictie boeken">
         <b:form id="dataFictiebooks">
-            <b:dataTable value="#{boekFictieController.boekFiction}" var="fictieboek" >
+            <b:dataTable value="#{boekFictieController.allBoekFiction}" var="fictieboek" >
 
                 <b:dataTableColumn label="titel" value="#{fictieboek.titel}"/>
                 <b:dataTableColumn label="price" value="#{fictieboek.price}"/>
                 <b:dataTableColumn label="details">
-                    <b:modal  title="details" styleClass="modalPseudoClass">
+                <b:commandButton action="#{boekFictieController.Details(fictieboek.id)}" value="Details" look="info"><b:icon value="search"/>
 
-                        <b:button value="Close" dismiss="modal" />
-                        <b:button value="Ok" look="primary" dismiss="modal" />
-
-                    </b:modal>
-                    <b:row>
-                      <b:column span="3">
-                        <b:button value="Details"  onclick="$('.modalPseudoClass').modal()" size="lg"/>
-                      </b:column>
-                    </b:row>
-
-
-
+                </b:commandButton>
+                </b:dataTableColumn>
+                <b:dataTableColumn label="Operations">
+                    <b:commandButton value="Delete"  action="#{boekFictieController.remove(fictieboek.id)}"
+                                     update="panel3"/>
                 </b:dataTableColumn>
             </b:dataTable>
+            <b:commandButton value="Add Fiction boek"  action="addfictionboek?faces-redirect=true"
+            />
         </b:form>
     </b:panel>
+
+
 
     <b:panel id="panel4" title="nonfictie boeken">
         <b:form id="dataNonfictiebooks">
@@ -82,15 +79,6 @@
             </b:dataTable>
         </b:form>
     </b:panel>
-
-
-
-
-
-
-
-
-
 
 </h:body>
 </html>

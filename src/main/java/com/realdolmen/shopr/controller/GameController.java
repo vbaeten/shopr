@@ -14,6 +14,7 @@ import java.util.List;
 @RequestScoped
 public class GameController implements Serializable {
     private Game newGame ;
+    private long GameId;
     @PostConstruct
     public void prepare(){
         newGame = new Game();
@@ -28,6 +29,17 @@ public class GameController implements Serializable {
 
     public void setNewGame(Game newGame) {
         this.newGame = newGame;
+    }
+
+    public long getGameId() {
+        return GameId;
+    }
+    public Game getGameById(int id) {
+        return this.gameService.findGameById(id);
+    }
+
+    public void setGameId(long gameId) {
+        GameId = gameId;
     }
 
     public List<Game> getGames(){
