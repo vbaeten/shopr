@@ -33,7 +33,9 @@ public class LpRepository
         entityManager.merge(lp);
     }
 
-    public void delete(Lp lp) {
+    public void delete(int id)
+    {
+        Lp lp = entityManager.find(Lp.class, id);
         entityManager.remove(lp);
     }
 

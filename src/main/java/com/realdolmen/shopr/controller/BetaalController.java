@@ -8,6 +8,7 @@ import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -43,5 +44,10 @@ public class BetaalController
     {
 
         bestellingsService.bestellingAanmaken(artikelLijnInBestellings, u);
+
+        FacesContext
+                .getCurrentInstance().getApplication()
+                .createValueBinding( "#{winkelmandjeController}")
+                .setValue(FacesContext.getCurrentInstance(), null );
     }
 }

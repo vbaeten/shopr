@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.omnifaces.util.Messages.isEmpty;
+
 @Stateless
 public class LpService
 {
@@ -73,19 +75,25 @@ public class LpService
 
     public void ratingsOpHalenLp(int id)
     {
-        beoordelingListLp = ratingRepository.findBeoordelingenBepaaldArtikel(overviewRepository.findById(id).getId());
+        this.beoordelingListLp = ratingRepository.findBeoordelingenBepaaldArtikel(overviewRepository.findById(id).getId());
+    }
+
+    public void deleteBeoordelingenVanLp()
+    {
+        for (Beoordeling b : beoordelingListLp)
+        {
+            ratingRepository.delete(b);
+        }
     }
 
     public void delete(int id)
     {
         ratingsOpHalenLp(id);
-        for (Beoordeling b : beoordelingListLp)
+        if (beoordelingListLp.size() >= 1)
         {
-            ratingRepository.delete(b);
+            deleteBeoordelingenVanLp();
         }
-
-        Lp lp = lpRepository.findById(id);
-        lpRepository.delete(lp);
+        lpRepository.delete(id);
     }
 
 }

@@ -2,9 +2,11 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.repository.LpRepository;
+import com.realdolmen.shopr.repository.OverviewRepository;
 import com.realdolmen.shopr.repository.RatingRepository;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -23,11 +25,15 @@ public class LpServiceTest
     LpRepository lpRepository;
     @Mock
     RatingRepository ratingRepository;
+    @InjectMocks
+    RatingService ratingService;
+    @Mock
+    OverviewRepository overviewRepository;
 
 
     Lp lp;
-    Beoordeling beoordeling;
     User user;
+    Beoordeling beoordeling;
 
     @Before
     public void init()
@@ -47,11 +53,14 @@ public class LpServiceTest
         user.setFirstName("indy");
         user.setRole(EnumRoles.USER);
 
+        ratingRepository = new RatingRepository();
+        overviewRepository = new OverviewRepository();
+
 //        beoordeling = new Beoordeling();
-//        beoordeling.setArtikel(lp);
-//        beoordeling.setUser(user);
-//        beoordeling.setOnschrijving("test");
 //        beoordeling.setScore(5);
+//        beoordeling.setOnschrijving("test");
+//        beoordeling.setUser(user);
+//        beoordeling.setArtikel(lp);
 
 
     }
@@ -79,12 +88,26 @@ public class LpServiceTest
         verify(lpRepository, times(1)).insert(lp);
     }
 
+    @Ignore
     @Test
     public void deleteLpTest()
     {
-        doNothing().when(lpRepository).delete(lp);
-        lpService.delete(lp.getId());
-        verify(lpRepository, times(1)).delete(lp);
+        doNothing().when(lpRepository).delete(1);
+        lpService.delete(1);
+        verify(lpRepository, times(1)).delete(lp.getId());
+        verify(lpRepository).delete(1);
 
     }
+
+    @Test
+    public void testFindById()
+    {
+        when(lpRepository.findById(1)).thenReturn(lp);
+        Lp lptest = lpService.findLpById(1);
+        Assert.assertEquals(lp, lptest);
+    }
+
 }
+
+
+
