@@ -53,9 +53,6 @@ public class GameDetailController {
 
 
 
-
-
-
     public GameGenre[]getGenres(){
         return GameGenre.values();
     }

@@ -22,5 +22,6 @@ public class OrderLineRepository {
     public List<OrderLine> findAllOrderLines() {
         return entityManager.createNamedQuery(OrderLine.FIND_ALL, OrderLine.class).getResultList();
     }
+
 }
 

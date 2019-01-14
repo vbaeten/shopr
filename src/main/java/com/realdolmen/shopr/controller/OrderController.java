@@ -25,14 +25,12 @@ public class OrderController {
 
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    private Order order=new Order();
+
 
 
     public String placeOrder(){
         orderLines = orderLineService.getOrderLines();
-        order.setOrderLines(orderLines);
-        this.orderService.submitOrder(order);
-        order=new Order();
+
         orderLines.clear();
         return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
     }
@@ -43,11 +41,4 @@ public class OrderController {
 
 
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }

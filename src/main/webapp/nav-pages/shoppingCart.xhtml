@@ -20,17 +20,17 @@
 
                 <h:form>
 
-                    <b:dataTable value="#{orderLineController.orderLines}" var="orderLine">
+                    <b:dataTable value="#{orderLineController.order.orderLines}" var="orderLine">
                         <b:dataTableColumn value="#{orderLine.item.price}"/>
                         <b:dataTableColumn value="#{orderLine.item.title}"/>
                         <b:dataTableColumn value="#{orderLine.item.type}"/>
                         <b:dataTableColumn value="#{orderLine.quantity}"/>
-
-
                     </b:dataTable>
-
-                    <b:commandButton value="Order!" action="#{orderController.placeOrder()}"/>
                 </h:form>
+
+                <b:form>
+                    <b:commandButton value="Order!" action="#{orderLineController.placeOrder()}"/>
+                </b:form>
             </div>
 
 

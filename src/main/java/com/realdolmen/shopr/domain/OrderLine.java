@@ -25,7 +25,7 @@ public class OrderLine {
     @ManyToOne
     private Item item;
 
-    @Transient
+    @ManyToOne
     private Order order;
 
     private int quantity;

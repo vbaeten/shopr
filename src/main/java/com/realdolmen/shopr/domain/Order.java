@@ -21,7 +21,6 @@ public class Order {
     private List<OrderLine> orderLines;
 
 
-    @Transient
     @ManyToOne
     @JoinColumn
     private User user;

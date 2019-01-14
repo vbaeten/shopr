@@ -67,13 +67,15 @@
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <h:link value="edit" outcome="/edit-pages/games-edit.xhtml">
-                                    <f:param name="id" value="#{gameDetailController.game.id}"/>
-                                </h:link>
 
-                                <b:inputText value="#{orderLineController.orderLine.quantity}"/>
+                                <b:inputText value="#{orderLineController.quantity}"/>
                                 <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(gameDetailController.game.id)}"/>
 
+                                <div class="editButton">
+                                <h:link value="edit" outcome="/edit-pages/games-edit.xhtml" style="color: black">
+                                    <f:param name="id" value="#{gameDetailController.game.id}"/>
+                                </h:link>
+                                </div>
 
 
                                 <b:commandButton value="delete game" style="width:100%"
