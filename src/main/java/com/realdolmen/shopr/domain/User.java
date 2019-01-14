@@ -21,7 +21,7 @@ import java.util.Objects;
                 )
         }
 )
-public class User implements Serializable {
+public class User extends AbstractEntity implements Serializable {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 

@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
+
 @ManagedBean
 @ViewScoped
 public class LPController {
@@ -35,8 +36,9 @@ public class LPController {
         this.lpService.insert(lp);
     }
 
-    public String update(LP lp) {this.lpService.update(lp);
-        return  ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
+    public String update(LP lp) {
+        this.lpService.update(lp);
+        return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public LP getLPbyId(Long articleId) {

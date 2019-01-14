@@ -7,7 +7,9 @@ import com.realdolmen.shopr.repository.OrderLineRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class OrderLineService extends CrudService<OrderLine, Long> {
@@ -25,12 +27,12 @@ public class OrderLineService extends CrudService<OrderLine, Long> {
         return quantity.multiply(price);
     }
 
-    public BigDecimal calculateTotalPrice(ArrayList<OrderLine> sessionorderLines) {
-        Double tusentotaal = new Double(0.00);
+    public BigDecimal calculateTotalPrice(List<OrderLine> sessionorderLines) {
+        double tusentotaal = 0.00;
         for (OrderLine orderLine : sessionorderLines) {
             tusentotaal = tusentotaal + orderLine.getSubTotal().doubleValue();
         }
-        this.totalPrice = BigDecimal.valueOf(tusentotaal);
+        this.totalPrice = BigDecimal.valueOf(tusentotaal).setScale(2, RoundingMode.HALF_EVEN);
         return this.totalPrice;
     }
 }

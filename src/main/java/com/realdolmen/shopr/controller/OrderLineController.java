@@ -19,7 +19,7 @@ public class OrderLineController {
 
     private OrderLine orderLine = new OrderLine();
 
-    private ArrayList<OrderLine> sessionOrderLines = new ArrayList<>();
+    private List<OrderLine> sessionOrderLines = new ArrayList<>();
 
     private Article selectedArticle;
 
@@ -37,7 +37,7 @@ public class OrderLineController {
         return ShoprEndpoints.OVERVIEW;
     }
 
-    public String placeOrder(ArrayList<OrderLine> sessionOrderLines){
+    public String placeOrder(List<OrderLine> sessionOrderLines){
         if (sessionOrderLines.size() > 0) {
             return "ordercreated";
         } else {
@@ -93,7 +93,7 @@ public class OrderLineController {
     public void setSelectedArticle(Article selectedArticle) {
         this.selectedArticle = selectedArticle;
     }
-    public ArrayList<OrderLine> getSessionOrderLines() {
+    public List<OrderLine> getSessionOrderLines() {
         return sessionOrderLines;
     }
 

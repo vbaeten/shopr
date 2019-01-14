@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "order_article")
-public class Order {
+public class Order extends AbstractEntity{
     @Id
     @GeneratedValue
     private Long id;
