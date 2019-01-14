@@ -13,12 +13,17 @@ import java.util.List;
                 @NamedQuery(
                         name = Order.FIND_ALL,
                         query = "SELECT o from Order o"
+                ),
+                @NamedQuery(
+                        name = Order.FIND_BY_USER,
+                        query = "SELECT o FROM Order o WHERE o.user = :user"
                 )
         }
 )
 public class Order implements Serializable {
 
-    public static final String FIND_ALL = "Order.FindAll";
+    public static final String FIND_ALL = "Order.findAll";
+    public static final String FIND_BY_USER = "Order.findByUser";
 
     @Id
     @GeneratedValue

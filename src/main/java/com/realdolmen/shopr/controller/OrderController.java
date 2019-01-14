@@ -4,11 +4,13 @@ import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.OrderService;
+import com.realdolmen.shopr.service.ShoppingCartService;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +27,15 @@ public class OrderController {
     private OrderLineService orderLineService;
     @Inject
     private UserService userService;
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
-    //TODO order is created with orderlines in shoppingbag logged user
-    public void submitOrder(int userId) {
-        orderLines = orderLineService.findOrderLinesByUser(userService.findUserById(userId));
-        newOrder.setOrderLines(orderLines);
-        newOrder.setUser(userService.findUserById(userId));
-        this.orderService.createOrder(newOrder);
+    public void submitOrder(int userId, List<OrderLine> orderLines) {
         newOrder = new Order();
+        newOrder.setUser(userService.findUserById(userId));
+        newOrder.setOrderDate(new Timestamp(System.currentTimeMillis()));
+        newOrder.setOrderLines(orderLines);
+        orderService.createOrder(newOrder);
     }
 
     public void orderCart(int cartId) {

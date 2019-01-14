@@ -37,14 +37,14 @@
                                            itemLabel="#{user.firstName} #{user.name}"/>
                         </b:selectOneMenu>
                         <b:commandButton value="Submit" actionListener="#{loginBean.login(loginBean.loggedUser.id)}" ajax="true"
-                                         update="indexcontainer" autoUpdate="true">
+                                         update="indexcontainer navbarcontainer" autoUpdate="true">
                             <f:param name="loggedUser" value="#{loginBean.id}" />
                         </b:commandButton>
                     </b:formGroup>
                 </b:form>
                 <b:form>
                     <b:commandButton value="Logout" actionListener="#{loginBean.logout()}" ajax="true"
-                                     update="indexcontainer" autoUpdate="true">
+                                     update="indexcontainer navbarcontainer" autoUpdate="true">
                     <f:param name="loggedUser" value="" />
                     </b:commandButton>
                 </b:form>

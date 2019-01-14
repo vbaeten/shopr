@@ -2,6 +2,7 @@ package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.OrderLineRepository;
 
@@ -27,6 +28,10 @@ public class OrderLineService {
         return orderLineRepository.findAll();
     }
 
+    public List<OrderLine> findOrderLinesByShoppingCart (ShoppingCart shoppingCart) {
+        return orderLineRepository.findByShoppingCart(shoppingCart);
+    }
+
     public void insertOrderLine(OrderLine orderLine) {
         orderLineRepository.insertOrderLine(orderLine);
     }
@@ -35,4 +40,11 @@ public class OrderLineService {
         orderLine.setOrdered(true);
         orderLine.setOrder(order);
     }
+
+
+    public void deleteOrderLine(int id) {
+        orderLineRepository.deleteOrderLine(id);
+    }
+
+    public void removeOrderLine(OrderLine orderLine) {orderLineRepository.removeOrderLine(orderLine);}
 }

@@ -1,10 +1,12 @@
 package com.realdolmen.shopr.service;
 
 import com.realdolmen.shopr.domain.Order;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.OrderRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.List;
 
 @Stateless
 public class OrderService {

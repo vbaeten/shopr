@@ -16,15 +16,17 @@
                 <f:viewParam name="id" value="#{gameDetailBean.id}"/>
                 <f:event type="preRenderView" listener="#{gameDetailBean.init}"/>
             </f:metadata>
+            <b:container>
             <p>Details of this article</p>
             <b:panel>
                 <h:outputText styleClass="detail-title" value="#{gameDetailBean.game.title} by #{gameDetailBean.game.publisher}"/>
                 <h:outputText value=""/>
                 <b:form inline="true">
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{orderLineController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
+                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.id)}" update="navbarcontainer"/>
                 </b:form>
             </b:panel>
+            </b:container>
         </ui:define>
 
         <ui:define name="js">

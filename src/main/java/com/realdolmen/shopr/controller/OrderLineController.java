@@ -4,15 +4,16 @@ import com.realdolmen.shopr.beans.LoginBean;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.ShoppingCart;
-import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.*;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@ViewScoped
 @ManagedBean
 public class OrderLineController implements Serializable {
 
@@ -62,6 +63,14 @@ public class OrderLineController implements Serializable {
         orderLineService.insertOrderLine(orderLine);
     }
 
+    public void removeFromCart (int id) {
+        this.orderLineService.deleteOrderLine(id);
+    }
+
+    public void removeOrderLine (int id) {
+        orderLineService.removeOrderLine(orderLineService.findOrderLineById(id));
+    }
+
     public List<OrderLine> getOrderLines() {
         return orderLineService.findAllOrderLines();
     }
@@ -77,6 +86,8 @@ public class OrderLineController implements Serializable {
     public void setOrderLine(OrderLine orderLine) {
         this.orderLine = orderLine;
     }
+
+
 
 
 }

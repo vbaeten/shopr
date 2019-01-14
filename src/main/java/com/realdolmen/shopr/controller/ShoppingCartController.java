@@ -2,29 +2,28 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.domain.ShoppingCart;
-import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.ArticleService;
 import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.ShoppingCartService;
 import com.realdolmen.shopr.service.UserService;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.NoSuchEntityException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ShoppingCartController implements Serializable {
 
     private int userId;
-    private int id;
     private ShoppingCart newShoppingCart;
     private ShoppingCart shoppingCart;
-    private List<OrderLine> orderLines;
+    private List<OrderLine> orderLines = new ArrayList<>();
+    private OrderLine orderLine;
 
     @Inject
     private ShoppingCartService shoppingCartService;
@@ -32,27 +31,36 @@ public class ShoppingCartController implements Serializable {
     private OrderLineService orderLineService;
     @Inject
     private UserService userService;
+    @Inject
+    private ArticleService articleService;
 
-    //TODO Shoppingcartcontroller must load with site. Works like loggedUser
-//
-//    @PostConstruct
-//    public void init() {
-//        shoppingCartService.findShoppingCartByUserId(id);
-//    }
-
-
-    public void loadShoppingCart(int userId) {
+    public ShoppingCart loadShoppingCart(int userId) {
         try {
-            shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
+            return shoppingCart = shoppingCartService.findShoppingCartByUserId(userId);
         } catch (NoResultException nre) {
-            createShoppingCart(userId);
+            return shoppingCart = null;
         }
     }
 
-    public void addToCart(int articleId, int quantity, int userId) {
-        loadShoppingCart(userId);
+    public void createOrderLine(int articleId, int quantity, int userId) {
+        orderLine = new OrderLine();
+        this.orderLine.setArticle(articleService.findArticleById(articleId));
+        this.orderLine.setUser(userService.findUserById(userId));
+        this.orderLine.setQuantity(quantity);
+        this.orderLine.setShoppingCart(shoppingCartService.findShoppingCartByUserId(userId));
+        orderLineService.insertOrderLine(orderLine);
     }
 
+    public void addToCart(int articleId, int quantity, int userId) {
+        createOrderLine(articleId, quantity, userId);
+        shoppingCart = loadShoppingCart(userId);
+        orderLines = shoppingCart.getOrderLines();
+        shoppingCart.addOrderLine(orderLine);
+    }
+
+    public void removeFromCart (int id) {
+        orderLineService.removeOrderLine(orderLine);
+    }
 
     public ShoppingCart loadShoppingCartCheck(int userId) {
         return shoppingCartService.findShoppingCartByUserId(userId);
@@ -81,7 +89,6 @@ public class ShoppingCartController implements Serializable {
     public void setId(int id) {
         this.userId = id;
     }
-
 
     public List<OrderLine> getOrderLines() {
         return orderLines;

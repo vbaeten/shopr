@@ -26,14 +26,19 @@ public class ShoppingCart implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column
     private int id;
 
     @OneToOne
     @JoinColumn(name="user")
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "shoppingCart", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines;
+
+    public void addOrderLine(OrderLine orderLine) {
+        orderLines.add(orderLine);
+    }
 
     public ShoppingCart() {
     }

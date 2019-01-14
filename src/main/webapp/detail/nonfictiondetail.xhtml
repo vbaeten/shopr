@@ -16,21 +16,25 @@
                 <f:viewParam name="id" value="#{nonFictionDetailBean.id}"/>
                 <f:event type="preRenderView" listener="#{nonFictionDetailBean.init}"/>
             </f:metadata>
-            <p>Details of this article</p>
-            <b:panel>
-                <h:outputText styleClass="detail-title" value="#{nonFictionDetailBean.nonFiction.title} by #{nonFictionDetailBean.nonFiction.author}"/>
-                <h:outputText value="Pulisher: #{nonfictionDetailBean.fiction.supplier}"/>
-                <h:outputText value="Isbn: #{nonFictionDetailBean.nonFiction.isbn}"/>
-                <h:outputText value="Topic: #{nonFictionDetailBean.nonFiction.subject}"/>
-                <b:form inline="true">
-                    <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{orderLineController.addToCart(nonFictionDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
-                </b:form>
-            </b:panel>
+            <b:container>
+                <p>Details of this article</p>
+                <b:panel>
+                    <h:outputText styleClass="detail-title"
+                                  value="#{nonFictionDetailBean.nonFiction.title} by #{nonFictionDetailBean.nonFiction.author}"/>
+                    <h:outputText value="Pulisher: #{nonfictionDetailBean.fiction.supplier}"/>
+                    <h:outputText value="Isbn: #{nonFictionDetailBean.nonFiction.isbn}"/>
+                    <h:outputText value="Topic: #{nonFictionDetailBean.nonFiction.subject}"/>
+                    <b:form inline="true">
+                        <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
+                        <b:commandButton value="Order"
+                                         action="#{orderLineController.addToCart(nonFictionDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
+                    </b:form>
+                </b:panel>
+            </b:container>
         </ui:define>
 
         <ui:define name="js">
-            <script type="text/javascript" >
+            <script type="text/javascript">
                 setNavMenuItemActive("shop");
             </script>
         </ui:define>

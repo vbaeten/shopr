@@ -14,38 +14,44 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <b:panel>
-                <p>List of all articles</p>
-                <h:form>
-                    <b:dataTable value="#{articleController.articles}"
-                                 var="article">
-                        <b:dataTableColumn value="#{article.id}" label="Id"/>
-                        <b:dataTableColumn value="#{article.title}" label="Title"/>
-                        <b:dataTableColumn value="#{article.supplier}" label="Supplier"/>
-                        <b:dataTableColumn value="#{article.price}" label="Price"/>
-                        <b:dataTableColumn value="#{article.type}" label="Type"/>
-                        <b:dataTableColumn>
-                            <b:commandButton value="Delete" action="#{articleController.deleteArticle(article.id)}">
-                                <f:ajax excecute="@this" render="@form"/>
-                            </b:commandButton>
-                        </b:dataTableColumn>
-                        <b:dataTableColumn label="Details">
-                            <h:link value="Details" outcome="/detail/lpdetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Lp'}">
-                                <f:param name="id" value="#{article.id}"/>
-                            </h:link>
-                            <h:link value="Details" outcome="/detail/gamedetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Game'}">
-                                <f:param name="id" value="#{article.id}"/>
-                            </h:link>
-                            <h:link value="Details" outcome="/detail/fictiondetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Fiction'}">
-                                <f:param name="id" value="#{article.id}"/>
-                            </h:link>
-                            <h:link value="Details" outcome="/detail/nonfictiondetail.xhtml" includeViewParams="true" rendered="#{article.type eq 'Non-Fiction'}">
-                                <f:param name="id" value="#{article.id}"/>
-                            </h:link>
-                        </b:dataTableColumn>
-                    </b:dataTable>
-                </h:form>
-            </b:panel>
+            <b:container>
+                <b:panel>
+                    <p>List of all articles</p>
+                    <h:form>
+                        <b:dataTable value="#{articleController.articles}"
+                                     var="article">
+                            <b:dataTableColumn value="#{article.id}" label="Id"/>
+                            <b:dataTableColumn value="#{article.title}" label="Title"/>
+                            <b:dataTableColumn value="#{article.supplier}" label="Supplier"/>
+                            <b:dataTableColumn value="#{article.price}" label="Price"/>
+                            <b:dataTableColumn value="#{article.type}" label="Type"/>
+                            <b:dataTableColumn>
+                                <b:commandButton value="Delete" action="#{articleController.deleteArticle(article.id)}">
+                                    <f:ajax excecute="@this" render="@form"/>
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                            <b:dataTableColumn label="Details">
+                                <h:link value="Details" outcome="/detail/lpdetail.xhtml" includeViewParams="true"
+                                        rendered="#{article.type eq 'Lp'}">
+                                    <f:param name="id" value="#{article.id}"/>
+                                </h:link>
+                                <h:link value="Details" outcome="/detail/gamedetail.xhtml" includeViewParams="true"
+                                        rendered="#{article.type eq 'Game'}">
+                                    <f:param name="id" value="#{article.id}"/>
+                                </h:link>
+                                <h:link value="Details" outcome="/detail/fictiondetail.xhtml" includeViewParams="true"
+                                        rendered="#{article.type eq 'Fiction'}">
+                                    <f:param name="id" value="#{article.id}"/>
+                                </h:link>
+                                <h:link value="Details" outcome="/detail/nonfictiondetail.xhtml"
+                                        includeViewParams="true" rendered="#{article.type eq 'Non-Fiction'}">
+                                    <f:param name="id" value="#{article.id}"/>
+                                </h:link>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </h:form>
+                </b:panel>
+            </b:container>
         </ui:define>
         <ui:define name="js">
             <script type="text/javascript">

@@ -16,6 +16,8 @@
                 <f:viewParam name="id" value="#{fictionDetailBean.id}"/>
                 <f:event type="preRenderView" listener="#{fictionDetailBean.init}"/>
             </f:metadata>
+            <b:container id="fictiondetailcontainer">
+
             <p>Details of this article</p>
             <b:panel>
                 <h:outputText styleClass="detail-title" value="#{fictionDetailBean.fiction.title} by #{fictionDetailBean.fiction.author}"/>
@@ -26,9 +28,10 @@
                 <h:outputText value="#{fictionDetailBean.fiction.synopsis}"/>
                 <b:form inline="true">
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{orderLineController.addToCart(fictionDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}"/>
+                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(fictionDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}" update="navbarcontainer"/>
                 </b:form>
             </b:panel>
+            </b:container>
         </ui:define>
 
         <ui:define name="js">

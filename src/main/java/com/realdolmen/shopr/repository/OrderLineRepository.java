@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.repository;
 
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.domain.ShoppingCart;
 import com.realdolmen.shopr.domain.User;
 
 import javax.persistence.EntityManager;
@@ -30,12 +31,21 @@ public class OrderLineRepository {
                 .setParameter("id", id).getResultList();
     }
 
+    public List<OrderLine> findByShoppingCart(ShoppingCart shoppingCart) {
+        return entityManager.createNamedQuery(OrderLine.FIND_BY_USER, OrderLine.class)
+                .setParameter("shoppingCart", shoppingCart).getResultList();
+    }
+
     public void insertOrderLine(OrderLine orderLine) {
         entityManager.persist(orderLine);
     }
 
-    public void updateOrderLine(OrderLine orderLine) { entityManager.merge(orderLine);}
+    public void deleteOrderLine(int id) {
+        entityManager.remove(entityManager.getReference(OrderLine.class, id));
+    }
 
-    //TODO must be deleted in shoppingbag
+    public void removeOrderLine(OrderLine orderLine) {
+        entityManager.remove(orderLine);
+    }
 
 }

@@ -14,29 +14,37 @@
 <h:body>
     <ui:composition template="templates/basetemplate.xhtml">
         <ui:define name="content">
-            <b:panel id="shoppingbagnologin" rendered="#{loginBean.loggedUser eq null}">You are not logged in.</b:panel>
-            <b:panel id="shoppingbagview">
-                Hi, #{loginBean.loggedUser.firstName}!
-                Order here or continue shopping.
-                <b:form id="shoppingbag">
-                    <b:dataTable value="#{orderLineController.getOrderLinesByUser(loginBean.loggedUser.id)}" var="orderLine">
-                        <b:dataTableColumn label="Article ID" value="#{orderLine.article.id}"/>
-                        <b:dataTableColumn label="User Id" value="#{orderLine.user.id}"/>
-                        <b:dataTableColumn label="Title" value="#{orderLine.article.title}"/>
-                        <b:dataTableColumn label="Price" value="#{orderLine.article.price}"/>
-                        <b:dataTableColumn label="Quantity" value="#{orderLine.quantity}"/>
-                        <b:dataTableColumn label="Type" value="#{orderLine.article.type}"/>
-                        <b:dataTableColumn label="Delete">
-                            <b:commandButton value="Remove from Order"/>
-                        </b:dataTableColumn>
-                    </b:dataTable>
+            <b:container>
+                <b:panel id="shoppingbagnologin"
+                         rendered="#{loginBean.loggedUser eq null}">You are not logged in.</b:panel>
+                <b:panel id="shoppingbagview">
+                    <p>Hi, #{loginBean.loggedUser.firstName}!</p>
+                    <p>Order here or continue shopping.</p>
+
+                    <b:form id="shoppingcart">
+                        <b:dataTable
+                                value="#{shoppingCartController.loadShoppingCart(loginBean.loggedUser.id).orderLines}"
+                                var="orderLine">
+                            <b:dataTableColumn label="Article ID" value="#{orderLine.article.id}"/>
+                            <b:dataTableColumn label="User Id" value="#{orderLine.user.id}"/>
+                            <b:dataTableColumn label="Title" value="#{orderLine.article.title}"/>
+                            <b:dataTableColumn label="Price" value="#{orderLine.article.price}"/>
+                            <b:dataTableColumn label="Quantity" value="#{orderLine.quantity}"/>
+                            <b:dataTableColumn label="Type" value="#{orderLine.article.type}"/>
+                            <b:dataTableColumn label="Subtotal" value="#{orderLine.subTotal}"/>
+                            <b:dataTableColumn label="Delete">
+                                <b:commandButton value="Remove from Order" actionListener="#{orderLineController.removeFromCart(orderLine.id)}"/>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:form>
+                </b:panel>
+                <h:outputText value="Shoppingbag of #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
+                <b:form>
+                    <b:commandButton value="Order"
+                                     actionListener="#{orderController.submitOrder(loginBean.loggedUser.id, orderLineController.getOrderLinesByUser(loginBean.loggedUser.id))}"/>
+                    <b:commandButton value="Empty List"/>
                 </b:form>
-            </b:panel>
-            <h:outputText value="Shoppingbag of #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
-            <b:form>
-                <b:commandButton value="Order" actionListener="#{orderController.submitOrder(loginBean.loggedUser.id)}"/>
-                <b:commandButton value="Empty List"/>
-            </b:form>
+            </b:container>
         </ui:define>
         <ui:define name="js">
             <script type="text/javascript">
