@@ -24,14 +24,14 @@ public class FictionService {
         return fictionRepository.findAll();
     }
 
-    public Fiction findFictionByTitle(String title) {
-        return fictionRepository.findByTitle(title);
-    }
-
-    public void updateTitle(int id, String newTitle) {
-        Fiction fiction = fictionRepository.findById(id);
-        fiction.setTitle(newTitle);
-    }
+//    public Fiction findFictionByTitle(String title) {
+//        return fictionRepository.findByTitle(title);
+//    }
+//
+//    public void updateTitle(int id, String newTitle) {
+//        Fiction fiction = fictionRepository.findById(id);
+//        fiction.setTitle(newTitle);
+//    }
 
     public void insert(Fiction fiction) {
         fictionRepository.insert(fiction);

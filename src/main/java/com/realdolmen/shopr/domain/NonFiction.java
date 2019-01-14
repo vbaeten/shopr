@@ -29,4 +29,9 @@ public class NonFiction extends Book {
     public void setSubject(NonFictionSubject subject) {
         this.subject = subject;
     }
+
+    @Override
+    public String getDisplayValue(){
+        return "Non Fiction";
+    }
 }

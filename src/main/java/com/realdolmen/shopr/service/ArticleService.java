@@ -20,6 +20,10 @@ public class ArticleService implements Serializable {
     public List<Article> findAllArticles() {
         return articleRepository.findAll();
     }
+
+    public List<String> findAllTypes(){
+        return articleRepository.findAllArticleTypes();
+    }
 //
 //    public Article findByTitle(String title) {
 //        return ArticleRepository.findByTitle(title);

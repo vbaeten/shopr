@@ -41,4 +41,9 @@ public class Lp extends Article {
     public void setGenre(LpGenre genre) {
         this.genre = genre;
     }
+
+    @Override
+    public String getDisplayValue(){
+        return "Lp";
+    }
 }

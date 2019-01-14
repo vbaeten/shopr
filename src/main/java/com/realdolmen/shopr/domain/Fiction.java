@@ -41,4 +41,9 @@ public class Fiction extends Book {
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
+    @Override
+    public String getDisplayValue(){
+        return "Fiction";
+    }
 }

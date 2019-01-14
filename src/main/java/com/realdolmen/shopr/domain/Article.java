@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@DiscriminatorColumn(name = "type")
+@DiscriminatorColumn(name = "types")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(
@@ -19,10 +19,25 @@ import javax.validation.constraints.Size;
                         name = Article.FIND_ALL,
                         query = "SELECT a FROM Article a order by a.title"
                 ),
+                @NamedQuery(
+                        name = Article.FIND_ALL_TYPES,
+                        query = "SELECT distinct types FROM Article a order by a.title"
+                ),
+                @NamedQuery(
+                        name = Article.FIND_MIN_PRICE,
+                        query = "SELECT min(price) FROM Article a"
+                ),
+                @NamedQuery(
+                        name = Article.FIND_MAX_PRICE,
+                        query = "SELECT max(price) FROM Article a"
+                )
         })
 public class Article {
     public static final String FIND_BY_TITLE = "Article.findByTitle";
     public static final String FIND_ALL = "Article.findAll";
+    public static final String FIND_ALL_TYPES = "Article.findAllTypes";
+    public static final String FIND_MIN_PRICE = "SearchBean.findMinPrice";
+    public static final String FIND_MAX_PRICE = "SearchBean.findMaxPrice";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +55,11 @@ public class Article {
     @Size(max=100)
     private String supplierId;
 
-    String type = new String();
+    String types = new String();
+
+    public String getDisplayValue(){
+        return "Article";
+    }
 
     public int getId() {
         return id;
@@ -74,12 +93,12 @@ public class Article {
         this.supplierId = supplierId;
     }
 
-    public String getType() {
-        return type;
+    public String getTypes() {
+        return types;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypes(String types) {
+        this.types = types;
     }
 
     @Override

@@ -43,9 +43,9 @@ public class RatingController {
         return newRating = ratingService.getRatingById(id);
     }
 
-    public List<Rating> getRatingsByArticle(Article article){
-        return ratingService.getRatingsByArticle(article);
-    }
+//    public List<Rating> getRatingsByArticle(Article article){
+//        return ratingService.getRatingsByArticle(article);
+//    }
 
     public List<Rating> getRatingsByArticleId(int id){
         return ratingService.getRatingsByArticleId(id);

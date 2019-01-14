@@ -18,6 +18,9 @@ public class ArticleRepository {
     }
 
 
+    public List<String> findAllArticleTypes(){
+        return entityManager.createNamedQuery(Article.FIND_ALL_TYPES, String.class).getResultList();
+    }
 
 //    public Article findByTitle(String title) {
 //        return entityManager.createNamedQuery(Article.FIND_BY_TITLE, Article.class).setParameter("name", title).getSingleResult();

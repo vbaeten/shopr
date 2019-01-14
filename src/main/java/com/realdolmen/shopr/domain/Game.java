@@ -52,4 +52,9 @@ public class Game extends Article {
     public void setGenre(GameGenre genre) {
         this.genre = genre;
     }
+
+    @Override
+    public String getDisplayValue(){
+        return "Game";
+    }
 }

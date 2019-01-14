@@ -12,6 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -29,51 +32,61 @@ public class LpServiceTest {
     RatingRepository ratingRepository;
 
     private Lp lp;
+    private Lp lp2;
 
     @Before
-    public void init(){
+    public void init() {
         lp = new Lp();
         lp.setId(1);
+        lp2 = new Lp();
+        lp2.setId(2);
+
         lp.setArtist("TestArtist");
         lp.setTitle("TestTitle");
         lp.setPrice(9.99);
     }
 
     @Test
-    public void testUpdateTitle(){
+    public void testUpdateTitle() {
         when(lpRepository.findById(1)).thenReturn(lp);
         lpService.updateTitle(1, "NewTestTitle");
         Assert.assertEquals("NewTestTitle", lp.getTitle());
     }
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         doNothing().when(lpRepository).insert(lp);
         lpService.insert(lp);
         verify(lpRepository, times(1)).insert(lp);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         doNothing().when(lpRepository).delete(1);
         lpService.delete(lp);
         verify(lpRepository, times(1)).delete(1);
     }
 
     @Test
-    public void testFindLpById(){
+    public void testFindLpById() {
         when(lpRepository.findById(1)).thenReturn(lp);
         Lp checkedLp = lpService.findLpById(1);
         assertEquals(checkedLp, lp);
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         when(lpRepository.findById(1)).thenReturn(lp);
         lpService.update(lp);
         verify(lpRepository, times(1)).update(lp);
     }
 
+    @Test
+    public void testFindAllGames() {
+        when(lpRepository.findAll()).thenReturn(Arrays.asList(lp, lp2));
+        List<Lp> expectedFictionList = lpService.findAllLps();
+        Assert.assertEquals(expectedFictionList, Arrays.asList(lp, lp2));
+    }
 
 
 }

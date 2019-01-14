@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.service;
 
-import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Rating;
 import com.realdolmen.shopr.repository.RatingRepository;
 
@@ -15,10 +14,6 @@ public class RatingService {
 
     public Rating getRatingById(int id) {
         return ratingRepository.findById(id);
-    }
-
-    public List<Rating> getRatingsByArticle(Article article) {
-        return ratingRepository.findByArticle(article);
     }
 
     public List<Rating> getRatingsByArticleId(int id) {

@@ -47,7 +47,7 @@ public class ArticleController implements Serializable {
     }
 
     public String navigateToDetailPage(Article article) {
-        switch (article.getType()) {
+        switch (article.getTypes()) {
             case "LP":
                 return "lpDetail.xhtml?";
             case "GAME":
@@ -58,5 +58,9 @@ public class ArticleController implements Serializable {
                 return "nonFictionDetail.xhtml";
         }
         return "pageNotFound.xhtml";
+    }
+
+    public List<String> findAllTypes(){
+        return articleService.findAllTypes();
     }
 }
