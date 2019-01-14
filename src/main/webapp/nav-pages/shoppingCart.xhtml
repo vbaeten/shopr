@@ -26,11 +26,9 @@
                         <b:dataTableColumn value="#{orderLine.item.type}"/>
                         <b:dataTableColumn value="#{orderLine.quantity}"/>
                     </b:dataTable>
-                </h:form>
 
-                <b:form>
-                    <b:commandButton value="Order!" action="#{orderLineController.placeOrder()}"/>
-                </b:form>
+                    <b:commandButton value="Order!" action="#{orderLineController.placeOrder()}" update="@form"/>
+                </h:form>
             </div>
 
 

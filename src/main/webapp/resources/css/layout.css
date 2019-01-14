@@ -1,6 +1,7 @@
 .templateBody{
-    background: rgba(207, 225, 249, 0.85);
+    /*background: rgba(207, 225, 249, 0.85);*/
     font-family: "Lucida Sans Unicode", Courier, monospace;
+    background: rgba(10, 10, 10, 0.44);
 }
 
 .loginMessage{

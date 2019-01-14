@@ -25,7 +25,7 @@ public class OrderLine {
     @ManyToOne
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
     private int quantity;

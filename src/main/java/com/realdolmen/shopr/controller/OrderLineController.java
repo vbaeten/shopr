@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class OrderLineController {
     private OrderLineService orderLineService;
     @Inject
     private ItemService itemService;
+    @Inject
+    private LoginController loginController;
 
 
 
@@ -53,11 +56,12 @@ public class OrderLineController {
 
 
     public String placeOrder(){
+        orderService.checkForUser();
         order = new Order();
         order.setOrderLines(orderLines);
+        order.setUser(loginController.getCurrentUser());
         orderService.submitOrder(order);
-        orderLines = orderLineService.getOrderLines();
-        orderLines.clear();
+        order.getOrderLines().clear();
         return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
     }
 

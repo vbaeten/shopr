@@ -1,5 +1,6 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.controller.LoginController;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.repository.OrderRepository;
@@ -11,7 +12,8 @@ import java.util.List;
 @Stateless
 public class OrderService {
 
-
+    @Inject
+    LoginController loginController;
 
 
     @Inject
@@ -22,4 +24,21 @@ public class OrderService {
         this.orderRepository.submitOrder(order);
 
     }
+
+
+    public String checkForUser() {
+        if(!isLoggedIn()){
+
+            return "/nav-pages/index.xhtml?faces-redirect=true";
+        }return "/nav-pages/thankyou-page.xhtml";
+    }
+
+    private Boolean isLoggedIn() {
+        if (loginController.getCurrentUser()==null){
+            return false;
+        }
+        return true;
+    }
+
+
 }
