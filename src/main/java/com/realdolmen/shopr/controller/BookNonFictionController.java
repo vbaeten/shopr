@@ -48,8 +48,8 @@ public class BookNonFictionController {
         return ShoprEndpoints.OVERVIEW;
     }
 
-    public String removeBookNonFiction(BookNonFiction bookNonFiction) {
-        bookNonFictionService.remove(bookNonFiction);
+    public String removeBookNonFictionById(Long articleId) {
+        bookNonFictionService.removeById(articleId);
         return ShoprEndpoints.OVERVIEW;
     }
 

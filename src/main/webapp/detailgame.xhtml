@@ -53,7 +53,7 @@
                 <h:link value="Edit" outcome="updategame">
                     <f:param name="articleId" value="#{game.articleId}" />
                 </h:link>
-                <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(game)}" >
+                <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGameById(game.articleId)}" >
                     <f:param name="articleId" value="#{param.articleId}"/>
                 </b:commandButton>
             </b:form>

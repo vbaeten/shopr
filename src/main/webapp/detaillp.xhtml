@@ -49,7 +49,7 @@
                     <h:link value="Edit" outcome="updatelp">
                         <f:param name="articleId" value="#{lp.articleId}" />
                     </h:link>
-                    <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lp)}" >
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLPById(lp.articleId)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
                 </b:form>

@@ -57,7 +57,7 @@
                     <h:link value="Edit" outcome="updatebooknonfiction">
                         <f:param name="articleId" value="#{bookNonFiction.articleId}" />
                     </h:link>
-                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFiction(bookNonFiction)}" >
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFictionById(bookNonFiction.articleId)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
                 </b:form>

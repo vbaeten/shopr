@@ -9,10 +9,10 @@
         <p>What article would you like to add to Shopr?</p>
         <h:form>
             <b:dropButton value="Choose article type" size="md" look="primary">
-                <b:navLink value="Fiction Book" outcome="createbookfiction.xhtml" />
-                <b:navLink value="Non Fiction Book" outcome="createbooknonfiction.xhtml"/>
-                <b:navLink value="Game" outcome="creategame.xhtml"/>
-                <b:navLink value="LP" outcome="createlp.xhtml"/>
+                <b:navLink value="Fiction Book" outcome="#{ShoprEndpoints.CREATE_BOOKFICTION}" />
+                <b:navLink value="Non Fiction Book" outcome="#{ShoprEndpoints.CREATE_BOOKNONFICTION}"/>
+                <b:navLink value="Game" outcome="#{ShoprEndpoints.CREATE_GAME}"/>
+                <b:navLink value="LP" outcome="#{ShoprEndpoints.CREATE_LP}"/>
             </b:dropButton>
         </h:form>
     </ui:define>

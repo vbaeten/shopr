@@ -26,4 +26,9 @@ public abstract class CrudService<T, PK> {
     public void remove(T entity) {
         getRepository().remove(entity);
     }
+
+    public void removeById(PK primaryKey) {
+        getRepository().remove(getRepository().findByPrimaryKey(primaryKey));
+    }
+
 }

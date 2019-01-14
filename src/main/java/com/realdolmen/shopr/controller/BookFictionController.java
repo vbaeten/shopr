@@ -46,8 +46,8 @@ public class BookFictionController {
         return ShoprEndpoints.OVERVIEW;
     }
 
-    public String removeBookFiction(BookFiction bookFiction) {
-        bookFictionService.remove(bookFiction);
+    public String removeBookFictionById(Long articleId) {
+        bookFictionService.removeById(articleId);
         return ShoprEndpoints.OVERVIEW;
     }
 

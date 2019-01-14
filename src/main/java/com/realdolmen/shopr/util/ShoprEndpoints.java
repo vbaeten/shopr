@@ -1,9 +1,13 @@
 package com.realdolmen.shopr.util;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class ShoprEndpoints {
     public static final String CREATE_GAME= "creategame.xhtml";
-    public static final String CREATE_BOOKFICTION= "bookfiction.xhtml";
-    public static final String CREATE_BOOKNONFICTION= "booknonfiction.xhtml";
+    public static final String CREATE_BOOKFICTION= "createbookfiction.xhtml";
+    public static final String CREATE_BOOKNONFICTION= "createbooknonfiction.xhtml";
     public static final String CREATE_LP = "createlp.xhtml";
     public static final String DETAIL_GAME = "detailgame.xhtml";
     public static final String DETAIL_LP= "detaillp.xhtml";

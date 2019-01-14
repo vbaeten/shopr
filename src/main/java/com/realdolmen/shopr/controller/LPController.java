@@ -48,8 +48,8 @@ public class LPController {
         return ShoprEndpoints.OVERVIEW;
     }
 
-    public String removeLP(LP lp) {
-        lpService.remove(lp);
+    public String removeLPById(Long articleId) {
+        lpService.removeById(articleId);
         return ShoprEndpoints.OVERVIEW;
     }
 

@@ -29,13 +29,13 @@ public class UserController implements Serializable {
         this.userService.remove(user);
     }
 
-//    public String sayHello(User loggedInUser) {
-////        if (loggedInUser.getFirstName().hashCode() > 0) {
-////            return " Hello " + loggedInUser.getFirstName();
-////        } else {
-////            return "";
-////        }
-////    }
+    public String sayHello(User loggedInUser) {
+        if (loggedInUser.getUserId() != null) {
+            return " Hello " + loggedInUser.getFirstName();
+        } else {
+            return "";
+        }
+    }
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");

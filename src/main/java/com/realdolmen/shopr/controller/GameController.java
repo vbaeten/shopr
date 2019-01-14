@@ -48,8 +48,8 @@ public class GameController {
         return ShoprEndpoints.OVERVIEW;
     }
 
-    public String removeGame(Game game) {
-        gameService.remove(game);
+    public String removeGameById(Long articleId) {
+        gameService.removeById(articleId);
         return ShoprEndpoints.OVERVIEW;
     }
 
