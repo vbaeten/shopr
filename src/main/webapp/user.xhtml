@@ -18,12 +18,20 @@
                 <f:event type="preRenderView" listener="#{loginBean.init}"/>
             </f:metadata>
             <b:container>
+
                 <b:panel>
                     <p>Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!</p>
                     <p>Your Orders</p>
-                    <b:dataTable>
-
+                    <b:form>
+                    <b:dataTable value="#{orderController.findOrdersByUserId(loginBean.loggedUser.id)}" var="order">
+                        <b:dataTableColumn width="10px" value ="#{order.id}"/>
+                        <b:dataTableColumn value ="#{order.orderDate}"/>
+                        <b:dataTableColumn value ="#{order.total}"/>
+                        <b:dataTableColumn>
+                            <b:commandButton value="details"/>
+                        </b:dataTableColumn>
                     </b:dataTable>
+                </b:form>
                 </b:panel>
             </b:container>
         </ui:define>

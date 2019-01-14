@@ -36,15 +36,22 @@ public class Order implements Serializable {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    public double calculateTotal() {
+    private double total;
+
+    public double getTotal() {
         double total = 0;
         for (OrderLine orderLine : orderLines) {
-            total += orderLine.calculateSubtotal();
+            double subTotal = orderLine.getSubTotal();
+            total += subTotal;
         }
         return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public int getId() {

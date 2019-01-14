@@ -18,8 +18,13 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
+    public List<Order> findOrdersByUser(User user) {
+        return orderRepository.findByUser(user);
+    }
+
     public void createOrder(Order order) {
         orderRepository.createOrder(order);
     }
+
 
 }

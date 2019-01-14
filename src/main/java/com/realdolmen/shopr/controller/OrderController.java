@@ -2,6 +2,7 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.OrderService;
 import com.realdolmen.shopr.service.ShoppingCartService;
@@ -38,7 +39,19 @@ public class OrderController {
         orderService.createOrder(newOrder);
     }
 
+    public List<Order> findOrdersByUserId(int id) {
+        return orderService.findOrdersByUser(userService.findUserById(id));
+    }
+
     public void orderCart(int cartId) {
 
+    }
+
+    public Order getNewOrder() {
+        return newOrder;
+    }
+
+    public void setNewOrder(Order newOrder) {
+        this.newOrder = newOrder;
     }
 }
