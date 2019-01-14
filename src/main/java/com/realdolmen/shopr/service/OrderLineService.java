@@ -36,9 +36,9 @@ public class OrderLineService {
         orderLineRepository.insertOrderLine(orderLine);
     }
 
-    public void sendToOrder(OrderLine orderLine, Order order) {
-        orderLine.setOrdered(true);
-        orderLine.setOrder(order);
+    public void sendToOrder(int id, Order order) {
+        OrderLine orderline = orderLineRepository.findById(id);
+        orderline.setOrder(order);
     }
 
 

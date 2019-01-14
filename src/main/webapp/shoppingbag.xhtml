@@ -41,7 +41,7 @@
                 <h:outputText value="Shoppingbag of #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}"/>
                 <b:form>
                     <b:commandButton value="Order"
-                                     actionListener="#{orderController.submitOrder(loginBean.loggedUser.id, orderLineController.getOrderLinesByUser(loginBean.loggedUser.id))}"/>
+                                     actionListener="#{orderController.submitOrder(loginBean.loggedUser.id)}"/>
                     <b:commandButton value="Empty List"/>
                 </b:form>
             </b:container>

@@ -59,7 +59,7 @@ public class ShoppingCartController implements Serializable {
     }
 
     public void removeFromCart (int id) {
-        orderLineService.removeOrderLine(orderLine);
+        orderLineService.deleteOrderLine(id);
     }
 
     public ShoppingCart loadShoppingCartCheck(int userId) {

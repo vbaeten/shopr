@@ -58,8 +58,8 @@ public class OrderLineController implements Serializable {
         this.orderLineService.deleteOrderLine(id);
     }
 
-    public void removeOrderLine (int id) {
-        orderLineService.removeOrderLine(orderLineService.findOrderLineById(id));
+    public void sendToOrder (int id, Order order) {
+        this.orderLineService.sendToOrder(id, order);
     }
 
     public List<OrderLine> getOrderLines() {

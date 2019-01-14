@@ -18,9 +18,9 @@
                 <f:event type="preRenderView" listener="#{loginBean.init}"/>
             </f:metadata>
             <b:container>
-
                 <b:panel>
                     <p>Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!</p>
+                    <h3>Change your things here. </h3>
                     <p>Your Orders</p>
                     <b:form>
                     <b:dataTable value="#{orderController.findOrdersByUserId(loginBean.loggedUser.id)}" var="order">

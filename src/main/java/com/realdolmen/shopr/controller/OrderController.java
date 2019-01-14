@@ -19,9 +19,6 @@ import java.util.List;
 @ViewScoped
 public class OrderController {
 
-    private Order newOrder = new Order();
-    private List<OrderLine> orderLines = new ArrayList<OrderLine>();
-
     @Inject
     private OrderService orderService;
     @Inject
@@ -31,12 +28,20 @@ public class OrderController {
     @Inject
     private ShoppingCartService shoppingCartService;
 
-    public void submitOrder(int userId, List<OrderLine> orderLines) {
+    private Order newOrder = new Order();
+    private List<OrderLine> orderLines = new ArrayList<OrderLine>();
+    private OrderLine orderLine;
+
+    public void submitOrder(int userId) {
         newOrder = new Order();
+        orderLines = orderLineService.findOrderLinesByUser(userService.findUserById(userId));
         newOrder.setUser(userService.findUserById(userId));
         newOrder.setOrderDate(new Timestamp(System.currentTimeMillis()));
         newOrder.setOrderLines(orderLines);
         orderService.createOrder(newOrder);
+        for (OrderLine orderLine: orderLines) {
+            orderLineService.sendToOrder(orderLine.getId(), newOrder);
+        }
     }
 
     public List<Order> findOrdersByUserId(int id) {
