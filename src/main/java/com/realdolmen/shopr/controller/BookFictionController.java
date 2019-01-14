@@ -1,9 +1,9 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.BookFiction;
-import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.enums.BookGenre;
 import com.realdolmen.shopr.service.BookFictionService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -22,7 +22,7 @@ public class BookFictionController {
     }
 
     public List<BookFiction> getBookFictions() {
-        return this.bookFictionService.findAllBookFictions();
+        return this.bookFictionService.findAll();
     }
 
     public List<BookGenre> getBookGenres() {
@@ -34,7 +34,7 @@ public class BookFictionController {
     }
 
     public String update(BookFiction bookFiction) {this.bookFictionService.update(bookFiction);
-        return "overview.xhtml?faces-redirect=true";
+        return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public BookFiction getBookFictionbyId(Long articleId) {
@@ -43,12 +43,12 @@ public class BookFictionController {
 
     public String saveBookFiction() {
         this.bookFictionService.insert(bookFiction);
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String removeBookFiction(BookFiction bookFiction) {
         bookFictionService.removeBookFictionByArticleId(bookFiction.getArticleId());
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public BookFiction getBookFiction() {

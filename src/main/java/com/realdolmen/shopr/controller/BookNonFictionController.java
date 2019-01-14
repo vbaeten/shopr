@@ -4,6 +4,7 @@ import com.realdolmen.shopr.domain.BookNonFiction;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.enums.BookSubjectNF;
 import com.realdolmen.shopr.service.BookNonFictionService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -35,7 +36,7 @@ public class BookNonFictionController {
     }
 
     public String update(BookNonFiction bookNonFiction) {this.bookNonFictionService.update(bookNonFiction);
-        return "overview.xhtml?faces-redirect=true";
+        return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public BookNonFiction getBookNonFictionbyId(Long articleId) {
@@ -44,12 +45,12 @@ public class BookNonFictionController {
 
     public String saveBookNonFiction() {
         this.bookNonFictionService.insert(bookNonFiction);
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String removeBookNonFiction(BookNonFiction bookNonFiction) {
         bookNonFictionService.removeBookNonFictionByArticleId(bookNonFiction.getArticleId());
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public BookNonFiction getBookNonFiction() {

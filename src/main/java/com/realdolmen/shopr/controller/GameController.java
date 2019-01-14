@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.enums.GameGenre;
 import com.realdolmen.shopr.service.GameService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -35,7 +36,7 @@ public class GameController {
     }
 
     public String update(Game game) {this.gameService.update(game);
-        return "overview.xhtml?faces-redirect=true";
+        return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public Game getGamebyArticleId(Long articleId) {
@@ -44,12 +45,12 @@ public class GameController {
 
     public String saveGame() {
         this.gameService.insert(game);
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String removeGame(Game game) {
         gameService.removeByArticleId(game.getArticleId());
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public Game getGame() {

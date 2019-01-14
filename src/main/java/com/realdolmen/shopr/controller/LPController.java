@@ -4,6 +4,8 @@ import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.domain.LP;
 import com.realdolmen.shopr.domain.enums.LPMusicGenre;
 import com.realdolmen.shopr.service.LPService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -34,7 +36,7 @@ public class LPController {
     }
 
     public String update(LP lp) {this.lpService.update(lp);
-        return "overview.xhtml?faces-redirect=true";
+        return  ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public LP getLPbyId(Long articleId) {
@@ -43,12 +45,12 @@ public class LPController {
 
     public String saveLP() {
         this.lpService.insert(lp);
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String removeLP(LP lp) {
         lpService.removeLPByArticleId(lp.getArticleId());
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public LP getLP() {

@@ -1,36 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="templates/template.xhtml">
 <f:metadata>
     <f:viewParam name="gameId" value="#{gameController.game.articleId}"/>
     <f:event type="preRenderView" listener="#{gameController.initDetailView(param.articleId)}"/>
 </f:metadata>
-<h:body>
-    <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
+            <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
             <b:panel title="Update Game" collapsible="false">
-
+                <c:set var="game" value="#{gameController.game}"/>
                 <b:form>
                     <b:container>
                         <b:row>
                             <b:column medium-screen="4">
-                                <b:inputText placeholder="#{gameController.game.title}" value="#{gameController.game.title}" required="true" label="Title" />
-                                <b:inputText placeholder="#{gameController.game.price}" value="#{gameController.game.price}" required="true" label="Price" />
-                                <b:inputText placeholder="#{gameController.game.supplierId}" value="#{gameController.game.supplierId}" required="true" label="SupplierId" />
-                                <b:inputText placeholder="#{gameController.game.publisher}" value="#{gameController.game.publisher}" required="true" label="Publisher" />
-                                <b:inputText placeholder="#{gameController.game.minimumAge}" value="#{gameController.game.minimumAge}" required="true" label="Minimum Age" />
-                                <b:selectOneMenu placeholder="#{gameController.game.gameGenre}" value="#{gameController.game.gameGenre}" ajax="true" label="Game genre">
+                                <b:inputText placeholder="#{game.title}" value="#{game.title}" required="true" label="Title" />
+                                <b:inputText placeholder="#{game.price}" value="#{game.price}" required="true" label="Price" />
+                                <b:inputText placeholder="#{game.supplierId}" value="#{game.supplierId}" required="true" label="SupplierId" />
+                                <b:inputText placeholder="#{game.publisher}" value="#{game.publisher}" required="true" label="Publisher" />
+                                <b:inputText placeholder="#{game.minimumAge}" value="#{game.minimumAge}" required="true" label="Minimum Age" />
+                                <b:selectOneMenu placeholder="#{game.gameGenre}" value="#{game.gameGenre}" ajax="true" label="Game genre">
                                     <f:selectItems value="#{gameController.gameGenres}" var="gameGenre"
                                                    itemValue="#{gameGenre}" itemLabel="#{gameGenre}" />
                                 </b:selectOneMenu>
-                                <b:commandButton action="#{gameController.update(gameController.game)}" value="Update this game"
+                                <b:commandButton action="#{gameController.update(game)}" value="Update this game"
                                                  look="info" />
                             </b:column>
                         </b:row>
@@ -39,5 +34,3 @@
             </b:panel>
         </ui:define>
     </ui:composition>
-</h:body>
-</html>

@@ -1,63 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
-<h:head><title>ShopR!</title></h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="templates/template.xhtml">
 <f:metadata>
     <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.articleId)}" />
 </f:metadata>
-<h:body>
-    <ui:composition template="templates/template.xhtml">
         <ui:define name="content">
+            <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
             <b:panel title="Non Fiction Book Detail" collapsible="false">
+                <c:set var="bookNonFiction" value="#{bookNonFictionController.bookNonFiction}"/>
                 <b:form>
                     <b:container>
                         <b:row>
                             <b:column medium-screen="4">
                                 <h:outputLabel value="type:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.type}"/>
+                                <h:outputText value="  #{bookNonFiction.type}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="title:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.title}"/>
+                                <h:outputText value="  #{bookNonFiction.title}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="price:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.price}"/>
+                                <h:outputText value="  #{bookNonFiction.price}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Author:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.author}"/>
+                                <h:outputText value="  #{bookNonFiction.author}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Isbn:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.isbn}"/>
+                                <h:outputText value="  #{bookNonFiction.isbn}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Number of pages:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.numberOfPages}"/>
+                                <h:outputText value="  #{bookNonFiction.numberOfPages}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Book Subject:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.bookSubjectNF}"/>
+                                <h:outputText value="  #{bookNonFiction.bookSubjectNF}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Supplier Id"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.supplierId}"/>
+                                <h:outputText value="  #{bookNonFiction.supplierId}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Product code:"/>
-                                <h:outputText value="  #{bookNonFictionController.bookNonFiction.articleId}"/>
+                                <h:outputText value="  #{bookNonFiction.articleId}"/>
                                 <br/>
                                 <br/>
                             </b:column>
                         </b:row>
                     </b:container>
                     <h:link value="Edit" outcome="updatebooknonfiction">
-                        <f:param name="articleId" value="#{bookNonFictionController.bookNonFiction.articleId}" />
+                        <f:param name="articleId" value="#{bookNonFiction.articleId}" />
                     </h:link>
                     <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFiction(bookNonFictionController.bookNonFiction)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
@@ -76,5 +74,3 @@
             </b:form>
 </ui:define>
 </ui:composition>
-</h:body>
-</html>

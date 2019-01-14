@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
-<h:head><title>ShopR!</title></h:head>
-<h:body>
-    <ui:composition template="templates/template.xhtml">
-        <ui:define name="content">
-    <p>What article would you like to add to Shopr?</p>
-    <h:form>
-        <b:dropButton value="Choose article type" size="md" look="primary">
-            <b:navLink value="Fiction Book" href="createbookfiction.xhtml"></b:navLink>
-            <b:navLink value="Non Fiction Book" href="createbooknonfiction.xhtml"></b:navLink>
-            <b:navLink value="Game" href="creategame.xhtml"></b:navLink>
-            <b:navLink value="LP" href="createlp.xhtml"></b:navLink>
-        </b:dropButton>
-    </h:form>
-</ui:define>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
+                template="templates/template.xhtml">
+    <ui:define name="content">
+        <!--@elvariable id="ShoprEndpoints" type="com.realdolmen.shopr.util.ShoprEndpoints"-->
+        <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
+        <p>What article would you like to add to Shopr?</p>
+        <h:form>
+            <b:dropButton value="Choose article type" size="md" look="primary">
+                <b:navLink value="Fiction Book" outcome="createbookfiction.xhtml" />
+                <b:navLink value="Non Fiction Book" outcome="createbooknonfiction.xhtml"/>
+                <b:navLink value="Game" outcome="creategame.xhtml"/>
+                <b:navLink value="LP" outcome="createlp.xhtml"/>
+            </b:dropButton>
+        </h:form>
+    </ui:define>
 </ui:composition>
-</h:body>
-</html>

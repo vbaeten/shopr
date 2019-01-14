@@ -2,6 +2,7 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -38,7 +39,7 @@ public class UserController implements Serializable {
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");
 
-        return "index?faces-redirect=true";
+        return ShoprEndpoints.INDEX + "?faces-redirect=true";
     }
 
     public User getLoggedInUser() {

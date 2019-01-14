@@ -1,67 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
-<h:head><title>ShopR!</title></h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="templates/template.xhtml">
 <f:metadata>
     <f:event type="preRenderView" listener="#{bookFictionController.initDetailView(param.articleId)}" />
 </f:metadata>
-<h:body>
-    <ui:composition template="templates/template.xhtml">
+
         <ui:define name="content">
+            <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
             <b:panel title="Fiction Book Detail" collapsible="false">
+                <c:set var="bookFiction" value="#{bookFictionController.bookFiction}"/>
                 <b:form>
                     <b:container>
                         <b:row>
                             <b:column medium-screen="4">
                                 <h:outputLabel value="type:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.type}"/>
+                                <h:outputText value="  #{bookFiction.type}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="title:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.title}"/>
+                                <h:outputText value="  #{bookFiction.title}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="price:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.price}"/>
+                                <h:outputText value="  #{bookFiction.price}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Author:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.author}"/>
+                                <h:outputText value="  #{bookFiction.author}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Isbn:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.isbn}"/>
+                                <h:outputText value="  #{bookFiction.isbn}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Number of pages:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.numberOfPages}"/>
+                                <h:outputText value="  #{bookFiction.numberOfPages}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Book Genre:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.bookGenre}"/>
+                                <h:outputText value="  #{bookFiction.bookGenre}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Supplier Id"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.supplierId}"/>
+                                <h:outputText value="  #{bookFiction.supplierId}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Product code:"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.articleId}"/>
+                                <h:outputText value="  #{bookFiction.articleId}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Summary"/>
-                                <h:outputText value="  #{bookFictionController.bookFiction.summary}"/>
+                                <h:outputText value="  #{bookFiction.summary}"/>
                                 <br/>
                                 <br/>
                             </b:column>
                         </b:row>
                     </b:container>
                     <h:link value="Edit" outcome="updatebookfiction">
-                        <f:param name="articleId" value="#{bookFictionController.bookFiction.articleId}" />
+                        <f:param name="articleId" value="#{bookFiction.articleId}" />
                     </h:link>
                     <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
@@ -80,5 +79,3 @@
             </b:form>
 </ui:define>
 </ui:composition>
-</h:body>
-</html>

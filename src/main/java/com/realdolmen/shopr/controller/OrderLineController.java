@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.OrderLineService;
+import com.realdolmen.shopr.util.ShoprEndpoints;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,11 +30,11 @@ public class OrderLineController {
 
     public String reset(){
         this.sessionOrderLines.clear();
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String continueShopping (){
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public String placeOrder(ArrayList<OrderLine> sessionOrderLines){
@@ -61,7 +62,7 @@ public class OrderLineController {
         }else{
            orderLine.ifPresent(orderLine1 -> orderLine1.setQuantity(orderLine1.getQuantity().add(quantity)));
         }
-        return "orderlineselected";
+        return ShoprEndpoints.SHOPPING_CART;
     }
 
     public void add(OrderLine orderLine) {
@@ -74,7 +75,7 @@ public class OrderLineController {
 
     public String removeOrderLine(OrderLine orderLine) {
         orderLineService.removeByOrderlineId(orderLine.getOrderlineId());
-        return "overview";
+        return ShoprEndpoints.OVERVIEW;
     }
 
     public OrderLine getOrderLine() {

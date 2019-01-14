@@ -16,10 +16,10 @@ public class ArticleController {
     private ArticleService articleService;
 
     public List<Article> getArticles() {
-        return this.articleService.findAllArticles();
+        return this.articleService.findAll();
     }
 
     public void removeArticle(Article article) {
-        articleService.removeArticleById(article.getArticleId());
+        articleService.remove(article); //TODO ellis
     }
 }

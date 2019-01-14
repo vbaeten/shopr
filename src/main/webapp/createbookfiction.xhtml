@@ -1,41 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
-<h:head><title>ShopR!</title></h:head>
-<h:body>
-    <ui:composition template="templates/template.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="templates/template.xhtml">
         <ui:define name="content">
-    <b:panel title="Create a Fiction Book" collapsible="false">
-        <b:form>
-        <b:panelGrid columns="2">
-            <b:inputText value="#{bookFictionController.bookFiction.title}"
-                         label="Title" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.price}"
-                         label="Price" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.supplierId}"
-                         label="Supplier Id" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.author}"
-                         label="Author" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.isbn}"
-                         label="Isbn" render-label="true"/>
-            <b:inputText value="#{bookFictionController.bookFiction.numberOfPages}"
-                         label="Number Of Pages" render-label="true"/>
-            <b:inputTextarea placeholder="Type summary here..." value="#{bookFictionController.bookFiction.summary}" label="Summary">
-            </b:inputTextarea>
-            <b:selectOneMenu value="#{bookFictionController.bookFiction.bookGenre}" ajax="true" label="Choose bookgenre">
-                <f:selectItems value="#{bookFictionController.bookGenres}" var="bookGenre"
-                               itemValue="#{bookGenre}" itemLabel="#{bookGenre}" />
-            </b:selectOneMenu>
-            <b:commandButton action="#{bookFictionController.saveBookFiction}" value="Add this book"
-                             look="info" />
-        </b:panelGrid>
-        </b:form>
-    </b:panel>
-</ui:define>
-</ui:composition>
-</h:body>
-</html>
+            <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
+            <b:panel title="Create a Fiction Book" collapsible="false">
+                <c:set var="bookFiction" value="#{bookFictionController.bookFiction}"/>
+                <b:form>
+                    <b:panelGrid columns="2">
+                        <b:inputText value="#{bookFiction.title}"
+                                     label="Title" render-label="true"/>
+                        <b:inputText value="#{bookFiction.price}"
+                                     label="Price" render-label="true"/>
+                        <b:inputText value="#{bookFiction.supplierId}"
+                                     label="Supplier Id" render-label="true"/>
+                        <b:inputText value="#{bookFiction.author}"
+                                     label="Author" render-label="true"/>
+                        <b:inputText value="#{bookFiction.isbn}"
+                                     label="Isbn" render-label="true"/>
+                        <b:inputText value="#{bookFiction.numberOfPages}"
+                                     label="Number Of Pages" render-label="true"/>
+                        <b:inputTextarea placeholder="Type summary here..."
+                                         value="#{bookFiction.summary}" label="Summary">
+                        </b:inputTextarea>
+                        <b:selectOneMenu value="#{bookFiction.bookGenre}" ajax="true"
+                                         label="Choose bookgenre">
+                            <f:selectItems value="#{bookFictionController.bookGenres}" var="bookGenre"
+                                           itemValue="#{bookGenre}" itemLabel="#{bookGenre}"/>
+                        </b:selectOneMenu>
+                        <b:commandButton action="#{bookFictionController.saveBookFiction}" value="Add this book"
+                                         look="info"/>
+                    </b:panelGrid>
+                </b:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
