@@ -7,27 +7,18 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 @Stateless
-public class ArticleService {
+public class ArticleService extends CrudService<Article, Long>{
     @Inject
     private ArticleRepository articleRepository;
 
-    public List<Article> findAllArticles() {
-        List<Article> articles = articleRepository.findAll();
-        return articles;
+    @Override
+    CrudRepository<Article, Long> getRepository() {
+        return articleRepository;
     }
 
     public void updateTitle(Long articleId, String newTitle) {
-        Article article = articleRepository.findByArticleId(articleId);
+        Article article = articleRepository.findByPrimaryKey(articleId);
         article.setTitle(newTitle);
-    }
-
-    public Article findById(Long articleId){
-        return articleRepository.findByArticleId(articleId);
-    }
-
-    public void removeArticleById (Long articleId) {
-        Article article = articleRepository.findByArticleId(articleId);
-        articleRepository.remove(article);
     }
 
 }

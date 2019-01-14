@@ -53,7 +53,7 @@
                 <h:link value="Edit" outcome="updategame">
                     <f:param name="articleId" value="#{game.articleId}" />
                 </h:link>
-                <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(gameController.game)}" >
+                <b:commandButton value="delete" look="danger" immediate="true" action="#{gameController.removeGame(game)}" >
                     <f:param name="articleId" value="#{param.articleId}"/>
                 </b:commandButton>
             </b:form>
@@ -62,7 +62,7 @@
                 <b:panelGrid columns="1">
                     <b:inputText value="#{orderLineController.orderLine.quantity}"
                                  label="Quantity" render-label="true"/>
-                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, gameController.game)}" value="Add to shoppingcart"
+                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, game)}" value="Add to shoppingcart"
                                      look="primary" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
@@ -70,5 +70,3 @@
             </b:form>
 </ui:define>
 </ui:composition>
-</h:body>
-</html>

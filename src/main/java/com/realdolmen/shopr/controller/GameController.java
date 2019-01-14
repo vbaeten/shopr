@@ -20,11 +20,11 @@ public class GameController {
     private Game game = new Game();
 
     public void initDetailView(Long articleId) {
-        this.game = gameService.findGameByArticleId(articleId);
+        this.game = gameService.findByPrimaryKey(articleId);
     }
 
     public List<Game> getGames() {
-        return this.gameService.findAllGames();
+        return this.gameService.findAll();
     }
 
     public List<GameGenre> getGameGenres() {
@@ -40,7 +40,7 @@ public class GameController {
     }
 
     public Game getGamebyArticleId(Long articleId) {
-        return gameService.findGameByArticleId(articleId);
+        return gameService.findByPrimaryKey(articleId);
     }
 
     public String saveGame() {
@@ -49,7 +49,7 @@ public class GameController {
     }
 
     public String removeGame(Game game) {
-        gameService.removeByArticleId(game.getArticleId());
+        gameService.remove(game);
         return ShoprEndpoints.OVERVIEW;
     }
 

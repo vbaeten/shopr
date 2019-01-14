@@ -25,8 +25,7 @@ public abstract class Article {
     @Size(max = 100 )
     @NotNull
     private String supplierId;
-    @ManyToOne
-    private Rating rating;
+
     @Column(insertable = false, updatable = false)
     private String type;
 
@@ -39,13 +38,6 @@ public abstract class Article {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Article(String title, BigDecimal price, String supplierId, Rating rating) {
-        this.title = title;
-        this.price = price;
-        this.supplierId = supplierId;
-        this.rating = rating;
     }
 
     public Article(String title, BigDecimal price, String supplierId) {

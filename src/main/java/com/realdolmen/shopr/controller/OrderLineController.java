@@ -70,11 +70,11 @@ public class OrderLineController {
     }
 
     public OrderLine getOrderLinebyId(Long orderlineId) {
-        return orderLineService.findOrderLineById(orderlineId);
+        return orderLineService.findByPrimaryKey(orderlineId);
     }
 
     public String removeOrderLine(OrderLine orderLine) {
-        orderLineService.removeByOrderlineId(orderLine.getOrderlineId());
+        orderLineService.remove(orderLine);
         return ShoprEndpoints.OVERVIEW;
     }
 
@@ -102,7 +102,7 @@ public class OrderLineController {
     }
 
     public List<OrderLine> getOrderLines() {
-        return this.orderLineService.findAllOrderLines();
+        return this.orderLineService.findAll();
     }
 
     public BigDecimal getTotalPrice() {

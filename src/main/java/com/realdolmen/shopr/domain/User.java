@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private Long userId;
     @Column(name = "name")
     private String name;
     @Column(name = "firstname")
@@ -44,18 +44,7 @@ public class User implements Serializable {
         this.orders = orders;
     }
 
-    @OneToMany
-    private List<Rating> ratings;
-
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
-
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 

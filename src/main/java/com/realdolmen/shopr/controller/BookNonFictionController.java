@@ -20,11 +20,11 @@ public class BookNonFictionController {
     private BookNonFiction bookNonFiction = new BookNonFiction();
 
     public void initDetailView(Long articleId) {
-        this.bookNonFiction = bookNonFictionService.findBookNonFictionByArticleId(articleId);
+        this.bookNonFiction = bookNonFictionService.findByPrimaryKey(articleId);
     }
 
     public List<BookNonFiction> getBookNonFictions() {
-        return this.bookNonFictionService.findAllBooksNonFiction();
+        return this.bookNonFictionService.findAll();
     }
 
     public List<BookSubjectNF> getBookNonFictionSubjects() {
@@ -40,7 +40,7 @@ public class BookNonFictionController {
     }
 
     public BookNonFiction getBookNonFictionbyId(Long articleId) {
-        return bookNonFictionService.findBookNonFictionByArticleId(articleId);
+        return bookNonFictionService.findByPrimaryKey(articleId);
     }
 
     public String saveBookNonFiction() {
@@ -49,7 +49,7 @@ public class BookNonFictionController {
     }
 
     public String removeBookNonFiction(BookNonFiction bookNonFiction) {
-        bookNonFictionService.removeBookNonFictionByArticleId(bookNonFiction.getArticleId());
+        bookNonFictionService.remove(bookNonFiction);
         return ShoprEndpoints.OVERVIEW;
     }
 

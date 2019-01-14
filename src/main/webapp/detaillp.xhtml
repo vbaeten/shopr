@@ -16,40 +16,40 @@
                         <b:row>
                             <b:column medium-screen="4">
                                 <h:outputLabel value="type:"/>
-                                <h:outputText value="  #{LP.type}"/>
+                                <h:outputText value="  #{lp.type}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="title:"/>
-                                <h:outputText value="  #{LP.title}"/>
+                                <h:outputText value="  #{lp.title}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="price:"/>
-                                <h:outputText value="  #{LP.price}"/>
+                                <h:outputText value="  #{lp.price}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="artist:"/>
-                                <h:outputText value="  #{LP.artist}"/>
+                                <h:outputText value="  #{lp.artist}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Music Genre:"/>
-                                <h:outputText value="  #{LP.LPMusicGenre}"/>
+                                <h:outputText value="  #{lp.LPMusicGenre}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Supplier Id"/>
-                                <h:outputText value="  #{LP.supplierId}"/>
+                                <h:outputText value="  #{lp.supplierId}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Product Id:"/>
-                                <h:outputText value="  #{LP.articleId}"/>
+                                <h:outputText value="  #{lp.articleId}"/>
                                 <br/>
                                 <br/>
                             </b:column>
                         </b:row>
                     </b:container>
                     <h:link value="Edit" outcome="updatelp">
-                        <f:param name="articleId" value="#{LP.articleId}" />
+                        <f:param name="articleId" value="#{lp.articleId}" />
                     </h:link>
-                    <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lPController.LP)}" >
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{lPController.removeLP(lp)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
                 </b:form>
@@ -58,7 +58,7 @@
                 <b:panelGrid columns="1">
                     <b:inputText placeholder="1" value="#{orderLineController.orderLine.quantity}"
                                  label="Quantity" render-label="true"/>
-                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, lPController.LP)}" value="Add to shoppingcart"
+                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, lp)}" value="Add to shoppingcart"
                                      look="primary" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
@@ -66,5 +66,3 @@
             </b:form>
 </ui:define>
 </ui:composition>
-</h:body>
-</html>

@@ -18,7 +18,7 @@ public class BookFictionController {
     private BookFiction bookFiction = new BookFiction();
 
     public void initDetailView(Long articleId) {
-        this.bookFiction = bookFictionService.findBookFictionByArticleId(articleId);
+        this.bookFiction = bookFictionService.findByPrimaryKey(articleId);
     }
 
     public List<BookFiction> getBookFictions() {
@@ -38,7 +38,7 @@ public class BookFictionController {
     }
 
     public BookFiction getBookFictionbyId(Long articleId) {
-        return bookFictionService.findBookFictionByArticleId(articleId);
+        return bookFictionService.findByPrimaryKey(articleId);
     }
 
     public String saveBookFiction() {
@@ -47,7 +47,7 @@ public class BookFictionController {
     }
 
     public String removeBookFiction(BookFiction bookFiction) {
-        bookFictionService.removeBookFictionByArticleId(bookFiction.getArticleId());
+        bookFictionService.remove(bookFiction);
         return ShoprEndpoints.OVERVIEW;
     }
 

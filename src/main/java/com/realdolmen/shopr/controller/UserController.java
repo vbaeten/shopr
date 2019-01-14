@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.xml.stream.events.EndDocument;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,20 +22,20 @@ public class UserController implements Serializable {
     private User loggedInUser = new User();
 
     public List<User> getUsers() {
-        return this.userService.findAllUsers();
+        return this.userService.findAll();
     }
 
-    public void removeUserById(int userId) {
-        this.userService.removeUserByUserId(userId);
+    public void removeUser(User user) {
+        this.userService.remove(user);
     }
 
-    public String sayHello(User loggedInUser) {
-        if (loggedInUser.getUserId() > 0) {
-            return " Hello " + loggedInUser.getFirstName();
-        } else {
-            return "";
-        }
-    }
+//    public String sayHello(User loggedInUser) {
+////        if (loggedInUser.getFirstName().hashCode() > 0) {
+////            return " Hello " + loggedInUser.getFirstName();
+////        } else {
+////            return "";
+////        }
+////    }
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("userController");

@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.repository.CrudRepository;
 import com.realdolmen.shopr.repository.OrderLineRepository;
 
 import javax.ejb.Stateless;
@@ -10,28 +12,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class OrderLineService {
+public class OrderLineService extends CrudService<OrderLine, Long>{
     private BigDecimal totalPrice;
 
     @Inject
     private OrderLineRepository orderLineRepository;
 
-    public OrderLine findOrderLineById(Long orderlineId) {
-        return orderLineRepository.findByOrderLineId(orderlineId);
+    @Override
+    CrudRepository<OrderLine, Long> getRepository() {
+        return orderLineRepository;
     }
 
-    public List<OrderLine> findAllOrderLines() {
-        return orderLineRepository.findAll();
-    }
-
-    public void insert(OrderLine orderLine) {
-        orderLineRepository.insert(orderLine);
-    }
-
-    public void removeByOrderlineId(Long orderlineId) {
-        OrderLine orderLine = orderLineRepository.findByOrderLineId(orderlineId);
-        orderLineRepository.remove(orderLine);
-    }
+//    public OrderLine findOrderLineById(Long orderlineId) {
+//        return orderLineRepository.findByOrderLineId(orderlineId);
+//    }
+//
+//    public List<OrderLine> findAllOrderLines() {
+//        return orderLineRepository.findAll();
+//    }
+//
+//    public void insert(OrderLine orderLine) {
+//        orderLineRepository.insert(orderLine);
+//    }
+//
+//    public void removeByOrderlineId(Long orderlineId) {
+//        OrderLine orderLine = orderLineRepository.findByOrderLineId(orderlineId);
+//        orderLineRepository.remove(orderLine);
+//    }
 
     public BigDecimal calculateSubtotal(BigDecimal quantity, BigDecimal price) {
         return quantity.multiply(price);

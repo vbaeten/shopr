@@ -8,20 +8,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class ArticleRepository {
+public class ArticleRepository extends CrudRepository<Article, Long> {
     @PersistenceContext(unitName = "shoprPU")
     private EntityManager entityManager;
 
-    public Article findByArticleId(Long articleId) {
-        return entityManager.find(Article.class, articleId);
+    @Override
+    EntityManager getEntityManager() {
+        return entityManager;
     }
-
-    public List<Article> findAll() {
-        return entityManager.createQuery("select f from Article f ", Article.class).getResultList();
-    }
-
-    public void remove(Article article) {
-        entityManager.remove(article);}
 
 //    public BookFiction findByTitle(String title) {
 //        return entityManager.createQuery(" select f from BookFiction f where f.title =: title", BookFiction.class).getSingleResult();

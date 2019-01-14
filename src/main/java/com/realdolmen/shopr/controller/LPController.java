@@ -20,11 +20,11 @@ public class LPController {
     private LP lp = new LP();
 
     public void initDetailView(Long articleId) {
-        this.lp = lpService.findLPByArticleId(articleId);
+        this.lp = lpService.findByPrimaryKey(articleId);
     }
 
     public List<LP> getLPs() {
-        return this.lpService.findAllLPS();
+        return this.lpService.findAll();
     }
 
     public List<LPMusicGenre> getLPGenres() {
@@ -40,7 +40,7 @@ public class LPController {
     }
 
     public LP getLPbyId(Long articleId) {
-        return lpService.findLPByArticleId(articleId);
+        return lpService.findByPrimaryKey(articleId);
     }
 
     public String saveLP() {
@@ -49,7 +49,7 @@ public class LPController {
     }
 
     public String removeLP(LP lp) {
-        lpService.removeLPByArticleId(lp.getArticleId());
+        lpService.remove(lp);
         return ShoprEndpoints.OVERVIEW;
     }
 

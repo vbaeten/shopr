@@ -62,7 +62,7 @@
                     <h:link value="Edit" outcome="updatebookfiction">
                         <f:param name="articleId" value="#{bookFiction.articleId}" />
                     </h:link>
-                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFictionController.bookFiction)}" >
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFiction(bookFiction)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
                 </b:form>
@@ -71,7 +71,7 @@
                 <b:panelGrid columns="1">
                     <b:inputText placeholder="1" value="#{orderLineController.orderLine.quantity}"
                                  label="Quantity" render-label="true"/>
-                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, bookFictionController.bookFiction)}" value="Add to shoppingcart"
+                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, bookFiction)}" value="Add to shoppingcart"
                                      look="primary" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
