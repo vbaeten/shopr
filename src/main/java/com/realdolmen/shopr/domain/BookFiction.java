@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @DiscriminatorValue("fiction")
 public class BookFiction extends Book {
     @Column
+    @Enumerated(EnumType.STRING)
     private BookGenre bookGenre;
     @Column
     @Size(max = 255 )

@@ -13,6 +13,7 @@ public class LP extends Article {
     @Column
     private String artist;
     @Column
+    @Enumerated(EnumType.STRING)
     private LPMusicGenre LPMusicGenre;
 
     public LP() {

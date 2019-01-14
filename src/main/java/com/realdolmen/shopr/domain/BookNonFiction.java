@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @DiscriminatorValue("nonfiction")
 public class BookNonFiction extends Book {
     @Column
+    @Enumerated(EnumType.STRING)
     private BookSubjectNF bookSubjectNF;
 
     public BookNonFiction () {
