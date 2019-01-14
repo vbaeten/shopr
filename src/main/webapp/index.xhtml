@@ -6,11 +6,12 @@
 <h:head>
     <title>ShopR!</title>
     <link rel="stylesheet" type="text/css" href="../shopr/styles/style.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
     <link rel="icon" type="image/x-icon" href="images/logo-dragon.Q5"/>
 </h:head>
 <h:body>
-        <img src="#{request.contextPath}/images/logo-dragon.Q5"></img>
+    <img src="#{request.contextPath}/images/logo-dragon.Q5"></img>
 
     <h:form id="registerinForm">
         <p:panel id="panel" header="Register" style="margin-bottom:10px;">
@@ -30,7 +31,8 @@
         <p:panel header="Login" style="margin-bottom:10px;">
             <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel for="user" value="User: "/>
-                <p:selectOneMenu id="user" style="width:150px"
+                <p:selectOneMenu id="user"
+                                 style="width:150px"
                                  value="#{userController.currentUser}"
                                  converter="omnifaces.SelectItemsConverter">
                     <f:selectItem itemLabel="--- Select User ---" noSelectionOption="true"/>
@@ -39,7 +41,7 @@
                                    itemValue="#{loginguser}"
                                    itemLabel="${loginguser.firstName} ${loginguser.name}"/>
                 </p:selectOneMenu>
-                <p:commandButton value="Login" action="#{userController.gotoArticles()}" update="login" />
+                <p:commandButton value="Login" action="#{userController.gotoArticles()}" update="login"/>
             </h:panelGrid>
         </p:panel>
     </h:form>

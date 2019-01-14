@@ -2,23 +2,32 @@ package com.realdolmen.shopr.domain;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Named
-@RequestScoped
-@NamedQueries(
-        {
-
-        })
+@SessionScoped
 public class SearchBean implements Serializable {
+    private Map<String, String> searchParameters = new HashMap<>();
+
     private String searchTitle = new String();
     private int searchId;
     private int searchMinPrice;
     private int searchMaxPrice;
+
+    private List<Article> searchResults = new ArrayList<>();
+
+    private String searchType = new String();
+    private String searchArtist = new String();
 
     @Inject
     SearchBeanService searchBeanService;
@@ -59,5 +68,42 @@ public class SearchBean implements Serializable {
 
     public void setSearchMaxPrice(int searchMaxPrice) {
         this.searchMaxPrice = searchMaxPrice;
+    }
+
+    public String getSearchType() {
+        return searchType;
+    }
+
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
+
+    public String getSearchArtist() {
+        return searchArtist;
+    }
+
+    public void setSearchArtist(String searchArtist) {
+        this.searchArtist = searchArtist;
+    }
+
+    public void search(){
+        searchParameters.put("id", String.valueOf(searchId));
+        searchParameters.put("title", searchTitle);
+        searchParameters.put("min", String.valueOf(searchMinPrice));
+        searchParameters.put("max", String.valueOf(searchMaxPrice));
+
+        searchResults = searchBeanService.search(searchParameters);
+    }
+
+    public void clear(){
+        searchMinPrice = searchBeanService.findMinPrice();
+        searchMaxPrice = searchBeanService.findMaxPrice();
+        searchId = 0;
+        searchTitle = "";
+        searchResults = new ArrayList<>();
+    }
+
+    public List<Article> getSearchResults() {
+        return searchResults;
     }
 }

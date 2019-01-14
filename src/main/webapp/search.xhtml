@@ -11,35 +11,66 @@
     <ui:define name="pageContent">
 
         <p:fieldset legend="Search articles" style="margin-bottom:20px">
-            <h:panelGrid columns="4" cellpadding="5">
-                <p:outputLabel for="typeSearch" value="Article type:"/>
-                <p:selectOneMenu id="typeSearch" style="width:150px" value="#{searchBean.searchId}">
-                    <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{articleController.findAllTypes()}"
-                                   var="articleType"
-                                   itemValue="#{articleType}"
-                                   itemLabel="#{articleType}"/>
-                </p:selectOneMenu>
 
-                <p:outputLabel for="titleSearch" value="Title"/>
-                <p:inputText id="titleSearch" value="#{searchBean.searchTitle}"/>
+            <h:form>
+                <div class="ui-g">
+                    <div class="ui-g-4">
+                        <p:outputLabel for="typeSearch" value="Article type: "/>
+
+                        <p:selectOneMenu id="typeSearch" style="width:150px" value="#{searchBean.searchId}">
+                            <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{articleController.findAllTypes()}"
+                                           var="articleType"
+                                           itemValue="#{articleType}"
+                                           itemLabel="#{articleType}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="ui-g-4">
+                        <p:outputLabel for="titleSearch" value="Title: "/>
+                        <p:inputText id="titleSearch" value="#{searchBean.searchTitle}"/>
+                    </div>
+                    <div class="ui-g-4">
+                        <p:outputLabel for="searchId" value="Id: "/>
+                        <p:inputNumber id="searchId" value="#{searchBean.searchId}" class="width:20px;" decimalPlaces="0"/>
+                    </div>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <h:outputText value="Price:"></h:outputText>
+                    </div>
+                </div>
 
 
-                <h:outputText id="displayRange"
-                              value="Between #{searchBean.searchMinPrice} and #{searchBean.searchMaxPrice}"/>
-                <p:slider for="min, max" display="displayRange" range="true"
-                          displayTemplate="Between {min} and {max}"/>
+                <div class="ui-g">
+                    <div class="ui-g-2">
+                        <h:outputText id="displayRange"
+                                      value="Between #{searchBean.searchMinPrice}€ and #{searchBean.searchMaxPrice}€"/>
+                    </div>
 
-                <h:inputHidden id="min" value="#{searchBean.searchMinPrice}"/>
-                <h:inputHidden id="max" value="#{searchBean.searchMaxPrice}"/>
+                    <div class="ui-g-2">
+                        <p:slider for="min, max"
+                                  display="displayRange"
+                                  range="true"
+                                  displayTemplate="Between {min}€ and {max}€"/>
+                        <h:inputHidden id="min" value="#{searchBean.searchMinPrice}"/>
+                        <h:inputHidden id="max" value="#{searchBean.searchMaxPrice}"/>
+                    </div>
+                </div>
 
+                <p:commandButton value="Search" type="submit" action="#{searchBean.search}" update="searchTable"/>
+                <p:commandButton value="Clear search" action="#{searchBean.clear}" update="@all"/>
+            </h:form>
 
-            </h:panelGrid>
         </p:fieldset>
 
 
-        <p:dataTable var="article"
-                     value="#{articleController.articles}"
+
+
+
+        <p:dataTable id="searchTable"
+                     var="article"
+                     value="#{searchBean.searchResults}"
                      rows="10"
                      paginator="true">
             <p:column headerText="Id">

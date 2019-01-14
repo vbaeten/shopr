@@ -17,6 +17,7 @@ public class UserController implements Serializable {
     private User newUser ;
     private User currentUser ;
 
+
     @Inject
     private UserService userService;
 
