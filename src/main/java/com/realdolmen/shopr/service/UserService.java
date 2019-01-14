@@ -19,30 +19,4 @@ public class UserService extends CrudService<User, Long> {
     CrudRepository<User, Long> getRepository() {
         return userRepository;
     }
-
-//    public User findUserByUserId(Long userId) {
-//        return userRepository.findByPrimaryKey(userId);
-//    }
-//
-//    public List<User> findAllUsers() {
-//        return userRepository.findAll();
-//    }
-//
-//    public User findUserByName(String name) {
-//        return userRepository.findByName(name);
-//    }
-//
-//    public void updateName(Long userId, String newName) {
-//        User user = userRepository.findByPrimaryKey(userId);
-//        user.setName(newName);
-//    }
-//
-//    public void insert(User user) {
-//        userRepository.insert(user);
-//    }
-//
-//    public void removeUserByUserId(Long userId) {
-//        userRepository.removeUserByUserId(userId);
-//    }
-
 }

@@ -16,20 +16,4 @@ public class BookRepository extends CrudRepository<Book, Long> {
     EntityManager getEntityManager() {
         return entityManager;
     }
-
-//    public Book findById(Long articleId) {
-//        return entityManager.find(Book.class, articleId);
-//    }
-//
-//    public List<Book> findAll() {
-//        return entityManager.createQuery("select f from Book f ", Book.class).getResultList();
-//    }
-//
-//    public Book findByTitle(String title) {
-//        return entityManager.createQuery(" select f from Book f where f.title =: title", Book.class).getSingleResult();
-//    }
-//
-//    public void insert(Book book) {
-//        entityManager.persist(book);
-//    }
 }

@@ -3,66 +3,61 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-                template="templates/template.xhtml">
+                template="../templates/template.xhtml">
 <f:metadata>
-    <f:event type="preRenderView" listener="#{bookFictionController.initDetailView(param.articleId)}" />
+    <f:event type="preRenderView" listener="#{bookNonFictionController.initDetailView(param.articleId)}" />
 </f:metadata>
-
         <ui:define name="content">
             <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
-            <b:panel title="Fiction Book Detail" collapsible="false">
-                <c:set var="bookFiction" value="#{bookFictionController.bookFiction}"/>
+            <b:panel title="Non Fiction Book Detail" collapsible="false">
+                <c:set var="bookNonFiction" value="#{bookNonFictionController.bookNonFiction}"/>
                 <b:form>
                     <b:container>
                         <b:row>
                             <b:column medium-screen="4">
                                 <h:outputLabel value="type:"/>
-                                <h:outputText value="  #{bookFiction.type}"/>
+                                <h:outputText value="  #{bookNonFiction.type}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="title:"/>
-                                <h:outputText value="  #{bookFiction.title}"/>
+                                <h:outputText value="  #{bookNonFiction.title}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="price:"/>
-                                <h:outputText value="  #{bookFiction.price}"/>
+                                <h:outputText value="  #{bookNonFiction.price}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Author:"/>
-                                <h:outputText value="  #{bookFiction.author}"/>
+                                <h:outputText value="  #{bookNonFiction.author}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Isbn:"/>
-                                <h:outputText value="  #{bookFiction.isbn}"/>
+                                <h:outputText value="  #{bookNonFiction.isbn}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Number of pages:"/>
-                                <h:outputText value="  #{bookFiction.numberOfPages}"/>
+                                <h:outputText value="  #{bookNonFiction.numberOfPages}"/>
                                 <br/>
                                 <br/>
-                                <h:outputLabel value="Book Genre:"/>
-                                <h:outputText value="  #{bookFiction.bookGenre}"/>
+                                <h:outputLabel value="Book Subject:"/>
+                                <h:outputText value="  #{bookNonFiction.bookSubjectNF}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Supplier Id"/>
-                                <h:outputText value="  #{bookFiction.supplierId}"/>
+                                <h:outputText value="  #{bookNonFiction.supplierId}"/>
                                 <br/>
                                 <br/>
                                 <h:outputLabel value="Product code:"/>
-                                <h:outputText value="  #{bookFiction.articleId}"/>
-                                <br/>
-                                <br/>
-                                <h:outputLabel value="Summary"/>
-                                <h:outputText value="  #{bookFiction.summary}"/>
+                                <h:outputText value="  #{bookNonFiction.articleId}"/>
                                 <br/>
                                 <br/>
                             </b:column>
                         </b:row>
                     </b:container>
-                    <h:link value="Edit" outcome="updatebookfiction">
-                        <f:param name="articleId" value="#{bookFiction.articleId}" />
+                    <h:link value="Edit" outcome="updatebooknonfiction">
+                        <f:param name="articleId" value="#{bookNonFiction.articleId}" />
                     </h:link>
-                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookFictionController.removeBookFictionById(bookFiction.articleId)}" >
+                    <b:commandButton value="delete" look="danger" immediate="true" action="#{bookNonFictionController.removeBookNonFictionById(bookNonFiction.articleId)}" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>
                 </b:form>
@@ -71,7 +66,7 @@
                 <b:panelGrid columns="1">
                     <b:inputText placeholder="1" value="#{orderLineController.orderLine.quantity}"
                                  label="Quantity" render-label="true"/>
-                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, bookFiction)}" value="Add to shoppingcart"
+                    <b:commandButton action="#{orderLineController.createOrderLine(orderLineController.orderLine.quantity, bookNonFiction)}" value="Add to shoppingcart"
                                      look="primary" >
                         <f:param name="articleId" value="#{param.articleId}"/>
                     </b:commandButton>

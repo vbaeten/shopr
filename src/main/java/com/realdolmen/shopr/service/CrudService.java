@@ -30,5 +30,4 @@ public abstract class CrudService<T, PK> {
     public void removeById(PK primaryKey) {
         getRepository().remove(getRepository().findByPrimaryKey(primaryKey));
     }
-
 }

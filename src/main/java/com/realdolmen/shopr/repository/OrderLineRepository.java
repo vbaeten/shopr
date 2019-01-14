@@ -15,18 +15,4 @@ public class OrderLineRepository extends CrudRepository<OrderLine, Long> {
     EntityManager getEntityManager() {
         return entityManager;
     }
-//
-//    public OrderLine findByOrderLineId(Long orderlineId) {
-//        return entityManager.find(OrderLine.class, orderlineId);
-//    }
-//
-//    public List<OrderLine> findAll() {
-//        return entityManager.createQuery("select f from OrderLine f ", OrderLine.class).getResultList();
-//    }
-//
-//    public void insert(OrderLine orderLine) {entityManager.persist(orderLine);
-//    }
-//
-//    public void remove(OrderLine orderLine) {
-//        entityManager.remove(orderLine);}
 }

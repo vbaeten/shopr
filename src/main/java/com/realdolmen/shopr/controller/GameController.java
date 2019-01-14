@@ -44,8 +44,8 @@ public class GameController {
     }
 
     public String saveGame() {
-        this.gameService.insert(game);
-        return ShoprEndpoints.OVERVIEW;
+        this.gameService.update(game);
+        return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 
     public String removeGameById(Long articleId) {

@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.service;
 
-import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.repository.CrudRepository;
 import com.realdolmen.shopr.repository.OrderRepository;

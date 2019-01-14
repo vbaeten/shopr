@@ -19,31 +19,4 @@ public class BookNonFictionService extends CrudService<BookNonFiction, Long>{
     CrudRepository<BookNonFiction, Long> getRepository() {
         return bookNonFictionRepository;
     }
-
-//    public BookNonFiction findBookNonFictionByArticleId(Long articleId) {
-//        return bookNonFictionRepository.findByPrimaryKey(articleId);
-//    }
-//
-//    public List<BookNonFiction> findAllBooksNonFiction() {
-//        return bookNonFictionRepository.findAll();
-//    }
-//
-//    //public BookNonFiction findByTitle(String title) {
-//        return bookNonFictionRepository.findByTitle(title);
-//    }
-//
-//    public void updateTitle(Long articleId, String newTitle) {
-//        BookNonFiction bookNonFiction = bookNonFictionRepository.findByPrimaryKey(articleId);
-//        bookNonFiction.setTitle(newTitle);
-//    }
-//    public void insert(BookNonFiction bookNonFiction) {
-//        bookNonFictionRepository.insert(bookNonFiction);
-//    }
-//
-//    public void update(BookNonFiction bookNonFiction) {bookNonFictionRepository.update(bookNonFiction);}
-//
-//    public void removeBookNonFictionByArticleId (Long articleId) {
-//        BookNonFiction bookNonFiction = bookNonFictionRepository.findByPrimaryKey(articleId);
-//        bookNonFictionRepository.remove(bookNonFiction);
-//    }
 }

@@ -16,14 +16,4 @@ public class OrderRepository extends CrudRepository<Order, Long> {
         return entityManager;
     }
 
-//    public Order findById(Long id) {
-//        return entityManager.find(Order.class, id);
-//    }
-//
-//    public List<Order> findAll() {
-//        return entityManager.createQuery("select f from Order f ", Order.class).getResultList();
-//    }
-//
-//    public void insert(Order order) {entityManager.persist(order);
-//    }
 }

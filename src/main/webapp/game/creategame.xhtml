@@ -3,24 +3,24 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-                template="templates/template.xhtml">
+                template="../templates/template.xhtml">
         <ui:define name="content">
             <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
     <b:panel title="Create Game" collapsible="false">
         <c:set var="game" value="#{gameController.game}"/>
         <b:form>
             <b:panelGrid columns="2">
-                <b:inputText value="#{game.title}"
+                <b:inputText value="#{game.title}" required="true"
                              label="Title" render-label="true"/>
-                <b:inputText value="#{game.price}"
+                <b:inputText value="#{game.price}" required="true"
                              label="Price" render-label="true"/>
-                <b:inputText value="#{game.supplierId}"
+                <b:inputText value="#{game.supplierId}" required="true"
                              label="Supplier Id" render-label="true"/>
-                <b:inputText value="#{game.publisher}"
+                <b:inputText value="#{game.publisher}" required="true"
                              label="Publisher" render-label="true"/>
-                <b:inputText value="#{game.minimumAge}"
+                <b:inputText value="#{game.minimumAge}" required="true"
                              label="Minimum Age" render-label="true"/>
-                <b:selectOneMenu value="#{game.gameGenre}" ajax="true" label="Choose game genre">
+                <b:selectOneMenu value="#{game.gameGenre}" ajax="true" label="Choose game genre" required="true">
                     <f:selectItems value="#{gameController.gameGenres}" var="gameGenre"
                                    itemValue="#{gameGenre}" itemLabel="#{gameGenre}" />
                 </b:selectOneMenu>

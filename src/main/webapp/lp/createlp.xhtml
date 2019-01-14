@@ -3,22 +3,22 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-                template="templates/template.xhtml">
+                template="../templates/template.xhtml">
         <ui:define name="content">
             <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
     <b:panel title="Create LP" collapsible="false">
         <c:set var="lp" value="#{lPController.LP}"/>
         <b:form>
             <b:panelGrid columns="2">
-                <b:inputText value="#{lp.title}"
+                <b:inputText value="#{lp.title}" required="true"
                              label="Title" render-label="true"/>
-                <b:inputText value="#{lp.price}"
+                <b:inputText value="#{lp.price}" required="true"
                              label="Price" render-label="true"/>
-                <b:inputText value="#{lp.supplierId}"
+                <b:inputText value="#{lp.supplierId}" required="true"
                              label="Supplier Id" render-label="true"/>
-                <b:inputText value="#{lp.artist}"
+                <b:inputText value="#{lp.artist}" required="true"
                              label="Artist" render-label="true"/>
-                <b:selectOneMenu value="#{lp.LPMusicGenre}" ajax="true" label="Choose Music genre">
+                <b:selectOneMenu value="#{lp.LPMusicGenre}" ajax="true" label="Choose Music genre" required="true">
                     <f:selectItems value="#{lPController.LPGenres}" var="musicGenre"
                                    itemValue="#{musicGenre}" itemLabel="#{musicGenre}" />
                 </b:selectOneMenu>

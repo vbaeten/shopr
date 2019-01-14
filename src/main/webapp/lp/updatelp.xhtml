@@ -2,7 +2,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-                template="templates/template.xhtml">
+                template="../templates/template.xhtml">
 <f:metadata>
     <f:viewParam name="lpId" value="#{lPController.LP.articleId}"/>
     <f:event type="preRenderView" listener="#{lPController.initDetailView(param.articleId)}"/>
@@ -16,14 +16,14 @@
                         <b:row>
                             <b:column medium-screen="4">
                                 <b:inputText placeholder="#{lp.title}" value="#{lp.title}"
-                                             label="Title" render-label="true"/>
+                                             label="Title" render-label="true" required="true"/>
                                 <b:inputText placeholder="#{lp.price}" value="#{lp.price}"
-                                             label="Price" render-label="true"/>
+                                             label="Price" render-label="true" required="true"/>
                                 <b:inputText placeholder="#{lp.supplierId}" value="#{lp.supplierId}"
-                                             label="Supplier Id" render-label="true"/>
+                                             label="Supplier Id" render-label="true" required="true"/>
                                 <b:inputText placeholder="#{lp.artist}" value="#{lp.artist}"
-                                             label="Artist" render-label="true"/>
-                                <b:selectOneMenu placeholder="#{lp.LPMusicGenre}" value="#{lp.LPMusicGenre}" ajax="true" label="Choose Music genre">
+                                             label="Artist" render-label="true" required="true"/>
+                                <b:selectOneMenu placeholder="#{lp.LPMusicGenre}" value="#{lp.LPMusicGenre}" ajax="true" label="Choose Music genre" required="true">
                                     <f:selectItems value="#{lPController.LPGenres}" var="musicGenre"
                                                    itemValue="#{musicGenre}" itemLabel="#{musicGenre}" />
                                 </b:selectOneMenu>

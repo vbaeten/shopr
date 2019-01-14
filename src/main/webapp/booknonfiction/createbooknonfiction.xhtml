@@ -3,26 +3,26 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui" xmlns:o="http://omnifaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-                template="templates/template.xhtml">
+                template="../templates/template.xhtml">
         <ui:define name="content">
             <o:importConstants type="com.realdolmen.shopr.util.ShoprEndpoints" />
     <b:panel title="Create a Non Fiction Book" collapsible="false">
         <c:set var="bookNonFiction" value="#{bookNonFictionController.bookNonFiction}"/>
         <b:form>
             <b:panelGrid columns="2">
-                <b:inputText value="#{bookNonFiction.title}"
+                <b:inputText value="#{bookNonFiction.title}" required="true"
                              label="Title" render-label="true"/>
-                <b:inputText value="#{bookNonFiction.price}"
+                <b:inputText value="#{bookNonFiction.price}" required="true"
                              label="Price" render-label="true"/>
-                <b:inputText value="#{bookNonFiction.supplierId}"
+                <b:inputText value="#{bookNonFiction.supplierId}" required="true"
                              label="Supplier Id" render-label="true"/>
-                <b:inputText value="#{bookNonFiction.author}"
+                <b:inputText value="#{bookNonFiction.author}" required="true"
                              label="Author" render-label="true"/>
-                <b:inputText value="#{bookNonFiction.isbn}"
+                <b:inputText value="#{bookNonFiction.isbn}" required="true"
                              label="Isbn" render-label="true"/>
-                <b:inputText value="#{bookNonFiction.numberOfPages}"
+                <b:inputText value="#{bookNonFiction.numberOfPages}" required="true"
                              label="Number Of Pages" render-label="true"/>
-                <b:selectOneMenu value="#{bookNonFiction.bookSubjectNF}" ajax="true" label="Choose booksubject">
+                <b:selectOneMenu value="#{bookNonFiction.bookSubjectNF}" ajax="true" label="Choose booksubject" required="true">
                     <f:selectItems value="#{bookNonFictionController.bookNonFictionSubjects}" var="bookSubjectNF"
                                    itemValue="#{bookSubjectNF}" itemLabel="#{bookSubjectNF}" />
                 </b:selectOneMenu>
