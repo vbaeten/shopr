@@ -3,7 +3,6 @@ package com.realdolmen.shopr.domain;
 import com.realdolmen.shopr.domain.enums.BookSubjectNF;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @DiscriminatorValue("nonfiction")

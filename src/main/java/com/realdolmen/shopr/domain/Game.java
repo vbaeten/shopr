@@ -4,7 +4,6 @@ import com.realdolmen.shopr.domain.enums.GameGenre;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
 
 @Entity
 @DiscriminatorValue("game")

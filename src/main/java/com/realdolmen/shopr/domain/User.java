@@ -2,7 +2,6 @@ package com.realdolmen.shopr.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;

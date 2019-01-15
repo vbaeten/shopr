@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.util;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean

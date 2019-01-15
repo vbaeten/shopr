@@ -1,11 +1,11 @@
 package com.realdolmen.shopr.service;
 
-import com.realdolmen.shopr.domain.*;
-import com.realdolmen.shopr.repository.*;
+import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.repository.ArticleRepository;
+import com.realdolmen.shopr.repository.CrudRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.List;
 @Stateless
 public class ArticleService extends CrudService<Article, Long>{
     @Inject

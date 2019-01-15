@@ -1,10 +1,9 @@
 package com.realdolmen.shopr.repository;
 
-import com.realdolmen.shopr.domain.*;
+import com.realdolmen.shopr.domain.BookNonFiction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 public class BookNonFictionRepository extends CrudRepository<BookNonFiction, Long> {
     @PersistenceContext(unitName = "shoprPU")
