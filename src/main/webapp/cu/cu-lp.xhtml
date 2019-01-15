@@ -5,18 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{cuLpController.id}"/>
                 <f:event listener="#{cuLpController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="#{msg['cuLp.panel.header.addLp']}" style="margin-bottom: 10px;">
+            <b:well>
                 <b:form id="addLpForm">
                     <b:inputText placeholder="#{msg['cuLp.inputText.placeholder.title']}" value="#{cuLpController.lp.title}"/>
                     <b:inputText placeholder="#{msg['cuLp.inputText.placeholder.artist']}" value="#{cuLpController.lp.artist}"/>
@@ -36,10 +35,7 @@
                     <b:inputText placeholder="#{msg['cuLp.inputText.placeholder.price']}" value="#{cuLpController.lp.price}"/>
                     <b:commandButton value="#{msg['cuLp.commandButton.submit']}" action="#{cuLpController.submit}"/>
                 </b:form>
-            </p:panel>
-        </ui:define>
-
-        <ui:define name="footer">
+            </b:well>
         </ui:define>
     </ui:composition>
 </h:body>

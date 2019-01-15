@@ -5,33 +5,82 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{gameDetailController.id}"/>
                 <f:event listener="#{gameDetailController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="#{msg['details.panel.header.details']}" style="margin-bottom: 10px;">
-                <h:outputText value="#{gameDetailController.game.title}"/><br/>
-                <h:outputText value="#{gameDetailController.game.publisher}"/><br/>
-                <h:outputText value="#{gameDetailController.game.gameGenre.name}"/><br/>
-                <h:outputText value="#{gameDetailController.game.minAge}"/><br/>
-                <h:outputText value="#{gameDetailController.game.price}"/>
-                <b:form>
-                    <b:commandButton value="#{msg['details.commandButton.delete']}" action="#{gameDetailController.delete}"/><br/>
-                    <h:link value="#{msg['details.link.edit']}" outcome="/cu/cu-game.xhtml" includeViewParams="true">
-                        <f:param id="id" value="#{gameDetailController.game.id}"/>
-                    </h:link>
-                </b:form>
-            </p:panel>
-        </ui:define>
+            <b:row>
+                <b:well>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.title']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{gameDetailController.game.title}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['gameDetail.outputLabel.publisher']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{gameDetailController.game.publisher}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['gameDetail.outputLabel.gameGenre']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{gameDetailController.game.gameGenre.name}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['gameDetail.outputLabel.minAge']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{gameDetailController.game.minAge}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.price']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{gameDetailController.game.price}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-buttons">
+                        <b:column>
+                            <b:form>
+                                <b:commandButton value="#{msg['details.commandButton.delete']}"
+                                                 action="#{gameDetailController.delete}"/>
+                                <h:link styleClass="btn btn-default" value="#{msg['details.link.edit']}" outcome="/cu/cu-game.xhtml" includeViewParams="true">
+                                    <f:param id="id" value="#{gameDetailController.game.id}"/>
+                                </h:link>
+                            </b:form>
+                        </b:column>
+                    </b:row>
+                </b:well>
+            </b:row>
 
-        <ui:define name="footer">
+            <b:row>
+                <b:well>
+                    <b:form>
+                        <b:inputText placeholder="#{msg['details.inputText.amount']}"
+                                     value="#{orderLineController.newOrderLine.amount}"/>
+                        <b:commandButton value="#{msg['details.commandButton.addOrderLine']}"
+                                         action="#{orderLineController.submit(gameDetailController.id)}"/>
+                    </b:form>
+                </b:well>
+            </b:row>
         </ui:define>
     </ui:composition>
 </h:body>

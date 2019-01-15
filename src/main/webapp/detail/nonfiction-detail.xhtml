@@ -5,35 +5,98 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{nonFictionDetailController.id}"/>
                 <f:event listener="#{nonFictionDetailController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="#{msg['details.panel.header.details']}" style="margin-bottom: 10px;">
-                <h:outputText value="#{nonFictionDetailController.nonFiction.title}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.author}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.type}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.nonFictionSubject.name}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.isbn}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.pages}"/><br/>
-                <h:outputText value="#{nonFictionDetailController.nonFiction.price}"/><br/>
-                <b:form>
-                    <b:commandButton value="#{msg['details.commandButton.delete']}" action="#{nonFictionDetailController.delete}"/><br/>
-                    <h:link value="#{msg['details.link.edit']}" outcome="/cu/cu-nonfiction.xhtml" includeViewParams="true">
-                        <f:param id="id" value="#{nonFictionDetailController.nonFiction.id}"/>
-                    </h:link>
-                </b:form>
-            </p:panel>
-        </ui:define>
+            <b:row>
+                <b:well>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.title']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.title}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.author']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.author}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.type']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.type}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['nonFiction.outputLabel.nonFictionSubject']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.nonFictionSubject.name}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.isbn']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.isbn}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.pages']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.pages}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.price']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{nonFictionDetailController.nonFiction.price}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-buttons">
+                        <b:column>
+                            <b:form>
+                                <b:commandButton value="#{msg['details.commandButton.delete']}"
+                                                 action="#{nonFictionDetailController.delete}"/>
+                                <h:link styleClass="btn btn-default" value="#{msg['details.link.edit']}" outcome="/cu/cu-nonFiction.xhtml" includeViewParams="true">
+                                    <f:param id="id" value="#{nonFictionDetailController.nonFiction.id}"/>
+                                </h:link>
+                            </b:form>
+                        </b:column>
+                    </b:row>
+                </b:well>
+            </b:row>
 
-        <ui:define name="footer">
+            <b:row>
+                <b:well>
+                    <b:form>
+                        <b:inputText placeholder="#{msg['details.inputText.amount']}"
+                                     value="#{orderLineController.newOrderLine.amount}"/>
+                        <b:commandButton value="#{msg['details.commandButton.addOrderLine']}"
+                                         action="#{orderLineController.submit(nonFictionDetailController.id)}"/>
+                    </b:form>
+                </b:well>
+            </b:row>
         </ui:define>
     </ui:composition>
 </h:body>

@@ -4,38 +4,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
 
-
 <h:body>
-    <ui:composition template="template/common.xhtml">
+    <ui:composition template="template/template.xhtml">
         <ui:define name="content">
-            <p:panel header="#{msg['index.panel.header.signIn']}" style="margin-bottom: 10px;">
-                <b:form id="selectUserForm">
-                    <b:selectOneMenu value="#{loginController.id}" required="true">
-                        <i class="fas fa-user"/>
-                        <f:selectItem itemLabel="#{msg['index.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems var="user" value="#{loginController.users}" itemValue="#{user.id}"
-                                       itemLabel="#{user.firstName}"/>
-                    </b:selectOneMenu>
-                    <b:commandButton value="#{msg['index.commandButton.login']}" action="#{loginController.logIn}"/>
-                    <b:commandButton value="#{msg['index.commandButton.delete']}" action="#{loginController.deleteNewUser}"
-                                     update="@form"/>
-                </b:form>
-            </p:panel>
+            <b:row>
+                <b:column span="4" offset="1">
+                    <b:well>
+                        <b:form id="selectUserForm">
+                            <b:selectOneMenu value="#{loginController.id}" required="true">
+                                <i class="fas fa-user"/>
+                                <f:selectItem itemLabel="#{msg['login.selectOneMenu.selectItem.pleaseSelect']}" itemValue="" noSelectionOption="true"/>
+                                <f:selectItems var="user" value="#{loginController.users}" itemValue="#{user.id}"
+                                               itemLabel="#{user.firstName}"/>
+                            </b:selectOneMenu>
+                            <b:commandButton value="#{msg['login.commandButton.login']}" action="#{loginController.logIn}"/>
+                            <b:commandButton value="#{msg['login.commandButton.delete']}" action="#{loginController.deleteNewUser}"
+                                             update="@form"/>
+                        </b:form>
+                    </b:well>
+                </b:column>
 
-            <p:panel header="#{msg['index.panel.header.register']}" style="margin-bottom:10px;">
-                <b:form id="addUserForm">
-                    <b:inputText placeholder="#{msg['index.inputText.placeholder.firstName']}" value="#{loginController.newUser.firstName}"/>
-                    <b:inputText placeholder="#{msg['index.inputText.placeholder.lastName']}" value="#{loginController.newUser.name}"/>
-                    <b:commandButton value="#{msg['index.commandButton.addUser']}" action="#{loginController.submit}"/>
-                </b:form>
-            </p:panel>
-        </ui:define>
-
-        <ui:define name="footer">
+                <b:column span="4" offset="2">
+                    <b:well>
+                        <b:form id="addUserForm">
+                            <b:inputText placeholder="#{msg['login.inputText.placeholder.firstName']}" value="#{loginController.newUser.firstName}"/>
+                            <b:inputText placeholder="#{msg['login.inputText.placeholder.lastName']}" value="#{loginController.newUser.name}"/>
+                            <b:commandButton value="#{msg['login.commandButton.addUser']}" action="#{loginController.submit}"/>
+                        </b:form>
+                    </b:well>
+                </b:column>
+            </b:row>
         </ui:define>
     </ui:composition>
 </h:body>

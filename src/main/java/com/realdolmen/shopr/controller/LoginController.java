@@ -40,7 +40,7 @@ public class LoginController implements Serializable {
     public String logIn() {
         currentUser = userService.findUserById(id);
         order = orderService.getCorrectOrderInstance(order, currentUser);
-        return "/overview/items.xhtml?faces-redirect=true";
+        return "index.xhtml?faces-redirect=true";
     }
 
     public String logOut() {

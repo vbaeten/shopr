@@ -5,13 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
-            <p:panel header="#{msg['games.panel.header.listGames']}" style="margin-bottom: 10px;">
+            <b:well>
                 <b:dataTable value="#{gamesController.games}" var="game">
                     <b:dataTableColumn label="#{msg['games.dataTableColumn.title']}">
                         <h:link value="#{game.title}" outcome="/detail/game-detail.xhtml" includeViewParams="true">
@@ -21,10 +20,7 @@
                     <b:dataTableColumn label="#{msg['games.dataTableColumn.publisher']}" value="#{game.publisher}"/>
                     <b:dataTableColumn label="#{msg['games.dataTableColumn.price']}" value="#{game.price}"/>
                 </b:dataTable>
-            </p:panel>
-        </ui:define>
-
-        <ui:define name="footer">
+            </b:well>
         </ui:define>
     </ui:composition>
 </h:body>

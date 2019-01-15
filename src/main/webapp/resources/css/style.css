@@ -1,0 +1,51 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #30415d !important;
+    padding: 20px;
+}
+
+li a.commandLink {
+    display: block;
+    padding: 15px;
+    color: #777;
+}
+
+li a.commandLink:hover {
+    text-decoration: none;
+    color: #333333;
+}
+
+.header {
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+}
+
+.content .container-fluid {
+    padding-top: 25px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.btn {
+    margin-right: 20px;
+}
+
+.details-detail {
+    margin-top: 10px;
+}
+
+.details-buttons {
+    margin-top: 30px;
+}
+
+.order-buttons {
+    margin-top: 30px;
+}

@@ -5,18 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{cuFictionController.id}"/>
                 <f:event listener="#{cuFictionController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="#{msg['cuFiction.panel.header.addBook']}" style="margin-bottom: 10px;">
+            <b:well>
                 <b:form id="addFictionForm">
                     <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.title']}" value="#{cuFictionController.fiction.title}"/>
                     <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.author']}" value="#{cuFictionController.fiction.author}"/>
@@ -39,10 +38,7 @@
                     <b:inputText placeholder="#{msg['cuFiction.inputText.placeholder.price']}" value="#{cuFictionController.fiction.price}"/>
                     <b:commandButton value="#{msg['cuFiction.commandButton.submit']}" action="#{cuFictionController.submit}"/>
                 </b:form>
-            </p:panel>
-        </ui:define>
-
-        <ui:define name="footer">
+            </b:well>
         </ui:define>
     </ui:composition>
 </h:body>

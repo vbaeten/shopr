@@ -4,31 +4,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="template/common.xhtml">
+    <ui:composition template="template/template.xhtml">
         <ui:define name="content">
             <b:form>
-                <b:dataTable value="#{orderController.orderLines}" var="orderLine">
-                    <b:dataTableColumn label="#{msg['order.dataTableColumn.type']}" value="#{orderLine.item.type}"/>
-                    <b:dataTableColumn label="#{msg['order.dataTableColumn.title']}" value="#{orderLine.item.title}"/>
-                    <b:dataTableColumn label="#{msg['order.dataTableColumn.amount']}" value="#{orderLine.amount}"/>
-                    <b:dataTableColumn label="#{msg['order.dataTableColumn.priceUnit']}"
-                                       value="#{orderLine.item.price}"/>
-                    <b:dataTableColumn label="#{msg['order.dataTableColumn.subtotal']}"
-                                       value="#{orderLine.orderLineTotalPrice}"/>
-                </b:dataTable>
-                <h:outputLabel value="#{msg['order.outputText.totalPrice']}"/>
-                <h:outputText value="#{orderController.orderTotalPrice}"/>
-                <b:commandButton value="#{msg['order.commandButton.confirm']}" action="#{orderController.confirm}" immediate="true"/>
-                <b:commandButton value="#{msg['order.commandButton.cancel']}" action="#{orderController.cancel}" immediate="true"/>
-            </b:form>
-        </ui:define>
+                <b:well>
+                    <b:dataTable value="#{orderController.orderLines}" var="orderLine">
+                        <b:dataTableColumn label="#{msg['order.dataTableColumn.type']}" value="#{orderLine.item.type}"/>
+                        <b:dataTableColumn label="#{msg['order.dataTableColumn.title']}"
+                                           value="#{orderLine.item.title}"/>
+                        <b:dataTableColumn label="#{msg['order.dataTableColumn.amount']}" value="#{orderLine.amount}"/>
+                        <b:dataTableColumn label="#{msg['order.dataTableColumn.priceUnit']}"
+                                           value="#{orderLine.item.price}"/>
+                        <b:dataTableColumn label="#{msg['order.dataTableColumn.subtotal']}"
+                                           value="#{orderLine.orderLineTotalPrice}"/>
+                    </b:dataTable>
+                </b:well>
 
-        <ui:define name="footer">
+                <b:well>
+                    <b:row>
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['order.outputText.totalPrice']}"/>
+                        </b:column>
+                        <b:column span="1">
+                            <h:outputText value="#{orderController.orderTotalPrice}"/><br/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row styleClass="order-buttons">
+                        <b:column>
+                            <b:commandButton value="#{msg['order.commandButton.confirm']}" action="#{orderController.confirm}"
+                                             immediate="true"/>
+                            <b:commandButton value="#{msg['order.commandButton.cancel']}" action="#{orderController.cancel}"
+                                             immediate="true"/>
+                        </b:column>
+                    </b:row>
+                </b:well>
+            </b:form>
         </ui:define>
     </ui:composition>
 </h:body>

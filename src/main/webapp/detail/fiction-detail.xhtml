@@ -5,36 +5,106 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
 <h:body>
-    <ui:composition template="../template/common.xhtml">
+    <ui:composition template="../template/template.xhtml">
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{fictionDetailController.id}"/>
                 <f:event listener="#{fictionDetailController.init}" type="preRenderView"/>
             </f:metadata>
 
-            <p:panel header="#{msg['details.panel.header.details']}" style="margin-bottom: 10px;">
-                <h:outputText value="#{fictionDetailController.fiction.title}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.author}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.type}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.fictionGenre.name}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.isbn}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.pages}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.summary}"/><br/>
-                <h:outputText value="#{fictionDetailController.fiction.price}"/><br/>
-                <b:form>
-                    <b:commandButton value="#{msg['details.commandButton.delete']}" action="#{fictionDetailController.delete}"/><br/>
-                    <h:link value="#{msg['details.link.edit']}" outcome="/cu/cu-fiction.xhtml" includeViewParams="true">
-                        <f:param id="id" value="#{fictionDetailController.fiction.id}"/>
-                    </h:link>
-                </b:form>
-            </p:panel>
-        </ui:define>
+            <b:row>
+                <b:well>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.title']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.title}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.author']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.author}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.type']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.type}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['fictionDetail.outputLabel.fictionGenre']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.fictionGenre.name}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.isbn']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.isbn}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['bookDetail.outputLabel.pages']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.pages}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['fictionDetail.outputLabel.summary']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.summary}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-detail">
+                        <b:column span="1">
+                            <h:outputLabel value="#{msg['details.outputLabel.price']}"/>
+                        </b:column>
+                        <b:column span="11">
+                            <h:outputText value="#{fictionDetailController.fiction.price}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row styleClass="details-buttons">
+                        <b:column>
+                            <b:form>
+                                <b:commandButton value="#{msg['details.commandButton.delete']}"
+                                                 action="#{fictionDetailController.delete}"/>
+                                <h:link styleClass="btn btn-default" value="#{msg['details.link.edit']}" outcome="/cu/cu-fiction.xhtml" includeViewParams="true">
+                                    <f:param id="id" value="#{fictionDetailController.fiction.id}"/>
+                                </h:link>
+                            </b:form>
+                        </b:column>
+                    </b:row>
+                </b:well>
+            </b:row>
 
-        <ui:define name="footer">
+            <b:row>
+                <b:well>
+                    <b:form>
+                        <b:inputText placeholder="#{msg['details.inputText.amount']}"
+                                     value="#{orderLineController.newOrderLine.amount}"/>
+                        <b:commandButton value="#{msg['details.commandButton.addOrderLine']}"
+                                         action="#{orderLineController.submit(fictionDetailController.id)}"/>
+                    </b:form>
+                </b:well>
+            </b:row>
         </ui:define>
     </ui:composition>
 </h:body>
