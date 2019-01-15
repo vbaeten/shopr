@@ -18,35 +18,17 @@
                             style="border-radius: 12px; border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb; color: #fffffb">
 
                         <p:dataTable style="width: 55em" resizableColumns="true" id="userDataTable" resizeMode="expand"
-                                     var="user" value="#{userController.users}"
+                                     var="bestelling"
+                                     value="#{userConsoleController.bestellingenCurrentUser}"
                                      rows="10"
                                      paginator="true">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{user.id}"/>
-                            </p:column>
-
-                            <p:column headerText="Voornaam">
-                                <h:outputText value="#{user.firstName}"/>
-                            </p:column>
-
-                            <p:column headerText="Achternaam">
-                                <h:outputText value="#{user.name}"/>
-                            </p:column>
-
-                            <p:column headerText="Rol">
-                                <h:outputText value="#{user.role}"/>
+                            <p:column headerText="Datum">
+                                <h:outputText value="#{bestelling.bestelDatum}"/>
                             </p:column>
 
                             <p:column>
 
-
-                                <b:commandButton
-                                        style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
-                                        rendered="#{loginController.currentUser.id != user.id }"
-                                        action="#{userController.delete(user.id)}">
-                                    <b:iconAwesome name="trash"></b:iconAwesome>
-                                </b:commandButton>
-                                <b:commandButton action="#{adminConsoleController.ratingsUsers(user.id)}"
+                                <b:commandButton action="#{userConsoleController.ArtikelDetails(bestelling.id)}"
                                                  rendered="#{user.role eq 'USER'}"
                                                  style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px">
                                     <b:iconAwesome name="star"></b:iconAwesome>
@@ -54,12 +36,12 @@
                             </p:column>
                         </p:dataTable>
                         <p:panel style="width: 55em" rendered="#{adminConsoleController.ratingPaneel eq true}">
-                            <p:dataTable value="#{adminConsoleController.ratingsUser}" var="beoordeling">
+                            <p:dataTable value="#{userConsoleController.artikel}" var="artikel">
                                 <p:column resizable="true" headerText="#{msgs['artikel.rating']}">
-                                    <p:rating value="#{beoordeling.score}" readonly="true"/>
+                                    <p:rating value="#{artikel.type}" readonly="true"/>
                                 </p:column>
                                 <p:column resizable="true" headerText="#{msgs['artikel.beoordeling']}">
-                                    <h:outputText value="#{beoordeling.onschrijving}"/>
+                                    <h:outputText value="#{artikel.prijs}"/>
                                 </p:column>
                                 <p:column resizable="true" headerText="#{msgs['artikel.titel']}">
                                     <h:outputText value="#{beoordeling.artikel.titel}"/>

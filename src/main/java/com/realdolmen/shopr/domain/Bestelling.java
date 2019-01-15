@@ -18,10 +18,12 @@ public class Bestelling
     private Calendar bestelDatum;
 
     @OneToMany
-//    @JoinColumn(name = "order_id")
     private List<Artikel> artikels = new ArrayList<>();
     @ManyToOne
     User user;
+
+
+
 
     public Calendar getBestelDatum()
     {
