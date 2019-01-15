@@ -8,11 +8,37 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
 
-
 <h:body>
     <ui:composition template="template/common.xhtml">
         <ui:define name="content">
             <h1>Welcome :)</h1>
+            <p:panel header="#{msg['items.panel.header.listItems']}" style="margin-bottom: 10px;">
+                <b:form>
+                    <div>
+                        <b:selectBooleanCheckbox value="#{criteriaController.booksChecked}" caption="Books" valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'BOOK')}" update="@this itemsTable"/>
+                        <b:selectBooleanCheckbox value="#{criteriaController.gamesChecked}" caption="Games" valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'GAME')}" update="@this itemsTable"/>
+                        <b:selectBooleanCheckbox value="#{criteriaController.lpsChecked}" caption="LP's" valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'LP')}" update="@this itemsTable"/>
+                    </div>
+                    <b:dataTable value="#{criteriaController.items}" var="item" id="itemsTable">
+                        <b:dataTableColumn label="#{msg['items.dataTableColumn.title']}">
+                            <h:link rendered="#{item.type eq 'Fiction'}" value="#{item.title}" outcome="/detail/fiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'Non fiction'}" value="#{item.title}" outcome="/detail/nonfiction-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'Game'}" value="#{item.title}" outcome="/detail/game-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                            <h:link rendered="#{item.type eq 'LP'}" value="#{item.title}" outcome="/detail/lp-detail.xhtml" includeViewParams="true">
+                                <f:param name="id" value="#{item.id}"/>
+                            </h:link>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="#{msg['items.dataTableColumn.type']}" value="#{item.type}"/>
+                        <b:dataTableColumn label="#{msg['items.dataTableColumn.price']}" value="#{item.price}"/>
+                    </b:dataTable>
+                </b:form>
+            </p:panel>
         </ui:define>
 
         <ui:define name="footer">
