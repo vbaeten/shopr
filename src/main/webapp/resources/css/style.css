@@ -15,11 +15,6 @@
     background: #247ba0!important;
 }
 
-/*.panelStyle*/
-/*{*/
-    /*background-color: #ebebeb!important;*/
-/*}*/
-
 .footerStyle
 {
     background: #5d5d81!important;
@@ -53,11 +48,23 @@ html, body {
     margin-top: -50px;
 }
 
-.ui-datatable * {
-    border : 0px !important;
+
+#panelLp.label
+{
+    background: #b8b42d;
 }
 
+#panelGame .label
+{
+    background: #b8b42d;
+}
+.buttons .commandInfo{
 
-.btn-primary{
-    color: #738290;
+    background: #6c7d47;
+    color: #6c7d47;
+}
+.buttons .commandShop{
+
+    background: #6c7d47;
+    color: #6c7d47;
 }

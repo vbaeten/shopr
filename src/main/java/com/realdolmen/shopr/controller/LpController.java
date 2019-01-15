@@ -16,8 +16,10 @@ public class LpController
     @Inject
     LpService lpService;
 
+
+
     private Lp newLp = new Lp();
-    private boolean loadPanel;
+    private boolean loadPanel=false;
     private Lp editLp = new Lp();
 
     public Lp getEditLp()
@@ -41,40 +43,41 @@ public class LpController
     }
 
     public Lp getNewLp()
-{
-    return newLp;
-}
+    {
+        return newLp;
+    }
 
-public void SetNewLp(Lp newLp)
-{
-    this.newLp = newLp;
-}
+    public void SetNewLp(Lp newLp)
+    {
+        this.newLp = newLp;
+    }
 
-public List<Lp> getlps()
-{
-    return this.lpService.findAllLps();
-}
+    public List<Lp> getlps()
+    {
+        return this.lpService.findAllLps();
+    }
 
-public void submit()
-{
-    this.lpService.insert(newLp);
-}
+    public void submit()
+    {
+        this.lpService.insert(newLp);
+    }
 
-public void delete(Lp lp)
-{
-lpService.delete(lp.getId());
-}
+    public void delete(Lp lp)
+    {
+        lpService.delete(lp.getId());
+    }
 
-public void update()
-{
-this.loadPanel = false;
-    lpService.update(this.editLp);
-}
+    public void update()
+    {
+        this.loadPanel = false;
+        lpService.update(this.editLp);
+    }
 
-public void booleanAndLpPanelLp(Lp lp)
-{
-    this.loadPanel = true;
-    this.editLp = lp;
-}
+    public void booleanAndLpPanelLp(Lp lp)
+    {
+        this.loadPanel = true;
+
+        this.editLp = lp;
+    }
 
 }

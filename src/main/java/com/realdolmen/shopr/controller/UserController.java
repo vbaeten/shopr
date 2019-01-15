@@ -12,11 +12,14 @@ import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named
+@ManagedBean
 @SessionScoped
-public class UserController {
+public class UserController
+{
 
     private User newUser = new User();
+
+    private boolean newUserPanel = false;
 
 
     @Inject
@@ -27,26 +30,39 @@ public class UserController {
     private RatingController ratingController;
 
 
+    public boolean isNewUserPanel()
+    {
+        return newUserPanel;
+    }
 
-    public User getNewUser() {
+    public void setNewUserPanel(boolean newUserPanel)
+    {
+        this.newUserPanel = newUserPanel;
+    }
+
+    public User getNewUser()
+    {
         return newUser;
     }
 
-    public void setNewUser(User newUser) {
+    public void setNewUser(User newUser)
+    {
         this.newUser = newUser;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers()
+    {
         return this.userService.findAllUsers();
     }
 
-    public void submit(){
+    public void submit()
+    {
         this.userService.insert(newUser);
     }
 
     public void delete(int id)
     {
-       this.ratingService.deleteRatingsUser(id);
+        this.ratingService.deleteRatingsUser(id);
         this.userService.delete(id);
     }
 
@@ -59,6 +75,23 @@ public class UserController {
     {
         ratingController.ratingsUser = ratingService.findAllBeoordelingenByUserId(id);
     }
+
+    public void userToevoegen()
+    {
+        this.newUserPanel = false;
+        userService.insert(this.newUser);
+    }
+
+    public void ladenPanel()
+    {
+        this.newUserPanel = true;
+    }
+
+    public void terug()
+    {
+        this.newUserPanel = false;
+    }
+
 
 
 }

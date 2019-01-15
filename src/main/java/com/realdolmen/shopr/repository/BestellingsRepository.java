@@ -4,6 +4,7 @@ import com.realdolmen.shopr.domain.Bestelling;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 public class BestellingsRepository
@@ -13,6 +14,12 @@ public class BestellingsRepository
 
     public Bestelling findById(int id) {
         return entityManager.find(Bestelling.class, id);
+    }
+    public List<Bestelling> findByUser(int id)
+    {
+        Query a = entityManager.createQuery("select b from Bestelling b where b.user.id =:id ");
+        a.setParameter("id", id);
+        return a.getResultList();
     }
 
 //    public List<Bestelling> findAll() {

@@ -17,7 +17,7 @@ public class GameController
 
     private Game newGame = new Game();
     private Game editGame = new Game();
-    private boolean loadpanel;
+    private boolean loadpanel=false;
 
     public boolean isLoadpanel()
     {

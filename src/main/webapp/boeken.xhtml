@@ -29,7 +29,7 @@
                     </p:selectOneRadio>
                 </b:panel>
                 <b:panel
-                        style="width: 60em;  border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb">
+                        style="width: 60em;  border : 0px !important; border-radius: 12px;font-weight: bold; background-color: #333333; color: #fffffb; border-color: #333333">
                 <p:dataTable style="width: 55em" resizableColumns="true" id="overviewBoeken" resizeMode="expand"
                              rendered="#{editController.selectPanel eq 3}"
                              var="boek"
@@ -82,7 +82,8 @@
                 </p:dataTable>
                 <br></br>
                 <br></br>
-                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewGames" resizeMode="expand"
+                <p:dataTable style="width: 55em; background-color: #333333; color: #fffffb; border-color: #333333"
+                             resizableColumns="true" id="overviewGames" resizeMode="expand"
                              rendered="#{editController.selectPanel eq 2}"
                              var="game"
                              value="#{gameController.games}" rows="10"
@@ -147,7 +148,7 @@
                 </p:dataTable>
                 <br></br>
                 <br></br>
-                <p:dataTable style="width: 55em" resizableColumns="true" id="overviewLp" resizeMode="expand"
+                <p:dataTable style="width: 55em; background-color: #333333; color: #fffffb; border-color: #333333" resizableColumns="true" id="overviewLp" resizeMode="expand"
                              rendered="#{editController.selectPanel eq 1}"
                              var="lp"
                              value="#{lpController.getlps()}" rows="10"
@@ -207,8 +208,8 @@
                     </p:column>
 
                 </p:dataTable>
-                <b:panel id="panelLpEdit" style="margin-bottom:10px; width: 60em"
-                         rendered="#{lpController.loadPanel eq true}">
+                <b:panel id="panelLpEdit" style="margin-bottom:10px; width: 55em; background-color: #333333; color: #fffffb; border-color: #333333"
+                         rendered="#{(lpController.loadPanel eq true) and (editController.selectPanel eq 1)}">
                     <b:form>
 
                         <h:panelGrid columns="2" cellpadding="5">
@@ -259,8 +260,8 @@
                     </b:form>
                 </b:panel>
 
-                <b:panel id="panelGameEdit" style="margin-bottom:10px; width: 60em"
-                         rendered="#{gameController.loadpanel eq true}">
+                <b:panel id="panelGameEdit" style="margin-bottom:10px; width: 55em; background-color: #333333; color: #fffffb; border-color: #333333"
+                         rendered="#{(gameController.loadpanel eq true) and (editController.selectPanel eq 2)}">
                     <b:form>
 
                         <h:panelGrid columns="2" cellpadding="5">
@@ -285,8 +286,10 @@
                             </b:inputText>
 
                             <h:outputLabel for="leeftijdGame" value="#{msgs['toevoegen.leeftijd']}"/>
-                            <p:spinner id="leeftijdGame" value="#{gameController.editGame.minLeeftijd}" min="6"
-                                       max="18"/>
+                            <b:touchSpin  id="leeftijdGame"
+                                         value="#{gameController.editGame.minLeeftijd}" min="6" max="18"
+                                         step="1"/>
+
 
                             <o:importConstants type="com.realdolmen.shopr.domain.EnumGameGenre"/>
 
@@ -315,7 +318,7 @@
                     </b:form>
                 </b:panel>
 
-                <b:panel id="panelFictieEdit" style="margin-bottom:10px; width: 60em"
+                <b:panel id="panelFictieEdit" style="margin-bottom:10px; width: 55em; background-color: #333333; color: #fffffb; border-color: #333333"
                          rendered="#{boekController.loadPanelEditBoek eq 3}">
                     <b:form>
 
@@ -384,8 +387,9 @@
                     </b:form>
                 </b:panel>
 
-                <b:panel id="panelNonFictieEdit" style="margin-bottom:10px; width: 60em"
-                         rendered="#{boekController.loadPanelEditBoek eq 4}">
+                <b:panel id="panelNonFictieEdit" style="margin-bottom:10px; width: 55em; background-color: #333333; color: #fffffb;
+                border-color: #333333"
+                         rendered="#{(boekController.loadPanelEditBoek eq 4) and(editController.selectPanel eq 3)}">
                     <b:form>
 
                         <h:panelGrid columns="2" cellpadding="5">

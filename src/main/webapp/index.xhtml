@@ -15,327 +15,414 @@
             <br></br>
             <h:form id="form">
                 <p:growl id="msgs"/>
-                <b:panel
-                        style="width: 60em;  border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb">
-                    <p:dataTable style="width: 55em;  border : 2px !important; font-weight: bold; color: #fffffb"
-                                 resizableColumns="true" id="overviewArtikels" resizeMode="expand"
-                                 var="artikel"
-                                 value="#{overviewController.artikels()}" rows="10"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15">
-
-                        <f:facet name="header">
-                            <p:outputPanel>
-                                <h:outputText value="Search all fields:"/>
-                                <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()"
-                                             style="width:150px"
-                                             placeholder="Zoek"/>
-                            </p:outputPanel>
-                        </f:facet>
-
-                        <p:column resizable="true" headerText="#{msgs['artikel.type']}" sortBy="#{artikel.type}">
-                            <h:outputText value="#{artikel.type}"/>
-                        </p:column>
-                        <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
-                                  sortBy="#{artikel.titel}">
-                            <h:outputText value="#{artikel.titel}"/>
-                        </p:column>
-                        <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
-                                  sortBy="#{artikel.leverancier}">
-                            <h:outputText value="#{artikel.leverancier}"/>
-                        </p:column>
-                        <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
-                                  sortBy="#{artikel.prijs}">
-                            <h:outputText value=" $ #{artikel.prijs}"/>
-                        </p:column>
+                <b:container>
+
+                    <b:row>
+                        <b:column span="9">
+                            <b:panel
+                                    style="border-radius: 12px; border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb; color: #fffffb">
+                                <p:dataTable
+                                        style="width: 55em;  border : 2px !important; font-weight: bold; color: #fffffb"
+                                        resizableColumns="true" id="overviewArtikels" resizeMode="expand"
+                                        var="artikel"
+                                        value="#{overviewController.artikels()}" rows="10"
+                                        paginator="true"
+                                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                        rowsPerPageTemplate="5,10,15">
+
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Search all fields:"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('overviewArtikels').filter()"
+                                                         style="width:150px"
+                                                         placeholder="Zoek"/>
+                                        </p:outputPanel>
+                                    </f:facet>
+
+                                    <p:column resizable="true" headerText="#{msgs['artikel.type']}"
+                                              sortBy="#{artikel.type}">
+                                        <h:outputText value="#{artikel.type}"/>
+                                    </p:column>
+                                    <p:column resizable="true" headerText="#{msgs['artikel.titel']}"
+                                              sortBy="#{artikel.titel}">
+                                        <h:outputText value="#{artikel.titel}"/>
+                                    </p:column>
+                                    <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}"
+                                              sortBy="#{artikel.leverancier}">
+                                        <h:outputText value="#{artikel.leverancier}"/>
+                                    </p:column>
+                                    <p:column resizable="true" headerText="#{msgs['artikel.prijs']}"
+                                              sortBy="#{artikel.prijs}">
+                                        <h:outputText value=" $ #{artikel.prijs}"/>
+                                    </p:column>
+
+                                    <p:column
+                                            rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }"
+                                            resizable="true" headerText="#{msgs['artikel.details']}">
+                                        <b:commandButton style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                                         action="#{overviewController.details(artikel.id, loginController.currentUser)}">
+                                            <b:iconAwesome name="info"></b:iconAwesome>
+                                        </b:commandButton>
+
+                                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                                         style="background-color: #738290; color: #ffffffb; border-color:#333333; border-width:5px"
+                                                         action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
+                                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+                                        </b:commandButton>
+
+                                    </p:column>
+
+                                </p:dataTable>
+                            </b:panel>
+                        </b:column>
+
+                        <!--#####################################################################################################################################details___________________-->
+                        <b:column span="3">
+                            <b:panel id="panelLp"
+                                     style="border : 0px !important; font-weight: bold; border-radius: 12px; background-color: #333333; color: #fffffb"
+                                     rendered="#{overviewController.getPanelNumber() eq 1}">
+
+                                <b:panelGrid columns="2" style="text-align: left;">
+
+                                    <b:label style="background: #b8b42d" severity="info" for="titellp"
+                                             value="#{msgs['toevoegen.titel']}  : "/>
+                                    <h:outputLabel id="titellp"
+                                                   value="#{overviewController.artikelSelected.titel}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="leverancierlp"
+                                             value="#{msgs['toevoegen.leverancier']}  :"/>
+                                    <h:outputLabel id="leverancierlp"
+                                                   value="#{overviewController.artikelSelected.leverancier}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="uitgeverlp"
+                                             value="#{msgs['toevoegen.uitvoerder']}  : "/>
+                                    <h:outputLabel id="uitgeverlp"
+                                                   value="#{overviewController.artikelSelected.uitvoerder}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="genrelp"
+                                             value="#{msgs['toevoegen.genre']}  : "/>
+                                    <h:outputLabel id="genrelp"
+                                                   value="#{overviewController.artikelSelected.enumMuziekGenre}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="prijslp"
+                                             value="#{msgs['toevoegen.prijs']}  : "/>
+                                    <h:outputLabel id="prijslp"
+                                                   value=" $ #{overviewController.artikelSelected.prijs}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info"
+                                             rendered="#{loginController.enumRoles eq 'USER'}" for="aantallp"
+                                             value="#{msgs['overview.aantal']}"/>
+
+                                    <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp"
+                                                 value="#{winkelmandjeController.aantalArtikel}" min="1" max="9"
+                                                 step="1"/>
+
+                                </b:panelGrid>
 
-                        <p:column
-                                rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }"
-                                resizable="true" headerText="#{msgs['artikel.details']}">
-                            <b:commandButton styleClass="btn btn-primary" style="background-color: #738290;"
-                                             action="#{overviewController.details(artikel.id, loginController.currentUser)}">
-                                <b:iconAwesome name="info"></b:iconAwesome>
-                            </b:commandButton>
 
-                            <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                             onclick="$('.bevestiging').modal()"
-                                             styleClass="btn btn-primary" style="background-color: #738290;"
-                                             action="#{winkelmandjeController.artikelToevoegenPerStuk(artikel)}">
-                                <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                            </b:commandButton>
+                                <b:row>
+                                    <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                                     styleClass="btn btn-primary" style="background-color: #738290; color: #fffffb"
+                                                     action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                                        <b:iconAwesome name="shopping-cart"></b:iconAwesome>
 
-                        </p:column>
+                                    </b:commandButton>
+                                    <b:button rendered="#{loginController.enumRoles eq 'USER'}"
+                                              class="btn btn-primary"
+                                              style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                              iconAwesome="star"
+                                              outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                              onclick="$('.modalPseudoClass').modal()"/>
 
-                    </p:dataTable>
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq false}"
+                                            style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                            class="btn btn-primary"
+                                            action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
 
+                                    </b:commandButton>
 
-                <!--#####################################################################################################################################details___________________-->
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq true}"
+                                            look="danger"
+                                            action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
 
-                <b:panel id="panelLp" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
-                         rendered="#{overviewController.getPanelNumber() eq 1}">
+                                    </b:commandButton>
 
-                    <h:panelGrid columns="2" cellpadding="5">
-
-                        <h:outputLabel for="titellp" value="#{msgs['toevoegen.titel']}  : "/>
-                        <h:outputLabel id="titellp" value="#{overviewController.artikelSelected.titel}"/>
+                                </b:row>
 
-                        <h:outputLabel for="leverancierlp" value="#{msgs['toevoegen.leverancier']}  :"/>
-                        <h:outputLabel id="leverancierlp" value="#{overviewController.artikelSelected.leverancier}"/>
 
-                        <h:outputLabel for="uitgeverlp" value="#{msgs['toevoegen.uitvoerder']}  : "/>
-                        <h:outputLabel id="uitgeverlp" value="#{overviewController.artikelSelected.uitvoerder}"/>
-
-                        <h:outputLabel for="genrelp" value="#{msgs['toevoegen.genre']}  : "/>
-                        <h:outputLabel id="genrelp" value="#{overviewController.artikelSelected.enumMuziekGenre}"/>
-
-                        <h:outputLabel for="prijslp" value="#{msgs['toevoegen.prijs']}  : "/>
-                        <h:outputLabel id="prijslp" value=" $ #{overviewController.artikelSelected.prijs}"/>
+                            </b:panel>
 
-                        <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantallp"
-                                       value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantallp" col-md="3"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
+                            <b:panel id="panelGames"
+                                     style="border : 0px !important; font-weight: bold;border-radius: 12px; background-color: #333333; color: #fffffb"
+                                     rendered="#{overviewController.getPanelNumber() eq 2}">
 
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" styleClass="btn btn-primary" style="background-color: #738290;"
+                                <b:panelGrid columns="2" style="text-align: left;">
 
-                                         onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+                                    <b:label style="background: #b8b42d" severity="info" for="titelgame"
+                                             value="#{msgs['toevoegen.titel']}  : "/>
+                                    <h:outputLabel id="titelgame"
+                                                   value="#{overviewController.artikelSelected.titel}"/>
 
-                        </b:commandButton>
+                                    <b:label style="background: #b8b42d" severity="info" for="leveranciergame"
+                                             value="#{msgs['toevoegen.leverancier']}  :"/>
+                                    <h:outputLabel id="leveranciergame"
+                                                   value="#{overviewController.artikelSelected.leverancier}"/>
 
-                        <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-                                      value="#{msgs['overview.beoordeling']}"
-                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                      onclick="$('.modalPseudoClass').modal()"/>
+                                    <b:label style="background: #b8b42d" severity="info" for="uitgevergame"
+                                             value="#{msgs['toevoegen.uitgever']}  : "/>
+                                    <h:outputLabel id="uitgevergame"
+                                                   value="#{overviewController.artikelSelected.uitgever}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="leeftijdgame"
+                                             value="#{msgs['toevoegen.uitgever']}  : "/>
+                                    <h:outputLabel id="leeftijdgame"
+                                                   value="#{overviewController.artikelSelected.minLeeftijd}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="genregame"
+                                             value="#{msgs['toevoegen.genre']}  : "/>
+                                    <h:outputLabel id="genregame"
+                                                   value="#{overviewController.artikelSelected.enumGameGenre}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="prijsGame"
+                                             value="#{msgs['toevoegen.prijs']}  : "/>
+                                    <h:outputLabel id="prijsGame"
+                                                   value=" $ #{overviewController.artikelSelected.prijs}"/>
 
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
-                                    class="btn btn-primary"
-                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq true}"
-                                    look="danger"
-                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-
-
-                        </p:row>
-
-
-                    </h:panelGrid>
-                </b:panel>
-
-                <b:panel id="panelGames" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
-                         rendered="#{overviewController.getPanelNumber() eq 2}">
-
-                    <h:panelGrid columns="2" cellpadding="5">
-
-                        <h:outputLabel for="titelgame" value="#{msgs['toevoegen.titel']}  : "/>
-                        <h:outputLabel id="titelgame" value="#{overviewController.artikelSelected.titel}"/>
-
-                        <h:outputLabel for="leveranciergame" value="#{msgs['toevoegen.leverancier']}  :"/>
-                        <h:outputLabel id="leveranciergame" value="#{overviewController.artikelSelected.leverancier}"/>
-
-                        <h:outputLabel for="uitgevergame" value="#{msgs['toevoegen.uitgever']}  : "/>
-                        <h:outputLabel id="uitgevergame" value="#{overviewController.artikelSelected.uitgever}"/>
-
-                        <h:outputLabel for="leeftijdgame" value="#{msgs['toevoegen.uitgever']}  : "/>
-                        <h:outputLabel id="leeftijdgame" value="#{overviewController.artikelSelected.minLeeftijd}"/>
-
-                        <h:outputLabel for="genregame" value="#{msgs['toevoegen.genre']}  : "/>
-                        <h:outputLabel id="genregame" value="#{overviewController.artikelSelected.enumGameGenre}"/>
-
-                        <h:outputLabel for="prijsGame" value="#{msgs['toevoegen.prijs']}  : "/>
-                        <h:outputLabel id="prijsGame" value=" $ #{overviewController.artikelSelected.prijs}"/>
-
-                        <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalgame"
-                                       value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalgame" col-md="3"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
-
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-
-                                         onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                        </b:commandButton>
-                        <p:row> <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-                                          value="#{msgs['overview.beoordeling']}"
-                                          outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                          onclick="$('.modalPseudoClass').modal()"/>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}"
-                                    class="btn btn-primary" style="background-color: #738290;"
-                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq true}"
-                                    look="danger"
-                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-                        </p:row>
-
-                    </h:panelGrid>
-                </b:panel>
-
-                <b:panel id="panelNonFictie" style="border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
-                         rendered="#{overviewController.getPanelNumber() eq 4}">
-
-                    <h:panelGrid columns="2" cellpadding="5">
-
-                        <h:outputLabel for="titelnonfictie" value="#{msgs['toevoegen.titel']}  : "/>
-                        <h:outputLabel id="titelnonfictie" value="#{overviewController.artikelSelected.titel}"/>
-
-                        <h:outputLabel for="leveranciernonfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                        <h:outputLabel id="leveranciernonfictie"
-                                       value="#{overviewController.artikelSelected.leverancier}"/>
-
-                        <h:outputLabel for="auteurnonfictie" value="#{msgs['toevoegen.auteur']}  : "/>
-                        <h:outputLabel id="auteurnonfictie" value="#{overviewController.artikelSelected.auteur}"/>
-
-                        <h:outputLabel for="isbnnonfictie" value="#{msgs['toevoegen.isbn']}  : "/>
-                        <h:outputLabel id="isbnnonfictie" value="#{overviewController.artikelSelected.isbn}"/>
-
-                        <h:outputLabel for="paginasnonfictie" value="#{msgs['toevoegen.paginas']}  : "/>
-                        <h:outputLabel id="paginasnonfictie"
-                                       value="#{overviewController.artikelSelected.aantalPaginas}"/>
-
-                        <h:outputLabel for="genrenonfictie" value="#{msgs['toevoegen.genre']}  : "/>
-                        <h:outputLabel id="genrenonfictie"
-                                       value="#{overviewController.artikelSelected.enumNonFictieGenre}"/>
-
-                        <h:outputLabel for="prijsnonfictie" value="#{msgs['toevoegen.prijs']}  : "/>
-                        <h:outputLabel id="prijsnonfictie" value=" $ #{overviewController.artikelSelected.prijs}"/>
-
-                        <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalnonfictie"
-                                       value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalnonfictie" col-md="3"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
-
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary"
-
-                                         onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                        </b:commandButton>
-                        <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-                                      value="#{msgs['overview.beoordeling']}"
-                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                      onclick="$('.modalPseudoClass').modal()"/>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
-                                    class="btn btn-primary"
-                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq true}"
-                                    look="danger"
-                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-                        </p:row>
-
-
-                    </h:panelGrid>
-                </b:panel>
-
-                <b:panel id="panelFictie" style=" border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb"
-                         rendered="#{overviewController.getPanelNumber() eq 3}">
-
-                    <h:panelGrid columns="2" cellpadding="5">
-
-                        <h:outputLabel for="titelfictie" value="#{msgs['toevoegen.titel']}  : "/>
-                        <h:outputLabel id="titelfictie" value="#{overviewController.artikelSelected.titel}"/>
-
-                        <h:outputLabel for="leverancierfictie" value="#{msgs['toevoegen.leverancier']}  :"/>
-                        <h:outputLabel id="leverancierfictie"
-                                       value="#{overviewController.artikelSelected.leverancier}"/>
-
-                        <h:outputLabel for="auteurfictie" value="#{msgs['toevoegen.auteur']}  : "/>
-                        <h:outputLabel id="auteurfictie" value="#{overviewController.artikelSelected.auteur}"/>
-
-                        <h:outputLabel for="isbnfictie" value="#{msgs['toevoegen.isbn']}  : "/>
-                        <h:outputLabel id="isbnfictie" value="#{overviewController.artikelSelected.isbn}"/>
-
-
-                        <h:outputLabel for="paginasfictie" value="#{msgs['toevoegen.paginas']}  : "/>
-                        <h:outputLabel id="paginasfictie" value="#{overviewController.artikelSelected.aantalPaginas}"/>
-
-                        <h:outputLabel for="inhoudfictie" value="#{msgs['toevoegen.inhoud']}  : "/>
-                        <h:outputLabel id="inhoudfictie" value="#{overviewController.artikelSelected.korteInhoud}"/>
-
-                        <h:outputLabel for="genrefictie" value="#{msgs['toevoegen.genre']}  : "/>
-                        <h:outputLabel id="genrefictie" value="#{overviewController.artikelSelected.enumFictieGenre}"/>
-
-                        <h:outputLabel for="prijsfictie" value="#{msgs['toevoegen.prijs']}  : "/>
-                        <h:outputLabel id="prijsfictie" value=" $ #{overviewController.artikelSelected.prijs}"/>
-
-                        <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}" for="aantalfictie"
-                                       value="#{msgs['overview.aantal']}"/>
-                        <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie" col-md="3"
-                                     value="#{winkelmandjeController.aantalArtikel}" min="1" max="9" step="1"/>
-
-                        <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-                                         onclick="$('.bevestiging').modal()"
-                                         action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
-                            <b:iconAwesome name="shopping-cart"></b:iconAwesome>
-                        </b:commandButton>
-                        <p:row>
-                            <b:button rendered="#{loginController.enumRoles eq 'USER'}" class="btn btn-primary" style="background-color: #738290;"
-                                      outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
-                                      onclick="$('.modalPseudoClass').modal()"
-                                      iconAwesome="star">
-
-                            </b:button>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq false}" style="background-color: #738290;"
-                                    class="btn btn-primary"
-                                    action="#{overviewController.addFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-
-                            <b:commandButton
-                                    rendered="#{overviewController.favorietOfNietButton eq true}"
-                                    look="danger"
-                                    action="#{overviewController.removeFavoriet(loginController.currentUser)}"
-                                    iconAwesome="heart">
-
-                            </b:commandButton>
-                        </p:row>
-
-                    </h:panelGrid>
-                </b:panel>
-
-                </b:panel>
+                                    <b:label style="background: #b8b42d" severity="info"
+                                             rendered="#{loginController.enumRoles eq 'USER'}"
+                                             for="aantalgame"
+                                             value="#{msgs['overview.aantal']}"/>
+                                    <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalgame"
+                                                 value="#{winkelmandjeController.aantalArtikel}" min="1" max="9"
+                                                 step="1"/>
+
+                                </b:panelGrid>
+
+
+                                <b:row>
+                                    <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                                     style="background-color: #738290; color:#fffffb"
+                                                     action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                                        <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+
+                                    </b:commandButton>
+                                    <b:button rendered="#{loginController.enumRoles eq 'USER'}"
+
+                                              style="background-color: #738290; color: #fffffb;border-color:#333333; border-width:5px"
+                                              iconAwesome="star"
+                                              outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                              onclick="$('.modalPseudoClass').modal()"/>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq false}"
+                                            style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                            action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq true}"
+                                            look="danger"
+                                            style="color: #fffffb"
+
+                                            action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                </b:row>
+                            </b:panel>
+
+                            <b:panel id="panelNonFictie"
+                                     style="border : 0px !important; font-weight: bold; border-radius: 12px; background-color: #333333; color: #fffffb"
+                                     rendered="#{overviewController.getPanelNumber() eq 4}">
+
+                                <b:panelGrid columns="2" style="text-align: left;">
+
+                                    <b:label style="background: #b8b42d" severity="info" for="titelnonfictie"
+                                             value="#{msgs['toevoegen.titel']}  : "/>
+                                    <h:outputLabel id="titelnonfictie"
+                                                   value="#{overviewController.artikelSelected.titel}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="leveranciernonfictie"
+                                             value="#{msgs['toevoegen.leverancier']}  :"/>
+                                    <h:outputLabel id="leveranciernonfictie"
+                                                   value="#{overviewController.artikelSelected.leverancier}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="auteurnonfictie"
+                                             value="#{msgs['toevoegen.auteur']}  : "/>
+                                    <h:outputLabel id="auteurnonfictie"
+                                                   value="#{overviewController.artikelSelected.auteur}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="isbnnonfictie"
+                                             value="#{msgs['toevoegen.isbn']}  : "/>
+                                    <h:outputLabel id="isbnnonfictie"
+                                                   value="#{overviewController.artikelSelected.isbn}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="paginasnonfictie"
+                                             value="#{msgs['toevoegen.paginas']}  : "/>
+                                    <h:outputLabel id="paginasnonfictie"
+                                                   value="#{overviewController.artikelSelected.aantalPaginas}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="genrenonfictie"
+                                             value="#{msgs['toevoegen.genre']}  : "/>
+                                    <h:outputLabel id="genrenonfictie"
+                                                   value="#{overviewController.artikelSelected.enumNonFictieGenre}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="prijsnonfictie"
+                                             value="#{msgs['toevoegen.prijs']}  : "/>
+                                    <h:outputLabel id="prijsnonfictie"
+                                                   value=" $ #{overviewController.artikelSelected.prijs}"/>
+
+                                    <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}"
+                                                   for="aantalnonfictie"
+                                                   value="#{msgs['overview.aantal']}"/>
+                                    <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}"
+                                                 id="aantalnonfictie"
+                                                 value="#{winkelmandjeController.aantalArtikel}" min="1" max="9"
+                                                 step="1"/>
+
+                                </b:panelGrid>
+
+
+                                <b:row>
+                                    <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                                     styleClass="btn btn-primary" style="background-color: #738290;border-color:#333333;  color: #fffffb"
+                                                     action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                                        <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+
+                                    </b:commandButton>
+                                    <b:button rendered="#{loginController.enumRoles eq 'USER'}"
+                                              style="background-color: #738290; color: #333333;border-color:#333333;  border-width:5px"
+                                              iconAwesome="star"
+                                              outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                              onclick="$('.modalPseudoClass').modal()"/>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq false}"
+                                            style="background-color: #738290; color: #333333; border-width:5px; border-color:#333333; "
+                                            action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq true}"
+                                            look="danger"
+                                            style="color: #fffffb"
+                                            action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                </b:row>
+                            </b:panel>
+
+                            <b:panel id="panelFictie"
+                                     style=" border : 0px !important; font-weight: bold; border-radius: 12px; background-color: #333333; color: #fffffb"
+                                     rendered="#{overviewController.getPanelNumber() eq 3}">
+
+                                <b:panelGrid columns="2" style="text-align: left;">
+
+                                    <b:label style="background: #b8b42d" severity="info" for="titelfictie"
+                                             value="#{msgs['toevoegen.titel']}  : "/>
+                                    <h:outputLabel id="titelfictie"
+                                                   value="#{overviewController.artikelSelected.titel}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="leverancierfictie"
+                                             value="#{msgs['toevoegen.leverancier']}  :"/>
+                                    <h:outputLabel id="leverancierfictie"
+                                                   value="#{overviewController.artikelSelected.leverancier}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="auteurfictie"
+                                             value="#{msgs['toevoegen.auteur']}  : "/>
+                                    <h:outputLabel id="auteurfictie"
+                                                   value="#{overviewController.artikelSelected.auteur}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="isbnfictie"
+                                             value="#{msgs['toevoegen.isbn']}  : "/>
+                                    <h:outputLabel id="isbnfictie"
+                                                   value="#{overviewController.artikelSelected.isbn}"/>
+
+
+                                    <b:label style="background: #b8b42d" severity="info" for="paginasfictie"
+                                             value="#{msgs['toevoegen.paginas']}  : "/>
+                                    <h:outputLabel id="paginasfictie"
+                                                   value="#{overviewController.artikelSelected.aantalPaginas}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="inhoudfictie"
+                                             value="#{msgs['toevoegen.inhoud']}  : "/>
+                                    <h:outputLabel id="inhoudfictie"
+                                                   value="#{overviewController.artikelSelected.korteInhoud}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="genrefictie"
+                                             value="#{msgs['toevoegen.genre']}  : "/>
+                                    <h:outputLabel id="genrefictie"
+                                                   value="#{overviewController.artikelSelected.enumFictieGenre}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info" for="prijsfictie"
+                                             value="#{msgs['toevoegen.prijs']}  : "/>
+                                    <h:outputLabel id="prijsfictie"
+                                                   value=" $ #{overviewController.artikelSelected.prijs}"/>
+
+                                    <b:label style="background: #b8b42d" severity="info"
+                                             rendered="#{loginController.enumRoles eq 'USER'}"
+                                             for="aantalfictie"
+                                             value="#{msgs['overview.aantal']}"/>
+                                    <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}" id="aantalfictie"
+                                                 value="#{winkelmandjeController.aantalArtikel}" min="1" max="9"
+                                                 step="1"/>
+                                </b:panelGrid>
+
+
+                                <b:row>
+                                    <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
+                                                     styleClass="btn btn-primary" style="background-color:#738290;border-color:#333333; color: #fffffb;"
+                                                     action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
+                                        <b:iconAwesome name="shopping-cart"></b:iconAwesome>
+
+                                    </b:commandButton>
+                                    <b:button rendered="#{loginController.enumRoles eq 'USER'}"
+
+                                              style="background-color: #738290; color: #fffffb;border-color:#333333;  border-width:5px"
+                                              iconAwesome="star"
+                                              outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
+                                              onclick="$('.modalPseudoClass').modal()"/>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq false}"
+                                            style="background-color: #738290; color: #fffffb;border-color:#333333;  border-width:5px"
+                                            action="#{overviewController.addFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                    <b:commandButton
+                                            rendered="#{overviewController.favorietOfNietButton eq true}"
+                                            look="danger"
+                                            style="color: #fffffb"
+                                            action="#{overviewController.removeFavoriet(loginController.currentUser)}"
+                                            iconAwesome="heart">
+
+                                    </b:commandButton>
+
+                                </b:row>
+                            </b:panel>
+                        </b:column>
+                    </b:row>
+
+                </b:container>
             </h:form>
 
 
             <!--#############################################################################################################################################Modal________________-->
 
-            <b:modal id="reviewmodal" styleClass="modalPseudoClass">
+            <b:modal id="reviewmodal" styleClass="modalPseudoClass" style="background-color: #333333;">
                 <p:dataTable value="#{ratingController.beoordelingslijstBepaaldArtikel}" var="beoordeling">
                     <p:column resizable="true" headerText="#{msgs['artikel.rating']}">
                         <p:rating value="#{beoordeling.score}" readonly="true"/>
@@ -364,10 +451,6 @@
                     </h:panelGrid>
 
                 </h:form>
-            </b:modal>
-            <b:modal id="bevestigingsmodal" styleClass="bevestiging">
-                <h1>In Winkelmand</h1>
-
             </b:modal>
 
         </ui:define>

@@ -4,10 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions"
       xmlns:b="http://bootsfaces.net/ui">
 <h:head><title>ShopR!</title></h:head>
 <h:body>
@@ -18,11 +15,11 @@
                 <br></br>
                 <br></br>
                 <b:form id="loginForm">
-                    <b:panel id="panel" class="panelStyle" style="width: 500px;background-color: #333333; border-color: #738290; border-width: 5px ">
-                        <h:panelGrid columns="1" cellpadding="5">
+                    <b:panel rendered="#{userController.newUserPanel eq false}"
+                             id="panel"
+                             style="width: 500px;background-color: #333333;color: #fffffb; border-radius: 12px; border-color: #333333;">
+                        <b:panelGrid columns="2">
                             <h:outputLabel for="gebruiker" value="Gebruiker:"/>
-
-                            <!--primefaces selectitemsindexconverter bootsfaces  selectitemsconverter-->
                             <b:selectOneMenu id="gebruiker" value="#{loginController.id}"
                                              converter="omnifaces.SelectItemsConverter">
 
@@ -31,14 +28,48 @@
                                                itemLabel="#{user.firstName}"
                                                itemValue="#{user.id}"/>
                             </b:selectOneMenu>
-                            <b:commandButton class="btn btn-primary" style="background: #52489c"
-                                             value="#{msgs['login.login']}" action="#{loginController.loggedIn}"/>
+                            <b:row>
+                                <b:commandButton
+                                        style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                        value="#{msgs['login.login']}"
+                                        action="#{loginController.loggedIn}"/>
 
-                        </h:panelGrid>
+                                <b:commandButton
+                                        style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                        value="#{msgs['login.create']}"
+                                        action="#{userController.ladenPanel}"/>
+                            </b:row>
+
+                        </b:panelGrid>
                     </b:panel>
                 </b:form>
 
+                <b:form>
+                    <b:panel rendered="#{userController.newUserPanel eq true}"
+                             id="panelNewUser"
+                             style="width: 500px;background-color: #333333;color: #fffffb; border-radius: 12px; border-color: #333333;">
+                        <b:panelGrid columns="2">
 
+                            <h:outputLabel for="voornaam" value="#{msgs['user.voornaam']} : "/>
+                            <b:inputText id="voornaam" value="#{userController.newUser.firstName}">
+                            </b:inputText>
+
+                            <h:outputLabel for="achternaam" value="#{msgs['user.achternaam']} : "/>
+                            <b:inputText id="achternaam" value="#{userController.newUser.name}">
+                            </b:inputText>
+
+                            <b:row>
+                                <b:commandButton
+                                        style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                        value="#{msgs['login.create']}" action="#{userController.userToevoegen}"/>
+
+                                <b:commandButton
+                                        style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                        value="#{msgs['login.cancel']}" action="#{userController.terug}"/>
+                            </b:row>
+                        </b:panelGrid>
+                    </b:panel>
+                </b:form>
             </b:container>
         </ui:define>
     </ui:composition>

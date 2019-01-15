@@ -13,8 +13,11 @@
         <ui:define name="content">
             <b:container>
                 <b:form>
+                    <br></br>
 
-                    <p:panelGrid>
+                    <b:panel style="width: 60em;  border : 0px !important; border-radius: 12px;font-weight: bold;
+                    background-color: #333333; color: #fffffb; border-color: #333333">
+
                         <p:dataList value="#{winkelmandjeController.artikelsInMandje}" var="artikels"
                                     emptyMessage="Winkelwagen leeg"
                                     type="definition">
@@ -30,40 +33,46 @@
                         </p:dataList>
 
                         <div style="color: #eff1ea">Totaal: $ #{winkelmandjeController.totaalBedragBestelling}</div>
+
+                        <br></br>
+                        <br></br>
                         <p:row>
-                            <b:button rendered="#{winkelmandjeController.winkelmandButtonsHide eq true}"
-                                             class="btn btn-primary"
+                            <b:commandButton rendered="#{winkelmandjeController.winkelmandButtonsHide eq true}"
+
+                                             style="background-color: #738290; color: #fffffb;  border-color: #333333; border-width:5px"
                                              value="#{msgs['bestelling.betaal']}"
                                              onclick="$('.modalPseudoClass').modal()"
-                            outcome="#{betaalController.betalingAfronden(winkelmandjeController.artikelsInMandje, loginController.currentUser)}">
-                            </b:button>
+                                             action="#{betaalController.betalingAfronden(winkelmandjeController.artikelsInMandje, loginController.currentUser)}">
+                            </b:commandButton>
 
                             <b:commandButton rendered="#{winkelmandjeController.winkelmandButtonsHide eq true}"
-                                             class="btn btn-primary"
+
+                                             style="background-color: #738290; color: #fffffb; border-color: #333333; border-width:5px"
                                              value="#{msgs['bestelling.reset']}"
-                                             action="#{winkelmandjeController.resetWinkelmand}">
+                                             immediate="true"
+                                             action="#{winkelmandjeController.resetWinkelmand()}">
                             </b:commandButton>
 
                         </p:row>
 
-                    </p:panelGrid>
+                    </b:panel>
 
 
                     <b:modal id="betaalmodal" styleClass="modalPseudoClass">
                         <h:outputLabel for="voornaam" value="#{msgs['user.voornaam']}"/>
                         <b:inputText id="voornaam" placeholder="#{loginController.currentUser.firstName}"
-                                     value="#{betaalController.betalendeUser.firstName}" >
+                                     value="#{betaalController.betalendeUser.firstName}">
                         </b:inputText>
 
                         <h:outputLabel for="achternaam" value="#{msgs['user.achternaam']}"/>
                         <b:inputText id="achternaam" placeholder="#{loginController.currentUser.name}"
-                                     value="#{betaalController.betalendeUser.name}" >
+                                     value="#{betaalController.betalendeUser.name}">
                         </b:inputText>
 
                         <b:button class="btn btn-primary"
-                                         value="#{msgs['bestelling.betaal']}"
+                                  value="#{msgs['bestelling.betaal']}"
 
-                                         outcome="merci">
+                                  outcome="merci">
 
                         </b:button>
 

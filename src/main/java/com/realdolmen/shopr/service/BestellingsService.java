@@ -32,4 +32,9 @@ public class BestellingsService
 
     }
 
+    public List<Bestelling> bestellingenUser(int id)
+    {
+        return bestellingsRepository.findByUser(id);
+    }
+
 }

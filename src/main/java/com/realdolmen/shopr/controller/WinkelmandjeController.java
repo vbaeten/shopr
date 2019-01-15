@@ -2,7 +2,6 @@ package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Artikel;
 import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
-import com.realdolmen.shopr.domain.Bestelling;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,7 +19,7 @@ public class WinkelmandjeController implements Serializable
     @Inject
     ArtikelLijnInBestelling artikelLijnInBestelling;
 
-   @Inject
+    @Inject
     LoginController loginController;
 
     private List<ArtikelLijnInBestelling> artikelsInMandje = new ArrayList<>();
@@ -29,7 +28,7 @@ public class WinkelmandjeController implements Serializable
     private int aantalArtikelsTotaal = 0;
     private int totaalBedragBestelling;
     private boolean betalingsPanel = false;
-    private boolean winkelmandButtonsHide = false ;
+    private boolean winkelmandButtonsHide = false;
 
     public boolean isWinkelmandButtonsHide()
     {
@@ -100,27 +99,25 @@ public class WinkelmandjeController implements Serializable
 
     public void artikelToevoegen(Artikel a)
     {
-        boolean legeLijst;
         boolean notFound = true;
-
-        legeLijst = artikelsInMandje.isEmpty();
+        boolean legeLijst = artikelsInMandje.isEmpty();
         winkelmandButtonsHide = !artikelsInMandje.isEmpty();
 
-        if (legeLijst == false)
+        if (!legeLijst)
         {
 
-                for (ArtikelLijnInBestelling al: artikelsInMandje)
+            for (ArtikelLijnInBestelling al : artikelsInMandje)
+            {
+                if (al.getId() == a.getId())
                 {
-                    if (al.getId() == a.getId())
-                    {
-                        int aantal = al.getAantal() + this.aantalArtikel;
-                        al.setAantal(aantal);
-                        int totaal = aantal * a.getPrijs();
-                        al.setTotaalBedragLijn(totaal);
-                        aantalArtikel = 0;
-                        notFound = false;
-                    }
+                    int aantal = al.getAantal() + this.aantalArtikel;
+                    al.setAantal(aantal);
+                    int totaal = aantal * a.getPrijs();
+                    al.setTotaalBedragLijn(totaal);
+                    aantalArtikel = 0;
+                    notFound = false;
                 }
+            }
 
 
         }
@@ -134,33 +131,31 @@ public class WinkelmandjeController implements Serializable
             artikelsInMandje.add(artikelLijnInBestelling);
             aantalArtikel = 0;
         }
-totaalBestelling();
+        totaalBestelling();
 
     }
 
     public void artikelToevoegenPerStuk(Artikel a)
     {
-        boolean legeLijst;
         boolean notFound = true;
-
-        legeLijst = artikelsInMandje.isEmpty();
+        boolean legeLijst = artikelsInMandje.isEmpty();
         winkelmandButtonsHide = !artikelsInMandje.isEmpty();
 
-        if (legeLijst == false)
+        if (!legeLijst)
         {
 
-                for (ArtikelLijnInBestelling al: artikelsInMandje)
+            for (ArtikelLijnInBestelling al : artikelsInMandje)
+            {
+                if (al.getId() == a.getId())
                 {
-                    if (al.getId() == a.getId())
-                    {
-                        int aantal = al.getAantal() + 1;
-                        al.setAantal(aantal);
-                        int totaal = aantal * a.getPrijs();
-                        al.setTotaalBedragLijn(totaal);
-                        aantalArtikel = 0;
-                        notFound = false;
-                    }
+                    int aantal = al.getAantal() + 1;
+                    al.setAantal(aantal);
+                    int totaal = aantal * a.getPrijs();
+                    al.setTotaalBedragLijn(totaal);
+                    aantalArtikel = 0;
+                    notFound = false;
                 }
+            }
 
 
         }
@@ -174,13 +169,14 @@ totaalBestelling();
             artikelsInMandje.add(artikelLijnInBestelling);
             aantalArtikel = 0;
         }
-totaalBestelling();
+        totaalBestelling();
 
     }
+
     private void totaalBestelling()
     {
         totaalBedragBestelling = 0;
-        for (ArtikelLijnInBestelling al: artikelsInMandje)
+        for (ArtikelLijnInBestelling al : artikelsInMandje)
         {
             totaalBedragBestelling += al.getTotaalBedragLijn();
         }
@@ -190,8 +186,8 @@ totaalBestelling();
     public void resetWinkelmand()
     {
         artikelsInMandje = new ArrayList<>();
-         winkelmandButtonsHide = false;
-         totaalBedragBestelling = 0;
+        winkelmandButtonsHide = false;
+        totaalBedragBestelling = 0;
 
     }
 
@@ -203,6 +199,7 @@ totaalBestelling();
         }
         betalingsPanel = true;
         loginController.getCurrentUserName();
+
 
     }
 
