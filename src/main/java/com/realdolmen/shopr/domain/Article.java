@@ -5,8 +5,10 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-@DiscriminatorColumn(name = "types")
+@DiscriminatorColumn(name = "types", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue(value = "")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(
@@ -20,10 +22,6 @@ import javax.validation.constraints.Size;
                         query = "SELECT a FROM Article a order by a.title"
                 ),
                 @NamedQuery(
-                        name = Article.FIND_ALL_TYPES,
-                        query = "SELECT distinct types FROM Article a order by a.title"
-                ),
-                @NamedQuery(
                         name = Article.FIND_MIN_PRICE,
                         query = "SELECT min(price) FROM Article a"
                 ),
@@ -32,10 +30,9 @@ import javax.validation.constraints.Size;
                         query = "SELECT max(price) FROM Article a"
                 )
         })
-public class Article {
+public class Article implements Serializable {
     public static final String FIND_BY_TITLE = "Article.findByTitle";
     public static final String FIND_ALL = "Article.findAll";
-    public static final String FIND_ALL_TYPES = "Article.findAllTypes";
     public static final String FIND_MIN_PRICE = "SearchBean.findMinPrice";
     public static final String FIND_MAX_PRICE = "SearchBean.findMaxPrice";
 
@@ -54,8 +51,6 @@ public class Article {
     @NotNull
     @Size(max=100)
     private String supplierId;
-
-    String types = new String();
 
     public String getDisplayValue(){
         return "Article";
@@ -91,14 +86,6 @@ public class Article {
 
     public void setSupplierId(String supplierId) {
         this.supplierId = supplierId;
-    }
-
-    public String getTypes() {
-        return types;
-    }
-
-    public void setTypes(String types) {
-        this.types = types;
     }
 
     @Override

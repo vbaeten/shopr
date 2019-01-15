@@ -21,9 +21,6 @@ public class ArticleService implements Serializable {
         return articleRepository.findAll();
     }
 
-    public List<String> findAllTypes(){
-        return articleRepository.findAllArticleTypes();
-    }
 //
 //    public Article findByTitle(String title) {
 //        return ArticleRepository.findByTitle(title);

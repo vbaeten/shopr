@@ -5,6 +5,7 @@ import com.realdolmen.shopr.domain.Rating;
 import com.realdolmen.shopr.service.RatingService;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
@@ -18,7 +19,7 @@ public class RatingController {
     @Inject
     RatingService ratingService;
 
-    @Inject
+    @ManagedProperty(value = "#{userController}")
     UserController userController;
 
     public void init(){
@@ -51,5 +52,11 @@ public class RatingController {
         return ratingService.getRatingsByArticleId(id);
     }
 
+    public UserController getUserController() {
+        return userController;
+    }
 
+    public void setUserController(UserController userController) {
+        this.userController = userController;
+    }
 }

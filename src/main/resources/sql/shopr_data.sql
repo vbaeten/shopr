@@ -197,8 +197,6 @@ insert into orderline(id, amount, article_id, order_id) values (5, 1, 3, 2);
 insert into orderline(id, amount, article_id, order_id) values (6, 2, 5, 2);
 insert into orderline(id, amount, article_id, order_id) values (7, 1, 42, 2);
 
-insert into orderline(id, amount, article_id, order_id) values (8, 3, 31, 3);
-
 insert into orderline(id, amount, article_id, order_id) values (8, 1, 10, 4);
 insert into orderline(id, amount, article_id, order_id) values (9, 5, 55, 4);
 insert into orderline(id, amount, article_id, order_id) values (10, 3, 22, 4);

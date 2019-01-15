@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
+import com.realdolmen.shopr.domain.Game;
+import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.ArticleService;
 
 import javax.enterprise.context.SessionScoped;
@@ -39,20 +41,16 @@ public class ArticleController implements Serializable {
     }
 
     public String navigateToDetailPage(Article article) {
-        switch (article.getTypes()) {
-            case "LP":
+        switch (article.getDisplayValue()) {
+            case "Lp":
                 return "lpDetail.xhtml";
-            case "GAME":
+            case "Game":
                 return "gameDetail.xhtml";
-            case "FICTION":
+            case "Fiction":
                 return "fictionDetail.xhtml";
-            case "NON_FICTION":
+            case "Non Fiction":
                 return "nonFictionDetail.xhtml";
         }
         return "pageNotFound.xhtml";
-    }
-
-    public List<String> findAllTypes(){
-        return articleService.findAllTypes();
     }
 }

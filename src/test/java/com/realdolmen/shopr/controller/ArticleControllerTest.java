@@ -25,8 +25,8 @@ public class ArticleControllerTest {
 
     @Before
     public void init(){
-        lp.setTypes("LP");
-        game.setTypes("GAME");
+//        lp.setTypes("LP");
+//        game.setTypes("GAME");
     }
 
     @Test
