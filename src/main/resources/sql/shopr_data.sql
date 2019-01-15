@@ -14,8 +14,8 @@ INSERT INTO item(id,title,price,type) VALUES (10,'Not OK Computer',15.99,'lp');
 INSERT INTO item(id,title,price,type) VALUES (11,'Dance Dance Revolution',25.99,'lp');
 INSERT INTO item(id,title,price,type) VALUES (12,'Not My Cup Of Tea',12.99,'lp');
 
-INSERT INTO item(id,title,price,type) VALUES (13,'Merloc Homes',12.99,'fiction book');
-INSERT INTO item(id,title,price,type) VALUES (14,'To Much Data',10.99,'fiction book');
+INSERT INTO item(id,title,price,type) VALUES (13,'Merloc Holmes',12.99,'fiction book');
+INSERT INTO item(id,title,price,type) VALUES (14,'Too Much Data',10.99,'fiction book');
 INSERT INTO item(id,title,price,type) VALUES (15,'Regretting This',15.99,'fiction book');
 INSERT INTO item(id,title,price,type) VALUES (16,'Not Another Book',20.99,'fiction book');
 INSERT INTO item(id,title,price,type) VALUES (17,'Code Monkeys',22.99,'fiction book');
@@ -34,25 +34,25 @@ INSERT INTO item(id,title,price,type) VALUES (29,'two more',2.00,'non-fiction bo
 INSERT INTO item(id,title,price,type) VALUES (30,'Practically Free',999.99,'non-fiction book');
 INSERT INTO item(id,title,price,type) VALUES (31,'Cheap as',1.99,'non-fiction book');
 
-INSERT INTO book(id,author, isbn, totalPages) VALUES (13,'Meetch','5648465412',500);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (14,'Meetch','5648465412',485);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (15,'Meetch','5648465412',215);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (13,'Meetch','5648465416',500);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (14,'Meetch','5648465442',485);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (15,'Meetch','5648465411',215);
 INSERT INTO book(id,author, isbn, totalPages) VALUES (16,'Meetch','5648465412',360);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (17,'Meetch','5648465412',789);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (18,'Meetch','5648465412',100);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (19,'Meetch','5648465412',89);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (20,'Karel','7894526548',233);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (21,'Karel','7894526548',344);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (22,'Karel','7894526548',45);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (23,'Karel','7894526548',569);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (24,'Ines','1203201558',541);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (25,'Ines','1203201558',189);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (26,'Ines','1203201558',278);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (27,'Ines','1203201558',364);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (28,'Amir','1203201558',198);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (29,'Amir','87089540',65);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (30,'Amir','87089540',105);
-INSERT INTO book(id,author, isbn, totalPages) VALUES (31,'Amir','87089540',1000);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (17,'Meetch','5648465413',789);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (18,'Meetch','5648465414',100);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (19,'Meetch','5648465415',89);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (20,'Karel','7894526541',233);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (21,'Karel','7894526542',344);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (22,'Karel','7894526543',45);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (23,'Karel','7894526544',569);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (24,'Ines','1203201551',541);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (25,'Ines','1203201552',189);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (26,'Ines','1203201553',278);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (27,'Ines','1203201554',364);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (28,'Amir','1203201555',198);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (29,'Amir','87089541',65);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (30,'Amir','87089542',105);
+INSERT INTO book(id,author, isbn, totalPages) VALUES (31,'Amir','87089543',1000);
 
 
 INSERT INTO games(id, publisher, minAge, genre) VALUES (1,'EAGames',5,'FPS');
@@ -72,7 +72,7 @@ INSERT INTO lp(id, publisher, genre) VALUES (11,'Karel','ROCK');
 INSERT INTO lp(id, publisher, genre) VALUES (12,'meme','DANCE');
 
 
-INSERT INTO fiction(id,bookGenre,preview) VALUES (13,'THRILLER','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
+INSERT INTO fiction(id,bookGenre,preview) VALUES (13,'THRILLER','MLGRLGLRGRGLRMGLRGMLRGMLRGMLRGMLRGMLRGMLRGMLRGRRMLRGMLGLMG');
 INSERT INTO fiction(id,bookGenre,preview) VALUES (14,'FANTASY', 'Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
 INSERT INTO fiction(id,bookGenre,preview) VALUES (15,'DETECTIVE','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');
 INSERT INTO fiction(id,bookGenre,preview) VALUES (16,'SCIFI','Dit is een korte inhoud van dit boek maar aangezien het fictief is, is het moeilijk hier iets te plaatsen Lorem Ipsum missschien?');

@@ -16,8 +16,8 @@ public class OrderRepository {
 
 
 
-    public void submitOrder(Order order) {
-        this.entityManager.merge(order);
+    public Order submitOrder(Order order) {
+        return this.entityManager.merge(order);
     }
 
     public Order findById(int id) {

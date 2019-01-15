@@ -19,7 +19,7 @@ public class Order {
 
     private Timestamp date;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     @JoinColumn
     private List<OrderLine> orderLines;
 
@@ -28,7 +28,7 @@ public class Order {
     @JoinColumn
     private User user;
 
-    @Transient
+
     private double totalPrice;
 
 

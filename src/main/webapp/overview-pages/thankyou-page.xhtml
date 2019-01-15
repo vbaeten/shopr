@@ -15,25 +15,26 @@
         <div class="afterNav">
 
             <h2>
-                Thank you for your order!
+                Thank you for shopping with ShopR!
             </h2>
+            <h3>Your order is on it's way!</h3>
 
+        </div>
             <div class="afterNav">
 
-                <h3>Your order is on it's way:</h3>
+                <h3>Order overview:</h3>
 
                 <h:form>
-                    <b:dataTable value="#{orderLineController.toShowOrder.orderLines}" var="order">
+                    <b:dataTable value="#{orderLineController.findOrderById().orderLines}" var="order">
                         <b:dataTableColumn value="#{order.item.title}"/>
                         <b:dataTableColumn value="#{order.item.type}"/>
                         <b:dataTableColumn value="#{order.quantity}"/>
                         <b:dataTableColumn value="#{order.item.price}"/>
                     </b:dataTable>
 
-                    <h3>Total price = <h:outputLabel value="#{orderLineController.toShowOrder.totalPrice}"/></h3>
+                    <h3>Total price = <h:outputLabel value="#{orderLineController.findOrderById().totalPrice}"/></h3>
 
                 </h:form>
-            </div>
 
 
             <b:form>

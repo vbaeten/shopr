@@ -24,11 +24,12 @@ public class OrderLineController implements Serializable {
 
 
     private Order order = new Order();
-    private Order toShowOrder= order;
     private Item item;
     private OrderLine orderLine;
     private short quantity;
     private List<OrderLine> orderLines = new ArrayList<>();
+    private int toShowId;
+    private Order persistedOrder;
     private static  final SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd.HH.mm.ss");
 
     @Inject
@@ -57,7 +58,7 @@ public class OrderLineController implements Serializable {
         orderLines.add(orderLine);
         this.orderLineService.submit(orderLine);
         order.setOrderLines(orderLines);
-        toShowOrder.setOrderLines(orderLines);
+        orderLine.setOrder(order);
         orderLine = new OrderLine();
     }
 
@@ -65,18 +66,17 @@ public class OrderLineController implements Serializable {
     public String placeOrder(){
 
         try {
-            orderLine.setOrder(order);
+
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            order = new Order();
             order.setDate(timestamp);
             order.setOrderLines(orderLines);
             int id = userController.getCurrentUser().getId();
             User userById = userService.getUserById(id);
             order.setUser(userById);
             order.setTotalPrice(calcTotalPrice());
-            orderService.submitOrder(order);
-            toShowOrder = order;
+            persistedOrder =  orderService.submitOrder(order);
             orderLines.clear();
+            toShowId = persistedOrder.getId();
             order = new Order();
             return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
         }catch(Exception e){
@@ -85,14 +85,14 @@ public class OrderLineController implements Serializable {
     }
 
 
-
-
-
-
-
-
     public String backToHome(){
         return "/nav-pages/index.xhtml?faces-redirect=true";
+    }
+
+
+    public Order findOrderById(){
+
+        return orderService.findById(toShowId);
     }
 
     public Double calcTotalPrice(){
@@ -125,8 +125,6 @@ public class OrderLineController implements Serializable {
         this.quantity = quantity;
     }
 
-
-
     public Order getOrder() {
         return order;
     }
@@ -135,13 +133,11 @@ public class OrderLineController implements Serializable {
         this.order = order;
     }
 
-
-
-    public Order getToShowOrder() {
-        return toShowOrder;
+    public int getToShowId() {
+        return toShowId;
     }
 
-    public void setToShowOrder(Order toShowOrder) {
-        this.toShowOrder = toShowOrder;
+    public void setToShowId(int toShowId) {
+        this.toShowId = toShowId;
     }
 }

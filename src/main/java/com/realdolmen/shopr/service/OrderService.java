@@ -15,9 +15,9 @@ public class OrderService implements Serializable {
     @Inject
     private OrderRepository orderRepository;
 
-    public void submitOrder(Order order) {
+    public Order submitOrder(Order order) {
 
-        this.orderRepository.submitOrder(order);
+        return this.orderRepository.submitOrder(order);
 
     }
 
