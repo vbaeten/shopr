@@ -3,13 +3,13 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Book;
 import com.realdolmen.shopr.service.BookService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class BooksController {
     @Inject
     private BookService bookService;
