@@ -72,7 +72,7 @@
                                 <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(gameDetailController.game.id)}"/>
 
                                 <div class="editButton">
-                                <h:link value="edit" outcome="/edit-pages/games-edit.xhtml" style="color: black">
+                                <h:link value="edit" outcome="/edit-pages/games-edit.xhtml" styleClass="button.button-default">
                                     <f:param name="id" value="#{gameDetailController.game.id}"/>
                                 </h:link>
                                 </div>

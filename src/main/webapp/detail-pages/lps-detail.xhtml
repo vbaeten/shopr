@@ -60,11 +60,16 @@
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <h:link value="edit" outcome="/edit-pages/lps-edit.xhtml">
+                                <h:link value="edit" outcome="/edit-pages/lps-edit.xhtml"  styleClass="button.button-default">
                                     <f:param name="id" value="#{lpDetailController.lp.id}"/>
                                 </h:link>
 
-                                <b:commandButton value="add to card" style="width:100%"/>
+                                <b:inputText value="#{orderLineController.quantity}"/>
+
+                                <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(lpDetailController.lp.id)}"/>
+
+
+
                                 <b:commandButton value="delete Lp" style="width:100%"
                                                  action="#{lpDetailController.delete}"/>
                             </b:column>

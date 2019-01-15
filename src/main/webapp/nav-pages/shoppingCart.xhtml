@@ -21,7 +21,7 @@
                 <h:form>
 
                     <b:dataTable value="#{orderLineController.order.orderLines}" var="orderLine">
-                        <b:dataTableColumn value="#{orderLine.item.price}"/>
+                        <b:dataTableColumn value="#{orderLine.subTotal}"/>
                         <b:dataTableColumn value="#{orderLine.item.title}"/>
                         <b:dataTableColumn value="#{orderLine.item.type}"/>
                         <b:dataTableColumn value="#{orderLine.quantity}"/>

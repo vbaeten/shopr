@@ -5,11 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/WEB-INF/layout.xhtml">
     <ui:define name="pageContent">
         <h:outputStylesheet library="css"/>
+
 
 
         <div class="afterNav">
@@ -21,6 +22,15 @@
             <div class="afterNav">
 
                 <h3>Your order is on it's way:</h3>
+
+
+                <b:dataTable value="#{orderLineController.getOrderById(orderLineController.toShowOrderId).orderLines}" var="order">
+                    <b:dataTableColumn value="#{order.item}"/>
+                    <b:dataTableColumn value="#{order.quantity}"/>
+
+
+
+                </b:dataTable>
 
             </div>
 

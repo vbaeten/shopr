@@ -30,6 +30,7 @@ public class OrderLineController implements Serializable {
     private List<OrderLine> orderLines = new ArrayList<>();
     private static  final SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd.HH.mm.ss");
     private Timestamp timestamp;
+    private int toShowOrderId;
 
     @Inject
     private OrderService orderService;
@@ -53,8 +54,8 @@ public class OrderLineController implements Serializable {
         orderLine = new OrderLine();
         item = itemService.getById(itemId);
         orderLine.setItem(item);
-        orderLine.setOrder(order);
         orderLine.setQuantity(quantity);
+//        orderLine.setSubTotal(orderLineService.getOrderLinePrice());
         orderLines.add(orderLine);
         this.orderLineService.submit(orderLine);
         order.setOrderLines(orderLines);
@@ -64,18 +65,32 @@ public class OrderLineController implements Serializable {
 
     public String placeOrder(){
 
-        timestamp=new Timestamp(System.currentTimeMillis());
-        orderService.checkForUser();
-        order = new Order();
-        order.setDate(timestamp);
-        order.setOrderLines(orderLines);
-        int id = userController.getCurrentUser().getId();
-        User userById = userService.getUserById(id);
-        order.setUser(userById);
-        orderService.submitOrder(order);
-        order.getOrderLines().clear();
-        return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
+        try {
+            orderLine.setOrder(order);
+            timestamp = new Timestamp(System.currentTimeMillis());
+            order = new Order();
+            order.setDate(timestamp);
+            order.setOrderLines(orderLines);
+            int id = userController.getCurrentUser().getId();
+            User userById = userService.getUserById(id);
+            order.setUser(userById);
+            orderService.submitOrder(order);
+            toShowOrderId = (order.getId());
+            orderLines.clear();
+            order = new Order();
+            return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
+        }catch(Exception e){
+            return "/nav-pages/index.xhtml?faces-redirect=true";
+        }
     }
+
+
+
+    public Order getOrderById(int id){
+        return orderService.findById(id);
+    }
+
+
 
     public String backToHome(){
         return "/nav-pages/index.xhtml?faces-redirect=true";
@@ -118,5 +133,13 @@ public class OrderLineController implements Serializable {
 
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public int getToShowOrderId() {
+        return toShowOrderId;
+    }
+
+    public void setToShowOrderId(int toShowOrderId) {
+        this.toShowOrderId = toShowOrderId;
     }
 }

@@ -28,6 +28,7 @@ public class OrderLine {
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
+    private double subTotal;
     private int quantity;
 
 
@@ -61,5 +62,13 @@ public class OrderLine {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public double getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
     }
 }

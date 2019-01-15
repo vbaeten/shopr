@@ -11,9 +11,6 @@ import java.io.Serializable;
 @Stateless
 public class OrderService implements Serializable {
 
-    @Inject
-    UserController userController;
-
 
     @Inject
     private OrderRepository orderRepository;
@@ -24,20 +21,7 @@ public class OrderService implements Serializable {
 
     }
 
-
-    public String checkForUser() {
-        if(!isLoggedIn()){
-
-            return "/nav-pages/index.xhtml?faces-redirect=true";
-        }return "/nav-pages/thankyou-page.xhtml";
+    public Order findById(int id) {
+        return orderRepository.findById(id);
     }
-
-    private Boolean isLoggedIn() {
-        if (userController.getCurrentUser()==null){
-            return false;
-        }
-        return true;
-    }
-
-
 }

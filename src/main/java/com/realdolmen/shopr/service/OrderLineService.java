@@ -13,6 +13,10 @@ public class OrderLineService implements Serializable {
 
     @Inject
     private OrderLineRepository orderLineRepository;
+//    private OrderLine orderLine;
+//    private double orderLinePrice = orderLine.getItem().getPrice() * orderLine.getQuantity();
+
+
 
 
     public OrderLine findById(int id){
@@ -27,4 +31,11 @@ public class OrderLineService implements Serializable {
         return this.orderLineRepository.findAllOrderLines();
     }
 
+//    public double getOrderLinePrice() {
+//        return orderLinePrice;
+//    }
+//
+//    public void setOrderLinePrice(double orderLinePrice) {
+//        this.orderLinePrice = orderLinePrice;
+//    }
 }

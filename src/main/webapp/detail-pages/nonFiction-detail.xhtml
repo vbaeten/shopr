@@ -74,10 +74,16 @@
                         </b:row>
                         <b:row>
                             <b:column span="2">
-                                <h:link value="edit" outcome="/edit-pages/nonFiction-edit.xhtml">
+                                <h:link value="edit" outcome="/edit-pages/nonFiction-edit.xhtml" styleClass="button.button-default">
                                     <f:param name="id" value="#{nonFictionDetailController.nonFiction.id}"/>
                                 </h:link>
-                                <b:commandButton value="add to card" style="width:100%"/>
+
+
+                                <b:inputText value="#{orderLineController.quantity}"/>
+
+                                <b:commandButton value="add to cart" style="width:100%" action="#{orderLineController.addToCart(nonFictionDetailController.nonFiction.id)}"/>
+
+
                                 <b:commandButton value="delete book" style="width:100%"
                                                  action="#{nonFictionDetailController.delete}"/>
                             </b:column>
