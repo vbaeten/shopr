@@ -25,10 +25,6 @@ public class GameService implements Serializable {
         return gameRepository.findAll();
     }
 
-//    public Game findGameByTitle(String title) {
-//        return gameRepository.findByTitle(title);
-//    }
-
     public void insert(Game game) {
         gameRepository.insert(game);
     }

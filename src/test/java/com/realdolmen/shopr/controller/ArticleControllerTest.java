@@ -1,16 +1,16 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Fiction;
-import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.domain.Lp;
-import com.realdolmen.shopr.domain.NonFiction;
+import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.service.ArticleService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ArticleControllerTest {
     @InjectMocks
     ArticleController articleController;
@@ -22,11 +22,11 @@ public class ArticleControllerTest {
     private Game game = new Game();
     private Fiction fiction = new Fiction();
     private NonFiction nonFiction = new NonFiction();
+    private Article article = new Article();
 
     @Before
     public void init(){
-//        lp.setTypes("LP");
-//        game.setTypes("GAME");
+
     }
 
     @Test
@@ -40,4 +40,24 @@ public class ArticleControllerTest {
         String result = articleController.navigateToDetailPage(game);
         Assert.assertEquals("gameDetail.xhtml", result);
     }
+
+    @Test
+    public void testNavigateToDetailsPageFiction(){
+        String result = articleController.navigateToDetailPage(fiction);
+        Assert.assertEquals("fictionDetail.xhtml", result);
+    }
+
+    @Test
+    public void testNavigateToDetailsPageNonFiction(){
+        String result = articleController.navigateToDetailPage(nonFiction);
+        Assert.assertEquals("nonFictionDetail.xhtml", result);
+    }
+
+    @Test
+    public void testNavigateToDetailsPageNotFound(){
+        String result = articleController.navigateToDetailPage(article);
+        Assert.assertEquals("pageNotFound.xhtml", result);
+    }
+
+
 }

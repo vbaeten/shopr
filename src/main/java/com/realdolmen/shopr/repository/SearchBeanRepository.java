@@ -25,10 +25,7 @@ public class SearchBeanRepository {
         if (!searchParameters.get("id").equals("0")){
             query +=  " and a.id = " + searchParameters.get("id");
         }
-
-
         query +=  " order by price";
-
         return entityManager.createQuery(query).getResultList();
     }
 

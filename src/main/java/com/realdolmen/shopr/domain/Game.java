@@ -16,9 +16,6 @@ import javax.validation.constraints.Size;
                         query = "SELECT g FROM Game g order by g.title"
                 )
         })
-//@Table(name = "game",
-//        uniqueConstraints=@UniqueConstraint(columnNames = {"title", "publisher"})
-//)
 public class Game extends Article {
     public static final String FIND_ALL = "Game.findAll";
     public static final String FIND_BY_TITLE = "Game.findByTitle";

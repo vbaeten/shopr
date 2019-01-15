@@ -1,9 +1,7 @@
 package com.realdolmen.shopr.controller;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import com.realdolmen.shopr.controller.FlowBean;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;

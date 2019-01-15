@@ -1,8 +1,6 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Article;
-import com.realdolmen.shopr.domain.Game;
-import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.service.ArticleService;
 
 import javax.enterprise.context.SessionScoped;

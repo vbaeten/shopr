@@ -24,15 +24,6 @@ public class NonFictionService {
         return nonFictionRepository.findAll();
     }
 
-//    public NonFiction findNonFictionByTitle(String title) {
-//        return nonFictionRepository.findByTitle(title);
-//    }
-//
-//    public void updateTitle(int id, String newTitle) {
-//        NonFiction nonFiction = nonFictionRepository.findById(id);
-//        nonFiction.setTitle(newTitle);
-//    }
-
     public void insert(NonFiction nonFiction) {
         nonFictionRepository.insert(nonFiction);
     }

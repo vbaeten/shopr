@@ -1,7 +1,6 @@
 package com.realdolmen.shopr.repository;
 
 import com.realdolmen.shopr.domain.Article;
-import com.realdolmen.shopr.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,10 +16,4 @@ public class ArticleRepository {
         return entityManager.createNamedQuery(Article.FIND_ALL, Article.class).getResultList();
     }
 
-
-
-//    public Article findByTitle(String title) {
-//        return entityManager.createNamedQuery(Article.FIND_BY_TITLE, Article.class).setParameter("name", title).getSingleResult();
-//    }
-//
 }

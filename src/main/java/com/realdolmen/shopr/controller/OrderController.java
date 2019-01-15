@@ -16,7 +16,6 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @SessionScoped

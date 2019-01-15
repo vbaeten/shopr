@@ -3,8 +3,6 @@ package com.realdolmen.shopr.domain;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;

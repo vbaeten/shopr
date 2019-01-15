@@ -20,19 +20,4 @@ public class ArticleService implements Serializable {
     public List<Article> findAllArticles() {
         return articleRepository.findAll();
     }
-
-//
-//    public Article findByTitle(String title) {
-//        return ArticleRepository.findByTitle(title);
-//    }
-
-//    public void updateTitle(int id, String newTitle) {
-//        Article article = articleRepository.findById(id);
-//        article.setTitle(newTitle);
-//    }
-
-//
-//    public void delete(int id){
-//        articleRepository.delete(id);
-//    }
 }

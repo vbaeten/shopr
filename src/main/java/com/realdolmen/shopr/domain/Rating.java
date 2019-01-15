@@ -3,7 +3,6 @@ package com.realdolmen.shopr.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries(

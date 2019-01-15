@@ -1,12 +1,10 @@
 package com.realdolmen.shopr.service;
 
-import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.UserRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
