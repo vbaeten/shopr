@@ -16,9 +16,4 @@ public class ArticleService extends CrudService<Article, Long>{
         return articleRepository;
     }
 
-    public void updateTitle(Long articleId, String newTitle) {
-        Article article = articleRepository.findByPrimaryKey(articleId);
-        article.setTitle(newTitle);
-    }
-
 }
