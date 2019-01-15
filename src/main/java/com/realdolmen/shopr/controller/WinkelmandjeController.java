@@ -25,10 +25,21 @@ public class WinkelmandjeController implements Serializable
     private List<ArtikelLijnInBestelling> artikelsInMandje = new ArrayList<>();
     private Artikel artikel;
     private int aantalArtikel;
+    private int aantalVerschillendeArtikels;
     private int aantalArtikelsTotaal = 0;
     private int totaalBedragBestelling;
     private boolean betalingsPanel = false;
     private boolean winkelmandButtonsHide = false;
+
+    public int getAantalVerschillendeArtikels()
+    {
+        return aantalVerschillendeArtikels;
+    }
+
+    public void setAantalVerschillendeArtikels(int aantalVerschillendeArtikels)
+    {
+        this.aantalVerschillendeArtikels = aantalVerschillendeArtikels;
+    }
 
     public boolean isWinkelmandButtonsHide()
     {
@@ -130,6 +141,7 @@ public class WinkelmandjeController implements Serializable
             artikelLijnInBestelling.setId(a.getId());
             artikelsInMandje.add(artikelLijnInBestelling);
             aantalArtikel = 0;
+            artikelsInHeader();
         }
         totaalBestelling();
 
@@ -168,6 +180,7 @@ public class WinkelmandjeController implements Serializable
             artikelLijnInBestelling.setId(a.getId());
             artikelsInMandje.add(artikelLijnInBestelling);
             aantalArtikel = 0;
+            artikelsInHeader();
         }
         totaalBestelling();
 
@@ -175,6 +188,7 @@ public class WinkelmandjeController implements Serializable
 
     private void totaalBestelling()
     {
+
         totaalBedragBestelling = 0;
         for (ArtikelLijnInBestelling al : artikelsInMandje)
         {
@@ -201,6 +215,11 @@ public class WinkelmandjeController implements Serializable
         loginController.getCurrentUserName();
 
 
+    }
+
+    public void artikelsInHeader()
+    {
+        aantalVerschillendeArtikels++;
     }
 
 

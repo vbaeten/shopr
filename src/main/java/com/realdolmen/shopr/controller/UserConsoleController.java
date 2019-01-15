@@ -25,8 +25,18 @@ public class UserConsoleController
     private boolean detailPanel = false;
     private List<ArtikelLijnInBestelling> artikelLijnInBestelling = new ArrayList<>();
     private List<Artikel> artikels = new ArrayList<>();
+    private List<Bestelling> bestellingen = new ArrayList<>();
     private int totaalBedrag;
 
+    public List<Bestelling> getBestellingen()
+    {
+        return bestellingen;
+    }
+
+    public void setBestellingen(List<Bestelling> bestellingen)
+    {
+        this.bestellingen = bestellingen;
+    }
 
     public List<Artikel> getArtikels()
     {
@@ -78,9 +88,12 @@ public class UserConsoleController
         this.bestellingenCurrentUser = bestellingen;
     }
 
-    public List<Bestelling> bestellingen(User u)
+    public List<Bestelling> bestellingen()
     {
-        return bestellingsService.bestellingenGeladenMetArtikels(u.getId());
+
+        return bestellingsService.bestellingenGeladenMetArtikels(user.getId());
+
+
     }
 
     public User getUser()
@@ -96,7 +109,7 @@ public class UserConsoleController
     public String naarUserConsole(User user)
     {
         this.user = user;
-        bestellingenCurrentUser = bestellingen(user);
+        bestellingenCurrentUser = bestellingen();
         return "userConsole";
 
     }

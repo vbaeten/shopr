@@ -44,7 +44,7 @@
                                   action="#{userConsoleController.naarUserConsole(loginController.currentUser)}" class="btn btn-primary"
                                   style="background: #b8b42d; color: #fffffb; border-color: #333333"
                                   iconAwesome="user"
-                                  value="User: #{loginController.currentUserName}">
+                                  value="#{loginController.currentUserName} ">
                     </b:navCommandLink>
 
                 <b:navCommandLink action="goToLogin" rendered="#{loginController.enumRoles eq null }"

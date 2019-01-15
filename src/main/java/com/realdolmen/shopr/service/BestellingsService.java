@@ -15,6 +15,8 @@ public class BestellingsService
     @Inject
     BestellingsRepository bestellingsRepository;
 
+    public List<Bestelling> bestellingenUser = new ArrayList<>();
+
     public void bestellingAanmaken(List<ArtikelLijnInBestelling> artikelLijnInBestellings, User u)
     {
         Bestelling bestelling = new Bestelling();
@@ -60,7 +62,7 @@ public class BestellingsService
         ArtikelLijnInBestelling artikelLijnInBestellingFictie = new ArtikelLijnInBestelling();
         ArtikelLijnInBestelling artikelLijnInBestellingNonFictie = new ArtikelLijnInBestelling();
         int aantal = 1;
-        for (Artikel a : bestelling.getArtikels()  )
+        for (Artikel a : bestelling.getArtikels())
         {
 
             switch (a.getType())
@@ -69,25 +71,25 @@ public class BestellingsService
 
                     artikelLijnInBestellingLP.setArtikel(a);
                     artikelLijnInBestellingLP.setAantal(aantal);
-                    artikelLijnInBestellingLP.setTotaalBedragLijn(a.getPrijs()* artikelLijnInBestellingLP.getAantal());
+                    artikelLijnInBestellingLP.setTotaalBedragLijn(a.getPrijs() * artikelLijnInBestellingLP.getAantal());
                     break;
                 case "game":
 
                     artikelLijnInBestellingGame.setArtikel(a);
                     artikelLijnInBestellingGame.setAantal(aantal);
-                    artikelLijnInBestellingGame.setTotaalBedragLijn(a.getPrijs()* artikelLijnInBestellingGame.getAantal());
+                    artikelLijnInBestellingGame.setTotaalBedragLijn(a.getPrijs() * artikelLijnInBestellingGame.getAantal());
                     break;
                 case "fictie":
 
                     artikelLijnInBestellingFictie.setArtikel(a);
                     artikelLijnInBestellingFictie.setAantal(aantal);
-                    artikelLijnInBestellingFictie.setTotaalBedragLijn(a.getPrijs()* artikelLijnInBestellingFictie.getAantal());
+                    artikelLijnInBestellingFictie.setTotaalBedragLijn(a.getPrijs() * artikelLijnInBestellingFictie.getAantal());
                     break;
                 case "nonFictie":
 
                     artikelLijnInBestellingNonFictie.setArtikel(a);
                     artikelLijnInBestellingNonFictie.setAantal(aantal);
-                    artikelLijnInBestellingNonFictie.setTotaalBedragLijn(a.getPrijs()* artikelLijnInBestellingFictie.getAantal());
+                    artikelLijnInBestellingNonFictie.setTotaalBedragLijn(a.getPrijs() * artikelLijnInBestellingFictie.getAantal());
                     break;
             }
         }
@@ -105,12 +107,14 @@ public class BestellingsService
         return bestellingsRepository.bestellingenJoinFetch(id);
     }
 
-    public void deleteBestellingenUser()
+    public void deleteBestellingenUser(int id)
     {
-
+        bestellingenUser = bestellingsRepository.findByUser(id);
+        for (Bestelling b :bestellingenUser )
+        {
+            bestellingsRepository.delete(b);
+        }
     }
-
-
 
 
 }

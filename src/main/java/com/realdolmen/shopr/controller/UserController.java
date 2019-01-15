@@ -1,7 +1,9 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Beoordeling;
+import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
+import com.realdolmen.shopr.service.BestellingsService;
 import com.realdolmen.shopr.service.RatingService;
 import com.realdolmen.shopr.service.UserService;
 
@@ -28,6 +30,8 @@ public class UserController
     private RatingService ratingService;
     @Inject
     private RatingController ratingController;
+    @Inject
+    private BestellingsService bestellingsService;
 
 
     public boolean isNewUserPanel()
@@ -63,6 +67,7 @@ public class UserController
     public void delete(int id)
     {
         this.ratingService.deleteRatingsUser(id);
+        this.bestellingsService.deleteBestellingenUser(id);
         this.userService.delete(id);
     }
 
@@ -79,6 +84,7 @@ public class UserController
     public void userToevoegen()
     {
         this.newUserPanel = false;
+        newUser.setRole(EnumRoles.USER);
         userService.insert(this.newUser);
     }
 
