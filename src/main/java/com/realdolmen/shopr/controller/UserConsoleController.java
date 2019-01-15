@@ -5,16 +5,15 @@ import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
 import com.realdolmen.shopr.domain.Bestelling;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.BestellingsService;
-import com.realdolmen.shopr.service.OverviewService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UserConsoleController
 {
     @Inject
@@ -24,14 +23,37 @@ public class UserConsoleController
     User user;
     private List<Bestelling> bestellingenCurrentUser = new ArrayList<>();
     private boolean detailPanel = false;
-    private ArtikelLijnInBestelling artikelLijnInBestelling;
+    private List<ArtikelLijnInBestelling> artikelLijnInBestelling = new ArrayList<>();
+    private List<Artikel> artikels = new ArrayList<>();
+    private int totaalBedrag;
 
-    public ArtikelLijnInBestelling getArtikelLijnInBestelling()
+
+    public List<Artikel> getArtikels()
+    {
+        return artikels;
+    }
+
+    public void setArtikels(List<Artikel> artikels)
+    {
+        this.artikels = artikels;
+    }
+
+    public int getTotaalBedrag()
+    {
+        return totaalBedrag;
+    }
+
+    public void setTotaalBedrag(int totaalBedrag)
+    {
+        this.totaalBedrag = totaalBedrag;
+    }
+
+    public List<ArtikelLijnInBestelling> getArtikelLijnInBestelling()
     {
         return artikelLijnInBestelling;
     }
 
-    public void setArtikelLijnInBestelling(ArtikelLijnInBestelling artikelLijnInBestelling)
+    public void setArtikelLijnInBestelling(List<ArtikelLijnInBestelling> artikelLijnInBestelling)
     {
         this.artikelLijnInBestelling = artikelLijnInBestelling;
     }
@@ -58,7 +80,7 @@ public class UserConsoleController
 
     public List<Bestelling> bestellingen(User u)
     {
-        return bestellingsService.bestellingenUser(u.getId());
+        return bestellingsService.bestellingenGeladenMetArtikels(u.getId());
     }
 
     public User getUser()
@@ -82,10 +104,20 @@ public class UserConsoleController
     public void ArtikelDetails(Bestelling b)
     {
 
-        bestellingsService.artikelLijnInBestellingList(b);
+        this.artikelLijnInBestelling = bestellingsService.artikelLijnInBestellingList(b);
+        berekenTotaal();
+
         this.detailPanel = true;
+
     }
 
+    public void berekenTotaal()
+    {
+        for (ArtikelLijnInBestelling a : this.artikelLijnInBestelling)
+        {
+            this.totaalBedrag += a.getTotaalBedragLijn();
+        }
+    }
 
 
 }

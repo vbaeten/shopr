@@ -70,3 +70,19 @@ INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, 
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('17', 'not bad', '4', '5', '12');
 INSERT INTO `shopr`.`beoordeling` (`id`, `onschrijving`, `score`, `artikel_id`, `user_id`) VALUES ('18', 'good', '5', '5', '11');
 
+UPDATE `shopr`.`bestellingen` SET `id` = '1' WHERE (`id` = '1');
+INSERT INTO `shopr`.`bestellingen` (`id`, `bestelDatum`, `user_id`) VALUES ('2', '2018-03-10 12:12:12', '11');
+INSERT INTO `shopr`.`bestellingen` (`id`, `bestelDatum`, `user_id`) VALUES ('3', '2017-07-16 20:00:00', '12');
+INSERT INTO `shopr`.`bestellingen` (`id`, `bestelDatum`, `user_id`) VALUES ('4', '2016-02-20 19:00:03', '12');
+
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('1', '3');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('1', '4');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('2', '6');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('2', '8');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('3', '10');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('3', '11');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('4', '2');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('4', '3');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('4', '6');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('4', '4');
+INSERT INTO `shopr`.`bestellingen_artikel` (`Bestelling_id`, `artikels_id`) VALUES ('3', '3');

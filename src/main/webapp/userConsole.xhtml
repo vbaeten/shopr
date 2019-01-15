@@ -19,36 +19,39 @@
 
                         <p:dataTable style="width: 55em" resizableColumns="true" id="userDataTable" resizeMode="expand"
                                      var="bestelling"
-                                     value="#{userConsoleController.bestellingenCurrentUser}"
+                                     value="#{userConsoleController.bestellingen(loginController.currentUser)}"
                                      rows="10"
                                      paginator="true">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{bestelling.id}"/>
+                            </p:column>
                             <p:column headerText="Datum">
                                 <h:outputText value="#{bestelling.bestelDatum}"/>
                             </p:column>
 
                             <p:column>
 
-                                <b:commandButton action="#{userConsoleController.ArtikelDetails(bestelling.id)}"
-                                                 rendered="#{user.role eq 'USER'}"
+                                <b:commandButton action="#{userConsoleController.ArtikelDetails(bestelling)}"
                                                  style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px">
-                                    <b:iconAwesome name="star"></b:iconAwesome>
+                                    <b:iconAwesome name="info"></b:iconAwesome>
                                 </b:commandButton>
                             </p:column>
                         </p:dataTable>
-                        <p:panel style="width: 55em" rendered="#{adminConsoleController.ratingPaneel eq true}">
-                            <p:dataTable value="#{userConsoleController.artikel}" var="artikel">
-                                <p:column resizable="true" headerText="#{msgs['artikel.rating']}">
-                                    <p:rating value="#{artikel.type}" readonly="true"/>
-                                </p:column>
-                                <p:column resizable="true" headerText="#{msgs['artikel.beoordeling']}">
-                                    <h:outputText value="#{artikel.prijs}"/>
-                                </p:column>
-                                <p:column resizable="true" headerText="#{msgs['artikel.titel']}">
-                                    <h:outputText value="#{beoordeling.artikel.titel}"/>
-                                </p:column>
+                        <p:panel style="width: 55em" rendered="#{userConsoleController.detailPanel eq true}">
+                            <p:dataTable value="#{userConsoleController.artikelLijnInBestelling}" var="artikel">
                                 <p:column resizable="true" headerText="#{msgs['artikel.type']}">
-                                    <h:outputText value="#{beoordeling.artikel.type}"/>
+                                    <h:outputText value="#{artikel.artikel.type}"/>
                                 </p:column>
+                                <p:column resizable="true" headerText="#{msgs['artikel.leverancier']}">
+                                    <h:outputText value="#{artikel.artikel.leverancier}"/>
+                                </p:column>
+                                <p:column resizable="true" headerText="#{msgs['artikel.prijs']}">
+                                    <h:outputText value="#{artikel.artikel.prijs}"/>
+                                </p:column>
+                                <p:column resizable="true" headerText="#{msgs['artikel.totaal']}">
+                                    <h:outputText value="#{artikel.totaalBedragLijn}"/>
+                                </p:column>
+
 
                             </p:dataTable>
 

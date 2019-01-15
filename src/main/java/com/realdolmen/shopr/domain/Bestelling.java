@@ -13,7 +13,7 @@ public class Bestelling
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private int id;
     @Column
     private Calendar bestelDatum;
 
@@ -22,8 +22,15 @@ public class Bestelling
     @ManyToOne
     User user;
 
+    public int getId()
+    {
+        return id;
+    }
 
-
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public Calendar getBestelDatum()
     {

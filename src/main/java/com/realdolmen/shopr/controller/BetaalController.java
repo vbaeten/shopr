@@ -30,6 +30,8 @@ public class BetaalController
 
     User betalendeUser = new User();
 
+
+
     public User getBetalendeUser()
     {
         return betalendeUser;

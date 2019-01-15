@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.repository;
 
+import com.realdolmen.shopr.domain.Artikel;
+import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
 import com.realdolmen.shopr.domain.Bestelling;
 
 import javax.persistence.EntityManager;
@@ -27,6 +29,7 @@ public class BestellingsRepository
 //    }
 //
 
+
     public void insert(Bestelling bestelling) {
         entityManager.persist(bestelling);
     }
@@ -41,4 +44,16 @@ public class BestellingsRepository
         entityManager.merge(bestelling);
     }
 
+    public List<Bestelling> bestellingenJoinFetch(int id)
+    {
+
+        Query q = entityManager.createQuery(
+                "select b " +
+                        "from Bestelling b " +
+                        "join fetch b.artikels " +
+                        "where b.user.id = :id", Bestelling.class);
+                q.setParameter("id", id);
+                return q.getResultList();
+
+    }
 }
