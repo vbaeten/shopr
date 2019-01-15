@@ -14,45 +14,29 @@
 
             <h:form>
                 <div class="ui-g">
-                    <div class="ui-g-4">
-                        <p:outputLabel for="typeSearch" value="Article type: "/>
-
-                        <p:selectOneMenu id="typeSearch" style="width:150px" value="#{searchBean.searchId}">
-                            <f:selectItem itemLabel="--- Select genre ---" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value="#{articleController.findAllTypes()}"
-                                           var="articleType"
-                                           itemValue="#{articleType}"
-                                           itemLabel="#{articleType}"/>
-                        </p:selectOneMenu>
-                    </div>
-                    <div class="ui-g-4">
+                    <div class="ui-g-6">
                         <p:outputLabel for="titleSearch" value="Title: "/>
                         <p:inputText id="titleSearch" value="#{searchBean.searchTitle}"/>
                     </div>
-                    <div class="ui-g-4">
+                    <div class="ui-g-6">
                         <p:outputLabel for="searchId" value="Id: "/>
-                        <p:inputNumber id="searchId" value="#{searchBean.searchId}" class="width:20px;" decimalPlaces="0"/>
+                        <p:inputNumber id="searchId" value="#{searchBean.searchId}" class="width:20px;"
+                                       decimalPlaces="0"/>
                     </div>
                 </div>
-
                 <div class="ui-g">
                     <div class="ui-g-12">
                         <h:outputText value="Price:"></h:outputText>
                     </div>
-                </div>
+                    <div class="ui-g-12">
 
-
-                <div class="ui-g">
-                    <div class="ui-g-2">
                         <h:outputText id="displayRange"
-                                      value="Between #{searchBean.searchMinPrice}€ and #{searchBean.searchMaxPrice}€"/>
-                    </div>
-
-                    <div class="ui-g-2">
+                                      value="Between #{searchBean.searchMinPrice}€ and #{searchBean.searchMaxPrice}€"/><br/>
                         <p:slider for="min, max"
                                   display="displayRange"
                                   range="true"
-                                  displayTemplate="Between {min}€ and {max}€"/>
+                                  displayTemplate="Between {min}€ and {max}€"
+                                  style="margin: 10px 0;"/>
                         <h:inputHidden id="min" value="#{searchBean.searchMinPrice}"/>
                         <h:inputHidden id="max" value="#{searchBean.searchMaxPrice}"/>
                     </div>
@@ -63,10 +47,6 @@
             </h:form>
 
         </p:fieldset>
-
-
-
-
 
         <p:dataTable id="searchTable"
                      var="article"

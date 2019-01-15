@@ -30,14 +30,6 @@ public class ArticleController implements Serializable {
         return newArticle = articleService.findById(id);
     }
 
-    public Article getNewArticle() {
-        return newArticle;
-    }
-
-    public void setNewArticle(Article newArticle) {
-        this.newArticle = newArticle;
-    }
-
     public int getArticleId() {
         return articleId;
     }
@@ -49,7 +41,7 @@ public class ArticleController implements Serializable {
     public String navigateToDetailPage(Article article) {
         switch (article.getTypes()) {
             case "LP":
-                return "lpDetail.xhtml?";
+                return "lpDetail.xhtml";
             case "GAME":
                 return "gameDetail.xhtml";
             case "FICTION":

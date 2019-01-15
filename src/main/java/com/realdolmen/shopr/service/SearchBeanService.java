@@ -1,5 +1,6 @@
-package com.realdolmen.shopr.domain;
+package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Article;
 import com.realdolmen.shopr.repository.SearchBeanRepository;
 
 import javax.ejb.Stateless;
