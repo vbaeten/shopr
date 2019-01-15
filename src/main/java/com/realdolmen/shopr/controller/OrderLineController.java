@@ -32,6 +32,7 @@ public class OrderLineController implements Serializable {
     private Timestamp timestamp;
     private int toShowOrderId;
     private double totalPrice;
+    private double orderLineTotal;
 
     @Inject
     private OrderService orderService;
@@ -56,7 +57,8 @@ public class OrderLineController implements Serializable {
         item = itemService.getById(itemId);
         orderLine.setItem(item);
         orderLine.setQuantity(quantity);
-//        orderLine.setSubTotal(orderLineService.getOrderLinePrice());
+        orderLineTotal = orderLine.getQuantity()*orderLine.getItem().getPrice();
+        orderLine.setSubTotal(orderLineTotal);
         orderLines.add(orderLine);
         this.orderLineService.submit(orderLine);
         order.setOrderLines(orderLines);
@@ -84,6 +86,7 @@ public class OrderLineController implements Serializable {
             return "/nav-pages/index.xhtml?faces-redirect=true";
         }
     }
+
 
 
 
@@ -150,5 +153,13 @@ public class OrderLineController implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public double getOrderLineTotal() {
+        return orderLineTotal;
+    }
+
+    public void setOrderLineTotal(double orderLineTotal) {
+        this.orderLineTotal = orderLineTotal;
     }
 }

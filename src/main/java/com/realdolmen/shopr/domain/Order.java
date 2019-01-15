@@ -28,6 +28,8 @@ public class Order {
     @JoinColumn
     private User user;
 
+    private double totalPrice;
+
 
     public int getId() {
         return id;
@@ -59,5 +61,13 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
