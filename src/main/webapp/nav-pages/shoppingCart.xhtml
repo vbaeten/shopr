@@ -25,11 +25,17 @@
                         <b:dataTableColumn value="#{orderLine.item.title}"/>
                         <b:dataTableColumn value="#{orderLine.item.type}"/>
                         <b:dataTableColumn value="#{orderLine.quantity}"/>
+                        <b:dataTableColumn value="#{orderLine.item.price}"/>
                         <b:dataTableColumn value="#{orderLine.subTotal}"/>
                     </b:dataTable>
 
+                    <div>
+                    <h3>Total price:</h3>
+                    <h:outputLabel value="#{orderLineController.calcTotalPrice()}"/>
+                    </div>
                     <b:commandButton value="Order!" action="#{orderLineController.placeOrder()}" update="@form"/>
                 </h:form>
+
             </div>
 
 

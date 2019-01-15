@@ -27,8 +27,9 @@ public class GameDetailController {
     public void init(){
         if (id==0){
             game = new Game();
-        }else
+        }else{
         getGameById(id);
+        }
     }
 
 

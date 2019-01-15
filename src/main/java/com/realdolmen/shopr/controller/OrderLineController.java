@@ -24,15 +24,12 @@ public class OrderLineController implements Serializable {
 
 
     private Order order = new Order();
+    private Order toShowOrder= order;
     private Item item;
     private OrderLine orderLine;
     private short quantity;
     private List<OrderLine> orderLines = new ArrayList<>();
     private static  final SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd.HH.mm.ss");
-    private Timestamp timestamp;
-    private int toShowOrderId;
-    private double totalPrice;
-    private double orderLineTotal;
 
     @Inject
     private OrderService orderService;
@@ -46,9 +43,7 @@ public class OrderLineController implements Serializable {
     private UserService userService;
 
 
-    public List<OrderLine> getOrderLines(){
-        return this.orderLineService.getOrderLines();
-    }
+
 
 
     public void addToCart(int itemId){
@@ -57,11 +52,12 @@ public class OrderLineController implements Serializable {
         item = itemService.getById(itemId);
         orderLine.setItem(item);
         orderLine.setQuantity(quantity);
-        orderLineTotal = orderLine.getQuantity()*orderLine.getItem().getPrice();
+        double orderLineTotal = orderLine.getQuantity() * orderLine.getItem().getPrice();
         orderLine.setSubTotal(orderLineTotal);
         orderLines.add(orderLine);
         this.orderLineService.submit(orderLine);
         order.setOrderLines(orderLines);
+        toShowOrder.setOrderLines(orderLines);
         orderLine = new OrderLine();
     }
 
@@ -70,15 +66,16 @@ public class OrderLineController implements Serializable {
 
         try {
             orderLine.setOrder(order);
-            timestamp = new Timestamp(System.currentTimeMillis());
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             order = new Order();
             order.setDate(timestamp);
             order.setOrderLines(orderLines);
             int id = userController.getCurrentUser().getId();
             User userById = userService.getUserById(id);
             order.setUser(userById);
+            order.setTotalPrice(calcTotalPrice());
             orderService.submitOrder(order);
-            toShowOrderId = (order.getId());
+            toShowOrder = order;
             orderLines.clear();
             order = new Order();
             return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
@@ -90,9 +87,7 @@ public class OrderLineController implements Serializable {
 
 
 
-    public Order getOrderById(int id){
-        return orderService.findById(id);
-    }
+
 
 
 
@@ -100,7 +95,19 @@ public class OrderLineController implements Serializable {
         return "/nav-pages/index.xhtml?faces-redirect=true";
     }
 
+    public Double calcTotalPrice(){
+        double totalPrice = 0;
+        for (int i =0; i<orderLines.size();i++){
+            totalPrice = totalPrice +(orderLines.get(i).getSubTotal());
+        }
+        return totalPrice;
+    }
 
+
+
+    public List<OrderLine> getOrderLines(){
+        return this.orderLineService.getOrderLines();
+    }
 
     public Item getItem() {
         return item;
@@ -118,13 +125,6 @@ public class OrderLineController implements Serializable {
         this.quantity = quantity;
     }
 
-    public OrderLine getOrderLine() {
-        return orderLine;
-    }
-
-    public void setOrderLine(OrderLine orderLine) {
-        this.orderLine = orderLine;
-    }
 
 
     public Order getOrder() {
@@ -135,31 +135,13 @@ public class OrderLineController implements Serializable {
         this.order = order;
     }
 
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
+
+
+    public Order getToShowOrder() {
+        return toShowOrder;
     }
 
-    public int getToShowOrderId() {
-        return toShowOrderId;
-    }
-
-    public void setToShowOrderId(int toShowOrderId) {
-        this.toShowOrderId = toShowOrderId;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public double getOrderLineTotal() {
-        return orderLineTotal;
-    }
-
-    public void setOrderLineTotal(double orderLineTotal) {
-        this.orderLineTotal = orderLineTotal;
+    public void setToShowOrder(Order toShowOrder) {
+        this.toShowOrder = toShowOrder;
     }
 }

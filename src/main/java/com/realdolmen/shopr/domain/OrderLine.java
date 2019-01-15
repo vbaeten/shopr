@@ -28,6 +28,7 @@ public class OrderLine {
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
+    @Transient
     private double subTotal;
     private int quantity;
 

@@ -28,6 +28,7 @@ public class Order {
     @JoinColumn
     private User user;
 
+    @Transient
     private double totalPrice;
 
 

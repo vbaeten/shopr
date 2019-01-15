@@ -12,32 +12,32 @@
         <h:outputStylesheet library="css"/>
 
 
-
         <div class="afterNav">
 
-         <h2>
-             Thank you for your order!
-         </h2>
+            <h2>
+                Thank you for your order!
+            </h2>
 
             <div class="afterNav">
 
                 <h3>Your order is on it's way:</h3>
 
+                <h:form>
+                    <b:dataTable value="#{orderLineController.toShowOrder.orderLines}" var="order">
+                        <b:dataTableColumn value="#{order.item.title}"/>
+                        <b:dataTableColumn value="#{order.item.type}"/>
+                        <b:dataTableColumn value="#{order.quantity}"/>
+                        <b:dataTableColumn value="#{order.item.price}"/>
+                    </b:dataTable>
 
-                <b:dataTable value="#{orderLineController.getOrderById(orderLineController.toShowOrderId).orderLines}" var="order">
-                    <b:dataTableColumn value="#{order.item}"/>
-                    <b:dataTableColumn value="#{order.quantity}"/>
-                    <b:dataTableColumn value="#{order.subTotal}"/>
+                    <h3>Total price = <h:outputLabel value="#{orderLineController.toShowOrder.totalPrice}"/></h3>
 
-
-
-                </b:dataTable>
-
+                </h:form>
             </div>
 
 
             <b:form>
-            <b:commandButton value="back" action="#{orderLineController.backToHome}"/>
+                <b:commandButton value="back" action="#{orderLineController.backToHome}"/>
             </b:form>
         </div>
 
