@@ -27,6 +27,7 @@
                 <b:dataTable value="#{orderLineController.getOrderById(orderLineController.toShowOrderId).orderLines}" var="order">
                     <b:dataTableColumn value="#{order.item}"/>
                     <b:dataTableColumn value="#{order.quantity}"/>
+                    <b:dataTableColumn value="#{order.subTotal}"/>
 
 
 

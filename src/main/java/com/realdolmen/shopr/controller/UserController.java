@@ -47,8 +47,7 @@ public class UserController implements Serializable {
 
     public void logout(){
 
-        currentUser = new User();
-
+        currentUser = null;
     }
 
     public void delete(int id) {

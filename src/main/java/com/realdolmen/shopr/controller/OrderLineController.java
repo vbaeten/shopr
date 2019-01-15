@@ -31,6 +31,7 @@ public class OrderLineController implements Serializable {
     private static  final SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd.HH.mm.ss");
     private Timestamp timestamp;
     private int toShowOrderId;
+    private double totalPrice;
 
     @Inject
     private OrderService orderService;
@@ -141,5 +142,13 @@ public class OrderLineController implements Serializable {
 
     public void setToShowOrderId(int toShowOrderId) {
         this.toShowOrderId = toShowOrderId;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
