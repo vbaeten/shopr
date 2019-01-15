@@ -43,8 +43,8 @@ public class GameController {
         return gameService.findByPrimaryKey(articleId);
     }
 
-    public String saveGame() {
-        this.gameService.update(game);
+    public String addGame() {
+        this.gameService.insert(game);
         return ShoprEndpoints.OVERVIEW + "?faces-redirect=true";
     }
 

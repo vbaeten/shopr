@@ -18,9 +18,6 @@ public class Order extends AbstractEntity{
     @OneToMany
     private List<Article> articles;
 
-    public Order() {
-
-    }
     public Long getId() {
         return id;
     }

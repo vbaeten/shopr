@@ -19,7 +19,4 @@ public class ArticleController {
         return this.articleService.findAll();
     }
 
-    public void removeArticle(Article article) {
-        articleService.remove(article); //TODO ellis
-    }
 }

@@ -15,9 +15,6 @@ public class BookFiction extends Book {
     @Size(max = 255 )
     private String summary;
 
-    public BookFiction() {
-    }
-
     public BookGenre getBookGenre() {
         return bookGenre;
     }

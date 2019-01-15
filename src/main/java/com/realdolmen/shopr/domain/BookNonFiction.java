@@ -11,9 +11,6 @@ public class BookNonFiction extends Book {
     @Enumerated(EnumType.STRING)
     private BookSubjectNF bookSubjectNF;
 
-    public BookNonFiction () {
-    }
-
     public BookSubjectNF getBookSubjectNF() {
         return bookSubjectNF;
     }

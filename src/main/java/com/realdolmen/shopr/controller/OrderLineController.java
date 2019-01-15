@@ -38,7 +38,7 @@ public class OrderLineController {
     }
 
     public String placeOrder(List<OrderLine> sessionOrderLines){
-        if (sessionOrderLines.size() > 0) {
+        if (sessionOrderLines.isEmpty()) {
             return "ordercreated";
         } else {
             return "emptyshoppingcart";
@@ -51,16 +51,16 @@ public class OrderLineController {
     }
 
     public String createOrderLine(BigDecimal quantity, Article article) {
-        Optional<OrderLine> orderLine = sessionOrderLines.stream()
+        Optional<OrderLine> orderLine2 = sessionOrderLines.stream()
                 .filter(orderLine1 -> orderLine1.getArticle().getArticleId().equals(article.getArticleId())).findAny();
-        if(!orderLine.isPresent()){
+        if (!orderLine2.isPresent()) {
             OrderLine newOrderline = new OrderLine();
             newOrderline.setArticle(article);
             newOrderline.setQuantity(quantity);
             newOrderline.setSubTotal(orderLineService.calculateSubtotal(quantity, article.getPrice()));
             sessionOrderLines.add(newOrderline);
         }else{
-           orderLine.ifPresent(orderLine1 -> orderLine1.setQuantity(orderLine1.getQuantity().add(quantity)));
+            orderLine2.ifPresent(orderLine1 -> orderLine1.setQuantity(orderLine1.getQuantity().add(quantity)));
         }
         return ShoprEndpoints.SHOPPING_CART;
     }
@@ -97,7 +97,7 @@ public class OrderLineController {
         return sessionOrderLines;
     }
 
-    public void setSessionOrderLines(ArrayList<OrderLine> sessionOrderLines) {
+    public void setSessionOrderLines(List<OrderLine> sessionOrderLines) {
         this.sessionOrderLines = sessionOrderLines;
     }
 

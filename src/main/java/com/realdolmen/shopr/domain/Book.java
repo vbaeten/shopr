@@ -21,8 +21,6 @@ public abstract class Book extends Article {
     private String isbn;
     @Column
     private int numberOfPages;
-//    @Column(insertable = false, updatable = false)
-//    private String booktype;
 
     public Book() {
     }

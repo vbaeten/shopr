@@ -17,9 +17,6 @@ public class Game extends Article{
     @Enumerated(EnumType.STRING)
     private GameGenre gameGenre;
 
-    public Game() {
-    }
-
     public String getPublisher() {
         return publisher;
     }

@@ -23,7 +23,7 @@
                     <f:selectItems value="#{gameController.gameGenres}" var="gameGenre"
                                    itemValue="#{gameGenre}" itemLabel="#{gameGenre}" />
                 </b:selectOneMenu>
-                <b:commandButton action="#{gameController.saveGame}" value="Add this game"
+                <b:commandButton action="#{gameController.addGame}" value="Add this game"
                                  look="info" />
             </b:panelGrid>
         </b:form>

@@ -14,15 +14,15 @@ public class LP extends Article {
     private String artist;
     @Column
     @Enumerated(EnumType.STRING)
-    private LPMusicGenre LPMusicGenre;
+    private LPMusicGenre lpMusicGenre;
 
     public LP() {
     }
 
-    public LP(String title, BigDecimal price, String supplierId, String artist, com.realdolmen.shopr.domain.enums.LPMusicGenre LPMusicGenre) {
+    public LP(String title, BigDecimal price, String supplierId, String artist, com.realdolmen.shopr.domain.enums.LPMusicGenre lpMusicGenre) {
         super(title, price, supplierId);
         this.artist = artist;
-        this.LPMusicGenre = LPMusicGenre;
+        this.lpMusicGenre = lpMusicGenre;
     }
 
     public String getArtist() {
@@ -34,10 +34,10 @@ public class LP extends Article {
     }
 
     public com.realdolmen.shopr.domain.enums.LPMusicGenre getLPMusicGenre() {
-        return LPMusicGenre;
+        return lpMusicGenre;
     }
 
-    public void setLPMusicGenre(com.realdolmen.shopr.domain.enums.LPMusicGenre LPMusicGenre) {
-        this.LPMusicGenre = LPMusicGenre;
+    public void setLPMusicGenre(com.realdolmen.shopr.domain.enums.LPMusicGenre lpMusicGenre) {
+        this.lpMusicGenre = lpMusicGenre;
     }
 }

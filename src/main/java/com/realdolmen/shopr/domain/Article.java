@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public abstract class Article extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ArticleId;
+    private Long articleId;
     @Column
     @Size(max = 100 )
     @NotNull
@@ -47,7 +47,7 @@ public abstract class Article extends AbstractEntity {
     }
 
     public Long getArticleId() {
-        return ArticleId;
+        return articleId;
     }
 
     public String getTitle() {
@@ -75,6 +75,6 @@ public abstract class Article extends AbstractEntity {
     }
 
     public void setArticleId(Long articleId) {
-        ArticleId = articleId;
+        this.articleId = articleId;
     }
 }

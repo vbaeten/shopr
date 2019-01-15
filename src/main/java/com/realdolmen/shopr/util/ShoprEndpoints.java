@@ -4,6 +4,10 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 public class ShoprEndpoints {
+
+    private ShoprEndpoints() {
+        throw new IllegalStateException("Utility Class");
+    }
     public static final String CREATE_GAME= "/game/creategame.xhtml";
     public static final String CREATE_BOOKFICTION= "/bookfiction/createbookfiction.xhtml";
     public static final String CREATE_BOOKNONFICTION= "/booknonfiction/createbooknonfiction.xhtml";
