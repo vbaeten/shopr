@@ -6,10 +6,11 @@ import com.realdolmen.shopr.repository.GameRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class GameService {
+public class GameService implements Serializable {
 
     @Inject
     private GameRepository gameRepository = new GameRepository();

@@ -6,10 +6,11 @@ import com.realdolmen.shopr.repository.FictionRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class FictionService {
+public class FictionService implements Serializable {
 
 
     @Inject

@@ -17,7 +17,6 @@ public class OrderRepository {
 
 
     public void submitOrder(Order order) {
-
-        this.entityManager.persist(order);
+        this.entityManager.merge(order);
     }
 }

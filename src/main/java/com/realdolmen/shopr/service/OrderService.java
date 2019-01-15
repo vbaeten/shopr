@@ -1,19 +1,18 @@
 package com.realdolmen.shopr.service;
 
-import com.realdolmen.shopr.controller.LoginController;
+import com.realdolmen.shopr.controller.UserController;
 import com.realdolmen.shopr.domain.Order;
-import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.repository.OrderRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.List;
+import java.io.Serializable;
 
 @Stateless
-public class OrderService {
+public class OrderService implements Serializable {
 
     @Inject
-    LoginController loginController;
+    UserController userController;
 
 
     @Inject
@@ -34,7 +33,7 @@ public class OrderService {
     }
 
     private Boolean isLoggedIn() {
-        if (loginController.getCurrentUser()==null){
+        if (userController.getCurrentUser()==null){
             return false;
         }
         return true;

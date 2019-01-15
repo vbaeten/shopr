@@ -3,24 +3,24 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Item;
 import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
+import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.ItemService;
 import com.realdolmen.shopr.service.OrderLineService;
 import com.realdolmen.shopr.service.OrderService;
+import com.realdolmen.shopr.service.UserService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.sql.Time;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean
+@Named
 @SessionScoped
-public class OrderLineController {
+public class OrderLineController implements Serializable {
 
 
     private Order order = new Order();
@@ -38,8 +38,9 @@ public class OrderLineController {
     @Inject
     private ItemService itemService;
     @Inject
-    private LoginController loginController;
-
+    private UserController userController;
+    @Inject
+    private UserService userService;
 
 
     public List<OrderLine> getOrderLines(){
@@ -47,11 +48,12 @@ public class OrderLineController {
     }
 
 
-    public void addToCart(int id){
+    public void addToCart(int itemId){
 
         orderLine = new OrderLine();
-        item = itemService.getById(id);
+        item = itemService.getById(itemId);
         orderLine.setItem(item);
+        orderLine.setOrder(order);
         orderLine.setQuantity(quantity);
         orderLines.add(orderLine);
         this.orderLineService.submit(orderLine);
@@ -67,12 +69,17 @@ public class OrderLineController {
         order = new Order();
         order.setDate(timestamp);
         order.setOrderLines(orderLines);
-        order.setUser(loginController.getCurrentUser());
+        int id = userController.getCurrentUser().getId();
+        User userById = userService.getUserById(id);
+        order.setUser(userById);
         orderService.submitOrder(order);
         order.getOrderLines().clear();
         return "/overview-pages/thankyou-page.xhtml?faces-redirect=true";
     }
 
+    public String backToHome(){
+        return "/nav-pages/index.xhtml?faces-redirect=true";
+    }
 
 
 

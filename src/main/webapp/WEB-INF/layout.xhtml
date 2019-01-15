@@ -49,8 +49,8 @@
             </b:navbarLinks>
 
             <b:navbarLinks pull="right">
-                <b:navLink  value="Logged in as: #{loginController.currentUser.firstName}"/>
-                <b:navCommandLink styleClass="menuItems" value="Log Out" action="#{loginController.logout}"/>
+                <b:navLink  value="Logged in as: #{userController.currentUser.firstName}"/>
+                <b:navCommandLink styleClass="menuItems" value="Log Out" action="#{userController.logout}"/>
 
             </b:navbarLinks>
         </b:navBar>

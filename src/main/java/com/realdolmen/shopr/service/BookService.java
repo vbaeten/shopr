@@ -5,10 +5,11 @@ import com.realdolmen.shopr.repository.BookRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class BookService {
+public class BookService implements Serializable {
 
 
     @Inject

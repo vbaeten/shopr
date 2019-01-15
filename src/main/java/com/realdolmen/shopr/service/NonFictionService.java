@@ -6,10 +6,11 @@ import com.realdolmen.shopr.repository.NonFictionRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class NonFictionService {
+public class NonFictionService implements Serializable {
 
 
     @Inject

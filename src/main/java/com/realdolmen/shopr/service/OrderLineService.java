@@ -5,10 +5,11 @@ import com.realdolmen.shopr.repository.OrderLineRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class OrderLineService {
+public class OrderLineService implements Serializable {
 
     @Inject
     private OrderLineRepository orderLineRepository;

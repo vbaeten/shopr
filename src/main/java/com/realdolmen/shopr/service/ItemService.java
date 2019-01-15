@@ -6,10 +6,11 @@ import com.realdolmen.shopr.repository.ItemRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class ItemService {
+public class ItemService implements Serializable {
 
     @Inject
     private ItemRepository itemRepository = new ItemRepository();

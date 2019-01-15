@@ -3,16 +3,21 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+
+import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
-@ManagedBean
-@ViewScoped
-public class UserController {
+@Named
+@SessionScoped
+public class UserController implements Serializable {
 
     private User newUser = new User();
+    private User currentUser;
+    private int id;
 
     @Inject
     private UserService userService;
@@ -36,8 +41,34 @@ public class UserController {
         newUser = new User();
     }
 
+    public void login(){
+        this.currentUser = this.userService.getUserById(id);
+    }
+
+    public void logout(){
+
+        currentUser = new User();
+
+    }
+
     public void delete(int id) {
         this.userService.delete(id);
     }
 
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

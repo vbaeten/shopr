@@ -50,14 +50,14 @@
                 <b:form styleClass="addLocationForm">
 
                 <h:outputLabel for="user" value="User: "/>
-                <b:selectOneMenu id="user" value="#{loginController.id}" style="width:125px" required="true">
-                    <f:selectItem itemLable="select user"/>
+                <b:selectOneMenu id="user" value="#{userController.id}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="select user"/>
                     <f:selectItems value="#{userController.users}" var="user" itemLabel="#{user.firstName}"
                                    itemValue="#{user.id}"/>
                 </b:selectOneMenu>
                 <b:message for="@previous"/>
                 <div>
-                    <b:commandButton value="Login" action="#{loginController.login}"
+                    <b:commandButton value="Login" action="#{userController.login}"
                                      styleClass="cmdButton" update="@form">
                     </b:commandButton>
                     <b:commandButton value="Delete user" action="#{userController.delete}"

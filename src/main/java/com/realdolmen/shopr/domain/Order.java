@@ -1,36 +1,32 @@
 package com.realdolmen.shopr.domain;
 
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private Timestamp date;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private List<OrderLine> orderLines;
 
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn
     private User user;
-
-
-
-
-
-
-
 
 
     public int getId() {
