@@ -6,6 +6,7 @@ import com.realdolmen.shopr.repository.GameRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -18,11 +19,11 @@ import static org.mockito.Mockito.*;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class CrudServiceTest {
+public class GameServiceTest {
     @Mock
     GameRepository gameRepository;
 
-    @Mock
+    @InjectMocks
     GameService gameService;
 
     List<Game> gameList;
@@ -39,7 +40,7 @@ public class CrudServiceTest {
         game1.setPrice(BigDecimal.valueOf(10));
         game1.setSupplierId("supplierid");
         game1.setType("game");
-        game1.setMinimumAge(8);
+        game1.setMinimumAge(8L);
         game1.setPublisher("publisher");
         game1.setGameGenre(GameGenre.MMORPG);
 
@@ -49,7 +50,7 @@ public class CrudServiceTest {
         game2.setPrice(BigDecimal.valueOf(11));
         game2.setSupplierId("supplierid2");
         game2.setType("game2");
-        game2.setMinimumAge(8);
+        game2.setMinimumAge(8L);
         game2.setPublisher("publisher2");
         game2.setGameGenre(GameGenre.FPS);
 
@@ -65,14 +66,31 @@ public class CrudServiceTest {
     }
 
     @Test
-    public void testGameRepositoryDelete() {
+    public void testGameRepositoryRemove() {
         doNothing().when(gameRepository).remove(game1);
         gameRepository.remove(game1);
         verify(gameRepository, times(1)).remove(game1);
     }
 
     @Test
-    public void testGameRepositoryUpdate() {
+    public void testGameRepositoryInsert() {
+        when(gameRepository.insert(game1)).thenReturn(game1);
+        gameService.insert(game1);
+        verify(gameRepository, times(1)).insert(game1);
+    }
 
+    @Test
+    public void testGameRepositoryFindById() {
+        Long primaryKey = 1L;
+        when(gameRepository.findByPrimaryKey(primaryKey)).thenReturn(game1);
+        Game gameById = gameService.findByPrimaryKey(primaryKey);
+        assertEquals("gameById is game1", game1, gameById);
+    }
+
+    @Test
+    public void testGameRepositoryUpdate() {
+        when(gameRepository.findByPrimaryKey(1L)).thenReturn(game1);
+        gameService.update(game1);
+        verify(gameRepository, times(1)).update(game1);
     }
 }

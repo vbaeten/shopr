@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.Objects;
                 )
         }
 )
+@Data
 public class User extends AbstractEntity implements Serializable {
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
@@ -37,30 +40,6 @@ public class User extends AbstractEntity implements Serializable {
 
     public List<Order> getOrders() {
         return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     @Override

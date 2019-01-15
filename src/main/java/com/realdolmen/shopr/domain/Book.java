@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.domain;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -10,7 +12,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
+@Data
 public abstract class Book extends Article {
     @Column
     @Size(max = 100)
@@ -22,30 +24,4 @@ public abstract class Book extends Article {
     @Column
     private int numberOfPages;
 
-    public Book() {
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getNumberOfPages() {
-        return numberOfPages;
-    }
-
-    public void setNumberOfPages(int numberOfPages) {
-        this.numberOfPages = numberOfPages;
-    }
 }

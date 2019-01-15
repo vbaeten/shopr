@@ -1,12 +1,14 @@
 package com.realdolmen.shopr.domain;
 
 import com.realdolmen.shopr.domain.enums.BookGenre;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 @DiscriminatorValue("fiction")
+@Data
 public class BookFiction extends Book {
     @Column
     @Enumerated(EnumType.STRING)
@@ -15,19 +17,4 @@ public class BookFiction extends Book {
     @Size(max = 255 )
     private String summary;
 
-    public BookGenre getBookGenre() {
-        return bookGenre;
-    }
-
-    public void setBookGenre(BookGenre bookGenre) {
-        this.bookGenre = bookGenre;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
 }

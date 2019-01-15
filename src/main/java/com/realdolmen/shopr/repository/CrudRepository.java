@@ -34,4 +34,5 @@ public abstract class CrudRepository<T, PK> {
 
     public void remove(T entity) {
         getEntityManager().remove(entity);}
+
 }
