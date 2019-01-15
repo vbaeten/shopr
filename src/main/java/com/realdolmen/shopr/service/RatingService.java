@@ -56,7 +56,7 @@ public class RatingService
         ratingUser = findAllBeoordelingenByUserId(id);
         for (Beoordeling b: ratingUser)
         {
-            delete(b);
+            this.delete(b);
         }
     }
 }

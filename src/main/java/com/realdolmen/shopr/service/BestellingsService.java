@@ -105,6 +105,10 @@ public class BestellingsService
         return bestellingsRepository.bestellingenJoinFetch(id);
     }
 
+    public void deleteBestellingenUser()
+    {
+
+    }
 
 
 
