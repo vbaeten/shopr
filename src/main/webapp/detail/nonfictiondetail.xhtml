@@ -27,7 +27,7 @@
                     <b:form inline="true">
                         <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
                         <b:commandButton value="Order"
-                                         action="#{orderLineController.addToCart(nonFictionDetailBean.id, orderLineController.quantity, loginBean.id)}"/>
+                                         action="#{orderLineController.addToCart(nonFictionDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}"/>
                     </b:form>
                 </b:panel>
             </b:container>

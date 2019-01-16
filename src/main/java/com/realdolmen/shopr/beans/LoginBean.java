@@ -22,7 +22,7 @@ public class LoginBean implements Serializable {
     @Inject
     private UserService userService;
 
-//    @PostConstruct
+    @PostConstruct
     public void init() {
         loggedUser = userService.findUserById(id);
     }
@@ -32,7 +32,8 @@ public class LoginBean implements Serializable {
     }
 
     public void logout() {
-        loggedUser = userService.findUserById(guestid);
+        id = 0;
+        loggedUser = null;
     }
 
     public int getId() {

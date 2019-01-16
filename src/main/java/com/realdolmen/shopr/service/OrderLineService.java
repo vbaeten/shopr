@@ -39,6 +39,7 @@ public class OrderLineService {
     public void sendToOrder(int id, Order order) {
         OrderLine orderline = orderLineRepository.findById(id);
         orderline.setOrder(order);
+        orderline.setShoppingCart(null);
     }
 
 

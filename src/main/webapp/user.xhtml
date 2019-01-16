@@ -19,9 +19,11 @@
             </f:metadata>
             <b:container>
                 <b:panel>
-                    <p>Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!</p>
-                    <h3>Change your things here. </h3>
-                    <p>Your Orders</p>
+                    <h4>Welcome back, #{loginBean.loggedUser.firstName} #{loginBean.loggedUser.name}!!</h4>
+                    <h5>Change your details here.</h5>
+                    <p>Name: #{loginBean.loggedUser.name}</p>
+                    <p>First Name: #{loginBean.loggedUser.firstName}</p>
+                    <h5>Your Orders</h5>
                     <b:form>
                     <b:dataTable value="#{orderController.findOrdersByUserId(loginBean.loggedUser.id)}" var="order">
                         <b:dataTableColumn width="10px" value ="#{order.id}"/>

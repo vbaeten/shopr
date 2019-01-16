@@ -23,7 +23,7 @@
                 <h:outputText value=""/>
                 <b:form inline="true">
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.id)}" update="navbarcontainer"/>
+                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(gameDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}"/>
                 </b:form>
             </b:panel>
             </b:container>

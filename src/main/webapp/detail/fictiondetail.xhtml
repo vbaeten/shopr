@@ -20,15 +20,15 @@
 
             <p>Details of this article</p>
             <b:panel>
-                <h:outputText styleClass="detail-title" value="#{fictionDetailBean.fiction.title} by #{fictionDetailBean.fiction.author}"/>
-                <h:outputText value="Pulisher: #{fictionDetailBean.fiction.supplier}"/>
-                <h:outputText value="Isbn: #{fictionDetailBean.fiction.isbn}"/>
-                <h:outputText value="Genre: #{fictionDetailBean.fiction.bookGenre}"/>
-                <p>Synopsys</p>
-                <h:outputText value="#{fictionDetailBean.fiction.synopsis}"/>
+                <h4>#{fictionDetailBean.fiction.title} by #{fictionDetailBean.fiction.author}</h4>
+                <p>Pulisher: #{fictionDetailBean.fiction.supplier}</p>
+                <p>Isbn: #{fictionDetailBean.fiction.isbn}</p>
+                <p>Genre: #{fictionDetailBean.fiction.bookGenre}</p>
+                <h4>Synopsys</h4>
+                <p>#{fictionDetailBean.fiction.synopsis}</p>
                 <b:form inline="true">
                     <b:inputText value="#{orderLineController.quantity}" mask="numeric" size="5"/>
-                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(fictionDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}" update="navbarcontainer"/>
+                    <b:commandButton value="Order" action="#{shoppingCartController.addToCart(fictionDetailBean.id, orderLineController.quantity, loginBean.loggedUser.id)}"/>
                 </b:form>
             </b:panel>
             </b:container>
