@@ -51,38 +51,6 @@ public class OrderLineController {
         }
     }
 
-//    private String isLoggedIn(Long id) {
-//        order = orderService.getCorrectOrderInstance(order, loginController.getCurrentUser());
-//        if (order == null) {
-//            return executeRedirect();
-//        } else {
-//            return executeSubmit(id);
-//        }
-//    }
-//
-//    private String executeRedirect() {
-//        return "login.xhtml?faces-redirect=true";
-//    }
-//
-//    private String executeSubmit(Long id) {
-//        setItemToOrderLine(id);
-//        setOrderToOrderLine(newOrderLine);
-//        orderLineService.insert(newOrderLine);
-//        newOrderLine = new OrderLine();
-//        return "order.xhtml?faces-redirect=true";
-//    }
-//
-//    private void setItemToOrderLine(Long id) {
-//        item = itemService.findItemById(id);
-//        newOrderLine.setItem(item);
-//    }
-//
-//    private void setOrderToOrderLine(OrderLine orderLine) {
-//        newOrderLine.setOrder(this.order);
-//    }
-
-
-
     public OrderLine getNewOrderLine() {
         return newOrderLine;
     }
