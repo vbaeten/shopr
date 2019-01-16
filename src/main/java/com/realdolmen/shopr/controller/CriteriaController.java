@@ -29,7 +29,7 @@ public class CriteriaController implements Serializable {
                 gamesChecked, lpsChecked);
     }
 
-    public void fetchCheckboxStateAndType(SelectBooleanCheckbox checked, String type) {
+    public void findItemsByCheckedState(SelectBooleanCheckbox checked, String type) {
         types = criteriaService.manageCheckedTypes(types, (Boolean) checked.getValue(), type);
         items = criteriaService.findByCriteria(types);
     }

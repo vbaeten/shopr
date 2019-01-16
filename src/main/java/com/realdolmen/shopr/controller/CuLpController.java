@@ -3,14 +3,15 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Lp;
 import com.realdolmen.shopr.domain.LpGenre;
 import com.realdolmen.shopr.service.LpService;
+import org.omnifaces.cdi.ViewScoped;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class CuLpController {
+public class CuLpController implements Serializable {
     private Lp lp;
     private Long id;
 
@@ -21,22 +22,22 @@ public class CuLpController {
         if (id == null) {
             lp = new Lp();
         } else {
-            getLpById(id);
+            lp = lpService.findLpById(id);
         }
-    }
-
-    private void getLpById(Long id) {
-        lp = lpService.findLpById(id);
     }
 
     public String submit() {
         if (id == null) {
-            this.lpService.insert(lp);
+            lpService.insert(lp);
             lp = new Lp();
         } else {
-            this.lpService.update(lp);
+            lpService.update(lp);
         }
         return "/overview/lps.xhtml?faces-redirect=true";
+    }
+
+    public LpGenre[] getLpGenres() {
+        return LpGenre.values();
     }
 
     public Lp getLp() {
@@ -53,9 +54,5 @@ public class CuLpController {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LpGenre[] getLpGenres() {
-        return LpGenre.values();
     }
 }

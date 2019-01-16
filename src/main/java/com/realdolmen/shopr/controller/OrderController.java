@@ -11,7 +11,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -19,7 +18,7 @@ import java.util.List;
 public class OrderController implements Serializable {
     private User currentUser;
     private Order order;
-    private List<OrderLine> orderLines = new ArrayList<>();
+    private List<OrderLine> orderLines;
     private Double orderTotalPrice;
 
     @Inject
@@ -31,8 +30,9 @@ public class OrderController implements Serializable {
 
     @PostConstruct
     private void init() {
-        this.currentUser = getCurrentUser();
-        this.order = getOrder();
+        currentUser = getCurrentUser();
+        order = getOrder();
+        orderLines = orderLineService.findAllOrderLinesByOrderId(order.getId());
     }
 
     public String confirm() {
@@ -70,7 +70,7 @@ public class OrderController implements Serializable {
     }
 
     public Double getOrderTotalPrice() {
-        this.orderTotalPrice = orderService.calculateOrderTotalPrice(orderLines);
+        orderTotalPrice = orderService.calculateOrderTotalPrice(orderLines);
         return orderTotalPrice;
     }
 

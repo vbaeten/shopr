@@ -15,6 +15,6 @@ public class BooksController {
     private BookService bookService;
 
     public List<Book> getBooks() {
-        return this.bookService.findAllBooks();
+        return bookService.findAllBooks();
     }
 }

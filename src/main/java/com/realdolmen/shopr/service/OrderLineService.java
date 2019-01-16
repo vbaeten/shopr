@@ -1,7 +1,8 @@
 package com.realdolmen.shopr.service;
 
+import com.realdolmen.shopr.domain.Item;
+import com.realdolmen.shopr.domain.Order;
 import com.realdolmen.shopr.domain.OrderLine;
-import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.repository.OrderLineRepository;
 
 import javax.ejb.Stateless;
@@ -35,5 +36,11 @@ public class OrderLineService implements Serializable {
         return orderLineRepository.findAllByOrderId(id);
     }
 
+    public void setItemToOrderLine(Item item, OrderLine orderLine) {
+        orderLine.setItem(item);
+    }
 
+    public void setOrderToOrderLine(Order order, OrderLine orderLine) {
+        orderLine.setOrder(order);
+    }
 }

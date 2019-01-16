@@ -3,14 +3,15 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.NonFiction;
 import com.realdolmen.shopr.domain.NonFictionSubject;
 import com.realdolmen.shopr.service.NonFictionService;
+import org.omnifaces.cdi.ViewScoped;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class CuNonFictionController {
+public class CuNonFictionController implements Serializable {
     private NonFiction nonFiction;
     private Long id;
 
@@ -21,22 +22,22 @@ public class CuNonFictionController {
         if (id == null) {
             nonFiction = new NonFiction();
         } else {
-            getNonFictionById(id);
+            nonFiction = nonFictionService.findNonFictionById(id);
         }
-    }
-
-    private void getNonFictionById(Long id) {
-        nonFiction = nonFictionService.findNonFictionById(id);
     }
 
     public String submit() {
         if (id == null) {
-            this.nonFictionService.insert(nonFiction);
+            nonFictionService.insert(nonFiction);
             nonFiction = new NonFiction();
         } else {
-            this.nonFictionService.update(nonFiction);
+            nonFictionService.update(nonFiction);
         }
         return "/overview/books.xhtml?faces-redirect=true";
+    }
+
+    public NonFictionSubject[] getNonFictionSubjects() {
+        return NonFictionSubject.values();
     }
 
     public NonFiction getNonFiction() {
@@ -53,9 +54,5 @@ public class CuNonFictionController {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public NonFictionSubject[] getNonFictionSubjects() {
-        return NonFictionSubject.values();
     }
 }

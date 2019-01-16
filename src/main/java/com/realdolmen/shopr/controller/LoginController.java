@@ -14,8 +14,7 @@ import java.util.List;
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
-    private User newUser = new User();
-    private User currentUser;
+    private User currentUser = new User();
     private Order order;
     private Long id;
 
@@ -24,17 +23,13 @@ public class LoginController implements Serializable {
     @Inject
     private OrderService orderService;
 
-    public List<User> getUsers() {
-        return this.userService.findAllUsers();
-    }
-
     public void submit() {
-        this.userService.insert(newUser);
-        newUser = new User();
+        userService.insert(currentUser);
+        currentUser = new User();
     }
 
-    public void deleteNewUser() {
-        this.userService.delete(this.id);
+    public void delete() {
+        userService.delete(id);
     }
 
     public String logIn() {
@@ -45,15 +40,12 @@ public class LoginController implements Serializable {
 
     public String logOut() {
         currentUser = new User();
-        return "index.xhtml?faces-redirect=true";
+        order = new Order();
+        return "login.xhtml?faces-redirect=true";
     }
 
-    public User getNewUser() {
-        return newUser;
-    }
-
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
+    public List<User> getUsers() {
+        return userService.findAllUsers();
     }
 
     public User getCurrentUser() {

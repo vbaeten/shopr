@@ -3,14 +3,15 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.domain.FictionGenre;
 import com.realdolmen.shopr.service.FictionService;
+import org.omnifaces.cdi.ViewScoped;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class CuFictionController {
+public class CuFictionController implements Serializable {
     private Fiction fiction;
     private Long id;
 
@@ -21,22 +22,22 @@ public class CuFictionController {
         if (id == null) {
             fiction = new Fiction();
         } else {
-            getFictionById(id);
+            fiction = fictionService.findFictionById(id);
         }
-    }
-
-    private void getFictionById(Long id) {
-        fiction = fictionService.findFictionById(id);
     }
 
     public String submit() {
         if (id == null) {
-            this.fictionService.insert(fiction);
+            fictionService.insert(fiction);
             fiction = new Fiction();
         } else {
-            this.fictionService.update(fiction);
+            fictionService.update(fiction);
         }
         return "/overview/books.xhtml?faces-redirect=true";
+    }
+
+    public FictionGenre[] getFictionGenres() {
+        return FictionGenre.values();
     }
 
     public Fiction getFiction() {
@@ -53,9 +54,5 @@ public class CuFictionController {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public FictionGenre[] getFictionGenres() {
-        return FictionGenre.values();
     }
 }

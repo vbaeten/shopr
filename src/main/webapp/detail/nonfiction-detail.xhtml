@@ -12,7 +12,7 @@
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{nonFictionDetailController.id}"/>
-                <f:event listener="#{nonFictionDetailController.init}" type="preRenderView"/>
+                <f:viewAction action="#{nonFictionDetailController.init}"/>
             </f:metadata>
 
             <b:row>
@@ -78,7 +78,7 @@
                             <b:form>
                                 <b:commandButton value="#{msg['details.commandButton.delete']}"
                                                  action="#{nonFictionDetailController.delete}"/>
-                                <h:link styleClass="btn btn-default" value="#{msg['details.link.edit']}" outcome="/cu/cu-nonFiction.xhtml" includeViewParams="true">
+                                <h:link styleClass="btn btn-default" value="#{msg['details.link.edit']}" outcome="/cu/cu-nonfiction.xhtml" includeViewParams="true">
                                     <f:param id="id" value="#{nonFictionDetailController.nonFiction.id}"/>
                                 </h:link>
                             </b:form>
@@ -93,7 +93,7 @@
                         <b:inputText placeholder="#{msg['details.inputText.amount']}"
                                      value="#{orderLineController.newOrderLine.amount}"/>
                         <b:commandButton value="#{msg['details.commandButton.addOrderLine']}"
-                                         action="#{orderLineController.submit(nonFictionDetailController.id)}"/>
+                                         action="#{orderLineController.addToCart(nonFictionDetailController.id)}"/>
                     </b:form>
                 </b:well>
             </b:row>

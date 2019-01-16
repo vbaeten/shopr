@@ -3,12 +3,12 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Game;
 import com.realdolmen.shopr.service.GameService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class GameDetailController {
     private Long id;
     private Game game;
@@ -17,10 +17,6 @@ public class GameDetailController {
     private GameService gameService;
 
     public void init() {
-        getGameById(id);
-    }
-
-    private void getGameById(Long id) {
         game = gameService.findGameById(id);
     }
 

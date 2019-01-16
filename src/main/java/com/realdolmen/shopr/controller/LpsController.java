@@ -15,6 +15,6 @@ public class LpsController {
     private LpService lpService;
 
     public List<Lp> getLps() {
-        return this.lpService.findAllLps();
+        return lpService.findAllLps();
     }
 }

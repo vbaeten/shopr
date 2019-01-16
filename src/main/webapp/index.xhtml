@@ -15,13 +15,13 @@
                     <b:column span="2">
                         <b:well>
                             <b:selectBooleanCheckbox value="#{criteriaController.booksChecked}" caption="#{msg['index.caption.books']}"
-                                                     valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'BOOK')}"
+                                                     valueChangeListener="#{criteriaController.findItemsByCheckedState(component, 'BOOK')}"
                                                      update="@this itemsTable"/>
                             <b:selectBooleanCheckbox value="#{criteriaController.gamesChecked}" caption="#{msg['index.caption.games']}"
-                                                     valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'GAME')}"
+                                                     valueChangeListener="#{criteriaController.findItemsByCheckedState(component, 'GAME')}"
                                                      update="@this itemsTable"/>
                             <b:selectBooleanCheckbox value="#{criteriaController.lpsChecked}" caption="#{msg['index.caption.lps']}"
-                                                     valueChangeListener="#{criteriaController.fetchCheckboxStateAndType(component, 'LP')}"
+                                                     valueChangeListener="#{criteriaController.findItemsByCheckedState(component, 'LP')}"
                                                      update="@this itemsTable"/>
                         </b:well>
                     </b:column>

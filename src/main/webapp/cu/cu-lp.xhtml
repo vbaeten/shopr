@@ -12,7 +12,7 @@
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{cuLpController.id}"/>
-                <f:event listener="#{cuLpController.init}" type="preRenderView"/>
+                <f:viewAction action="#{cuLpController.init}"/>
             </f:metadata>
 
             <b:well>

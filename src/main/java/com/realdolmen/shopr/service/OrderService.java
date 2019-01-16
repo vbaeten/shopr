@@ -9,9 +9,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @Stateless
 public class OrderService implements Serializable {
@@ -37,8 +34,12 @@ public class OrderService implements Serializable {
 
     public Order getCorrectOrderInstance(Order order, User currentUser) {
         order = getUnconfirmedOrderByCurrentUser(currentUser);
-        if (order == null) {
-            order = createNewOrderAndSetUser(currentUser);
+        if (currentUser.getId() == null) {
+            return order;
+        } else {
+            if (order == null) {
+                order = createNewOrderAndSetUser(currentUser);
+            }
         }
         return order;
     }

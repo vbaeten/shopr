@@ -21,7 +21,7 @@
                                                itemLabel="#{user.firstName}"/>
                             </b:selectOneMenu>
                             <b:commandButton value="#{msg['login.commandButton.login']}" action="#{loginController.logIn}"/>
-                            <b:commandButton value="#{msg['login.commandButton.delete']}" action="#{loginController.deleteNewUser}"
+                            <b:commandButton value="#{msg['login.commandButton.delete']}" action="#{loginController.delete}"
                                              update="@form"/>
                         </b:form>
                     </b:well>
@@ -30,8 +30,8 @@
                 <b:column span="4" offset="2">
                     <b:well>
                         <b:form id="addUserForm">
-                            <b:inputText placeholder="#{msg['login.inputText.placeholder.firstName']}" value="#{loginController.newUser.firstName}"/>
-                            <b:inputText placeholder="#{msg['login.inputText.placeholder.lastName']}" value="#{loginController.newUser.name}"/>
+                            <b:inputText placeholder="#{msg['login.inputText.placeholder.firstName']}" value="#{loginController.currentUser.firstName}"/>
+                            <b:inputText placeholder="#{msg['login.inputText.placeholder.lastName']}" value="#{loginController.currentUser.name}"/>
                             <b:commandButton value="#{msg['login.commandButton.addUser']}" action="#{loginController.submit}"/>
                         </b:form>
                     </b:well>

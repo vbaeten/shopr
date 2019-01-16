@@ -1,16 +1,14 @@
 package com.realdolmen.shopr.controller;
 
 import com.realdolmen.shopr.domain.Lp;
-import com.realdolmen.shopr.domain.OrderLine;
 import com.realdolmen.shopr.service.LpService;
-import com.realdolmen.shopr.service.OrderLineService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class LpDetailController {
     private Long id;
     private Lp lp;
@@ -19,10 +17,6 @@ public class LpDetailController {
     private LpService lpService;
 
     public void init() {
-        getLpById(id);
-    }
-
-    private void getLpById(Long id) {
         lp = lpService.findLpById(id);
     }
 

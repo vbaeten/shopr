@@ -3,12 +3,12 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.NonFiction;
 import com.realdolmen.shopr.service.NonFictionService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class NonFictionDetailController {
     private Long id;
     private NonFiction nonFiction;
@@ -17,10 +17,6 @@ public class NonFictionDetailController {
     private NonFictionService nonFictionService;
 
     public void init() {
-        getNonFictionById(id);
-    }
-
-    private void getNonFictionById(Long id) {
         nonFiction = nonFictionService.findNonFictionById(id);
     }
 

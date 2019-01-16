@@ -39,8 +39,7 @@ public class UserService implements Serializable {
         userRepository.delete(user);
     }
 
-//    temp
-    protected void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public Boolean isLoggedIn(User currentUser) {
+        return currentUser.getId() != null;
     }
 }

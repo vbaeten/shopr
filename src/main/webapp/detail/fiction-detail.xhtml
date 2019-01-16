@@ -12,7 +12,7 @@
         <ui:define name="content">
             <f:metadata>
                 <f:viewParam name="id" value="#{fictionDetailController.id}"/>
-                <f:event listener="#{fictionDetailController.init}" type="preRenderView"/>
+                <f:viewAction action="#{fictionDetailController.init}"/>
             </f:metadata>
 
             <b:row>
@@ -101,7 +101,7 @@
                         <b:inputText placeholder="#{msg['details.inputText.amount']}"
                                      value="#{orderLineController.newOrderLine.amount}"/>
                         <b:commandButton value="#{msg['details.commandButton.addOrderLine']}"
-                                         action="#{orderLineController.submit(fictionDetailController.id)}"/>
+                                         action="#{orderLineController.addToCart(fictionDetailController.id)}"/>
                     </b:form>
                 </b:well>
             </b:row>

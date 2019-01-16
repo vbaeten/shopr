@@ -3,12 +3,12 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Fiction;
 import com.realdolmen.shopr.service.FictionService;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class FictionDetailController {
     private Long id;
     private Fiction fiction;
@@ -17,10 +17,6 @@ public class FictionDetailController {
     private FictionService fictionService;
 
     public void init() {
-        getFictionById(id);
-    }
-
-    private void getFictionById(Long id) {
         fiction = fictionService.findFictionById(id);
     }
 

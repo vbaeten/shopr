@@ -15,6 +15,6 @@ public class GamesController {
     private GameService gameService;
 
     public List<Game> getGames() {
-        return this.gameService.findAllGames();
+        return gameService.findAllGames();
     }
 }
