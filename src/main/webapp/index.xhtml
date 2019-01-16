@@ -29,7 +29,8 @@
                             <h:outputText value="#{user.firstName}"/>
                         </b:dataTableColumn>
                         <b:dataTableColumn label="Operations">
-                            <b:commandButton value="Delete" look="danger" action="#{userController.removeUser(user)}"
+                            <b:commandButton value="Delete" look="danger"
+                                             action="#{userController.removeUserById(user.userId)}"
                                              update="Userdata"/>
                         </b:dataTableColumn>
                     </b:dataTable>

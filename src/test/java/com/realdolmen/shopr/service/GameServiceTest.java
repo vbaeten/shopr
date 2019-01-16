@@ -12,9 +12,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 
@@ -60,9 +62,17 @@ public class GameServiceTest {
 
     @Test
     public void testGameRepositoryFindAll() {
-        when(gameRepository.findAll()).thenReturn(this.gameList);
+        when(gameRepository.findAll()).thenReturn(Arrays.asList(game1, game2));
+        List<Game> gameListExpected = gameService.findAll();
+        assertEquals("gamelistExpected shoud be gameList", gameListExpected, gameList);
         assertEquals("size should be 2", 2, gameList.size());
         assertEquals("Title should be 'test'", "test", gameList.get(0).getTitle());
+    }
+
+    @Test
+    public void testGameServiceFindAll() {
+        when(gameRepository.findAll()).thenReturn(this.gameList);
+        assertTrue(this.gameList.size() == 2);
     }
 
     @Test

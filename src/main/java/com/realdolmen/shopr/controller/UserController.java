@@ -28,6 +28,10 @@ public class UserController implements Serializable {
         this.userService.remove(user);
     }
 
+    public void removeUserById(Long userId) {
+        this.userService.removeById(userId);
+    }
+
     public String sayHello(User loggedInUser) {
         if (loggedInUser.getUserId() != null) {
             return " Hello " + loggedInUser.getFirstName();

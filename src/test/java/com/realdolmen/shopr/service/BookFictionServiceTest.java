@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -59,7 +60,9 @@ public class BookFictionServiceTest {
 
     @Test
     public void testBookFictionRepositoryFindAll() {
-        when(bookFictionRepository.findAll()).thenReturn(this.bookFictionList);
+        when(bookFictionRepository.findAll()).thenReturn(Arrays.asList(bookFiction1, bookFiction2));
+        List<BookFiction> bookFictionListExpected = bookFictionService.findAll();
+        assertEquals("BookListExpected should be BookFictionList", bookFictionListExpected, bookFictionList);
         assertEquals("size should be 2", 2, bookFictionList.size());
         assertEquals("Title should be 'test'", "test", bookFictionList.get(0).getTitle());
     }
