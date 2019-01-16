@@ -35,7 +35,7 @@ public class User extends AbstractEntity implements Serializable {
     @Column(name = "firstname")
     private String firstName;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Order> orders;
 
     public List<Order> getOrders() {
