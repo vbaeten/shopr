@@ -3,6 +3,7 @@ package com.realdolmen.shopr.controller;
 import com.realdolmen.shopr.domain.Boek;
 import com.realdolmen.shopr.domain.Fictie;
 import com.realdolmen.shopr.domain.NonFictie;
+import com.realdolmen.shopr.domain.TestLombok;
 import com.realdolmen.shopr.service.BoekService;
 import com.realdolmen.shopr.service.OverviewService;
 
@@ -28,6 +29,8 @@ public class BoekController
 
     private Boek editFictieBoek = new Fictie();
     private Boek editNonFictieBoek = new NonFictie();
+
+
 
     public int getLoadPanelEditBoek()
     {

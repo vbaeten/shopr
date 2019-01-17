@@ -1,15 +1,14 @@
 package com.realdolmen.shopr.service;
 
 
-        import com.realdolmen.shopr.domain.Beoordeling;
-        import com.realdolmen.shopr.domain.User;
-        import com.realdolmen.shopr.repository.RatingRepository;
-        import com.realdolmen.shopr.repository.UserRepository;
+import com.realdolmen.shopr.domain.Beoordeling;
+import com.realdolmen.shopr.repository.RatingRepository;
+import com.realdolmen.shopr.repository.UserRepository;
 
-        import javax.ejb.Stateless;
-        import javax.inject.Inject;
-        import java.util.ArrayList;
-        import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class RatingService

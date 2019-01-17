@@ -47,7 +47,7 @@ public class LpController
         return newLp;
     }
 
-    public void SetNewLp(Lp newLp)
+    public void setNewLp(Lp newLp)
     {
         this.newLp = newLp;
     }

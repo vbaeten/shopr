@@ -68,3 +68,8 @@ html, body {
     background: #6c7d47;
     color: #6c7d47;
 }
+
+.companyHeaderGrid.ui-panelgrid>*>tr,
+.companyHeaderGrid.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}

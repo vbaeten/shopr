@@ -4,7 +4,6 @@ import com.realdolmen.shopr.domain.*;
 import com.realdolmen.shopr.repository.LpRepository;
 import com.realdolmen.shopr.repository.OverviewRepository;
 import com.realdolmen.shopr.repository.RatingRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,6 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,8 +30,6 @@ public class LpServiceTest
     LpRepository lpRepository;
     @Mock
     RatingRepository ratingRepository;
-    @InjectMocks
-    RatingService ratingService;
     @Mock
     OverviewRepository overviewRepository;
 
@@ -34,6 +37,7 @@ public class LpServiceTest
     Lp lp;
     User user;
     Beoordeling beoordeling;
+    List<Beoordeling> beoordelingList;
 
     @Before
     public void init()
@@ -53,15 +57,17 @@ public class LpServiceTest
         user.setFirstName("indy");
         user.setRole(EnumRoles.USER);
 
-        ratingRepository = new RatingRepository();
-        overviewRepository = new OverviewRepository();
+        beoordeling = new Beoordeling();
+        beoordeling.setScore(5);
+        beoordeling.setOnschrijving("test");
+        beoordeling.setUser(user);
+        beoordeling.setArtikel(lp);
 
-//        beoordeling = new Beoordeling();
-//        beoordeling.setScore(5);
-//        beoordeling.setOnschrijving("test");
-//        beoordeling.setUser(user);
-//        beoordeling.setArtikel(lp);
-
+        beoordelingList = new ArrayList<>();
+        Artikel artikel = new Artikel();
+        artikel.setId(1);
+        when(overviewRepository.findById(1)).thenReturn(artikel);
+        when(ratingRepository.findBeoordelingenBepaaldArtikel(artikel.getId())).thenReturn(Arrays.asList(beoordeling, beoordeling));
 
     }
 
@@ -74,10 +80,10 @@ public class LpServiceTest
         lp.setEnumMuziekGenre(EnumMuziekGenre.ROCK);
 
         lpService.update(lp);
-        Assert.assertEquals("opus", lp.getTitel());
+        assertEquals("opus", lp.getTitel());
         int prijs = lp.getPrijs();
-        Assert.assertEquals(30, prijs);
-        Assert.assertEquals(EnumMuziekGenre.ROCK, lp.getEnumMuziekGenre());
+        assertEquals(30, prijs);
+        assertEquals(EnumMuziekGenre.ROCK, lp.getEnumMuziekGenre());
     }
 
     @Test
@@ -104,7 +110,15 @@ public class LpServiceTest
     {
         when(lpRepository.findById(1)).thenReturn(lp);
         Lp lptest = lpService.findLpById(1);
-        Assert.assertEquals(lp, lptest);
+        assertEquals(lp, lptest);
+    }
+
+    @Test
+    public void ratingOphalenPerLpTest()
+    {
+        lpService.ratingsOpHalenLp(1);
+        assertFalse(lpService.getBeoordelingListLp().isEmpty());
+        assertEquals("test", lpService.getBeoordelingListLp().get(0).getOnschrijving());
     }
 
 }

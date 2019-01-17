@@ -6,11 +6,9 @@ import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.UserService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -10,6 +12,7 @@ import javax.validation.constraints.Size;
                 query = "select f from Fictie f"),
         @NamedQuery(name= Fictie.FIND_BY_NAME,
                 query = "select f from Fictie f where f.titel=:titel")})
+@Data
 public class Fictie extends Boek
 {
     public static final String FIND_ALL = "Fictie.findAll";
@@ -23,23 +26,5 @@ public class Fictie extends Boek
     @Column
     private String korteInhoud;
 
-    public EnumFictieGenre getEnumFictieGenre()
-    {
-        return enumFictieGenre;
-    }
 
-    public void setEnumFictieGenre(EnumFictieGenre enumFictieGenre)
-    {
-        this.enumFictieGenre = enumFictieGenre;
-    }
-
-    public String getKorteInhoud()
-    {
-        return korteInhoud;
-    }
-
-    public void setKorteInhoud(String korteInhoud)
-    {
-        this.korteInhoud = korteInhoud;
-    }
 }

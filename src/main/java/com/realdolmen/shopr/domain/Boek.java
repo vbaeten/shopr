@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,6 +16,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "boek_type")
 @DiscriminatorValue(value = "boek")
+@Data
 public abstract class Boek extends Artikel
 {
     public static final String FIND_ALL_BOOKS = "Boek.findall";
@@ -29,33 +32,5 @@ public abstract class Boek extends Artikel
 
 
 
-    public String getAuteur()
-    {
-        return auteur;
-    }
 
-    public void setAuteur(String auteur)
-    {
-        this.auteur = auteur;
-    }
-
-    public String getIsbn()
-    {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn)
-    {
-        this.isbn = isbn;
-    }
-
-    public Integer getAantalPaginas()
-    {
-        return aantalPaginas;
-    }
-
-    public void setAantalPaginas(Integer aantalPaginas)
-    {
-        this.aantalPaginas = aantalPaginas;
-    }
 }

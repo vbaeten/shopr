@@ -1,7 +1,8 @@
 package com.realdolmen.shopr.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 query = "select g from Game g where g.titel=:titel")})
 
 @DiscriminatorValue(value = "game")
+@Data
 public class Game extends Artikel
 {
 
@@ -28,33 +30,5 @@ public class Game extends Artikel
     @Enumerated(EnumType.STRING)
     private EnumGameGenre enumGameGenre;
 
-    public String getUitgever()
-    {
-        return uitgever;
-    }
 
-    public void setUitgever(String uitgever)
-    {
-        this.uitgever = uitgever;
-    }
-
-    public int getMinLeeftijd()
-    {
-        return minLeeftijd;
-    }
-
-    public void setMinLeeftijd(int minLeeftijd)
-    {
-        this.minLeeftijd = minLeeftijd;
-    }
-
-    public EnumGameGenre getEnumGameGenre()
-    {
-        return enumGameGenre;
-    }
-
-    public void setEnumGameGenre(EnumGameGenre enumGameGenre)
-    {
-        this.enumGameGenre = enumGameGenre;
-    }
 }

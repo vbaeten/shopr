@@ -10,7 +10,7 @@ import java.util.List;
 @Stateless
 public class OverviewService
 {
-    public int detailsSoort;
+    private int detailsSoort;
 
     @Inject
     OverviewRepository overviewRepository;
@@ -26,6 +26,16 @@ public class OverviewService
 
     @Inject
     NonFictieRepository nonFictieRepository;
+
+    public int getDetailsSoort()
+    {
+        return detailsSoort;
+    }
+
+    public void setDetailsSoort(int detailsSoort)
+    {
+        this.detailsSoort = detailsSoort;
+    }
 
     public Artikel findArtikelById(int id)
     {
@@ -53,6 +63,9 @@ public class OverviewService
             case "nonFictie":
                 detailsSoort = 4;
                 break;
+                default:
+                    detailsSoort = 1;
+
 
         }
 

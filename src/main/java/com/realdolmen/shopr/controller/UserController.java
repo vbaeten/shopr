@@ -1,6 +1,5 @@
 package com.realdolmen.shopr.controller;
 
-import com.realdolmen.shopr.domain.Beoordeling;
 import com.realdolmen.shopr.domain.EnumRoles;
 import com.realdolmen.shopr.domain.User;
 import com.realdolmen.shopr.service.BestellingsService;
@@ -10,8 +9,6 @@ import com.realdolmen.shopr.service.UserService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean

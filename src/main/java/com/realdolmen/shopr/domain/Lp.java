@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
                 query = "select l from Lp l where l.titel=:titel")})
 @Table(name = "LP")
 @DiscriminatorValue(value = "lp")
+@Data
 public class Lp extends Artikel
 {
     public static final String FIND_ALL = "Lp.findAll";
@@ -26,23 +29,5 @@ public class Lp extends Artikel
     @Enumerated(EnumType.STRING)
     EnumMuziekGenre enumMuziekGenre;
 
-    public String getUitvoerder()
-    {
-        return uitvoerder;
-    }
 
-    public void setUitvoerder(String uitvoerder)
-    {
-        this.uitvoerder = uitvoerder;
-    }
-
-    public EnumMuziekGenre getEnumMuziekGenre()
-    {
-        return enumMuziekGenre;
-    }
-
-    public void setEnumMuziekGenre(EnumMuziekGenre enumMuziekGenre)
-    {
-        this.enumMuziekGenre = enumMuziekGenre;
-    }
 }

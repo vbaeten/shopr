@@ -205,17 +205,7 @@ public class WinkelmandjeController implements Serializable
 
     }
 
-    public void betaalPaneel()
-    {
-        if (artikelsInMandje.isEmpty())
-        {
-            betalingsPanel = false;
-        }
-        betalingsPanel = true;
-        loginController.getCurrentUserName();
 
-
-    }
 
     public void artikelsInHeader()
     {

@@ -20,7 +20,7 @@
                     <b:row>
                         <b:column span="9">
                             <b:panel
-                                    style="border-radius: 12px; border : 0px !important; font-weight: bold; background-color: #333333; color: #fffffb; color: #fffffb">
+                                    style="border-radius: 12px; border : none !important; font-weight: bold; background-color: #333333; color: #fffffb; color: #fffffb">
                                 <p:dataTable
                                         style="width: 55em;  border : 2px !important; font-weight: bold; color: #fffffb"
                                         resizableColumns="true" id="overviewArtikels" resizeMode="expand"
@@ -59,8 +59,9 @@
                                     <p:column
                                             rendered="#{(loginController.enumRoles eq 'USER')||(loginController.enumRoles eq 'ADMIN') }"
                                             resizable="true" headerText="#{msgs['artikel.details']}">
-                                        <b:commandButton style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
-                                                         action="#{overviewController.details(artikel.id, loginController.currentUser)}">
+                                        <b:commandButton
+                                                style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                                action="#{overviewController.details(artikel.id, loginController.currentUser)}">
                                             <b:iconAwesome name="info"></b:iconAwesome>
                                         </b:commandButton>
 
@@ -122,13 +123,12 @@
 
                                 <b:row>
                                     <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                                     styleClass="btn btn-primary" style="background-color: #738290; color: #fffffb"
+                                                     style="background-color: #738290; border-color:#333333; color: #fffffb"
                                                      action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                                         <b:iconAwesome name="shopping-cart"></b:iconAwesome>
 
                                     </b:commandButton>
                                     <b:button rendered="#{loginController.enumRoles eq 'USER'}"
-                                              class="btn btn-primary"
                                               style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
                                               iconAwesome="star"
                                               outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
@@ -136,8 +136,7 @@
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq false}"
-                                            style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
-                                            class="btn btn-primary"
+                                            style="background-color: #738290; color: #fffffb; border-color:#333333;"
                                             action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -145,7 +144,7 @@
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq true}"
-                                            look="danger"
+                                            style="background-color: red; color: #fffffb; border-color:#333333;"
                                             action="#{overviewController.removeFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -205,21 +204,21 @@
 
                                 <b:row>
                                     <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                                     style="background-color: #738290; color:#fffffb"
+                                                     style="background-color: #738290; color:#fffffb; border-color:#333333;"
                                                      action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                                         <b:iconAwesome name="shopping-cart"></b:iconAwesome>
 
                                     </b:commandButton>
                                     <b:button rendered="#{loginController.enumRoles eq 'USER'}"
 
-                                              style="background-color: #738290; color: #fffffb;border-color:#333333; border-width:5px"
+                                              style="background-color: #738290; color: #fffffb;border-color:#333333;border-width:5px"
                                               iconAwesome="star"
                                               outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                               onclick="$('.modalPseudoClass').modal()"/>
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq false}"
-                                            style="background-color: #738290; color: #fffffb; border-color:#333333; border-width:5px"
+                                            style="background-color: #738290; color: #fffffb; border-color:#333333; "
                                             action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -227,9 +226,7 @@
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq true}"
-                                            look="danger"
-                                            style="color: #fffffb"
-
+                                            style="background-color: red; color: #fffffb; border-color:#333333;"
                                             action="#{overviewController.removeFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -279,7 +276,7 @@
                                     <h:outputLabel id="prijsnonfictie"
                                                    value=" $ #{overviewController.artikelSelected.prijs}"/>
 
-                                    <h:outputLabel rendered="#{loginController.enumRoles eq 'USER'}"
+                                    <b:label style="background: #b8b42d" severity="info"  rendered="#{loginController.enumRoles eq 'USER'}"
                                                    for="aantalnonfictie"
                                                    value="#{msgs['overview.aantal']}"/>
                                     <b:touchSpin rendered="#{loginController.enumRoles eq 'USER'}"
@@ -292,20 +289,21 @@
 
                                 <b:row>
                                     <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                                     styleClass="btn btn-primary" style="background-color: #738290;border-color:#333333;  color: #fffffb"
+                                                     styleClass="btn btn-primary"
+                                                     style="background-color: #738290;border-color:#333333;  color: #fffffb"
                                                      action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                                         <b:iconAwesome name="shopping-cart"></b:iconAwesome>
 
                                     </b:commandButton>
                                     <b:button rendered="#{loginController.enumRoles eq 'USER'}"
-                                              style="background-color: #738290; color: #333333;border-color:#333333;  border-width:5px"
+                                              style="background-color: #738290; color: #fffffb;border-color:#333333; border-width:5px  "
                                               iconAwesome="star"
                                               outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                               onclick="$('.modalPseudoClass').modal()"/>
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq false}"
-                                            style="background-color: #738290; color: #333333; border-width:5px; border-color:#333333; "
+                                            style="background-color: #738290; color: #fffffb; border-color:#333333; "
                                             action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -313,8 +311,7 @@
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq true}"
-                                            look="danger"
-                                            style="color: #fffffb"
+                                            style="background-color: red; color: #fffffb; border-color:#333333;"
                                             action="#{overviewController.removeFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -382,21 +379,22 @@
 
                                 <b:row>
                                     <b:commandButton rendered="#{loginController.enumRoles eq 'USER'}"
-                                                     styleClass="btn btn-primary" style="background-color:#738290;border-color:#333333; color: #fffffb;"
+                                                     styleClass="btn btn-primary"
+                                                     style="background-color:#738290;border-color:#333333; color: #fffffb;"
                                                      action="#{winkelmandjeController.artikelToevoegen(overviewController.artikelSelected)}">
                                         <b:iconAwesome name="shopping-cart"></b:iconAwesome>
 
                                     </b:commandButton>
                                     <b:button rendered="#{loginController.enumRoles eq 'USER'}"
 
-                                              style="background-color: #738290; color: #fffffb;border-color:#333333;  border-width:5px"
+                                              style="background-color: #738290; color: #fffffb;border-color:#333333;border-width:5px "
                                               iconAwesome="star"
                                               outcome="#{ratingController.beoordelingenGeselecteerdAtikelOphalen(overviewController.artikelSelected.id)}"
                                               onclick="$('.modalPseudoClass').modal()"/>
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq false}"
-                                            style="background-color: #738290; color: #fffffb;border-color:#333333;  border-width:5px"
+                                            style="background-color: #738290; color: #fffffb;border-color:#333333; "
                                             action="#{overviewController.addFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 
@@ -404,8 +402,7 @@
 
                                     <b:commandButton
                                             rendered="#{overviewController.favorietOfNietButton eq true}"
-                                            look="danger"
-                                            style="color: #fffffb"
+                                            style="background-color: red; color: #fffffb; border-color:#333333;"
                                             action="#{overviewController.removeFavoriet(loginController.currentUser)}"
                                             iconAwesome="heart">
 

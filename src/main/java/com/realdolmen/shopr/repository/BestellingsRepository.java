@@ -1,7 +1,5 @@
 package com.realdolmen.shopr.repository;
 
-import com.realdolmen.shopr.domain.Artikel;
-import com.realdolmen.shopr.domain.ArtikelLijnInBestelling;
 import com.realdolmen.shopr.domain.Bestelling;
 
 import javax.persistence.EntityManager;

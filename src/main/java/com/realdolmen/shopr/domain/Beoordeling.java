@@ -1,5 +1,7 @@
 package com.realdolmen.shopr.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +9,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = Beoordeling.FIND_ALL,
                 query = "select b from Beoordeling b")})
-
+@Data
 public class Beoordeling
 {
 
@@ -28,50 +30,6 @@ public class Beoordeling
    private Artikel artikel;
 
 
-    public Artikel getArtikel()
-    {
-        return artikel;
-    }
-
-    public void setArtikel(Artikel artikel)
-    {
-        this.artikel = artikel;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public int getScore()
-    {
-        return score;
-    }
-
-    public void setScore(int score)
-    {
-        this.score = score;
-    }
-
-    public String getOnschrijving()
-    {
-        return onschrijving;
-    }
-
-    public void setOnschrijving(String onschrijving)
-    {
-        this.onschrijving = onschrijving;
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
 
 
 }

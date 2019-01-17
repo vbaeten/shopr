@@ -114,7 +114,7 @@ public class UserConsoleController
 
     }
 
-    public void ArtikelDetails(Bestelling b)
+    public void artikelDetails(Bestelling b)
     {
 
         this.artikelLijnInBestelling = bestellingsService.artikelLijnInBestellingList(b);

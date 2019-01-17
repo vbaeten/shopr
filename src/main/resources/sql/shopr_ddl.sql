@@ -10,7 +10,7 @@ INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VA
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('game', '6', 'bungie', '70', 'halo');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('game', '7', 'sony interactive', '40', 'god of war');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('lp', '8', 'nuclear blast', '30', 'i love you at your darkest');
-INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('nonFictie', '9', 'lavey', '8', 'the satanic bible');
+INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('nonFictie', '9', 'lavey', '8', 'the black bible');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('lp', '10', 'heart&skull', '20', 'good mourning');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('lp', '11', 'nuclear blast', '20', 'northern chaos gods');
 INSERT INTO `shopr`.`artikel` (`type`, `id`, `leverancier`, `prijs`, `titel`) VALUES ('lp', '12', 'records', '21', 'infestissumam');

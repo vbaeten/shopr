@@ -1,6 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -18,7 +20,10 @@ import java.util.List;
                 )
         }
 )
-public class User {
+@Data
+public class User
+
+{
     public static final String FIND_ALL = "User.findAll";
     public static final String FIND_BY_NAME = "User.findByName";
 
@@ -50,59 +55,7 @@ public class User {
         this.firstName = firstName;
     }
 
-    public List<Artikel> getFavorieten()
-    {
-        return favorieten;
-    }
 
-    public void setFavorieten(List<Artikel> favorieten)
-    {
-        this.favorieten = favorieten;
-    }
-
-    public EnumRoles getRole()
-    {
-        return role;
-    }
-
-    public void setRole(EnumRoles role)
-    {
-        this.role = role;
-    }
-
-    public List<Beoordeling> getBeoordelingen()
-    {
-        return beoordelingen;
-    }
-
-    public void setBeoordelingen(List<Beoordeling> beoordelingen)
-    {
-        this.beoordelingen = beoordelingen;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
 
     public void favorietToevoegenAanUser(Artikel a)
