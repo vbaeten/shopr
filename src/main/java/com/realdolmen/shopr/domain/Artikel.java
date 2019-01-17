@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -16,7 +17,8 @@ import static javax.persistence.DiscriminatorType.STRING;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries(@NamedQuery(name = Artikel.FIND_ALL_ARTIKELS,
         query = "select a from Artikel a"))
-@Data
+@Getter
+@Setter
 public class Artikel implements Serializable
 {
     public static final String FIND_ALL_ARTIKELS = "Artikel.findAll";

@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,7 +14,8 @@ import javax.validation.constraints.Size;
 query = "select g from Game g where g.titel=:titel")})
 
 @DiscriminatorValue(value = "game")
-@Data
+@Getter
+@Setter
 public class Game extends Artikel
 {
 

@@ -13,11 +13,6 @@ public class SupplierService {
         if (shouldThrowException(order)) {
             throw new SupplierException();
         }
-
-        // Negeer onderstaande code even...
-        System.out.println(order.getClientReference()
-                + "-" + order.getArticleId()
-                + "-" + order.getNumberOfArticles());
     }
 
     protected boolean shouldThrowException(SupplierOrder order) {

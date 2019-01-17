@@ -1,7 +1,8 @@
 package com.realdolmen.shopr.domain;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,7 +17,8 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "boek_type")
 @DiscriminatorValue(value = "boek")
-@Data
+@Getter
+@Setter
 public abstract class Boek extends Artikel
 {
     public static final String FIND_ALL_BOOKS = "Boek.findall";

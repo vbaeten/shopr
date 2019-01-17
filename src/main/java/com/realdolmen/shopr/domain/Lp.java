@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +15,8 @@ import javax.validation.constraints.Size;
                 query = "select l from Lp l where l.titel=:titel")})
 @Table(name = "LP")
 @DiscriminatorValue(value = "lp")
-@Data
+@Getter
+@Setter
 public class Lp extends Artikel
 {
     public static final String FIND_ALL = "Lp.findAll";

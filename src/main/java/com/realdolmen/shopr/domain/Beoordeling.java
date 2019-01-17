@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -9,7 +10,8 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = Beoordeling.FIND_ALL,
                 query = "select b from Beoordeling b")})
-@Data
+@Getter
+@Setter
 public class Beoordeling
 {
 

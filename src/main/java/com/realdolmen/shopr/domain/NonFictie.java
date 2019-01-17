@@ -1,6 +1,7 @@
 package com.realdolmen.shopr.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -12,7 +13,8 @@ import javax.persistence.*;
         @NamedQuery(name= NonFictie.FIND_BY_NAME,
                 query = "select n from NonFictie n where n.titel=:titel")})
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Data
+@Getter
+@Setter
 public class NonFictie extends Boek
 {
 

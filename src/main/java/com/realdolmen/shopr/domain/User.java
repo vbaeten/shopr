@@ -1,10 +1,10 @@
 package com.realdolmen.shopr.domain;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -20,7 +20,8 @@ import java.util.List;
                 )
         }
 )
-@Data
+@Getter
+@Setter
 public class User
 
 {

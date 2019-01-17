@@ -33,9 +33,14 @@ public class BestellingsService
 
     }
 
-    public List<Bestelling> bestellingenUser(int id)
+    public List<Bestelling> getBestellingenUser()
     {
-        return bestellingsRepository.findByUser(id);
+        return bestellingenUser;
+    }
+
+    public void setBestellingenUser(List<Bestelling> bestellingenUser)
+    {
+        this.bestellingenUser = bestellingenUser;
     }
 
     public Bestelling findById(int id)
@@ -51,12 +56,6 @@ public class BestellingsService
     public List<ArtikelLijnInBestelling> artikelLijnInBestellingList(Bestelling bestelling)
     {
         List<ArtikelLijnInBestelling> artikels = new ArrayList<>();
-
-        Lp lp = new Lp();
-        Game game = new Game();
-        Fictie fictie = new Fictie();
-        NonFictie nonFictie = new NonFictie();
-
         ArtikelLijnInBestelling artikelLijnInBestellingLP = new ArtikelLijnInBestelling();
         ArtikelLijnInBestelling artikelLijnInBestellingGame = new ArtikelLijnInBestelling();
         ArtikelLijnInBestelling artikelLijnInBestellingFictie = new ArtikelLijnInBestelling();
@@ -91,6 +90,8 @@ public class BestellingsService
                     artikelLijnInBestellingNonFictie.setAantal(aantal);
                     artikelLijnInBestellingNonFictie.setTotaalBedragLijn(a.getPrijs() * artikelLijnInBestellingFictie.getAantal());
                     break;
+                    default:
+                        break;
             }
         }
 
